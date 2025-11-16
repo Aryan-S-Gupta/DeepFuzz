@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 import inspect
 
-from .doc_collect import extract_api_info, collect_doc_context, resolve_callable
+from .doc_collect import collect_doc_context, resolve_callable
 
 from .llm_client import LLMClient
 from .registry import (
@@ -141,16 +141,16 @@ def fallback_spec_from_signature(qualname: str, signature_str: str) -> dict:
     params = []
     for p in sig.parameters.values():
         if p.kind in (p.VAR_POSITIONAL, p.VAR_KEYWORD):
-            params.append({"name": p.name, "type": "any", "optional": True})
+            # params.append({"name": p.name, "type": "any", "optional": True})
             continue
 
         optional = (p.default is not inspect._empty)
 
         # simple name-based heuristics
         pname = p.name.lower()
-        if pname in ("x", "y", "input", "inputs", "tensor", "values"):
+        if pname in ("x", "y", "input", "inputs", "tensors", "values"):
             ptype = "tensor"
-        elif "shape" in pname:
+        elif "shape" in pname and "axis" not in pname:
             ptype = "shape"
         elif pname in ("axis", "axes", "dim", "rank"):
             ptype = "number"
@@ -229,6 +229,7 @@ def looks_useless_sig(sig: inspect.Signature, doc: str):
         return True
 
     return False
+
 
 def looks_like_enum(cls):
     """
@@ -354,9 +355,9 @@ def main():
             if isinstance(oracles, dict):
                 inv = oracles.get("invariants")
                 if isinstance(inv, list):
-                    cleaned = [s for s in inv if isinstance(
-                        s, str) and s.strip()]
-                    if all(s.strip().lower() == "none" for s in cleaned):
+                    cleaned = [str(s).strip()
+                               for s in inv if isinstance(s, str)]
+                    if all(str(s).strip().lower() == "none" for s in cleaned):
                         cleaned = []
                     oracles["invariants"] = cleaned
                 else:
@@ -374,6 +375,8 @@ def main():
 
                 if nm == "name":
                     p["type"] = "str"
+                    if "description" not in p:
+                        p["description"] = "A name for the operation."
 
                 if "allowed_dtypes" in p:
                     p["allowed_dtypes"] = coerce_allowed_dtypes(
@@ -406,33 +409,41 @@ def main():
 
                 else:
                     # For classes, use __init__; for others, use the object itself
-                    target = fn.__init__ if inspect.isclass(fn) else fn
+                    if inspect.isclass(fn):
+                        init = fn.__init__
+                        call = fn.__call__ if hasattr(fn, "__call__") else None
+
+                        # Prefer __init__ unless it's inherited and __call__ is overridden
+                        if (
+                            call is not None
+                            and call is not object.__call__
+                            and init is object.__init__
+                        ):
+                            target = call
+                        else:
+                            target = init
+                    else:
+                        target = fn
+
 
                     try:
                         sig = inspect.signature(target)
-                    except Exception:
+                    except:
                         sig = None
 
-                    try:
-                        info = extract_api_info(qn)
-                        if info.parameters:        # if extractor found params, always prefer them
-                            real_params = info.parameters
-                        else:
-                            # fallback: use inspect only if it has meaningful params
-                            if sig is not None and not looks_useless_sig(sig, docstring):
-                                real_params = [
-                                    p for p in sig.parameters.values()
-                                    if p.kind not in (
-                                        inspect.Parameter.VAR_POSITIONAL,
-                                        inspect.Parameter.VAR_KEYWORD,
-                                    )
-                                    and p.name not in ("self", "/", "*", "**")
-                                    and not p.name.startswith(("/", "*"))
-                                ]
-                            else:
-                                real_params = fb["params"]  # final fallback
-                    except Exception:
+                    if sig is not None and not looks_useless_sig(sig, docstring):
+                        real_params = [
+                            p for p in sig.parameters.values()
+                            if p.kind not in (inspect.Parameter.VAR_POSITIONAL,
+                                              inspect.Parameter.VAR_KEYWORD)
+                            and p.name not in ("self", "/", "*", "**")
+                            and not p.name.startswith(("/", "*"))
+                        ]
+                    else:
                         real_params = fb["params"]
+
+                if not real_params:
+                    real_params = fb["params"]
 
             except Exception:
                 # Last resort: use fallback spec params (dicts)
@@ -453,40 +464,63 @@ def main():
             mentions_dtype = any(
                 key in ds
                 for key in [
-                    "allowed dtype", "allowed dtypes",
-                    "dtype must be", "supported dtype",
-                    "type must be"
+                    "dtype",
+                    "dtypes",
+                    "data type",
+                    "tensor of type",
+                    "tensor with type",
+                    "scalar type",
+                    "expected type",
+                    "numeric type",
+                    "cv_",
+                    "uint8",
+                    "float32",
+                    "float64",
+                    "int32",
+                    "int64",
                 ]
             )
 
             mentions_shape = any(
                 key in ds
                 for key in [
-                    "must have rank", "rank must be",
-                    "shape must be", "minimum rank",
-                    "maximum rank", "dimensions must"
+                    "shape",
+                    "rank",
+                    "dimension",
+                    "dimensions",
+                    "spatial",
+                    "size(",
+                    "size:",
+                    "broadcast",
+                    "compatible shapes",
+                    "image size",
+                    "rows",
+                    "cols",
                 ]
             )
 
             for p in real_params:
-                # p can be inspect.Parameter, ParamInfo, or a dict from fb
                 if isinstance(p, inspect.Parameter):
                     name = p.name
 
                     if name in ("self", "args", "kwargs"):
                         continue
-
-                    # we already filter markers, but be defensive
-                    if p.kind in (
-                        inspect.Parameter.VAR_POSITIONAL,
-                        inspect.Parameter.VAR_KEYWORD,
-                    ):
+                    if p.kind == inspect.Parameter.VAR_POSITIONAL:
+                        continue
+                    if p.kind == inspect.Parameter.VAR_KEYWORD:
                         continue
                     if name in ("self", "/", "*", "**"):
                         continue
                     if name.startswith(("/", "*")):
                         continue
-                    optional = (p.default is not inspect._empty)
+
+                    # MUST add this here
+                    cand = llm_by_name.get(name)
+
+                    if cand and "optional" in cand:
+                        optional = bool(cand["optional"])
+                    else:
+                        optional = (p.default is not inspect._empty)
 
                 elif hasattr(p, "name"):  # ParamInfo from doc_collect
                     name = p.name
@@ -506,31 +540,33 @@ def main():
                 else:
                     continue
 
+                cand = llm_by_name.get(name)
+                if cand and "optional" in cand:
+                    optional = bool(cand["optional"])
+
                 base: Dict[str, Any] = {
                     "name": name,
-                    "type": llm_by_name.get(name, {}).get("type", "any"),
+                    "type": cand.get("type", "any") if cand else "any",
                     "optional": optional,
                 }
 
-                cand = llm_by_name.get(name)
                 if cand:
-                    if "description" in cand:
+                    if cand and "description" in cand and cand["description"]:
                         base["description"] = cand["description"]
 
                     # Only keep allowed_dtypes if docstring clearly talks about dtypes
                     if mentions_dtype and "allowed_dtypes" in cand:
-                        norm = coerce_allowed_dtypes(
-                            cand["allowed_dtypes"], allowed=UNIFIED_DTYPES
-                        )
+                        raw_dt = cand["allowed_dtypes"]
+                        if isinstance(raw_dt, str):
+                            raw_dt = [raw_dt]
+                        norm = coerce_allowed_dtypes(raw_dt, allowed=UNIFIED_DTYPES)
                         if norm:
                             base["allowed_dtypes"] = norm
 
-                    # Only keep rank info if docstring clearly talks about ranks/shapes
-                    if mentions_shape:
-                        if "min_rank" in cand:
-                            base["min_rank"] = cand["min_rank"]
-                        if "max_rank" in cand:
-                            base["max_rank"] = cand["max_rank"]
+                    if mentions_shape and "min_rank" in cand:
+                        base["min_rank"] = cand["min_rank"]
+                    if mentions_shape and "max_rank" in cand:
+                        base["max_rank"] = cand["max_rank"]
 
                 clean_params.append(base)
 
