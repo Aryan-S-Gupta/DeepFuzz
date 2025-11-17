@@ -109,10 +109,11 @@ def merge_llm_fallback(llm_obj: dict, fb_obj: dict) -> dict:
 
 def fallback_spec_from_signature(qualname: str, signature_str: str) -> dict:
     """
-    Generic fallback: each parameter becomes type=any or guessed by name.
+    Very conservative fallback: no parameters.
+    Used only when doc/LLM/sig pipeline fails.
     """
-    import inspect
     from .doc_collect import resolve_callable
+    import inspect
 
     try:
         fn = resolve_callable(qualname)
@@ -124,54 +125,22 @@ def fallback_spec_from_signature(qualname: str, signature_str: str) -> dict:
                 "params": [],
                 "oracles": {"invariants": []},
             }
-        # mirror doc_collect: classes → use __init__ when possible
-        if inspect.isclass(fn):
-            target = getattr(fn, "__init__", fn)
-        else:
-            target = fn
-        sig = inspect.signature(target)
+
+        # For everything else, do NOT guess parameters.
+        return {
+            "name": qualname.split(".")[-1],
+            "qualname": qualname,
+            "params": [],
+            "oracles": {"invariants": []},
+        }
+
     except Exception:
         return {
             "name": qualname.split(".")[-1],
             "qualname": qualname,
-            "params": [{"name": "x", "type": "any", "optional": False}],
-            "oracles": {"invariants": []}
+            "params": [],
+            "oracles": {"invariants": []},
         }
-
-    params = []
-    for p in sig.parameters.values():
-        if p.kind in (p.VAR_POSITIONAL, p.VAR_KEYWORD):
-            # params.append({"name": p.name, "type": "any", "optional": True})
-            continue
-
-        optional = (p.default is not inspect._empty)
-
-        # simple name-based heuristics
-        pname = p.name.lower()
-        if pname in ("x", "y", "input", "inputs", "tensors", "values"):
-            ptype = "tensor"
-        elif "shape" in pname and "axis" not in pname:
-            ptype = "shape"
-        elif pname in ("axis", "axes", "dim", "rank"):
-            ptype = "number"
-        elif pname in ("keepdims", "training", "use_locking"):
-            ptype = "bool"
-        elif pname in ("name", "device"):
-            ptype = "str"
-        else:
-            ptype = "any"
-
-        entry = {"name": p.name, "type": ptype, "optional": optional}
-        if ptype == "tensor":
-            entry = {"name": p.name, "type": ptype, "optional": optional}
-        params.append(entry)
-
-    return {
-        "name": qualname.split(".")[-1],
-        "qualname": qualname,
-        "params": params,
-        "oracles": {"invariants": []}
-    }
 
 
 # ---------------------------------------------------------------------
@@ -221,7 +190,7 @@ def looks_useless_sig(sig: inspect.Signature, doc: str):
 
     # Signatures like (self, /) → not meaningful
     names = [p.name for p in sig.parameters.values()]
-    if names in (["self"], ["x"], ["args"], ["kwargs"]):
+    if names in (["self"], ["args"], ["kwargs"]):
         return True
 
     # empty doc + almost empty signature → useless
@@ -234,15 +203,23 @@ def looks_useless_sig(sig: inspect.Signature, doc: str):
 def looks_like_enum(cls):
     """
     Detect pseudo-enum classes used in PyTorch, TensorFlow, OpenCV, etc.
-    These are classes where most public attributes are ALL CAPS
-    and they have no meaningful __init__ signature.
     """
+    import inspect
     try:
+        if not inspect.isclass(cls):
+            return False
+
+        if issubclass(cls, enum.Enum):
+            return True
+
+        sig = inspect.signature(cls.__init__)
+        real = [p for p in sig.parameters.values() if p.name != "self"]
+        if real:
+            return False
+
         attrs = [a for a in dir(cls) if not a.startswith("_")]
-        # Count ALLCAPS members
         upper = [a for a in attrs if a.isupper()]
-        # Heuristic: 2+ uppercase attributes → enum-like
-        return len(upper) >= 2
+        return len(upper) >= 3
     except Exception:
         return False
 
@@ -389,69 +366,54 @@ def main():
                 if isinstance(p, dict)
                 and p.get("name")
                 and p["name"] not in ("/", "*", "**")
-                and not str(p["name"]).startswith(("/", "*"))
             ]
 
             # ----- Derive real_params from real Python signature, with fallbacks -----
+            use_real_sig = True
             try:
                 fn = resolve_callable(qn)
 
-                # Enum types: treat as having no constructor params
+                # Enums -> no params
                 if inspect.isclass(fn) and (issubclass(fn, enum.Enum) or looks_like_enum(fn)):
                     enriched.append({
                         "name": qn.split(".")[-1],
                         "qualname": qn,
                         "params": [],
-                        "oracles": {"invariants": []}
+                        "oracles": {"invariants": []},
                     })
                     print("enum")
                     continue
 
+                # Determine callable target (class __init__ or function)
+                if inspect.isclass(fn):
+                    target = fn.__init__
                 else:
-                    # For classes, use __init__; for others, use the object itself
-                    if inspect.isclass(fn):
-                        init = fn.__init__
-                        call = fn.__call__ if hasattr(fn, "__call__") else None
+                    target = fn
 
-                        # Prefer __init__ unless it's inherited and __call__ is overridden
-                        if (
-                            call is not None
-                            and call is not object.__call__
-                            and init is object.__init__
-                        ):
-                            target = call
-                        else:
-                            target = init
-                    else:
-                        target = fn
+                try:
+                    sig = inspect.signature(target)
+                except Exception:
+                    sig = None
 
-
-                    try:
-                        sig = inspect.signature(target)
-                    except:
-                        sig = None
-
-                    if sig is not None and not looks_useless_sig(sig, docstring):
-                        real_params = [
-                            p for p in sig.parameters.values()
-                            if p.kind not in (inspect.Parameter.VAR_POSITIONAL,
-                                              inspect.Parameter.VAR_KEYWORD)
-                            and p.name not in ("self", "/", "*", "**")
-                            and not p.name.startswith(("/", "*"))
-                        ]
-                    else:
-                        real_params = fb["params"]
-
-                if not real_params:
+                if sig is None or looks_useless_sig(sig, docstring):
                     real_params = fb["params"]
+                    use_real_sig = False
+                else:
+                    real_params = list(sig.parameters.values())
 
             except Exception:
-                # Last resort: use fallback spec params (dicts)
                 real_params = fb["params"]
 
             # ------------------------------------------------------------------
             # ENFORCE REAL SIGNATURE PARAM NAMES, KEEP LLM METADATA WHERE VALID
             # ------------------------------------------------------------------
+            if not use_real_sig:
+                final = llm_obj if spec_valid(
+                    llm_obj) else merge_llm_fallback(llm_obj, fb)
+                enriched.append(final)
+                print("ok")
+                continue
+
             clean_params: List[Dict[str, Any]] = []
             llm_by_name = {
                 p.get("name"): p
@@ -460,67 +422,70 @@ def main():
             }
 
             ds = (docstring or "").lower()
-            # Stricter detection to avoid hallucinating dtypes/ranks
+
             mentions_dtype = any(
-                key in ds
-                for key in [
-                    "dtype",
-                    "dtypes",
+                kw in ds
+                for kw in [
+                    "dtype:",
+                    "dtypes:",
                     "data type",
-                    "tensor of type",
-                    "tensor with type",
-                    "scalar type",
-                    "expected type",
-                    "numeric type",
-                    "cv_",
-                    "uint8",
-                    "float32",
-                    "float64",
-                    "int32",
-                    "int64",
+                    "must be of type",
+                    "only supports dtype",
                 ]
             )
 
             mentions_shape = any(
-                key in ds
-                for key in [
-                    "shape",
-                    "rank",
-                    "dimension",
-                    "dimensions",
-                    "spatial",
-                    "size(",
-                    "size:",
-                    "broadcast",
-                    "compatible shapes",
-                    "image size",
-                    "rows",
-                    "cols",
+                kw in ds
+                for kw in [
+                    "shape:",
+                    "shape :",
+                    "of shape",
+                    "has shape",
+                    "expected shape",
+                    "tensor shape",
                 ]
             )
 
             for p in real_params:
                 if isinstance(p, inspect.Parameter):
                     name = p.name
-
-                    if name in ("self", "args", "kwargs"):
-                        continue
-                    if p.kind == inspect.Parameter.VAR_POSITIONAL:
-                        continue
-                    if p.kind == inspect.Parameter.VAR_KEYWORD:
-                        continue
-                    if name in ("self", "/", "*", "**"):
-                        continue
-                    if name.startswith(("/", "*")):
-                        continue
-
-                    # MUST add this here
                     cand = llm_by_name.get(name)
 
-                    if cand and "optional" in cand:
-                        optional = bool(cand["optional"])
-                    else:
+                    # keyword-only
+                    if p.kind == inspect.Parameter.KEYWORD_ONLY:
                         optional = (p.default is not inspect._empty)
+                        base = {
+                            "name": name,
+                            "type": cand.get("type", "any") if cand else "any",
+                            "optional": optional,
+                        }
+                        clean_params.append(base)
+                        continue
+
+                    # *args
+                    if p.kind == inspect.Parameter.VAR_POSITIONAL:
+                        name = p.name.lstrip("*")
+                        clean_params.append(
+                            {"name": name, "type": "any", "optional": True}
+                        )
+                        continue
+
+                    # **kwargs
+                    if p.kind == inspect.Parameter.VAR_KEYWORD:
+                        name = p.name.lstrip("*")
+                        clean_params.append(
+                            {"name": name, "type": "any", "optional": True}
+                        )
+                        continue
+
+                    # normal parameters
+                    if name == "self":
+                        continue
+                    if name in ("/", "*", "**"):
+                        continue
+
+                    cand = llm_by_name.get(name)
+                    optional = (p.default is not inspect._empty)
 
                 elif hasattr(p, "name"):  # ParamInfo from doc_collect
                     name = p.name
@@ -530,9 +495,6 @@ def main():
 
                 elif isinstance(p, dict):
                     name = p.get("name")
-                    if name == "x" and len(real_params) == 0:
-                        # prevent fake 'x' added by fallback for enum/pseudo-enum
-                        continue
                     if not name:
                         continue
                     optional = bool(p.get("optional", True))
@@ -541,8 +503,6 @@ def main():
                     continue
 
                 cand = llm_by_name.get(name)
-                if cand and "optional" in cand:
-                    optional = bool(cand["optional"])
 
                 base: Dict[str, Any] = {
                     "name": name,
@@ -551,22 +511,15 @@ def main():
                 }
 
                 if cand:
-                    if cand and "description" in cand and cand["description"]:
-                        base["description"] = cand["description"]
-
                     # Only keep allowed_dtypes if docstring clearly talks about dtypes
                     if mentions_dtype and "allowed_dtypes" in cand:
                         raw_dt = cand["allowed_dtypes"]
                         if isinstance(raw_dt, str):
                             raw_dt = [raw_dt]
-                        norm = coerce_allowed_dtypes(raw_dt, allowed=UNIFIED_DTYPES)
+                        norm = coerce_allowed_dtypes(
+                            raw_dt, allowed=UNIFIED_DTYPES)
                         if norm:
                             base["allowed_dtypes"] = norm
-
-                    if mentions_shape and "min_rank" in cand:
-                        base["min_rank"] = cand["min_rank"]
-                    if mentions_shape and "max_rank" in cand:
-                        base["max_rank"] = cand["max_rank"]
 
                 clean_params.append(base)
 
@@ -586,7 +539,45 @@ def main():
 
         except Exception as e:
             print(f"fallback (LLM error: {e})")
-            enriched.append(fb)
+            try:
+                fn = resolve_callable(qn)
+                if inspect.isclass(fn):
+                    target = fn.__init__
+                else:
+                    target = fn
+                sig = inspect.signature(target)
+                real_params = []
+                for p in sig.parameters.values():
+                    if p.name == "self":
+                        continue
+                    if p.kind == p.VAR_POSITIONAL:
+                        real_params.append({"name": p.name.lstrip(
+                            "*"), "type": "any", "optional": True})
+                        continue
+                    if p.kind == p.VAR_KEYWORD:
+                        real_params.append({"name": p.name.lstrip(
+                            "*"), "type": "any", "optional": True})
+                        continue
+                    if p.name in ("/", "*", "**"):
+                        continue
+                    real_params.append(p)
+
+                fixed = []
+                for p in real_params:
+                    fixed.append({
+                        "name": p.name,
+                        "type": "any",
+                        "optional": (p.default is not inspect._empty),
+                    })
+
+                enriched.append({
+                    "name": qn.split(".")[-1],
+                    "qualname": qn,
+                    "params": fixed,
+                    "oracles": {"invariants": []},
+                })
+            except:
+                enriched.append(fb)
 
         with open(outfile, "w") as f:
             json.dump(enriched, f, indent=2)
