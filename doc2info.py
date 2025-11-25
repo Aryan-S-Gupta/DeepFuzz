@@ -72,8 +72,6 @@ RETURN_GOOD_KEYWORDS = [
 RETURN_BAD_KEYWORDS = [
     "modifies in place", "in-place", "side effect",
     "updates the object", "mutates", "changes internal state",
-
-    #
     "share the same underlying storage", "view on the original tensor",
     "returns a view", "aliasing", "shares storage",
 ]
@@ -106,21 +104,7 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
     if any(p in low for p in PLACEHOLDER_PATTERNS):
         return False
 
-    # ============================================================
-    # NEW: unwrap autocast-mode wrapper to recover true op path
-    # ============================================================
-    if "torch.amp.autocast_mode" in api_name:
-        # keep only the segment after the LAST occurrence of "torch."
-        api_for_filter = "torch." + api_name.split("torch.")[-1]
-    else:
-        api_for_filter = api_name
-
-    full = api_for_filter.lower()
-
-    # ============================================================
-    # Forbidden phrases (library-agnostic; protocol-based)
-    # ============================================================
-
+    # Forbidden phrases (cross refs, aliases, etc.)
     FORBIDDEN_PHRASES = [
         # cross refs that actually redirect elsewhere
         "see also", "see class", "see function",
@@ -160,42 +144,6 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
             return False
 
     # ============================================================
-    # UNIVERSAL DOMAIN FILTER (DL-agnostic)
-    # Rejects non-tensor domains that violate your protocol
-    # ============================================================
-
-    # INVALID_PATH_FRAGMENT = [
-    #     ".jit", ".fx", ".mlir", ".xla", ".autograph", ".compiler",
-    #     ".graph", ".tracer", ".trace", ".interpreter",
-    #     ".distributed", ".rpc", ".collective",
-    #     ".quant", ".qat", ".fake_tensor",
-    #     ".debug", ".pdb", ".profile",
-    #     ".serialization", ".proto", ".protobuf", ".quantized",
-    #     ".dynamic", ".nnq", ".fake", ".proxy", ".rnn", ".seq",
-    #     ".six", ".difflib", ".onnx", ".tflite", ".coreml", ".openvino",
-    #     ".hexagon", ".edge", ".micro", ".delegate", ".plugin", ".importlib.",
-    #     ".sys.", ".types.", ".json.", ".pytree.", ".nested.", ".autograd.",
-    #     ".coroutine.", ".gc.", ".unsafe"
-    # ]
-
-    # # Domains that should never appear in the FULL path
-    # INVALID_DOMAINS = [
-    #     ".xmlrpc.", ".urllib.", ".http.", ".email.", ".socket.", ".ssl.",
-    #     ".tkinter.", ".zipfile.", ".shutil.", ".six.", ".decimal.", ".difflib.", ".pickle.", ".astunparse.",
-    #     ".cloud.", ".hdfs.", ".s3.", ".gcs.", ".azure.", ".bigquery.", ".redshift.", ".snowflake.", ".databricks.",
-    #     ".kafka.", ".pubsub.", ".rabbitmq.", ".activemq.", ".mqtt.", ".streaming.", ".eventhub."
-    # ]
-
-    # if any(frag in full for frag in INVALID_PATH_FRAGMENT):
-    #     return False
-    # if any(dom in full for dom in INVALID_DOMAINS):
-    #     return False
-
-    # # Reject entire API if full path contains a forbidden domain
-    # if any(dom in full for dom in INVALID_DOMAINS):
-    #     return False
-
-    # ============================================================
     # Step 2 — Required parameter validity
     # ============================================================
 
@@ -214,18 +162,21 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
     if not structured and not inline_valid:
         return False
 
-    # Single param must be mentioned
+    # Collect required parameter names from the inline signature
+    required_params = []
     if inline_valid:
         parts = [p.strip() for p in params_text.split(",") if p.strip()]
-        param_names = []
         for p in parts:
-            name = p.split(":", 1)[0].split("=", 1)[0].strip().lstrip("*")
-            if name and name not in ("self", "cls"):
-                param_names.append(name)
+            name_default = p.split("=", 1)
+            name = name_default[0].split(":", 1)[0].strip().lstrip("*")
 
-        if len(param_names) == 1:
-            if param_names[0] not in low:
-                return False
+            # Ignore self, cls
+            if name in ("self", "cls"):
+                continue
+
+            # No '=' means required param
+            if "=" not in p:
+                required_params.append(name)
 
     # ============================================================
     # Step 3 — Constructible types
@@ -234,17 +185,24 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
     if not any(t in low for t in CONSTRUCTIBLE_TYPES):
         return False
 
-    if any(b in low for b in NON_CONSTRUCTIBLE_TYPES):
-        return False
+    # Allow NON_CONSTRUCTIBLE_TYPES only in optional parameters
+    for word in NON_CONSTRUCTIBLE_TYPES:
+        if word in low:
+            in_required = any(
+                f"{req} (" in low and word in low.split(f"{req} (", 1)[1].split(")", 1)[0]
+                for req in required_params
+            )
+            if in_required:
+                return False
 
     # ============================================================
     # Step 4 — Side-effect checks
+    # (keep IO strict, but do not globally kill distributed / training)
     # ============================================================
 
-    for category in ["io", "distributed"]:
-        for w in SIDE_EFFECT_KEYWORDS[category]:
-            if w in low:
-                return False
+    for w in SIDE_EFFECT_KEYWORDS["io"]:
+        if w in low:
+            return False
 
     # ============================================================
     # Step 5 — Return-value clarity
@@ -279,14 +237,26 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
 # Library Walker (safe, recursive)
 # ============================================================
 
-def collect_docs_recursive(obj, prefix, seen):
+def collect_docs_recursive(obj, prefix, seen, max_depth=5):
+    """
+    Recursive walk with:
+      - object-identity visited guard (seen)
+      - structural skips for private / deep namespaces
+      - gentle depth limit to avoid huge internal trees
+    """
     results = []
+    current_depth = prefix.count(".")
 
     for name in dir(obj):
         if name.startswith("_"):
             continue
 
         full = f"{prefix}.{name}" if prefix else name
+
+        # Skip any path containing private segments like torch._C, torch.nn._reduction, etc.
+        parts = full.split(".")
+        if any(part.startswith("_") for part in parts):
+            continue
 
         try:
             child = getattr(obj, name)
@@ -295,10 +265,8 @@ def collect_docs_recursive(obj, prefix, seen):
 
         # Skip non-APIs (constants, ints, enums, etc.)
         if not (
-            # Python functions, C++ methods
             inspect.isroutine(child)
-            or inspect.isbuiltin(child)           # C++ tensor ops
-            # Tensor methods bound from C++
+            or inspect.isbuiltin(child)
             or inspect.ismethoddescriptor(child)
             or inspect.isfunction(child)
             or inspect.ismethod(child)
@@ -316,8 +284,20 @@ def collect_docs_recursive(obj, prefix, seen):
         if isinstance(doc, str) and is_testable_doc(doc, full):
             results.append((full, doc))
 
+        # Recurse into modules and classes, but avoid deep explosion
         if inspect.ismodule(child) or inspect.isclass(child):
-            results.extend(collect_docs_recursive(child, full, seen))
+            # stop going deeper after a certain depth
+            if current_depth + 1 > max_depth:
+                continue
+
+            # big internal modules tend to have huge dir() and are not needed
+            try:
+                if inspect.ismodule(child) and len(dir(child)) > 1000:
+                    continue
+            except Exception:
+                pass
+
+            results.extend(collect_docs_recursive(child, full, seen, max_depth))
 
     return results
 
@@ -327,7 +307,8 @@ def collect_docs_recursive(obj, prefix, seen):
 # ============================================================
 
 def save_testable_csv(lib, out_path="testable_apis.csv"):
-    seen = set()
+    # seed seen with the root library object to avoid cycles like autocast_mode.torch -> torch
+    seen = {id(lib)}
     results = collect_docs_recursive(lib, lib.__name__, seen)
 
     with open(out_path, "w", newline="", encoding="utf-8") as f:
@@ -335,14 +316,10 @@ def save_testable_csv(lib, out_path="testable_apis.csv"):
         writer.writerow(["api_full_name", "api_doc_text"])
         for api, doc in results:
             decision, reason = step6_final_decision(doc)
-
             if decision == "TESTABLE":
                 writer.writerow([api, doc])
-            else:
-                with open("incorrect_apis.txt", "a", encoding="utf-8") as log:
-                    log.write(f"{api} — {decision} — {reason}\n")
 
-    print(f"[✓] Saved {len(results)} testable APIs to {out_path}")
+    print(f"[✓] Saved testable APIs to {out_path}")
 
 
 # ============================================================
@@ -388,10 +365,18 @@ def step6_final_decision(doc: str):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--lib", type=str, required=True,
-                        help="Library name, e.g., tensorflow, torch, numpy")
-    parser.add_argument("--out", type=str, default="testable_apis.csv",
-                        help="Output CSV file")
+    parser.add_argument(
+        "--lib",
+        type=str,
+        required=True,
+        help="Library name, e.g., tensorflow, torch, numpy",
+    )
+    parser.add_argument(
+        "--out",
+        type=str,
+        default="testable_apis.csv",
+        help="Output CSV file",
+    )
 
     args = parser.parse_args()
 
