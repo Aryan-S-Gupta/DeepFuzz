@@ -58,11 +58,8 @@ SIDE_EFFECT_KEYWORDS = {
     ]
 }
 
-# ============================================================
-# Step 5 patterns
-# ============================================================
-
 RETURN_SECTION_RE = r"(returns?|output|outputs?)\s*[:]"
+
 RETURN_GOOD_KEYWORDS = [
     "tensor", "ndarray", "array", "numeric", "number",
     "tuple", "list", "object", "value", "boolean",
@@ -76,10 +73,10 @@ RETURN_BAD_KEYWORDS = [
     "returns a view", "aliasing", "shares storage",
 ]
 
+
 # ============================================================
 # Step 1–5 Unified Testability Function
 # ============================================================
-
 
 def is_testable_doc(doc: str, api_name: str = "") -> bool:
     if not doc:
@@ -87,7 +84,7 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
 
     d = doc.strip()
 
-    # Reject PyTorch in-place ops universally (protocol: side effects)
+    # Reject PyTorch in-place ops universally
     if api_name.endswith("_"):
         return False
 
@@ -104,37 +101,25 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
     if any(p in low for p in PLACEHOLDER_PATTERNS):
         return False
 
-    # Forbidden phrases (cross refs, aliases, etc.)
     FORBIDDEN_PHRASES = [
-        # cross refs that actually redirect elsewhere
         "see also", "see class", "see function",
         "for details see", "see documentation for",
         "see above", "see below",
         "see source code", "see implementation",
         "see :", "see:",
-
-        # aliases / wrappers
         "alias for", "alias of", "alias to",
         "same as", "equivalent to",
         "wrapper for", "wrapper around",
         "redirects to", "delegates to", "calls into",
         "thin wrapper", "inherits documentation from",
-
-        # implementation shortcuts
         "implemented in", "defined in",
         "internal use only", "private api",
-
-        # deprecation / legacy / instability
         "deprecated", "will be removed", "legacy",
-        "backward compatibility",
-        "implementation dependent", "backend dependent",
-        "platform dependent", "nondeterministic", "may vary",
-
-        # behavior-copying
+        "backward compatibility", "implementation dependent",
+        "backend dependent", "platform dependent",
+        "nondeterministic", "may vary",
         "identical to", "matches the behavior of",
         "follows semantics of", "based on",
-
-        # others
         "out-of-place version of", "version of",
         "same semantics as", "similar to", "equivalent to",
     ]
@@ -148,33 +133,28 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
     # ============================================================
 
     structured = re.search(r"(parameters|args|arguments|inputs?)\s*[:]", low)
-
     inline_sig = re.search(r"\b\w+\s*\(([^()]*)\)", d)
+
     inline_valid = False
     params_text = ""
 
     if inline_sig:
         params_text = inline_sig.group(1)
         parts = [p.strip() for p in params_text.split(",") if p.strip()]
-        if len(parts) >= 1:
+        if parts:
             inline_valid = True
 
     if not structured and not inline_valid:
         return False
 
-    # Collect required parameter names from the inline signature
     required_params = []
     if inline_valid:
         parts = [p.strip() for p in params_text.split(",") if p.strip()]
         for p in parts:
             name_default = p.split("=", 1)
             name = name_default[0].split(":", 1)[0].strip().lstrip("*")
-
-            # Ignore self, cls
             if name in ("self", "cls"):
                 continue
-
-            # No '=' means required param
             if "=" not in p:
                 required_params.append(name)
 
@@ -185,19 +165,20 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
     if not any(t in low for t in CONSTRUCTIBLE_TYPES):
         return False
 
-    # Allow NON_CONSTRUCTIBLE_TYPES only in optional parameters
+    # Forbid non-constructible types only if they are tied
+    # to required parameters (optional-only is allowed)
     for word in NON_CONSTRUCTIBLE_TYPES:
         if word in low:
             in_required = any(
-                f"{req} (" in low and word in low.split(f"{req} (", 1)[1].split(")", 1)[0]
+                f"{req} (" in low
+                and word in low.split(f"{req} (", 1)[1].split(")", 1)[0]
                 for req in required_params
             )
             if in_required:
                 return False
 
     # ============================================================
-    # Step 4 — Side-effect checks
-    # (keep IO strict, but do not globally kill distributed / training)
+    # Step 4 — IO side effects only
     # ============================================================
 
     for w in SIDE_EFFECT_KEYWORDS["io"]:
@@ -205,8 +186,15 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
             return False
 
     # ============================================================
-    # Step 5 — Return-value clarity
+    # Step 5 — Return clarity
+    # Relaxed for class-like APIs (e.g. torch.nn.Conv2d)
     # ============================================================
+
+    is_classish = False
+    if api_name:
+        last = api_name.split(".")[-1]
+        if last and last[0].isupper():
+            is_classish = True
 
     structured_return = re.search(RETURN_SECTION_RE, low)
 
@@ -220,9 +208,10 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
         low,
     )
 
-    if not (structured_return or inline_return):
-        if not (arrow_return and len(d.split()) > 15):
-            return False
+    if not is_classish:
+        if not (structured_return or inline_return):
+            if not (arrow_return and len(d.split()) > 15):
+                return False
 
     if any(bad in low for bad in RETURN_BAD_KEYWORDS):
         return False
@@ -234,43 +223,49 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
 
 
 # ============================================================
-# Library Walker (safe, recursive)
+# Library Walker — Correct recursion
 # ============================================================
 
-def collect_docs_recursive(obj, prefix, seen, max_depth=5):
-    """
-    Recursive walk with:
-      - object-identity visited guard (seen)
-      - structural skips for private / deep namespaces
-      - gentle depth limit to avoid huge internal trees
-    """
+def collect_docs_recursive(obj, prefix, seen, max_depth=5, root_name=None):
     results = []
-    current_depth = prefix.count(".")
+
+    if root_name is None:
+        # root_name will be "torch" when starting from torch
+        root_name = prefix.split(".")[0]
+
+    depth = prefix.count(".")
+    if depth > max_depth:
+        return results
 
     for name in dir(obj):
         if name.startswith("_"):
             continue
 
-        full = f"{prefix}.{name}" if prefix else name
-
-        # Skip any path containing private segments like torch._C, torch.nn._reduction, etc.
-        parts = full.split(".")
-        if any(part.startswith("_") for part in parts):
-            continue
+        full = f"{prefix}.{name}"
 
         try:
             child = getattr(obj, name)
         except Exception:
             continue
 
-        # Skip non-APIs (constants, ints, enums, etc.)
+        # treat ANY Python/C type as class-like
+        is_class_like = isinstance(child, type) or inspect.isclass(child)
+
+        # Skip giant internal modules
+        if inspect.ismodule(child):
+            modname = getattr(child, "__name__", "")
+            # Only follow modules that actually belong to the same top-level lib
+            if not modname.startswith(root_name):
+                continue
+            
+        # Identify valid API objects
         if not (
             inspect.isroutine(child)
             or inspect.isbuiltin(child)
             or inspect.ismethoddescriptor(child)
-            or inspect.isfunction(child)
             or inspect.ismethod(child)
-            or inspect.isclass(child)
+            or inspect.isfunction(child)
+            or is_class_like
             or inspect.ismodule(child)
         ):
             continue
@@ -280,24 +275,16 @@ def collect_docs_recursive(obj, prefix, seen, max_depth=5):
             continue
         seen.add(oid)
 
+        # Collect testable docs
         doc = getattr(child, "__doc__", None)
         if isinstance(doc, str) and is_testable_doc(doc, full):
             results.append((full, doc))
 
-        # Recurse into modules and classes, but avoid deep explosion
-        if inspect.ismodule(child) or inspect.isclass(child):
-            # stop going deeper after a certain depth
-            if current_depth + 1 > max_depth:
-                continue
-
-            # big internal modules tend to have huge dir() and are not needed
-            try:
-                if inspect.ismodule(child) and len(dir(child)) > 1000:
-                    continue
-            except Exception:
-                pass
-
-            results.extend(collect_docs_recursive(child, full, seen, max_depth))
+        # Recurse into modules and class-like objects
+        if inspect.ismodule(child) or is_class_like:
+            results.extend(
+                collect_docs_recursive(child, full, seen, max_depth, root_name)
+            )
 
     return results
 
@@ -307,32 +294,28 @@ def collect_docs_recursive(obj, prefix, seen, max_depth=5):
 # ============================================================
 
 def save_testable_csv(lib, out_path="testable_apis.csv"):
-    # seed seen with the root library object to avoid cycles like autocast_mode.torch -> torch
     seen = {id(lib)}
     results = collect_docs_recursive(lib, lib.__name__, seen)
 
     with open(out_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["api_full_name", "api_doc_text"])
+
         for api, doc in results:
-            decision, reason = step6_final_decision(doc)
+            decision, _ = step6_final_decision(doc)
             if decision == "TESTABLE":
                 writer.writerow([api, doc])
 
     print(f"[✓] Saved testable APIs to {out_path}")
 
 
-# ============================================================
-# Step 6: Final Decision Function
-# ============================================================
-
 def step6_final_decision(doc: str):
     if not doc or not isinstance(doc, str):
-        return "NOT TESTABLE", "missing documentation"
+        return "NOT TESTABLE", "missing doc"
 
     text = doc.strip()
     if not text:
-        return "NOT TESTABLE", "empty documentation"
+        return "NOT TESTABLE", "empty doc"
 
     try:
         passed = is_testable_doc(doc)
@@ -343,20 +326,14 @@ def step6_final_decision(doc: str):
         return "TESTABLE", "all steps passed"
 
     low = text.lower()
-
     hard_fail_signals = [
-        "modifies in place",
-        "in-place",
-        "side effect",
-        "deprecated",
-        "unsafe",
-        "do not use",
+        "modifies in place", "in-place", "side effect",
+        "deprecated", "unsafe", "do not use"
     ]
-
     if any(w in low for w in hard_fail_signals):
-        return "NOT TESTABLE", "explicit non-testable behavior"
+        return "NOT TESTABLE", "explicit fail"
 
-    return "UNCERTAIN", "insufficient information"
+    return "UNCERTAIN", "insufficient info"
 
 
 # ============================================================
@@ -365,19 +342,10 @@ def step6_final_decision(doc: str):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--lib",
-        type=str,
-        required=True,
-        help="Library name, e.g., tensorflow, torch, numpy",
-    )
-    parser.add_argument(
-        "--out",
-        type=str,
-        default="testable_apis.csv",
-        help="Output CSV file",
-    )
-
+    parser.add_argument("--lib", type=str, required=True,
+                        help="Library name, e.g., tensorflow, torch, numpy")
+    parser.add_argument("--out", type=str, default="testable_apis.csv",
+                        help="Output CSV file")
     args = parser.parse_args()
 
     lib = importlib.import_module(args.lib)
