@@ -237,7 +237,27 @@ def collect_docs_recursive(obj, prefix, seen, max_depth=5, root_name=None):
     if depth > max_depth:
         return results
 
-    for name in dir(obj):
+    attr_names = set()
+
+    try:
+        attr_names.update(dir(obj))
+    except Exception:
+        pass
+
+    try:
+        attr_names.update(getattr(obj, "__dict__", {}).keys())
+    except Exception:
+        pass
+
+    try:
+        attr_names.update(getattr(obj, "__all__", []))
+    except Exception:
+        pass
+
+    # Filter to string names only
+    attr_names = {n for n in attr_names if isinstance(n, str)}
+
+    for name in attr_names:
         if name.startswith("_"):
             continue
 
