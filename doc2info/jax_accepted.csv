@@ -1,0 +1,538 @@
+api_full_name,api_doc_text
+jax.array_ref,"Create a mutable array reference with initial value ``init_val``.
+
+  For more discussion, see the `Ref guide`_.
+
+  Args:
+    init_val: A :class:`jax.Array` representing the initial state
+      of the buffer.
+    memory_space: An optional memory space attribute for the Ref.
+
+  Returns:
+    A :class:`jax.ref.Ref` containing a reference to a mutable buffer.
+
+  .. _Ref guide: https://docs.jax.dev/en/latest/array_refs.html
+  "
+jax.copy_to_host_async,"
+  Tries to call a ``copy_to_host_async`` method on pytree leaves.
+
+  For each leaf this method will try to call the ``copy_to_host_async`` method
+  on the leaf. If the leaf is not a JAX array, or if the leaf does not have a
+  ``copy_to_host_async`` method, then this method will do nothing to the leaf.
+
+  Args:
+    x: a pytree, usually with at least some JAX array instances at its leaves.
+
+  Returns:
+    A pytree with the same structure and values of the input, where the host
+    copy of the values of all JAX array leaves are started.
+  "
+jax.array_ref,"Create a mutable array reference with initial value ``init_val``.
+
+  For more discussion, see the `Ref guide`_.
+
+  Args:
+    init_val: A :class:`jax.Array` representing the initial state
+      of the buffer.
+    memory_space: An optional memory space attribute for the Ref.
+
+  Returns:
+    A :class:`jax.ref.Ref` containing a reference to a mutable buffer.
+
+  .. _Ref guide: https://docs.jax.dev/en/latest/array_refs.html
+  "
+jax.copy_to_host_async,"
+  Tries to call a ``copy_to_host_async`` method on pytree leaves.
+
+  For each leaf this method will try to call the ``copy_to_host_async`` method
+  on the leaf. If the leaf is not a JAX array, or if the leaf does not have a
+  ``copy_to_host_async`` method, then this method will do nothing to the leaf.
+
+  Args:
+    x: a pytree, usually with at least some JAX array instances at its leaves.
+
+  Returns:
+    A pytree with the same structure and values of the input, where the host
+    copy of the values of all JAX array leaves are started.
+  "
+jax.experimental.mutable_array,"Create a mutable array reference with initial value ``init_val``.
+
+  For more discussion, see the `Ref guide`_.
+
+  Args:
+    init_val: A :class:`jax.Array` representing the initial state
+      of the buffer.
+    memory_space: An optional memory space attribute for the Ref.
+
+  Returns:
+    A :class:`jax.ref.Ref` containing a reference to a mutable buffer.
+
+  .. _Ref guide: https://docs.jax.dev/en/latest/array_refs.html
+  "
+jax.interpreters.partial_eval.dce_jaxpr,"Runs dead-code elementation on a given jaxpr.
+
+  Args:
+    jaxpr: The jaxpr to DCE.
+    used_outputs: A list of bools indicating which outputs are used.
+    instantiate: A bool or a list of bools indicating which inputs should be
+      considered used, regardless of whether they are actually used in a jaxpr.
+      If a bool, the same value is used for all inputs.
+
+  Returns:
+    A tuple of ``(new_jaxpr, used_inputs)``.
+  "
+jax.interpreters.pxla.global_aval_to_result_handler,"Returns a function for handling the raw buffers of a single output aval.
+
+  Args:
+    aval: The global output AbstractValue.
+    out_axis_resources: A PartitionSpec specifying the sharding of outputs.
+      Used for creating GSDAs.
+    global_mesh: The global device mesh that generated this output. Used
+      for creating GSDAs.
+
+  Returns:
+    A function for handling the Buffers that will eventually be produced
+    for this output. The function will return an object suitable for returning
+    to the user, e.g. an Array.
+  "
+jax.lax.conv_dimension_numbers,"Converts convolution `dimension_numbers` to a `ConvDimensionNumbers`.
+
+  Args:
+    lhs_shape: tuple of nonnegative integers, shape of the convolution input.
+    rhs_shape: tuple of nonnegative integers, shape of the convolution kernel.
+    dimension_numbers: None or a tuple/list of strings or a ConvDimensionNumbers
+      object.
+
+  Returns:
+    A `ConvDimensionNumbers` object that represents `dimension_numbers` in the
+    canonical form used by lax functions.
+  "
+jax.lax.custom_root,"Differentiably solve for the roots of a function.
+
+  This is a low-level routine, mostly intended for internal use in JAX.
+  Gradients of custom_root() are defined with respect to closed-over variables
+  from the provided function ``f`` via the implicit function theorem:
+  https://en.wikipedia.org/wiki/Implicit_function_theorem
+
+  Args:
+    f: function for which to find a root. Should accept a single argument,
+      return a tree of arrays with the same structure as its input.
+    initial_guess: initial guess for a zero of f.
+    solve: function to solve for the roots of f. Should take two positional
+      arguments, f and initial_guess, and return a solution with the same
+      structure as initial_guess such that func(solution) = 0. In other words,
+      the following is assumed to be true (but not checked)::
+
+        solution = solve(f, initial_guess)
+        error = f(solution)
+        assert all(error == 0)
+
+    tangent_solve: function to solve the tangent system. Should take two
+      positional arguments, a linear function ``g`` (the function ``f``
+      linearized at its root) and a tree of array(s) ``y`` with the same
+      structure as initial_guess, and return a solution ``x`` such that
+      ``g(x)=y``:
+
+      - For scalar ``y``, use ``lambda g, y: y / g(1.0)``.
+      - For vector ``y``, you could use a linear solve with the Jacobian, if
+        dimensionality of ``y`` is not too large:
+        ``lambda g, y: np.linalg.solve(jacobian(g)(y), y)``.
+    has_aux: bool indicating whether the ``solve`` function returns
+      auxiliary data like solver diagnostics as a second argument.
+
+  Returns:
+    The result of calling solve(f, initial_guess) with gradients defined via
+    implicit differentiation assuming ``f(solve(f, initial_guess)) == 0``.
+  "
+jax.lax.linalg.hessenberg,"Reduces a square matrix to upper Hessenberg form.
+
+  Currently implemented on CPU only.
+
+  Args:
+    a: A floating point or complex square matrix or batch of matrices.
+
+  Returns:
+    A ``(a, taus)`` pair, where the upper triangle and first subdiagonal of
+    ``a`` contain the upper Hessenberg matrix, and the elements below the first
+    subdiagonal contain the Householder reflectors. For each Householder
+    reflector ``taus`` contains the scalar factors of the elementary Householder
+    reflectors.
+  "
+jax.lax.precv,"Perform a collective recv according to the permutation ``perm``.
+
+  This function is an analog of the Recv HLO.
+
+  Args:
+    token: a compiler token, either generated by a matching psend or
+      lax.create_token(). This is used to enforce control dependencies between
+      collectives.
+    out_shape: ShapeDtypeStruct(s) containing the dtype and shape
+      of the result.
+    axis_name: hashable Python object used to name a pmapped axis (see the
+      :func:`jax.pmap` documentation for more details).
+    perm: list of pairs of ints, representing ``(source_index,
+      destination_index)`` pairs that encode how the mapped axis named
+      ``axis_name`` should be shuffled. The integer values are treated as
+      indices into the mapped axis ``axis_name``. Any two pairs should not have
+      the same source index or the same destination index. For each index of the
+      axis ``axis_name`` that does not correspond to a destination index in
+      ``perm``, the corresponding values in the result are filled with zeros of
+      the appropriate type. The semantics here are platform-specific, and for
+      GPU they correspond to NCCL recv.
+
+  Returns:
+    Array(s) with the same shape as ``out_shape``.
+  "
+jax.local_devices,"Like :py:func:`jax.devices`, but only returns devices local to a given process.
+
+  If ``process_index`` is ``None``, returns devices local to this process.
+
+  Args:
+    process_index: the integer index of the process. Process indices can be
+      retrieved via ``len(jax.process_count())``.
+    backend: This is an experimental feature and the API is likely to change.
+      Optional, a string representing the xla backend: ``'cpu'``, ``'gpu'``, or
+      ``'tpu'``.
+
+  Returns:
+    List of Device subclasses.
+  "
+jax.new_ref,"Create a mutable array reference with initial value ``init_val``.
+
+  For more discussion, see the `Ref guide`_.
+
+  Args:
+    init_val: A :class:`jax.Array` representing the initial state
+      of the buffer.
+    memory_space: An optional memory space attribute for the Ref.
+
+  Returns:
+    A :class:`jax.ref.Ref` containing a reference to a mutable buffer.
+
+  .. _Ref guide: https://docs.jax.dev/en/latest/array_refs.html
+  "
+jax.nn.hard_tanh,"Hard :math:`\mathrm{tanh}` activation function.
+
+  Computes the element-wise function:
+
+  .. math::
+    \mathrm{hard\_tanh}(x) = \begin{cases}
+      -1, & x < -1\\
+      x, & -1 \le x \le 1\\
+      1, & 1 < x
+    \end{cases}
+
+  Args:
+    x : input array
+
+  Returns:
+    An array.
+  "
+jax.nn.initializers.lecun_normal,"Builds a Lecun normal initializer.
+
+  A `Lecun normal initializer`_ is a specialization of
+  :func:`jax.nn.initializers.variance_scaling` where ``scale = 1.0``,
+  ``mode=""fan_in""``, and ``distribution=""truncated_normal""``.
+
+  Args:
+    in_axis: axis or sequence of axes of the input dimension in the weights
+      array.
+    out_axis: axis or sequence of axes of the output dimension in the weights
+      array.
+    batch_axis: axis or sequence of axes in the weight array that should be
+      ignored.
+    dtype: the dtype of the weights.
+
+  Returns:
+    An initializer.
+
+  Examples:
+
+  >>> import jax, jax.numpy as jnp
+  >>> initializer = jax.nn.initializers.lecun_normal()
+  >>> initializer(jax.random.key(42), (2, 3), jnp.float32)  # doctest: +SKIP
+  Array([[ 0.46700746,  0.8414632 ,  0.8518669 ],
+         [-0.61677957, -0.67402434,  0.09683388]], dtype=float32)
+
+  .. _Lecun normal initializer: https://arxiv.org/abs/1706.02515
+  "
+jax.nn.initializers.lecun_uniform,"Builds a Lecun uniform initializer.
+
+  A `Lecun uniform initializer`_ is a specialization of
+  :func:`jax.nn.initializers.variance_scaling` where ``scale = 1.0``,
+  ``mode=""fan_in""``, and ``distribution=""uniform""``.
+
+  Args:
+    in_axis: axis or sequence of axes of the input dimension in the weights
+      array.
+    out_axis: axis or sequence of axes of the output dimension in the weights
+      array.
+    batch_axis: axis or sequence of axes in the weight array that should be
+      ignored.
+    dtype: the dtype of the weights.
+
+  Returns:
+    An initializer.
+
+  Examples:
+
+  >>> import jax, jax.numpy as jnp
+  >>> initializer = jax.nn.initializers.lecun_uniform()
+  >>> initializer(jax.random.key(42), (2, 3), jnp.float32)  # doctest: +SKIP
+  Array([[ 0.56293887,  0.90433645,  0.9119454 ],
+         [-0.71479625, -0.7676109 ,  0.12302713]], dtype=float32)
+
+  .. _Lecun uniform initializer: https://arxiv.org/abs/1706.02515
+  "
+jax.nn.initializers.orthogonal,"
+  Builds an initializer that returns uniformly distributed orthogonal matrices.
+
+  If the shape is not square, the matrices will have orthonormal rows or columns
+  depending on which side is smaller.
+
+  Args:
+    scale: the upper bound of the uniform distribution.
+    column_axis: the axis that contains the columns that should be orthogonal.
+    dtype: the default dtype of the weights.
+
+  Returns:
+    An orthogonal initializer.
+
+  Examples:
+
+  >>> import jax, jax.numpy as jnp
+  >>> initializer = jax.nn.initializers.orthogonal()
+  >>> initializer(jax.random.key(42), (2, 3), jnp.float32)  # doctest: +SKIP
+  Array([[ 3.9026976e-01,  7.2495741e-01, -5.6756169e-01],
+         [ 8.8047469e-01, -4.7409311e-01, -1.3157725e-04]],            dtype=float32)
+  "
+jax.nn.mish,"Mish activation function.
+
+  Computes the element-wise function:
+
+  .. math::
+    \mathrm{mish}(x) = x \cdot \mathrm{tanh}(\mathrm{softplus}(x))
+
+  For more information, see
+  `Mish: A Self Regularized Non-Monotonic Activation Function
+  <https://arxiv.org/abs/1908.08681>`_.
+
+  Args:
+    x : input array
+
+  Returns:
+    An array.
+  "
+jax.numpy.isdtype,"Returns a boolean indicating whether a provided dtype is of a specified kind.
+
+  Args:
+    dtype : the input dtype
+    kind : the data type kind.
+      If ``kind`` is dtype-like, return ``dtype = kind``.
+      If ``kind`` is a string, then return True if the dtype is in the specified category:
+
+      - ``'bool'``: ``{bool}``
+      - ``'signed integer'``: ``{int4, int8, int16, int32, int64}``
+      - ``'unsigned integer'``: ``{uint4, uint8, uint16, uint32, uint64}``
+      - ``'integral'``: shorthand for ``('signed integer', 'unsigned integer')``
+      - ``'real floating'``: ``{float8_*, float16, bfloat16, float32, float64}``
+      - ``'complex floating'``: ``{complex64, complex128}``
+      - ``'numeric'``: shorthand for ``('integral', 'real floating', 'complex floating')``
+
+      If ``kind`` is a tuple, then return True if dtype matches any entry of the tuple.
+
+  Returns:
+    True or False
+  "
+jax.process_index,"Returns the integer process index of this process.
+
+  On most platforms, this will always be 0. This will vary on multi-process
+  platforms though.
+
+  Args:
+    backend: This is an experimental feature and the API is likely to change.
+      Optional, a string representing the xla backend: ``'cpu'``, ``'gpu'``, or
+      ``'tpu'``.
+
+  Returns:
+    Integer process index.
+  "
+jax.process_indices,"Returns the list of all JAX process indices associated with the backend.
+
+  Args:
+    backend: This is an experimental feature and the API is likely to change.
+      Optional, a string representing the xla backend: ``'cpu'``, ``'gpu'``, or
+      ``'tpu'``.
+
+  Returns:
+    List of integer process indices.
+  "
+jax.random.ball,"Sample uniformly from the unit Lp ball.
+
+  Reference: https://arxiv.org/abs/math/0503650.
+
+  Args:
+    key: a PRNG key used as the random key.
+    d: a nonnegative int representing the dimensionality of the ball.
+    p: a float representing the p parameter of the Lp norm.
+    shape: optional, the batch dimensions of the result. Default ().
+    dtype: optional, a float dtype for the returned values (default float64 if
+      jax_enable_x64 is true, otherwise float32).
+
+  Returns:
+    A random array of shape `(*shape, d)` and specified dtype.
+  "
+jax.random.uniform,"Sample uniform random values in [minval, maxval) with given shape/dtype.
+
+  Args:
+    key: a PRNG key used as the random key.
+    shape: optional, a tuple of nonnegative integers representing the result
+      shape. Default ().
+    dtype: optional, a float dtype for the returned values (default float64 if
+      jax_enable_x64 is true, otherwise float32).
+    minval: optional, a minimum (inclusive) value broadcast-compatible with shape for the range (default 0).
+    maxval: optional, a maximum (exclusive) value broadcast-compatible with shape for the range (default 1).
+
+  Returns:
+    A random array with the specified shape and dtype.
+  "
+jax.random.wrap_key_data,"Wrap an array of key data bits into a PRNG key array.
+
+  Args:
+    key_bits_array: a ``uint32`` array with trailing shape corresponding to
+      the key shape of the PRNG implementation specified by ``impl``.
+    impl: optional, specifies a PRNG implementation, as in ``random.key``.
+
+  Returns:
+    A PRNG key array, whose dtype is a subdtype of ``jax.dtypes.prng_key``
+      corresponding to ``impl``, and whose shape equals the leading shape
+      of ``key_bits_array.shape`` up to the key bit dimensions.
+  "
+jax.ref.array_ref,"Create a mutable array reference with initial value ``init_val``.
+
+  For more discussion, see the `Ref guide`_.
+
+  Args:
+    init_val: A :class:`jax.Array` representing the initial state
+      of the buffer.
+    memory_space: An optional memory space attribute for the Ref.
+
+  Returns:
+    A :class:`jax.ref.Ref` containing a reference to a mutable buffer.
+
+  .. _Ref guide: https://docs.jax.dev/en/latest/array_refs.html
+  "
+jax.ref.new_ref,"Create a mutable array reference with initial value ``init_val``.
+
+  For more discussion, see the `Ref guide`_.
+
+  Args:
+    init_val: A :class:`jax.Array` representing the initial state
+      of the buffer.
+    memory_space: An optional memory space attribute for the Ref.
+
+  Returns:
+    A :class:`jax.ref.Ref` containing a reference to a mutable buffer.
+
+  .. _Ref guide: https://docs.jax.dev/en/latest/array_refs.html
+  "
+jax.scipy.special.bernoulli,"Generate the first N Bernoulli numbers.
+
+  JAX implementation of :func:`scipy.special.bernoulli`.
+
+  Args:
+    n: integer, the number of Bernoulli terms to generate.
+
+  Returns:
+    Array containing the first ``n`` Bernoulli numbers.
+
+  Notes:
+    ``bernoulli`` generates numbers using the :math:`B_n^-` convention,
+    such that :math:`B_1=-1/2`.
+  "
+jax.scipy.special.ndtr,"Normal distribution function.
+
+  JAX implementation of :obj:`scipy.special.ndtr`.
+
+  Returns the area under the Gaussian probability density function, integrated
+  from minus infinity to x:
+
+  .. math::
+    \begin{align}
+    \mathrm{ndtr}(x) =&
+      \ \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^{x} e^{-\frac{1}{2}t^2} dt \\
+    =&\ \frac{1}{2} (1 + \mathrm{erf}(\frac{x}{\sqrt{2}})) \\
+    =&\ \frac{1}{2} \mathrm{erfc}(\frac{x}{\sqrt{2}})
+    \end{align}
+
+  Args:
+    x: An array of type `float32`, `float64`.
+
+  Returns:
+    An array with `dtype=x.dtype`.
+
+  Raises:
+    TypeError: if `x` is not floating-type.
+  "
+jax.scipy.stats.gaussian_kde.resample,"Randomly sample a dataset from the estimated pdf
+
+    Args:
+      key: a PRNG key used as the random key.
+      shape: optional, a tuple of nonnegative integers specifying the result
+        batch shape; that is, the prefix of the result shape excluding the last
+        axis.
+
+    Returns:
+      The resampled dataset as an array with shape `(d,) + shape`.
+    "
+jax.local_devices,"Like :py:func:`jax.devices`, but only returns devices local to a given process.
+
+  If ``process_index`` is ``None``, returns devices local to this process.
+
+  Args:
+    process_index: the integer index of the process. Process indices can be
+      retrieved via ``len(jax.process_count())``.
+    backend: This is an experimental feature and the API is likely to change.
+      Optional, a string representing the xla backend: ``'cpu'``, ``'gpu'``, or
+      ``'tpu'``.
+
+  Returns:
+    List of Device subclasses.
+  "
+jax.new_ref,"Create a mutable array reference with initial value ``init_val``.
+
+  For more discussion, see the `Ref guide`_.
+
+  Args:
+    init_val: A :class:`jax.Array` representing the initial state
+      of the buffer.
+    memory_space: An optional memory space attribute for the Ref.
+
+  Returns:
+    A :class:`jax.ref.Ref` containing a reference to a mutable buffer.
+
+  .. _Ref guide: https://docs.jax.dev/en/latest/array_refs.html
+  "
+jax.process_index,"Returns the integer process index of this process.
+
+  On most platforms, this will always be 0. This will vary on multi-process
+  platforms though.
+
+  Args:
+    backend: This is an experimental feature and the API is likely to change.
+      Optional, a string representing the xla backend: ``'cpu'``, ``'gpu'``, or
+      ``'tpu'``.
+
+  Returns:
+    Integer process index.
+  "
+jax.process_indices,"Returns the list of all JAX process indices associated with the backend.
+
+  Args:
+    backend: This is an experimental feature and the API is likely to change.
+      Optional, a string representing the xla backend: ``'cpu'``, ``'gpu'``, or
+      ``'tpu'``.
+
+  Returns:
+    List of integer process indices.
+  "
