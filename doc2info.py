@@ -15,32 +15,27 @@ VAGUE_WORDS = [
     "something", "misc", "various", "obj",
 ]
 
-CONSTRUCTIBLE_TYPES = [
-    "int",
-    "float",
-    "bool",
-    "string",
-    "str",
-    "tuple",
-    "list",
-    "array",
-    "ndarray",
-    "tensor",
-    "numeric",
-    "number",
-]
-
+# UPDATED: allow GPU/device types
 NON_CONSTRUCTIBLE_TYPES = [
+    # Files / paths
     "file", "filepath", "path", "directory", "folder",
+    
+    # Networking
     "url", "uri", "http", "https",
     "network", "socket", "connection",
+    
+    # Stateful or internal framework objects
     "session", "graph", "model", "handle",
-    "context manager", "stream", "iterator", "generator",
+    
+    # Context-like or IO streams
+    "context manager", "stream",
+    "iterator", "generator",
+    
+    # Execution / callback / callable
     "callback", "callable",
-    "device", "gpu", "cuda", "hardware",
-    "environment", "env",
-    "iterable", "sequence", "mapping", "collection",
-    "parameter", "parameters", "nn.module", "module"
+    
+    # Specific unfuzzable DL types
+    "nn.module",
 ]
 
 SIDE_EFFECT_KEYWORDS = {
@@ -107,10 +102,12 @@ RETURN_SECTION_RE = r"(returns?|output|outputs?)\s*[:]"
 
 RETURN_GOOD_KEYWORDS = [
     "tensor",
+    "tensor[]",
     "ndarray",
     "array",
     "numeric",
     "number",
+    "scalar",
     "tuple",
     "list",
     "object",
@@ -121,15 +118,18 @@ RETURN_GOOD_KEYWORDS = [
     "string",
     "str",
     "index",
+    "longtensor",
+    "bool",
+    "dict",
+    "mapping",
+    "pair",
+    "pairs",
+    "shape",
+    "dtype"
 ]
 
+# UPDATED: keep aliasing/view stuff as bad but allow in-place style wording
 RETURN_BAD_KEYWORDS = [
-    "modifies in place",
-    "in-place",
-    "side effect",
-    "updates the object",
-    "mutates",
-    "changes internal state",
     "share the same underlying storage",
     "view on the original tensor",
     "returns a view",
@@ -140,7 +140,6 @@ RETURN_BAD_KEYWORDS = [
 
 # ============================================================
 # Step 1-5 Unified Testability Function
-# (exactly your original criteria)
 # ============================================================
 
 def is_testable_doc(doc: str, api_name: str = "") -> bool:
@@ -149,10 +148,7 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
 
     d = doc.strip()
 
-    # Reject PyTorch in-place ops universally
-    if api_name.endswith("_"):
-        return False
-
+    # Do not blanket reject in-place ops by name
     if len(d) < 10:
         return False
 
@@ -166,27 +162,19 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
     if any(p in low for p in PLACEHOLDER_PATTERNS):
         return False
 
+    # Allow "see:" docs etc, only keep hard-fail phrases
     FORBIDDEN_PHRASES = [
-        "see also", "see class", "see function",
-        "for details see", "see documentation for",
-        "see above", "see below",
-        "see source code", "see implementation",
-        "see :", "see:",
-        "alias for", "alias of", "alias to",
-        "same as", "equivalent to",
-        "wrapper for", "wrapper around",
-        "redirects to", "delegates to", "calls into",
-        "thin wrapper", "inherits documentation from",
-        "implemented in", "defined in",
-        "internal use only", "private api",
-        "deprecated", "will be removed", "legacy",
-        "backward compatibility", "implementation dependent",
-        "backend dependent", "platform dependent",
-        "nondeterministic", "may vary",
-        "identical to", "matches the behavior of",
-        "follows semantics of", "based on",
-        "out-of-place version of", "version of",
-        "same semantics as", "similar to", "equivalent to",
+        "internal use only",
+        "private api",
+        "deprecated",
+        "will be removed",
+        "legacy",
+        "backward compatibility",
+        "implementation dependent",
+        "backend dependent",
+        "platform dependent",
+        "nondeterministic",
+        "may vary",
     ]
 
     for phrase in FORBIDDEN_PHRASES:
@@ -202,46 +190,44 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
 
     inline_valid = False
     params_text = ""
+    user_params = []     # all user facing params (required + optional)
+    required_params = [] # only non defaulted
 
     if inline_sig:
         params_text = inline_sig.group(1)
         parts = [p.strip() for p in params_text.split(",") if p.strip()]
         if parts:
             inline_valid = True
+            for p in parts:
+                name_default = p.split("=", 1)
+                name = name_default[0].split(":", 1)[0].strip().lstrip("*")
+                if name in ("self", "cls"):
+                    continue
+                user_params.append(name)
+                if "=" not in p:
+                    required_params.append(name)
 
     if not structured and not inline_valid:
         return False
 
-    required_params = []
-    if inline_valid:
-        parts = [p.strip() for p in params_text.split(",") if p.strip()]
-        for p in parts:
-            name_default = p.split("=", 1)
-            name = name_default[0].split(":", 1)[0].strip().lstrip("*")
-            if name in ("self", "cls"):
-                continue
-            if "=" not in p:
-                required_params.append(name)
+    # Reject APIs that are effectively used as obj.func()
+    # (no user parameters at all in the signature)
+    if inline_valid and not user_params:
+        return False
 
-    # Fuzzing requires at least one required parameter to generate tests.
+    # Fuzzing requires at least one required parameter OR a clear return
     if len(required_params) == 0:
         if not re.search(RETURN_SECTION_RE, low) and "->" not in low:
             return False
 
     # ============================================================
-    # Step 3 - Constructible types
+    # Step 3 - Constructible types (negative-list only)
     # ============================================================
 
-    # If doc does not mention any constructible type at all → reject
-    if not any(t in low for t in CONSTRUCTIBLE_TYPES):
-        return False
-
-    # If a required parameter has a non-constructible or unknown type → reject.
+    # If a required parameter has a documented NON-CONSTRUCTIBLE type → reject.
     for req in required_params:
-        # Look for patterns like:
-        #   param (TYPE
-        #   param: TYPE
-        pattern = rf"{re.escape(req)}\s*\(\s*([A-Za-z0-9_\[\]]+)"
+        # Look for patterns like: param (TYPE or param: TYPE
+        pattern = rf"{re.escape(req)}\s*[\(:]\s*([A-Za-z0-9_\[\]\.]+)"
         m = re.search(pattern, d)
         if m:
             ptype = m.group(1).lower()
@@ -250,26 +236,26 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
             if ptype in NON_CONSTRUCTIBLE_TYPES:
                 return False
 
-            # Accept if required param type is constructible
-            if ptype in CONSTRUCTIBLE_TYPES:
-                continue
-
-            # Otherwise type is unknown, not safely constructible → reject
+            # Otherwise: unknown or generic types → allowed
             continue
-        else:
-            # No type documented → reject
-            return False
 
-    # Forbid non-constructible types when tied to required parameters
+        # If no type is documented, do NOT reject.
+        # PyTorch/JAX rarely include param types; assume constructible.
+        continue
+
+    # Forbid non-constructible terms IF explicitly tied to required parameters.
+        # Forbid non-constructible terms IF explicitly tied to required parameters.
     for word in NON_CONSTRUCTIBLE_TYPES:
         if word in low:
-            in_required = any(
-                f"{req} (" in low
-                and word in low.split(f"{req} (", 1)[1].split(")", 1)[0]
-                for req in required_params
-            )
-            if in_required:
-                return False
+            for req in required_params:
+                # Check for patterns like: "req (type)" containing forbidden type
+                segment = re.search(rf"{re.escape(req)}\s*\((.*?)\)", low)
+                if segment and word in segment.group(1):
+                    return False
+
+    # Special case: reject memory_format 
+    if re.search(r"memory_format\s*=\s*torch\.[a-zA-Z_]+", d):
+        return False
 
     # ============================================================
     # Step 4 - IO side effects only
@@ -280,7 +266,7 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
             return False
 
     # ============================================================
-    # Step 5 - Return clarity
+    # Step 5 - Return clarity (negative-list only)
     # Relaxed for class-like APIs (for example torch.nn.Conv2d)
     # ============================================================
 
@@ -293,28 +279,31 @@ def is_testable_doc(doc: str, api_name: str = "") -> bool:
     structured_return = re.search(RETURN_SECTION_RE, low)
 
     inline_return = re.search(
-        r"returns?\b[^.\n]{0,80}\b(tensor|ndarray|array|number|float|int|list|tuple|value|object)\b",
+        r"returns?\b[^.\n]{0,80}\b(tensor|ndarray|array|number|float|int|list|tuple|value|object|dict|mapping|shape|dtype|bool|boolean)\b",
         low,
     )
 
     arrow_return = re.search(
-        r"->\s*(tensor|[a-z_]*tensor|ndarray|array|float|int|list|tuple|number)",
+        r"->\s*\(?\s*(tensor|[a-z_]*tensor|ndarray|array|float|int|list|tuple|number|bool)",
         low,
     )
 
+    # Simple structural requirement: there must be SOME indication of a return
     if not is_classish:
-        if not (structured_return or inline_return):
-            if not (arrow_return and len(d.split()) > 15):
-                return False
+        if not (
+            structured_return
+            or inline_return
+            or arrow_return
+            or "tensor of size" in low
+            or "returns a tensor" in low
+        ):
+            return False
 
+    # Pure negative filter: reject only clearly bad semantics
     if any(bad in low for bad in RETURN_BAD_KEYWORDS):
         return False
 
-    if not any(g in low for g in RETURN_GOOD_KEYWORDS):
-        return False
-
     return True
-
 
 # ============================================================
 # Step 6 - Final decision (kept for compatibility)
@@ -368,10 +357,7 @@ def explain_failure_reason(doc: str, api_name: str = "") -> str:
 
     low = d.lower()
 
-    # Same checks and order as is_testable_doc
-    if api_name.endswith("_"):
-        return "in-place op"
-
+    # Length / signature / placeholder checks
     if len(d) < 10:
         return "too short"
 
@@ -381,42 +367,19 @@ def explain_failure_reason(doc: str, api_name: str = "") -> str:
     if any(p in low for p in PLACEHOLDER_PATTERNS):
         return "placeholder doc"
 
+    # Disqualifying phrases
     FORBIDDEN_PHRASES = [
-        # Redirection / missing semantics
-        "see also",
-        "see class",
-        "see function",
-        "for details see",
-        "see documentation for",
-        "see above",
-        "see below",
-        "see source code",
-        "see implementation",
-        "see :",
-        "see:",
-
-        # Delegation / aliasing (no independent behavior)
-        "alias for",
-        "alias of",
-        "alias to",
-        "wrapper for",
-        "wrapper around",
-        "redirects to",
-        "delegates to",
-        "calls into",
-        "thin wrapper",
-        "inherits documentation from",
-
-        # Documentation that explicitly voids meaningful semantics
         "internal use only",
         "private api",
-
-        # Unsafe / removed / unstable
         "deprecated",
         "will be removed",
         "legacy",
-
-        # Stability / determinism issues fatal for fuzzing
+        "backward compatibility",
+        "implementation dependent",
+        "backend dependent",
+        "platform dependent",
+        "nondeterministic",
+        "may vary",
         "undefined behavior",
         "do not use",
         "not intended for direct use",
@@ -435,44 +398,47 @@ def explain_failure_reason(doc: str, api_name: str = "") -> str:
 
     inline_valid = False
     params_text = ""
+    user_params = []
+    required_params = []
 
     if inline_sig:
         params_text = inline_sig.group(1)
         parts = [p.strip() for p in params_text.split(",") if p.strip()]
         if parts:
             inline_valid = True
+            for p in parts:
+                name_default = p.split("=", 1)
+                name = name_default[0].split(":", 1)[0].strip().lstrip("*")
+                if name in ("self", "cls"):
+                    continue
+                user_params.append(name)
+                if "=" not in p:
+                    required_params.append(name)
 
     if not structured and not inline_valid:
         return "missing parameter description"
 
-    required_params = []
-    if inline_valid:
-        parts = [p.strip() for p in params_text.split(",") if p.strip()]
-        for p in parts:
-            name_default = p.split("=", 1)
-            name = name_default[0].split(":", 1)[0].strip().lstrip("*")
-            if name in ("self", "cls"):
-                continue
-            if "=" not in p:
-                required_params.append(name)
+    if inline_valid and not user_params:
+        return "no user parameters"
 
-    if not any(t in low for t in CONSTRUCTIBLE_TYPES):
-        return "no constructible input type"
-
+    # Non-constructible types tied to required params
     for word in NON_CONSTRUCTIBLE_TYPES:
         if word in low:
-            in_required = any(
-                f"{req} (" in low
-                and word in low.split(f"{req} (", 1)[1].split(")", 1)[0]
-                for req in required_params
-            )
-            if in_required:
-                return f"non-constructible required type: {word}"
+            for req in required_params:
+                segment = re.search(rf"{re.escape(req)}\s*\((.*?)\)", low)
+                if segment and word in segment.group(1):
+                    return f"non-constructible required type: {word}"
 
+    # IO side effects
     for w in SIDE_EFFECT_KEYWORDS["io"]:
         if w in low:
             return f"io side effect: {w}"
 
+    # memory_format restriction
+    if re.search(r"memory_format\s*=\s*torch\.[a-zA-Z_]+", d):
+        return "unsupported memory_format default"
+
+    # Return clarity (mirror negative-list logic)
     is_classish = False
     if api_name:
         last = api_name.split(".")[-1]
@@ -482,28 +448,29 @@ def explain_failure_reason(doc: str, api_name: str = "") -> str:
     structured_return = re.search(RETURN_SECTION_RE, low)
 
     inline_return = re.search(
-        r"returns?\b[^.\n]{0,80}\b(tensor|ndarray|array|number|float|int|list|tuple|value|object)\b",
+        r"returns?\b[^.\n]{0,80}\b(tensor|ndarray|array|number|float|int|list|tuple|value|object|dict|mapping|shape|dtype|bool|boolean)\b",
         low,
     )
 
     arrow_return = re.search(
-        r"->\s*(tensor|[a-z_]*tensor|ndarray|array|float|int|list|tuple|number)",
+        r"->\s*\(?\s*(tensor|[a-z_]*tensor|ndarray|array|float|int|list|tuple|number|bool)",
         low,
     )
 
     if not is_classish:
-        if not (structured_return or inline_return):
-            if not (arrow_return and len(d.split()) > 15):
-                return "unclear return type"
+        if not (
+            structured_return
+            or inline_return
+            or arrow_return
+            or "tensor of size" in low
+            or "returns a tensor" in low
+        ):
+            return "unclear return type"
 
     if any(bad in low for bad in RETURN_BAD_KEYWORDS):
         return "bad return semantics"
 
-    if not any(g in low for g in RETURN_GOOD_KEYWORDS):
-        return "no good return keywords"
-
     return "unspecified failure"
-
 
 def collect_docs_recursive(obj, prefix, seen_modules, max_depth=10, root_name=None, seen_classes=None):
     import inspect
