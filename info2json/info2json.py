@@ -48,7 +48,8 @@ Required JSON schema:
       "size": "",
       "default": "",
       "flag": "",
-      "description": ""
+      "description": "",
+      "constraints": [""]
     }}
   }},
   "output": {{
@@ -69,17 +70,20 @@ Rules:
 7. flag must be exactly one of: "Required", "Optional", "".
 8. Mark a parameter as "Optional" only when the signature or documentation explicitly indicates optionality, a default value, or wording like "(optional)" or "Defaults to ...".
 9. If a field is unknown, use the empty string "".
-10. constraints must contain short, mutation-useful validation rules only when the documentation explicitly supports them.
-11. Good constraint examples:
+10. Put single-parameter rules inside that parameter's "constraints".
+11. Use top-level "constraints" only for cross-parameter, object-level, or output-level rules.
+12. If a rule mentions exactly one real parameter, do not place it only at top level.
+13. Good parameter-constraint examples:
    - "axis must satisfy -rank(input) <= axis < rank(input)"
-   - "x and y must have broadcast-compatible shapes"
-   - "minval must be less than maxval"
-   - "input rank must be at least 2"
    - "indices dtype must be int32 or int64"
    - "indices values must be in range [0, params.shape[axis])"
-12. Do not invent hidden semantics. If the documentation does not support a rule, omit it.
-13. Keep descriptions short and documentation-grounded.
-14. Output exactly one JSON object and nothing else.
+   - "input must be 4-D"
+14. Good top-level constraint examples:
+   - "x and y must have broadcast-compatible shapes"
+   - "minval must be less than maxval"
+15. Do not invent hidden semantics. If the documentation does not support a rule, omit it.
+16. Keep descriptions short and documentation-grounded.
+17. Output exactly one JSON object and nothing else.
 """
 
 
@@ -119,7 +123,7 @@ def call_ollama(
     host: str,
     timeout: int = 300,
     temperature: float = 0.0,
-    num_predict: int = 700,
+    num_predict: int = 900,
 ) -> str:
     url = host.rstrip("/") + "/api/generate"
     payload = {
@@ -138,6 +142,17 @@ def call_ollama(
     if not isinstance(data, dict) or "response" not in data:
         raise RuntimeError(f"Unexpected Ollama response: {data}")
     return str(data["response"])
+
+
+def blank_param_spec() -> Dict[str, Any]:
+    return {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "",
+        "description": "",
+        "constraints": [],
+    }
 
 
 def blank_spec() -> Dict[str, Any]:
@@ -193,19 +208,23 @@ def extract_json(text: Any) -> Dict[str, Any]:
     return blank_spec()
 
 
-SECTION_ARGS = {"args", "arguments", "parameters", "parameter", "inputs", "input"}
-SECTION_RETURNS = {"returns", "return", "output", "outputs", "result", "results"}
-STOP_SECTIONS = {"raises", "examples", "example", "note", "notes", "warning", "warnings", "see also", "references"}
+SECTION_ARGS = {"args", "arguments",
+                "parameters", "parameter", "inputs", "input"}
+SECTION_RETURNS = {"returns", "return",
+                   "output", "outputs", "result", "results"}
+STOP_SECTIONS = {"raises", "examples", "example", "note",
+                 "notes", "warning", "warnings", "see also", "references"}
 BAD_PARAM_NAMES = {
     "optional", "required", "parameter", "parameters", "argument", "arguments", "arg", "args",
     "input", "inputs", "output", "outputs", "return", "returns", "result", "results",
     "default", "defaults", "note", "notes", "example", "examples",
 }
-BAD_RETURN_TYPES = {"note", "notes", "example", "examples", "warning", "warnings"}
-
+BAD_RETURN_TYPES = {"note", "notes", "example",
+                    "examples", "warning", "warnings"}
 
 SPECIFIC_TYPE_PATTERNS = [
-    re.compile(r"\b(?:raggedtensor|sparsetensor|tensorarray|dataset|variable|indexedslices)\b", re.I),
+    re.compile(
+        r"\b(?:raggedtensor|sparsetensor|tensorarray|dataset|variable|indexedslices)\b", re.I),
     re.compile(r"\b(?:list|tuple|sequence)\s+of\b", re.I),
     re.compile(r"\b[123]-d\b", re.I),
     re.compile(r"\btf\.[A-Za-z_][\w.]*\b"),
@@ -241,6 +260,62 @@ FLOAT_LIKE_NAMES = {
     "eps", "epsilon", "alpha", "beta", "gamma", "sigma", "stddev", "std", "mean", "momentum",
     "learning_rate", "lr", "prob", "probability", "p",
 }
+
+DTYPE_NAMES = (
+    "int8", "int16", "int32", "int64",
+    "uint8", "uint16", "uint32", "uint64",
+    "float16", "float32", "float64", "bfloat16",
+    "bool", "string", "complex64", "complex128",
+)
+
+DOC_RELATION_PATTERNS = [
+    (
+        re.compile(
+            r"\b([A-Za-z_]\w*)\s+and\s+([A-Za-z_]\w*)\s+must\s+have\s+the\s+same\s+shape\b", re.I),
+        lambda a, b: f"{a} and {b} must have the same shape",
+    ),
+    (
+        re.compile(
+            r"\b([A-Za-z_]\w*)\s+and\s+([A-Za-z_]\w*)\s+must\s+have\s+broadcast[- ]compatible\s+shapes\b", re.I),
+        lambda a, b: f"{a} and {b} must have broadcast-compatible shapes",
+    ),
+    (
+        re.compile(
+            r"\b([A-Za-z_]\w*)\s+and\s+([A-Za-z_]\w*)\s+must\s+have\s+the\s+same\s+(?:dtype|type)\b", re.I),
+        lambda a, b: f"{a} and {b} must have the same dtype",
+    ),
+    (
+        re.compile(
+            r"\b([A-Za-z_]\w*)\s+must\s+have\s+the\s+same\s+(?:dtype|type)\s+as\s+([A-Za-z_]\w*)\b", re.I),
+        lambda a, b: f"{a} must have the same dtype as {b}",
+    ),
+    (
+        re.compile(
+            r"\b([A-Za-z_]\w*)\s+must\s+be\s+less\s+than\s+([A-Za-z_]\w*)\b", re.I),
+        lambda a, b: f"{a} must be less than {b}",
+    ),
+    (
+        re.compile(
+            r"\b([A-Za-z_]\w*)\s+must\s+be\s+greater\s+than\s+([A-Za-z_]\w*)\b", re.I),
+        lambda a, b: f"{a} must be greater than {b}",
+    ),
+    (
+        re.compile(r"\b([A-Za-z_]\w*)\s*<\s*([A-Za-z_]\w*)\b"),
+        lambda a, b: f"{a} must be less than {b}",
+    ),
+    (
+        re.compile(r"\b([A-Za-z_]\w*)\s*<=\s*([A-Za-z_]\w*)\b"),
+        lambda a, b: f"{a} must be less than or equal to {b}",
+    ),
+    (
+        re.compile(r"\b([A-Za-z_]\w*)\s*>\s*([A-Za-z_]\w*)\b"),
+        lambda a, b: f"{a} must be greater than {b}",
+    ),
+    (
+        re.compile(r"\b([A-Za-z_]\w*)\s*>=\s*([A-Za-z_]\w*)\b"),
+        lambda a, b: f"{a} must be greater than or equal to {b}",
+    ),
+]
 
 
 def normalize_ws(s: str) -> str:
@@ -300,7 +375,8 @@ def parse_signature_params(sig_line: str) -> Tuple[List[str], Dict[str, Any], Op
                 try:
                     defaults[name] = ast.literal_eval(node)
                 except Exception:
-                    defaults[name] = ast.unparse(node) if hasattr(ast, "unparse") else ""
+                    defaults[name] = ast.unparse(
+                        node) if hasattr(ast, "unparse") else ""
 
         for arg, node in zip(fn.args.kwonlyargs, fn.args.kw_defaults):
             if is_suspicious_param_name(arg.arg):
@@ -310,7 +386,8 @@ def parse_signature_params(sig_line: str) -> Tuple[List[str], Dict[str, Any], Op
                 try:
                     defaults[arg.arg] = ast.literal_eval(node)
                 except Exception:
-                    defaults[arg.arg] = ast.unparse(node) if hasattr(ast, "unparse") else ""
+                    defaults[arg.arg] = ast.unparse(
+                        node) if hasattr(ast, "unparse") else ""
 
         ret = None
         if "->" in sig_line:
@@ -324,6 +401,10 @@ def extract_size_text(text: str) -> str:
     s = normalize_ws(text)
     if not s:
         return ""
+
+    m = re.search(r"\b\d+\s*[- ]?d\b", s, flags=re.I)
+    if m:
+        return normalize_ws(m.group(0)).upper().replace(" ", "")
 
     m = re.search(r"\bshape\s*=\s*\([^)]*\)", s, flags=re.I)
     if m:
@@ -341,11 +422,30 @@ def extract_size_text(text: str) -> str:
     if m:
         return normalize_ws(m.group(0))
 
-    m = re.search(r"\(([^)]*(?:shape|rank|ndim|dimension|dimensions)[^)]*)\)", s, flags=re.I)
+    m = re.search(
+        r"\(([^)]*(?:shape|rank|ndim|dimension|dimensions)[^)]*)\)", s, flags=re.I)
     if m:
         return normalize_ws(f"({m.group(1)})")
 
     return ""
+
+
+def explicit_optional_from_text(text: str) -> bool:
+    d = clean_text(text).lower()
+    if not d:
+        return False
+    return bool(
+        "(optional)" in d
+        or d.startswith("optional")
+        or " optional" in d
+        or " defaults to " in d
+        or d.startswith("defaults to ")
+        or " default is " in d
+        or " default: " in d
+        or re.search(r"\bdefault\b", d)
+        or "if none" in d
+    )
+
 
 def parse_doc_params(doc: str) -> Tuple[Dict[str, str], Dict[str, str], Dict[str, str], Dict[str, bool]]:
     """Return name->type, name->desc, name->size, name->is_optional."""
@@ -358,7 +458,8 @@ def parse_doc_params(doc: str) -> Tuple[Dict[str, str], Dict[str, str], Dict[str
     in_args = False
     current_name: Optional[str] = None
 
-    p_google = re.compile(r"^\s*(\*{0,2}[A-Za-z_][\w\.]*)\s*(\(([^)]*)\))?\s*:\s*(.*)$")
+    p_google = re.compile(
+        r"^\s*(\*{0,2}[A-Za-z_][\w\.]*)\s*(\(([^)]*)\))?\s*:\s*(.*)$")
     p_numpy = re.compile(r"^\s*(\*{0,2}[A-Za-z_][\w\.]*)\s*:\s*(.+?)\s*$")
     p_rst_param = re.compile(r"^\s*:param\s+([A-Za-z_][\w]*)\s*:\s*(.+)$")
     p_rst_type = re.compile(r"^\s*:type\s+([A-Za-z_][\w]*)\s*:\s*(.+)$")
@@ -399,7 +500,11 @@ def parse_doc_params(doc: str) -> Tuple[Dict[str, str], Dict[str, str], Dict[str
                 continue
             typ = normalize_ws(m.group(2))
             type_map[name] = typ
-            optional_map[name] = optional_map.get(name, False) or explicit_optional_from_text(typ)
+            optional_map[name] = optional_map.get(
+                name, False) or explicit_optional_from_text(typ)
+            size = extract_size_text(typ)
+            if size and name not in size_map:
+                size_map[name] = size
             continue
 
         if not in_args:
@@ -424,7 +529,8 @@ def parse_doc_params(doc: str) -> Tuple[Dict[str, str], Dict[str, str], Dict[str
                 size = extract_size_text(desc)
                 if size:
                     size_map[name] = size
-            optional_map[name] = explicit_optional_from_text(meta) or explicit_optional_from_text(desc)
+            optional_map[name] = explicit_optional_from_text(
+                meta) or explicit_optional_from_text(desc)
             continue
 
         m = p_numpy.match(line)
@@ -447,8 +553,10 @@ def parse_doc_params(doc: str) -> Tuple[Dict[str, str], Dict[str, str], Dict[str
             extra = normalize_ws(line)
             if extra:
                 prev = desc_map.get(current_name, "")
-                desc_map[current_name] = normalize_ws((prev + " " + extra).strip())
-                optional_map[current_name] = optional_map.get(current_name, False) or explicit_optional_from_text(extra)
+                desc_map[current_name] = normalize_ws(
+                    (prev + " " + extra).strip())
+                optional_map[current_name] = optional_map.get(
+                    current_name, False) or explicit_optional_from_text(extra)
                 size = extract_size_text(extra)
                 if size and current_name not in size_map:
                     size_map[current_name] = size
@@ -476,7 +584,8 @@ def parse_return_info(doc: str) -> Tuple[str, str, str]:
             continue
 
         if not ret_type:
-            m = re.match(r"^\s*([A-Za-z_][\w\[\], .|/-]*)\s*:\s*(.+)$", stripped)
+            m = re.match(
+                r"^\s*([A-Za-z_][\w\[\], .|/-]*)\s*:\s*(.+)$", stripped)
             if m:
                 candidate_type = normalize_ws(m.group(1))
                 if candidate_type.lower() not in BAD_RETURN_TYPES:
@@ -513,23 +622,6 @@ def clean_text(v: Any) -> str:
         return ""
     s = normalize_ws(v)
     return "" if s.lower() in {"none", "null"} else s
-
-
-def explicit_optional_from_text(text: str) -> bool:
-    d = clean_text(text).lower()
-    if not d:
-        return False
-    return bool(
-        "(optional)" in d
-        or d.startswith("optional")
-        or " optional" in d
-        or " defaults to " in d
-        or d.startswith("defaults to ")
-        or " default is " in d
-        or " default: " in d
-        or re.search(r"\bdefault\b", d)
-        or "if none" in d
-    )
 
 
 def should_preserve_specific_type(type_str: str) -> bool:
@@ -628,7 +720,8 @@ def normalize_llm_params(raw: Any) -> Dict[str, Dict[str, Any]]:
         for item in raw:
             if not isinstance(item, dict):
                 continue
-            name = item.get("name") or item.get("param") or item.get("arg") or item.get("parameter")
+            name = item.get("name") or item.get(
+                "param") or item.get("arg") or item.get("parameter")
             if name:
                 out[str(name)] = item
         return out
@@ -636,26 +729,36 @@ def normalize_llm_params(raw: Any) -> Dict[str, Dict[str, Any]]:
 
 
 def infer_optional_from_doc(type_text: str, desc: str, default_text: str = "") -> bool:
-    text = " ".join([clean_text(type_text), clean_text(desc), clean_text(default_text)])
+    text = " ".join([clean_text(type_text), clean_text(
+        desc), clean_text(default_text)])
     return explicit_optional_from_text(text)
 
 
-PARAM_RELATION_PATTERNS = [
-    (re.compile(r"\b([A-Za-z_]\w*)\s+must\s+be\s+positive\b", re.I), "{0} must be positive"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+must\s+be\s+non[- ]negative\b", re.I), "{0} must be non-negative"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+must\s+be\s+negative\b", re.I), "{0} must be negative"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+must\s+be\s+nonzero\b", re.I), "{0} must be nonzero"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+must\s+be\s+sorted\b", re.I), "{0} must be sorted"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+must\s+be\s+numeric\b", re.I), "{0} must be numeric"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+and\s+([A-Za-z_]\w*)\s+must\s+have\s+the\s+same\s+shape\b", re.I), "{0} and {1} must have the same shape"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+and\s+([A-Za-z_]\w*)\s+must\s+have\s+broadcast[- ]compatible\s+shapes\b", re.I), "{0} and {1} must have broadcast-compatible shapes"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+must\s+have\s+the\s+same\s+dtype\s+as\s+([A-Za-z_]\w*)\b", re.I), "{0} must have the same dtype as {1}"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s+must\s+be\s+less\s+than\s+([A-Za-z_]\w*)\b", re.I), "{0} must be less than {1}"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s*<\s*([A-Za-z_]\w*)\b"), "{0} must be less than {1}"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s*<=\s*([A-Za-z_]\w*)\b"), "{0} must be less than or equal to {1}"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s*>\s*([A-Za-z_]\w*)\b"), "{0} must be greater than {1}"),
-    (re.compile(r"\b([A-Za-z_]\w*)\s*>=\s*([A-Za-z_]\w*)\b"), "{0} must be greater than or equal to {1}"),
-]
+def normalize_constraint_list(raw: Any) -> List[str]:
+    if isinstance(raw, str):
+        raw = [raw]
+    if not isinstance(raw, list):
+        return []
+    out: List[str] = []
+    for item in raw:
+        s = clean_text(item)
+        if s and s not in out:
+            out.append(s)
+    return out
+
+
+def add_unique_rule(target: List[str], rule: str) -> None:
+    rule = clean_text(rule)
+    if rule and rule not in target:
+        target.append(rule)
+
+
+def param_mentions(text: str, param_names: Sequence[str]) -> List[str]:
+    out: List[str] = []
+    for p in param_names:
+        if re.search(rf"\b{re.escape(p)}\b", text, flags=re.I):
+            out.append(p)
+    return out
 
 
 def normalize_range_constraint_text(text: str) -> str:
@@ -665,96 +768,204 @@ def normalize_range_constraint_text(text: str) -> str:
     return s
 
 
-def extract_constraints_from_doc(doc: str, param_names: Sequence[str]) -> List[str]:
-    lines = [normalize_ws(ln) for ln in split_lines(doc) if normalize_ws(ln)]
-    text = "\n".join(lines)
+def extract_param_local_constraints(
+    name: str,
+    type_text: str,
+    size_text: str,
+    desc_text: str,
+    param_names: Sequence[str],
+) -> List[str]:
+    text = " ".join(
+        x for x in [clean_text(type_text), clean_text(size_text), clean_text(desc_text)] if x
+    )
     low = text.lower()
-    params = set(param_names)
     out: List[str] = []
 
-    def add(rule: str) -> None:
-        rule = normalize_ws(rule)
-        if rule and rule not in out:
-            out.append(rule)
+    dim_m = re.search(r"\b([1-9])\s*[- ]?d\b", size_text or text, flags=re.I)
+    if dim_m:
+        add_unique_rule(out, f"{name} must be {dim_m.group(1)}-D")
+    elif re.search(r"\bscalar\b", low):
+        add_unique_rule(out, f"{name} must be scalar")
 
-    for rx, tmpl in PARAM_RELATION_PATTERNS:
-        for m in rx.finditer(text):
-            names = [g for g in m.groups() if isinstance(g, str)]
-            if names and not all((n in params or n.lower() in {"input", "x", "y", "value", "indices", "shape", "dtype", "params", "axis"}) for n in names):
+    m = re.search(r"\brank\s*(?:>=|at least)\s*(\d+)", low)
+    if m:
+        add_unique_rule(out, f"{name} rank must be at least {m.group(1)}")
+
+    m = re.search(r"\bat least\s+(\d+)\s*[- ]?d(?:imension|im)?s?\b", low)
+    if m:
+        add_unique_rule(out, f"{name} rank must be at least {m.group(1)}")
+
+    if re.search(r"\bnon[- ]negative\b|greater than or equal to 0|>=\s*0", low):
+        add_unique_rule(out, f"{name} must be non-negative")
+
+    if re.search(r"\bnonzero\b|!=\s*0", low):
+        add_unique_rule(out, f"{name} must be nonzero")
+
+    if re.search(r"\bpositive\b|greater than 0|>\s*0", low) and "less than 0" not in low:
+        add_unique_rule(out, f"{name} must be positive")
+
+    if re.search(r"\bnegative\b|less than 0|<\s*0", low) and "non-negative" not in low:
+        add_unique_rule(out, f"{name} must be negative")
+
+    if re.search(r"\bsorted\b", low):
+        add_unique_rule(out, f"{name} must be sorted")
+
+    if re.search(r"\bnumeric\b", low):
+        add_unique_rule(out, f"{name} must be numeric")
+
+    range_patterns = [
+        r"(?:taking values|values|entries|elements)\s+in\s+(`?\[[^`\n]+(?:\)|\])`?)",
+        r"(?:must|should)\s+be\s+in\s+range\s+(`?\[[^`\n]+(?:\)|\])`?)",
+        r"(?:must|should)\s+lie\s+in\s+(`?\[[^`\n]+(?:\)|\])`?)",
+        r"(?:must|should)\s+be\s+in\s+(`?\[[^`\n]+(?:\)|\])`?)",
+    ]
+    for pat in range_patterns:
+        m = re.search(pat, desc_text or text, flags=re.I)
+        if m:
+            add_unique_rule(
+                out,
+                f"{name} values must be in range {normalize_range_constraint_text(m.group(1))}",
+            )
+            break
+
+    dtype_hits: List[str] = []
+    for dt in DTYPE_NAMES:
+        if re.search(rf"\b{re.escape(dt)}\b", low):
+            dtype_hits.append(dt)
+
+    if dtype_hits:
+        ordered: List[str] = []
+        for dt in dtype_hits:
+            if dt not in ordered:
+                ordered.append(dt)
+        if len(ordered) == 1:
+            add_unique_rule(out, f"{name} dtype must be {ordered[0]}")
+        else:
+            add_unique_rule(
+                out, f"{name} dtype must be {' or '.join(ordered)}")
+    elif re.search(r"\binteger\b", low):
+        add_unique_rule(out, f"{name} dtype must be integer")
+
+    for other in param_names:
+        if other == name:
+            continue
+
+        if re.search(rf"\bsame\s+shape\s+as\s+`?{re.escape(other)}`?\b", text, re.I):
+            add_unique_rule(out, f"{name} must have the same shape as {other}")
+
+        if re.search(rf"\bsame\s+(?:dtype|type)\s+as\s+`?{re.escape(other)}`?\b", text, re.I):
+            add_unique_rule(out, f"{name} must have the same dtype as {other}")
+
+        if re.search(rf"\bbroadcast[- ]compatible(?:\s+shapes?)?\s+with\s+`?{re.escape(other)}`?\b", text, re.I):
+            add_unique_rule(
+                out, f"{name} must be broadcast-compatible with {other}")
+
+        if re.search(rf"\b(?:less\s+than|<)\s+`?{re.escape(other)}`?\b", text, re.I):
+            add_unique_rule(out, f"{name} must be less than {other}")
+
+        if re.search(rf"\b(?:greater\s+than|>)\s+`?{re.escape(other)}`?\b", text, re.I):
+            add_unique_rule(out, f"{name} must be greater than {other}")
+
+    if re.search(r"\bone of\b|\beither\b", low):
+        choices: List[str] = []
+        for c in re.findall(r"[`'\"]([A-Za-z0-9_.-]+)[`'\"]", desc_text or text):
+            cl = c.lower()
+            if cl in BAD_PARAM_NAMES:
                 continue
-            add(tmpl.format(*names))
-
-    m = re.search(r"at least\s+(\d+)\s*[- ]?d(?:imension|im)?s?", low)
-    if m:
-        add(f"input rank must be at least {m.group(1)}")
-
-    m = re.search(r"rank\s+at\s+least\s+(\d+)", low)
-    if m:
-        add(f"input rank must be at least {m.group(1)}")
-
-    if re.search(r"broadcast(?:ing)?", low):
-        mentioned = [p for p in param_names if re.search(rf"\b{re.escape(p)}\b", low)]
-        if len(mentioned) >= 2:
-            add(f"{mentioned[0]} and {mentioned[1]} must have broadcast-compatible shapes")
-
-    if re.search(r"same\s+shape", low):
-        mentioned = [p for p in param_names if re.search(rf"\b{re.escape(p)}\b", low)]
-        if len(mentioned) >= 2:
-            add(f"{mentioned[0]} and {mentioned[1]} must have the same shape")
-
-    if re.search(r"same\s+dtype|matching\s+dtype", low):
-        mentioned = [p for p in param_names if re.search(rf"\b{re.escape(p)}\b", low)]
-        if len(mentioned) >= 2:
-            add(f"{mentioned[0]} and {mentioned[1]} must have compatible dtypes")
-
-    if re.search(r"sorted", low):
-        for p in param_names:
-            if re.search(rf"\b{re.escape(p)}\b", low):
-                add(f"{p} must be sorted")
-                break
-
-    if re.search(r"axis|dimension|dim", low):
-        axis_name = next((p for p in param_names if p.lower() in {"axis", "dim", "dims", "dimension"}), "")
-        input_name = next((p for p in param_names if p.lower() in {"input", "x", "tensor", "values", "params", "flat_values"}), "input")
-        if axis_name and re.search(r"\b(in range|within|valid)\b.*\baxis|\baxis\b.*\b(rank|ndim|dimensions)\b|\bdim\b.*\b(rank|ndim|dimensions)\b", low):
-            add(f"{axis_name} must satisfy -rank({input_name}) <= {axis_name} < rank({input_name})")
-
-    if re.search(r"non-?negative|greater than or equal to 0|>=\s*0", low):
-        for p in param_names:
-            if re.search(rf"\b{re.escape(p)}\b", low):
-                add(f"{p} must be non-negative")
-
-    if re.search(r"greater than 0|positive|>\s*0", low):
-        for p in param_names:
-            if re.search(rf"\b{re.escape(p)}\b", low):
-                add(f"{p} must be positive")
-
-    for p in param_names:
-        desc_match = re.search(rf"\b{re.escape(p)}\s*:\s*(.+?)(?=(?:\n\S)|\Z)", text, flags=re.I | re.S)
-        desc_text = desc_match.group(1) if desc_match else text
-        desc_low = desc_text.lower()
-
-        type_choices = re.findall(r"`?(int32|int64|float16|float32|float64|bool|string|complex64|complex128)`?", desc_text, flags=re.I)
-        if type_choices and ("one of the following types" in desc_low or "must be one of" in desc_low):
-            ordered = []
-            for t in type_choices:
-                tl = t.lower()
-                if tl not in ordered:
-                    ordered.append(tl)
-            add(f"{p} dtype must be {' or '.join(ordered)}")
-
-        rng = re.search(r"must\s+be\s+in\s+range\s+(`?\[[^\n`]+(?:\)|\])`?)", desc_text, flags=re.I)
-        if rng:
-            range_text = normalize_range_constraint_text(rng.group(1))
-            add(f"{p} values must be in range {range_text}")
-
-        same_as = re.search(r"same\s+type\s+as\s+`?([A-Za-z_][\w\.]*)`?", desc_text, flags=re.I)
-        if same_as:
-            ref = same_as.group(1)
-            if ref != p:
-                add(f"output type must match {ref}")
+            if cl == name.lower():
+                continue
+            if cl in {p.lower() for p in param_names}:
+                continue
+            if c not in choices:
+                choices.append(c)
+        if 2 <= len(choices) <= 8:
+            add_unique_rule(
+                out, f"{name} must be one of: {', '.join(choices)}")
 
     return out
+
+
+def extract_parameter_constraints_and_globals(
+    doc: str,
+    params: Dict[str, Dict[str, Any]],
+) -> Tuple[Dict[str, List[str]], List[str]]:
+    param_names = list(params.keys())
+    param_constraints: Dict[str, List[str]] = {p: [] for p in param_names}
+    global_constraints: List[str] = []
+
+    for p, meta in params.items():
+        for rule in normalize_constraint_list(meta.get("constraints", [])):
+            add_unique_rule(param_constraints[p], rule)
+
+        for rule in extract_param_local_constraints(
+            name=p,
+            type_text=meta.get("type", ""),
+            size_text=meta.get("size", ""),
+            desc_text=meta.get("description", ""),
+            param_names=param_names,
+        ):
+            add_unique_rule(param_constraints[p], rule)
+
+    text = "\n".join(normalize_ws(ln)
+                     for ln in split_lines(doc) if normalize_ws(ln))
+    low = text.lower()
+    lookup = {p.lower(): p for p in param_names}
+
+    for rx, builder in DOC_RELATION_PATTERNS:
+        for m in rx.finditer(text):
+            groups = [g for g in m.groups() if isinstance(g, str)]
+            resolved: List[str] = []
+            ok = True
+            for g in groups:
+                actual = lookup.get(g.lower())
+                if not actual:
+                    ok = False
+                    break
+                resolved.append(actual)
+            if not ok:
+                continue
+
+            rule = builder(*resolved)
+            for name in sorted(set(resolved)):
+                add_unique_rule(param_constraints[name], rule)
+            if len(set(resolved)) > 1:
+                add_unique_rule(global_constraints, rule)
+
+    axis_name = next(
+        (p for p in param_names if p.lower() in {
+         "axis", "dim", "dims", "dimension"}),
+        "",
+    )
+    input_name = next(
+        (p for p in param_names if p.lower() in {
+         "input", "x", "tensor", "values", "params", "flat_values"}),
+        "",
+    )
+    if axis_name and input_name:
+        if re.search(r"\b(rank|ndim|dimensions)\b", low):
+            rule = f"{axis_name} must satisfy -rank({input_name}) <= {axis_name} < rank({input_name})"
+            add_unique_rule(param_constraints[axis_name], rule)
+
+    return param_constraints, global_constraints
+
+
+def redistribute_global_constraints(
+    raw_constraints: Any,
+    param_names: Sequence[str],
+    param_constraints: Dict[str, List[str]],
+    global_constraints: List[str],
+) -> None:
+    for rule in normalize_constraint_list(raw_constraints):
+        mentioned = param_mentions(rule, param_names)
+        if not mentioned:
+            add_unique_rule(global_constraints, rule)
+            continue
+
+        for p in mentioned:
+            add_unique_rule(param_constraints[p], rule)
+
+        if len(mentioned) > 1:
+            add_unique_rule(global_constraints, rule)
 
 
 def build_prompt(api_full_name: str, doc: str) -> str:
@@ -771,7 +982,8 @@ def build_prompt(api_full_name: str, doc: str) -> str:
             supported.append(p)
             seen.add(p)
 
-    supported_text = ", ".join(supported) if supported else "(none reliably parsed)"
+    supported_text = ", ".join(
+        supported) if supported else "(none reliably parsed)"
     sig_text = sig_line or ""
     return PROMPT_TEMPLATE.format(
         api_full_name=api_full_name,
@@ -788,7 +1000,8 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
     module_path, _, api_name = api_full_name.rpartition(".")
     sig_line = find_signature_line(doc)
     sig_params, sig_defaults, sig_ret = parse_signature_params(sig_line)
-    doc_type_map, doc_desc_map, doc_size_map, doc_optional_map = parse_doc_params(doc)
+    doc_type_map, doc_desc_map, doc_size_map, doc_optional_map = parse_doc_params(
+        doc)
     ret_type_doc, ret_numbers_doc, ret_desc_doc = parse_return_info(doc)
 
     out = blank_spec()
@@ -814,16 +1027,22 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
             if desc:
                 supported_names.append(p)
 
-    final_params: Dict[str, Dict[str, str]] = {}
+    final_params: Dict[str, Dict[str, Any]] = {}
+
     for name in supported_names:
-        llm_p = llm_params.get(name, {}) if isinstance(llm_params.get(name, {}), dict) else {}
+        llm_p = llm_params.get(name, {}) if isinstance(
+            llm_params.get(name, {}), dict) else {}
         default_val = sig_defaults.get(name)
         default_str = "" if default_val is None else str(default_val)
 
-        p_desc = clean_text(doc_desc_map.get(name, "")) or clean_text(llm_p.get("description", ""))
-        raw_type_text = clean_text(doc_type_map.get(name, "")) or clean_text(llm_p.get("type", ""))
-        p_type = normalize_type(raw_type_text, name=name, default_val=default_val, desc=p_desc)
-        p_size = clean_text(doc_size_map.get(name, "")) or extract_size_text(clean_text(llm_p.get("size", "")))
+        p_desc = clean_text(doc_desc_map.get(name, "")) or clean_text(
+            llm_p.get("description", ""))
+        raw_type_text = clean_text(doc_type_map.get(
+            name, "")) or clean_text(llm_p.get("type", ""))
+        p_type = normalize_type(raw_type_text, name=name,
+                                default_val=default_val, desc=p_desc)
+        p_size = clean_text(doc_size_map.get(name, "")) or extract_size_text(
+            clean_text(llm_p.get("size", "")))
 
         if name in sig_defaults:
             flag = "Optional"
@@ -836,15 +1055,21 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
         else:
             flag = "Required"
 
-        final_params[name] = {
-            "type": p_type,
-            "size": p_size,
-            "default": default_str,
-            "flag": flag,
-            "description": p_desc,
-        }
+        param_obj = blank_param_spec()
+        param_obj.update(
+            {
+                "type": p_type,
+                "size": p_size,
+                "default": default_str,
+                "flag": flag,
+                "description": p_desc,
+                "constraints": normalize_constraint_list(llm_p.get("constraints")),
+            }
+        )
+        final_params[name] = param_obj
 
-    raw_output = spec.get("output") if isinstance(spec.get("output"), dict) else {}
+    raw_output = spec.get("output") if isinstance(
+        spec.get("output"), dict) else {}
     output_type_raw = ret_type_doc or clean_text(raw_output.get("type", ""))
     out["output"] = {
         "type": normalize_type(output_type_raw, desc=ret_desc_doc) or clean_text(sig_ret or ""),
@@ -852,24 +1077,21 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
         "description": ret_desc_doc or clean_text(raw_output.get("description", "")),
     }
 
-    llm_constraints = spec.get("constraints")
-    if isinstance(llm_constraints, str):
-        llm_constraints = [llm_constraints]
-    elif not isinstance(llm_constraints, list):
-        llm_constraints = []
+    param_constraints, global_constraints = extract_parameter_constraints_and_globals(
+        doc, final_params)
 
-    constraints: List[str] = []
-    for c in llm_constraints:
-        cc = clean_text(c)
-        if cc:
-            constraints.append(cc)
+    redistribute_global_constraints(
+        raw_constraints=spec.get("constraints"),
+        param_names=list(final_params.keys()),
+        param_constraints=param_constraints,
+        global_constraints=global_constraints,
+    )
 
-    for c in extract_constraints_from_doc(doc, list(final_params.keys())):
-        if c not in constraints:
-            constraints.append(c)
+    for name in final_params:
+        final_params[name]["constraints"] = param_constraints.get(name, [])
 
     out["params"] = final_params
-    out["constraints"] = constraints
+    out["constraints"] = global_constraints
     return out
 
 
@@ -1021,17 +1243,23 @@ def process_file(
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Convert representative API docs into per-API JSON specs using Ollama")
-    ap.add_argument("--input", required=True, help="CSV/XLSX with api_full_name, api_doc_text")
-    ap.add_argument("--outdir", required=True, help="Output directory for per-API JSON files")
-    ap.add_argument("--model", required=True, help="Ollama model name, e.g. llama3.1:8b")
-    ap.add_argument("--host", default="http://localhost:11434", help="Ollama host")
+    ap = argparse.ArgumentParser(
+        description="Convert representative API docs into per-API JSON specs using Ollama")
+    ap.add_argument("--input", required=True,
+                    help="CSV/XLSX with api_full_name, api_doc_text")
+    ap.add_argument("--outdir", required=True,
+                    help="Output directory for per-API JSON files")
+    ap.add_argument("--model", required=True,
+                    help="Ollama model name, e.g. llama3.1:8b")
+    ap.add_argument("--host", default="http://localhost:11434",
+                    help="Ollama host")
     ap.add_argument("--timeout", type=int, default=300)
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--retries", type=int, default=3)
     ap.add_argument("--sleep", type=float, default=0.0)
     ap.add_argument("--overwrite", action="store_true")
-    ap.add_argument("--combined-out", default="", help="Optional combined JSON list path")
+    ap.add_argument("--combined-out", default="",
+                    help="Optional combined JSON list path")
     args = ap.parse_args()
 
     process_file(
