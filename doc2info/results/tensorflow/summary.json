@@ -1,0 +1,1643 @@
+{
+  "input": "tf_apis.jsonl",
+  "library": "tensorflow",
+  "total": 18903,
+  "accepted": 922,
+  "accepted_before_alias_dedup": 922,
+  "duplicate_aliases_removed": 0,
+  "rejected": 17981,
+  "rejected_by_step": {
+    "1_doc": 6314,
+    "2_params": 5176,
+    "3_types": 536,
+    "4_return": 304,
+    "5_readiness": 5651
+  },
+  "top_reasons": {
+    "classes/exceptions are excluded": 801,
+    "required param 'condition' not fuzzable: type unclear / not constructable": 2,
+    "missing/placeholder/too short doc": 6245,
+    "return description too vague / predicate-like": 73,
+    "no documented return value": 59,
+    "no modifiable seedable parameters": 255,
+    "doc indicates side-effect/external-dependency keyword (\\b(distributed|cluster|server|worker|rpc|remote)\\b)": 2,
+    "return not capturable / side-effect style (\\breturns?\\s+none\\b)": 19,
+    "required param 'pred_fn_pairs' not fuzzable: non-fuzzable type cue: callable": 1,
+    "doc indicates utility/metadata behavior (\\bchecks? whether\\b)": 2,
+    "required param 'value' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'hypothesis' not fuzzable: type unclear / not constructable": 1,
+    "required param 'equation' lacks constraint/type/shape/value detail": 2,
+    "no concrete parameters; zero-arg APIs are excluded": 3585,
+    "doc indicates side-effect/external-dependency keyword (\\b(train|fit|learn|backward)\\b)": 7,
+    "required param 'fn' not fuzzable: non-fuzzable type cue: callable": 5,
+    "return not meaningful/capturable data-form": 153,
+    "required param 'graph_def' not fuzzable: type unclear / not constructable": 2,
+    "required param 'values' not fuzzable: type unclear / not constructable": 1,
+    "required param 'num_batch_threads' lacks constraint/type/shape/value detail": 1,
+    "required param 'conversion_func' not fuzzable: non-fuzzable type cue: function": 1,
+    "missing required param descriptions for: x": 10,
+    "doc indicates side-effect/external-dependency keyword (\\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\\b)": 44,
+    "required param 'branch_fns' not fuzzable: non-fuzzable type cue: callable": 1,
+    "required param 'indices' not fuzzable: type unclear / not constructable": 5,
+    "required param 'cond' not fuzzable: non-fuzzable type cue: callable": 2,
+    "receiver-like owner 'CriticalSection'": 1,
+    "reference-only doc / alias redirect": 69,
+    "receiver-like owner 'DType'": 1,
+    "receiver-like owner 'DeviceSpec'": 3,
+    "receiver-like owner 'GradientTape'": 4,
+    "receiver-like owner 'Graph'": 17,
+    "missing required param descriptions for: type": 1,
+    "receiver-like owner 'IndexedSlicesSpec'": 6,
+    "receiver-like owner 'Module'": 1,
+    "receiver-like owner 'NoneTensorSpec'": 6,
+    "receiver-like owner 'Operation'": 5,
+    "receiver-like owner 'OptionalSpec'": 6,
+    "receiver-like owner 'RaggedTensor'": 25,
+    "receiver-like owner 'RaggedTensorSpec'": 6,
+    "receiver-like owner 'SparseTensor'": 3,
+    "receiver-like owner 'SparseTensorSpec'": 6,
+    "receiver-like owner 'Tensor'": 2,
+    "no parsable documented parameters aligned with signature": 25,
+    "receiver-like owner 'TensorArray'": 8,
+    "receiver-like owner 'TensorArraySpec'": 5,
+    "missing required param descriptions for: other": 2,
+    "receiver-like owner 'TensorShape'": 12,
+    "missing required param descriptions for: value, casting_context": 1,
+    "receiver-like owner 'TensorSpec'": 6,
+    "receiver-like owner 'TypeSpec'": 6,
+    "receiver-like owner 'Variable'": 21,
+    "required param 'contents' not fuzzable: non-fuzzable type cue: file": 1,
+    "name contains side-effect keyword (\\b(camera|microphone|audio|video)\\b)": 1,
+    "required param 'entity' not fuzzable: non-fuzzable type cue: callable": 1,
+    "wrapper/bridge namespace (\\.compat(?:\\.|$))": 9,
+    "required param 'run_eagerly' lacks constraint/type/shape/value detail": 2,
+    "name contains utility/metadata keyword (\\b(importlib|metadata|inspect|typing|warnings|logging|config|backend|backends)\\b)": 8,
+    "required param 'device' not fuzzable: type unclear / not constructable": 3,
+    "required param 'enabled' lacks constraint/type/shape/value detail": 1,
+    "required param 'message' not fuzzable: type unclear / not constructable": 1,
+    "required param 'message' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: tensor": 1,
+    "missing required param descriptions for: x_type, y_type": 1,
+    "required param 'source_column' not fuzzable: type unclear / not constructable": 1,
+    "required param 'num_buckets' not fuzzable: type unclear / not constructable": 1,
+    "required param 'vocabulary_file' not fuzzable: non-fuzzable type cue: file": 1,
+    "required param 'categorical_column' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'key' lacks constraint/type/shape/value detail": 5,
+    "required param 'categorical_columns' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'categorical_column' not fuzzable: type unclear / not constructable": 1,
+    "required param 'image' not fuzzable: type unclear / not constructable": 12,
+    "required param 'images' not fuzzable: type unclear / not constructable": 12,
+    "required param 'max_total_size' has opaque custom type(s): Note, OOM": 1,
+    "required param 'sizes' not fuzzable: type unclear / not constructable": 1,
+    "required param 'offset_height' lacks constraint/type/shape/value detail": 1,
+    "required param 'lower' lacks constraint/type/shape/value detail": 2,
+    "required param 'target_height' not fuzzable: type unclear / not constructable": 2,
+    "required param 'max_val' not fuzzable: type unclear / not constructable": 1,
+    "required param 'img1' not fuzzable: type unclear / not constructable": 1,
+    "required param 'seed' not fuzzable: non-fuzzable type cue: generator": 13,
+    "required param 'features' not fuzzable: type unclear / not constructable": 2,
+    "required param 'sp_input' not fuzzable: type unclear / not constructable": 9,
+    "utility-style param 'ragged'": 2,
+    "required param 'lower_upper' not fuzzable: type unclear / not constructable": 1,
+    "doc indicates utility/metadata behavior (\\bbackend\\b)": 38,
+    "required param 'y_pred' not fuzzable: non-fuzzable type cue: model": 2,
+    "required param 'y_true' not fuzzable: type unclear / not constructable": 4,
+    "required param 'k' lacks constraint/type/shape/value detail": 6,
+    "required param 'targets' not fuzzable: type unclear / not constructable": 2,
+    "required param 'nest1' not fuzzable: type unclear / not constructable": 1,
+    "required param 'structure' not fuzzable: type unclear / not constructable": 2,
+    "required param 'num_true' lacks constraint/type/shape/value detail": 9,
+    "required param 'rate' not fuzzable: type unclear / not constructable": 2,
+    "required param 'per_example_loss' not fuzzable: type unclear / not constructable": 1,
+    "required param 'padding' not fuzzable: type unclear / not constructable": 1,
+    "doc indicates side-effect/external-dependency keyword (\\b(camera|microphone|audio|video)\\b)": 2,
+    "required param 'strides' not fuzzable: type unclear / not constructable": 2,
+    "required param 'data_format' lacks constraint/type/shape/value detail": 4,
+    "missing required param descriptions for: sp_weights": 1,
+    "required param 'num_sampled' lacks constraint/type/shape/value detail": 2,
+    "required param 'pooling_type' not fuzzable: type unclear / not constructable": 1,
+    "required param 'logits' not fuzzable: type unclear / not constructable": 1,
+    "required param 'padding' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: min, max": 1,
+    "required param 'input_min' not fuzzable: type unclear / not constructable": 2,
+    "required param 'args' not fuzzable: type unclear / not constructable": 2,
+    "required param 'alg' lacks constraint/type/shape/value detail": 2,
+    "required param 'seed' lacks constraint/type/shape/value detail": 2,
+    "wrapper/bridge namespace ((?:^|\\.)raw_ops(?:\\.|$))": 1277,
+    "required param 'export_dir' not fuzzable: non-fuzzable type cue: directory": 1,
+    "missing required param descriptions for: input_tensor": 10,
+    "required param 'default_value' not fuzzable: type unclear / not constructable": 1,
+    "required param 'sp_a' not fuzzable: type unclear / not constructable": 1,
+    "required param 'key' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'name' not fuzzable: type unclear / not constructable": 5,
+    "required param 'logdir' not fuzzable: non-fuzzable type cue: file": 1,
+    "required param 'tensor' not fuzzable: non-fuzzable type cue: callable": 1,
+    "required param 'f' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'num_workers' not fuzzable: non-fuzzable type cue: worker": 1,
+    "required param 'checkpoint_dir' not fuzzable: non-fuzzable type cue: directory": 1,
+    "receiver-like owner 'SaveSliceInfo'": 2,
+    "receiver-like owner 'ForwardAccumulator'": 1,
+    "missing required param descriptions for: value": 32,
+    "required param 'num_threads' lacks constraint/type/shape/value detail": 2,
+    "receiver-like owner 'Dataset'": 41,
+    "missing required param descriptions for: path": 8,
+    "receiver-like owner 'DatasetSpec'": 4,
+    "receiver-like owner 'FixedLengthRecordDataset'": 41,
+    "receiver-like owner 'IteratorSpec'": 6,
+    "receiver-like owner 'Options'": 1,
+    "receiver-like owner 'TFRecordDataset'": 41,
+    "receiver-like owner 'TextLineDataset'": 41,
+    "doc describes lookup/resource/spec-style behavior, not data transformation": 6,
+    "required param 'element_length_func' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'batch_size' not fuzzable: non-fuzzable type cue: dataset": 1,
+    "required param 'key_func' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'file_pattern' not fuzzable: non-fuzzable type cue: file": 2,
+    "required param 'map_func' not fuzzable: non-fuzzable type cue: function": 2,
+    "missing required param descriptions for: features": 1,
+    "required param 'device' lacks constraint/type/shape/value detail": 1,
+    "required param 'class_func' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'datasets' not fuzzable: non-fuzzable type cue: dataset": 1,
+    "required param 'dump_root' not fuzzable: non-fuzzable type cue: path": 1,
+    "receiver-like owner 'CrossDeviceOps'": 6,
+    "receiver-like owner 'DistributedDataset'": 1,
+    "receiver-like owner 'HierarchicalCopyAllReduce'": 6,
+    "receiver-like owner 'InputContext'": 1,
+    "missing required param descriptions for: colocate_with_variable": 9,
+    "receiver-like owner 'MirroredStrategy'": 8,
+    "missing required param descriptions for: dataset_fn": 9,
+    "missing required param descriptions for: fn": 9,
+    "missing required param descriptions for: dataset": 9,
+    "missing required param descriptions for: input_fn": 9,
+    "missing required param descriptions for: config_proto": 9,
+    "receiver-like owner 'MultiWorkerMirroredStrategy'": 16,
+    "receiver-like owner 'NcclAllReduce'": 6,
+    "receiver-like owner 'OneDeviceStrategy'": 8,
+    "receiver-like owner 'ParameterServerStrategy'": 8,
+    "receiver-like owner 'ReductionToOneDevice'": 6,
+    "receiver-like owner 'ReplicaContext'": 3,
+    "receiver-like owner 'Server'": 3,
+    "receiver-like owner 'Strategy'": 8,
+    "receiver-like owner 'StrategyExtended'": 6,
+    "receiver-like owner 'TPUStrategy'": 18,
+    "missing required param descriptions for: object": 44,
+    "receiver-like owner 'DynamicRaggedShape'": 3,
+    "receiver-like owner 'ExtensionTypeBatchEncoder'": 5,
+    "receiver-like owner 'ExtensionTypeSpec'": 6,
+    "receiver-like owner 'Optional'": 4,
+    "receiver-like owner 'RowPartition'": 7,
+    "receiver-like owner 'StructuredTensor'": 9,
+    "required param 'layout' not fuzzable: type unclear / not constructable": 5,
+    "required param 'mesh_name' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: mesh": 2,
+    "missing required param descriptions for: device_type": 3,
+    "required param 'checkpoint_prefix' not fuzzable: type unclear / not constructable": 2,
+    "required param 'file_prefix' not fuzzable: type unclear / not constructable": 1,
+    "wrapper/bridge namespace (\\.experimental\\.numpy(?:\\.|$))": 1254,
+    "receiver-like owner 'Constant'": 1,
+    "receiver-like owner 'GlorotNormal'": 1,
+    "receiver-like owner 'GlorotUniform'": 1,
+    "receiver-like owner 'HeNormal'": 1,
+    "receiver-like owner 'HeUniform'": 1,
+    "receiver-like owner 'Identity'": 8,
+    "receiver-like owner 'Initializer'": 1,
+    "receiver-like owner 'LecunNormal'": 1,
+    "receiver-like owner 'LecunUniform'": 1,
+    "receiver-like owner 'Ones'": 1,
+    "receiver-like owner 'Orthogonal'": 1,
+    "receiver-like owner 'RandomNormal'": 1,
+    "receiver-like owner 'RandomUniform'": 1,
+    "receiver-like owner 'STFT'": 1,
+    "receiver-like owner 'TruncatedNormal'": 1,
+    "receiver-like owner 'VarianceScaling'": 1,
+    "receiver-like owner 'Zeros'": 1,
+    "receiver-like owner 'TFRecordOptions'": 1,
+    "receiver-like owner 'TFRecordWriter'": 2,
+    "required param 'path' not fuzzable: non-fuzzable type cue: path": 1,
+    "required param 'top' not fuzzable: non-fuzzable type cue: directory": 1,
+    "missing required param descriptions for: x, autocast, dtype": 6,
+    "receiver-like owner 'Function'": 1,
+    "missing required param descriptions for: loss": 164,
+    "missing required param descriptions for: shape, initializer": 149,
+    "receiver-like owner 'Layer'": 7,
+    "missing required param descriptions for: weights": 149,
+    "receiver-like owner 'Model'": 26,
+    "receiver-like owner 'Optimizer'": 10,
+    "missing required param descriptions for: grads": 15,
+    "receiver-like owner 'Quantizer'": 1,
+    "receiver-like owner 'Regularizer'": 1,
+    "receiver-like owner 'Sequential'": 28,
+    "required param 'threshold' not fuzzable: type unclear / not constructable": 3,
+    "required param 'value' lacks constraint/type/shape/value detail": 4,
+    "missing required param descriptions for: backend": 1,
+    "missing required param descriptions for: policy": 3,
+    "required param 'max_epochs' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: max_steps_per_epoch": 1,
+    "required param 'kwargs' not fuzzable: non-fuzzable type cue: layer": 1,
+    "required param 'start' lacks constraint/type/shape/value detail": 2,
+    "required param 'f' not fuzzable: non-fuzzable type cue: callable": 2,
+    "required param 'mean' not fuzzable: type unclear / not constructable": 2,
+    "required param 'x_min' not fuzzable: type unclear / not constructable": 2,
+    "required param 'true_fn' not fuzzable: non-fuzzable type cue: callable": 1,
+    "required param 'x1' not fuzzable: type unclear / not constructable": 4,
+    "utility-style param 'flash_attention'": 2,
+    "required param 'operands' not fuzzable: type unclear / not constructable": 2,
+    "required param 'axis' not fuzzable: type unclear / not constructable": 3,
+    "required param 'N' lacks constraint/type/shape/value detail": 2,
+    "required param 'fill_value' not fuzzable: type unclear / not constructable": 4,
+    "doc indicates utility/metadata behavior (\\breturns? whether\\b)": 4,
+    "required param 'fun' not fuzzable: non-fuzzable type cue: function": 2,
+    "required param 'source' not fuzzable: type unclear / not constructable": 2,
+    "required param 'x' not fuzzable: type unclear / not constructable": 2,
+    "required param 'num_classes' lacks constraint/type/shape/value detail": 2,
+    "required param 'axes_lengths' not fuzzable: type unclear / not constructable": 1,
+    "required param 'repeats' lacks constraint/type/shape/value detail": 4,
+    "required param 'shift' lacks constraint/type/shape/value detail": 2,
+    "required param 'axis1' not fuzzable: type unclear / not constructable": 2,
+    "required param 'index' not fuzzable: non-fuzzable type cue: function": 1,
+    "missing required param descriptions for: function, elements": 1,
+    "required param 'directory' not fuzzable: non-fuzzable type cue: directory": 5,
+    "required param 'targets' not fuzzable: non-fuzzable type cue: dataset": 2,
+    "utility-style param 'seed'": 1,
+    "required param 'alpha' lacks constraint/type/shape/value detail": 1,
+    "required param 'a' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: func": 1,
+    "required param 'img' not fuzzable: type unclear / not constructable": 2,
+    "required param 'path' not fuzzable: non-fuzzable type cue: file": 4,
+    "required param 'model' not fuzzable: non-fuzzable type cue: model": 2,
+    "required param 'dataset' not fuzzable: non-fuzzable type cue: dataset": 2,
+    "required param 'bounding_box_format' not fuzzable: type unclear / not constructable": 1,
+    "required param 'num_classes' has opaque custom type(s): Class, The": 1,
+    "receiver-like owner 'LinearOperator'": 23,
+    "receiver-like owner 'LinearOperatorAdjoint'": 23,
+    "receiver-like owner 'LinearOperatorBlockDiag'": 23,
+    "receiver-like owner 'LinearOperatorBlockLowerTriangular'": 23,
+    "receiver-like owner 'LinearOperatorCirculant'": 25,
+    "receiver-like owner 'LinearOperatorCirculant2D'": 25,
+    "receiver-like owner 'LinearOperatorCirculant3D'": 25,
+    "receiver-like owner 'LinearOperatorComposition'": 23,
+    "receiver-like owner 'LinearOperatorDiag'": 23,
+    "receiver-like owner 'LinearOperatorFullMatrix'": 23,
+    "receiver-like owner 'LinearOperatorHouseholder'": 23,
+    "receiver-like owner 'LinearOperatorIdentity'": 23,
+    "receiver-like owner 'LinearOperatorInversion'": 23,
+    "receiver-like owner 'LinearOperatorKronecker'": 23,
+    "receiver-like owner 'LinearOperatorLowRankUpdate'": 23,
+    "receiver-like owner 'LinearOperatorLowerTriangular'": 23,
+    "receiver-like owner 'LinearOperatorPermutation'": 23,
+    "receiver-like owner 'LinearOperatorScaledIdentity'": 23,
+    "receiver-like owner 'LinearOperatorToeplitz'": 23,
+    "receiver-like owner 'LinearOperatorTridiag'": 23,
+    "receiver-like owner 'LinearOperatorZeros'": 23,
+    "required param 'operator' not fuzzable: type unclear / not constructable": 1,
+    "receiver-like owner 'Interpreter'": 6,
+    "receiver-like owner 'TFLiteConverter'": 4,
+    "required param 'library' not fuzzable: type unclear / not constructable": 1,
+    "receiver-like owner 'KeyValueTensorInitializer'": 1,
+    "receiver-like owner 'StaticHashTable'": 3,
+    "receiver-like owner 'StaticVocabularyTable'": 1,
+    "receiver-like owner 'TextFileInitializer'": 1,
+    "receiver-like owner 'AUC'": 1,
+    "receiver-like owner 'BinaryIoU'": 1,
+    "receiver-like owner 'FalseNegatives'": 1,
+    "receiver-like owner 'FalsePositives'": 1,
+    "receiver-like owner 'IoU'": 1,
+    "receiver-like owner 'MeanIoU'": 1,
+    "receiver-like owner 'OneHotIoU'": 1,
+    "receiver-like owner 'OneHotMeanIoU'": 1,
+    "receiver-like owner 'Precision'": 1,
+    "receiver-like owner 'PrecisionAtRecall'": 1,
+    "receiver-like owner 'R2Score'": 1,
+    "receiver-like owner 'Recall'": 1,
+    "receiver-like owner 'RecallAtPrecision'": 1,
+    "receiver-like owner 'RootMeanSquaredError'": 1,
+    "receiver-like owner 'SensitivityAtSpecificity'": 1,
+    "receiver-like owner 'SpecificityAtSensitivity'": 1,
+    "receiver-like owner 'TrueNegatives'": 1,
+    "receiver-like owner 'TruePositives'": 1,
+    "receiver-like owner 'RNNCellDeviceWrapper'": 17,
+    "receiver-like owner 'RNNCellDropoutWrapper'": 17,
+    "receiver-like owner 'RNNCellResidualWrapper'": 17,
+    "required param 'uniform_sampler' not fuzzable: non-fuzzable type cue: callable": 1,
+    "receiver-like owner 'Adadelta'": 10,
+    "receiver-like owner 'Adafactor'": 11,
+    "receiver-like owner 'Adagrad'": 10,
+    "receiver-like owner 'Adam'": 11,
+    "receiver-like owner 'AdamW'": 11,
+    "receiver-like owner 'Adamax'": 11,
+    "receiver-like owner 'Ftrl'": 11,
+    "receiver-like owner 'Lamb'": 11,
+    "receiver-like owner 'Lion'": 11,
+    "receiver-like owner 'LossScaleOptimizer'": 10,
+    "receiver-like owner 'Muon'": 11,
+    "missing required param descriptions for: x, steps": 1,
+    "receiver-like owner 'Nadam'": 11,
+    "receiver-like owner 'RMSprop'": 10,
+    "receiver-like owner 'SGD'": 10,
+    "missing required param descriptions for: variables": 1,
+    "receiver-like owner 'FIFOQueue'": 9,
+    "receiver-like owner 'PaddingFIFOQueue'": 9,
+    "receiver-like owner 'PriorityQueue'": 9,
+    "receiver-like owner 'QueueBase'": 9,
+    "receiver-like owner 'RandomShuffleQueue'": 9,
+    "receiver-like owner 'Generator'": 15,
+    "receiver-like owner 'SummaryWriter'": 2,
+    "receiver-like owner 'Benchmark'": 3,
+    "missing required param descriptions for: function": 2,
+    "receiver-like owner 'TestCase'": 43,
+    "vague required param descriptions for: a, b": 6,
+    "vague required param descriptions for: a": 4,
+    "vague required param descriptions for: target": 3,
+    "missing required param descriptions for: first, second": 6,
+    "missing required param descriptions for: expected_subset, actual_set": 1,
+    "vague required param descriptions for: container": 3,
+    "missing required param descriptions for: a, b": 5,
+    "missing required param descriptions for: member, container": 2,
+    "missing required param descriptions for: expr1, expr2": 2,
+    "missing required param descriptions for: obj": 3,
+    "missing required param descriptions for: text, unexpected_regex": 1,
+    "missing required param descriptions for: expected_exception": 1,
+    "missing required param descriptions for: text, expected_regex": 1,
+    "missing required param descriptions for: expected_warning": 1,
+    "missing required param descriptions for: cm": 1,
+    "missing required param descriptions for: params": 1,
+    "receiver-like owner 'Checkpoint'": 4,
+    "receiver-like owner 'CheckpointManager'": 1,
+    "receiver-like owner 'CheckpointView'": 3,
+    "receiver-like owner 'ClusterSpec'": 4,
+    "receiver-like owner 'Coordinator'": 4,
+    "receiver-like owner 'ExponentialMovingAverage'": 4,
+    "receiver-like owner 'TrackableView'": 1,
+    "missing required param descriptions for: job_name, task_index, device_filters": 1,
+    "missing required param descriptions for: bytes": 3,
+    "receiver-like owner 'CsvDataset'": 41,
+    "receiver-like owner 'RandomDataset'": 41,
+    "receiver-like owner 'SqlDataset'": 41,
+    "required param 'processing_mode' not fuzzable: non-fuzzable type cue: dataset": 2,
+    "receiver-like owner 'ClusterResolver'": 2,
+    "receiver-like owner 'GCEClusterResolver'": 2,
+    "receiver-like owner 'KubernetesClusterResolver'": 2,
+    "receiver-like owner 'SimpleClusterResolver'": 2,
+    "receiver-like owner 'SlurmClusterResolver'": 2,
+    "receiver-like owner 'TFConfigClusterResolver'": 2,
+    "receiver-like owner 'TPUClusterResolver'": 3,
+    "receiver-like owner 'UnionResolver'": 2,
+    "receiver-like owner 'ClusterCoordinator'": 3,
+    "receiver-like owner 'CentralStorageStrategy'": 8,
+    "receiver-like owner 'PreemptionCheckpointHandler'": 1,
+    "receiver-like owner 'Spec'": 12,
+    "receiver-like owner 'DTensorCheckpoint'": 4,
+    "receiver-like owner 'DTensorDataset'": 41,
+    "receiver-like owner 'DVariable'": 21,
+    "missing required param descriptions for: device": 1,
+    "missing required param descriptions for: device_idx": 1,
+    "receiver-like owner 'Converter'": 4,
+    "receiver-like owner 'GFile'": 2,
+    "missing required param descriptions for: file_content": 1,
+    "receiver-like owner 'BackupAndRestore'": 14,
+    "receiver-like owner 'CSVLogger'": 14,
+    "receiver-like owner 'Callback'": 14,
+    "receiver-like owner 'CallbackList'": 14,
+    "receiver-like owner 'EarlyStopping'": 14,
+    "receiver-like owner 'History'": 14,
+    "receiver-like owner 'LambdaCallback'": 14,
+    "receiver-like owner 'LearningRateScheduler'": 14,
+    "receiver-like owner 'ModelCheckpoint'": 14,
+    "receiver-like owner 'ProgbarLogger'": 14,
+    "receiver-like owner 'ReduceLROnPlateau'": 14,
+    "receiver-like owner 'RemoteMonitor'": 14,
+    "receiver-like owner 'SwapEMAWeights'": 14,
+    "receiver-like owner 'TensorBoard'": 13,
+    "receiver-like owner 'TerminateOnNaN'": 15,
+    "receiver-like owner 'Constraint'": 1,
+    "receiver-like owner 'MaxNorm'": 1,
+    "receiver-like owner 'MinMaxNorm'": 1,
+    "receiver-like owner 'NonNeg'": 1,
+    "receiver-like owner 'UnitNorm'": 1,
+    "receiver-like owner 'DistillationLoss'": 3,
+    "receiver-like owner 'Distiller'": 25,
+    "receiver-like owner 'FeatureDistillation'": 1,
+    "missing required param descriptions for: teacher, student": 1,
+    "receiver-like owner 'LogitsDistillation'": 3,
+    "receiver-like owner 'DataParallel'": 4,
+    "receiver-like owner 'LayoutMap'": 1,
+    "missing required param descriptions for: key": 4,
+    "missing required param descriptions for: kwds": 2,
+    "receiver-like owner 'ModelParallel'": 4,
+    "receiver-like owner 'DTypePolicyMap'": 1,
+    "receiver-like owner 'ExportArchive'": 5,
+    "receiver-like owner 'Activation'": 7,
+    "receiver-like owner 'ActivityRegularization'": 7,
+    "receiver-like owner 'AdaptiveAveragePooling1D'": 7,
+    "receiver-like owner 'AdaptiveAveragePooling2D'": 7,
+    "receiver-like owner 'AdaptiveAveragePooling3D'": 7,
+    "receiver-like owner 'AdaptiveMaxPooling1D'": 7,
+    "receiver-like owner 'AdaptiveMaxPooling2D'": 7,
+    "receiver-like owner 'AdaptiveMaxPooling3D'": 7,
+    "receiver-like owner 'Add'": 7,
+    "receiver-like owner 'AdditiveAttention'": 7,
+    "receiver-like owner 'AlphaDropout'": 7,
+    "receiver-like owner 'Attention'": 7,
+    "receiver-like owner 'AugMix'": 7,
+    "missing required param descriptions for: weight": 35,
+    "receiver-like owner 'AutoContrast'": 7,
+    "receiver-like owner 'Average'": 7,
+    "receiver-like owner 'AveragePooling1D'": 7,
+    "receiver-like owner 'AveragePooling2D'": 7,
+    "receiver-like owner 'AveragePooling3D'": 7,
+    "receiver-like owner 'BatchNormalization'": 7,
+    "receiver-like owner 'Bidirectional'": 7,
+    "receiver-like owner 'CategoryEncoding'": 7,
+    "receiver-like owner 'CenterCrop'": 7,
+    "receiver-like owner 'Concatenate'": 7,
+    "receiver-like owner 'Conv1D'": 7,
+    "receiver-like owner 'Conv1DTranspose'": 7,
+    "receiver-like owner 'Conv2D'": 7,
+    "receiver-like owner 'Conv2DTranspose'": 7,
+    "receiver-like owner 'Conv3D'": 7,
+    "receiver-like owner 'Conv3DTranspose'": 7,
+    "receiver-like owner 'ConvLSTM1D'": 7,
+    "receiver-like owner 'ConvLSTM2D'": 7,
+    "receiver-like owner 'ConvLSTM3D'": 7,
+    "receiver-like owner 'Cropping1D'": 7,
+    "receiver-like owner 'Cropping2D'": 7,
+    "receiver-like owner 'Cropping3D'": 7,
+    "receiver-like owner 'CutMix'": 7,
+    "receiver-like owner 'Dense'": 7,
+    "receiver-like owner 'DepthwiseConv1D'": 7,
+    "receiver-like owner 'DepthwiseConv2D'": 7,
+    "receiver-like owner 'Discretization'": 8,
+    "receiver-like owner 'Dot'": 7,
+    "receiver-like owner 'Dropout'": 7,
+    "receiver-like owner 'ELU'": 7,
+    "receiver-like owner 'EinsumDense'": 7,
+    "receiver-like owner 'Embedding'": 7,
+    "receiver-like owner 'Equalization'": 7,
+    "receiver-like owner 'Flatten'": 7,
+    "receiver-like owner 'FlaxLayer'": 7,
+    "receiver-like owner 'GRU'": 7,
+    "receiver-like owner 'GRUCell'": 7,
+    "receiver-like owner 'GaussianDropout'": 7,
+    "receiver-like owner 'GaussianNoise'": 7,
+    "receiver-like owner 'GlobalAveragePooling1D'": 7,
+    "receiver-like owner 'GlobalAveragePooling2D'": 7,
+    "receiver-like owner 'GlobalAveragePooling3D'": 7,
+    "receiver-like owner 'GlobalMaxPool1D'": 7,
+    "receiver-like owner 'GlobalMaxPool2D'": 7,
+    "receiver-like owner 'GlobalMaxPool3D'": 7,
+    "receiver-like owner 'GroupNormalization'": 7,
+    "receiver-like owner 'GroupQueryAttention'": 7,
+    "receiver-like owner 'HashedCrossing'": 7,
+    "receiver-like owner 'Hashing'": 7,
+    "receiver-like owner 'InputLayer'": 7,
+    "receiver-like owner 'IntegerLookup'": 10,
+    "receiver-like owner 'JaxLayer'": 7,
+    "receiver-like owner 'LSTM'": 7,
+    "receiver-like owner 'LSTMCell'": 7,
+    "receiver-like owner 'Lambda'": 7,
+    "receiver-like owner 'LayerNormalization'": 7,
+    "receiver-like owner 'LeakyReLU'": 7,
+    "receiver-like owner 'Masking'": 7,
+    "receiver-like owner 'MaxNumBoundingBoxes'": 7,
+    "receiver-like owner 'MaxPool1D'": 7,
+    "receiver-like owner 'MaxPool2D'": 7,
+    "receiver-like owner 'MaxPool3D'": 7,
+    "receiver-like owner 'Maximum'": 7,
+    "receiver-like owner 'MelSpectrogram'": 8,
+    "receiver-like owner 'Minimum'": 7,
+    "receiver-like owner 'MixUp'": 7,
+    "receiver-like owner 'MultiHeadAttention'": 8,
+    "receiver-like owner 'Multiply'": 7,
+    "missing required param descriptions for: data": 1,
+    "receiver-like owner 'Normalization'": 7,
+    "receiver-like owner 'PReLU'": 7,
+    "receiver-like owner 'Permute'": 7,
+    "receiver-like owner 'Pipeline'": 7,
+    "receiver-like owner 'RMSNormalization'": 8,
+    "receiver-like owner 'RNN'": 7,
+    "receiver-like owner 'RandAugment'": 7,
+    "receiver-like owner 'RandomBrightness'": 7,
+    "receiver-like owner 'RandomColorDegeneration'": 7,
+    "receiver-like owner 'RandomColorJitter'": 7,
+    "receiver-like owner 'RandomContrast'": 7,
+    "receiver-like owner 'RandomCrop'": 7,
+    "missing required param descriptions for: bounding_boxes, transformation": 1,
+    "receiver-like owner 'RandomElasticTransform'": 7,
+    "receiver-like owner 'RandomErasing'": 7,
+    "receiver-like owner 'RandomFlip'": 7,
+    "receiver-like owner 'RandomGaussianBlur'": 7,
+    "receiver-like owner 'RandomGrayscale'": 7,
+    "receiver-like owner 'RandomHeight'": 7,
+    "receiver-like owner 'RandomHue'": 7,
+    "receiver-like owner 'RandomInvert'": 7,
+    "receiver-like owner 'RandomPerspective'": 7,
+    "receiver-like owner 'RandomPosterization'": 7,
+    "receiver-like owner 'RandomRotation'": 7,
+    "receiver-like owner 'RandomSaturation'": 7,
+    "receiver-like owner 'RandomSharpness'": 7,
+    "receiver-like owner 'RandomShear'": 7,
+    "receiver-like owner 'RandomTranslation'": 7,
+    "receiver-like owner 'RandomWidth'": 7,
+    "receiver-like owner 'RandomZoom'": 7,
+    "receiver-like owner 'ReLU'": 7,
+    "receiver-like owner 'RepeatVector'": 7,
+    "receiver-like owner 'Rescaling'": 7,
+    "receiver-like owner 'Reshape'": 7,
+    "receiver-like owner 'Resizing'": 7,
+    "receiver-like owner 'ReversibleEmbedding'": 7,
+    "receiver-like owner 'STFTSpectrogram'": 7,
+    "receiver-like owner 'SeparableConv1D'": 7,
+    "receiver-like owner 'SeparableConv2D'": 7,
+    "receiver-like owner 'SimpleRNN'": 7,
+    "receiver-like owner 'SimpleRNNCell'": 7,
+    "receiver-like owner 'Softmax'": 7,
+    "receiver-like owner 'Solarization'": 7,
+    "receiver-like owner 'SpatialDropout1D'": 7,
+    "receiver-like owner 'SpatialDropout2D'": 7,
+    "receiver-like owner 'SpatialDropout3D'": 7,
+    "receiver-like owner 'SpectralNormalization'": 7,
+    "receiver-like owner 'StackedRNNCells'": 7,
+    "receiver-like owner 'StringLookup'": 10,
+    "receiver-like owner 'Subtract'": 7,
+    "receiver-like owner 'TFSMLayer'": 7,
+    "receiver-like owner 'TextVectorization'": 10,
+    "receiver-like owner 'ThresholdedReLU'": 7,
+    "receiver-like owner 'TimeDistributed'": 7,
+    "receiver-like owner 'TorchModuleWrapper'": 5,
+    "missing required param descriptions for: store": 1,
+    "receiver-like owner 'UnitNormalization'": 7,
+    "receiver-like owner 'UpSampling1D'": 7,
+    "receiver-like owner 'UpSampling2D'": 7,
+    "receiver-like owner 'UpSampling3D'": 7,
+    "receiver-like owner 'Wrapper'": 7,
+    "receiver-like owner 'ZeroPadding1D'": 7,
+    "receiver-like owner 'ZeroPadding2D'": 7,
+    "receiver-like owner 'ZeroPadding3D'": 7,
+    "required param 'identifier' not fuzzable: type unclear / not constructable": 2,
+    "required param 'volumes' not fuzzable: type unclear / not constructable": 1,
+    "required param 'method' lacks constraint/type/shape/value detail": 1,
+    "required param 'brightness' lacks constraint/type/shape/value detail": 1,
+    "required param 'intensity' not fuzzable: type unclear / not constructable": 1,
+    "required param 'intensity_range' not fuzzable: type unclear / not constructable": 1,
+    "required param 'sequence' not fuzzable: non-fuzzable type cue: dataset": 1,
+    "receiver-like owner 'AbsMaxQuantizer'": 1,
+    "receiver-like owner 'L1'": 1,
+    "receiver-like owner 'L1L2'": 1,
+    "receiver-like owner 'L2'": 1,
+    "receiver-like owner 'OrthogonalRegularizer'": 1,
+    "receiver-like owner 'FeatureSpace'": 7,
+    "missing required param descriptions for: filepath": 1,
+    "receiver-like owner 'Progbar'": 1,
+    "required param 'angle' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: boxes1, boxes2": 1,
+    "required param 'source' lacks constraint/type/shape/value detail": 1,
+    "required param 'top' not fuzzable: type unclear / not constructable": 2,
+    "missing required param descriptions for: boxes_delta": 1,
+    "receiver-like owner 'SKLearnClassifier'": 1,
+    "receiver-like owner 'SKLearnRegressor'": 1,
+    "receiver-like owner 'SKLearnTransformer'": 2,
+    "receiver-like owner 'Analyzer'": 1,
+    "receiver-like owner 'QuantizationDebugger'": 1,
+    "receiver-like owner 'DenseHashTable'": 7,
+    "receiver-like owner 'MutableHashTable'": 5,
+    "receiver-like owner 'CosineDecay'": 1,
+    "receiver-like owner 'CosineDecayRestarts'": 1,
+    "receiver-like owner 'ExponentialDecay'": 1,
+    "receiver-like owner 'InverseTimeDecay'": 1,
+    "receiver-like owner 'LearningRateSchedule'": 1,
+    "receiver-like owner 'PiecewiseConstantDecay'": 1,
+    "receiver-like owner 'PolynomialDecay'": 1,
+    "required param 'logdir' not fuzzable: non-fuzzable type cue: path": 1,
+    "receiver-like owner 'TfRecordRepresentativeDatasetSaver'": 1,
+    "missing required param descriptions for: symbol_dict": 1,
+    "receiver-like owner 'DeviceAssignment'": 1,
+    "receiver-like owner 'Topology'": 2,
+    "missing required param descriptions for: device_coordinates": 1,
+    "receiver-like owner 'AtomicFunction'": 1,
+    "receiver-like owner 'TraceType'": 3,
+    "missing required param descriptions for: others": 1,
+    "receiver-like owner 'Client'": 2,
+    "receiver-like owner 'DirectoryIterator'": 1,
+    "receiver-like owner 'ImageDataGenerator'": 5,
+    "receiver-like owner 'TPUEmbedding'": 4,
+    "receiver-like owner 'TPUEmbeddingForServing'": 1,
+    "receiver-like owner 'TPUEmbeddingV0'": 1,
+    "receiver-like owner 'TPUEmbeddingV2'": 2,
+    "receiver-like owner 'MaxShardSizePartitioner'": 1
+  },
+  "examples_by_step": {
+    "1_doc": [
+      {
+        "api_full_name": "tensorflow.NoneTensorSpec",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.no_op",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.ragged_fill_empty_rows",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.ragged_fill_empty_rows_grad",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.tensor_scatter_nd_min",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.CriticalSection.name",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.as_numpy_dtype",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.cast",
+        "reason": "reference-only doc / alias redirect"
+      },
+      {
+        "api_full_name": "tensorflow.DType.experimental_as_proto",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.experimental_from_proto",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.experimental_type_proto",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.flatten",
+        "reason": "reference-only doc / alias redirect"
+      },
+      {
+        "api_full_name": "tensorflow.DType.from_tensors",
+        "reason": "reference-only doc / alias redirect"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_bool",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_complex",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_integer",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_numeric",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_quantized",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_subtype_of",
+        "reason": "reference-only doc / alias redirect"
+      },
+      {
+        "api_full_name": "tensorflow.DType.most_specific_common_supertype",
+        "reason": "reference-only doc / alias redirect"
+      },
+      {
+        "api_full_name": "tensorflow.DType.name",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.placeholder_value",
+        "reason": "reference-only doc / alias redirect"
+      },
+      {
+        "api_full_name": "tensorflow.DType.real_dtype",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.size",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DType.to_tensors",
+        "reason": "reference-only doc / alias redirect"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.device_index",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.device_type",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.job",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.replica",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.task",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.Dismantle",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.building_function",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.finalized",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.get",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.get_all_collection_keys",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.get_operations",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.is_feedable",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.is_fetchable",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.new_operations",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.num_operations",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.operations",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.prevent_feeding",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.prevent_fetching",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.seed",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.version",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlices.consumers",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlices.dtype",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlices.indices",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlices.name",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlices.op",
+        "reason": "missing/placeholder/too short doc"
+      }
+    ],
+    "2_params": [
+      {
+        "api_full_name": "tensorflow.AggregationMethod",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.CriticalSection",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.GradientTape",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.Graph",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlices",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlicesSpec",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.Module",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.Operation",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.OptionalSpec",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.RaggedTensor",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.RaggedTensorSpec",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.RegisterGradient",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.SparseTensor",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.SparseTensorSpec",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.Tensor",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.TensorArray",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.TensorArraySpec",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.TensorShape",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.TensorSpec",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.TypeSpec",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.UnconnectedGradients",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.Variable",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.VariableAggregation",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.VariableSynchronization",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.constant_initializer",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.executing_eagerly",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.get_current_name_scope",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.get_logger",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.group",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.init_scope",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.inside_function",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.meshgrid",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.name_scope",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.ones_initializer",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.print",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.random_normal_initializer",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.random_uniform_initializer",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.sign",
+        "reason": "missing required param descriptions for: x"
+      },
+      {
+        "api_full_name": "tensorflow.zeros_initializer",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType.as_datatype_enum",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType.base_dtype",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_floating",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_numpy_compatible",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_unsigned",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType.limits",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType.max",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DType.min",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.replace",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      }
+    ],
+    "3_types": [
+      {
+        "api_full_name": "tensorflow.Assert",
+        "reason": "required param 'condition' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.add_n",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.broadcast_static_shape",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.case",
+        "reason": "required param 'pred_fn_pairs' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.control_dependencies",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.convert_to_tensor",
+        "reason": "required param 'value' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "tensorflow.custom_gradient",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.device",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.edit_distance",
+        "reason": "required param 'hypothesis' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.einsum",
+        "reason": "required param 'equation' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "tensorflow.foldl",
+        "reason": "required param 'fn' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.foldr",
+        "reason": "required param 'fn' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.grad_pass_through",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.guarantee_const",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.identity",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.identity_n",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.import_graph_def",
+        "reason": "required param 'graph_def' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.is_tensor",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.load_library",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.load_op_library",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.make_tensor_proto",
+        "reason": "required param 'values' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.map_fn",
+        "reason": "required param 'fn' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.matrix_square_root",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.nondifferentiable_batch_function",
+        "reason": "required param 'num_batch_threads' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "tensorflow.rank",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.recompute_grad",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.register_tensor_conversion_function",
+        "reason": "required param 'conversion_func' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "tensorflow.scan",
+        "reason": "required param 'fn' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.shape",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.shape_n",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.stop_gradient",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.switch_case",
+        "reason": "required param 'branch_fns' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.tensor_scatter_nd_update",
+        "reason": "required param 'indices' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.timestamp",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.variable_creator_scope",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.vectorized_map",
+        "reason": "required param 'fn' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.while_loop",
+        "reason": "required param 'cond' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.audio.decode_wav",
+        "reason": "required param 'contents' not fuzzable: non-fuzzable type cue: file"
+      },
+      {
+        "api_full_name": "tensorflow.autograph.to_graph",
+        "reason": "required param 'entity' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.config.experimental_connect_to_cluster",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.config.experimental_connect_to_host",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.config.experimental_run_functions_eagerly",
+        "reason": "required param 'run_eagerly' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "tensorflow.config.get_logical_device_configuration",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.config.run_functions_eagerly",
+        "reason": "required param 'run_eagerly' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "tensorflow.config.set_logical_device_configuration",
+        "reason": "required param 'device' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.config.set_soft_device_placement",
+        "reason": "required param 'enabled' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "tensorflow.constant_initializer.from_config",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.Assert",
+        "reason": "required param 'condition' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_all_finite",
+        "reason": "required param 'message' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_proper_iterable",
+        "reason": "no modifiable seedable parameters"
+      }
+    ],
+    "4_return": [
+      {
+        "api_full_name": "tensorflow.abs",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.add",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "tensorflow.asin",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.asinh",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.assert_equal",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.assert_greater",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.assert_less",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.assert_rank",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.atan",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.atanh",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.cond",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.function",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "tensorflow.get_static_value",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.matmul",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.multiply",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "tensorflow.negative",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.no_gradient",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "tensorflow.norm",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.numpy_function",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.py_function",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.repeat",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.sin",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.split",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.sqrt",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.square",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.tan",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.tanh",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.truediv",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "tensorflow.where",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "tensorflow.autograph.set_verbosity",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "tensorflow.config.set_visible_devices",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_equal",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_greater",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_greater_equal",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_integer",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_less",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_less_equal",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_near",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_negative",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_non_negative",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_non_positive",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_none_equal",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_positive",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_rank",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_rank_at_least",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_rank_in",
+        "reason": "return not capturable / side-effect style (\\breturns?\\s+none\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_same_float_dtype",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_scalar",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_shapes",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "tensorflow.debugging.assert_type",
+        "reason": "no documented return value"
+      }
+    ],
+    "5_readiness": [
+      {
+        "api_full_name": "tensorflow.approx_top_k",
+        "reason": "doc indicates side-effect/external-dependency keyword (\\b(distributed|cluster|server|worker|rpc|remote)\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.check_pinned",
+        "reason": "doc indicates utility/metadata behavior (\\bchecks? whether\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.expand_dims",
+        "reason": "doc indicates side-effect/external-dependency keyword (\\b(train|fit|learn|backward)\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.slice",
+        "reason": "doc indicates side-effect/external-dependency keyword (\\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\\b)"
+      },
+      {
+        "api_full_name": "tensorflow.CriticalSection.execute",
+        "reason": "receiver-like owner 'CriticalSection'"
+      },
+      {
+        "api_full_name": "tensorflow.DType.is_compatible_with",
+        "reason": "receiver-like owner 'DType'"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.from_string",
+        "reason": "receiver-like owner 'DeviceSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.make_merged_spec",
+        "reason": "receiver-like owner 'DeviceSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.DeviceSpec.parse_from_string",
+        "reason": "receiver-like owner 'DeviceSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.GradientTape.batch_jacobian",
+        "reason": "receiver-like owner 'GradientTape'"
+      },
+      {
+        "api_full_name": "tensorflow.GradientTape.gradient",
+        "reason": "receiver-like owner 'GradientTape'"
+      },
+      {
+        "api_full_name": "tensorflow.GradientTape.jacobian",
+        "reason": "receiver-like owner 'GradientTape'"
+      },
+      {
+        "api_full_name": "tensorflow.GradientTape.watch",
+        "reason": "receiver-like owner 'GradientTape'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.add_to_collection",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.add_to_collections",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.as_graph_def",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.as_graph_element",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.clear_collection",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.colocate_with",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.container",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.control_dependencies",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.create_op",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.device",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.get_collection",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.get_collection_ref",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.get_operation_by_name",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.get_tensor_by_name",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.gradient_override_map",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.name_scope",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.Graph.unique_name",
+        "reason": "receiver-like owner 'Graph'"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlicesSpec.experimental_from_proto",
+        "reason": "receiver-like owner 'IndexedSlicesSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlicesSpec.is_compatible_with",
+        "reason": "receiver-like owner 'IndexedSlicesSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlicesSpec.is_subtype_of",
+        "reason": "receiver-like owner 'IndexedSlicesSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlicesSpec.most_specific_common_supertype",
+        "reason": "receiver-like owner 'IndexedSlicesSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlicesSpec.most_specific_compatible_type",
+        "reason": "receiver-like owner 'IndexedSlicesSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.IndexedSlicesSpec.placeholder_value",
+        "reason": "receiver-like owner 'IndexedSlicesSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.Module.with_name_scope",
+        "reason": "receiver-like owner 'Module'"
+      },
+      {
+        "api_full_name": "tensorflow.NoneTensorSpec.experimental_from_proto",
+        "reason": "receiver-like owner 'NoneTensorSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.NoneTensorSpec.is_compatible_with",
+        "reason": "receiver-like owner 'NoneTensorSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.NoneTensorSpec.is_subtype_of",
+        "reason": "receiver-like owner 'NoneTensorSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.NoneTensorSpec.most_specific_common_supertype",
+        "reason": "receiver-like owner 'NoneTensorSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.NoneTensorSpec.most_specific_compatible_type",
+        "reason": "receiver-like owner 'NoneTensorSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.NoneTensorSpec.placeholder_value",
+        "reason": "receiver-like owner 'NoneTensorSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.Operation.experimental_set_type",
+        "reason": "receiver-like owner 'Operation'"
+      },
+      {
+        "api_full_name": "tensorflow.Operation.from_node_def",
+        "reason": "receiver-like owner 'Operation'"
+      },
+      {
+        "api_full_name": "tensorflow.Operation.get_attr",
+        "reason": "receiver-like owner 'Operation'"
+      },
+      {
+        "api_full_name": "tensorflow.Operation.run",
+        "reason": "receiver-like owner 'Operation'"
+      },
+      {
+        "api_full_name": "tensorflow.OptionalSpec.experimental_from_proto",
+        "reason": "receiver-like owner 'OptionalSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.OptionalSpec.is_compatible_with",
+        "reason": "receiver-like owner 'OptionalSpec'"
+      },
+      {
+        "api_full_name": "tensorflow.OptionalSpec.is_subtype_of",
+        "reason": "receiver-like owner 'OptionalSpec'"
+      }
+    ]
+  },
+  "config": {
+    "allow_receiver_apis": false,
+    "allow_wrapper_bridges": false
+  }
+}

@@ -1,0 +1,2310 @@
+{
+  "input": "torch_apis1.jsonl",
+  "library": "torch",
+  "total": 62488,
+  "accepted": 335,
+  "accepted_before_alias_dedup": 335,
+  "duplicate_aliases_removed": 0,
+  "rejected": 62153,
+  "rejected_by_step": {
+    "1_doc": 27473,
+    "2_params": 23349,
+    "3_types": 578,
+    "4_return": 387,
+    "5_readiness": 10366
+  },
+  "top_reasons": {
+    "missing/placeholder/too short doc": 24688,
+    "classes/exceptions are excluded": 3083,
+    "no concrete parameters; zero-arg APIs are excluded": 13366,
+    "return not meaningful/capturable data-form": 121,
+    "required param 'pred' not fuzzable: non-fuzzable type cue: function": 1,
+    "no parsable documented parameters aligned with signature": 1740,
+    "no modifiable seedable parameters": 260,
+    "required param 'device' lacks constraint/type/shape/value detail": 2,
+    "no documented return value": 79,
+    "required param 'b' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: split_size_or_sections": 2,
+    "missing required param descriptions for: b, t, f": 2,
+    "missing required param descriptions for: a, b": 69,
+    "required param 'a' lacks constraint/type/shape/value detail": 6,
+    "doc indicates side-effect/external-dependency keyword (\\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\\b)": 21,
+    "required param 'mode' lacks constraint/type/shape/value detail": 1,
+    "required param 'func' not fuzzable: non-fuzzable type cue: function": 16,
+    "missing required param descriptions for: object": 329,
+    "reference-only doc / alias redirect": 2755,
+    "missing required param descriptions for: tensors": 23,
+    "return description too vague / predicate-like": 125,
+    "missing required param descriptions for: shapes": 2,
+    "required param 'ext_tensor' not fuzzable: non-fuzzable type cue: function": 2,
+    "unresolved: AttributeError: module 'torch.quantization' has no attribute 'WeightObserver'": 1,
+    "required param 'cond_fn' not fuzzable: non-fuzzable type cue: callable": 1,
+    "receiver-like owner 'BoolStorage'": 14,
+    "receiver-like owner 'BoolTensor'": 16,
+    "missing required param descriptions for: names, rename_map": 36,
+    "missing required param descriptions for: n_fft": 36,
+    "receiver-like owner 'ByteStorage'": 14,
+    "receiver-like owner 'ByteTensor'": 24,
+    "receiver-like owner 'CharStorage'": 14,
+    "receiver-like owner 'CharTensor'": 24,
+    "receiver-like owner 'DoubleStorage'": 14,
+    "receiver-like owner 'DoubleTensor'": 24,
+    "receiver-like owner 'FloatStorage'": 14,
+    "receiver-like owner 'FloatTensor'": 24,
+    "receiver-like owner 'GradScaler'": 15,
+    "missing required param descriptions for: new_factor": 6,
+    "receiver-like owner 'IntStorage'": 14,
+    "receiver-like owner 'IntTensor'": 24,
+    "receiver-like owner 'LongStorage'": 14,
+    "receiver-like owner 'LongTensor'": 24,
+    "receiver-like owner 'ShortStorage'": 14,
+    "receiver-like owner 'ShortTensor'": 24,
+    "receiver-like owner 'Tensor'": 8,
+    "receiver-like owner 'TypedStorage'": 7,
+    "receiver-like owner 'UntypedStorage'": 4,
+    "missing required param descriptions for: names": 6,
+    "missing required param descriptions for: mod": 24,
+    "required param 'mod' not fuzzable: non-fuzzable type cue: module": 3,
+    "required param 'f' not fuzzable: non-fuzzable type cue: file": 2,
+    "missing required param descriptions for: f": 43,
+    "missing required param descriptions for: value": 231,
+    "receiver-like owner 'BFloat16Storage'": 14,
+    "receiver-like owner 'BFloat16Tensor'": 24,
+    "receiver-like owner 'ComplexDoubleStorage'": 14,
+    "receiver-like owner 'ComplexFloatStorage'": 14,
+    "receiver-like owner 'HalfStorage'": 14,
+    "receiver-like owner 'HalfTensor'": 24,
+    "receiver-like owner 'QInt32Storage'": 7,
+    "receiver-like owner 'QInt8Storage'": 7,
+    "receiver-like owner 'QUInt2x4Storage'": 7,
+    "receiver-like owner 'QUInt4x2Storage'": 7,
+    "receiver-like owner 'QUInt8Storage'": 7,
+    "missing required param descriptions for: user_function": 2,
+    "utility-style param 'is_grads_batched'": 1,
+    "missing required param descriptions for: kwds": 183,
+    "missing required param descriptions for: typ, val": 21,
+    "missing required param descriptions for: public_api, relevant_args": 6,
+    "missing required param descriptions for: inp": 3,
+    "missing required param descriptions for: iterable": 30,
+    "missing required param descriptions for: aiterator": 1,
+    "missing required param descriptions for: obj": 69,
+    "missing required param descriptions for: number": 7,
+    "missing required param descriptions for: kws": 1,
+    "missing required param descriptions for: i": 2,
+    "missing required param descriptions for: source, filename, mode": 1,
+    "missing required param descriptions for: obj, name": 6,
+    "missing required param descriptions for: x, y": 27,
+    "missing required param descriptions for: source": 8,
+    "missing required param descriptions for: obj, class_or_tuple": 1,
+    "missing required param descriptions for: class_or_tuple": 1,
+    "missing required param descriptions for: file": 45,
+    "missing required param descriptions for: character": 1,
+    "missing required param descriptions for: base, exp": 1,
+    "missing required param descriptions for: obj, name, value": 1,
+    "doc indicates utility/metadata behavior (\\bbackend\\b)": 1,
+    "missing required param descriptions for: enabled": 8,
+    "missing required param descriptions for: fn": 18,
+    "missing required param descriptions for: serialized_artifacts": 1,
+    "missing required param descriptions for: guard_entries": 5,
+    "missing required param descriptions for: stream": 3,
+    "missing required param descriptions for: device": 40,
+    "missing required param descriptions for: restype, argtypes, kw": 1,
+    "missing required param descriptions for: type": 1,
+    "missing required param descriptions for: init": 3,
+    "missing required param descriptions for: ptr": 2,
+    "required param 'mem_ptr' lacks constraint/type/shape/value detail": 2,
+    "missing required param descriptions for: res": 2,
+    "required param 'data_ptr' lacks constraint/type/shape/value detail": 2,
+    "required param 'callables' not fuzzable: non-fuzzable type cue: callable": 2,
+    "required param 'seed' lacks constraint/type/shape/value detail": 9,
+    "required param 'pool' not fuzzable: type unclear / not constructable": 2,
+    "required param 'new_state' not fuzzable: type unclear / not constructable": 6,
+    "missing required param descriptions for: x": 92,
+    "return not capturable / side-effect style (\\bhandle\\b)": 25,
+    "required param 'obj' not fuzzable: type unclear / not constructable": 5,
+    "required param 'tensor' not fuzzable: non-fuzzable type cue: function": 4,
+    "required param 'tensors' not fuzzable: non-fuzzable type cue: function": 2,
+    "required param 'group' not fuzzable: type unclear / not constructable": 4,
+    "required param 'backend' lacks constraint/type/shape/value detail": 2,
+    "unresolved: AttributeError: module 'torch.distributed.rpc' has no attribute 'backend_registered'": 1,
+    "unresolved: AttributeError: module 'torch.distributed.rpc' has no attribute 'register_backend'": 1,
+    "unresolved: AttributeError: module 'torch.distributed.rpc' has no attribute 'construct_rpc_backend_options'": 1,
+    "unresolved: AttributeError: module 'torch.distributed.rpc' has no attribute 'init_backend'": 1,
+    "unresolved: AttributeError: module 'torch.distributed.rpc' has no attribute 'BackendValue'": 1,
+    "missing required param descriptions for: reduceOp": 2,
+    "required param 'func' not fuzzable: non-fuzzable type cue: callable": 7,
+    "missing required param descriptions for: root": 1,
+    "missing required param descriptions for: parameter_and_buffer_dicts": 1,
+    "missing required param descriptions for: models": 1,
+    "missing required param descriptions for: tensor": 4,
+    "missing required param descriptions for: arg_name, arg_index, if_true, if_false, module_name, func_name": 2,
+    "missing required param descriptions for: wrapper, wrapped": 3,
+    "missing required param descriptions for: wrapped": 5,
+    "missing required param descriptions for: mycmp": 1,
+    "missing required param descriptions for: func": 41,
+    "missing required param descriptions for: typename, field_names": 13,
+    "required param 'root' not fuzzable: non-fuzzable type cue: callable": 2,
+    "missing required param descriptions for: gm, pattern, replacement": 2,
+    "missing required param descriptions for: a, fn": 10,
+    "missing required param descriptions for: pathname": 3,
+    "missing required param descriptions for: pat": 2,
+    "required param 'url' not fuzzable: non-fuzzable type cue: url": 2,
+    "required param 'model' not fuzzable: non-fuzzable type cue: model": 2,
+    "doc indicates utility/metadata behavior (\\benvironment\\b)": 1,
+    "required param 'repo_or_dir' not fuzzable: non-fuzzable type cue: path": 1,
+    "missing required param descriptions for: url": 3,
+    "missing required param descriptions for: name": 43,
+    "missing required param descriptions for: module": 3,
+    "missing required param descriptions for: doc": 1,
+    "missing required param descriptions for: varargs, varkw, locals": 1,
+    "missing required param descriptions for: co": 2,
+    "missing required param descriptions for: frame": 26,
+    "missing required param descriptions for: agen": 2,
+    "missing required param descriptions for: obj, attr": 1,
+    "missing required param descriptions for: lines": 18,
+    "missing required param descriptions for: func, positional, named": 1,
+    "missing required param descriptions for: classes": 1,
+    "missing required param descriptions for: coroutine": 2,
+    "missing required param descriptions for: generator": 2,
+    "missing required param descriptions for: tb": 5,
+    "missing required param descriptions for: path": 52,
+    "missing required param descriptions for: line": 10,
+    "unresolved: AttributeError: '_CachedForward' object has no attribute '__getattr__'": 3,
+    "missing required param descriptions for: m": 6,
+    "missing required param descriptions for: strategy": 1,
+    "missing required param descriptions for: should_optimize": 1,
+    "missing required param descriptions for: obj, mod": 2,
+    "required param 'qualname' not fuzzable: non-fuzzable type cue: module": 1,
+    "missing required param descriptions for: qualname": 1,
+    "required param 'op' lacks constraint/type/shape/value detail": 2,
+    "missing required param descriptions for: op": 2,
+    "missing required param descriptions for: op, torch_dispatch_class": 1,
+    "required param 'mutates_args' not fuzzable: non-fuzzable type cue: function": 2,
+    "missing required param descriptions for: triton_kernel": 1,
+    "required param 'prototype_function' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'op' not fuzzable: non-fuzzable type cue: function": 1,
+    "missing required param descriptions for: op, backward": 1,
+    "missing required param descriptions for: y, x": 1,
+    "missing required param descriptions for: n, k": 1,
+    "missing required param descriptions for: p, q": 4,
+    "missing required param descriptions for: x, y, z": 1,
+    "missing required param descriptions for: seq": 12,
+    "missing required param descriptions for: n": 70,
+    "missing required param descriptions for: x, i": 1,
+    "name contains utility/metadata keyword (\\b(env|environment|version|build|cudnn|mps)\\b)": 1,
+    "missing required param descriptions for: executable": 7,
+    "missing required param descriptions for: module_names": 7,
+    "required param 'fn' not fuzzable: non-fuzzable type cue: function": 1,
+    "vague required param descriptions for: tensor_list": 1,
+    "missing required param descriptions for: tensor, mask": 1,
+    "missing required param descriptions for: filename": 35,
+    "missing required param descriptions for: status": 14,
+    "missing required param descriptions for: path, mode": 4,
+    "missing required param descriptions for: path, flags": 6,
+    "missing required param descriptions for: path, uid, gid": 4,
+    "missing required param descriptions for: fd": 25,
+    "missing required param descriptions for: path, argv": 2,
+    "missing required param descriptions for: path, argv, env": 6,
+    "missing required param descriptions for: fd, mode": 2,
+    "missing required param descriptions for: fd, uid, gid": 2,
+    "missing required param descriptions for: fd, name": 2,
+    "missing required param descriptions for: fd, length": 4,
+    "missing required param descriptions for: user, group": 2,
+    "missing required param descriptions for: username, gid": 2,
+    "missing required param descriptions for: src, dst": 18,
+    "missing required param descriptions for: fd, command, length": 2,
+    "missing required param descriptions for: fd, position, whence": 2,
+    "missing required param descriptions for: major, minor": 3,
+    "missing required param descriptions for: increment": 2,
+    "missing required param descriptions for: path, name": 2,
+    "missing required param descriptions for: oflag": 2,
+    "missing required param descriptions for: fd, length, offset": 2,
+    "missing required param descriptions for: fd, buffers, offset": 4,
+    "missing required param descriptions for: fd, buffer, offset": 2,
+    "missing required param descriptions for: fd, buffers": 4,
+    "missing required param descriptions for: out_fd, in_fd, offset, count": 2,
+    "missing required param descriptions for: fd, blocking": 2,
+    "missing required param descriptions for: fd, pgid": 2,
+    "missing required param descriptions for: path, length": 2,
+    "missing required param descriptions for: mask": 2,
+    "missing required param descriptions for: size": 3,
+    "missing required param descriptions for: options": 2,
+    "missing required param descriptions for: pid, options": 4,
+    "missing required param descriptions for: idtype, id, options": 2,
+    "missing required param descriptions for: old, new": 15,
+    "missing required param descriptions for: top": 1,
+    "missing required param descriptions for: file, env": 1,
+    "missing required param descriptions for: key": 52,
+    "missing required param descriptions for: mode, file": 6,
+    "missing required param descriptions for: mode, file, env": 2,
+    "missing required param descriptions for: system, release, version": 1,
+    "missing required param descriptions for: wait, warmup, active": 2,
+    "missing required param descriptions for: dir_name": 2,
+    "missing required param descriptions for: model": 1,
+    "missing required param descriptions for: model, qconfig_dict, run_fn, run_args": 1,
+    "missing required param descriptions for: model, qconfig_dict": 1,
+    "missing required param descriptions for: float_module_class": 4,
+    "missing required param descriptions for: op_list": 2,
+    "missing required param descriptions for: custom_module_class_mapping": 1,
+    "missing required param descriptions for: model, calib_data": 1,
+    "missing required param descriptions for: relu": 2,
+    "missing required param descriptions for: mod, obs_dict": 2,
+    "missing required param descriptions for: qconfig": 1,
+    "missing required param descriptions for: qconfig_dict": 1,
+    "required param 'flatten_fn' not fuzzable: non-fuzzable type cue: callable": 3,
+    "required param 'module' not fuzzable: non-fuzzable type cue: module": 10,
+    "required param 'storage' not fuzzable: type unclear / not constructable": 1,
+    "required param 'compute_crc32' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: event": 1,
+    "missing required param descriptions for: exctype, value, traceback": 1,
+    "missing required param descriptions for: string": 19,
+    "missing required param descriptions for: depth": 1,
+    "missing required param descriptions for: maxdigits": 1,
+    "missing required param descriptions for: flags": 2,
+    "missing required param descriptions for: function": 2,
+    "missing required param descriptions for: limit": 1,
+    "missing required param descriptions for: interval": 1,
+    "missing required param descriptions for: unraisable": 1,
+    "missing required param descriptions for: actual, expected": 1,
+    "required param 'actual' not fuzzable: type unclear / not constructable": 5,
+    "missing required param descriptions for: text": 8,
+    "missing required param descriptions for: text, prefix": 1,
+    "missing required param descriptions for: backend_name": 2,
+    "missing required param descriptions for: t1, t2": 1,
+    "missing required param descriptions for: message, category, filename, lineno": 1,
+    "missing required param descriptions for: action": 2,
+    "missing required param descriptions for: a": 86,
+    "missing required param descriptions for: ep": 1,
+    "missing required param descriptions for: other_dict": 1,
+    "receiver-like owner 'ExportedProgram'": 1,
+    "receiver-like owner 'UnflattenedModule'": 33,
+    "missing required param descriptions for: hook": 277,
+    "missing required param descriptions for: msg, dynamic_shapes": 1,
+    "required param 'func' not fuzzable: non-fuzzable type cue: path": 2,
+    "missing required param descriptions for: typename": 22,
+    "missing required param descriptions for: gm, shape_env, name": 2,
+    "missing required param descriptions for: user_kwargs, spec": 1,
+    "missing required param descriptions for: context": 1,
+    "missing required param descriptions for: level, levelName": 1,
+    "missing required param descriptions for: capture": 1,
+    "missing required param descriptions for: msg": 21,
+    "missing required param descriptions for: level": 7,
+    "missing required param descriptions for: level, msg": 4,
+    "missing required param descriptions for: dict": 1,
+    "missing required param descriptions for: klass": 2,
+    "missing required param descriptions for: obj, kp": 1,
+    "missing required param descriptions for: tree": 4,
+    "missing required param descriptions for: leaves, treespec": 2,
+    "missing required param descriptions for: type_or_types_or_pred": 1,
+    "missing required param descriptions for: data": 43,
+    "missing required param descriptions for: ctx, grad_outputs": 9,
+    "missing required param descriptions for: ctx, grad_inputs": 7,
+    "missing required param descriptions for: ctx": 8,
+    "missing required param descriptions for: info, in_dims": 7,
+    "missing required param descriptions for: tensor, tangent": 1,
+    "missing required param descriptions for: tensors, fn": 1,
+    "unresolved: AttributeError: 'NoneType' object has no attribute 'device_index'": 2,
+    "missing required param descriptions for: bytes": 17,
+    "missing required param descriptions for: item": 8,
+    "missing required param descriptions for: width": 44,
+    "missing required param descriptions for: iterable_of_ints": 1,
+    "missing required param descriptions for: index, item": 1,
+    "missing required param descriptions for: iterable_of_bytes": 4,
+    "missing required param descriptions for: frm, to": 4,
+    "missing required param descriptions for: sep": 22,
+    "missing required param descriptions for: prefix": 13,
+    "missing required param descriptions for: suffix": 20,
+    "missing required param descriptions for: table": 11,
+    "missing required param descriptions for: others": 7,
+    "missing required param descriptions for: other": 43,
+    "missing required param descriptions for: mapping": 7,
+    "missing required param descriptions for: encoding": 10,
+    "receiver-like owner 'CUDAGraph'": 2,
+    "missing required param descriptions for: end_event": 3,
+    "missing required param descriptions for: device, handle": 1,
+    "receiver-like owner 'ExternalStream'": 3,
+    "receiver-like owner 'Stream'": 6,
+    "receiver-like owner 'GreenContext'": 1,
+    "missing required param descriptions for: bwd": 2,
+    "required param 'msg' lacks constraint/type/shape/value detail": 2,
+    "missing required param descriptions for: duration": 1,
+    "missing required param descriptions for: iterations": 1,
+    "missing required param descriptions for: filename_pattern, num_gpus": 1,
+    "missing required param descriptions for: buffer_size": 1,
+    "missing required param descriptions for: exc": 3,
+    "missing required param descriptions for: extracted_list": 2,
+    "receiver-like owner 'Backend'": 1,
+    "receiver-like owner 'DeviceMesh'": 3,
+    "missing required param descriptions for: statement": 1,
+    "missing required param descriptions for: expression": 1,
+    "missing required param descriptions for: code": 5,
+    "required param 'to' not fuzzable: non-fuzzable type cue: worker": 6,
+    "missing required param descriptions for: val, typ": 3,
+    "missing required param descriptions for: arg": 67,
+    "missing required param descriptions for: tp": 15,
+    "missing required param descriptions for: decorator": 3,
+    "missing required param descriptions for: method": 6,
+    "missing required param descriptions for: funcobj": 8,
+    "vague required param descriptions for: value": 97,
+    "receiver-like owner 'Bernoulli'": 3,
+    "receiver-like owner 'Beta'": 3,
+    "receiver-like owner 'Binomial'": 3,
+    "receiver-like owner 'Categorical'": 3,
+    "receiver-like owner 'Cauchy'": 3,
+    "receiver-like owner 'Chi2'": 3,
+    "receiver-like owner 'ContinuousBernoulli'": 3,
+    "receiver-like owner 'Dirichlet'": 3,
+    "receiver-like owner 'Distribution'": 6,
+    "receiver-like owner 'Exponential'": 3,
+    "receiver-like owner 'ExponentialFamily'": 3,
+    "receiver-like owner 'FisherSnedecor'": 3,
+    "receiver-like owner 'Gamma'": 3,
+    "receiver-like owner 'GeneralizedPareto'": 3,
+    "receiver-like owner 'Geometric'": 3,
+    "receiver-like owner 'Gumbel'": 3,
+    "receiver-like owner 'HalfCauchy'": 3,
+    "missing required param descriptions for: prob": 2,
+    "receiver-like owner 'HalfNormal'": 3,
+    "receiver-like owner 'Independent'": 3,
+    "receiver-like owner 'InverseGamma'": 3,
+    "receiver-like owner 'Kumaraswamy'": 3,
+    "receiver-like owner 'LKJCholesky'": 3,
+    "receiver-like owner 'Laplace'": 3,
+    "receiver-like owner 'LogNormal'": 3,
+    "receiver-like owner 'LogisticNormal'": 3,
+    "receiver-like owner 'LowRankMultivariateNormal'": 3,
+    "receiver-like owner 'MixtureSameFamily'": 3,
+    "receiver-like owner 'Multinomial'": 3,
+    "receiver-like owner 'MultivariateNormal'": 3,
+    "receiver-like owner 'NegativeBinomial'": 3,
+    "receiver-like owner 'Normal'": 3,
+    "receiver-like owner 'OneHotCategorical'": 3,
+    "receiver-like owner 'OneHotCategoricalStraightThrough'": 3,
+    "receiver-like owner 'Pareto'": 3,
+    "receiver-like owner 'RelaxedBernoulli'": 3,
+    "receiver-like owner 'RelaxedOneHotCategorical'": 3,
+    "receiver-like owner 'StudentT'": 3,
+    "receiver-like owner 'Poisson'": 3,
+    "receiver-like owner 'Uniform'": 3,
+    "receiver-like owner 'VonMises'": 3,
+    "receiver-like owner 'Weibull'": 3,
+    "receiver-like owner 'Wishart'": 3,
+    "receiver-like owner 'TransformedDistribution'": 3,
+    "missing required param descriptions for: shape": 77,
+    "missing required param descriptions for: values": 29,
+    "missing required param descriptions for: logits": 8,
+    "missing required param descriptions for: probs": 8,
+    "missing required param descriptions for: mat": 2,
+    "missing required param descriptions for: vec": 2,
+    "receiver-like owner 'F'": 51,
+    "missing required param descriptions for: running_mean, running_var": 1,
+    "missing required param descriptions for: output_size, kernel_size": 1,
+    "missing required param descriptions for: num_groups": 1,
+    "missing required param descriptions for: normalized_shape": 2,
+    "missing required param descriptions for: norm_type, kernel_size": 3,
+    "missing required param descriptions for: indices, kernel_size": 3,
+    "missing required param descriptions for: query, key, value, in_proj_weight, in_proj_bias, bias_k, bias_v, out_proj_weight": 1,
+    "missing required param descriptions for: mat_a, mat_b": 2,
+    "missing required param descriptions for: threshold, value": 2,
+    "missing required param descriptions for: anchor, positive, negative": 2,
+    "missing required param descriptions for: kernel_size": 3,
+    "receiver-like owner 'Future'": 4,
+    "receiver-like owner 'Tracer'": 6,
+    "missing required param descriptions for: kind, target": 4,
+    "missing required param descriptions for: node": 19,
+    "receiver-like owner 'Graph'": 14,
+    "missing required param descriptions for: target": 21,
+    "missing required param descriptions for: out": 1,
+    "missing required param descriptions for: codegen": 1,
+    "receiver-like owner 'GraphModule'": 36,
+    "missing required param descriptions for: args_list": 5,
+    "receiver-like owner 'Interpreter'": 9,
+    "receiver-like owner 'Transformer'": 41,
+    "receiver-like owner 'Node'": 9,
+    "missing required param descriptions for: free_vars, maybe_return_annotation": 1,
+    "missing required param descriptions for: output_args": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_sqrt'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_cos'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_cosh'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_sin'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_sinh'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_tan'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_tanh'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_asin'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_acos'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_atan'": 1,
+    "unresolved: AttributeError: module 'torch.fx.experimental.sym_node' has no attribute 'sym_log2'": 1,
+    "missing required param descriptions for: body, import_block": 1,
+    "missing required param descriptions for: importer, body, generated_module_name": 1,
+    "required param 'target' not fuzzable: non-fuzzable type cue: callable": 3,
+    "required param 'root' not fuzzable: non-fuzzable type cue: module": 2,
+    "missing required param descriptions for: signature_type, argument_type": 1,
+    "missing required param descriptions for: class_or_instance": 3,
+    "missing required param descriptions for: gm, pattern": 1,
+    "missing required param descriptions for: stack": 1,
+    "missing required param descriptions for: seq_nr": 1,
+    "missing required param descriptions for: graph": 1,
+    "missing required param descriptions for: names, pat": 1,
+    "missing required param descriptions for: name, pat": 2,
+    "missing required param descriptions for: pattern, string": 6,
+    "missing required param descriptions for: pattern, repl, string": 2,
+    "missing required param descriptions for: mode": 6,
+    "missing required param descriptions for: pattern": 25,
+    "missing required param descriptions for: other, _deprecated": 14,
+    "missing required param descriptions for: pathsegments": 14,
+    "missing required param descriptions for: path_pattern": 7,
+    "missing required param descriptions for: other_path": 3,
+    "missing required param descriptions for: fileobj, digest": 1,
+    "missing required param descriptions for: hash_name, password, salt, iterations": 1,
+    "missing required param descriptions for: obj, fp, kw": 1,
+    "missing required param descriptions for: obj, kw": 1,
+    "missing required param descriptions for: fp, kw": 1,
+    "missing required param descriptions for: s, kw": 1,
+    "missing required param descriptions for: fsrc, fdst": 1,
+    "missing required param descriptions for: base_name, format": 1,
+    "missing required param descriptions for: name, function": 1,
+    "missing required param descriptions for: name, extensions, function": 1,
+    "missing required param descriptions for: patterns": 25,
+    "missing required param descriptions for: cmd": 6,
+    "missing required param descriptions for: namespace, name": 2,
+    "required param 'distribution_name' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: params": 4,
+    "missing required param descriptions for: distribution_name": 1,
+    "unresolved: AttributeError: module 'email' has no attribute 'generator'": 1,
+    "unresolved: AttributeError: module 'email' has no attribute 'mime'": 1,
+    "missing required param descriptions for: anchor, path_names": 5,
+    "missing required param descriptions for: source_bytes": 2,
+    "missing required param descriptions for: new_node, old_node": 1,
+    "missing required param descriptions for: source, node": 1,
+    "missing required param descriptions for: node_or_string": 1,
+    "missing required param descriptions for: code, offset": 1,
+    "unresolved: AttributeError: <class 'enum.EnumDict'> has no attribute 'member_names'": 1,
+    "missing required param descriptions for: num": 1,
+    "missing required param descriptions for: filename, lineno": 11,
+    "missing required param descriptions for: filename, module_globals": 1,
+    "missing required param descriptions for: readline": 3,
+    "receiver-like owner 'ScriptModule'": 33,
+    "receiver-like owner 'ONNXTracedModule'": 33,
+    "receiver-like owner 'RecursiveScriptModule'": 16,
+    "receiver-like owner 'TopLevelTracedModule'": 33,
+    "receiver-like owner 'TracedModule'": 33,
+    "missing required param descriptions for: type_line, rcb, loc": 1,
+    "missing required param descriptions for: type_line": 1,
+    "missing required param descriptions for: fn, loc": 1,
+    "receiver-like owner 'Library'": 3,
+    "receiver-like owner 'CustomOpDef'": 4,
+    "missing required param descriptions for: backward": 1,
+    "missing required param descriptions for: torch_dispatch_class": 1,
+    "receiver-like owner 'MaskedTensor'": 8,
+    "missing required param descriptions for: fname": 1,
+    "missing required param descriptions for: obj, file": 3,
+    "receiver-like owner 'ProcessContext'": 1,
+    "receiver-like owner 'SpawnContext'": 1,
+    "receiver-like owner 'AdaptiveAvgPool1d'": 33,
+    "receiver-like owner 'AdaptiveAvgPool2d'": 33,
+    "receiver-like owner 'AdaptiveAvgPool3d'": 33,
+    "receiver-like owner 'AdaptiveLogSoftmaxWithLoss'": 33,
+    "receiver-like owner 'AdaptiveMaxPool1d'": 33,
+    "receiver-like owner 'AdaptiveMaxPool2d'": 33,
+    "receiver-like owner 'AdaptiveMaxPool3d'": 33,
+    "receiver-like owner 'AlphaDropout'": 33,
+    "receiver-like owner 'AvgPool1d'": 33,
+    "receiver-like owner 'AvgPool2d'": 33,
+    "receiver-like owner 'AvgPool3d'": 33,
+    "receiver-like owner 'BCELoss'": 33,
+    "receiver-like owner 'BCEWithLogitsLoss'": 33,
+    "receiver-like owner 'BatchNorm1d'": 33,
+    "receiver-like owner 'BatchNorm2d'": 66,
+    "receiver-like owner 'BatchNorm3d'": 66,
+    "receiver-like owner 'Bilinear'": 33,
+    "receiver-like owner 'Buffer'": 8,
+    "receiver-like owner 'CELU'": 33,
+    "receiver-like owner 'CTCLoss'": 33,
+    "receiver-like owner 'ChannelShuffle'": 33,
+    "receiver-like owner 'CircularPad1d'": 33,
+    "receiver-like owner 'CircularPad2d'": 33,
+    "receiver-like owner 'CircularPad3d'": 33,
+    "receiver-like owner 'ConstantPad1d'": 33,
+    "receiver-like owner 'ConstantPad2d'": 33,
+    "receiver-like owner 'ConstantPad3d'": 33,
+    "receiver-like owner 'Container'": 33,
+    "receiver-like owner 'Conv1d'": 136,
+    "receiver-like owner 'Conv2d'": 136,
+    "receiver-like owner 'Conv3d'": 136,
+    "receiver-like owner 'ConvTranspose1d'": 103,
+    "receiver-like owner 'ConvTranspose2d'": 103,
+    "receiver-like owner 'ConvTranspose3d'": 103,
+    "receiver-like owner 'CosineEmbeddingLoss'": 33,
+    "receiver-like owner 'CosineSimilarity'": 33,
+    "receiver-like owner 'CrossEntropyLoss'": 33,
+    "receiver-like owner 'CrossMapLRN2d'": 33,
+    "receiver-like owner 'DataParallel'": 33,
+    "receiver-like owner 'Dropout'": 66,
+    "receiver-like owner 'Dropout1d'": 33,
+    "receiver-like owner 'Dropout2d'": 33,
+    "receiver-like owner 'Dropout3d'": 33,
+    "receiver-like owner 'ELU'": 66,
+    "receiver-like owner 'Embedding'": 102,
+    "receiver-like owner 'EmbeddingBag'": 104,
+    "receiver-like owner 'FeatureAlphaDropout'": 33,
+    "receiver-like owner 'Flatten'": 33,
+    "receiver-like owner 'Fold'": 33,
+    "receiver-like owner 'FractionalMaxPool2d'": 33,
+    "receiver-like owner 'FractionalMaxPool3d'": 33,
+    "receiver-like owner 'GELU'": 33,
+    "receiver-like owner 'GLU'": 33,
+    "receiver-like owner 'GRU'": 66,
+    "receiver-like owner 'GRUCell'": 66,
+    "receiver-like owner 'GaussianNLLLoss'": 33,
+    "receiver-like owner 'GroupNorm'": 66,
+    "receiver-like owner 'Hardshrink'": 33,
+    "receiver-like owner 'Hardsigmoid'": 33,
+    "receiver-like owner 'Hardswish'": 66,
+    "receiver-like owner 'Hardtanh'": 33,
+    "receiver-like owner 'HingeEmbeddingLoss'": 33,
+    "receiver-like owner 'HuberLoss'": 33,
+    "receiver-like owner 'Identity'": 33,
+    "receiver-like owner 'InstanceNorm1d'": 66,
+    "receiver-like owner 'InstanceNorm2d'": 66,
+    "receiver-like owner 'InstanceNorm3d'": 66,
+    "receiver-like owner 'KLDivLoss'": 33,
+    "receiver-like owner 'L1Loss'": 33,
+    "receiver-like owner 'LPPool1d'": 33,
+    "receiver-like owner 'LPPool2d'": 33,
+    "receiver-like owner 'LPPool3d'": 33,
+    "receiver-like owner 'LSTM'": 132,
+    "receiver-like owner 'LSTMCell'": 99,
+    "receiver-like owner 'LayerNorm'": 66,
+    "receiver-like owner 'LazyBatchNorm1d'": 33,
+    "receiver-like owner 'LazyBatchNorm2d'": 33,
+    "receiver-like owner 'LazyBatchNorm3d'": 33,
+    "receiver-like owner 'LazyConv1d'": 33,
+    "receiver-like owner 'LazyConv2d'": 33,
+    "receiver-like owner 'LazyConv3d'": 33,
+    "receiver-like owner 'LazyConvTranspose1d'": 33,
+    "receiver-like owner 'LazyConvTranspose2d'": 33,
+    "receiver-like owner 'LazyConvTranspose3d'": 33,
+    "receiver-like owner 'LazyInstanceNorm1d'": 33,
+    "receiver-like owner 'LazyInstanceNorm2d'": 33,
+    "receiver-like owner 'LazyInstanceNorm3d'": 33,
+    "receiver-like owner 'LazyLinear'": 33,
+    "receiver-like owner 'LeakyReLU'": 66,
+    "receiver-like owner 'Linear'": 169,
+    "receiver-like owner 'LocalResponseNorm'": 33,
+    "receiver-like owner 'LogSigmoid'": 33,
+    "receiver-like owner 'LogSoftmax'": 33,
+    "receiver-like owner 'MSELoss'": 33,
+    "receiver-like owner 'MarginRankingLoss'": 33,
+    "receiver-like owner 'MaxPool1d'": 33,
+    "receiver-like owner 'MaxPool2d'": 33,
+    "receiver-like owner 'MaxPool3d'": 33,
+    "receiver-like owner 'MaxUnpool1d'": 33,
+    "receiver-like owner 'MaxUnpool2d'": 33,
+    "receiver-like owner 'MaxUnpool3d'": 33,
+    "receiver-like owner 'Mish'": 33,
+    "receiver-like owner 'Module'": 33,
+    "receiver-like owner 'ModuleDict'": 35,
+    "receiver-like owner 'ModuleList'": 36,
+    "receiver-like owner 'MultiLabelMarginLoss'": 33,
+    "receiver-like owner 'MultiLabelSoftMarginLoss'": 33,
+    "receiver-like owner 'MultiMarginLoss'": 33,
+    "receiver-like owner 'MultiheadAttention'": 103,
+    "receiver-like owner 'NLLLoss'": 33,
+    "receiver-like owner 'NLLLoss2d'": 33,
+    "receiver-like owner 'PReLU'": 66,
+    "receiver-like owner 'PairwiseDistance'": 33,
+    "receiver-like owner 'Parameter'": 8,
+    "receiver-like owner 'ParameterDict'": 37,
+    "receiver-like owner 'ParameterList'": 35,
+    "receiver-like owner 'PixelShuffle'": 33,
+    "receiver-like owner 'PixelUnshuffle'": 33,
+    "receiver-like owner 'PoissonNLLLoss'": 33,
+    "receiver-like owner 'RMSNorm'": 33,
+    "receiver-like owner 'RNN'": 33,
+    "receiver-like owner 'RNNBase'": 33,
+    "receiver-like owner 'RNNCell'": 66,
+    "receiver-like owner 'RNNCellBase'": 33,
+    "receiver-like owner 'RReLU'": 33,
+    "receiver-like owner 'ReLU'": 33,
+    "receiver-like owner 'ReLU6'": 66,
+    "receiver-like owner 'ReflectionPad1d'": 33,
+    "receiver-like owner 'ReflectionPad2d'": 33,
+    "receiver-like owner 'ReflectionPad3d'": 33,
+    "receiver-like owner 'ReplicationPad1d'": 33,
+    "receiver-like owner 'ReplicationPad2d'": 33,
+    "receiver-like owner 'ReplicationPad3d'": 33,
+    "receiver-like owner 'SELU'": 33,
+    "receiver-like owner 'Sequential'": 36,
+    "receiver-like owner 'SiLU'": 33,
+    "receiver-like owner 'Sigmoid'": 66,
+    "receiver-like owner 'SmoothL1Loss'": 33,
+    "receiver-like owner 'SoftMarginLoss'": 33,
+    "receiver-like owner 'Softmax'": 66,
+    "receiver-like owner 'Softmax2d'": 33,
+    "receiver-like owner 'Softmin'": 33,
+    "receiver-like owner 'Softplus'": 33,
+    "receiver-like owner 'Softshrink'": 33,
+    "receiver-like owner 'Softsign'": 33,
+    "receiver-like owner 'SyncBatchNorm'": 34,
+    "receiver-like owner 'Tanh'": 33,
+    "receiver-like owner 'Tanhshrink'": 33,
+    "receiver-like owner 'Threshold'": 33,
+    "missing required param descriptions for: sz": 1,
+    "receiver-like owner 'TransformerDecoder'": 34,
+    "receiver-like owner 'TransformerDecoderLayer'": 34,
+    "receiver-like owner 'TransformerEncoder'": 34,
+    "receiver-like owner 'TransformerEncoderLayer'": 34,
+    "receiver-like owner 'TripletMarginLoss'": 33,
+    "receiver-like owner 'TripletMarginWithDistanceLoss'": 33,
+    "receiver-like owner 'Unflatten'": 33,
+    "receiver-like owner 'Unfold'": 33,
+    "receiver-like owner 'UninitializedBuffer'": 9,
+    "receiver-like owner 'UninitializedParameter'": 9,
+    "receiver-like owner 'Upsample'": 33,
+    "receiver-like owner 'UpsamplingBilinear2d'": 33,
+    "receiver-like owner 'UpsamplingNearest2d'": 33,
+    "receiver-like owner 'ZeroPad1d'": 33,
+    "receiver-like owner 'ZeroPad2d'": 33,
+    "receiver-like owner 'ZeroPad3d'": 33,
+    "in-place style API name": 17,
+    "required param 'sparsity' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: target_gpus": 2,
+    "required param 'modules' not fuzzable: non-fuzzable type cue: module": 1,
+    "doc indicates side-effect/external-dependency keyword (\\b(distributed|cluster|server|worker|rpc|remote)\\b)": 4,
+    "missing required param descriptions for: max_norm": 2,
+    "required param 'max_norm' lacks constraint/type/shape/value detail": 3,
+    "required param 'conv' not fuzzable: non-fuzzable type cue: module": 2,
+    "required param 'bn_eps' lacks constraint/type/shape/value detail": 4,
+    "receiver-like owner 'Adafactor'": 10,
+    "receiver-like owner 'Adadelta'": 10,
+    "receiver-like owner 'Adagrad'": 10,
+    "receiver-like owner 'Adam'": 10,
+    "receiver-like owner 'Adamax'": 10,
+    "receiver-like owner 'AdamW'": 10,
+    "receiver-like owner 'ASGD'": 10,
+    "receiver-like owner 'LBFGS'": 10,
+    "missing required param descriptions for: a, x": 7,
+    "receiver-like owner 'Muon'": 9,
+    "receiver-like owner 'NAdam'": 10,
+    "receiver-like owner 'Optimizer'": 10,
+    "receiver-like owner 'RAdam'": 10,
+    "receiver-like owner 'RMSprop'": 10,
+    "receiver-like owner 'Rprop'": 10,
+    "receiver-like owner 'SGD'": 10,
+    "receiver-like owner 'SparseAdam'": 10,
+    "missing required param descriptions for: a, p": 1,
+    "missing required param descriptions for: p": 5,
+    "missing required param descriptions for: s": 42,
+    "missing required param descriptions for: f1, f2": 2,
+    "missing required param descriptions for: fp1, fp2": 2,
+    "missing required param descriptions for: paths": 1,
+    "receiver-like owner 'Directory'": 1,
+    "receiver-like owner 'Importer'": 1,
+    "missing required param descriptions for: module_name": 4,
+    "receiver-like owner 'OrderedImporter'": 1,
+    "receiver-like owner 'PackageExporter'": 13,
+    "receiver-like owner 'PackageImporter'": 6,
+    "missing required param descriptions for: key, value": 3,
+    "required param 'path' not fuzzable: non-fuzzable type cue: file": 1,
+    "missing required param descriptions for: callback": 1,
+    "missing required param descriptions for: enable": 2,
+    "missing required param descriptions for: output_file_path": 1,
+    "missing required param descriptions for: val": 3,
+    "missing required param descriptions for: requester": 1,
+    "receiver-like owner 'QuantWrapper'": 33,
+    "missing required param descriptions for: X": 5,
+    "receiver-like owner 'QuantStub'": 33,
+    "receiver-like owner 'DeQuantStub'": 33,
+    "receiver-like owner 'ObserverBase'": 33,
+    "receiver-like owner 'HistogramObserver'": 33,
+    "missing required param descriptions for: x_orig": 3,
+    "required param 'state_dict' lacks constraint/type/shape/value detail": 1,
+    "doc describes lookup/resource/spec-style behavior, not data transformation": 2,
+    "required param 'name' not fuzzable: non-fuzzable type cue: module": 1,
+    "name contains utility/metadata keyword (\\b(state_dict|serialization|pickle)\\b)": 1,
+    "required param 'device' not fuzzable: non-fuzzable type cue: module": 1,
+    "receiver-like owner 'FakeQuantize'": 33,
+    "receiver-like owner 'FakeQuantizeBase'": 33,
+    "receiver-like owner 'FixedQParamsFakeQuantize'": 33,
+    "receiver-like owner 'FusedMovingAvgObsFakeQuantize'": 33,
+    "receiver-like owner 'MinMaxObserver'": 33,
+    "receiver-like owner 'MovingAverageMinMaxObserver'": 33,
+    "receiver-like owner 'MovingAveragePerChannelMinMaxObserver'": 33,
+    "receiver-like owner 'NoopObserver'": 33,
+    "receiver-like owner 'PerChannelMinMaxObserver'": 33,
+    "receiver-like owner 'RecordingObserver'": 33,
+    "receiver-like owner 'SobolEngine'": 3,
+    "missing required param descriptions for: typ": 3,
+    "missing required param descriptions for: module, name, code": 1,
+    "missing required param descriptions for: word, possibilities": 1,
+    "missing required param descriptions for: delta, which": 1,
+    "missing required param descriptions for: ch": 1,
+    "missing required param descriptions for: dfunc, a, b": 1,
+    "missing required param descriptions for: format, buffer": 4,
+    "missing required param descriptions for: format": 1,
+    "missing required param descriptions for: buf": 2,
+    "missing required param descriptions for: predicate": 1,
+    "missing required param descriptions for: daemonic": 2,
+    "receiver-like owner 'ThroughputBenchmark'": 1,
+    "required param 'enabled' lacks constraint/type/shape/value detail": 1,
+    "required param 'policy_fn_or_list' not fuzzable: non-fuzzable type cue: callable": 1,
+    "missing required param descriptions for: run_lambda": 2,
+    "missing required param descriptions for: run_lambda, command, regex": 1,
+    "missing required param descriptions for: run_lambda, command": 2,
+    "required param 'dataset' not fuzzable: non-fuzzable type cue: dataset": 2,
+    "missing required param descriptions for: desc": 1,
+    "missing required param descriptions for: cls_name, fields": 1,
+    "missing required param descriptions for: obj, changes": 2,
+    "missing required param descriptions for: func, converter, flat_args, args_spec": 1,
+    "missing required param descriptions for: check": 1,
+    "missing required param descriptions for: records": 1,
+    "missing required param descriptions for: record": 24,
+    "missing required param descriptions for: stack_info": 1,
+    "missing required param descriptions for: name, level, fn, lno, msg, exc_info": 2,
+    "missing required param descriptions for: factory": 1,
+    "missing required param descriptions for: clk_id": 2,
+    "missing required param descriptions for: o": 5,
+    "missing required param descriptions for: member": 5,
+    "missing required param descriptions for: zinfo_or_arcname, data": 3,
+    "missing required param descriptions for: zf": 1,
+    "missing required param descriptions for: offset": 11,
+    "missing required param descriptions for: b": 14,
+    "missing required param descriptions for: hexstr": 2,
+    "missing required param descriptions for: check_id": 1,
+    "missing required param descriptions for: enabled, activities": 1,
+    "receiver-like owner 'EventList'": 3,
+    "missing required param descriptions for: child": 1,
+    "missing required param descriptions for: parent": 1,
+    "missing required param descriptions for: start_us, end_us": 1,
+    "missing required param descriptions for: buffer": 8,
+    "missing required param descriptions for: pos": 3,
+    "missing required param descriptions for: cookie": 1,
+    "missing required param descriptions for: objs": 2,
+    "receiver-like owner 'GdsFile'": 2,
+    "receiver-like owner 'StackSummary'": 1,
+    "missing required param descriptions for: frame_summary": 1,
+    "missing required param descriptions for: a_list": 1,
+    "receiver-like owner 'Join'": 1,
+    "receiver-like owner 'JoinHook'": 1,
+    "missing required param descriptions for: list": 4,
+    "missing required param descriptions for: text, state": 2,
+    "missing required param descriptions for: text, line, begidx, endidx": 1,
+    "missing required param descriptions for: frame, arg": 12,
+    "missing required param descriptions for: frame_lineno": 3,
+    "missing required param descriptions for: f, t": 3,
+    "missing required param descriptions for: stop, line": 2,
+    "missing required param descriptions for: func, kwds": 3,
+    "missing required param descriptions for: cmd, globals, locals": 3,
+    "missing required param descriptions for: expr": 80,
+    "missing required param descriptions for: frame, event, arg": 3,
+    "missing required param descriptions for: frame, argument_list": 1,
+    "missing required param descriptions for: frame, exc_info": 1,
+    "missing required param descriptions for: frame, return_value": 1,
+    "missing required param descriptions for: changes": 1,
+    "missing required param descriptions for: b, frame": 1,
+    "missing required param descriptions for: file, line, frame": 1,
+    "required param 'source' lacks constraint/type/shape/value detail": 2,
+    "missing required param descriptions for: seconds": 1,
+    "missing required param descriptions for: signalnum, frame": 1,
+    "missing required param descriptions for: signalnum": 2,
+    "missing required param descriptions for: how, mask": 1,
+    "missing required param descriptions for: which, seconds": 1,
+    "missing required param descriptions for: signalnum, flag": 1,
+    "missing required param descriptions for: signalnum, handler": 1,
+    "missing required param descriptions for: sigset": 1,
+    "receiver-like owner 'TensorPipeRpcBackendOptions'": 2,
+    "required param 'backend_name' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: subclass": 1,
+    "receiver-like owner 'ConstraintRegistry'": 1,
+    "receiver-like owner 'LogitRelaxedBernoulli'": 3,
+    "receiver-like owner 'ExpRelaxedCategorical'": 3,
+    "required param 'a' not fuzzable: type unclear / not constructable": 21,
+    "required param 'file' not fuzzable: non-fuzzable type cue: file": 6,
+    "missing required param descriptions for: arrays": 3,
+    "missing required param descriptions for: ary, indices_or_sections": 5,
+    "missing required param descriptions for: a1, a2": 6,
+    "missing required param descriptions for: x1, x2": 43,
+    "required param 'num' lacks constraint/type/shape/value detail": 1,
+    "required param 'x' not fuzzable: type unclear / not constructable": 33,
+    "missing required param descriptions for: ar1, ar2": 8,
+    "missing required param descriptions for: xi": 1,
+    "required param 'func1d' not fuzzable: non-fuzzable type cue: function": 2,
+    "required param 'f' not fuzzable: non-fuzzable type cue: function": 3,
+    "required param 'fname' not fuzzable: non-fuzzable type cue: file": 3,
+    "vague required param descriptions for: arr": 1,
+    "required param 'fill_value' not fuzzable: type unclear / not constructable": 1,
+    "required param 'x1' not fuzzable: type unclear / not constructable": 10,
+    "required param 'axis' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: arys": 6,
+    "required param 'ind' not fuzzable: type unclear / not constructable": 1,
+    "required param 'ary' not fuzzable: type unclear / not constructable": 1,
+    "required param 'v' not fuzzable: type unclear / not constructable": 1,
+    "doc indicates side-effect/external-dependency keyword (\\b(train|fit|learn|backward)\\b)": 1,
+    "required param 'values' not fuzzable: type unclear / not constructable": 2,
+    "required param 'indices' not fuzzable: type unclear / not constructable": 2,
+    "required param 'arr' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: a, v": 3,
+    "required param 'args' not fuzzable: type unclear / not constructable": 3,
+    "missing required param descriptions for: arg1, arg2": 1,
+    "required param 'indices' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'b' not fuzzable: type unclear / not constructable": 1,
+    "required param 'condlist' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'buffer' not fuzzable: type unclear / not constructable": 2,
+    "vague required param descriptions for: x": 25,
+    "return not capturable / side-effect style (\\bin-?place\\b)": 5,
+    "required param 'data' not fuzzable: type unclear / not constructable": 2,
+    "missing required param descriptions for: start_or_stop": 2,
+    "required param 'N' lacks constraint/type/shape/value detail": 1,
+    "required param 'function' not fuzzable: non-fuzzable type cue: callable": 2,
+    "required param 'axis1' lacks constraint/type/shape/value detail": 1,
+    "required param 'mask_func' not fuzzable: non-fuzzable type cue: callable": 1,
+    "required param 'y' not fuzzable: non-fuzzable type cue: dataset": 2,
+    "missing required param descriptions for: mod_traced, name": 1,
+    "required param 'm' not fuzzable: non-fuzzable type cue: module": 2,
+    "unresolved: AttributeError: 'NoneType' object has no attribute '_item_memo'": 1,
+    "unresolved: AttributeError: 'NoneType' object has no attribute '_nested_int_memo'": 1,
+    "unresolved: AttributeError: 'NoneType' object has no attribute '_nonzero_memo'": 1,
+    "unresolved: AttributeError: 'NoneType' object has no attribute '_unique_consecutive_memo'": 1,
+    "unresolved: AttributeError: 'NoneType' object has no attribute '_unique_memo'": 1,
+    "missing required param descriptions for: func, flat_args": 1,
+    "missing required param descriptions for: tracer, f": 1,
+    "required param 'x' lacks constraint/type/shape/value detail": 2,
+    "missing required param descriptions for: new, old": 1,
+    "missing required param descriptions for: shape_env, example_value": 1,
+    "missing required param descriptions for: shape_env, n, result": 1,
+    "missing required param descriptions for: shape_env, bindings": 1,
+    "missing required param descriptions for: t": 3,
+    "missing required param descriptions for: r": 3,
+    "missing required param descriptions for: fx_module, old_op, old_target, new_op, new_target": 1,
+    "missing required param descriptions for: fx_module": 2,
+    "missing required param descriptions for: fx_module, node": 2,
+    "missing required param descriptions for: gm, tags": 3,
+    "missing required param descriptions for: is_node_supported": 1,
+    "missing required param descriptions for: op_support": 2,
+    "missing required param descriptions for: submodules, node": 4,
+    "missing required param descriptions for: name, target_version": 1,
+    "missing required param descriptions for: gm, example_args": 1,
+    "missing required param descriptions for: gm, sample_args": 1,
+    "missing required param descriptions for: obj, attr, value": 1,
+    "required param 'gm' not fuzzable: non-fuzzable type cue: module": 3,
+    "missing required param descriptions for: k": 1,
+    "missing required param descriptions for: left, right": 2,
+    "missing required param descriptions for: tbs": 1,
+    "missing required param descriptions for: callback, kwds": 3,
+    "missing required param descriptions for: cm": 3,
+    "missing required param descriptions for: exit": 3,
+    "missing required param descriptions for: repl, string": 2,
+    "missing required param descriptions for: template": 1,
+    "missing required param descriptions for: search_function": 2,
+    "missing required param descriptions for: file, data_encoding": 1,
+    "missing required param descriptions for: iterator, encoding": 2,
+    "missing required param descriptions for: errors, handler": 1,
+    "missing required param descriptions for: decoding_map": 1,
+    "missing required param descriptions for: rng": 1,
+    "missing required param descriptions for: s, end": 1,
+    "missing required param descriptions for: spec": 6,
+    "missing required param descriptions for: fullname": 31,
+    "missing required param descriptions for: path, data": 1,
+    "missing required param descriptions for: data, path": 2,
+    "missing required param descriptions for: loader_details": 1,
+    "receiver-like owner 'PathDistribution'": 3,
+    "missing required param descriptions for: fp, kws": 2,
+    "missing required param descriptions for: s, kws": 2,
+    "missing required param descriptions for: resource": 4,
+    "missing required param descriptions for: loader": 1,
+    "missing required param descriptions for: sub": 2,
+    "missing required param descriptions for: members, more_members": 1,
+    "missing required param descriptions for: start": 1,
+    "missing required param descriptions for: fd, family, type": 1,
+    "missing required param descriptions for: address": 4,
+    "missing required param descriptions for: host, port": 1,
+    "missing required param descriptions for: oname": 1,
+    "missing required param descriptions for: ip_addr": 1,
+    "missing required param descriptions for: packed_ip": 1,
+    "missing required param descriptions for: sock, buffers, fds": 1,
+    "missing required param descriptions for: sock, bufsize, maxfds": 1,
+    "missing required param descriptions for: object_list": 1,
+    "receiver-like owner 'ConvBn1d'": 71,
+    "receiver-like owner 'ConvBn2d'": 71,
+    "receiver-like owner 'ConvBn3d'": 71,
+    "receiver-like owner 'ConvBnReLU1d'": 71,
+    "receiver-like owner 'ConvBnReLU2d'": 71,
+    "receiver-like owner 'ConvBnReLU3d'": 71,
+    "receiver-like owner 'ConvReLU1d'": 105,
+    "receiver-like owner 'ConvReLU2d'": 105,
+    "receiver-like owner 'ConvReLU3d'": 105,
+    "receiver-like owner 'LinearReLU'": 106,
+    "receiver-like owner 'BNReLU2d'": 69,
+    "receiver-like owner 'BNReLU3d'": 69,
+    "receiver-like owner 'LinearBn1d'": 72,
+    "required param 'state_dict' not fuzzable: non-fuzzable type cue: model": 1,
+    "receiver-like owner 'DistributedDataParallel'": 35,
+    "receiver-like owner 'DistributedDataParallelCPU'": 35,
+    "name contains side-effect keyword (\\b(distributed|cluster|server|worker|rpc|remote)\\b)": 1,
+    "receiver-like owner 'UninitializedTensorMixin'": 1,
+    "missing required param descriptions for: wi, wh": 1,
+    "missing required param descriptions for: query, key, value": 2,
+    "receiver-like owner 'DeQuantize'": 33,
+    "missing required param descriptions for: Xq": 1,
+    "missing required param descriptions for: indices": 41,
+    "receiver-like owner 'Quantize'": 33,
+    "receiver-like owner 'FloatFunctional'": 33,
+    "receiver-like owner 'FXFloatFunctional'": 33,
+    "receiver-like owner 'QFunctional'": 33,
+    "missing required param descriptions for: scale, zero_point": 1,
+    "required param 'from_module' not fuzzable: non-fuzzable type cue: module": 1,
+    "missing required param descriptions for: lengths": 1,
+    "receiver-like owner 'LambdaLR'": 2,
+    "receiver-like owner 'MultiplicativeLR'": 2,
+    "receiver-like owner 'StepLR'": 2,
+    "receiver-like owner 'MultiStepLR'": 2,
+    "receiver-like owner 'ConstantLR'": 2,
+    "receiver-like owner 'LinearLR'": 2,
+    "receiver-like owner 'ExponentialLR'": 2,
+    "receiver-like owner 'SequentialLR'": 1,
+    "receiver-like owner 'CosineAnnealingLR'": 2,
+    "receiver-like owner 'ChainedScheduler'": 1,
+    "receiver-like owner 'CyclicLR'": 1,
+    "receiver-like owner 'CosineAnnealingWarmRestarts'": 1,
+    "receiver-like owner 'OneCycleLR'": 2,
+    "receiver-like owner 'PolynomialLR'": 2,
+    "receiver-like owner 'LRScheduler'": 2,
+    "receiver-like owner 'AveragedModel'": 33,
+    "receiver-like owner 'SWALR'": 2,
+    "missing required param descriptions for: u, v": 1,
+    "receiver-like owner 'DiGraph'": 1,
+    "missing required param descriptions for: src": 2,
+    "missing required param descriptions for: dst": 1,
+    "missing required param descriptions for: pickle": 2,
+    "missing required param descriptions for: mangled": 1,
+    "missing required param descriptions for: path, device_str": 3,
+    "receiver-like owner 'HtmlDiff'": 2,
+    "missing required param descriptions for: module_name, global_name": 1,
+    "missing required param descriptions for: tarinfo": 1,
+    "missing required param descriptions for: tarinfo, targetpath, numeric_owner": 1,
+    "missing required param descriptions for: tarinfo, targetpath, filter_function, extraction_root": 1,
+    "missing required param descriptions for: tarinfo, targetpath": 1,
+    "missing required param descriptions for: pax_headers": 1,
+    "missing required param descriptions for: info, encoding": 1,
+    "missing required param descriptions for: buf, encoding, errors": 1,
+    "missing required param descriptions for: id": 1,
+    "missing required param descriptions for: uidobj": 1,
+    "missing required param descriptions for: ctx, run_function, preserve_rng_state": 1,
+    "receiver-like owner 'DefaultDeviceType'": 1,
+    "missing required param descriptions for: category": 1,
+    "missing required param descriptions for: f, val": 1,
+    "missing required param descriptions for: localename": 1,
+    "missing required param descriptions for: popenargs": 4,
+    "receiver-like owner 'DistributedSampler'": 1,
+    "missing required param descriptions for: datapipe, num_of_instances, instance_id": 1,
+    "missing required param descriptions for: ignored": 1,
+    "missing required param descriptions for: object, context, maxlevels, level": 1,
+    "missing required param descriptions for: dtype": 69,
+    "missing required param descriptions for: choices": 39,
+    "missing required param descriptions for: condition": 39,
+    "missing required param descriptions for: indices, values": 39,
+    "missing required param descriptions for: repeats": 39,
+    "missing required param descriptions for: new_shape": 35,
+    "missing required param descriptions for: v": 42,
+    "missing required param descriptions for: val, dtype": 33,
+    "missing required param descriptions for: axis1, axis2": 39,
+    "missing required param descriptions for: fid": 35,
+    "missing required param descriptions for: axes": 35,
+    "vague required param descriptions for: a, i": 2,
+    "vague required param descriptions for: a": 38,
+    "vague required param descriptions for: a, table": 2,
+    "receiver-like owner 'matrix'": 19,
+    "missing required param descriptions for: kth": 4,
+    "missing required param descriptions for: a, params": 4,
+    "required param 'a' has opaque custom type(s): Input, MaskedArray": 1,
+    "missing required param descriptions for: a, n": 2,
+    "required param 'm' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: m1, m2": 1,
+    "missing required param descriptions for: x, value": 6,
+    "missing required param descriptions for: x, v1, v2": 2,
+    "required param 'value' not fuzzable: type unclear / not constructable": 1,
+    "required param 'value' lacks constraint/type/shape/value detail": 1,
+    "required param 'condition' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: a, indices, values": 1,
+    "missing required param descriptions for: a, mask, values": 1,
+    "missing required param descriptions for: a, new_shape": 1,
+    "missing required param descriptions for: x, new_shape": 1,
+    "missing required param descriptions for: arr": 1,
+    "missing required param descriptions for: element, test_elements": 1,
+    "missing required param descriptions for: ar1": 1,
+    "required param 'datastring' lacks constraint/type/shape/value detail": 1,
+    "required param 'fd' not fuzzable: non-fuzzable type cue: file": 1,
+    "vague required param descriptions for: sep, seq": 1,
+    "required param 'sep' lacks constraint/type/shape/value detail": 1,
+    "vague required param descriptions for: obj": 2,
+    "required param 'val' not fuzzable: type unclear / not constructable": 2,
+    "return not capturable / side-effect style (\\bdistribution\\b)": 31,
+    "required param 'n' lacks constraint/type/shape/value detail": 10,
+    "required param 'mean' not fuzzable: type unclear / not constructable": 1,
+    "return not capturable / side-effect style (\\breturns?\\s+none\\b)": 1,
+    "missing required param descriptions for: bitgen": 1,
+    "required param 'place' not fuzzable: non-fuzzable type cue: module": 1,
+    "receiver-like owner 'ndarray'": 16,
+    "required param 'actual' has opaque custom type(s): The": 1,
+    "required param 'actual' lacks constraint/type/shape/value detail": 1,
+    "required param 'decorator' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'test_string' lacks constraint/type/shape/value detail": 1,
+    "required param 'code_str' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: exception_class, expected_regexp": 1,
+    "required param 'A' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: comline_list": 1,
+    "receiver-like owner 'FoldedGraphModule'": 36,
+    "receiver-like owner 'PythonKeyTracer'": 6,
+    "receiver-like owner 'DecompositionInterpreter'": 8,
+    "receiver-like owner 'FakeTensor'": 8,
+    "missing required param descriptions for: file, line": 1,
+    "missing required param descriptions for: forward_ref": 1,
+    "missing required param descriptions for: val, source": 2,
+    "missing required param descriptions for: ex, source": 1,
+    "missing required param descriptions for: sym, hint": 1,
+    "missing required param descriptions for: orig_expr": 1,
+    "missing required param descriptions for: sym_node": 1,
+    "missing required param descriptions for: e": 1,
+    "missing required param descriptions for: symints": 1,
+    "receiver-like owner 'ShapeEnv'": 2,
+    "missing required param descriptions for: symbol": 1,
+    "missing required param descriptions for: placeholders": 1,
+    "missing required param descriptions for: placeholders, sources": 1,
+    "missing required param descriptions for: k, v": 1,
+    "missing required param descriptions for: types": 12,
+    "missing required param descriptions for: hints": 35,
+    "missing required param descriptions for: assumptions": 14,
+    "missing required param descriptions for: query, value": 12,
+    "missing required param descriptions for: arg1": 12,
+    "missing required param descriptions for: deps": 22,
+    "missing required param descriptions for: syms": 44,
+    "missing required param descriptions for: gens": 22,
+    "missing required param descriptions for: deps, hint": 11,
+    "missing required param descriptions for: symbols": 12,
+    "receiver-like owner 'CeilToInt'": 5,
+    "missing required param descriptions for: c": 22,
+    "missing required param descriptions for: g, gens": 11,
+    "missing required param descriptions for: wrt, flags": 11,
+    "missing required param descriptions for: x, a": 11,
+    "missing required param descriptions for: n, x, previous_terms": 11,
+    "receiver-like owner 'CleanDiv'": 5,
+    "missing required param descriptions for: base, divisor": 3,
+    "missing required param descriptions for: s, expr": 1,
+    "receiver-like owner 'FloorDiv'": 5,
+    "receiver-like owner 'FloorToInt'": 5,
+    "receiver-like owner 'IntTrueDiv'": 5,
+    "receiver-like owner 'IsNonOverlappingAndDenseIndicator'": 5,
+    "receiver-like owner 'LoggingShapeGuardPrinter'": 2,
+    "receiver-like owner 'Max'": 5,
+    "receiver-like owner 'Mod'": 5,
+    "missing required param descriptions for: elem": 1,
+    "receiver-like owner 'PropagateUnbackedSymInts'": 9,
+    "receiver-like owner 'PythonMod'": 5,
+    "receiver-like owner 'ShapeGuardPrinter'": 2,
+    "receiver-like owner 'ShapeGuardPythonPrinter'": 2,
+    "receiver-like owner 'SingletonInt'": 6,
+    "receiver-like owner 'TruncToInt'": 5,
+    "missing required param descriptions for: x, y, fn": 1,
+    "missing required param descriptions for: z1, z2": 1,
+    "missing required param descriptions for: a, m": 1,
+    "missing required param descriptions for: y, n": 1,
+    "missing required param descriptions for: n, b": 1,
+    "missing required param descriptions for: f, symbols": 2,
+    "missing required param descriptions for: e, hints": 1,
+    "required param 'expr' not fuzzable: type unclear / not constructable": 4,
+    "missing required param descriptions for: x, options": 1,
+    "missing required param descriptions for: rv, F": 1,
+    "missing required param descriptions for: expr, func": 2,
+    "missing required param descriptions for: variables, minterms": 2,
+    "vague required param descriptions for: expr": 3,
+    "missing required param descriptions for: bool1, bool2": 1,
+    "required param 'proposition' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: key, handler": 2,
+    "missing required param descriptions for: f, gens": 25,
+    "missing required param descriptions for: f, g, gens": 15,
+    "missing required param descriptions for: seq, gens": 2,
+    "missing required param descriptions for: f, p, gens": 1,
+    "missing required param descriptions for: F": 1,
+    "missing required param descriptions for: f, s, t": 1,
+    "missing required param descriptions for: f, n, gens": 1,
+    "missing required param descriptions for: f, G, gens": 1,
+    "missing required param descriptions for: F, gens": 2,
+    "missing required param descriptions for: expr, gens": 1,
+    "missing required param descriptions for: data, x": 1,
+    "missing required param descriptions for: data, degnum": 1,
+    "missing required param descriptions for: ex": 1,
+    "required param 'ex' not fuzzable: type unclear / not constructable": 1,
+    "required param 'alg' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'p' lacks constraint/type/shape/value detail": 2,
+    "required param 'f' not fuzzable: type unclear / not constructable": 2,
+    "missing required param descriptions for: variables, max_degrees": 1,
+    "missing required param descriptions for: monomial": 3,
+    "missing required param descriptions for: f, gens, flags": 1,
+    "missing required param descriptions for: n, gens": 1,
+    "missing required param descriptions for: x, inf, sup": 1,
+    "missing required param descriptions for: n, x": 1,
+    "missing required param descriptions for: f, options": 2,
+    "missing required param descriptions for: partial_list": 1,
+    "vague required param descriptions for: domain": 3,
+    "vague required param descriptions for: exprs, symbols, options": 2,
+    "missing required param descriptions for: symbols, domain": 3,
+    "vague required param descriptions for: e": 1,
+    "missing required param descriptions for: e, z, z0": 1,
+    "missing required param descriptions for: l": 1,
+    "missing required param descriptions for: expr, x, x0": 1,
+    "missing required param descriptions for: arg, n": 1,
+    "missing required param descriptions for: eq": 10,
+    "missing required param descriptions for: z": 1,
+    "required param 'n' not fuzzable: non-fuzzable type cue: function": 1,
+    "vague required param descriptions for: n, a, b, x": 1,
+    "missing required param descriptions for: n, m, theta, phi": 1,
+    "vague required param descriptions for: n": 2,
+    "missing required param descriptions for: f, x0": 1,
+    "missing required param descriptions for: nth": 2,
+    "missing required param descriptions for: p, n": 1,
+    "missing required param descriptions for: rat": 1,
+    "missing required param descriptions for: m, n": 2,
+    "vague required param descriptions for: a, p": 4,
+    "vague required param descriptions for: a, n": 1,
+    "vague required param descriptions for: p": 1,
+    "vague required param descriptions for: a, n, p": 1,
+    "missing required param descriptions for: a, n, m": 1,
+    "missing required param descriptions for: n, a, b": 1,
+    "vague required param descriptions for: a, b, c": 1,
+    "missing required param descriptions for: cf": 2,
+    "missing required param descriptions for: f, k": 1,
+    "missing required param descriptions for: f, g, k": 1,
+    "missing required param descriptions for: rv": 1,
+    "required param 'path' not fuzzable: non-fuzzable type cue: path": 1,
+    "missing required param descriptions for: expr, syms": 1,
+    "missing required param descriptions for: expr, vars": 1,
+    "missing required param descriptions for: expr, opts": 1,
+    "missing required param descriptions for: f, flags": 1,
+    "missing required param descriptions for: system, symbols, flags": 1,
+    "missing required param descriptions for: matrix, syms": 1,
+    "missing required param descriptions for: equ, coeffs, syms, flags": 1,
+    "missing required param descriptions for: lhs": 1,
+    "missing required param descriptions for: f, symbol, flags": 1,
+    "missing required param descriptions for: M": 2,
+    "missing required param descriptions for: expr, assume": 1,
+    "missing required param descriptions for: expr, assumptions": 1,
+    "missing required param descriptions for: f, y": 1,
+    "missing required param descriptions for: coeffs, f, n, hints": 3,
+    "missing required param descriptions for: ode, sol": 1,
+    "missing required param descriptions for: eq, symbols": 1,
+    "required param 'gens' not fuzzable: type unclear / not constructable": 2,
+    "required param 'eq' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: eq, fun, sep": 2,
+    "missing required param descriptions for: pde, sol": 1,
+    "missing required param descriptions for: inequalities": 1,
+    "missing required param descriptions for: expr, rel, gen": 1,
+    "missing required param descriptions for: exprs, gen": 1,
+    "missing required param descriptions for: poly, rel": 1,
+    "missing required param descriptions for: eqs": 1,
+    "missing required param descriptions for: f, symbol": 1,
+    "missing required param descriptions for: system, symbols": 1,
+    "missing required param descriptions for: equations, symbols": 1,
+    "missing required param descriptions for: seqs, n": 1,
+    "missing required param descriptions for: f, varlist": 1,
+    "missing required param descriptions for: eigenval, n": 1,
+    "missing required param descriptions for: A, B": 1,
+    "missing required param descriptions for: theta": 7,
+    "required param 'prefix' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: functions, var": 1,
+    "missing required param descriptions for: expr, rowsizes, colsizes": 1,
+    "missing required param descriptions for: matrices": 2,
+    "missing required param descriptions for: matexpr": 2,
+    "missing required param descriptions for: d": 1,
+    "vague required param descriptions for: e1, e2": 1,
+    "missing required param descriptions for: seq, n": 1,
+    "missing required param descriptions for: seq, keyfunc": 1,
+    "missing required param descriptions for: iter": 1,
+    "missing required param descriptions for: seq, how": 1,
+    "missing required param descriptions for: propfunc": 1,
+    "missing required param descriptions for: field, curve, vars": 1,
+    "missing required param descriptions for: f, x, s, hints": 1,
+    "missing required param descriptions for: F, s, x, strip, hints": 1,
+    "missing required param descriptions for: f, t, s, hints": 1,
+    "missing required param descriptions for: F, s, t, hints": 1,
+    "missing required param descriptions for: f, x, k, hints": 3,
+    "missing required param descriptions for: F, k, x, hints": 3,
+    "missing required param descriptions for: f, r, k, nu, hints": 1,
+    "missing required param descriptions for: F, k, r, nu, hints": 1,
+    "missing required param descriptions for: f, x": 1,
+    "missing required param descriptions for: array, contraction_axes": 1,
+    "missing required param descriptions for: array, diagonal_axes": 1,
+    "missing required param descriptions for: expr, dx": 1,
+    "required param 's' lacks constraint/type/shape/value detail": 1,
+    "vague required param descriptions for: L": 1,
+    "required param 'y_list' not fuzzable: non-fuzzable type cue: function": 1,
+    "required param 'finset_intersection' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: expr, settings": 7,
+    "missing required param descriptions for: settings": 12,
+    "missing required param descriptions for: expr, latex_settings": 1,
+    "missing required param descriptions for: expr, a, b": 1,
+    "missing required param descriptions for: module, name": 1,
+    "receiver-like owner 'ShapeProp'": 9,
+    "missing required param descriptions for: fusion_group": 1,
+    "missing required param descriptions for: disallow_set": 1,
+    "receiver-like owner 'HolderModule'": 33,
+    "missing required param descriptions for: cpu_worklist": 1,
+    "missing required param descriptions for: node_name": 1,
+    "missing required param descriptions for: heap": 2,
+    "missing required param descriptions for: heap, item": 2,
+    "missing required param descriptions for: iterables": 1,
+    "missing required param descriptions for: n, iterable": 2,
+    "missing required param descriptions for: subgraph1, subgraph2": 1,
+    "missing required param descriptions for: state": 4,
+    "missing required param descriptions for: header_bytes": 2,
+    "missing required param descriptions for: bytearray": 1,
+    "missing required param descriptions for: alias, canonical": 1,
+    "missing required param descriptions for: charset": 1,
+    "missing required param descriptions for: charset, codecname": 1,
+    "missing required param descriptions for: header": 1,
+    "missing required param descriptions for: decoded_seq": 1,
+    "missing required param descriptions for: encoded": 3,
+    "missing required param descriptions for: body": 1,
+    "name contains utility/metadata keyword (\\b(importlib|metadata|inspect|typing|warnings|logging|config|backend|backends)\\b)": 2,
+    "missing required param descriptions for: octet": 2,
+    "missing required param descriptions for: pair": 1,
+    "missing required param descriptions for: dt": 1,
+    "missing required param descriptions for: fieldvalues": 1,
+    "missing required param descriptions for: addr": 1,
+    "missing required param descriptions for: str": 1,
+    "missing required param descriptions for: descendants": 1,
+    "missing required param descriptions for: f, n": 1,
+    "missing required param descriptions for: ustr": 1,
+    "missing required param descriptions for: i, v": 1,
+    "missing required param descriptions for: ref_linear_relu": 1,
+    "receiver-like owner 'NonDynamicallyQuantizableLinear'": 33,
+    "missing required param descriptions for: grad_output": 1,
+    "missing required param descriptions for: weight, bias, running_mean, running_var, eps, momentum, process_group, world_size": 1,
+    "missing required param descriptions for: ctx, grad_output": 2,
+    "missing required param descriptions for: ctx, target_device, dim": 1,
+    "missing required param descriptions for: ctx, target_gpus, chunk_sizes, dim": 1,
+    "receiver-like owner 'ParametrizationList'": 37,
+    "missing required param descriptions for: name, value": 2,
+    "missing required param descriptions for: names, values": 2,
+    "missing required param descriptions for: named_tensors": 2,
+    "missing required param descriptions for: path, value": 1,
+    "missing required param descriptions for: timestamp": 1,
+    "missing required param descriptions for: fd, cmd": 2,
+    "missing required param descriptions for: fd, request": 1
+  },
+  "examples_by_step": {
+    "1_doc": [
+      {
+        "api_full_name": "torch.BoolStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.BoolTensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ByteStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ByteTensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.CharStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.CharTensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DoubleStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DoubleTensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.FloatStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.FloatTensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.IntStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.IntTensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.LongStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.LongTensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ShortStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ShortTensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.Tensor",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.TypedStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.UntypedStorage",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.get_default_device",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.sym_fresh_size",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.sym_min",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.sym_sqrt",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.AcceleratorError",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.AliasDb",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.AnyType",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.Argument",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ArgumentSpec",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.AwaitType",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.BenchmarkConfig",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.BenchmarkExecutionStats",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.Block",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.BoolType",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.BufferDict",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.CallStack",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.Capsule",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ClassType",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.Code",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.CompilationUnit",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.CompleteArgumentSpec",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ComplexType",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ConcreteModuleType",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.ConcreteModuleTypeBuilder",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DeepCopyMemoTable",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DeserializationStorageContext",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DeviceObjType",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DictType",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DisableTorchFunction",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DisableTorchFunctionSubclass",
+        "reason": "missing/placeholder/too short doc"
+      },
+      {
+        "api_full_name": "torch.DispatchKeySet",
+        "reason": "missing/placeholder/too short doc"
+      }
+    ],
+    "2_params": [
+      {
+        "api_full_name": "torch.GradScaler",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.SymBool",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.SymFloat",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.SymInt",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.are_deterministic_algorithms_enabled",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.autocast",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.chunk",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.enable_grad",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.get_deterministic_debug_mode",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.get_device_module",
+        "reason": "no parsable documented parameters aligned with signature"
+      },
+      {
+        "api_full_name": "torch.get_float32_matmul_precision",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.get_rng_state",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.inference_mode",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.initial_seed",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.is_deterministic_algorithms_warn_only_enabled",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.is_warn_always_enabled",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.matmul",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.no_grad",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.rand",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.randn",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.seed",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.split",
+        "reason": "missing required param descriptions for: split_size_or_sections"
+      },
+      {
+        "api_full_name": "torch.stack",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.sym_ite",
+        "reason": "missing required param descriptions for: b, t, f"
+      },
+      {
+        "api_full_name": "torch.sym_max",
+        "reason": "missing required param descriptions for: a, b"
+      },
+      {
+        "api_full_name": "torch.sym_sum",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.AggregationType",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.DispatchKey",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.Event",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.Generator",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.ScriptFunction",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.Size",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.Stream",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.Tag",
+        "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "torch.fork",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.get_default_dtype",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.get_num_interop_threads",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.get_num_threads",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.import_ir_module",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.import_ir_module_from_buffer",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.init_num_threads",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.is_grad_enabled",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.is_inference_mode_enabled",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.merge_type_from_type_comment",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.parse_type_comment",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.set_flush_denormal",
+        "reason": "missing required param descriptions for: object"
+      },
+      {
+        "api_full_name": "torch.set_num_interop_threads",
+        "reason": "missing required param descriptions for: object"
+      },
+      {
+        "api_full_name": "torch.set_num_threads",
+        "reason": "missing required param descriptions for: object"
+      },
+      {
+        "api_full_name": "torch.unify_type_list",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      },
+      {
+        "api_full_name": "torch.wait",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
+      }
+    ],
+    "3_types": [
+      {
+        "api_full_name": "torch.cond",
+        "reason": "required param 'pred' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "torch.is_storage",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.is_tensor",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.load",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.save",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.set_default_device",
+        "reason": "required param 'device' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "torch.set_rng_state",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.set_warn_always",
+        "reason": "required param 'b' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "torch.sym_float",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.sym_int",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.sym_not",
+        "reason": "required param 'a' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "torch.typename",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.use_deterministic_algorithms",
+        "reason": "required param 'mode' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "torch.vmap",
+        "reason": "required param 'func' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "torch.block_diag",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.from_dlpack",
+        "reason": "required param 'ext_tensor' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "torch.while_loop",
+        "reason": "required param 'cond_fn' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "torch.export.export_for_training",
+        "reason": "required param 'mod' not fuzzable: non-fuzzable type cue: module"
+      },
+      {
+        "api_full_name": "torch.export.export",
+        "reason": "required param 'mod' not fuzzable: non-fuzzable type cue: module"
+      },
+      {
+        "api_full_name": "torch.export.load",
+        "reason": "required param 'f' not fuzzable: non-fuzzable type cue: file"
+      },
+      {
+        "api_full_name": "torch.export.register_dataclass",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.export.unflatten",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.accelerator.set_stream",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.autograd.gradcheck",
+        "reason": "required param 'func' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "torch.autograd.gradgradcheck",
+        "reason": "required param 'func' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "torch.compiler.assume_constant_result",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.compiler.allow_in_graph",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.compiler.substitute_in_graph",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.compiler.set_stance",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.compiler.load_compiled_function",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.cuda.caching_allocator_delete",
+        "reason": "required param 'mem_ptr' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "torch.cuda.change_current_allocator",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.cuda.get_device_capability",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.cuda.get_device_name",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.cuda.get_stream_from_external",
+        "reason": "required param 'data_ptr' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "torch.cuda.make_graphed_callables",
+        "reason": "required param 'callables' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "torch.cuda.manual_seed",
+        "reason": "required param 'seed' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "torch.cuda.manual_seed_all",
+        "reason": "required param 'seed' lacks constraint/type/shape/value detail"
+      },
+      {
+        "api_full_name": "torch.cuda.use_mem_pool",
+        "reason": "required param 'pool' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "torch.cuda.set_device",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.cuda.set_rng_state",
+        "reason": "required param 'new_state' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "torch.cuda.set_rng_state_all",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.cuda.set_stream",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.cuda.stream",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.distributed.all_gather_object",
+        "reason": "required param 'obj' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "torch.distributed.all_reduce",
+        "reason": "required param 'tensor' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "torch.distributed.all_reduce_coalesced",
+        "reason": "required param 'tensors' not fuzzable: non-fuzzable type cue: function"
+      },
+      {
+        "api_full_name": "torch.distributed.batch_isend_irecv",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.distributed.destroy_process_group",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "torch.distributed.gather_object",
+        "reason": "required param 'obj' not fuzzable: type unclear / not constructable"
+      }
+    ],
+    "4_return": [
+      {
+        "api_full_name": "torch.compile",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.manual_seed",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.set_default_tensor_type",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.set_deterministic_debug_mode",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.set_float32_matmul_precision",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.set_printoptions",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "torch.broadcast_tensors",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "torch.cdist",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "torch.chain_matmul",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "torch.meshgrid",
+        "reason": "return description too vague / predicate-like"
+      },
+      {
+        "api_full_name": "torch.norm",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "torch.tensordot",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "torch.set_default_dtype",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.accelerator.current_accelerator",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.accelerator.current_stream",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.accelerator.reset_accumulated_memory_stats",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.accelerator.reset_peak_memory_stats",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.accelerator.set_device_idx",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.accelerator.set_device_index",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.accelerator.synchronize",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.autograd.backward",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.compiler.disable",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "torch.cpu.synchronize",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cpu.current_stream",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.caching_allocator_alloc",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "torch.cuda.current_stream",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.default_stream",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.get_device_properties",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.list_gpu_processes",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.memory_summary",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.reset_accumulated_memory_stats",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.reset_max_memory_allocated",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.reset_max_memory_cached",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.reset_peak_memory_stats",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.set_per_process_memory_fraction",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.set_sync_debug_mode",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.cuda.synchronize",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.distributed.all_gather",
+        "reason": "return not capturable / side-effect style (\\bhandle\\b)"
+      },
+      {
+        "api_full_name": "torch.distributed.all_gather_coalesced",
+        "reason": "return not capturable / side-effect style (\\bhandle\\b)"
+      },
+      {
+        "api_full_name": "torch.distributed.all_gather_into_tensor",
+        "reason": "return not capturable / side-effect style (\\bhandle\\b)"
+      },
+      {
+        "api_full_name": "torch.distributed.all_to_all",
+        "reason": "return not capturable / side-effect style (\\bhandle\\b)"
+      },
+      {
+        "api_full_name": "torch.distributed.all_to_all_single",
+        "reason": "return not capturable / side-effect style (\\bhandle\\b)"
+      },
+      {
+        "api_full_name": "torch.distributed.barrier",
+        "reason": "return not capturable / side-effect style (\\bhandle\\b)"
+      },
+      {
+        "api_full_name": "torch.distributed.breakpoint",
+        "reason": "no documented return value"
+      },
+      {
+        "api_full_name": "torch.distributed.broadcast",
+        "reason": "return not capturable / side-effect style (\\bhandle\\b)"
+      },
+      {
+        "api_full_name": "torch.distributed.broadcast_object_list",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.distributed.gather",
+        "reason": "return not capturable / side-effect style (\\bhandle\\b)"
+      },
+      {
+        "api_full_name": "torch.distributed.get_default_backend_for_device",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.distributed.init_device_mesh",
+        "reason": "return not meaningful/capturable data-form"
+      },
+      {
+        "api_full_name": "torch.distributed.init_process_group",
+        "reason": "return not meaningful/capturable data-form"
+      }
+    ],
+    "5_readiness": [
+      {
+        "api_full_name": "torch.unravel_index",
+        "reason": "doc indicates side-effect/external-dependency keyword (\\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\\b)"
+      },
+      {
+        "api_full_name": "torch.cartesian_prod",
+        "reason": "doc indicates side-effect/external-dependency keyword (\\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\\b)"
+      },
+      {
+        "api_full_name": "torch.BoolStorage.cuda",
+        "reason": "receiver-like owner 'BoolStorage'"
+      },
+      {
+        "api_full_name": "torch.BoolStorage.from_file",
+        "reason": "receiver-like owner 'BoolStorage'"
+      },
+      {
+        "api_full_name": "torch.BoolStorage.hpu",
+        "reason": "receiver-like owner 'BoolStorage'"
+      },
+      {
+        "api_full_name": "torch.BoolStorage.is_pinned",
+        "reason": "receiver-like owner 'BoolStorage'"
+      },
+      {
+        "api_full_name": "torch.BoolStorage.pin_memory",
+        "reason": "receiver-like owner 'BoolStorage'"
+      },
+      {
+        "api_full_name": "torch.BoolStorage.to",
+        "reason": "receiver-like owner 'BoolStorage'"
+      },
+      {
+        "api_full_name": "torch.BoolStorage.type",
+        "reason": "receiver-like owner 'BoolStorage'"
+      },
+      {
+        "api_full_name": "torch.BoolTensor.align_to",
+        "reason": "receiver-like owner 'BoolTensor'"
+      },
+      {
+        "api_full_name": "torch.BoolTensor.backward",
+        "reason": "receiver-like owner 'BoolTensor'"
+      },
+      {
+        "api_full_name": "torch.BoolTensor.dim_order",
+        "reason": "receiver-like owner 'BoolTensor'"
+      },
+      {
+        "api_full_name": "torch.BoolTensor.index",
+        "reason": "receiver-like owner 'BoolTensor'"
+      },
+      {
+        "api_full_name": "torch.BoolTensor.module_load",
+        "reason": "receiver-like owner 'BoolTensor'"
+      },
+      {
+        "api_full_name": "torch.BoolTensor.refine_names",
+        "reason": "receiver-like owner 'BoolTensor'"
+      },
+      {
+        "api_full_name": "torch.BoolTensor.register_hook",
+        "reason": "receiver-like owner 'BoolTensor'"
+      },
+      {
+        "api_full_name": "torch.BoolTensor.register_post_accumulate_grad_hook",
+        "reason": "receiver-like owner 'BoolTensor'"
+      },
+      {
+        "api_full_name": "torch.ByteStorage.cuda",
+        "reason": "receiver-like owner 'ByteStorage'"
+      },
+      {
+        "api_full_name": "torch.ByteStorage.from_file",
+        "reason": "receiver-like owner 'ByteStorage'"
+      },
+      {
+        "api_full_name": "torch.ByteStorage.hpu",
+        "reason": "receiver-like owner 'ByteStorage'"
+      },
+      {
+        "api_full_name": "torch.ByteStorage.is_pinned",
+        "reason": "receiver-like owner 'ByteStorage'"
+      },
+      {
+        "api_full_name": "torch.ByteStorage.pin_memory",
+        "reason": "receiver-like owner 'ByteStorage'"
+      },
+      {
+        "api_full_name": "torch.ByteStorage.to",
+        "reason": "receiver-like owner 'ByteStorage'"
+      },
+      {
+        "api_full_name": "torch.ByteStorage.type",
+        "reason": "receiver-like owner 'ByteStorage'"
+      },
+      {
+        "api_full_name": "torch.ByteTensor.align_to",
+        "reason": "receiver-like owner 'ByteTensor'"
+      },
+      {
+        "api_full_name": "torch.ByteTensor.backward",
+        "reason": "receiver-like owner 'ByteTensor'"
+      },
+      {
+        "api_full_name": "torch.ByteTensor.dim_order",
+        "reason": "receiver-like owner 'ByteTensor'"
+      },
+      {
+        "api_full_name": "torch.ByteTensor.index",
+        "reason": "receiver-like owner 'ByteTensor'"
+      },
+      {
+        "api_full_name": "torch.ByteTensor.module_load",
+        "reason": "receiver-like owner 'ByteTensor'"
+      },
+      {
+        "api_full_name": "torch.ByteTensor.refine_names",
+        "reason": "receiver-like owner 'ByteTensor'"
+      },
+      {
+        "api_full_name": "torch.ByteTensor.register_hook",
+        "reason": "receiver-like owner 'ByteTensor'"
+      },
+      {
+        "api_full_name": "torch.ByteTensor.register_post_accumulate_grad_hook",
+        "reason": "receiver-like owner 'ByteTensor'"
+      },
+      {
+        "api_full_name": "torch.CharStorage.cuda",
+        "reason": "receiver-like owner 'CharStorage'"
+      },
+      {
+        "api_full_name": "torch.CharStorage.from_file",
+        "reason": "receiver-like owner 'CharStorage'"
+      },
+      {
+        "api_full_name": "torch.CharStorage.hpu",
+        "reason": "receiver-like owner 'CharStorage'"
+      },
+      {
+        "api_full_name": "torch.CharStorage.is_pinned",
+        "reason": "receiver-like owner 'CharStorage'"
+      },
+      {
+        "api_full_name": "torch.CharStorage.pin_memory",
+        "reason": "receiver-like owner 'CharStorage'"
+      },
+      {
+        "api_full_name": "torch.CharStorage.to",
+        "reason": "receiver-like owner 'CharStorage'"
+      },
+      {
+        "api_full_name": "torch.CharStorage.type",
+        "reason": "receiver-like owner 'CharStorage'"
+      },
+      {
+        "api_full_name": "torch.CharTensor.align_to",
+        "reason": "receiver-like owner 'CharTensor'"
+      },
+      {
+        "api_full_name": "torch.CharTensor.backward",
+        "reason": "receiver-like owner 'CharTensor'"
+      },
+      {
+        "api_full_name": "torch.CharTensor.dim_order",
+        "reason": "receiver-like owner 'CharTensor'"
+      },
+      {
+        "api_full_name": "torch.CharTensor.index",
+        "reason": "receiver-like owner 'CharTensor'"
+      },
+      {
+        "api_full_name": "torch.CharTensor.module_load",
+        "reason": "receiver-like owner 'CharTensor'"
+      },
+      {
+        "api_full_name": "torch.CharTensor.refine_names",
+        "reason": "receiver-like owner 'CharTensor'"
+      },
+      {
+        "api_full_name": "torch.CharTensor.register_hook",
+        "reason": "receiver-like owner 'CharTensor'"
+      },
+      {
+        "api_full_name": "torch.CharTensor.register_post_accumulate_grad_hook",
+        "reason": "receiver-like owner 'CharTensor'"
+      },
+      {
+        "api_full_name": "torch.DoubleStorage.cuda",
+        "reason": "receiver-like owner 'DoubleStorage'"
+      },
+      {
+        "api_full_name": "torch.DoubleStorage.from_file",
+        "reason": "receiver-like owner 'DoubleStorage'"
+      },
+      {
+        "api_full_name": "torch.DoubleStorage.hpu",
+        "reason": "receiver-like owner 'DoubleStorage'"
+      }
+    ]
+  },
+  "config": {
+    "allow_receiver_apis": false,
+    "allow_wrapper_bridges": false
+  }
+}

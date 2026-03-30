@@ -1,0 +1,71 @@
+Library: tensorflow
+====================
+
+Input APIs from accepted.csv: 922
+Effective candidates after selector preprocessing: 589
+Selected APIs: 100
+
+Selection policy
+----------------
+1. Public APIs were grouped by structural namespace.
+2. Internal / implementation-heavy namespaces were filtered.
+3. Strong computational namespaces were prioritized before niche, device, or experimental namespaces.
+4. Selection maximized marginal semantic feature gain, operation-family diversity,
+   and namespace balance, using documentation richness only as a tie-breaker.
+5. Exact alias-like duplicates were collapsed conservatively and near-duplicates were penalized.
+6. Cap overflow was only used after clean computational namespaces were exhausted.
+
+Coverage
+--------
+- All namespace coverage: 22/22 (100.00%)
+- Core namespace coverage: 14/14 (100.00%)
+- Semantic feature coverage: 62/62 (100.00%)
+- Operation-family coverage: 15/15 (100.00%)
+
+Diagnostics
+-----------
+- Missing core namespaces in accepted set: data, keras.initializers, keras.layers, keras.optimizers, lookup, losses, metrics
+- Cap overflow required to reach target: False
+
+Selected namespace distribution
+-------------------------------
+- top_level: 11
+- nn: 9
+- math: 8
+- io: 7
+- linalg: 7
+- random: 7
+- image: 6
+- strings: 6
+- keras.losses: 5
+- ragged: 5
+- signal: 5
+- sparse: 4
+- keras.metrics: 3
+- keras.ops: 3
+- keras.activations: 2
+- keras.preprocessing: 2
+- keras.quantizers: 2
+- keras.utils: 2
+- keras.visualization: 2
+- quantization: 2
+- keras.applications: 1
+- keras.datasets: 1
+
+Selected family distribution
+----------------------------
+- tensor_creation: 14
+- random: 13
+- image_signal_text: 12
+- io_serialization: 10
+- linalg: 10
+- loss_metric: 9
+- neural_layers: 7
+- reduction: 6
+- indexing: 5
+- shape_manipulation: 5
+- autodiff: 2
+- probabilistic: 2
+- sparse_ragged: 2
+- dtype_casting: 2
+- data_pipeline: 1
