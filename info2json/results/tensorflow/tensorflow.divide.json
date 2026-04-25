@@ -1,0 +1,48 @@
+{
+  "api_name": "divide",
+  "module_path": "tensorflow",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have the same shape"
+      ]
+    },
+    "y": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have the same shape"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float64",
+    "description": "A `Tensor` with same shape as input"
+  },
+  "constraints": [
+    "x and y must have the same shape"
+  ]
+}

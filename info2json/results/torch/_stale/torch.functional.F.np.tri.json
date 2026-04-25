@@ -1,0 +1,52 @@
+{
+  "api_name": "tri",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "N": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int Number of rows in the array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "M": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Number of columns in the array. By default, `M` is taken equal to `N`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional The sub-diagonal at and below which the array is filled. `k` = 0 is the main diagonal, while `k` < 0 is below it, and `k` > 0 is above. The default is 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "like": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like, optional Reference object to allow the creation of arrays which are not NumPy arrays. If an array-like passed in as ``like`` supports the ``__array_function__`` protocol, the result will be defined by it. In this case, it ensures the creation of an array object compatible with that passed in via this argument.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray of shape (N, M) Array with its lower triangle filled with ones and zero elsewhere; in other words ``T[i,j] == 1`` for ``j <= i + k``, 0 otherwise."
+  },
+  "constraints": []
+}

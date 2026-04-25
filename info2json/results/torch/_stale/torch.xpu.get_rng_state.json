@@ -1,0 +1,24 @@
+{
+  "api_name": "get_rng_state",
+  "module_path": "torch.xpu",
+  "params": {
+    "device": {
+      "type": "int|device",
+      "size": "",
+      "default": "'xpu'`` (i",
+      "flag": "Optional",
+      "description": "The device to return the RNG state of. Default: ``'xpu'`` (i.e., ``torch.device('xpu')``, the current XPU device).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "'xpu' can be replaced by an int representing the index of the XPU device"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Return the random number generator state of the specified GPU as a ByteTensor."
+  },
+  "constraints": []
+}

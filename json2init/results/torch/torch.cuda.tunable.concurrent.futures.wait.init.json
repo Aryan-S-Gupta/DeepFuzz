@@ -1,0 +1,82 @@
+{
+  "api_full_name": "torch.cuda.tunable.concurrent.futures.wait",
+  "api_name": "wait",
+  "module_path": "torch.cuda.tunable.concurrent.futures",
+  "import_path": "torch.cuda.tunable.concurrent.futures.wait",
+  "backend": "torch",
+  "params": {
+    "fs": {
+      "name": "fs",
+      "spec": {
+        "type": "sequence|Future",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The sequence of Futures (possibly created by different Executors) to wait upon.",
+        "constraints": []
+      },
+      "chosen_type": "future",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: future"
+    },
+    "timeout": {
+      "name": "timeout",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The maximum number of seconds to wait. If None, then there is no limit on the wait time.",
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "return_when": {
+      "name": "return_when",
+      "spec": {
+        "type": "callable",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Indicates when this function should return. The options",
+        "constraints": [
+          "return_when must be one of FIRST_COMPLETED, FIRST_EXCEPTION, ALL_COMPLETED"
+        ]
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable"
+    }
+  },
+  "output": {
+    "type": "tuple[set, set]",
+    "numbers": "2",
+    "description": "A named 2-tuple of sets. The first set, named 'done', contains the futures that completed (is finished or cancelled) before the wait completed. The second set, named 'not_done', contains uncompleted futures. Duplicate futures given to *fs* are removed and will be returned only once."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'fs' unresolved: unsupported base seed type: future",
+    "required param 'return_when' unresolved: unsupported base seed type: callable"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/torch/torch.cuda.tunable.concurrent.futures.wait.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

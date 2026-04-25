@@ -1,0 +1,92 @@
+{
+  "api_full_name": "tensorflow.keras.losses.categorical_generalized_cross_entropy",
+  "api_name": "categorical_generalized_cross_entropy",
+  "module_path": "tensorflow.keras.losses",
+  "import_path": "tensorflow.keras.losses.categorical_generalized_cross_entropy",
+  "backend": "tensorflow",
+  "params": {
+    "y_true": {
+      "name": "y_true",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Ground truth labels. Expected to contain *integer class indices* with shape `[batch_size]` or `[batch_size, 1]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_pred": {
+      "name": "y_pred",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The predicted class probabilities, with shape `[batch_size, num_classes]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "the predicted class probabilities",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: the predicted class probabilities"
+    },
+    "q": {
+      "name": "q",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Float in range `(0, 1)`. It is the noise parameter. Controls the behavior of the loss: - As `q` approaches 0: Behaves more like cross entropy - As `q` approaches 1: Behaves more like mean absolute error",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "GCE loss values",
+    "numbers": "[batch_size]",
+    "description": "GCE loss values with shape `[batch_size]`. ```"
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'y_pred' unresolved: unhandled chosen type: the predicted class probabilities"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.losses.categorical_generalized_cross_entropy.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

@@ -1,0 +1,65 @@
+{
+  "api_name": "searchsorted",
+  "module_path": "tensorflow",
+  "params": {
+    "sorted_sequence": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-D `Tensor` containing a sorted sequence.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "values": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-D `Tensor` containing the search values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "side": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "'left' or 'right'; 'left' corresponds to lower_bound and 'right' to upper_bound.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out_type": {
+      "type": "tf.int32",
+      "size": "",
+      "default": "tf",
+      "flag": "Optional",
+      "description": "The output type (`int32` or `int64`). Default is `tf.int32`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An N-D `Tensor` the size of `values` containing the result of applying either lower_bound or upper_bound (depending on side) to each value. The result is not a global index to the entire `Tensor`, but the index in the last dimension."
+  },
+  "constraints": []
+}

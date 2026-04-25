@@ -1,0 +1,51 @@
+{
+  "api_name": "eye",
+  "module_path": "tensorflow.sparse",
+  "params": {
+    "num_rows": {
+      "type": "int|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Non-negative integer or `int32` scalar `tensor` giving the number of rows in the resulting matrix.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "num_rows must be non-negative",
+        "num_rows >= 0"
+      ]
+    },
+    "num_columns": {
+      "type": "int|number|tensor|dtype",
+      "size": "scalar",
+      "default": "num_rows",
+      "flag": "Optional",
+      "description": "Optional non-negative integer or `int32` scalar `tensor` giving the number of columns in the resulting matrix. Defaults to `num_rows`. dtype: The type of element in the resulting `Tensor`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "num_columns must be non-negative"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "\"eye\"",
+      "flag": "Optional",
+      "description": "A name for this `Op`. Defaults to \"eye\".",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "SparseTensor",
+    "numbers": "[num_rows, num_columns]",
+    "description": "A `SparseTensor` of shape [num_rows, num_columns] with ones along the diagonal."
+  },
+  "constraints": []
+}

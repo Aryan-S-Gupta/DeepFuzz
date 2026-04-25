@@ -1,0 +1,72 @@
+{
+  "api_name": "eigh_tridiagonal",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "d": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "real-valued array of shape ``(N,)`` specifying the diagonal elements.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "e": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "real-valued array of shape ``(N - 1,)`` specifying the off-diagonal elements.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "eigvals_only": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If True, return only the eigenvalues (default: False). Computation of eigenvectors is not yet implemented, so ``eigvals_only`` must be set to True.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "select": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "specify which eigenvalues to calculate. Supported values are:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "select_range": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "range of values used when ``select='i'``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "tol": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "absolute tolerance to use when solving for the eigenvalues.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of eigenvalues with shape ``(N,)``."
+  },
+  "constraints": []
+}

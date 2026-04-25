@@ -1,0 +1,47 @@
+{
+  "api_name": "hypot",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies one of the legs of right angle triangle. ``complex`` dtype are not supported.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "complex"
+      ],
+      "constraints": [
+        "x1 dtype must not be complex",
+        "x1 must be one of complex",
+        "x1 and x2 must be provided"
+      ]
+    },
+    "x2": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the other leg of right angle triangle. ``complex`` dtype are not supported. ``x1`` and ``x2`` must either have same shape or be broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "complex"
+      ],
+      "constraints": [
+        "x2 dtype must not be complex",
+        "x1 and x2 must have same shape or be broadcast compatible",
+        "x2 must be one of complex",
+        "x1 and x2 must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array containing the hypotenuse for the given given legs ``x1`` and ``x2`` of a right angle triangle, promoting to inexact dtype."
+  },
+  "constraints": [
+    "x1 and x2 must be provided"
+  ]
+}

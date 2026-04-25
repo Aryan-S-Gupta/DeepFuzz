@@ -1,0 +1,34 @@
+{
+  "api_name": "signbit",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input and out must have same shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1D boolean",
+    "description": "handles signed zeros, so negative zero (-0) returns True."
+  },
+  "constraints": []
+}

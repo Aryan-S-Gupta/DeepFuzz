@@ -1,0 +1,51 @@
+{
+  "api_name": "rfftfreq",
+  "module_path": "torch.functional.F.np.fft",
+  "params": {
+    "n": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int Window length.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Input parameters n, d, and device are mutually exclusive."
+      ]
+    },
+    "d": {
+      "type": "number",
+      "size": "scalar",
+      "default": "1",
+      "flag": "Optional",
+      "description": "scalar, optional Sample spacing (inverse of the sampling rate). Defaults to 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Input parameters n, d, and device are mutually exclusive."
+      ]
+    },
+    "device": {
+      "type": "string|tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional The device on which to place the created array. Default: ``None``. For Array-API interoperability only, so must be ``\"cpu\"`` if passed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be 'cpu' if passed.",
+        "Input parameters n, d, and device are mutually exclusive."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "n//2 + 1",
+    "description": "------- ndarray Array of length ``n//2 + 1`` containing the sample frequencies."
+  },
+  "constraints": [
+    "Input parameters n, d, and device are mutually exclusive."
+  ]
+}

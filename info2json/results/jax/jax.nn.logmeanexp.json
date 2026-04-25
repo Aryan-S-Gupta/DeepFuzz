@@ -1,0 +1,62 @@
+{
+  "api_name": "logmeanexp",
+  "module_path": "jax.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x cannot be None or an empty array"
+      ]
+    },
+    "axis": {
+      "type": "int32 or int64",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "Axis or axes along which to reduce.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "axis must be None or a single integer or a tuple of integers",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    },
+    "where": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Elements to include in the reduction. Optional.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "Preserve the dimensions of the input.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array."
+  },
+  "constraints": []
+}

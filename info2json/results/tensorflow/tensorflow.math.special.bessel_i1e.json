@@ -1,0 +1,44 @@
+{
+  "api_name": "bessel_i1e",
+  "module_path": "tensorflow.math.special",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or `SparseTensor`. Must be one of the following types: `half`, `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [
+        "SparseTensor",
+        "half",
+        "float32",
+        "float64"
+      ],
+      "constraints": [
+        "Must be one of the following types: half, float32, float64",
+        "x must be one of SparseTensor, half, float32, float64",
+        "x and y must have broadcast-compatible shapes"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`. @compatibility(scipy) Equivalent to scipy.special.i1e @end_compatibility If `x` is a `SparseTensor`, returns `SparseTensor(x.indices, tf.math.bessel_i1e(x.values, ...), x.dense_shape)`"
+  },
+  "constraints": []
+}

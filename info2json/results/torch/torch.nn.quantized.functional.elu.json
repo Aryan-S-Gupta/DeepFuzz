@@ -1,0 +1,63 @@
+{
+  "api_name": "elu",
+  "module_path": "torch.nn.quantized.functional",
+  "params": {
+    "input": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "quantized input",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "scale": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "quantization scale of the output tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input, scale, zero_point, and alpha must be provided",
+        "scale and zero_point define the quantization parameters of the output tensor"
+      ]
+    },
+    "zero_point": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "quantization zero point of the output tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input, scale, zero_point, and alpha must be provided",
+        "scale and zero_point define the quantization parameters of the output tensor"
+      ]
+    },
+    "alpha": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the alpha constant",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input, scale, zero_point, and alpha must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "QuantizedTensor",
+    "numbers": "",
+    "description": "unspecified"
+  },
+  "constraints": [
+    "input, scale, zero_point, and alpha must be provided",
+    "scale and zero_point define the quantization parameters of the output tensor"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "api_name": "isclose",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "first input array to compare.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "b": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "second input array to compare.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rtol": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "relative tolerance used for approximate equality. Default = 1e-05.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "atol": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "absolute tolerance used for approximate equality. Default = 1e-08.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "equal_nan": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "Boolean. If ``True``, NaNs in ``a`` will be considered equal to NaNs in ``b``. Default is ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "A new array containing boolean values indicating whether the input arrays are element-wise approximately equal within the specified tolerances."
+  },
+  "constraints": []
+}

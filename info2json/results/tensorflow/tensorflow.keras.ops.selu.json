@@ -1,0 +1,25 @@
+{
+  "api_name": "selu",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float64",
+    "description": "A tensor with the same shape as `x`."
+  },
+  "constraints": [
+    "f(x) = scale * alpha * (exp(x) - 1.) for x < 0, f(x) = scale * x for x >= 0",
+    "scale and alpha are internal constants with values ~1.0507 and ~1.6732"
+  ]
+}

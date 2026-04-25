@@ -1,0 +1,20 @@
+{
+  "api_name": "max_memory_allocated",
+  "module_path": "torch.cuda.memory",
+  "params": {
+    "device": {
+      "type": "torch.device|int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`,",
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "int",
+    "numbers": "",
+    "description": "peak allocated memory since the beginning of statistic for the current device."
+  },
+  "constraints": []
+}

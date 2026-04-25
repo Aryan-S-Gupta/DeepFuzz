@@ -1,0 +1,62 @@
+{
+  "api_name": "insert",
+  "module_path": "jax.numpy",
+  "params": {
+    "arr": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array object into which values will be inserted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "obj": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "slice or array of indices specifying insertion locations.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If unspecified, arr will be flattened."
+      ]
+    },
+    "values": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of values to be inserted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "indices values must be in range [0, params.shape[axis])"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "specify the insertion axis in the case of multi-dimensional arrays. If unspecified, ``arr`` will be flattened.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Defaults to None.",
+        "indices values must be in range [0, params.shape[axis])"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A copy of ``arr`` with values inserted at the specified locations."
+  },
+  "constraints": [
+    "indices dtype must be int32 or int64",
+    "indices values must be in range [0, params.shape[axis])"
+  ]
+}

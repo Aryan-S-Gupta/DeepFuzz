@@ -1,0 +1,67 @@
+{
+  "api_full_name": "tensorflow.keras.ops.numpy.identity",
+  "api_name": "identity",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "import_path": "tensorflow.keras.ops.numpy.identity",
+  "backend": "tensorflow",
+  "params": {
+    "n": {
+      "name": "n",
+      "spec": {
+        "type": "int|number|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Number of rows (and columns) in the `n x n` output tensor. dtype: Data type of the output tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "n > 0"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2D",
+    "description": "The identity tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1,
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.identity.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

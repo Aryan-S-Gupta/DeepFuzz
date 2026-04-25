@@ -1,0 +1,25 @@
+{
+  "api_name": "fft2",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "float|tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tuple of the real and imaginary parts of the input tensor. Both tensors in the tuple should be of floating type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Both real and imaginary parts must be 2-D",
+        "Input x's real and imaginary parts must have the same shape."
+      ]
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple containing two tensors - the real and imaginary parts of the output."
+  },
+  "constraints": []
+}

@@ -1,0 +1,26 @@
+{
+  "api_name": "get_device_capability",
+  "module_path": "torch.accelerator",
+  "params": {
+    "device": {
+      "type": "string|int|device",
+      "size": "",
+      "default": "current_device_index",
+      "flag": "Optional",
+      "description": "The device to query capabilities for :ref:`accelerator<accelerators>` device type. If not given, use :func:`torch.accelerator.current_device_index` by default.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be a valid accelerator device type"
+      ]
+    }
+  },
+  "output": {
+    "type": "string|dict|device|dtype|any",
+    "numbers": "1",
+    "description": "A dictionary containing device capability information. The dictionary includes: - ``supported_dtypes`` (set(torch.dtype)): Set of PyTorch data types supported by the device"
+  },
+  "constraints": [
+    "output keys and values are TBD based on actual usage"
+  ]
+}

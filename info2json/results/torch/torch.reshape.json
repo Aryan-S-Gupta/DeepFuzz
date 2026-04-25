@@ -1,0 +1,35 @@
+{
+  "api_name": "reshape",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor to be reshaped",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shape": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the new shape",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "-1 can appear in exactly one dimension, which is inferred from the remaining dimensions and the number of elements in input",
+        "input and shape cannot be modified in-place"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Returns a tensor with the same data and number of elements as :attr:`input`, but with the specified shape. When possible, the returned tensor will be a view with compatible strides can be reshaped without copying."
+  },
+  "constraints": []
+}

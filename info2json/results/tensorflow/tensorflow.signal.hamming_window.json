@@ -1,0 +1,44 @@
+{
+  "api_name": "hamming_window",
+  "module_path": "tensorflow.signal",
+  "params": {
+    "window_length": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar `Tensor` indicating the window length to generate.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "periodic": {
+      "type": "bool|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A bool `Tensor` indicating whether to generate a periodic or symmetric window. Periodic windows are typically used for spectral analysis while symmetric windows are typically used for digital filter design. dtype: The data type to produce. Must be a floating point type.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A `Tensor` of shape `[window_length]` of type `dtype`."
+  },
+  "constraints": []
+}

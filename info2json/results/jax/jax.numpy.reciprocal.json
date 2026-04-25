@@ -1,0 +1,26 @@
+{
+  "api_name": "reciprocal",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x type must support unary ufunc for reciprocal"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "An array of same shape as ``x`` containing the reciprocal of each element of ``x``."
+  },
+  "constraints": [
+    "for integer inputs, output is rounded integer output"
+  ]
+}

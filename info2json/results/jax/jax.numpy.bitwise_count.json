@@ -1,0 +1,25 @@
+{
+  "api_name": "bitwise_count",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array, only accepts integer subtypes",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be 1D or 2D",
+        "x cannot be negative"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "same shape as x",
+    "description": "An array-like object containing the binary 1 bit counts of the absolute value of each element in ``x``, with the same shape as ``x`` of dtype uint8."
+  },
+  "constraints": []
+}

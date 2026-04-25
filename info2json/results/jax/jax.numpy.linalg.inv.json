@@ -1,0 +1,26 @@
+{
+  "api_name": "inv",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., N, N)`` specifying square array(s) to be inverted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must contain numeric values"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Array of shape ``(..., N, N)`` containing the inverse of the input."
+  },
+  "constraints": [
+    "input and output shapes must match"
+  ]
+}

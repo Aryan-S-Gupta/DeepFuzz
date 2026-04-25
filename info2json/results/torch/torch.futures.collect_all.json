@@ -1,0 +1,26 @@
+{
+  "api_name": "collect_all",
+  "module_path": "torch.futures",
+  "params": {
+    "futures": {
+      "type": "list|future",
+      "size": "",
+      "default": "[]",
+      "flag": "Required",
+      "description": "a list of :class:`~torch.futures.Future` objects.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "elements must be of type :class:`~torch.futures.Future`"
+      ]
+    }
+  },
+  "output": {
+    "type": "list|future",
+    "numbers": "1",
+    "description": "class:`~torch.futures.Future` object to a list of the passed in Futures."
+  },
+  "constraints": [
+    "input Future objects' results must be settable"
+  ]
+}

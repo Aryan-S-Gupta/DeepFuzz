@@ -1,0 +1,131 @@
+{
+  "api_full_name": "torch.functional.F.np.diff",
+  "api_name": "diff",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.diff",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like Input array",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "-rank(a) <= axis < rank(a)"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "n": {
+      "name": "n",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "int, optional The number of times values are differenced. If zero, the input is returned as-is.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "n >= 0"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|number|tensor",
+        "size": "Scalar",
+        "default": "the",
+        "flag": "Optional",
+        "description": "int, optional The axis along which the difference is taken, default is the last axis. Values to prepend or append to `a` along axis prior to performing the difference. Scalar values are expanded to arrays with length 1 in the direction of axis and the shape of the input array in along all other axes. Otherwise the dimension and shape must match `a` except along axis.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "-rank(a) <= axis < rank(a)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|any",
+    "numbers": "1",
+    "description": "------- ndarray The n-th differences. The shape of the output is the same as `a` except along `axis` where the dimension is smaller by `n`. The type of the output is the same as the type of the difference between any two elements of `a`. This is the same as the type of `a` in most cases. A notable exception is `datetime64`, which results in a `timedelta64` output array."
+  },
+  "constraints": [
+    "-rank(a) <= axis < rank(a)"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "size": 0,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.diff.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

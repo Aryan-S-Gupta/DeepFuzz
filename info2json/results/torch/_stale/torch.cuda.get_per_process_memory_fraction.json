@@ -1,0 +1,20 @@
+{
+  "api_name": "get_per_process_memory_fraction",
+  "module_path": "torch.cuda",
+  "params": {
+    "device": {
+      "type": "torch.device|int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. If it is ``None`` the default CUDA device is used.",
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float",
+    "numbers": "1",
+    "description": "memory fraction, in range 0~1. Allowed memory equals total_memory * fraction."
+  },
+  "constraints": []
+}

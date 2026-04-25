@@ -1,0 +1,52 @@
+{
+  "api_name": "cholesky",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array, representing a (batched) positive-definite hermitian matrix. Must have shape ``(..., N, N)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "lower": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "if True, compute the lower Cholesky decomposition `L`. if False (default), compute the upper Cholesky decomposition `U`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "overwrite_a": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "check_finite": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "array of shape ``(..., N, N)`` representing the cholesky decomposition of the input."
+  },
+  "constraints": []
+}

@@ -1,0 +1,52 @@
+{
+  "api_name": "dice",
+  "module_path": "tensorflow.keras.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have the same shape (except for axis)"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have the same shape (except for axis)"
+      ]
+    },
+    "axis": {
+      "type": "tuple",
+      "size": "",
+      "default": "()",
+      "flag": "Optional",
+      "description": "tuple for which dimensions the loss is calculated",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be valid axis indices",
+        "y_true and y_pred must have the same shape (except for axis)",
+        "axis values must be in range [0, rank(input))"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Dice loss value."
+  },
+  "constraints": [
+    "y_true and y_pred must have the same shape (except for axis)"
+  ]
+}

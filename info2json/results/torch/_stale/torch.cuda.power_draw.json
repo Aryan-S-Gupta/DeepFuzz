@@ -1,0 +1,22 @@
+{
+  "api_name": "power_draw",
+  "module_path": "torch.cuda",
+  "params": {
+    "MilliWatts": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "",
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "number",
+    "numbers": "mW (MilliWatts)",
+    "description": "average power draw of the GPU sensor"
+  },
+  "constraints": [
+    "device parameter is optional with no default action described in documentation"
+  ]
+}

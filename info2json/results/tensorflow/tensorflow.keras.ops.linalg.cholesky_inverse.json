@@ -1,0 +1,34 @@
+{
+  "api_name": "cholesky_inverse",
+  "module_path": "tensorflow.keras.ops.linalg",
+  "params": {
+    "upper": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "Determines whether to use the upper- or lower-triangular factor for the internal computation. Defaults to False.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor of shape `(..., M, M)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(..., M, M)",
+    "description": "A tensor of shape `(..., M, M)` representing the inverse of `x`."
+  },
+  "constraints": []
+}

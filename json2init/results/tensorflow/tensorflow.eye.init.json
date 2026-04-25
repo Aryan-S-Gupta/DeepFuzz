@@ -1,0 +1,154 @@
+{
+  "api_full_name": "tensorflow.eye",
+  "api_name": "eye",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.eye",
+  "backend": "tensorflow",
+  "params": {
+    "num_rows": {
+      "name": "num_rows",
+      "spec": {
+        "type": "number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Non-negative `int32` scalar `Tensor` giving the number of rows in each batch matrix.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "num_rows must be non-negative",
+          "num_rows >= 0"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "num_columns": {
+      "name": "num_columns",
+      "spec": {
+        "type": "number|tensor",
+        "size": "scalar",
+        "default": "num_rows",
+        "flag": "Optional",
+        "description": "Optional non-negative `int32` scalar `Tensor` giving the number of columns in each batch matrix. Defaults to `num_rows`.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "num_columns must be non-negative",
+          "num_columns >= 0"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "batch_shape": {
+      "name": "batch_shape",
+      "spec": {
+        "type": "tuple|list|tensor|dtype",
+        "size": "1-D",
+        "default": "",
+        "flag": "Optional",
+        "description": "A list or tuple of Python integers or a 1-D `int32` `Tensor`. If provided, the returned `Tensor` will have leading batch dimensions of this shape. dtype: The type of an element in the resulting `Tensor`",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "batch_shape must be 1-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "\"eye\"",
+        "flag": "Optional",
+        "description": "A name for this `Op`. Defaults to \"eye\".",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for this `op`. defaults to \"eye\".",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: a name for this `op`. defaults to \"eye\"."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "batch_shape + [num_rows, num_columns]",
+    "description": "A `Tensor` of shape `batch_shape + [num_rows, num_columns]`"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Arguments `num_rows` and `num_columns` must be positive integer values. Received: num_rows=0.0, num_columns=0.0"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Arguments `num_rows` and `num_columns` must be positive integer values. Received: num_rows=0.0, num_columns=0.0",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/linalg_ops_impl.py\", line 53, in eye\n    raise TypeError(\n        'Arguments `num_rows` and `num_columns` must be positive integer '\n        f'values. Received: num_rows={num_rows}, num_columns={num_columns}')\nTypeError: Arguments `num_rows` and `num_columns` must be positive integer values. Received: num_rows=0.0, num_columns=0.0\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.eye.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

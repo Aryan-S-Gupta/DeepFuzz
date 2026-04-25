@@ -1,0 +1,74 @@
+{
+  "api_name": "quantized_concat",
+  "module_path": "tensorflow.quantization",
+  "params": {
+    "concat_dim": {
+      "type": "tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `int32`. 0-D. The dimension along which to concatenate. Must be in the range [0, rank(values)).",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "concat_dim must be one of int32"
+      ]
+    },
+    "values": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of at least 2 `Tensor` objects with the same type. The `N` Tensors to concatenate. Their ranks and types must match, and their sizes must match in all dimensions except `concat_dim`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "input_mins": {
+      "type": "float|list|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A list with the same length as `values` of `Tensor` objects with type `float32`. The minimum scalar values for each of the input tensors.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "input_mins must be one of float32"
+      ]
+    },
+    "input_maxes": {
+      "type": "float|list|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A list with the same length as `values` of `Tensor` objects with type `float32`. The maximum scalar values for each of the input tensors.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "input_maxes must be one of float32"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (output, output_min, output_max). A `Tensor`. Has the same type as `values`. output_min: A `Tensor` of type `float32`. output_max: A `Tensor` of type `float32`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,127 @@
+{
+  "api_full_name": "tensorflow.io.encode_png",
+  "api_name": "encode_png",
+  "module_path": "tensorflow.io",
+  "import_path": "tensorflow.io.encode_png",
+  "backend": "tensorflow",
+  "params": {
+    "image": {
+      "name": "image",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `uint8`, `uint16`. Rank N >= 3 with shape `batch_dims + [height, width, channels]`.",
+        "dtype_candidates": [
+          "uint8",
+          "uint16"
+        ],
+        "enum_values": [
+          "uint8",
+          "uint16"
+        ],
+        "constraints": [
+          "image must be one of uint8, uint16"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "uint8",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "compression": {
+      "name": "compression",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `-1`. Compression level.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__EncodePng_device_/job:localhost/replica:0/task:0/device:CPU:0}} images must be at least rank 3[1] [Op:EncodePng] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__EncodePng_device_/job:localhost/replica:0/task:0/device:CPU:0}} images must be at least rank 3[1] [Op:EncodePng] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__EncodePng_device_/job:localhost/replica:0/task:0/device:CPU:0}} images must be at least rank 3[1] [Op:EncodePng] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.encode_png.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

@@ -1,0 +1,101 @@
+{
+  "api_full_name": "torch.functional.F.np.ma.expand_dims",
+  "api_name": "expand_dims",
+  "module_path": "torch.functional.F.np.ma",
+  "import_path": "torch.functional.F.np.ma.expand_dims",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like Input array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "`axis` may also be a tuple."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|tuple",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int or tuple of ints Position in the expanded axes where the new axis (or axes) is placed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "--> deprecated: Passing an axis where `axis > a.ndim` will be treated as `axis == a.ndim`, and passing `axis < -a.ndim - 1` will be treated as `axis == 0`.",
+          "`axis` may also be a tuple.",
+          "Example: y = np.expand_dims(x, axis=(0, 1))"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "------- ndarray View of `a` with the number of dimensions increased."
+  },
+  "constraints": [
+    "`axis` may also be a tuple."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: expand_dims() missing 1 required positional argument: 'axis'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "expand_dims() missing 1 required positional argument: 'axis'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: expand_dims() missing 1 required positional argument: 'axis'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.ma.expand_dims.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

@@ -1,0 +1,26 @@
+{
+  "api_name": "hstack",
+  "module_path": "jax.numpy",
+  "params": {
+    "tup": {
+      "type": "sequence|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "a sequence of arrays to stack; each must have the same shape along all but the second axis. Input arrays will be promoted to at least rank 1. If a single array is given it will be treated equivalently to `tup = unstack(tup)`, but the implementation will avoid explicit unstacking. dtype: optional dtype of the resulting array. If not specified, the dtype will be determined via type promotion rules described in :ref:`type-promotion`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Input arrays in tup must have the same shape along all but the second axis.",
+        "The resulting array's shape is determined by concatenating tup elements along the second axis.",
+        "If only one array is given for tup, it will be treated as if unstacked into a sequence of arrays."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "the stacked result."
+  },
+  "constraints": []
+}

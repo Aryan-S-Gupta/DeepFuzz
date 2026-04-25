@@ -1,0 +1,52 @@
+{
+  "api_name": "accumulate_n",
+  "module_path": "tensorflow.math",
+  "params": {
+    "inputs": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `Tensor` objects, each with same shape and type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shape": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Expected shape of elements of `inputs` (optional). Also controls the output shape of this op, which may affect type inference in other ops. A value of `None` means \"infer the input shape from the shapes in `inputs`\".",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "tensor_dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Expected data type of `inputs` (optional). A value of `None` means \"infer the input dtype from `inputs[0]`\".",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of same shape and type as the elements of `inputs`."
+  },
+  "constraints": []
+}

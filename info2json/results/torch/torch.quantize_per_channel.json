@@ -1,0 +1,61 @@
+{
+  "api_name": "quantize_per_channel",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "float tensor to quantize",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "scales": {
+      "type": "float|tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "float 1D tensor of scales to use, size should match ``input.size(axis)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "scales must be 1-D"
+      ]
+    },
+    "zero_points": {
+      "type": "int|tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "integer 1D tensor of offset to use, size should match ``input.size(axis)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "zero_points must be 1-D"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dimension on which apply per-channel quantization dtype (:class:`torch.dtype`): the desired data type of returned tensor. Has to be one of the quantized dtypes: ``torch.quint8``, ``torch.qint8``, ``torch.qint32``",
+      "dtype_candidates": [],
+      "enum_values": [
+        "torch.dtype",
+        "torch.quint8",
+        "torch.qint8",
+        "torch.qint32"
+      ],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A newly quantized tensor"
+  },
+  "constraints": []
+}

@@ -1,0 +1,48 @@
+{
+  "api_name": "qr",
+  "module_path": "torch.linalg",
+  "params": {
+    "A": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of shape `(*, m, n)` where `*` is zero or more batch dimensions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mode": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "reduced",
+      "flag": "Optional",
+      "description": "one of `'reduced'`, `'complete'`, `'r'`. Controls the shape of the returned tensors. Default: `'reduced'`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "reduced",
+        "complete",
+        "r"
+      ],
+      "constraints": [
+        "mode must be one of reduced, complete, r"
+      ]
+    },
+    "out": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "output tuple of two tensors. Ignored if `None`. Default: `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A named tuple `(Q, R)`."
+  },
+  "constraints": []
+}

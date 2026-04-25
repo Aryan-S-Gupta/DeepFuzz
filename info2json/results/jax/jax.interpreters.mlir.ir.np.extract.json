@@ -1,0 +1,39 @@
+{
+  "api_name": "extract",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "condition": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like An array whose nonzero or True entries indicate the elements of `arr` to extract.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "condition must be nonzero",
+        "params.condition and params.arr must have the same size"
+      ]
+    },
+    "arr": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array of the same size as `condition`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "params.condition and params.arr must have the same size"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Rank 1 array of values from `arr` where `condition` is True."
+  },
+  "constraints": [
+    "params.condition and params.arr must have the same size"
+  ]
+}

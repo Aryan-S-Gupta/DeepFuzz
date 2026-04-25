@@ -1,0 +1,57 @@
+{
+  "api_name": "can_cast",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "from_": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "dtype, dtype specifier, NumPy scalar, or array Data type, NumPy scalar, or array to cast from.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "from_ and to must be compatible for casting"
+      ]
+    },
+    "to": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or dtype specifier Data type to cast to.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "from_ and to must be compatible for casting"
+      ]
+    },
+    "casting": {
+      "type": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'}",
+      "size": "",
+      "default": "safe",
+      "flag": "Optional",
+      "description": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional Controls what kind of data casting may occur.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "no",
+        "equiv",
+        "safe",
+        "same_kind",
+        "unsafe"
+      ],
+      "constraints": [
+        "must be one of: 'no', 'equiv', 'safe', 'same_kind', 'unsafe'",
+        "from_ and to must be compatible for casting"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool True if cast can occur according to the casting rule."
+  },
+  "constraints": [
+    "from_ and to must be compatible for casting"
+  ]
+}

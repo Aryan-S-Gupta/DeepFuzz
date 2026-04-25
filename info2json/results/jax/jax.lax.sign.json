@@ -1,0 +1,25 @@
+{
+  "api_name": "sign",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must have a defined shape and dtype",
+        "x and output must have the same shape and dtype"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real or complex",
+    "description": "Array of same shape and dtype as ``x``, containing the sign of the value, as defined in Notes below."
+  },
+  "constraints": []
+}

@@ -1,0 +1,25 @@
+{
+  "api_name": "per_image_standardization",
+  "module_path": "tensorflow.image",
+  "params": {
+    "image": {
+      "type": "tensor",
+      "size": "3 dimensions",
+      "default": "",
+      "flag": "Required",
+      "description": "An n-D `Tensor` with at least 3 dimensions, the last 3 of which are the dimensions of each image.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape must have at least 3 dimensions",
+        "ValueError: The shape of `image` has fewer than 3 dimensions."
+      ]
+    }
+  },
+  "output": {
+    "type": "float|tensor|dtype",
+    "numbers": "float32",
+    "description": "A `Tensor` with the same shape as `image` and its dtype is `float32`."
+  },
+  "constraints": []
+}

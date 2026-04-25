@@ -1,0 +1,90 @@
+{
+  "api_full_name": "torch.functional.F.np.rec.fromrecords",
+  "api_name": "fromrecords",
+  "module_path": "torch.functional.F.np.rec",
+  "import_path": "torch.functional.F.np.rec.fromrecords",
+  "backend": "torch",
+  "params": {
+    "recList": {
+      "name": "recList",
+      "spec": {
+        "type": "sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "sequence data in the same field may be heterogeneous - they will be promoted to the highest data type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "int|tuple|callable|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int or tuple of ints, optional shape of each array. If `dtype` is ``None``, these arguments are passed to `numpy.format_parser` to construct a dtype. See that function for detailed documentation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Required if recList is not a list of records with explicit shapes."
+        ]
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- np.recarray record array consisting of given recList rows."
+  },
+  "constraints": [
+    "formats, names, titles, aligned, byteorder are not supported due to insufficient information.",
+    "pickle.loads(pickle.dumps(r)) should return the original record array, but this is not included in the constraints as it involves external libraries and functions."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "recarray",
+      "shape": [],
+      "dtype": "(numpy.record, [('f0', '<i8')])",
+      "size": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.rec.fromrecords.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

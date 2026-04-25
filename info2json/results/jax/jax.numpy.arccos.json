@@ -1,0 +1,25 @@
+{
+  "api_name": "arccos",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Real-valued and not in the closed interval [-1, 1] returns nan",
+        "x and output must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real (if input is real) or complex",
+    "description": "An array containing the inverse trigonometric cosine of each element of ``x`` in radians in the range ``[0, pi]``, promoting to inexact dtype."
+  },
+  "constraints": []
+}

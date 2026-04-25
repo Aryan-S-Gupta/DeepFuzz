@@ -1,0 +1,45 @@
+{
+  "api_name": "to_hash_bucket_fast",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "input": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. The strings to assign a hash bucket.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_buckets": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int` that is `>= 1`. The number of buckets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "[=, >= 1]",
+        "input and num_buckets are required"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1D",
+    "description": "A `Tensor` of type `int64`."
+  },
+  "constraints": []
+}

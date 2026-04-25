@@ -1,0 +1,26 @@
+{
+  "api_name": "isreal",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Can be string or object arrays, but behavior may be unexpected"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "bool",
+    "description": "------- ndarray, bool Boolean array of same shape as `x`."
+  },
+  "constraints": [
+    "Input array's elements should be numbers for predictable results"
+  ]
+}

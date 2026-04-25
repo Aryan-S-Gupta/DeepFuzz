@@ -1,0 +1,44 @@
+{
+  "api_name": "encode_base64",
+  "module_path": "tensorflow.io",
+  "params": {
+    "input": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. Strings to be encoded.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "pad": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`. Bool whether padding is applied at the ends.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": []
+}

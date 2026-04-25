@@ -1,0 +1,25 @@
+{
+  "api_name": "iscomplex",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x can contain complex numbers",
+        "jax.interpreters.mlir.ir.np.iscomplex(x) returns True for complex input elements in x and False otherwise"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating point",
+    "description": "------- ndarray of bools Output array."
+  },
+  "constraints": []
+}

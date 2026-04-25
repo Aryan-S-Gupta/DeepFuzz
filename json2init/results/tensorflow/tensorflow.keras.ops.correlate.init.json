@@ -1,0 +1,134 @@
+{
+  "api_full_name": "tensorflow.keras.ops.correlate",
+  "api_name": "correlate",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.correlate",
+  "backend": "tensorflow",
+  "params": {
+    "x1": {
+      "name": "x1",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "First 1-dimensional input tensor of length M.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "x2": {
+      "name": "x2",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Second 1-dimensional input tensor of length N.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "mode": {
+      "name": "mode",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Either `valid`, `same` or `full`. By default the mode is set to `valid`, which returns an output of length max(M, N) - min(M, N) + 1. `same` returns an output of length max(M, N). `full` mode returns the convolution at each point of overlap, with an output length of N+M-1",
+        "dtype_candidates": [],
+        "enum_values": [
+          "valid",
+          "same",
+          "full"
+        ],
+        "constraints": [
+          "mode must be one of valid, same, full"
+        ]
+      },
+      "chosen_type": "either `valid`",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: either `valid`"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Output tensor, cross-correlation of `x1` and `x2`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.correlate.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

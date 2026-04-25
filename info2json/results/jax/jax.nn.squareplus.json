@@ -1,0 +1,34 @@
+{
+  "api_name": "squareplus",
+  "module_path": "jax.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x, b and output array types must match"
+      ]
+    },
+    "b": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "smoothness parameter",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "x + sqrt(x^2 + b) / 2"
+  },
+  "constraints": []
+}

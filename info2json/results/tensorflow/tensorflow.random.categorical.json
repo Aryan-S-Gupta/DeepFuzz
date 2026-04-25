@@ -1,0 +1,59 @@
+{
+  "api_name": "categorical",
+  "module_path": "tensorflow.random",
+  "params": {
+    "logits": {
+      "type": "tensor",
+      "size": "2-D",
+      "default": "",
+      "flag": "Required",
+      "description": "2-D Tensor with shape `[batch_size, num_classes]`. Each slice `[i, :]` represents the unnormalized log-probabilities for all classes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape: [batch_size, num_classes]",
+        "logits must be 2-D",
+        "logits tensor must be 2-D"
+      ]
+    },
+    "num_samples": {
+      "type": "int|number|dtype",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "0-D. Number of independent samples to draw for each row slice. dtype: The integer type of the output: `int32` or `int64`. Defaults to `int64`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "seed": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A Python integer. Used to create a random seed for the distribution. See `tf.random.set_seed` for behavior.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32 or int64",
+    "description": "The drawn samples of shape `[batch_size, num_samples]`."
+  },
+  "constraints": []
+}

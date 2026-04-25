@@ -1,0 +1,59 @@
+{
+  "api_name": "vander",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have ``x.ndim == 1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x.ndim == 1",
+        "if increasing, N <= len(x)"
+      ]
+    },
+    "N": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int, optional, default=None. Specifies the number of the columns the output matrix. If not specified, ``N = len(x)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "increasing": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional, default=False. Specifies the order of the powers of the columns. If ``True``, the powers increase from left to right, :math:`[x^0, x^1, ..., x^{(N-1)}]`. By default, the powers decrease from left to",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "right": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "math:`[x^{(N-1)}, ..., x^1, x^0]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating point or integer",
+    "description": "An array of shape ``[len(x), N]`` containing the generated Vandermonde matrix."
+  },
+  "constraints": [
+    "N >= 1"
+  ]
+}

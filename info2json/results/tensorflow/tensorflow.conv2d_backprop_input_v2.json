@@ -1,0 +1,132 @@
+{
+  "api_name": "conv2d_backprop_input_v2",
+  "module_path": "tensorflow",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`, `int32`. 4-D with shape `[batch, in_height, in_width, in_channels]`. Only shape of tensor is used.",
+      "dtype_candidates": [
+        "int32",
+        "float32",
+        "float64",
+        "bfloat16"
+      ],
+      "enum_values": [
+        "half",
+        "bfloat16",
+        "float32",
+        "float64",
+        "int32"
+      ],
+      "constraints": []
+    },
+    "filter": {
+      "type": "tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `input`. 4-D with shape `[filter_height, filter_width, in_channels, out_channels]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "filter must be 4-D"
+      ]
+    },
+    "out_backprop": {
+      "type": "tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `input`. 4-D with shape `[batch, out_height, out_width, out_channels]`. Gradients w.r.t. the output of the convolution.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out_backprop must be 4-D"
+      ]
+    },
+    "strides": {
+      "type": "list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `ints`. The stride of the sliding window for each dimension of the input of the convolution. Must be in the same order as the dimension specified with format.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `string` from: `\"SAME\", \"VALID\", \"EXPLICIT\"`. The type of padding algorithm to use.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "use_cudnn_on_gpu": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `True`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "explicit_paddings": {
+      "type": "list",
+      "size": "",
+      "default": "[]",
+      "flag": "Optional",
+      "description": "An optional list of `ints`. Defaults to `[]`. If `padding` is `\"EXPLICIT\"`, the list of explicit padding amounts. For the ith dimension, the amount of padding inserted before and after the dimension is `explicit_paddings[2 * i]` and `explicit_paddings[2 * i + 1]`, respectively. If `padding` is not `\"EXPLICIT\"`, `explicit_paddings` must be empty.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "data_format": {
+      "type": "string",
+      "size": "",
+      "default": "\"NHWC\"",
+      "flag": "Optional",
+      "description": "An optional `string` from: `\"NHWC\", \"NCHW\"`. Defaults to `\"NHWC\"`. Specify the data format of the input and output data. With the default format \"NHWC\", the data is stored in the order of: [batch, in_height, in_width, in_channels]. Alternatively, the format could be \"NCHW\", the data storage order of: [batch, in_channels, in_height, in_width].",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dilations": {
+      "type": "list|tensor",
+      "size": "1-D",
+      "default": "[1, 1, 1, 1]",
+      "flag": "Optional",
+      "description": "An optional list of `ints`. Defaults to `[1, 1, 1, 1]`. 1-D tensor of length 4. The dilation factor for each dimension of `input`. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. The dimension order is determined by the value of `data_format`, see above for details. Dilations in the batch and depth dimensions must be 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "dilations must be 1-D",
+        "dilations must be one of ints"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": []
+}

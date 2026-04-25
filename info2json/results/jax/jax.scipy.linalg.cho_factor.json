@@ -1,0 +1,52 @@
+{
+  "api_name": "cho_factor",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array, representing a (batched) positive-definite hermitian matrix. Must have shape ``(..., N, N)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "lower": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "if True, compute the lower triangular Cholesky decomposition (default: False).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "overwrite_a": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "check_finite": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "``(c, lower)``: ``c`` is an array of shape ``(..., N, N)`` representing the lower or upper cholesky decomposition of the input; ``lower`` is a boolean specifying whether this is the lower or upper decomposition."
+  },
+  "constraints": []
+}

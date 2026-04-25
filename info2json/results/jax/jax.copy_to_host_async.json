@@ -1,0 +1,24 @@
+{
+  "api_name": "copy_to_host_async",
+  "module_path": "jax",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a pytree, usually with at least some JAX array instances at its leaves.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x's leaves must be JAX arrays"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A pytree with the same structure and values of the input, where the host copy of the values of all JAX array leaves are started."
+  },
+  "constraints": []
+}

@@ -1,0 +1,38 @@
+{
+  "api_name": "polar",
+  "module_path": "tensorflow.keras.ops.nn",
+  "params": {
+    "abs_": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The magnitude (absolute value) of the complex number.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "params.abs_.shape == params.angle.shape"
+      ]
+    },
+    "angle": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The angle (in radians) of the complex number.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "params.abs_.shape == params.angle.shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "2",
+    "description": "A complex number (or array of complex numbers) with the same shape as `abs_` and `angle`."
+  },
+  "constraints": [
+    "params.abs_.shape == params.angle.shape"
+  ]
+}

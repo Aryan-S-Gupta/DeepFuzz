@@ -1,0 +1,74 @@
+{
+  "api_name": "encode_proto",
+  "module_path": "tensorflow.io",
+  "params": {
+    "sizes": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `int32`. Tensor of int32 with shape `[batch_shape, len(field_names)]`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "values": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `Tensor` objects. List of tensors containing values for the corresponding field.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "field_names": {
+      "type": "list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `strings`. List of strings containing proto field names.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "message_type": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `string`. Name of the proto message type to decode.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "descriptor_source": {
+      "type": "string",
+      "size": "",
+      "default": "\"local://\"",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"local://\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": []
+}

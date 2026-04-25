@@ -38,6 +38,41 @@ Args:
 
 Returns:
   A `Tensor`. Has the same type as `x`."
+tensorflow.add_n,"Returns the element-wise sum of a list of tensors.
+
+All inputs in the list must have the same shape. This op does not
+[broadcast](https://docs.scipy.org/doc/numpy-1.13.0/user/basics.broadcasting.html)
+its inputs. If you need broadcasting, use `tf.math.add` (or the `+` operator)
+instead.
+
+For example:
+
+>>> a = tf.constant([[3, 5], [4, 8]])
+>>> b = tf.constant([[1, 6], [2, 9]])
+>>> tf.math.add_n([a, b, a]).numpy()
+array([[ 7, 16],
+       [10, 25]], dtype=int32)
+
+See Also:
+
+* `tf.reduce_sum(inputs, axis=0)` - This performs the same mathematical
+  operation, but `tf.add_n` may be more efficient because it sums the
+  tensors directly. `reduce_sum` on the other hand calls
+  `tf.convert_to_tensor` on the list of tensors, unnecessarily stacking them
+  into a single tensor before summing.
+
+Args:
+  inputs: A list of `tf.Tensor` or `tf.IndexedSlices` objects, each with the
+    same shape and type. `tf.IndexedSlices` objects will be converted into
+    dense tensors prior to adding.
+  name: A name for the operation (optional).
+
+Returns:
+  A `tf.Tensor` of the same shape and type as the elements of `inputs`.
+
+Raises:
+  ValueError: If `inputs` don't all have same shape and dtype or the shape
+  cannot be inferred."
 tensorflow.argmax,"Returns the index with the largest value across axes of a tensor.
 
 In case of identity returns the smallest index.
@@ -2504,6 +2539,22 @@ Args:
 
 Returns:
   A `Tensor` of type `bool`."
+tensorflow.guarantee_const,"Promise to the TF runtime that the input tensor is a constant. (deprecated)
+
+Deprecated: THIS FUNCTION IS DEPRECATED. It will be removed in a future version.
+Instructions for updating:
+Not for public use.
+
+The runtime is then free to make optimizations based on this.
+
+Returns the input tensor without modification.
+
+Args:
+  input: A `Tensor`.
+  name: A name for this operation.
+
+Returns:
+  A `Tensor`. Has the same dtype as `input`."
 tensorflow.hessians,"Constructs the Hessian of sum of `ys` with respect to `x` in `xs`.
 
 `hessians()` adds ops to the graph to output the Hessian matrix of `ys`
@@ -2595,6 +2646,30 @@ Examples:
 >>> indices = tf.histogram_fixed_width_bins(new_values, value_range, nbins=5)
 >>> indices.numpy()
 array([0, 0, 1, 2, 4, 4], dtype=int32)"
+tensorflow.identity_n,"Returns a list of tensors with the same shapes and contents as the input
+
+tensors.
+
+This op can be used to override the gradient for complicated functions. For
+example, suppose y = f(x) and we wish to apply a custom function g for backprop
+such that dx = g(dy). In Python,
+
+```python
+with tf.get_default_graph().gradient_override_map(
+    {'IdentityN': 'OverrideGradientWithG'}):
+  y, _ = identity_n([f(x), x])
+
+@tf.RegisterGradient('OverrideGradientWithG')
+def ApplyG(op, dy, _):
+  return [None, g(dy)]  # Do not backprop to f(x).
+```
+
+Args:
+  input: A list of `Tensor` objects.
+  name: A name for the operation (optional).
+
+Returns:
+  A list of `Tensor` objects. Has the same type as `input`."
 tensorflow.ifftnd,"ND inverse fast Fourier transform.
 
 Computes the n-dimensional inverse discrete Fourier transform over designated
@@ -3923,6 +3998,18 @@ Args:
 
 Returns:
   A `Tensor` of type `uint8`."
+tensorflow.io.decode_base64,"Decode web-safe base64-encoded strings.
+
+Input may or may not have padding at the end. See
+[EncodeBase64](https://www.tensorflow.org/api_docs/python/tf/io/encode_base64)
+for padding. Web-safe means that input must use - and _ instead of + and /.
+
+Args:
+  input: A `Tensor` of type `string`. Base64 strings to decode.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `string`."
 tensorflow.io.decode_bmp,"Decode the first frame of a BMP-encoded image to a uint8 tensor.
 
 The attr `channels` indicates the desired number of color channels for the
@@ -12996,6 +13083,19 @@ Args:
 
 Returns:
   A `Tensor`. Has the same type as `a`."
+tensorflow.linalg.det,"Computes the determinant of one or more square matrices.
+
+The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
+form square matrices. The output is a tensor containing the determinants
+for all input submatrices `[..., :, :]`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `half`, `float32`, `float64`, `complex64`, `complex128`.
+    Shape is `[..., M, M]`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
 tensorflow.linalg.diag,"Returns a batched diagonal tensor with given batched diagonal values.
 
 Returns a tensor with the contents in `diagonal` as `k[0]`-th to `k[1]`-th
@@ -13441,6 +13541,31 @@ Args:
 
 Returns:
   A `Tensor` with the same shape as `x`."
+tensorflow.linalg.logm,"Computes the matrix logarithm of one or more square matrices:
+
+
+\\(log(exp(A)) = A\\)
+
+This op is only defined for complex matrices. If A is positive-definite and
+real, then casting to a complex matrix, taking the logarithm and casting back
+to a real matrix will give the correct result.
+
+This function computes the matrix logarithm using the Schur-Parlett algorithm.
+Details of the algorithm can be found in Section 11.6.2 of:
+Nicholas J. Higham, Functions of Matrices: Theory and Computation, SIAM 2008.
+ISBN 978-0-898716-46-7.
+
+The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
+form square matrices. The output is a tensor of the same shape as the input
+containing the exponential for all input submatrices `[..., :, :]`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
+    Shape is `[..., M, M]`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
 tensorflow.linalg.lstsq,"Solves one or more linear least-squares problems.
 
 `matrix` is a tensor of shape `[..., M, N]` whose inner-most 2 dimensions
@@ -13732,6 +13857,28 @@ Returns:
 
   q: A `Tensor`. Has the same type as `input`.
   r: A `Tensor`. Has the same type as `input`."
+tensorflow.linalg.slogdet,"Computes the sign and the log of the absolute value of the determinant of
+
+one or more square matrices.
+
+The input is a tensor of shape `[N, M, M]` whose inner-most 2 dimensions
+form square matrices. The outputs are two tensors containing the signs and
+absolute values of the log determinants for all N input submatrices
+`[..., :, :]` such that `determinant = sign*exp(log_abs_determinant)`.
+The `log_abs_determinant` is computed as `det(P)*sum(log(diag(LU)))` where `LU`
+is the `LU` decomposition of the input and `P` is the corresponding
+permutation matrix.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `half`, `float32`, `float64`, `complex64`, `complex128`.
+    Shape is `[N, M, M]`.
+  name: A name for the operation (optional).
+
+Returns:
+  A tuple of `Tensor` objects (sign, log_abs_determinant).
+
+  sign: A `Tensor`. Has the same type as `input`.
+  log_abs_determinant: A `Tensor`. Has the same type as `input`."
 tensorflow.linalg.solve,"Solves systems of linear equations.
 
 `Matrix` is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
@@ -13753,6 +13900,31 @@ Args:
 
 Returns:
   A `Tensor`. Has the same type as `matrix`."
+tensorflow.linalg.sqrtm,"Computes the matrix square root of one or more square matrices:
+
+matmul(sqrtm(A), sqrtm(A)) = A
+
+The input matrix should be invertible. If the input matrix is real, it should
+have no eigenvalues which are real and negative (pairs of complex conjugate
+eigenvalues are allowed).
+
+The matrix square root is computed by first reducing the matrix to
+quasi-triangular form with the real Schur decomposition. The square root
+of the quasi-triangular matrix is then computed directly. Details of
+the algorithm can be found in: Nicholas J. Higham, ""Computing real
+square roots of a real matrix"", Linear Algebra Appl., 1987.
+
+The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
+form square matrices. The output is a tensor of the same shape as the input
+containing the matrix square root for all input submatrices `[..., :, :]`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `float64`, `float32`, `half`, `complex64`, `complex128`.
+    Shape is `[..., M, M]`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
 tensorflow.linalg.tensor_diag,"Returns a diagonal tensor with a given diagonal values.
 
 Given a `diagonal`, this operation returns a tensor with the `diagonal` and
@@ -13780,6 +13952,40 @@ Args:
 
 Returns:
   A `Tensor`. Has the same type as `diagonal`."
+tensorflow.linalg.tensor_diag_part,"Returns the diagonal part of the tensor.
+
+This operation returns a tensor with the `diagonal` part
+of the `input`. The `diagonal` part is computed as follows:
+
+Assume `input` has dimensions `[D1,..., Dk, D1,..., Dk]`, then the output is a
+tensor of rank `k` with dimensions `[D1,..., Dk]` where:
+
+`diagonal[i1,..., ik] = input[i1, ..., ik, i1,..., ik]`.
+
+For a rank 2 tensor, `linalg.diag_part` and `linalg.tensor_diag_part`
+produce the same result. For rank 3 and higher, linalg.diag_part extracts
+the diagonal of each inner-most matrix in the tensor. An example where
+they differ is given below.
+
+>>> x = [[[[1111,1112],[1121,1122]],
+...       [[1211,1212],[1221,1222]]],
+...      [[[2111, 2112], [2121, 2122]],
+...       [[2211, 2212], [2221, 2222]]]
+...      ]
+>>> tf.linalg.tensor_diag_part(x)
+<tf.Tensor: shape=(2, 2), dtype=int32, numpy=
+array([[1111, 1212],
+       [2121, 2222]], dtype=int32)>
+>>> tf.linalg.diag_part(x).shape
+TensorShape([2, 2, 2])
+
+Args:
+  input: A `Tensor` with rank `2k`.
+  name: A name for the operation (optional).
+
+Returns:
+  A Tensor containing diagonals of `input`. Has the same type as `input`, and
+  rank `k`."
 tensorflow.linalg.tensordot,"Tensor contraction of a and b along specified axes and outer product.
 
 Tensordot (also known as tensor contraction) sums the product of elements
@@ -14884,6 +15090,68 @@ Args:
 
 Returns:
   A `Tensor`. Has the same type as `x`."
+tensorflow.math.add_n,"Returns the element-wise sum of a list of tensors.
+
+All inputs in the list must have the same shape. This op does not
+[broadcast](https://docs.scipy.org/doc/numpy-1.13.0/user/basics.broadcasting.html)
+its inputs. If you need broadcasting, use `tf.math.add` (or the `+` operator)
+instead.
+
+For example:
+
+>>> a = tf.constant([[3, 5], [4, 8]])
+>>> b = tf.constant([[1, 6], [2, 9]])
+>>> tf.math.add_n([a, b, a]).numpy()
+array([[ 7, 16],
+       [10, 25]], dtype=int32)
+
+See Also:
+
+* `tf.reduce_sum(inputs, axis=0)` - This performs the same mathematical
+  operation, but `tf.add_n` may be more efficient because it sums the
+  tensors directly. `reduce_sum` on the other hand calls
+  `tf.convert_to_tensor` on the list of tensors, unnecessarily stacking them
+  into a single tensor before summing.
+
+Args:
+  inputs: A list of `tf.Tensor` or `tf.IndexedSlices` objects, each with the
+    same shape and type. `tf.IndexedSlices` objects will be converted into
+    dense tensors prior to adding.
+  name: A name for the operation (optional).
+
+Returns:
+  A `tf.Tensor` of the same shape and type as the elements of `inputs`.
+
+Raises:
+  ValueError: If `inputs` don't all have same shape and dtype or the shape
+  cannot be inferred."
+tensorflow.math.angle,"Returns the element-wise argument of a complex (or real) tensor.
+
+Given a tensor `input`, this operation returns a tensor of type `float` that
+is the argument of each element in `input` considered as a complex number.
+
+The elements in `input` are considered to be complex numbers of the form
+\\(a + bj\\), where *a* is the real part and *b* is the imaginary part.
+If `input` is real then *b* is zero by definition.
+
+The argument returned by this function is of the form \\(atan2(b, a)\\).
+If `input` is real, a tensor of all zeros is returned.
+
+For example:
+
+```
+input = tf.constant([-2.25 + 4.75j, 3.25 + 5.75j], dtype=tf.complex64)
+tf.math.angle(input).numpy()
+# ==> array([2.0131705, 1.056345 ], dtype=float32)
+```
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `float`, `double`,
+    `complex64`, `complex128`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `float32` or `float64`."
 tensorflow.math.argmax,"Returns the index with the largest value across axes of a tensor.
 
 In case of identity returns the smallest index.
@@ -15786,6 +16054,26 @@ Args:
 
 Returns:
   A `Tensor`. Has the same type as `a`."
+tensorflow.math.imag,"Returns the imaginary part of a complex (or real) tensor.
+
+Given a tensor `input`, this operation returns a tensor of type `float` that
+is the imaginary part of each element in `input` considered as a complex
+number. If `input` is real, a tensor of all zeros is returned.
+
+For example:
+
+```python
+x = tf.constant([-2.25 + 4.75j, 3.25 + 5.75j])
+tf.math.imag(x)  # [4.75, 5.75]
+```
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `float`, `double`,
+    `complex64`, `complex128`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `float32` or `float64`."
 tensorflow.math.invert_permutation,"Computes the inverse permutation of a tensor.
 
 This operation computes the inverse of an index permutation. It takes a 1-D
@@ -16501,6 +16789,26 @@ Args:
 
 Returns:
   A `Tensor`."
+tensorflow.math.real,"Returns the real part of a complex (or real) tensor.
+
+Given a tensor `input`, this operation returns a tensor of type `float` that
+is the real part of each element in `input` considered as a complex number.
+
+For example:
+
+```python
+x = tf.constant([-2.25 + 4.75j, 3.25 + 5.75j])
+tf.math.real(x)  # [-2.25, 3.25]
+```
+
+If `input` is already real, it is returned unchanged.
+
+Args:
+  input: A `Tensor`. Must have numeric type.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `float32` or `float64`."
 tensorflow.math.reciprocal,"Computes the reciprocal of x element-wise.
 
 I.e., \\(y = 1 / x\\).
@@ -17679,6 +17987,31 @@ Args:
 
 Returns:
   A `Tensor`. Has the same type as `x`."
+tensorflow.matrix_square_root,"Computes the matrix square root of one or more square matrices:
+
+matmul(sqrtm(A), sqrtm(A)) = A
+
+The input matrix should be invertible. If the input matrix is real, it should
+have no eigenvalues which are real and negative (pairs of complex conjugate
+eigenvalues are allowed).
+
+The matrix square root is computed by first reducing the matrix to
+quasi-triangular form with the real Schur decomposition. The square root
+of the quasi-triangular matrix is then computed directly. Details of
+the algorithm can be found in: Nicholas J. Higham, ""Computing real
+square roots of a real matrix"", Linear Algebra Appl., 1987.
+
+The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
+form square matrices. The output is a tensor of the same shape as the input
+containing the matrix square root for all input submatrices `[..., :, :]`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `float64`, `float32`, `half`, `complex64`, `complex128`.
+    Shape is `[..., M, M]`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
 tensorflow.maximum,"Returns the max of x and y (i.e. x > y ? x : y) element-wise.
 
 Example:
@@ -19336,6 +19669,46 @@ Raises:
 
 References:
   [Gaussian Error Linear Units (GELUs)](https://arxiv.org/abs/1606.08415)."
+tensorflow.nn.isotonic_regression,"Solves isotonic regression problems along the given axis.
+
+For each vector x, the problem solved is
+
+$$\argmin_{y_1 >= y_2 >= ... >= y_n} \sum_i (x_i - y_i)^2.$$
+
+As the solution is component-wise constant, a second tensor is returned that
+encodes the segments. The problems are solved over the given axis.
+
+Consider the following example, where we solve a batch of two problems. The
+first input is [3, 1, 2], while the second [1, 3, 4] (as the axis is 1).
+>>> x = tf.constant([[3, 1, 2], [1, 3, 4]], dtype=tf.float32)
+>>> y, segments = tf.nn.isotonic_regression(x, axis=1)
+>>> y  # The solution.
+<tf.Tensor: shape=(2, 3), dtype=float32, numpy=
+array([[3.       , 1.5      , 1.5      ],
+       [2.6666667, 2.6666667, 2.6666667]], dtype=float32)>
+
+Note that the first solution has two blocks [2] and [1.5, 1.5]. The second
+solution is constant, and thus has a single segment. These segments are
+exactly what the second returned tensor encodes:
+
+>>> segments
+<tf.Tensor: shape=(2, 3), dtype=int32, numpy=
+array([[0, 1, 1],
+       [0, 0, 0]], dtype=int32)>
+
+
+Args:
+  inputs: A tensor holding the inputs.
+  decreasing: If set to False, the inequalities in the optimizing constrained
+    are flipped.
+  axis: The axis along which the problems should be solved.
+
+Returns:
+  output: The solutions, same shape as type as the input.
+  segments: An int32 tensor, same shape as the input indicating the segments
+    that have the same value. Specifically, those positions that have the same
+    value correspond to the same segment. These values start at zero, and are
+    monotonously increasing for each solution."
 tensorflow.nn.l2_loss,"L2 Loss.
 
 Computes half the L2 norm of a tensor without the `sqrt`:
@@ -20907,6 +21280,63 @@ Args:
 
 Returns:
   A `Tensor` of type `float32`."
+tensorflow.quantization.fake_quant_with_min_max_vars,"Fake-quantize the 'inputs' tensor of type float via global float scalars
+
+Fake-quantize the `inputs` tensor of type float via global float scalars
+`min` and `max` to `outputs` tensor of same shape as `inputs`.
+
+Attributes
+
+*   `[min; max]` define the clamping range for the `inputs` data.
+*   `inputs` values are quantized into the quantization range (
+`[0; 2^num_bits - 1]` when `narrow_range` is false and `[1; 2^num_bits - 1]`
+when it is true) and then de-quantized and output as floats in `[min; max]`
+interval.
+*   `num_bits` is the bitwidth of the quantization; between 2 and 16, inclusive.
+
+Before quantization, `min` and `max` values are adjusted with the following
+logic.
+It is suggested to have `min <= 0 <= max`. If `0` is not in the range of values,
+the behavior can be unexpected:
+
+*   If `0 < min < max`: `min_adj = 0` and `max_adj = max - min`.
+*   If `min < max < 0`: `min_adj = min - max` and `max_adj = 0`.
+*   If `min <= 0 <= max`: `scale = (max - min) / (2^num_bits - 1) `,
+`min_adj = scale * round(min / scale)` and `max_adj = max + min_adj - min`.
+
+This operation has a gradient and thus allows for training `min` and `max`
+values.
+
+>>> constant_input = tf.constant([[1.2, -0.3, 0.7], [2.1, 0.5, -1.0]], dtype=tf.float32)
+>>>
+>>> min_val = -0.5
+>>> max_val = 0.8
+>>> num_bits = 8
+>>> narrow_range = False #False:for the quantization range [0; 2^num_bits - 1]
+>>>
+>>> quantized_data = tf.quantization.fake_quant_with_min_max_vars(
+...   inputs=constant_input, min=min_val, max=max_val, num_bits=num_bits, narrow_range=narrow_range
+... )
+>>>
+>>> print(""Input:\n"", constant_input.numpy())
+Input:
+[[ 1.2 -0.3  0.7]
+[ 2.1  0.5 -1. ]]
+>>> print(""Output:\n"", quantized_data.numpy())
+Output:
+[[ 0.8003921 -0.3007843  0.6984313]
+[ 0.8003921  0.4996078 -0.4996078]]
+
+Args:
+  inputs: A `Tensor` of type `float32`.
+  min: A `Tensor` of type `float32`.
+  max: A `Tensor` of type `float32`.
+  num_bits: An optional `int`. Defaults to `8`.
+  narrow_range: An optional `bool`. Defaults to `False`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `float32`."
 tensorflow.quantization.fake_quant_with_min_max_vars_gradient,"Compute gradients for a FakeQuantWithMinMaxVars operation.
 
 Args:
@@ -21709,6 +22139,34 @@ Returns:
 
 @compatibility(numpy)
 Equivalent to np.arange
+@end_compatibility"
+tensorflow.rank,"Returns the rank of a tensor.
+
+See also `tf.shape`.
+
+Returns a 0-D `int32` `Tensor` representing the rank of `input`.
+
+For example:
+
+```python
+# shape of tensor 't' is [2, 2, 3]
+t = tf.constant([[[1, 1, 1], [2, 2, 2]], [[3, 3, 3], [4, 4, 4]]])
+tf.rank(t)  # 3
+```
+
+**Note**: The rank of a tensor is not the same as the rank of a matrix. The
+rank of a tensor is the number of indices required to uniquely select each
+element of the tensor. Rank is also known as ""order"", ""degree"", or ""ndims.""
+
+Args:
+  input: A `Tensor` or `SparseTensor`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `int32`.
+
+@compatibility(numpy)
+Equivalent to np.ndim
 @end_compatibility"
 tensorflow.realdiv,"Returns x / y element-wise for real types.
 
@@ -22640,6 +23098,73 @@ Returns:
   A mask tensor of shape `lengths.shape + (maxlen,)`, cast to specified dtype.
 Raises:
   ValueError: if `maxlen` is not a scalar."
+tensorflow.shape,"Returns a tensor containing the shape of the input tensor.
+
+See also `tf.size`, `tf.rank`.
+
+`tf.shape` returns a 1-D integer tensor representing the shape of `input`.
+For a scalar input, the tensor returned has a shape of (0,) and its value is
+the empty vector (i.e. []).
+
+For example:
+
+>>> tf.shape(1.)
+<tf.Tensor: shape=(0,), dtype=int32, numpy=array([], dtype=int32)>
+
+>>> t = tf.constant([[[1, 1, 1], [2, 2, 2]], [[3, 3, 3], [4, 4, 4]]])
+>>> tf.shape(t)
+<tf.Tensor: shape=(3,), dtype=int32, numpy=array([2, 2, 3], dtype=int32)>
+
+Note: When using symbolic tensors, such as when using the Keras API,
+tf.shape() will return the shape of the symbolic tensor.
+
+>>> a = tf.keras.layers.Input((None, 10))
+>>> tf.shape(a)
+<... shape=(3,) dtype=int32...>
+
+In these cases, using `tf.Tensor.shape` will return more informative results.
+
+>>> a.shape
+TensorShape([None, None, 10])
+
+(The first `None` represents the as yet unknown batch size.)
+
+`tf.shape` and `Tensor.shape` should be identical in eager mode.  Within
+`tf.function` or within a `compat.v1` context, not all dimensions may be
+known until execution time. Hence, when defining custom layers and models
+for graph mode, prefer the dynamic `tf.shape(x)` over the static `x.shape`.
+
+Args:
+  input: A `Tensor` or `SparseTensor`.
+  out_type: (Optional) The specified output type of the operation (`int32` or
+    `int64`). Defaults to `tf.int32`. (Note: there is an experimental
+    flag, `tf_shape_default_int64` that changes the default to `tf.int64`.
+    This is an unsupported, experimental setting that causes known breakages.)
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `out_type`."
+tensorflow.shape_n,"Returns shape of a list of tensors.
+
+Given a list of tensors, `tf.shape_n` is much faster than applying `tf.shape`
+to each tensor individually.
+>>> a = tf.ones([1, 2])
+>>> b = tf.ones([2, 3])
+>>> c = tf.ones([3, 4])
+>>> tf.shape_n([a, b, c])
+[<tf.Tensor: shape=(2,), dtype=int32, numpy=array([1, 2], dtype=int32)>,
+<tf.Tensor: shape=(2,), dtype=int32, numpy=array([2, 3], dtype=int32)>,
+<tf.Tensor: shape=(2,), dtype=int32, numpy=array([3, 4], dtype=int32)>]
+
+Args:
+  input: A list of at least 1 `Tensor` object with the same dtype.
+  out_type: The specified output type of the operation (`int32` or `int64`).
+    Defaults to `tf.int32`(optional).
+  name: A name for the operation (optional).
+
+Returns:
+  A list of `Tensor` specifying the shape of each input tensor with type of
+  `out_type`."
 tensorflow.sigmoid,"Computes sigmoid of `x` element-wise.
 
 Formula for calculating $\mathrm{sigmoid}(x) = y = 1 / (1 + \exp(-x))$.
@@ -22725,6 +23250,42 @@ Raises:
   ValueError: If `type` is `1` and `norm` is `ortho`.
 
 [dct]: https://en.wikipedia.org/wiki/Discrete_cosine_transform"
+tensorflow.signal.fft,"Fast Fourier transform.
+
+Computes the 1-dimensional discrete Fourier transform over the inner-most
+dimension of `input`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
+    A complex tensor.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
+tensorflow.signal.fft2d,"2D fast Fourier transform.
+
+Computes the 2-dimensional discrete Fourier transform over the inner-most
+2 dimensions of `input`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
+    A complex tensor.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
+tensorflow.signal.fft3d,"3D fast Fourier transform.
+
+Computes the 3-dimensional discrete Fourier transform over the inner-most 3
+dimensions of `input`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
+    A complex tensor.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
 tensorflow.signal.fftshift,"Shift the zero-frequency component to the center of the spectrum.
 
 This function swaps half-spaces for all axes listed (defaults to all).
@@ -22787,6 +23348,79 @@ Raises:
   ValueError: If `dtype` is not a floating point type.
 
 [hann]: https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows"
+tensorflow.signal.idct,"Computes the 1D [Inverse Discrete Cosine Transform (DCT)][idct] of `input`.
+
+Currently Types I, II, III, IV are supported. Type III is the inverse of
+Type II, and vice versa.
+
+Note that you must re-normalize by 1/(2n) to obtain an inverse if `norm` is
+not `'ortho'`. That is:
+`signal == idct(dct(signal)) * 0.5 / signal.shape[-1]`.
+When `norm='ortho'`, we have:
+`signal == idct(dct(signal, norm='ortho'), norm='ortho')`.
+
+@compatibility(scipy)
+Equivalent to [scipy.fftpack.idct]
+ (https://docs.scipy.org/doc/scipy-1.4.0/reference/generated/scipy.fftpack.idct.html)
+ for Type-I, Type-II, Type-III and Type-IV DCT.
+@end_compatibility
+
+Args:
+  input: A `[..., samples]` `float32`/`float64` `Tensor` containing the
+    signals to take the DCT of.
+  type: The IDCT type to perform. Must be 1, 2, 3 or 4.
+  n: For future expansion. The length of the transform. Must be `None`.
+  axis: For future expansion. The axis to compute the DCT along. Must be `-1`.
+  norm: The normalization to apply. `None` for no normalization or `'ortho'`
+    for orthonormal normalization.
+  name: An optional name for the operation.
+
+Returns:
+  A `[..., samples]` `float32`/`float64` `Tensor` containing the IDCT of
+  `input`.
+
+Raises:
+  ValueError: If `type` is not `1`, `2` or `3`, `n` is not `None, `axis` is
+    not `-1`, or `norm` is not `None` or `'ortho'`.
+
+[idct]:
+https://en.wikipedia.org/wiki/Discrete_cosine_transform#Inverse_transforms"
+tensorflow.signal.ifft,"Inverse fast Fourier transform.
+
+Computes the inverse 1-dimensional discrete Fourier transform over the
+inner-most dimension of `input`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
+    A complex tensor.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
+tensorflow.signal.ifft2d,"Inverse 2D fast Fourier transform.
+
+Computes the inverse 2-dimensional discrete Fourier transform over the
+inner-most 2 dimensions of `input`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
+    A complex tensor.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
+tensorflow.signal.ifft3d,"Inverse 3D fast Fourier transform.
+
+Computes the inverse 3-dimensional discrete Fourier transform over the
+inner-most 3 dimensions of `input`.
+
+Args:
+  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
+    A complex tensor.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
 tensorflow.signal.ifftshift,"The inverse of fftshift.
 
 Although identical for even-length x,
@@ -23879,6 +24513,72 @@ Returns:
 
 Raises:
   ValueError: If `axis` is out of the range [-(R+1), R+1)."
+tensorflow.stop_gradient,"Stops gradient computation.
+
+When executed in a graph, this op outputs its input tensor as-is.
+
+When building ops to compute gradients, this op prevents the contribution of
+its inputs to be taken into account.  Normally, the gradient generator adds ops
+to a graph to compute the derivatives of a specified 'loss' by recursively
+finding out inputs that contributed to its computation.  If you insert this op
+in the graph it inputs are masked from the gradient generator.  They are not
+taken into account for computing gradients.
+
+This is useful any time you want to compute a value with TensorFlow but need
+to pretend that the value was a constant. For example, the softmax function
+for a vector x can be written as
+
+```python
+
+  def softmax(x):
+    numerator = tf.exp(x)
+    denominator = tf.reduce_sum(numerator)
+    return numerator / denominator
+```
+
+This however is susceptible to overflow if the values in x are large. An
+alternative more stable way is to subtract the maximum of x from each of the
+values.
+
+```python
+
+  def stable_softmax(x):
+    z = x - tf.reduce_max(x)
+    numerator = tf.exp(z)
+    denominator = tf.reduce_sum(numerator)
+    return numerator / denominator
+```
+
+However, when we backprop through the softmax to x, we dont want to backprop
+through the `tf.reduce_max(x)` (if the max values are not unique then the
+gradient could flow to the wrong input) calculation and treat that as a
+constant. Therefore, we should write this out as
+
+```python
+
+  def stable_softmax(x):
+    z = x - tf.stop_gradient(tf.reduce_max(x))
+    numerator = tf.exp(z)
+    denominator = tf.reduce_sum(numerator)
+    return numerator / denominator
+```
+
+Some other examples include:
+
+*  The *EM* algorithm where the *M-step* should not involve backpropagation
+   through the output of the *E-step*.
+*  Contrastive divergence training of Boltzmann machines where, when
+   differentiating the energy function, the training must not backpropagate
+   through the graph that generated the samples from the model.
+*  Adversarial training, where no backprop should happen through the adversarial
+   example generation process.
+
+Args:
+  input: A `Tensor`.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor`. Has the same type as `input`."
 tensorflow.strided_slice,"Extracts a strided slice of a tensor (generalized Python array indexing).
 
 See also `tf.slice`.
@@ -24180,6 +24880,19 @@ Args:
 
 Returns:
   string `Tensor` of the same shape as `input` with specified replacements."
+tensorflow.strings.strip,"Strip leading and trailing whitespaces from the Tensor.
+
+Examples:
+
+>>> tf.strings.strip([""\nTensorFlow"", ""     The python library    ""]).numpy()
+array([b'TensorFlow', b'The python library'], dtype=object)
+
+Args:
+  input: A `Tensor` of type `string`. A string `Tensor` of any shape.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `string`."
 tensorflow.strings.substr,"Return substrings from `Tensor` of strings.
 
 For each string in the input `Tensor`, creates a substring starting at index
@@ -24377,6 +25090,33 @@ Returns:
 >>> print(unicode_encode(input, 'UTF-8'))
 tf.Tensor([b'G\xc3\xb6\xc3\xb6dnight' b'\xf0\x9f\x98\x8a'],
           shape=(2,), dtype=string)"
+tensorflow.strings.unicode_script,"Determine the script codes of a given tensor of Unicode integer code points.
+
+This operation converts Unicode code points to script codes corresponding to
+each code point. Script codes correspond to International Components for
+Unicode (ICU) UScriptCode values.
+
+See
+[ICU project docs](http://icu-project.org/apiref/icu4c/uscript_8h.html)
+for more details on script codes.
+
+For an example, see the unicode strings guide on [unicode scripts]
+(https://www.tensorflow.org/tutorials/load_data/unicode#representing_unicode).
+
+Returns -1 (USCRIPT_INVALID_CODE) for invalid codepoints. Output shape will
+match input shape.
+
+Examples:
+
+>>> tf.strings.unicode_script([1, 31, 38])
+<tf.Tensor: shape=(3,), dtype=int32, numpy=array([0, 0, 0], dtype=int32)>
+
+Args:
+  input: A `Tensor` of type `int32`. A Tensor of int32 Unicode code points.
+  name: A name for the operation (optional).
+
+Returns:
+  A `Tensor` of type `int32`."
 tensorflow.strings.unicode_transcode,"Transcode the input text from a source encoding to a destination encoding.
 
 The input is a string tensor of any shape. The output is a string tensor of

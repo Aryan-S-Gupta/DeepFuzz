@@ -1,0 +1,48 @@
+{
+  "api_name": "ne",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor to compare",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor or value to compare",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input, other, out types must match during execution"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input, other, out types must match during execution"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "attr:`input` is not equal to :attr:`other` and False elsewhere"
+  },
+  "constraints": [
+    "input, other, out types must match during execution"
+  ]
+}

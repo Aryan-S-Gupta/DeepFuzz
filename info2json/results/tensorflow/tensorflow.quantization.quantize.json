@@ -1,0 +1,126 @@
+{
+  "api_name": "quantize",
+  "module_path": "tensorflow.quantization",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32`.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "min_range": {
+      "type": "float|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32`. The minimum value of the quantization range. This value may be adjusted by the op depending on other parameters. The adjusted value is written to `output_min`. If the `axis` attribute is specified, this must be a 1-D tensor whose size matches the `axis` dimension of the input and output tensors.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "min_range must be 1-D",
+        "min_range must be one of float32, output_min"
+      ]
+    },
+    "max_range": {
+      "type": "float|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32`. The maximum value of the quantization range. This value may be adjusted by the op depending on other parameters. The adjusted value is written to `output_max`. If the `axis` attribute is specified, this must be a 1-D tensor whose size matches the `axis` dimension of the input and output tensors.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "max_range must be 1-D",
+        "max_range must be one of float32, output_max"
+      ]
+    },
+    "T": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.DType` from: `tf.qint8, tf.quint8, tf.qint32, tf.qint16, tf.quint16`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mode": {
+      "type": "string",
+      "size": "",
+      "default": "\"MIN_COMBINED\"",
+      "flag": "Optional",
+      "description": "An optional `string` from: `\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"`. Defaults to `\"MIN_COMBINED\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "round_mode": {
+      "type": "string",
+      "size": "",
+      "default": "\"HALF_AWAY_FROM_ZERO\"",
+      "flag": "Optional",
+      "description": "An optional `string` from: `\"HALF_AWAY_FROM_ZERO\", \"HALF_TO_EVEN\"`. Defaults to `\"HALF_AWAY_FROM_ZERO\"`. `round_mode='HALF_TO_EVEN'` only supported for mode 'SCALED'.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "narrow_range": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `-1`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ensure_minimum_range": {
+      "type": "float",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An optional `float`. Defaults to `0.01`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (output, output_min, output_max). A `Tensor` of type `T`. output_min: A `Tensor` of type `float32`. output_max: A `Tensor` of type `float32`."
+  },
+  "constraints": []
+}

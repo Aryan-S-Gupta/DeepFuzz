@@ -1,0 +1,36 @@
+{
+  "api_name": "gammaln",
+  "module_path": "torch.special",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out is None or out.shape == input.shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1D",
+    "description": "natural logarithm of the gamma function of input tensor elements"
+  },
+  "constraints": [
+    "input.dim() >= 1"
+  ]
+}

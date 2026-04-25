@@ -1,0 +1,59 @@
+{
+  "api_full_name": "torch.mtia.memory.memory_allocated",
+  "api_name": "memory_allocated",
+  "module_path": "torch.mtia.memory",
+  "import_path": "torch.mtia.memory.memory_allocated",
+  "backend": "torch",
+  "params": {
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "string|int|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "selected device. Returns statistic for the current device, given by :func:`~torch.mtia.current_device`, if :attr:`device` is ``None`` (default).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|tensor|device",
+    "numbers": "1",
+    "description": "Return the current MTIA memory occupied by tensors in bytes for a given device."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: module 'torch.mtia.memory' has no attribute 'memory_allocated'"
+  ],
+  "smoke_test": {
+    "attempted": false,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "module 'torch.mtia.memory' has no attribute 'memory_allocated'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.mtia.memory.memory_allocated.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

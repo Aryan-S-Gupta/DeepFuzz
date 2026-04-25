@@ -1,0 +1,71 @@
+{
+  "api_name": "pad",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor to pad.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "pad_width": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Number of values padded to the edges of each axis. `((before_1, after_1), ...(before_N, after_N))` unique pad widths for each axis. `((before, after),)` yields same before and after pad for each axis. `(pad,)` or `int` is a shortcut for `before = after = pad` width for all axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "pad_width must be one of int"
+      ]
+    },
+    "mode": {
+      "type": "",
+      "size": "",
+      "default": "\"constant\"",
+      "flag": "Optional",
+      "description": "One of `\"constant\"`, `\"edge\"`, `\"linear_ramp\"`, `\"maximum\"`, `\"mean\"`, `\"median\"`, `\"minimum\"`, `\"reflect\"`, `\"symmetric\"`, `\"wrap\"`, `\"empty\"`, `\"circular\"`. Defaults to `\"constant\"`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "constant",
+        "edge",
+        "linear_ramp",
+        "maximum",
+        "mean",
+        "median",
+        "minimum",
+        "reflect",
+        "symmetric",
+        "wrap",
+        "empty",
+        "circular"
+      ],
+      "constraints": [
+        "mode must be one of constant, edge, linear_ramp, maximum, mean, median, minimum, reflect, symmetric, wrap, empty, circular"
+      ]
+    },
+    "constant_values": {
+      "type": "",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "value to pad with if `mode == \"constant\"`. Defaults to `0`. A `ValueError` is raised if not None and `mode != \"constant\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "constant_values must be one of constant, 0, ValueError"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Padded tensor."
+  },
+  "constraints": []
+}

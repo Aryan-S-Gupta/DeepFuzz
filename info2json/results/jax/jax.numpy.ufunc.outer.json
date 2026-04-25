@@ -1,0 +1,41 @@
+{
+  "api_name": "outer",
+  "module_path": "jax.numpy.ufunc",
+  "params": {
+    "A": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "A.ndim >= 0, B.ndim >= 0",
+        "output.shape == tuple(*A.shape, *B.shape)"
+      ]
+    },
+    "B": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "A.ndim >= 0, B.ndim >= 0",
+        "output.shape == tuple(*A.shape, *B.shape)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "*A.shape, *B.shape",
+    "description": "An array of shape `tuple(*A.shape, *B.shape)`"
+  },
+  "constraints": [
+    "A.ndim >= 0, B.ndim >= 0",
+    "output.shape == tuple(*A.shape, *B.shape)"
+  ]
+}

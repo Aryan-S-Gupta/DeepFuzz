@@ -1,0 +1,24 @@
+{
+  "api_name": "exp2",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real",
+    "description": "An array containing the base-2 exponential of each element in ``x``, promotes to inexact dtype."
+  },
+  "constraints": [
+    "jax.numpy.exp2(x1+x2) == jax.numpy.exp2(x1)*jax.numpy.exp2(x2)"
+  ]
+}

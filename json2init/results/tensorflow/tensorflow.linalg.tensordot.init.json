@@ -1,0 +1,150 @@
+{
+  "api_full_name": "tensorflow.linalg.tensordot",
+  "api_name": "tensordot",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.tensordot",
+  "backend": "tensorflow",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "`Tensor` of type `float32` or `float64`.",
+        "dtype_candidates": [
+          "float32",
+          "float64"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "b": {
+      "name": "b",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "`Tensor` with the same type as `a`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "b must have the same dtype as a"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axes": {
+      "name": "axes",
+      "spec": {
+        "type": "list|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Either a scalar `N`, or a list or an `int32` `Tensor` of shape [2, k]. If axes is a scalar, sum over the last N axes of a and the first N axes of b in order. If axes is a list or `Tensor` the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for `a` and `b`, respectively. The number of axes for `a` and `b` must be equal. If `axes=0`, computes the outer product between `a` and `b`.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [
+          "N",
+          "int32"
+        ],
+        "constraints": [
+          "axes must be one of N, int32"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with the same type as `a`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Cannot convert 1.0 to EagerTensor of dtype int32"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Cannot convert 1.0 to EagerTensor of dtype int32",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/constant_op.py\", line 108, in convert_to_eager_tensor\n    return ops.EagerTensor(value, ctx.device_name, dtype)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: Cannot convert 1.0 to EagerTensor of dtype int32\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.tensordot.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

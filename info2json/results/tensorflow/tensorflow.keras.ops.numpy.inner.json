@@ -1,0 +1,39 @@
+{
+  "api_name": "inner",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input tensor. The last dimension of `x1` and `x2` must match.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "last dimension of x1 and x2 must match",
+        "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Output tensor. The shape of the output is determined by broadcasting the shapes of `x1` and `x2` after removing their last axes."
+  },
+  "constraints": [
+    "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+  ]
+}

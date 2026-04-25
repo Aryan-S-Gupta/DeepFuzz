@@ -1,0 +1,53 @@
+{
+  "api_name": "array_equal",
+  "module_path": "jax.numpy",
+  "params": {
+    "a1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "first input array to compare.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a1 and a2 must have the same shape"
+      ]
+    },
+    "a2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "second input array to compare.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a1 and a2 must have the same shape"
+      ]
+    },
+    "equal_nan": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "Boolean. If ``True``, NaNs in ``a1`` will be considered equal to NaNs in ``a2``. Default is ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "must be a boolean"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|number|tensor",
+    "numbers": "bool",
+    "description": "Boolean scalar array indicating whether the input arrays are element-wise equal."
+  },
+  "constraints": [
+    "a1 and a2 must have the same shape",
+    "output is a boolean scalar with shape ()"
+  ]
+}

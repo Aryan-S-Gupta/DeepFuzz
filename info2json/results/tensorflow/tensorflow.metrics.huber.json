@@ -1,0 +1,50 @@
+{
+  "api_name": "huber",
+  "module_path": "tensorflow.metrics",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Y_true and y_pred must have broadcast-compatible shapes"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Y_true and y_pred must have broadcast-compatible shapes"
+      ]
+    },
+    "delta": {
+      "type": "float|callable",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "A float, the point where the Huber loss function changes from a quadratic to linear. Defaults to `1.0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Delta must be non-negative"
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "one scalar loss entry per sample",
+    "description": "Tensor with one scalar loss entry per sample."
+  },
+  "constraints": [
+    "Y_true and y_pred must have broadcast-compatible shapes"
+  ]
+}

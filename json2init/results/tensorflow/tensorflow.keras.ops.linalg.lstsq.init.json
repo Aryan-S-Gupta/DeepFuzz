@@ -1,0 +1,85 @@
+{
+  "api_full_name": "tensorflow.keras.ops.linalg.lstsq",
+  "api_name": "lstsq",
+  "module_path": "tensorflow.keras.ops.linalg",
+  "import_path": "tensorflow.keras.ops.linalg.lstsq",
+  "backend": "tensorflow",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "\"Coefficient\" matrix of shape `(M, N)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "\"coefficient\" matrix of shape `(m",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: \"coefficient\" matrix of shape `(m"
+    },
+    "b": {
+      "name": "b",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Ordinate or \"dependent variable\" values, of shape `(M,)` or `(M, K)`. If `b` is two-dimensional, the least-squares solution is calculated for each of the K columns of `b`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "ordinate or \"dependent variable\" values",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: ordinate or \"dependent variable\" values"
+    },
+    "rcond": {
+      "name": "rcond",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Cut-off ratio for small singular values of `a`. For the purposes of rank determination, singular values are treated as zero if they are smaller than rcond times the largest singular value of `a`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "cut-off ratio for small singular values of `a`. for the purposes of rank determination",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: cut-off ratio for small singular values of `a`. for the purposes of rank determination"
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "multiple",
+    "description": "Tensor with shape `(N,)` or `(N, K)` containing the least-squares solutions. **NOTE:** The output differs from `numpy.linalg.lstsq`. NumPy returns a tuple with four elements, the first of which being the least-squares solutions and the others being essentially never used. Keras only returns the first value. This is done both to ensure consistency across backends (which cannot be achieved for the other values) and to simplify the API."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'a' unresolved: unhandled chosen type: \"coefficient\" matrix of shape `(m",
+    "required param 'b' unresolved: unhandled chosen type: ordinate or \"dependent variable\" values",
+    "required param 'rcond' unresolved: unhandled chosen type: cut-off ratio for small singular values of `a`. for the purposes of rank determination"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.linalg.lstsq.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

@@ -1,0 +1,23 @@
+{
+  "api_name": "memory_reserved",
+  "module_path": "torch.cuda.memory",
+  "params": {
+    "device": {
+      "type": "torch.device|int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`,",
+      "constraints": [
+        "device can be either a torch.device or an integer representing the device index.",
+        "If not provided, returns the statistic for the current device."
+      ]
+    }
+  },
+  "output": {
+    "type": "int",
+    "numbers": "",
+    "description": "The amount of GPU memory reserved on the selected device."
+  },
+  "constraints": []
+}

@@ -1,0 +1,62 @@
+{
+  "api_name": "normalize_moments",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "counts": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` containing the total count of the data (one value).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mean_ss": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` containing the mean sufficient statistics: the (possibly shifted) sum of the elements to average over.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "variance_ss": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` containing the variance sufficient statistics: the (possibly shifted) squared sum of the data to compute the variance over.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shift": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` containing the value by which the data is shifted for numerical stability, or `None` if no shift was performed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Name used to scope the operations that compute the moments.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Two `Tensor` objects: `mean` and `variance`."
+  },
+  "constraints": []
+}

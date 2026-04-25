@@ -1,0 +1,113 @@
+{
+  "api_full_name": "torch.quantize_per_tensor",
+  "api_name": "quantize_per_tensor",
+  "module_path": "torch",
+  "import_path": "torch.quantize_per_tensor",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "float|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "float tensor or list of tensors to quantize",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "scale": {
+      "name": "scale",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "scale to apply in quantization formula",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "zero_point": {
+      "name": "zero_point",
+      "spec": {
+        "type": "int|float|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "offset in integer value that maps to float zero dtype (:class:`torch.dtype`): the desired data type of returned tensor. Has to be one of the quantized dtypes: ``torch.quint8``, ``torch.qint8``, ``torch.qint32``",
+        "dtype_candidates": [],
+        "enum_values": [
+          "torch.dtype",
+          "torch.quint8",
+          "torch.qint8",
+          "torch.qint32"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "1",
+    "description": "A newly quantized tensor or list of quantized tensors."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: quantize_per_tensor() received an invalid combination of arguments - got (zero_point=int, scale=float, input=float, ), but expected one of:\n * (Tensor input, Tensor scale, Tensor zero_point, torch.dtype dtype)\n * (Tensor input, float scale, int zero_point, torch.dtype dtype)\n * (tuple of Tensors tensors, Tensor scales, Tensor zero_points, torch.dtype dtype)\n"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "quantize_per_tensor() received an invalid combination of arguments - got (zero_point=int, scale=float, input=float, ), but expected one of:\n * (Tensor input, Tensor scale, Tensor zero_point, torch.dtype dtype)\n * (Tensor input, float scale, int zero_point, torch.dtype dtype)\n * (tuple of Tensors tensors, Tensor scales, Tensor zero_points, torch.dtype dtype)\n",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: quantize_per_tensor() received an invalid combination of arguments - got (zero_point=int, scale=float, input=float, ), but expected one of:\n * (Tensor input, Tensor scale, Tensor zero_point, torch.dtype dtype)\n * (Tensor input, float scale, int zero_point, torch.dtype dtype)\n * (tuple of Tensors tensors, Tensor scales, Tensor zero_points, torch.dtype dtype)\n\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.quantize_per_tensor.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

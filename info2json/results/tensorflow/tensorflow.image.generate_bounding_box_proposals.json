@@ -1,0 +1,110 @@
+{
+  "api_name": "generate_bounding_box_proposals",
+  "module_path": "tensorflow.image",
+  "params": {
+    "scores": {
+      "type": "float|tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 4-D float `Tensor` of shape `[num_images, height, width, num_achors]` containing scores of the boxes for given anchors, can be unsorted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "scores must be 4-D"
+      ]
+    },
+    "bbox_deltas": {
+      "type": "float|tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 4-D float `Tensor` of shape `[num_images, height, width, 4 x num_anchors]` encoding boxes with respect to each anchor. Coordinates are given in the form `[dy, dx, dh, dw]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "bbox_deltas must be 4-D"
+      ]
+    },
+    "image_info": {
+      "type": "float|tensor",
+      "size": "2-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 2-D float `Tensor` of shape `[num_images, 5]` containing image information Height, Width, Scale.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "image_info must be 2-D"
+      ]
+    },
+    "anchors": {
+      "type": "float|tensor",
+      "size": "2-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 2-D float `Tensor` of shape `[num_anchors, 4]` describing the anchor boxes. Boxes are formatted in the form `[y1, x1, y2, x2]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "anchors must be 2-D"
+      ]
+    },
+    "nms_threshold": {
+      "type": "float|number|tensor",
+      "size": "scalar",
+      "default": "0",
+      "flag": "Optional",
+      "description": "A scalar float `Tensor` for non-maximal-suppression threshold. Defaults to 0.7.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "pre_nms_topn": {
+      "type": "int|number|tensor",
+      "size": "scalar",
+      "default": "6000",
+      "flag": "Optional",
+      "description": "A scalar int `Tensor` for the number of top scoring boxes to be used as input. Defaults to 6000.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "min_size": {
+      "type": "float|number|tensor|any",
+      "size": "scalar",
+      "default": "16",
+      "flag": "Optional",
+      "description": "A scalar float `Tensor`. Any box that has a smaller size than min_size will be discarded. Defaults to 16.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "post_nms_topn": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer. Maximum number of rois in the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for this operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Region of interest boxes sorted by their scores. roi_probabilities: scores of the ROI boxes in the ROIs' `Tensor`."
+  },
+  "constraints": []
+}

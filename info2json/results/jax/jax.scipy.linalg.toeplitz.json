@@ -1,0 +1,47 @@
+{
+  "api_name": "toeplitz",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., N)`` specifying the first column.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "c and r leading dimensions must be broadcast-compatible",
+        "if r not specified, defaults to conj(c)",
+        "if complex-valued c, r defaults to c.conj()",
+        "for N-dimensional c and/or r, the result is a batch of Toeplitz matrices"
+      ]
+    },
+    "r": {
+      "type": "tensor",
+      "size": "",
+      "default": "conj(c)",
+      "flag": "Optional",
+      "description": "(optional) array of shape ``(..., M)`` specifying the first row. Leading dimensions must be broadcast-compatible with those of ``c``. If not specified, ``r`` defaults to ``conj(c)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "c and r leading dimensions must be broadcast-compatible",
+        "if r not specified, defaults to conj(c)",
+        "if complex-valued c, r defaults to c.conj()",
+        "for N-dimensional c and/or r, the result is a batch of Toeplitz matrices"
+      ]
+    }
+  },
+  "output": {
+    "type": "Toeplitz matrix",
+    "numbers": "1",
+    "description": "A Toeplitz matrix of shape ``(... N, M)``."
+  },
+  "constraints": [
+    "c and r leading dimensions must be broadcast-compatible",
+    "if r not specified, defaults to conj(c)",
+    "if complex-valued c, r defaults to c.conj()",
+    "for N-dimensional c and/or r, the result is a batch of Toeplitz matrices"
+  ]
+}

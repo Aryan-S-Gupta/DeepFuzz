@@ -1,0 +1,72 @@
+{
+  "api_name": "ragged_dot",
+  "module_path": "jax.lax",
+  "params": {
+    "lhs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(m, k) shaped array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rhs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(g, k, n) shaped array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "group_sizes": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(g,) shaped array with integer element type, where g denotes number of groups. The ith element indicates the size of ith group.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "precision": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Optional. Consistent with precision argument for :func:`jax.lax.dot`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "preferred_element_type": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Optional. Consistent with precision argument for :func:`jax.lax.dot`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "group_offset": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Optional. (1,) shaped array that indicates the group in group_sizes to start computing from. If not specified, defaults to [0].",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "(m, n) shaped array with preferred_element_type element type."
+  },
+  "constraints": []
+}

@@ -1,0 +1,107 @@
+{
+  "api_full_name": "tensorflow.ones",
+  "api_name": "ones",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.ones",
+  "backend": "tensorflow",
+  "params": {
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "float|tuple|list|tensor|dtype",
+        "size": "1-D",
+        "default": "",
+        "flag": "Optional",
+        "description": "A `list` of integers, a `tuple` of integers, or a 1-D `Tensor` of type `int32`. dtype: Optional DType of an element in the resulting `Tensor`. Default is `tf.float32`.",
+        "dtype_candidates": [
+          "int32",
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "shape must be 1-D"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional string. A name for the operation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "layout": {
+      "name": "layout",
+      "spec": {
+        "type": "tf.experimental.dtensor.Layout",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional, `tf.experimental.dtensor.Layout`. If provided, the result is a [DTensor](https://www.tensorflow.org/guide/dtensor_overview) with the provided layout.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tf.experimental.dtensor.layout",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: tf.experimental.dtensor.layout"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with all elements set to one (1)."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Missing required positional argument"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Missing required positional argument",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ones.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

@@ -1,0 +1,187 @@
+{
+  "api_full_name": "tensorflow.keras.losses.tversky",
+  "api_name": "tversky",
+  "module_path": "tensorflow.keras.losses",
+  "import_path": "tensorflow.keras.losses.tversky",
+  "backend": "tensorflow",
+  "params": {
+    "y_true": {
+      "name": "y_true",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "tensor of true targets.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_pred": {
+      "name": "y_pred",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "tensor of predicted targets.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "alpha": {
+      "name": "alpha",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "coefficient controlling incidence of false positives.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "alpha and beta must be in range (0, 1]",
+          "if alpha is not provided, it defaults to 0.5"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "beta": {
+      "name": "beta",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "coefficient controlling incidence of false negatives.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "alpha and beta must be in range (0, 1]",
+          "if beta is not provided, it defaults to 0.5"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tuple",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "tuple for which dimensions the loss is calculated.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "number",
+    "numbers": "1",
+    "description": "Tversky loss value. Reference: - [Salehi et al., 2017](https://arxiv.org/abs/1706.05721)"
+  },
+  "constraints": [
+    "alpha and beta must be in range (0, 1]"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__Sum_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 1 dimension(s) [Op:Sum]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__Sum_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 1 dimension(s) [Op:Sum]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/losses/losses.py\", line 2616, in tversky\n    intersection = ops.sum(inputs * targets, axis=axis)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 7479, in sum\n    return backend.numpy.sum(x, axis=axis, keepdims=keepdims)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 3155, in sum\n    return tf.reduce_sum(x, axis=axis, keepdims=keepdims)\n           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Sum_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 1 dimension(s) [Op:Sum]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.losses.tversky.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

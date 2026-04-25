@@ -1,0 +1,38 @@
+{
+  "api_name": "arctan2",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Tensor of angles in radians, in the range `[-pi, pi]`."
+  },
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ]
+}

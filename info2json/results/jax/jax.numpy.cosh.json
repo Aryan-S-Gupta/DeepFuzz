@@ -1,0 +1,27 @@
+{
+  "api_name": "cosh",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "can promote to inexact dtype",
+        "jnp.cosh(x) is equivalent to computing jnp.cos(1j * x)",
+        "jnp.cosh(x) and jnp.cos(1j * x) return the same dtype",
+        "when x is complex, jnp.cosh(x) and jnp.cos(1j * x) return the same value"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real or complex",
+    "description": "An array containing the hyperbolic cosine of each element of ``x``, promoting to inexact dtype."
+  },
+  "constraints": []
+}

@@ -1,0 +1,64 @@
+{
+  "api_name": "geomspace",
+  "module_path": "jax.numpy",
+  "params": {
+    "start": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the starting values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "stop": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the stop values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional, default=50. Number of values to generate.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "endpoint": {
+      "type": "bool|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional, default=True. If True, then include the ``stop`` value in the result. If False, then exclude the ``stop`` value. dtype: optional. Specifies the dtype of the output.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional, default=0. Axis along which to generate the geomspace.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the geometrically-spaced values."
+  },
+  "constraints": []
+}

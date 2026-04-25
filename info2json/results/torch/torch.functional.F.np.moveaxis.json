@@ -1,0 +1,55 @@
+{
+  "api_name": "moveaxis",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "np.ndarray The array whose axes should be reordered.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "source": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or sequence of int Original positions of the axes to move. These must be unique.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Unique values required.",
+        "source and destination must have the same length.",
+        "Each value in source should be unique.",
+        "The output shape depends on the provided source and destination axes."
+      ]
+    },
+    "destination": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or sequence of int Destination positions for each of the original axes. These must also be unique.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Unique values required.",
+        "source and destination must have the same length.",
+        "Each value in destination should be unique.",
+        "The output shape depends on the provided source and destination axes."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- np.ndarray Array with moved axes. This array is a view of the input array."
+  },
+  "constraints": [
+    "source and destination must have the same length.",
+    "The output shape depends on the provided source and destination axes."
+  ]
+}

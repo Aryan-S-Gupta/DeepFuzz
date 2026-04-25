@@ -1,0 +1,64 @@
+{
+  "api_name": "empty_like",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "prototype": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The shape and data-type of `prototype` define these same attributes of the returned array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "order": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'C', 'F', 'A', or 'K'}, optional Overrides the memory layout of the result. 'C' means C-order, 'F' means F-order, 'A' means 'F' if `prototype` is Fortran contiguous, 'C' otherwise. 'K' means match the layout of `prototype` as closely as possible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "subok": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional. If True, then the newly created array will use the sub-class type of `prototype`, otherwise it will be a base-class array. Defaults to True.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shape": {
+      "type": "int|sequence|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or sequence of ints, optional. Overrides the shape of the result. If order='K' and the number of dimensions is unchanged, will try to keep order, otherwise, order='C' is implied.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "string|tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional The device on which to place the created array. Default: None. For Array-API interoperability only, so must be ``\"cpu\"`` if passed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Array of uninitialized (arbitrary) data with the same shape and type as `prototype`."
+  },
+  "constraints": []
+}

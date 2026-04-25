@@ -1,0 +1,68 @@
+{
+  "api_name": "reduce_any",
+  "module_path": "tensorflow",
+  "params": {
+    "input_tensor": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The boolean tensor to reduce.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Must be a boolean tensor.",
+        "input_tensor must be 1-D to rank-N boolean tensors.",
+        "axis must satisfy -rank(input_tensor) <= axis < rank(input_tensor) if specified, otherwise reduces all dimensions."
+      ]
+    },
+    "axis": {
+      "type": "int32 or None",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(input_tensor) <= axis < rank(input_tensor) if specified, otherwise reduces all dimensions."
+      ]
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Required",
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "keepdims must be a bool indicating whether to retain reduced dimensions with length 1."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|any",
+    "numbers": "bool",
+    "description": "The reduced tensor. @compatibility(numpy) Equivalent to np.any @end_compatibility"
+  },
+  "constraints": [
+    "axis must satisfy -rank(input_tensor) <= axis < rank(input_tensor) if specified, otherwise reduces all dimensions."
+  ]
+}

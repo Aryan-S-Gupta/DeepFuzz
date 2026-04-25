@@ -1,0 +1,22 @@
+{
+  "api_name": "image_gradients",
+  "module_path": "tensorflow.image",
+  "params": {
+    "image": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor with shape [batch_size, h, w, d].",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "Pair of tensors (dy, dx) holding the vertical and horizontal image gradients (1-step finite difference)."
+  },
+  "constraints": []
+}

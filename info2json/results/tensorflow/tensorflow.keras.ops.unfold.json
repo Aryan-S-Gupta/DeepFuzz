@@ -1,0 +1,64 @@
+{
+  "api_name": "unfold",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 4-D tensor of shape `(N, C, H, W)` (**channels-first** format).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be 4-D"
+      ]
+    },
+    "kernel_size": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or tuple of two ints, the size of the sliding window `(kH, kW)`. If a single int is given, it is used for both dimensions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dilation": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "int or tuple of two ints, the spacing between kernel points (a.k.a. **dilation** or **atrous** convolution). Default: 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int or tuple of two ints, the amount of zero-padding to apply to both spatial dimensions. Default: 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "stride": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "int or tuple of two ints, the step size of the sliding window. Default: 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "A 3-D tensor of shape `(N, C * kH * kW, L)` where `L = num_patches_H * num_patches_W` is the total number of patches extracted."
+  },
+  "constraints": []
+}

@@ -1,0 +1,60 @@
+{
+  "api_name": "segment_max",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "data": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "data.shape[:len(segment_ids.shape)] should match"
+      ]
+    },
+    "segment_ids": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A N-D tensor containing segment indices for each element in `data`. data.shape[:len(segment_ids.shape)] should match.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "data.shape[:len(segment_ids.shape)] should match"
+      ]
+    },
+    "num_segments": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An integer representing the total number of segments. If not specified, it is inferred from the maximum value in `segment_ids`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sorted": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "A boolean indicating whether `segment_ids` is sorted. Defaults to `False`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "A tensor containing the max of segments, where each element represents the max of the corresponding segment in `data`."
+  },
+  "constraints": [
+    "data.shape[:len(segment_ids.shape)] should match"
+  ]
+}

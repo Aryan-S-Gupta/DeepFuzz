@@ -1,0 +1,46 @@
+{
+  "api_name": "get_total_norm",
+  "module_path": "torch.nn.utils",
+  "params": {
+    "norm_type": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "type of the used p-norm. Can be ``'inf'`` for infinity norm.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "error_if_nonfinite": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "if True, an error is thrown if the total norm of :attr:`tensors` is ``nan``, ``inf``, or ``-inf``. Default: ``False``",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "foreach": {
+      "type": "bool|tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "use the faster foreach-based implementation. If ``None``, use the foreach implementation for CUDA and CPU native tensors and silently fall back to the slow implementation for other device types. Default: ``None``",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Total norm of the tensors (viewed as a single vector)."
+  },
+  "constraints": []
+}

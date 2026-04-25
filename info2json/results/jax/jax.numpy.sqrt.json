@@ -1,0 +1,25 @@
+{
+  "api_name": "sqrt",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if x is complex, output will also be complex",
+        "if x is negative real number, output will be nan"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "complex or float",
+    "description": "An array containing the non-negative square root of the elements of ``x``."
+  },
+  "constraints": []
+}

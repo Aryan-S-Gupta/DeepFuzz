@@ -1,0 +1,31 @@
+{
+  "processed": 478,
+  "succeeded": 474,
+  "failed": 4,
+  "failures": [
+    {
+      "api_full_name": "jax.numpy.append",
+      "error": "ValueError: jax.numpy.append: prose default leaked into default field for axis"
+    },
+    {
+      "api_full_name": "jax.numpy.bincount",
+      "error": "ValueError: jax.numpy.bincount: prose default leaked into default field for weights"
+    },
+    {
+      "api_full_name": "jax.numpy.repeat",
+      "error": "ValueError: jax.numpy.repeat: prose default leaked into default field for axis"
+    },
+    {
+      "api_full_name": "jax.random.PRNGKey",
+      "error": "ValueError: jax.random.PRNGKey: prose default leaked into default field for impl"
+    }
+  ],
+  "input": "doc2info/results/jax/accepted.csv",
+  "outdir": "info2json/results/jax",
+  "model": "mixtral:8x7b",
+  "host": "http://localhost:11434",
+  "total_requested": 478,
+  "num_predict": 320,
+  "num_ctx": 2048,
+  "temperature": 0.0
+}

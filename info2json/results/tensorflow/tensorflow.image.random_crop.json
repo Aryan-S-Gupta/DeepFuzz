@@ -1,0 +1,57 @@
+{
+  "api_name": "random_crop",
+  "module_path": "tensorflow.image",
+  "params": {
+    "value": {
+      "type": "tensor",
+      "size": "",
+      "default": "image",
+      "flag": "Optional",
+      "description": "Input tensor to crop.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "size": {
+      "type": "list|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "1-D tensor with size the rank of `value`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Requires `value.shape >= size`",
+        "size must be 1-D"
+      ]
+    },
+    "seed": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Python integer. Used to create a random seed. See `tf.random.set_seed` for behavior.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for this operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A cropped tensor of the same rank as `value` and shape `size`."
+  },
+  "constraints": [
+    "name is an optional name for this operation."
+  ]
+}

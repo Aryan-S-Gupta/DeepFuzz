@@ -1,0 +1,96 @@
+{
+  "api_name": "gradients",
+  "module_path": "tensorflow",
+  "params": {
+    "ys": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or list of tensors to be differentiated.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "xs": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or list of tensors to be used for differentiation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "grad_ys": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional. A `Tensor` or list of tensors the same size as `ys` and holding the gradients computed for each y in `ys`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "'gradients'",
+      "flag": "Optional",
+      "description": "Optional name to use for grouping all the gradient ops together. defaults to 'gradients'.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "gate_gradients": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If True, add a tuple around the gradients returned for an operations. This avoids some race conditions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "aggregation_method": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Specifies the method used to combine gradient terms. Accepted values are constants defined in the class `AggregationMethod`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "aggregation_method must be one of AggregationMethod"
+      ]
+    },
+    "stop_gradients": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional. A `Tensor` or list of tensors not to differentiate through.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "unconnected_gradients": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional. Specifies the gradient value returned when the given input tensors are unconnected. Accepted values are constants defined in the class `tf.UnconnectedGradients` and the default value is `none`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "unconnected_gradients must be one of tf.UnconnectedGradients"
+      ]
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "1",
+    "description": "A list of `Tensor` of length `len(xs)` where each tensor is the `sum(dy/dx)` for y in `ys` and for x in `xs`."
+  },
+  "constraints": []
+}

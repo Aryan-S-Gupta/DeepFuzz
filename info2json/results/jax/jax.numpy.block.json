@@ -1,0 +1,24 @@
+{
+  "api_name": "block",
+  "module_path": "jax.numpy",
+  "params": {
+    "arrays": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an array, or nested list of arrays which will be concatenated together to form the final array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "arrays' shapes must match along the axis of concatenation"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real",
+    "description": "a single array constructed from the inputs."
+  },
+  "constraints": []
+}

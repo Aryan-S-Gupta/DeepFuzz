@@ -1,0 +1,72 @@
+{
+  "api_name": "addr",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "matrix to be added",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "vec1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the first vector of the outer product",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "vec2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the second vector of the outer product",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "beta": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "multiplier for :attr:`input` (:math:`\\beta`)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "multiplier for :math:`\\text{vec1} \\otimes \\text{vec2}` (:math:`\\alpha`)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

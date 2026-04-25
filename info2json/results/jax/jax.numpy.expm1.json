@@ -1,0 +1,25 @@
+{
+  "api_name": "expm1",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and output must have same shape",
+        "x values must be finite"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real",
+    "description": "An array containing ``exp(x)-1`` of each element in ``x``, promotes to inexact dtype."
+  },
+  "constraints": []
+}

@@ -1,0 +1,64 @@
+{
+  "api_name": "isclose",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "first tensor to compare",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "second tensor to compare",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rtol": {
+      "type": "float",
+      "size": "",
+      "default": "1e-05",
+      "flag": "Optional",
+      "description": "relative tolerance. Default: 1e-05",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "atol": {
+      "type": "float",
+      "size": "",
+      "default": "1e-08",
+      "flag": "Optional",
+      "description": "absolute tolerance. Default: 1e-08",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "equal_nan": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "if ``True``, then two ``NaN`` s will be considered equal. Default: ``False``",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

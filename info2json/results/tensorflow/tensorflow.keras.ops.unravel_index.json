@@ -1,0 +1,38 @@
+{
+  "api_name": "unravel_index",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "indices": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer or array of integers representing flat indices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "indices values must be in range [0, product(params.shape))"
+      ]
+    },
+    "shape": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The shape of the array to unravel into.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "indices values must be in range [0, product(params.shape))"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "Tuple of arrays for each dimension with unraveled indices."
+  },
+  "constraints": [
+    "indices values must be in range [0, product(params.shape))"
+  ]
+}

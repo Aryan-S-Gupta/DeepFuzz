@@ -1,0 +1,111 @@
+{
+  "api_full_name": "tensorflow.keras.ops.tri",
+  "api_name": "tri",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.tri",
+  "backend": "tensorflow",
+  "params": {
+    "N": {
+      "name": "N",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Number of rows in the tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "M": {
+      "name": "M",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Number of columns in the tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "k": {
+      "name": "k",
+      "spec": {
+        "type": "float|tensor|dtype",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "The sub-diagonal at and below which the array is filled. `k = 0` is the main diagonal, while `k < 0` is below it, and `k > 0` is above. The default is 0. dtype: Data type of the returned tensor. The default is \"float32\".",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "k must be positive"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Tensor with its lower triangle filled with ones and zeros elsewhere. `T[i, j] == 1` for `j <= i + k`, 0 otherwise."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Cannot convert [1.0, 1.0] to EagerTensor of dtype int32"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Cannot convert [1.0, 1.0] to EagerTensor of dtype int32",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 6574, in tri\n    return backend.numpy.tri(N, M=M, k=k, dtype=dtype)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2820, in tri\n    o = tf.ones([N, M], dtype=dtype)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/constant_op.py\", line 108, in convert_to_eager_tensor\n    return ops.EagerTensor(value, ctx.device_name, dtype)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: Cannot convert [1.0, 1.0] to EagerTensor of dtype int32\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.tri.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

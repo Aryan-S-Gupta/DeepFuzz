@@ -1,0 +1,51 @@
+{
+  "api_name": "can_cast",
+  "module_path": "jax.numpy",
+  "params": {
+    "from_": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype, dtype specifier, NumPy scalar, or array Data type, NumPy scalar, or array to cast from.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "from_, to, and casting parameters must be given as strings."
+      ]
+    },
+    "to": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or dtype specifier Data type to cast to.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "from_, to, and casting parameters must be given as strings."
+      ]
+    },
+    "casting": {
+      "type": "string",
+      "size": "",
+      "default": "safe",
+      "flag": "Optional",
+      "description": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional Controls what kind of data casting may occur.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "'no', 'equiv', 'safe', 'same_kind', or 'unsafe'",
+        "from_, to, and casting parameters must be given as strings."
+      ]
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool True if cast can occur according to the casting rule."
+  },
+  "constraints": [
+    "from_, to, and casting parameters must be given as strings."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "api_name": "dropout",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A floating point tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rate": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar `Tensor` with the same type as x. The probability that each element is dropped. For example, setting rate=0.1 would drop 10% of input elements.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "rate must have the same dtype as x"
+      ]
+    },
+    "noise_shape": {
+      "type": "int|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 1-D integer `Tensor`, representing the shape for randomly generated keep/drop flags.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "noise_shape must be 1-D"
+      ]
+    },
+    "seed": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A Python integer. Used to create random seeds. See `tf.random.set_seed` for behavior.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for this operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A Tensor of the same shape of `x`."
+  },
+  "constraints": []
+}

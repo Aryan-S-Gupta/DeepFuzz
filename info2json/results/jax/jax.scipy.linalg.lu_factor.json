@@ -1,0 +1,42 @@
+{
+  "api_name": "lu_factor",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array of shape ``(..., M, N)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "overwrite_a": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "check_finite": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple ``(lu, piv)`` - ``lu`` is an array of shape ``(..., M, N)``, containing ``L`` in its lower triangle and ``U`` in its upper. - ``piv`` is an array of shape ``(..., K)`` with ``K = min(M, N)``, which encodes the pivots."
+  },
+  "constraints": []
+}

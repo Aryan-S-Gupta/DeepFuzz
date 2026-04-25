@@ -1,0 +1,94 @@
+{
+  "api_name": "binary_focal_crossentropy",
+  "module_path": "tensorflow.metrics",
+  "params": {
+    "y_true": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Ground truth values, of shape `(batch_size, d0, .. dN)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The predicted values, of shape `(batch_size, d0, .. dN)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "apply_class_balancing": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A bool, whether to apply weight balancing on the binary classes 0 and 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "A weight balancing factor for class 1, default is `0.25` as mentioned in the reference. The weight for class 0 is `1.0 - alpha`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "gamma": {
+      "type": "",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "A focusing parameter, default is `2.0` as mentioned in the reference.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "from_logits": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Whether `y_pred` is expected to be a logits tensor. By default, we assume that `y_pred` encodes a probability distribution.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "label_smoothing": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Float in `[0, 1]`. If > `0` then smooth the labels by squeezing them towards 0.5, that is, using `1. - 0.5 * label_smoothing` for the target class and `0.5 * label_smoothing` for the non-target class.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "The axis along which the mean is computed. Defaults to `-1`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Binary focal crossentropy loss value with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": []
+}

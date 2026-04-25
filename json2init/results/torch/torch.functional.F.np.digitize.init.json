@@ -1,0 +1,134 @@
+{
+  "api_full_name": "torch.functional.F.np.digitize",
+  "api_name": "digitize",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.digitize",
+  "backend": "torch",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like Input array to be binned. Prior to NumPy 1.10.0, this array had to be 1-dimensional, but can now have any shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "bins": {
+      "name": "bins",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like Array of bins. It has to be 1-dimensional and monotonic.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "right": {
+      "name": "right",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "bool, optional Indicating whether the intervals include the right or the left bin edge. Default behavior is (right==False) indicating that the interval does not include the right edge. The left bin end is open in this case, i.e., bins[i-1] <= x < bins[i] is the default behavior for monotonically increasing bins.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray of ints Output array of indices, of same shape as `x`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "size": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.digitize.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

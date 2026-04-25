@@ -1,0 +1,38 @@
+{
+  "api_name": "gcd",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input tensor (integer type).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must be the same shape"
+      ]
+    },
+    "x2": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Second input tensor (integer type).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must be the same shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "single",
+    "description": "Output tensor, element-wise greatest common divisor of `x1` and `x2`."
+  },
+  "constraints": [
+    "x1 and x2 must be the same shape"
+  ]
+}

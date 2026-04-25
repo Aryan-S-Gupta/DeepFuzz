@@ -1,0 +1,89 @@
+{
+  "api_full_name": "tensorflow.math.conj",
+  "api_name": "conj",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.conj",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "`Tensor` to conjugate. Must have numeric or variant type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must be of the form a + bj, where a is the real part and bj is the imaginary part.",
+          "x and returned value must have the same type."
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` that is the conjugate of `x` (with the same type)."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.conj.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

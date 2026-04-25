@@ -1,0 +1,34 @@
+{
+  "api_name": "modf",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x can be any numeric type supported by JAX, promoting dtypes inexact"
+      ]
+    },
+    "out": {
+      "type": "unused",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Not used by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "An array containing the fractional and integral parts of the elements of ``x``, promoting dtypes inexact."
+  },
+  "constraints": []
+}

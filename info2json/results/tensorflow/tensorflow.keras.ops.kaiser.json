@@ -1,0 +1,37 @@
+{
+  "api_name": "kaiser",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "1D",
+      "default": "-",
+      "flag": "Optional",
+      "description": "Scalar or 1D Tensor. The window length.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be 1-D",
+        "x and output have compatible shapes"
+      ]
+    },
+    "beta": {
+      "type": "float",
+      "size": "",
+      "default": "-",
+      "flag": "Optional",
+      "description": "Float. Shape parameter for the Kaiser window.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "beta must be float"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A 1D tensor containing the Kaiser window values."
+  },
+  "constraints": []
+}

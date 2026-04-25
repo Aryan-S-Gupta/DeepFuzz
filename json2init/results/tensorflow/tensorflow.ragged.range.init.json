@@ -1,0 +1,149 @@
+{
+  "api_full_name": "tensorflow.ragged.range",
+  "api_name": "range",
+  "module_path": "tensorflow.ragged",
+  "import_path": "tensorflow.ragged.range",
+  "backend": "tensorflow",
+  "params": {
+    "starts": {
+      "name": "starts",
+      "spec": {
+        "type": "number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Optional",
+        "description": "Vector or scalar `Tensor`. Specifies the first entry for each range if `limits` is not `None`; otherwise, specifies the range limits, and the first entries default to `0`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "limits": {
+      "name": "limits",
+      "spec": {
+        "type": "number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Vector or scalar `Tensor`. Specifies the exclusive upper limits for each range.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "deltas": {
+      "name": "deltas",
+      "spec": {
+        "type": "number|tensor|dtype",
+        "size": "scalar",
+        "default": "1",
+        "flag": "Optional",
+        "description": "Vector or scalar `Tensor`. Specifies the increment for each range. Defaults to `1`. dtype: The type of the elements of the resulting tensor. If not specified, then a value is chosen based on the other args.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for the operation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation."
+    },
+    "row_splits_dtype": {
+      "name": "row_splits_dtype",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "`dtype` for the returned `RaggedTensor`'s `row_splits` tensor. One of `tf.int32` or `tf.int64`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "RaggedTensor",
+          "row_splits",
+          "tf.int32",
+          "tf.int64"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "int32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "A `RaggedTensor` of type `dtype` with `ragged_rank=1`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for the operation."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ragged.range.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

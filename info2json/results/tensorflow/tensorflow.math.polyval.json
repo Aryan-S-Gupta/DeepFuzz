@@ -1,0 +1,44 @@
+{
+  "api_name": "polyval",
+  "module_path": "tensorflow.math",
+  "params": {
+    "coeffs": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `Tensor` representing the coefficients of the polynomial.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "coeffs list size corresponds to polynomial degree n"
+      ]
+    },
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` representing the variable of the polynomial.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `tensor` of the shape as the expression p(x) with usual broadcasting rules for element-wise addition and multiplication applied. @compatibility(numpy) Equivalent to numpy.polyval. @end_compatibility"
+  },
+  "constraints": []
+}

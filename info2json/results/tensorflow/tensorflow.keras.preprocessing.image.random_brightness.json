@@ -1,0 +1,49 @@
+{
+  "api_name": "random_brightness",
+  "module_path": "tensorflow.keras.preprocessing.image",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "3D",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor. Must be 3D.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be 3-D",
+        "x must be 3D."
+      ]
+    },
+    "brightness_range": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tuple of floats; brightness range.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be a tuple."
+      ]
+    },
+    "scale": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "Whether to rescale the image such that minimum and maximum values are 0 and 255 respectively. Default: True.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Numpy image tensor."
+  },
+  "constraints": []
+}

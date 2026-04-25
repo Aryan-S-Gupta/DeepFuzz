@@ -1,0 +1,62 @@
+{
+  "api_name": "svd",
+  "module_path": "torch.functional.F.np.linalg",
+  "params": {
+    "a": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(..., M, N) array_like A real or complex array with ``a.ndim >= 2``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be real"
+      ]
+    },
+    "full_matrices": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "bool, optional If True (default), `u` and `vh` have the shapes ``(..., M, M)`` and ``(..., N, N)``, respectively. Otherwise, the shapes are ``(..., M, K)`` and ``(..., K, N)``, respectively, where ``K = min(M, N)``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "compute_uv": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional Whether or not to compute `u` and `vh` in addition to `s`. True by default.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "hermitian": {
+      "type": "float|bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, optional If True, `a` is assumed to be Hermitian (symmetric if real-valued), enabling a more efficient method for finding singular values. Defaults to False.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "3",
+    "description": "------- { (..., M, M), (..., M, K) } array Unitary array(s). The first ``a.ndim - 2`` dimensions have the same size as those of the input `a`. The size of the last two dimensions depends on the value of `full_matrices`. Only returned when `compute_uv` is True. S : (..., K) array Vector(s) with the singular values, within each vector sorted in descending order. The first ``a.ndim - 2`` dimensions have the same size as those of the input `a`. Vh : { (..., N, N), (..., K, N) } array Unitary array(s). The first ``a.ndim - 2`` dimensions have the same size as those of the input `a`. The size of the last two dimensions depends on the value of `full_matrices`. Only returned when `compute_uv` is True."
+  },
+  "constraints": [
+    "u and vh are unitary matrices (their product is identity)"
+  ]
+}

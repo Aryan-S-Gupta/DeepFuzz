@@ -1,0 +1,74 @@
+{
+  "api_name": "fake_quant_with_min_max_vars",
+  "module_path": "tensorflow.keras.quantizers",
+  "params": {
+    "inputs": {
+      "type": "float|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input Keras tensor of float dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "min_vals": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A global minimum scalar or a per-channel minimum tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "max_vals": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A global maximum scalar or a per-channel maximum tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_bits": {
+      "type": "",
+      "size": "",
+      "default": "8",
+      "flag": "Optional",
+      "description": "Quantization bit width (e.g., `8` for int8). Defaults to `8`.",
+      "dtype_candidates": [
+        "int8"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "narrow_range": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Whether to use narrow quantization range. Defaults to `False`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Axis along which to perform per-channel quantization. If `None`, per-tensor quantization is performed. Defaults to `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A Keras tensor with fake quantization applied."
+  },
+  "constraints": []
+}

@@ -1,0 +1,60 @@
+{
+  "api_name": "reduce_max",
+  "module_path": "tensorflow",
+  "params": {
+    "input_tensor": {
+      "type": "float|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The tensor to reduce. Should have real numeric type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input_tensor must have real numeric type"
+      ]
+    },
+    "axis": {
+      "type": "int32 or None",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Must be in the range `[-rank(input_tensor), rank(input_tensor))`"
+      ]
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Required",
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real",
+    "description": "The reduced tensor."
+  },
+  "constraints": []
+}

@@ -1,0 +1,94 @@
+{
+  "api_full_name": "torch.functional.F.np.rec.fromarrays",
+  "api_name": "fromarrays",
+  "module_path": "torch.functional.F.np.rec",
+  "import_path": "torch.functional.F.np.rec.fromarrays",
+  "backend": "torch",
+  "params": {
+    "arrayList": {
+      "name": "arrayList",
+      "spec": {
+        "type": "tuple|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "list or tuple List of array-like objects (such as lists, tuples, and ndarrays).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "int|tuple|callable|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int or tuple of ints, optional Shape of the resulting array. If not provided, inferred from ``arrayList[0]``. If `dtype` is ``None``, these arguments are passed to `numpy.rec.format_parser` to construct a dtype. See that function for detailed documentation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- np.recarray Record array consisting of given arrayList columns."
+  },
+  "constraints": [
+    "arrayList and dtype must be provided together or not at all"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "recarray",
+      "shape": [],
+      "dtype": "(numpy.record, [('f0', '<f4')])",
+      "size": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.rec.fromarrays.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

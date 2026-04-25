@@ -1,0 +1,46 @@
+{
+  "api_name": "det",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "N/A",
+      "flag": "Required",
+      "description": "input array, of shape ``(..., N, N)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape must be at least 2-D"
+      ]
+    },
+    "overwrite_a": {
+      "type": "unused",
+      "size": "",
+      "default": "N/A",
+      "flag": "Optional",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "check_finite": {
+      "type": "unused",
+      "size": "",
+      "default": "N/A",
+      "flag": "Optional",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real",
+    "description": "Determinant of shape ``a.shape[:-2]``"
+  },
+  "constraints": [
+    "input and output shapes match in first two dimensions"
+  ]
+}

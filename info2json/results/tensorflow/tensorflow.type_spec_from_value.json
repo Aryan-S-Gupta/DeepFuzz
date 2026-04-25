@@ -1,0 +1,27 @@
+{
+  "api_name": "type_spec_from_value",
+  "module_path": "tensorflow",
+  "params": {
+    "value": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A value that can be accepted or returned by TensorFlow APIs. Accepted types for `value` include `tf.Tensor`, any value that can be converted to `tf.Tensor` using `tf.convert_to_tensor`, and any subclass of `CompositeTensor` (such as `tf.RaggedTensor`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Accepted types: tf.Tensor, any value convertible to tf.Tensor using tf.convert_to_tensor, and any subclass of CompositeTensor (such as tf.RaggedTensor)",
+        "value must be one of tf.Tensor, tf.convert_to_tensor, CompositeTensor, tf.RaggedTensor"
+      ]
+    }
+  },
+  "output": {
+    "type": "tf.TypeSpec",
+    "numbers": "1",
+    "description": "A `TypeSpec` that is compatible with `value`."
+  },
+  "constraints": [
+    "input_signature can be set using @tf.function(input_signature=[tf.type_spec_from_value(example_input)])"
+  ]
+}

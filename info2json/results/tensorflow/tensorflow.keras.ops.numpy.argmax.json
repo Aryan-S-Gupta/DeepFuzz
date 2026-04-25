@@ -1,0 +1,55 @@
+{
+  "api_name": "argmax",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be numeric",
+        "x, axis, and keepdims must be present"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "By default, the index is into the flattened tensor, otherwise along the specified axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)",
+        "x, axis, and keepdims must be present"
+      ]
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If this is set to `True`, the axes which are reduced are left in the result as dimensions with size one. Defaults to `False`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "must be a valid Python boolean",
+        "x, axis, and keepdims must be present"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "Tensor of indices. It has the same shape as `x`, with the dimension along `axis` removed."
+  },
+  "constraints": [
+    "x, axis, and keepdims must be present"
+  ]
+}

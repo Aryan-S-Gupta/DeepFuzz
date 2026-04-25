@@ -1,0 +1,43 @@
+{
+  "api_name": "KLD",
+  "module_path": "tensorflow.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have the same shape.",
+        "All elements in y_true and y_pred must be in range [0, 1].",
+        "y_true should not contain zero values to avoid undefined log(0)."
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have same shape as y_true.",
+        "y_true and y_pred must have the same shape.",
+        "All elements in y_true and y_pred must be in range [0, 1]."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating",
+    "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": [
+    "y_true and y_pred must have the same shape.",
+    "All elements in y_true and y_pred must be in range [0, 1]."
+  ]
+}

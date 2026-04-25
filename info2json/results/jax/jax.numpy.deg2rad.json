@@ -1,0 +1,24 @@
+{
+  "api_name": "deg2rad",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the angle in degrees.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x values must be in range [0, 360)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "An array containing the angles in radians."
+  },
+  "constraints": []
+}

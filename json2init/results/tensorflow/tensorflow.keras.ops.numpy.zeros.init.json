@@ -1,0 +1,73 @@
+{
+  "api_full_name": "tensorflow.keras.ops.numpy.zeros",
+  "api_name": "zeros",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "import_path": "tensorflow.keras.ops.numpy.zeros",
+  "backend": "tensorflow",
+  "params": {
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "tuple|list|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Shape of the new tensor. dtype: Desired data type of the tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must be a non-empty sequence"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "Tensor of zeros with the given shape and dtype."
+  },
+  "constraints": [
+    "dtype must be a valid numpy dtype string"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'index_type' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Fill}}; Op<name=Fill; signature=dims:index_type, value:T -> output:T; attr=T:type; attr=index_type:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Fill] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'index_type' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Fill}}; Op<name=Fill; signature=dims:index_type, value:T -> output:T; attr=T:type; attr=index_type:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Fill] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 7493, in zeros\n    return backend.numpy.zeros(shape, dtype=dtype)\n           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 759, in zeros\n    return tf.zeros(shape, dtype=dtype)\n           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/dtensor/python/api.py\", line 64, in call_with_layout\n    return fn(*args, **kwargs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'index_type' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Fill}}; Op<name=Fill; signature=dims:index_type, value:T -> output:T; attr=T:type; attr=index_type:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Fill] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.zeros.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

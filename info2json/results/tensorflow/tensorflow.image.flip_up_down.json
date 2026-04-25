@@ -1,0 +1,26 @@
+{
+  "api_name": "flip_up_down",
+  "module_path": "tensorflow.image",
+  "params": {
+    "image": {
+      "type": "tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "4-D Tensor of shape `[batch, height, width, channels]` or 3-D Tensor of shape `[height, width, channels]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape must be supported",
+        "image must be 4-D",
+        "ValueError if unsupported shape of `image`"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of the same type and shape as `image`."
+  },
+  "constraints": []
+}

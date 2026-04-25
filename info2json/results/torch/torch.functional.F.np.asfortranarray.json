@@ -1,0 +1,32 @@
+{
+  "api_name": "asfortranarray",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "like": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like, optional Reference object to allow the creation of arrays which are not NumPy arrays. If an array-like passed in as ``like`` supports the ``__array_function__`` protocol, the result will be defined by it. In this case, it ensures the creation of an array object compatible with that passed in via this argument.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The input `a` in Fortran, or column-major, order."
+  },
+  "constraints": []
+}

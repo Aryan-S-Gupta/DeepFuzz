@@ -1,0 +1,50 @@
+{
+  "api_name": "exp",
+  "module_path": "tensorflow",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.Tensor`. Must be one of the following types: `bfloat16`, `half`, `float32`, `float64`, `complex64`, `complex128`.",
+      "dtype_candidates": [
+        "float32",
+        "float64",
+        "bfloat16",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [
+        "tf.Tensor",
+        "bfloat16",
+        "half",
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "constraints": [
+        "Must be 1D or higher.",
+        "x must be one of tf.Tensor, bfloat16, half, float32, float64, complex64, complex128",
+        "x cannot be empty."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `tf.Tensor`. Has the same type as `x`. @compatibility(numpy) Equivalent to np.exp @end_compatibility"
+  },
+  "constraints": []
+}

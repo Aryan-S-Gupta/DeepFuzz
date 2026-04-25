@@ -1,0 +1,40 @@
+{
+  "api_name": "heaviside",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be real number",
+        "x2 value is returned when x1 equals zero"
+      ]
+    },
+    "x2": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar or tensor, the value to return when `x1 == 0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be same shape as x1 for broadcasting",
+        "x2 value is returned when x1 equals zero"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "same dtype as x1 and x2",
+    "description": "A tensor with a shape determined by broadcasting `x1` and `x2`."
+  },
+  "constraints": [
+    "x2 value is returned when x1 equals zero"
+  ]
+}

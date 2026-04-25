@@ -1,0 +1,45 @@
+{
+  "api_name": "tensorsolve",
+  "module_path": "torch.functional.F.np.linalg",
+  "params": {
+    "a": {
+      "type": "tuple|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Coefficient tensor, of shape ``b.shape + Q``. `Q`, a tuple, equals the shape of that sub-tensor of `a` consisting of the appropriate number of its rightmost indices, and must be such that ``prod(Q) == prod(b.shape)`` (in which sense `a` is said to be 'square').",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape: b.shape + Q, where prod(Q) == prod(b.shape)",
+        "a must be 'square' for successful inversion"
+      ]
+    },
+    "b": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Right-hand tensor, which can be of any shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axes": {
+      "type": "tuple",
+      "size": "",
+      "default": "x.ndim",
+      "flag": "Optional",
+      "description": "tuple of ints, optional Axes in `a` to reorder to the right, before inversion. If None (default), no reordering is done.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray, shape Q"
+  },
+  "constraints": []
+}

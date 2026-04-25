@@ -1,0 +1,153 @@
+{
+  "api_full_name": "tensorflow.linalg.tridiagonal_matmul",
+  "api_name": "tridiagonal_matmul",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.tridiagonal_matmul",
+  "backend": "tensorflow",
+  "params": {
+    "diagonals": {
+      "name": "diagonals",
+      "spec": {
+        "type": "float|tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` or tuple of `Tensor`s describing left-hand sides. The shape depends of `diagonals_format`, see description above. Must be `float32`, `float64`, `complex64`, or `complex128`.",
+        "dtype_candidates": [
+          "float32",
+          "float64",
+          "complex64",
+          "complex128"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "rhs": {
+      "name": "rhs",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of shape [..., M, N] and with the same dtype as `diagonals`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "rhs must have the same dtype as diagonals"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "diagonals_format": {
+      "name": "diagonals_format",
+      "spec": {
+        "type": "sequence",
+        "size": "",
+        "default": "compact",
+        "flag": "Optional",
+        "description": "one of `sequence`, or `compact`. Default is `compact`.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "sequence",
+          "compact"
+        ],
+        "constraints": [
+          "diagonals_format must be one of sequence, compact"
+        ]
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name to give this `Op` (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name to give this `op` (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name to give this `op` (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of shape [..., M, N] containing the result of multiplication."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: 'float' object is not subscriptable"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "'float' object is not subscriptable",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/linalg/linalg_impl.py\", line 722, in tridiagonal_matmul\n    superdiag = diagonals[..., 0, :]\n                ~~~~~~~~~^^^^^^^^^^^\nTypeError: 'float' object is not subscriptable\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.tridiagonal_matmul.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

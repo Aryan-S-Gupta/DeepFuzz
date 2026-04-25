@@ -1,0 +1,40 @@
+{
+  "api_name": "reciprocal_no_nan",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float16`, `float32`, `float64` `complex64` or `complex128`.",
+      "dtype_candidates": [
+        "float16",
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "TypeError: x must be of a valid dtype."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of same shape and type as `x`."
+  },
+  "constraints": []
+}

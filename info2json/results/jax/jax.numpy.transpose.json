@@ -1,0 +1,40 @@
+{
+  "api_name": "transpose",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be 2-D or higher",
+        "a and axes must be compatible with each other"
+      ]
+    },
+    "axes": {
+      "type": "list|sequence",
+      "size": "",
+      "default": "range(a",
+      "flag": "Optional",
+      "description": "optionally specify the permutation using a length-`a.ndim` sequence of integers ``i`` satisfying ``0 <= i < a.ndim``. Defaults to ``range(a.ndim)[::-1]``, i.e. reverses the order of all axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "all elements must satisfy 0 <= i < a.ndim",
+        "a and axes must be compatible with each other"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "transposed copy of the array."
+  },
+  "constraints": [
+    "a and axes must be compatible with each other"
+  ]
+}

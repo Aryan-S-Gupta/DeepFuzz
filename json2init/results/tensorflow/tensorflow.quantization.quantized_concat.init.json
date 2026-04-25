@@ -1,0 +1,185 @@
+{
+  "api_full_name": "tensorflow.quantization.quantized_concat",
+  "api_name": "quantized_concat",
+  "module_path": "tensorflow.quantization",
+  "import_path": "tensorflow.quantization.quantized_concat",
+  "backend": "tensorflow",
+  "params": {
+    "concat_dim": {
+      "name": "concat_dim",
+      "spec": {
+        "type": "tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `int32`. 0-D. The dimension along which to concatenate. Must be in the range [0, rank(values)).",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "concat_dim must be one of int32"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "values": {
+      "name": "values",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A list of at least 2 `Tensor` objects with the same type. The `N` Tensors to concatenate. Their ranks and types must match, and their sizes must match in all dimensions except `concat_dim`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "input_mins": {
+      "name": "input_mins",
+      "spec": {
+        "type": "float|list|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "A list with the same length as `values` of `Tensor` objects with type `float32`. The minimum scalar values for each of the input tensors.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "input_mins must be one of float32"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "input_maxes": {
+      "name": "input_maxes",
+      "spec": {
+        "type": "float|list|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "A list with the same length as `values` of `Tensor` objects with type `float32`. The maximum scalar values for each of the input tensors.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "input_maxes must be one of float32"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (output, output_min, output_max). A `Tensor`. Has the same type as `values`. output_min: A `Tensor` of type `float32`. output_max: A `Tensor` of type `float32`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 8292, in quantized_concat\n    return quantized_concat_eager_fallback(\n        concat_dim, values, input_mins, input_maxes, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 8363, in quantized_concat_eager_fallback\n    raise TypeError(\n        \"Expected list for 'values' argument to \"\n        \"'quantized_concat' Op, not %r.\" % values)\nTypeError: Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.quantization.quantized_concat.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

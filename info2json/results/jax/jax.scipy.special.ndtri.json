@@ -1,0 +1,25 @@
+{
+  "api_name": "ndtri",
+  "module_path": "jax.scipy.special",
+  "params": {
+    "p": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an array of type `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "p.dtype",
+    "description": "an array with `dtype=p.dtype`."
+  },
+  "constraints": []
+}

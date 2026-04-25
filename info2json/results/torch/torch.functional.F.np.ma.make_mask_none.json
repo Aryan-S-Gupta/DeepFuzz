@@ -1,0 +1,25 @@
+{
+  "api_name": "make_mask_none",
+  "module_path": "torch.functional.F.np.ma",
+  "params": {
+    "newshape": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tuple A tuple indicating the shape of the mask.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must contain positive integers.",
+        "Output shape is determined by newshape."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "------- ndarray An ndarray of appropriate shape and dtype, filled with False."
+  },
+  "constraints": []
+}

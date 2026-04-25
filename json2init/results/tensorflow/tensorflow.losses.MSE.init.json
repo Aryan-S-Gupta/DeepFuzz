@@ -1,0 +1,112 @@
+{
+  "api_full_name": "tensorflow.losses.MSE",
+  "api_name": "MSE",
+  "module_path": "tensorflow.losses",
+  "import_path": "tensorflow.losses.MSE",
+  "backend": "tensorflow",
+  "params": {
+    "y_true": {
+      "name": "y_true",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Ground truth values with shape = `[batch_size, d0, .. dN]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "y_true and y_pred shapes must match"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_pred": {
+      "name": "y_pred",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "y_true and y_pred shapes must match"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Mean squared error values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": [
+    "y_true and y_pred shapes must match"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.losses.MSE.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

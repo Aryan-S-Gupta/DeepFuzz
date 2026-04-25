@@ -1,0 +1,55 @@
+{
+  "api_name": "zeros_like",
+  "module_path": "tensorflow",
+  "params": {
+    "input": {
+      "type": "string|float|bool|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A `Tensor` or array-like object. dtype: A type for the returned `Tensor`. Must be `float16`, `float32`, `float64`, `int8`, `uint8`, `int16`, `uint16`, `int32`, `int64`, `complex64`, `complex128`, `bool` or `string` (optional).",
+      "dtype_candidates": [
+        "int8",
+        "int16",
+        "int32",
+        "int64",
+        "uint8",
+        "uint16",
+        "float16",
+        "float32",
+        "float64",
+        "bool",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tf.experimental.dtensor.Layout",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional, `tf.experimental.dtensor.Layout`. If provided, the result is a [DTensor](https://www.tensorflow.org/guide/dtensor_overview) with the provided layout.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with all elements set to zero."
+  },
+  "constraints": []
+}

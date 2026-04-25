@@ -1,0 +1,68 @@
+{
+  "api_name": "sort",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array to be sorted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "-1, which sorts along the last axis",
+      "flag": "Optional",
+      "description": "int or None, optional Axis along which to sort. If None, the array is flattened before sorting. The default is -1, which sorts along the last axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "kind": {
+      "type": "",
+      "size": "",
+      "default": "'quicksort'",
+      "flag": "Optional",
+      "description": "{'quicksort', 'mergesort', 'heapsort', 'stable'}, optional Sorting algorithm. The default is 'quicksort'. Note that both 'stable' and 'mergesort' use timsort or radix sort under the covers and, in general, the actual implementation will vary with data type. The 'mergesort' option is retained for backwards compatibility.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "kind must be one of quicksort, mergesort, heapsort"
+      ]
+    },
+    "order": {
+      "type": "string|list|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str or list of str, optional When `a` is an array with fields defined, this argument specifies which fields to compare first, second, etc. A single field can be specified as a string, and not all fields need be specified, but unspecified fields will still be used, in the order in which they come up in the dtype, to break ties.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "stable": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional Sort stability. If ``True``, the returned array will maintain the relative order of ``a`` values which compare as equal. If ``False`` or ``None``, this is not guaranteed. Internally, this option selects ``kind='stable'``. Default: ``None``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "stable must be one of True, False"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Array of the same type and shape as `a`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,105 @@
+{
+  "api_full_name": "tensorflow.keras.ops.nn.glu",
+  "api_name": "glu",
+  "module_path": "tensorflow.keras.ops.nn",
+  "import_path": "tensorflow.keras.ops.nn.glu",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The axis along which to split the input tensor. Defaults to `-1`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "1",
+    "description": "A tensor with the same shape as half of the input."
+  },
+  "constraints": [
+    "x must be a tensor"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: only integer scalar arrays can be converted to a scalar index"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "only integer scalar arrays can be converted to a scalar index",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/nn.py\", line 745, in glu\n    return backend.nn.glu(x, axis=axis)\n           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/nn.py\", line 125, in glu\n    if x.shape[axis] % 2 != 0:\n       ~~~~~~~^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/tensor_shape.py\", line 962, in __getitem__\n    return self._dims[key]\n           ~~~~~~~~~~^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 318, in __index__\n    return cast(np.ndarray, self._numpy()).__index__()\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nTypeError: only integer scalar arrays can be converted to a scalar index\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.nn.glu.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

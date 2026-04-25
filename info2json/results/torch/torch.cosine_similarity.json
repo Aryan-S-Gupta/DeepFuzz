@@ -1,0 +1,60 @@
+{
+  "api_name": "cosine_similarity",
+  "module_path": "torch",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1.shape must be broadcastable to x2.shape"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1.shape must be broadcastable to x2.shape"
+      ]
+    },
+    "dim": {
+      "type": "int",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "Dimension along which cosine similarity is computed. Default: 1",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "dim >= 0"
+      ]
+    },
+    "eps": {
+      "type": "float",
+      "size": "",
+      "default": "1e-08",
+      "flag": "Optional",
+      "description": "Small value to avoid division by zero. Default: 1e-8",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating point",
+    "description": "Returns cosine similarity between x1 and x2, computed along dim. Dimension dim of the output is squeezed, resulting in the output tensor having 1 fewer dimension."
+  },
+  "constraints": [
+    "x1.shape must be broadcastable to x2.shape"
+  ]
+}

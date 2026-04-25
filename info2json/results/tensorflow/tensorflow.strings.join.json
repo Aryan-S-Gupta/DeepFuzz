@@ -1,0 +1,44 @@
+{
+  "api_name": "join",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "inputs": {
+      "type": "string|list|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `tf.Tensor` objects of same size and `tf.string` dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "separator": {
+      "type": "string",
+      "size": "",
+      "default": "\"\"",
+      "flag": "Optional",
+      "description": "A string added between each string being joined.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `tf.string` tensor."
+  },
+  "constraints": [
+    "inputs list must not be empty"
+  ]
+}

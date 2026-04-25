@@ -1,0 +1,34 @@
+{
+  "api_name": "sort",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "-1`; the last axis",
+      "flag": "Optional",
+      "description": "Axis along which to sort. If `None`, the tensor is flattened before sorting. Defaults to `-1`; the last axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be None or an integer in range [-rank(x), rank(x))"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "single",
+    "description": "Sorted tensor."
+  },
+  "constraints": []
+}

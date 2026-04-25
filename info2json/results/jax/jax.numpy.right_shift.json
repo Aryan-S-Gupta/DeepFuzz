@@ -1,0 +1,40 @@
+{
+  "api_name": "right_shift",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array, only accepts unsigned integer subtypes",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1.shape must be compatible for broadcasting to a shared shape with x2.shape, which will also be the shape of the output.",
+        "x1 can only accept unsigned integer subtypes."
+      ]
+    },
+    "x2": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The amount of bits to shift each element in ``x1`` to the right, only accepts integer subtypes",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1.shape must be compatible for broadcasting to a shared shape with x2.shape, which will also be the shape of the output.",
+        "x2 can only accept integer subtypes."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "An array-like object containing the right shifted elements of ``x1`` by the amount specified in ``x2``, with the same shape as the broadcasted shape of ``x1`` and ``x2``."
+  },
+  "constraints": [
+    "x1.shape must be compatible for broadcasting to a shared shape with x2.shape, which will also be the shape of the output."
+  ]
+}

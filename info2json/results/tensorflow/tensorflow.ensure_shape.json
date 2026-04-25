@@ -1,0 +1,49 @@
+{
+  "api_name": "ensure_shape",
+  "module_path": "tensorflow",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x's shape must match expected shape if shape is not None"
+      ]
+    },
+    "shape": {
+      "type": "tuple|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `TensorShape` representing the shape of this tensor, a `TensorShapeProto`, a list, a tuple, or None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be compatible with x's shape",
+        "x's shape must match expected shape if shape is not None"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "\"EnsureShape\"",
+      "flag": "Optional",
+      "description": "A name for this operation (optional). Defaults to \"EnsureShape\".",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type and contents as `x`."
+  },
+  "constraints": [
+    "x's shape must match expected shape if shape is not None"
+  ]
+}

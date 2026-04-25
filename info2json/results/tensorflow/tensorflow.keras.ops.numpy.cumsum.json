@@ -1,0 +1,37 @@
+{
+  "api_name": "cumsum",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "x",
+      "flag": "Optional",
+      "description": "Axis along which the cumulative sum is computed. By default the input is flattened. dtype: dtype of returned tensor. Defaults to x.dtype.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(input) <= axis < rank(input)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Output tensor."
+  },
+  "constraints": []
+}

@@ -1,0 +1,24 @@
+{
+  "api_name": "isfinite",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x cannot be NaN"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "same shape as x",
+    "description": "A boolean array of same shape as ``x`` containing ``True`` where ``x`` is not ``inf``, ``-inf``, or ``NaN``, and ``False`` otherwise."
+  },
+  "constraints": []
+}

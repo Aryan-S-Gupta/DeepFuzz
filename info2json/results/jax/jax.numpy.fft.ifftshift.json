@@ -1,0 +1,36 @@
+{
+  "api_name": "ifftshift",
+  "module_path": "jax.numpy.fft",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array array of frequencies.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and output have the same shape"
+      ]
+    },
+    "axes": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional integer or sequence of integers specifying which axes to shift. If None (default), then shift all axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axes values must be in range [0, rank(x))"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A shifted copy of ``x``."
+  },
+  "constraints": []
+}

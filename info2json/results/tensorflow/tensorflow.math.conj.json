@@ -1,0 +1,35 @@
+{
+  "api_name": "conj",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`Tensor` to conjugate. Must have numeric or variant type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be of the form a + bj, where a is the real part and bj is the imaginary part.",
+        "x and returned value must have the same type."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` that is the conjugate of `x` (with the same type)."
+  },
+  "constraints": []
+}

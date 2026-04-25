@@ -1,0 +1,45 @@
+{
+  "api_name": "regex_full_match",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "input": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. A string tensor of the text to be processed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "pattern": {
+      "type": "string|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. A scalar string tensor containing the regular expression to match the input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "follows re2 syntax (https://github.com/google/re2/wiki/Syntax)",
+        "input and pattern must be provided"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `bool`."
+  },
+  "constraints": []
+}

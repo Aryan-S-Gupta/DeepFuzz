@@ -1,0 +1,65 @@
+{
+  "api_name": "idct",
+  "module_path": "tensorflow.signal",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `[..., samples]` `float32`/`float64` `Tensor` containing the signals to take the DCT of. type: The IDCT type to perform. Must be 1, 2, 3 or 4.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "n": {
+      "type": "future",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "For future expansion. The length of the transform. Must be `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "future",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "For future expansion. The axis to compute the DCT along. Must be `-1`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "norm": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The normalization to apply. `None` for no normalization or `'ortho'` for orthonormal normalization.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "1",
+    "description": "A `[..., samples]` `float32`/`float64` `Tensor` containing the IDCT of `input`."
+  },
+  "constraints": []
+}

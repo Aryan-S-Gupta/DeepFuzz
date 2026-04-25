@@ -1,0 +1,144 @@
+{
+  "api_name": "strided_slice",
+  "module_path": "tensorflow",
+  "params": {
+    "input_": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "begin": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int16`, `int32` or `int64` `Tensor`.",
+      "dtype_candidates": [
+        "int16",
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "end": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int16`, `int32` or `int64` `Tensor`.",
+      "dtype_candidates": [
+        "int16",
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "strides": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int16`, `int32` or `int64` `Tensor`.",
+      "dtype_candidates": [
+        "int16",
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "begin_mask": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int32` mask.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "end_mask": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int32` mask.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ellipsis_mask": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int32` mask.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "new_axis_mask": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int32` mask.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shrink_axis_mask": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int32` mask.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "var": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The variable corresponding to `input_` or None",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` the same type as `input`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,35 @@
+{
+  "api_name": "integer_pow",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array giving the base value. Must have numerical dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y": {
+      "type": "int|number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Static scalar integer giving the exponent.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y must be an integer",
+        "x and y must be compatible for element-wise power operation"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "same shape and dtype as x",
+    "description": "An array of the same shape and dtype as ``x`` containing the elementwise power."
+  },
+  "constraints": []
+}

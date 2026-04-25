@@ -1,0 +1,148 @@
+{
+  "api_full_name": "torch.hspmm",
+  "api_name": "hspmm",
+  "module_path": "torch",
+  "import_path": "torch.hspmm",
+  "backend": "torch",
+  "params": {
+    "mat1": {
+      "name": "mat1",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the first sparse matrix to be matrix multiplied",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "mat1 and mat2 shapes must allow matrix multiplication",
+          "out tensor shape is inferred from mat1, mat2, and operation semantics"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "mat2": {
+      "name": "mat2",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the second strided matrix to be matrix multiplied",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "mat1 and mat2 shapes must allow matrix multiplication",
+          "out tensor shape is inferred from mat1, mat2, and operation semantics"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "out": {
+      "name": "out",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the output tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "out tensor shape is inferred from mat1, mat2, and operation semantics"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(1 + 1)-dimensional",
+    "description": ":ref:`hybrid COO matrix`"
+  },
+  "constraints": [
+    "mat1 and mat2 shapes must allow matrix multiplication",
+    "out tensor shape is inferred from mat1, mat2, and operation semantics"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Could not run 'aten::hspmm' with arguments from the 'CPU' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'aten::hspmm' is only available for these backends: [Meta, SparseCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradHIP, AutogradXLA, AutogradMPS, AutogradIPU, AutogradXPU, AutogradHPU, AutogradVE, AutogradLazy, AutogradMTIA, AutogradPrivateUse1, AutogradPrivateUse2, AutogradPrivateUse3, AutogradMeta, AutogradNestedTensor, Tracer, AutocastCPU, AutocastMTIA, AutocastXPU, AutocastMPS, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].\n\nMeta: registered at /workspace/pytorch/aten/src/ATen/core/MetaFallbackKernel.cpp:23 [backend fallback]\nSparseCPU: registered at /workspace/pytorch/build/aten/src/ATen/RegisterSparseCPU_0.cpp:3035 [kernel]\nBackendSelect: fallthrough registered at /workspace/pytorch/aten/src/ATen/core/BackendSelectFallbackKernel.cpp:3 [backend fallback]\nPython: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:194 [backend fallback]\nFuncTorchDynamicLayerBackMode: registered at /workspace/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:479 [backend fallback]\nFunctionalize: registered at /workspace/pytorch/aten/src/ATen/FunctionalizeFallbackKernel.cpp:349 [backend fallback]\nNamed: registered at /workspace/pytorch/aten/src/ATen/core/NamedRegistrations.cpp:7 [backend fallback]\nConjugate: registered at /workspace/pytorch/aten/src/ATen/ConjugateFallback.cpp:17 [backend fallback]\nNegative: registered at /workspace/pytorch/aten/src/ATen/native/NegateFallback.cpp:18 [backend fallback]\nZeroTensor: registered at /workspace/pytorch/aten/src/ATen/ZeroTensorFallback.cpp:86 [backend fallback]\nADInplaceOrView: fallthrough registered at /workspace/pytorch/aten/src/ATen/core/VariableFallbackKernel.cpp:100 [backend fallback]\nAutogradOther: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradCPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradCUDA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradHIP: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradXLA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMPS: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradIPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradXPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradHPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradVE: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradLazy: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMTIA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse1: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse2: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse3: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMeta: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradNestedTensor: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nTracer: registered at /workspace/pytorch/torch/csrc/autograd/generated/TraceType_2.cpp:17801 [kernel]\nAutocastCPU: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:322 [backend fallback]\nAutocastMTIA: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:466 [backend fallback]\nAutocastXPU: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:504 [backend fallback]\nAutocastMPS: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:209 [backend fallback]\nAutocastCUDA: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:165 [backend fallback]\nFuncTorchBatched: registered at /workspace/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:731 [backend fallback]\nBatchedNestedTensor: registered at /workspace/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:758 [backend fallback]\nFuncTorchVmapMode: fallthrough registered at /workspace/pytorch/aten/src/ATen/functorch/VmapModeRegistrations.cpp:27 [backend fallback]\nBatched: registered at /workspace/pytorch/aten/src/ATen/LegacyBatchingRegistrations.cpp:1075 [backend fallback]\nVmapMode: fallthrough registered at /workspace/pytorch/aten/src/ATen/VmapModeRegistrations.cpp:33 [backend fallback]\nFuncTorchGradWrapper: registered at /workspace/pytorch/aten/src/ATen/functorch/TensorWrapper.cpp:208 [backend fallback]\nPythonTLSSnapshot: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:202 [backend fallback]\nFuncTorchDynamicLayerFrontMode: registered at /workspace/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:475 [backend fallback]\nPreDispatch: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:206 [backend fallback]\nPythonDispatcher: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:198 [backend fallback]\n"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "NotImplementedError",
+    "error": "Could not run 'aten::hspmm' with arguments from the 'CPU' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'aten::hspmm' is only available for these backends: [Meta, SparseCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradHIP, AutogradXLA, AutogradMPS, AutogradIPU, AutogradXPU, AutogradHPU, AutogradVE, AutogradLazy, AutogradMTIA, AutogradPrivateUse1, AutogradPrivateUse2, AutogradPrivateUse3, AutogradMeta, AutogradNestedTensor, Tracer, AutocastCPU, AutocastMTIA, AutocastXPU, AutocastMPS, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].\n\nMeta: registered at /workspace/pytorch/aten/src/ATen/core/MetaFallbackKernel.cpp:23 [backend fallback]\nSparseCPU: registered at /workspace/pytorch/build/aten/src/ATen/RegisterSparseCPU_0.cpp:3035 [kernel]\nBackendSelect: fallthrough registered at /workspace/pytorch/aten/src/ATen/core/BackendSelectFallbackKernel.cpp:3 [backend fallback]\nPython: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:194 [backend fallback]\nFuncTorchDynamicLayerBackMode: registered at /workspace/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:479 [backend fallback]\nFunctionalize: registered at /workspace/pytorch/aten/src/ATen/FunctionalizeFallbackKernel.cpp:349 [backend fallback]\nNamed: registered at /workspace/pytorch/aten/src/ATen/core/NamedRegistrations.cpp:7 [backend fallback]\nConjugate: registered at /workspace/pytorch/aten/src/ATen/ConjugateFallback.cpp:17 [backend fallback]\nNegative: registered at /workspace/pytorch/aten/src/ATen/native/NegateFallback.cpp:18 [backend fallback]\nZeroTensor: registered at /workspace/pytorch/aten/src/ATen/ZeroTensorFallback.cpp:86 [backend fallback]\nADInplaceOrView: fallthrough registered at /workspace/pytorch/aten/src/ATen/core/VariableFallbackKernel.cpp:100 [backend fallback]\nAutogradOther: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradCPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradCUDA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradHIP: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradXLA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMPS: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradIPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradXPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradHPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradVE: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradLazy: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMTIA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse1: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse2: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse3: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMeta: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradNestedTensor: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nTracer: registered at /workspace/pytorch/torch/csrc/autograd/generated/TraceType_2.cpp:17801 [kernel]\nAutocastCPU: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:322 [backend fallback]\nAutocastMTIA: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:466 [backend fallback]\nAutocastXPU: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:504 [backend fallback]\nAutocastMPS: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:209 [backend fallback]\nAutocastCUDA: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:165 [backend fallback]\nFuncTorchBatched: registered at /workspace/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:731 [backend fallback]\nBatchedNestedTensor: registered at /workspace/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:758 [backend fallback]\nFuncTorchVmapMode: fallthrough registered at /workspace/pytorch/aten/src/ATen/functorch/VmapModeRegistrations.cpp:27 [backend fallback]\nBatched: registered at /workspace/pytorch/aten/src/ATen/LegacyBatchingRegistrations.cpp:1075 [backend fallback]\nVmapMode: fallthrough registered at /workspace/pytorch/aten/src/ATen/VmapModeRegistrations.cpp:33 [backend fallback]\nFuncTorchGradWrapper: registered at /workspace/pytorch/aten/src/ATen/functorch/TensorWrapper.cpp:208 [backend fallback]\nPythonTLSSnapshot: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:202 [backend fallback]\nFuncTorchDynamicLayerFrontMode: registered at /workspace/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:475 [backend fallback]\nPreDispatch: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:206 [backend fallback]\nPythonDispatcher: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:198 [backend fallback]\n",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nNotImplementedError: Could not run 'aten::hspmm' with arguments from the 'CPU' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'aten::hspmm' is only available for these backends: [Meta, SparseCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradHIP, AutogradXLA, AutogradMPS, AutogradIPU, AutogradXPU, AutogradHPU, AutogradVE, AutogradLazy, AutogradMTIA, AutogradPrivateUse1, AutogradPrivateUse2, AutogradPrivateUse3, AutogradMeta, AutogradNestedTensor, Tracer, AutocastCPU, AutocastMTIA, AutocastXPU, AutocastMPS, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].\n\nMeta: registered at /workspace/pytorch/aten/src/ATen/core/MetaFallbackKernel.cpp:23 [backend fallback]\nSparseCPU: registered at /workspace/pytorch/build/aten/src/ATen/RegisterSparseCPU_0.cpp:3035 [kernel]\nBackendSelect: fallthrough registered at /workspace/pytorch/aten/src/ATen/core/BackendSelectFallbackKernel.cpp:3 [backend fallback]\nPython: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:194 [backend fallback]\nFuncTorchDynamicLayerBackMode: registered at /workspace/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:479 [backend fallback]\nFunctionalize: registered at /workspace/pytorch/aten/src/ATen/FunctionalizeFallbackKernel.cpp:349 [backend fallback]\nNamed: registered at /workspace/pytorch/aten/src/ATen/core/NamedRegistrations.cpp:7 [backend fallback]\nConjugate: registered at /workspace/pytorch/aten/src/ATen/ConjugateFallback.cpp:17 [backend fallback]\nNegative: registered at /workspace/pytorch/aten/src/ATen/native/NegateFallback.cpp:18 [backend fallback]\nZeroTensor: registered at /workspace/pytorch/aten/src/ATen/ZeroTensorFallback.cpp:86 [backend fallback]\nADInplaceOrView: fallthrough registered at /workspace/pytorch/aten/src/ATen/core/VariableFallbackKernel.cpp:100 [backend fallback]\nAutogradOther: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradCPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradCUDA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradHIP: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradXLA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMPS: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradIPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradXPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradHPU: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradVE: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradLazy: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMTIA: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse1: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse2: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradPrivateUse3: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradMeta: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nAutogradNestedTensor: registered at /workspace/pytorch/torch/csrc/autograd/generated/VariableType_2.cpp:20142 [autograd kernel]\nTracer: registered at /workspace/pytorch/torch/csrc/autograd/generated/TraceType_2.cpp:17801 [kernel]\nAutocastCPU: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:322 [backend fallback]\nAutocastMTIA: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:466 [backend fallback]\nAutocastXPU: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:504 [backend fallback]\nAutocastMPS: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:209 [backend fallback]\nAutocastCUDA: fallthrough registered at /workspace/pytorch/aten/src/ATen/autocast_mode.cpp:165 [backend fallback]\nFuncTorchBatched: registered at /workspace/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:731 [backend fallback]\nBatchedNestedTensor: registered at /workspace/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:758 [backend fallback]\nFuncTorchVmapMode: fallthrough registered at /workspace/pytorch/aten/src/ATen/functorch/VmapModeRegistrations.cpp:27 [backend fallback]\nBatched: registered at /workspace/pytorch/aten/src/ATen/LegacyBatchingRegistrations.cpp:1075 [backend fallback]\nVmapMode: fallthrough registered at /workspace/pytorch/aten/src/ATen/VmapModeRegistrations.cpp:33 [backend fallback]\nFuncTorchGradWrapper: registered at /workspace/pytorch/aten/src/ATen/functorch/TensorWrapper.cpp:208 [backend fallback]\nPythonTLSSnapshot: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:202 [backend fallback]\nFuncTorchDynamicLayerFrontMode: registered at /workspace/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:475 [backend fallback]\nPreDispatch: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:206 [backend fallback]\nPythonDispatcher: registered at /workspace/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:198 [backend fallback]\n\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.hspmm.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

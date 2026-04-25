@@ -1,0 +1,115 @@
+{
+  "api_full_name": "tensorflow.keras.ops.cumsum",
+  "api_name": "cumsum",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.cumsum",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x cannot be None"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "x",
+        "flag": "Optional",
+        "description": "Axis along which the cumulative sum is computed. By default the input is flattened. dtype: dtype of returned tensor. Defaults to x.dtype.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "axis must satisfy -rank(input) <= axis < rank(input)"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Output tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.cumsum.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

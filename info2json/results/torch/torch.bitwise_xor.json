@@ -1,0 +1,59 @@
+{
+  "api_name": "bitwise_xor",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the first input tensor",
+      "dtype_candidates": [
+        "int",
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the second input tensor",
+      "dtype_candidates": [
+        "int",
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "other must be a Tensor"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [
+        "int",
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "out is an Optional Tensor",
+        "output has the same shape as input if out not provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "computes the bitwise XOR of :attr:`input` and :attr:`other`"
+  },
+  "constraints": [
+    "input must be a Tensor",
+    "output is a Tensor if out is not provided"
+  ]
+}

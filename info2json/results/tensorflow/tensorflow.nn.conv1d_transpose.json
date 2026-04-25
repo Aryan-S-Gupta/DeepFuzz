@@ -1,0 +1,101 @@
+{
+  "api_name": "conv1d_transpose",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "3-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 3-D `Tensor` of type `float` and shape `[batch, in_width, in_channels]` for `NWC` data format or `[batch, in_channels, in_width]` for `NCW` data format.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "filters": {
+      "type": "tensor",
+      "size": "3-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 3-D `Tensor` with the same type as `input` and shape `[filter_width, output_channels, in_channels]`. `filter`'s `in_channels` dimension must match that of `input`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "filters must be 3-D"
+      ]
+    },
+    "output_shape": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 1-D `Tensor`, containing three elements, representing the output shape of the deconvolution op.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "output_shape must be 1-D"
+      ]
+    },
+    "strides": {
+      "type": "int|list|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An int or list of `ints` that has length `1` or `3`. The number of entries by which the filter is moved right at each step.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A string, either `'VALID'` or `'SAME'`. The padding algorithm. See [here](https://www.tensorflow.org/api_docs/python/tf/nn#notes_on_padding_2) for more information.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "VALID",
+        "SAME"
+      ],
+      "constraints": [
+        "padding must be one of VALID, SAME"
+      ]
+    },
+    "data_format": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A string. `'NWC'` and `'NCW'` are supported.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dilations": {
+      "type": "int|list",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "An int or list of `ints` that has length `1` or `3` which defaults to 1. The dilation factor for each dimension of input. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. Dilations in the batch and depth dimensions must be 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional name for the returned tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with the same type as `input`."
+  },
+  "constraints": []
+}

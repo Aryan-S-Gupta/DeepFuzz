@@ -1,0 +1,52 @@
+{
+  "api_name": "diag_embed",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor. Must be at least 1-dimensional.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "offset": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "which diagonal to consider. Default: 0 (main diagonal).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim1": {
+      "type": "int",
+      "size": "",
+      "default": "-2",
+      "flag": "Optional",
+      "description": "first dimension with respect to which to take diagonal. Default: -2.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim2": {
+      "type": "int",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "second dimension with respect to which to take diagonal. Default: -1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

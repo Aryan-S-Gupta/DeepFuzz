@@ -1,0 +1,51 @@
+{
+  "api_name": "mv",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "matrix to be multiplied",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "vec": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "vector to be multiplied",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "vec must be 1-D",
+        "size(vec) == m or size(vec) == n if out is not provided"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "size(vec) == m or size(vec) == n if out is not provided",
+        "out must have compatible shape with the result of matrix-vector multiplication if provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "result of matrix-vector multiplication"
+  },
+  "constraints": [
+    "n, m > 0 for input's shape (n × m)",
+    "size(vec) == m or size(vec) == n if out is not provided"
+  ]
+}

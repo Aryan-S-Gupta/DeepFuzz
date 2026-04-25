@@ -1,0 +1,134 @@
+{
+  "api_full_name": "tensorflow.linalg.band_part",
+  "api_name": "band_part",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.band_part",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Rank `k` tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "num_lower": {
+      "name": "num_lower",
+      "spec": {
+        "type": "number|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 0-D tensor. Number of subdiagonals to keep. If negative, keep entire lower triangle.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "int32",
+          "int64"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "num_upper": {
+      "name": "num_upper",
+      "spec": {
+        "type": "number|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `num_lower`. 0-D tensor. Number of superdiagonals to keep. If negative, keep entire upper triangle.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.band_part.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

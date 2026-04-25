@@ -1,0 +1,135 @@
+{
+  "api_full_name": "tensorflow.ensure_shape",
+  "api_name": "ensure_shape",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.ensure_shape",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x's shape must match expected shape if shape is not None"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "tuple|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `TensorShape` representing the shape of this tensor, a `TensorShapeProto`, a list, a tuple, or None.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must be compatible with x's shape",
+          "x's shape must match expected shape if shape is not None"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"EnsureShape\"",
+        "flag": "Optional",
+        "description": "A name for this operation (optional). Defaults to \"EnsureShape\".",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type and contents as `x`."
+  },
+  "constraints": [
+    "x's shape must match expected shape if shape is not None"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Failed to convert '<tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>' to a shape: '<tf.Tensor: shape=(), dtype=float32, numpy=1.0>'could not be converted to a dimension. A shape should either be single dimension (e.g. 10), or an iterable of dimensions (e.g. [1, 10, None])."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Failed to convert '<tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>' to a shape: '<tf.Tensor: shape=(), dtype=float32, numpy=1.0>'could not be converted to a dimension. A shape should either be single dimension (e.g. 10), or an iterable of dimensions (e.g. [1, 10, None]).",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/tensor_shape.py\", line 856, in __init__\n    raise TypeError(\n    ...<3 lines>...\n        \"dimensions (e.g. [1, 10, None]).\".format(dims, d)) from e\nTypeError: Failed to convert '<tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>' to a shape: '<tf.Tensor: shape=(), dtype=float32, numpy=1.0>'could not be converted to a dimension. A shape should either be single dimension (e.g. 10), or an iterable of dimensions (e.g. [1, 10, None]).\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ensure_shape.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

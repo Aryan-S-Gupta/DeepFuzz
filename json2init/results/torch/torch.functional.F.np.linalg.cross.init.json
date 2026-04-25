@@ -1,0 +1,131 @@
+{
+  "api_full_name": "torch.functional.F.np.linalg.cross",
+  "api_name": "cross",
+  "module_path": "torch.functional.F.np.linalg",
+  "import_path": "torch.functional.F.np.linalg.cross",
+  "backend": "torch",
+  "params": {
+    "x1": {
+      "name": "x1",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like The first input array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "x2": {
+      "name": "x2",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like The second input array. Must be compatible with ``x1`` for all non-compute axes. The size of the axis over which to compute the cross-product must be the same size as the respective axis in ``x1``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "int, optional The axis (dimension) of ``x1`` and ``x2`` containing the vectors for which to compute the cross-product. Default: ``-1``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array containing the cross products."
+  },
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: cross() got some positional-only arguments passed as keyword arguments: 'x1, x2'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "cross() got some positional-only arguments passed as keyword arguments: 'x1, x2'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: cross() got some positional-only arguments passed as keyword arguments: 'x1, x2'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.linalg.cross.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

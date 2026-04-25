@@ -1,0 +1,149 @@
+{
+  "api_full_name": "tensorflow.math.top_k",
+  "api_name": "top_k",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.top_k",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "1-D or higher `Tensor` with last dimension at least `k`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "k": {
+      "name": "k",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "0-D `Tensor` of type `int16`, `int32` or `int64`. Number of top element to look for along the last dimension (along each row for matrices).",
+        "dtype_candidates": [
+          "int16",
+          "int32",
+          "int64"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "sorted": {
+      "name": "sorted",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "If true the resulting `k` elements will be sorted by the values in descending order.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "if true the resulting `k` elements will be sorted by the values in descending order.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: if true the resulting `k` elements will be sorted by the values in descending order."
+    },
+    "index_type": {
+      "name": "index_type",
+      "spec": {
+        "type": "dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Optional dtype for output indices.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Optional name for the operation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "optional name for the operation.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: optional name for the operation."
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A tuple with two named fields: The `k` largest elements along each last dimensional slice. indices: The indices of `values` within the last dimension of `input`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'sorted' unresolved: unhandled chosen type: if true the resulting `k` elements will be sorted by the values in descending order.",
+    "required param 'name' unresolved: unhandled chosen type: optional name for the operation."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.top_k.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

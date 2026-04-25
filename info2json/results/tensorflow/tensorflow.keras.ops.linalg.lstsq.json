@@ -1,0 +1,42 @@
+{
+  "api_name": "lstsq",
+  "module_path": "tensorflow.keras.ops.linalg",
+  "params": {
+    "a": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "\"Coefficient\" matrix of shape `(M, N)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "b": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Ordinate or \"dependent variable\" values, of shape `(M,)` or `(M, K)`. If `b` is two-dimensional, the least-squares solution is calculated for each of the K columns of `b`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rcond": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Cut-off ratio for small singular values of `a`. For the purposes of rank determination, singular values are treated as zero if they are smaller than rcond times the largest singular value of `a`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "multiple",
+    "description": "Tensor with shape `(N,)` or `(N, K)` containing the least-squares solutions. **NOTE:** The output differs from `numpy.linalg.lstsq`. NumPy returns a tuple with four elements, the first of which being the least-squares solutions and the others being essentially never used. Keras only returns the first value. This is done both to ensure consistency across backends (which cannot be achieved for the other values) and to simplify the API."
+  },
+  "constraints": []
+}

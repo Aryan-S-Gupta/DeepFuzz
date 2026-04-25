@@ -1,0 +1,50 @@
+{
+  "api_name": "encode_png",
+  "module_path": "tensorflow.io",
+  "params": {
+    "image": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `uint8`, `uint16`. Rank N >= 3 with shape `batch_dims + [height, width, channels]`.",
+      "dtype_candidates": [
+        "uint8",
+        "uint16"
+      ],
+      "enum_values": [
+        "uint8",
+        "uint16"
+      ],
+      "constraints": [
+        "image must be one of uint8, uint16"
+      ]
+    },
+    "compression": {
+      "type": "int",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `-1`. Compression level.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": []
+}

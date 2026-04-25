@@ -1,0 +1,110 @@
+{
+  "api_full_name": "tensorflow.keras.ops.numpy.reshape",
+  "api_name": "reshape",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "import_path": "tensorflow.keras.ops.numpy.reshape",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x and newshape must satisfy compatibility rule"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "newshape": {
+      "name": "newshape",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The new shape should be compatible with the original shape. One shape dimension can be -1 in which case the value is inferred from the length of the array and remaining dimensions.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "-1 can appear at most once",
+          "x and newshape must satisfy compatibility rule"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The reshaped tensor."
+  },
+  "constraints": [
+    "x and newshape must satisfy compatibility rule"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'Tshape' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Reshape}}; Op<name=Reshape; signature=tensor:T, shape:Tshape -> output:T; attr=T:type; attr=Tshape:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Reshape] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'Tshape' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Reshape}}; Op<name=Reshape; signature=tensor:T, shape:Tshape -> output:T; attr=T:type; attr=Tshape:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Reshape] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 5760, in reshape\n    return backend.numpy.reshape(x, newshape)\n           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2399, in reshape\n    return tf.reshape(x, newshape)\n           ~~~~~~~~~~^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'Tshape' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Reshape}}; Op<name=Reshape; signature=tensor:T, shape:Tshape -> output:T; attr=T:type; attr=Tshape:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Reshape] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.reshape.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

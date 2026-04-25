@@ -1,0 +1,72 @@
+{
+  "api_name": "reduce_all",
+  "module_path": "tensorflow.math",
+  "params": {
+    "input_tensor": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The boolean tensor to reduce.",
+      "dtype_candidates": [
+        "bool",
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "input_tensor must be a boolean tensor.",
+        "axis must be None or an int32/int64 in the range [-rank(input_tensor), rank(input_tensor))"
+      ]
+    },
+    "axis": {
+      "type": "int32, int64",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        ">= -rank(input_tensor)",
+        "< rank(input_tensor)",
+        "axis must be None or an int32/int64 in the range [-rank(input_tensor), rank(input_tensor))"
+      ]
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Required",
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "keepdims is optional and defaults to False."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "bool",
+    "description": "The reduced tensor. @compatibility(numpy) Equivalent to np.all @end_compatibility"
+  },
+  "constraints": [
+    "axis must be None or an int32/int64 in the range [-rank(input_tensor), rank(input_tensor))"
+  ]
+}

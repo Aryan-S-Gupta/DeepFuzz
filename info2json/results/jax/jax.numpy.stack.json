@@ -1,0 +1,44 @@
+{
+  "api_name": "stack",
+  "module_path": "jax.numpy",
+  "params": {
+    "arrays": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a sequence of arrays to stack; each must have the same shape. If a single array is given it will be treated equivalently to `arrays = unstack(arrays)`, but the implementation will avoid explicit unstacking.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "arrays must have the same shape."
+      ]
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "specify the axis along which to stack.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "unused by JAX dtype: optional dtype of the resulting array. If not specified, the dtype will be determined via type promotion rules described in :ref:`type-promotion`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "the stacked result."
+  },
+  "constraints": []
+}

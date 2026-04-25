@@ -1,0 +1,44 @@
+{
+  "api_name": "decode_bmp",
+  "module_path": "tensorflow.io",
+  "params": {
+    "contents": {
+      "type": "string|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. 0-D. The BMP-encoded image.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "channels": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "channels must be in range [0, inf) if provided"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1D",
+    "description": "A `Tensor` of type `uint8`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,39 @@
+{
+  "api_name": "vecmat",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, N)``. Leading dimensions must be broadcast-compatible with leading dimensions of ``x1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Leading dimensions must be broadcast-compatible with leading dimensions of x1",
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of shape ``(..., N)`` containing the batched conjugate vector-matrix product."
+  },
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ]
+}

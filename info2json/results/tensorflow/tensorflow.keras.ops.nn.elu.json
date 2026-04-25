@@ -1,0 +1,35 @@
+{
+  "api_name": "elu",
+  "module_path": "tensorflow.keras.ops.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "number",
+      "size": "scalar",
+      "default": "1",
+      "flag": "Optional",
+      "description": "A scalar, slope of positive section. Defaults to `1.0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "alpha >= 0.",
+        "alpha must be positive"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor with the same shape as `x`."
+  },
+  "constraints": []
+}

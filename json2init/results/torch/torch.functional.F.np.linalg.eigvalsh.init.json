@@ -1,0 +1,93 @@
+{
+  "api_full_name": "torch.functional.F.np.linalg.eigvalsh",
+  "api_name": "eigvalsh",
+  "module_path": "torch.functional.F.np.linalg",
+  "import_path": "torch.functional.F.np.linalg.eigvalsh",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "(..., M, M) array_like A complex- or real-valued matrix whose eigenvalues are to be computed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "shape constraints not specified in docs",
+          "input matrix `a` must be Hermitian"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "UPLO": {
+      "name": "UPLO",
+      "spec": {
+        "type": "string|float",
+        "size": "",
+        "default": "L",
+        "flag": "Optional",
+        "description": "{'L', 'U'}, optional Specifies whether the calculation is done with the lower triangular part of `a` ('L', default) or the upper triangular part ('U'). Irrespective of this value only the real parts of the diagonal will be considered in the computation to preserve the notion of a Hermitian matrix. It therefore follows that the imaginary part of the diagonal will always be treated as zero.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "L",
+          "U"
+        ],
+        "constraints": [
+          "must be either 'L' or 'U'",
+          "UPLO must be one of L, U"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(..., M,)",
+    "description": "------- (..., M,) ndarray The eigenvalues in ascending order, each repeated according to its multiplicity."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: 0-dimensional array given. Array must be at least two-dimensional"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "LinAlgError",
+    "error": "0-dimensional array given. Array must be at least two-dimensional",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/numpy/linalg/_linalg.py\", line 1312, in eigvalsh\n    _assert_stacked_2d(a)\n  File \"/usr/local/lib/python3.10/dist-packages/numpy/linalg/_linalg.py\", line 195, in _assert_stacked_2d\n    raise LinAlgError('%d-dimensional array given. Array must be '\nnumpy.linalg.LinAlgError: 0-dimensional array given. Array must be at least two-dimensional\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.linalg.eigvalsh.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

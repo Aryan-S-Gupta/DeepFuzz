@@ -1,0 +1,77 @@
+{
+  "api_full_name": "tensorflow.keras.ops.logical_not",
+  "api_name": "logical_not",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.logical_not",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "must be compatible with the input shape of the operation",
+          "x and output must have same shape and dtype"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "Same as x's numbers",
+    "description": "Output tensor, element-wise logical NOT of the input."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "bool",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.logical_not.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

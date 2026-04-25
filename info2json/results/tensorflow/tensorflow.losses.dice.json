@@ -1,0 +1,50 @@
+{
+  "api_name": "dice",
+  "module_path": "tensorflow.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred shapes must be broadcast-compatible"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred shapes must be broadcast-compatible"
+      ]
+    },
+    "axis": {
+      "type": "tuple",
+      "size": "",
+      "default": "()",
+      "flag": "Optional",
+      "description": "tuple for which dimensions the loss is calculated",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis values must satisfy axis <= rank(input)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Dice loss value."
+  },
+  "constraints": [
+    "y_true and y_pred shapes must be broadcast-compatible"
+  ]
+}

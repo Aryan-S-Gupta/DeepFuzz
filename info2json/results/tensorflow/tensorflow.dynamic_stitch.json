@@ -1,0 +1,48 @@
+{
+  "api_name": "dynamic_stitch",
+  "module_path": "tensorflow",
+  "params": {
+    "indices": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of at least 1 `Tensor` objects with type `int32`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Must not be empty.",
+        "All tensors in list must have same shape.",
+        "'indices' and 'data' must have the same length."
+      ]
+    },
+    "data": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list with the same length as `indices` of `Tensor` objects with the same type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `data`."
+  },
+  "constraints": []
+}

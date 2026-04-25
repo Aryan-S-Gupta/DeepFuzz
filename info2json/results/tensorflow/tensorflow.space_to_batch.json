@@ -1,0 +1,72 @@
+{
+  "api_name": "space_to_batch",
+  "module_path": "tensorflow",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. N-D with shape `input_shape = [batch] + spatial_shape + remaining_shape`, where spatial_shape has `M` dimensions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "block_shape": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 1-D with shape `[M]`, all values must be >= 1.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "block_shape must be 1-D",
+        "block_shape must be one of int32, int64"
+      ]
+    },
+    "paddings": {
+      "type": "tensor",
+      "size": "2-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 2-D with shape `[M, 2]`, all values must be >= 0. `paddings[i] = [pad_start, pad_end]` specifies the padding for input dimension `i + 1`, which corresponds to spatial dimension `i`. It is required that `block_shape[i]` divides `input_shape[i + 1] + pad_start + pad_end`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64",
+        "i"
+      ],
+      "constraints": [
+        "paddings must be 2-D",
+        "paddings must be non-negative",
+        "paddings must be one of int32, int64, i"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": []
+}

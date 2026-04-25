@@ -1,0 +1,41 @@
+{
+  "api_name": "reduce_sum",
+  "module_path": "jax.lax",
+  "params": {
+    "operand": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array over which to sum. Must have numerical dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have numerical dtype.",
+        "operand and axes are required parameters."
+      ]
+    },
+    "axes": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of zero or more unique integers specifying the axes over which to sum. Each entry must satisfy ``0 <= axis < operand.ndim``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be a sequence of zero or more unique integers.",
+        "Each entry must satisfy `0 <= axis < operand.ndim`.",
+        "operand and axes are required parameters."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array of the same dtype as ``operand``, with shape corresponding to the dimensions of ``operand.shape`` with ``axes`` removed."
+  },
+  "constraints": [
+    "operand and axes are required parameters."
+  ]
+}

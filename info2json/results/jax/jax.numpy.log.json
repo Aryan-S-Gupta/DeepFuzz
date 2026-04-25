@@ -1,0 +1,26 @@
+{
+  "api_name": "log",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "jnp.log on the result of jnp.exp(x) yields the original input x as :math`log(a*b) = log(a)+log(b)`."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real",
+    "description": "An array containing the logarithm of each element in ``x``, promotes to inexact dtype."
+  },
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes in constraints for multiplication example."
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "api_full_name": "tensorflow.math.maximum",
+  "api_name": "maximum",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.maximum",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `bfloat16`, `half`, `float32`, `float64`, `int8`, `uint8`, `int16`, `uint16`, `int32`, `uint32`, `int64`, `uint64`.",
+        "dtype_candidates": [
+          "int8",
+          "int16",
+          "int32",
+          "int64",
+          "uint8",
+          "uint16",
+          "uint32",
+          "uint64",
+          "float32",
+          "float64",
+          "bfloat16"
+        ],
+        "enum_values": [
+          "bfloat16",
+          "half",
+          "float32",
+          "float64",
+          "int8",
+          "uint8",
+          "int16",
+          "uint16",
+          "int32",
+          "uint32",
+          "int64",
+          "uint64"
+        ],
+        "constraints": [
+          "Must be one of the following types: bfloat16, half, float32, float64, int8, uint8, int16, uint16, int32, uint32, int64, uint64.",
+          "x must be one of bfloat16, half, float32, float64, int8, uint8, int16, uint16, int32, uint32, int64, uint64",
+          "x and y must have broadcast-compatible shapes."
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "y": {
+      "name": "y",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `x`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must have the same type as x.",
+          "y must have the same dtype as x",
+          "x and y must have broadcast-compatible shapes."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "name is optional."
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `x`."
+  },
+  "constraints": [
+    "x and y must have broadcast-compatible shapes."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.maximum.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

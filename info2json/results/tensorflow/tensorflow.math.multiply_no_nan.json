@@ -1,0 +1,55 @@
+{
+  "api_name": "multiply_no_nan",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [
+        "float32",
+        "float64"
+      ],
+      "constraints": [
+        "x must be one of float32, float64",
+        "y is zero returns 0 even if x is NaN or infinite"
+      ]
+    },
+    "y": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` whose dtype is compatible with `x`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y is zero returns 0 even if x is NaN or infinite"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "\"\"",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float",
+    "numbers": "1",
+    "description": "The element-wise value of the x times y."
+  },
+  "constraints": [
+    "y is zero returns 0 even if x is NaN or infinite"
+  ]
+}

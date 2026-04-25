@@ -1,0 +1,37 @@
+{
+  "api_name": "trace",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, N)`` and whose innermost two dimensions form MxN matrices for which to take the trace.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "M and N must be positive integers",
+        "dtype will match the dtype of x, promoted to default precision in the case of integer types"
+      ]
+    },
+    "offset": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "0)",
+      "flag": "Optional",
+      "description": "positive or negative offset from the main diagonal (default: 0). dtype: data type of the returned array (default: ``None``). If ``None``, then output dtype will match the dtype of ``x``, promoted to default precision in the case of integer types.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "offset must be positive"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "array of batched traces with shape ``x.shape[:-2]``"
+  },
+  "constraints": []
+}

@@ -1,0 +1,52 @@
+{
+  "api_name": "full_like",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "example array-like, used for shape and dtype information.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fill_value": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "a scalar value to fill the entries of the output array. dtype: optional, a dtype parameter for the output ndarray.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shape": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, a shape parameter for the output ndarray.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sharding": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "an optional sharding specification for the resulting array. If not specified, the output will have the same sharding as the input, with a few exceptions/limitations in particular: 1. Sharding is not available during tracing, thus this will rely on jit. 2. If x is weakly typed or uncommitted, will use default sharding. 3. Shape is not None and is different from x.shape, default will be used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An ndarray with the same shape as `x` with its entries set equal to `fill_value`, similar to the output of np.full."
+  },
+  "constraints": []
+}

@@ -1,0 +1,199 @@
+{
+  "api_full_name": "torch.nn.quantized.functional.linear",
+  "api_name": "linear",
+  "module_path": "torch.nn.quantized.functional",
+  "import_path": "torch.nn.quantized.functional.linear",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Quantized input of type `torch.quint8`",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "weight": {
+      "name": "weight",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Quantized weight of type `torch.qint8`",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "bias": {
+      "name": "bias",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "None or fp32 bias of type `torch.float`",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "scale": {
+      "name": "scale",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "output scale. If None, derived from the input scale",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "zero_point": {
+      "name": "zero_point",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "output zero point. If None, derived from the input zero_point",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "Shape": {
+      "name": "Shape",
+      "spec": {
+        "type": "number|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "- Input: :math:`(N, *, in\\_features)` where `*` means any number of additional dimensions - Weight: :math:`(out\\_features, in\\_features)` - Bias: :math:`(out\\_features)` - Output: :math:`(N, *, out\\_features)`",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: linear() got an unexpected keyword argument 'Shape'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "linear() got an unexpected keyword argument 'Shape'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: linear() got an unexpected keyword argument 'Shape'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.nn.quantized.functional.linear.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

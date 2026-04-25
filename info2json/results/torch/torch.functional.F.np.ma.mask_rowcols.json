@@ -1,0 +1,36 @@
+{
+  "api_name": "mask_rowcols",
+  "module_path": "torch.functional.F.np.ma",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "2D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, MaskedArray The array to mask. If not a MaskedArray instance (or if no array elements are masked), the result is a MaskedArray with `mask` set to `nomask` (False). Must be a 2D array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be a 2D array.",
+        "a must be 2-D",
+        "Input array `a` and output MaskedArray must have the same shape."
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Axis along which to perform the operation. If None, applies to a flattened version of the array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- MaskedArray A modified version of the input array, masked depending on the value of the `axis` parameter."
+  },
+  "constraints": []
+}

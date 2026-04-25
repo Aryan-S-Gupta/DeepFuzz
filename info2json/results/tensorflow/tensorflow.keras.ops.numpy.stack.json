@@ -1,0 +1,35 @@
+{
+  "api_name": "stack",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A sequence of tensors.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "Axis along which to stack. Defaults to `0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Defaults to `0`",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The stacked tensor."
+  },
+  "constraints": []
+}

@@ -1,0 +1,32 @@
+{
+  "api_name": "unstack",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array to unstack. Must have ``x.ndim >= 1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "integer axis along which to unstack. Must satisfy ``-x.ndim <= axis < x.ndim``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "tuple of unstacked arrays."
+  },
+  "constraints": []
+}

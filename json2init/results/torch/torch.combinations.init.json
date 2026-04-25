@@ -1,0 +1,126 @@
+{
+  "api_full_name": "torch.combinations",
+  "api_name": "combinations",
+  "module_path": "torch",
+  "import_path": "torch.combinations",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "1D",
+        "default": "",
+        "flag": "Required",
+        "description": "1D vector.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "r": {
+      "name": "r",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "2",
+        "flag": "Optional",
+        "description": "number of elements to combine",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "with_replacement": {
+      "name": "with_replacement",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "whether to allow duplication in combination",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "1",
+    "description": "A tensor equivalent to converting all the input tensors into lists, do `itertools.combinations` or `itertools.combinations_with_replacement` on these lists, and finally convert the resulting list into tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "Tensor",
+      "shape": [
+        0,
+        2
+      ],
+      "dtype": "float32",
+      "device": "cpu",
+      "numel": 0,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.combinations.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

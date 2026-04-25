@@ -1,0 +1,25 @@
+{
+  "api_name": "sici",
+  "module_path": "jax.scipy.special",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array-like, real-valued input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be real-valued",
+        "output arrays shapes must match x's shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple of two arrays, each with the same shape as `x`: - The first array contains the sine integral values `Si(x)`. - The second array contains the cosine integral values `Ci(x)`."
+  },
+  "constraints": []
+}

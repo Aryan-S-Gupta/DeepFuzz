@@ -1,0 +1,58 @@
+{
+  "api_name": "band_part",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Rank `k` tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_lower": {
+      "type": "number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 0-D tensor. Number of subdiagonals to keep. If negative, keep entire lower triangle.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": []
+    },
+    "num_upper": {
+      "type": "number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `num_lower`. 0-D tensor. Number of superdiagonals to keep. If negative, keep entire upper triangle.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": []
+}

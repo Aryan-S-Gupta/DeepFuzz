@@ -1,0 +1,25 @@
+{
+  "api_name": "get_rng_state",
+  "module_path": "torch.cuda.random",
+  "params": {
+    "device": {
+      "type": "torch.device|int",
+      "size": "",
+      "default": "'cuda'",
+      "flag": "Optional",
+      "description": "The device to return the RNG state of.",
+      "constraints": [
+        "'device' parameter is optional.",
+        "If 'device' is not provided or its value is omitted, it defaults to 'cuda'."
+      ]
+    }
+  },
+  "output": {
+    "type": "state object",
+    "numbers": "",
+    "description": "The RNG state of the specified device."
+  },
+  "constraints": [
+    "The output type depends on the CUDA implementation and cannot be further constrained by this documentation."
+  ]
+}

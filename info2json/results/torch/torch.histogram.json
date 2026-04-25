@@ -1,0 +1,76 @@
+{
+  "api_name": "histogram",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bins": {
+      "type": "int|sequence|number|tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "int or 1D Tensor. If int, defines the number of equal-width bins. If tensor, defines the sequence of bin edges including the rightmost edge.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "bins must be 1-D"
+      ]
+    },
+    "range": {
+      "type": "float|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Defines the range of the bins.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "weight": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If provided, weight should have the same shape as input. Each value in input contributes its associated weight towards its bin's result.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "density": {
+      "type": "bool|callable",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If False, the result will contain the count (or total weight) in each bin. If True, the result is the value of the probability density function over the bins, normalized such that the integral over the range of the bins is 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor. (tuple, optional): The result tuple of two output tensors (hist, bin_edges).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "hist (Tensor): 1D Tensor containing the values of the histogram. bin_edges(Tensor): 1D Tensor containing the edges of the histogram bins."
+  },
+  "constraints": []
+}

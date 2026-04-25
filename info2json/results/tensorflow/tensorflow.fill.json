@@ -1,0 +1,60 @@
+{
+  "api_name": "fill",
+  "module_path": "tensorflow",
+  "params": {
+    "dims": {
+      "type": "sequence|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 1-D sequence of non-negative numbers. Represents the shape of the output `tf.Tensor`. Entries should be of type: `int32`, `int64`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "dims must be 1-D",
+        "dims must be non-negative"
+      ]
+    },
+    "value": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A value to fill the returned `tf.Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "value must be one of tf.Tensor"
+      ]
+    },
+    "name": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional string. The name of the output `tf.Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tf.experimental.dtensor.Layout",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional, `tf.experimental.dtensor.Layout`. If provided, the result is a [DTensor](https://www.tensorflow.org/guide/dtensor_overview) with the provided layout.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A `tf.Tensor` with shape `dims` and the same dtype as `value`."
+  },
+  "constraints": []
+}

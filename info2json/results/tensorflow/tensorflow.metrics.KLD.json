@@ -1,0 +1,43 @@
+{
+  "api_name": "KLD",
+  "module_path": "tensorflow.metrics",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be the same shape as y_pred",
+        "y_true and y_pred must be clipped between 1e-7 and 1 before calculation",
+        "loss.shape matches the shape of batch_size dimension in y_true and y_pred"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be the same shape as y_true",
+        "y_true and y_pred must be clipped between 1e-7 and 1 before calculation",
+        "loss.shape matches the shape of batch_size dimension in y_true and y_pred"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": [
+    "y_true and y_pred must be clipped between 1e-7 and 1 before calculation",
+    "loss.shape matches the shape of batch_size dimension in y_true and y_pred"
+  ]
+}

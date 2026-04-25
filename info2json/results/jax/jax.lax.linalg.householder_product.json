@@ -1,0 +1,34 @@
+{
+  "api_name": "householder_product",
+  "module_path": "jax.lax.linalg",
+  "params": {
+    "a": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A matrix with shape ``[..., m, n]``, whose lower triangle contains elementary Householder reflectors.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "taus": {
+      "type": "number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A vector with shape ``[..., k]``, where ``k < min(m, n)``, containing the scalar factors of the elementary Householder reflectors.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "orthogonal_matrix",
+    "numbers": "float",
+    "description": "A batch of orthogonal (unitary) matrices with the same shape as ``a``, containing the products of the elementary Householder reflectors."
+  },
+  "constraints": [
+    "a's lower triangle contains elementary Householder reflectors"
+  ]
+}

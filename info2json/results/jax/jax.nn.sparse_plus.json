@@ -1,0 +1,25 @@
+{
+  "api_name": "sparse_plus",
+  "module_path": "jax.nn",
+  "params": {
+    "x": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input (float)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be a real number",
+        "-1 < x < 1 for 1/4*(x+1)^2 part"
+      ]
+    }
+  },
+  "output": {
+    "type": "float",
+    "numbers": "",
+    "description": "The result of sparse_plus(x)"
+  },
+  "constraints": []
+}

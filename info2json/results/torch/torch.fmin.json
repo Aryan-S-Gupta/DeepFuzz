@@ -1,0 +1,46 @@
+{
+  "api_name": "fmin",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the second input tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input and other must have the same shape or broadcastable shapes"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "a new tensor with the result of element-wise minimum between input and other, broadcasted if necessary"
+  },
+  "constraints": [
+    "if exactly one of the two elements being compared is a NaN then the non-NaN element is taken as the minimum"
+  ]
+}

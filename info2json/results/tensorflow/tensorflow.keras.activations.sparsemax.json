@@ -1,0 +1,36 @@
+{
+  "api_name": "sparsemax",
+  "module_path": "tensorflow.keras.activations",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x cannot be None"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "`int`, axis along which the sparsemax operation is applied.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must satisfy 0 <= axis < rank(x) if axis is not None"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor, output of sparsemax transformation. Has the same type and shape as `x`. Reference: - [Martins et.al., 2016](https://arxiv.org/abs/1602.02068)"
+  },
+  "constraints": []
+}

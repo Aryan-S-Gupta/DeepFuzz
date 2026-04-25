@@ -1,0 +1,36 @@
+{
+  "api_name": "flip",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dims": {
+      "type": "tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "axis to flip on",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must contain int values"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "a view in constant time."
+  },
+  "constraints": [
+    "input and output refer to the same data if no copying is needed"
+  ]
+}

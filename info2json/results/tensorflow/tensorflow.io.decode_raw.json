@@ -1,0 +1,69 @@
+{
+  "api_name": "decode_raw",
+  "module_path": "tensorflow.io",
+  "params": {
+    "input_bytes": {
+      "type": "string|tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Each element of the input Tensor is converted to an array of bytes. Currently, this must be a tensor of strings (bytes), although semantically the operation should support any input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out_type": {
+      "type": "float|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`DType` of the output. Acceptable types are `half`, `float`, `double`, `int32`, `uint16`, `uint8`, `int16`, `int8`, `int64`.",
+      "dtype_candidates": [
+        "int8",
+        "int16",
+        "int32",
+        "int64",
+        "uint8",
+        "uint16"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "little_endian": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Whether the `input_bytes` data is in little-endian format. Data will be converted into host byte order if necessary.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fixed_length": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If set, the first `fixed_length` bytes of each element will be converted. Data will be zero-padded or truncated to the specified length. `fixed_length` must be a multiple of the size of `out_type`. `fixed_length` must be specified if the elements of `input_bytes` are of variable length.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` object storing the decoded bytes."
+  },
+  "constraints": []
+}

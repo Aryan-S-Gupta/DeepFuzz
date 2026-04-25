@@ -1,0 +1,44 @@
+{
+  "api_name": "fftshift",
+  "module_path": "tensorflow.signal",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`Tensor`, input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x shape must match output shape"
+      ]
+    },
+    "axes": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "`int` or shape `tuple`, optional Axes over which to shift. Default is None, which shifts all axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`, The shifted tensor."
+  },
+  "constraints": []
+}

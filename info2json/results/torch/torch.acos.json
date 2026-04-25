@@ -1,0 +1,35 @@
+{
+  "api_name": "acos",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Defaults to None",
+        "input and out must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Returns a new tensor with the arccosine (in radians) of each element in input"
+  },
+  "constraints": []
+}

@@ -1,0 +1,47 @@
+{
+  "api_name": "cast",
+  "module_path": "tensorflow",
+  "params": {
+    "x": {
+      "type": "float|list|number|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or `SparseTensor` or `IndexedSlices` of numeric type. It could be `uint8`, `uint16`, `uint32`, `uint64`, `int8`, `int16`, `int32`, `int64`, `float16`, `float32`, `float64`, `complex64`, `complex128`, `bfloat16`. dtype: The destination type. The list of supported dtypes is the same as `x`.",
+      "dtype_candidates": [
+        "int8",
+        "int16",
+        "int32",
+        "int64",
+        "uint8",
+        "uint16",
+        "uint32",
+        "uint64",
+        "float16",
+        "float32",
+        "float64",
+        "bfloat16",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A `Tensor` or `SparseTensor` or `IndexedSlices` with same shape as `x` and same type as `dtype`."
+  },
+  "constraints": []
+}

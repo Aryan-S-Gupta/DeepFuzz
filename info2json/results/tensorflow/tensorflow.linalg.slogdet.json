@@ -1,0 +1,43 @@
+{
+  "api_name": "slogdet",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `half`, `float32`, `float64`, `complex64`, `complex128`. Shape is `[N, M, M]`.",
+      "dtype_candidates": [
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [
+        "half",
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple of `Tensor` objects (sign, log_abs_determinant). A `Tensor`. Has the same type as `input`. log_abs_determinant: A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": []
+}

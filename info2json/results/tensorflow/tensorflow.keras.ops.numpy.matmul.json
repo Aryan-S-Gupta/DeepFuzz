@@ -1,0 +1,34 @@
+{
+  "api_name": "matmul",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Output tensor, matrix product of the inputs."
+  },
+  "constraints": [
+    "If either tensor is N-D, N > 2, it is treated as a stack of matrices a 1 to its dimensions. After matrix multiplication the prepended to its dimensions. After matrix multiplication the appended 1 is removed."
+  ]
+}

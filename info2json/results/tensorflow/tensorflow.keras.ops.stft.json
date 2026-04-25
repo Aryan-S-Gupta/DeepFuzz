@@ -1,0 +1,74 @@
+{
+  "api_name": "stft",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sequence_length": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer representing the sequence length.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sequence_stride": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer representing the sequence hop size.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fft_length": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer representing the size of the FFT to apply. If not specified, uses the smallest power of 2 enclosing `sequence_length`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "window": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "\"hann\"",
+      "flag": "Optional",
+      "description": "A string, a tensor of the window or `None`. If `window` is a string, available values are `\"hann\"` and `\"hamming\"`. If `window` is a tensor, it will be used directly as the window and its length must be `sequence_length`. If `window` is `None`, no windowing is used. Defaults to `\"hann\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "window must be one of hann, hamming"
+      ]
+    },
+    "center": {
+      "type": "sequence",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "Whether to pad `x` on both sides so that the t-th sequence is centered at time `t * sequence_stride`. Otherwise, the t-th sequence begins at time `t * sequence_stride`. Defaults to `True`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple containing two tensors - the real and imaginary parts of the STFT output."
+  },
+  "constraints": []
+}

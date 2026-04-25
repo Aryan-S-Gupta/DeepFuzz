@@ -1,0 +1,172 @@
+{
+  "api_full_name": "tensorflow.keras.quantizers.fake_quant_with_min_max_vars",
+  "api_name": "fake_quant_with_min_max_vars",
+  "module_path": "tensorflow.keras.quantizers",
+  "import_path": "tensorflow.keras.quantizers.fake_quant_with_min_max_vars",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "float|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input Keras tensor of float dtype.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "min_vals": {
+      "name": "min_vals",
+      "spec": {
+        "type": "number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "A global minimum scalar or a per-channel minimum tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "max_vals": {
+      "name": "max_vals",
+      "spec": {
+        "type": "number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "A global maximum scalar or a per-channel maximum tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "num_bits": {
+      "name": "num_bits",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "8",
+        "flag": "Optional",
+        "description": "Quantization bit width (e.g., `8` for int8). Defaults to `8`.",
+        "dtype_candidates": [
+          "int8"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "quantization bit width (e.g.",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: quantization bit width (e.g."
+    },
+    "narrow_range": {
+      "name": "narrow_range",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Whether to use narrow quantization range. Defaults to `False`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "whether to use narrow quantization range. defaults to `false`.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: whether to use narrow quantization range. defaults to `false`."
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Axis along which to perform per-channel quantization. If `None`, per-tensor quantization is performed. Defaults to `None`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A Keras tensor with fake quantization applied."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'narrow_range' unresolved: unhandled chosen type: whether to use narrow quantization range. defaults to `false`."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.quantizers.fake_quant_with_min_max_vars.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

@@ -1,0 +1,62 @@
+{
+  "api_name": "irfft2",
+  "module_path": "torch.functional.F.np.fft",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "s": {
+      "type": "float|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "sequence of ints, optional Shape of the real output to the inverse FFT.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axes": {
+      "type": "sequence",
+      "size": "",
+      "default": "(-2, -1)``, the last two axes",
+      "flag": "Optional",
+      "description": "sequence of ints, optional The axes over which to compute the inverse fft. Default: ``(-2, -1)``, the last two axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "norm": {
+      "type": "",
+      "size": "",
+      "default": "\"backward\"",
+      "flag": "Optional",
+      "description": "{\"backward\", \"ortho\", \"forward\"}, optional Normalization mode (see `numpy.fft`). Default is \"backward\". Indicates which direction of the forward/backward pair of transforms is scaled and with what normalization factor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "ndarray, optional If provided, the result will be placed in this array. It should be of the appropriate shape and dtype for the last transformation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "1",
+    "description": "------- ndarray The result of the inverse real 2-D FFT."
+  },
+  "constraints": []
+}

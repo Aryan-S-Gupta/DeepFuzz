@@ -1,0 +1,55 @@
+{
+  "api_name": "from_dlpack",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An object that implements the DLPack_ protocol via the ``__dlpack__`` and ``__dlpack_device__`` methods, or a legacy DLPack tensor on either CPU or GPU.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "__dlpack__",
+        "__dlpack_device__"
+      ],
+      "constraints": [
+        "x must be one of __dlpack__, __dlpack_device__, CPU, GPU"
+      ]
+    },
+    "device": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional :class:`~jax.Device` or :class:`~jax.sharding.Sharding`, representing the single device onto which the returned array should be placed. If given, then the result is committed to the device. If unspecified, the resulting array will be unpacked onto the same device it originated from. Setting ``device`` to a device different from the source of ``external_array`` will require a copy, meaning ``copy`` must be set to either ``True`` or ``None``.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "external_array",
+        "True",
+        "None"
+      ],
+      "constraints": [
+        "device must be one of external_array, True"
+      ]
+    },
+    "copy": {
+      "type": "bool|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional boolean, controlling whether or not a copy is performed. If ``copy=True`` then a copy is always performed, even if unpacked onto the same device. If ``copy=False`` then the copy is never performed and will raise an error if necessary. When ``copy=None`` (default) then a copy may be performed if needed for a device transfer.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A JAX array of the input buffer."
+  },
+  "constraints": []
+}

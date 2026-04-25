@@ -1,0 +1,93 @@
+{
+  "api_full_name": "tensorflow.keras.ops.ldexp",
+  "api_name": "ldexp",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.ldexp",
+  "backend": "tensorflow",
+  "params": {
+    "x1": {
+      "name": "x1",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Float input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x1 and x2 must have the same shape."
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "x2": {
+      "name": "x2",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Integer exponent tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must be a tensor.",
+          "x1 and x2 must have the same shape."
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Output tensor"
+  },
+  "constraints": [
+    "x1 and x2 must have the same shape."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.ldexp.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

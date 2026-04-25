@@ -1,0 +1,250 @@
+{
+  "api_full_name": "torch.testing.make_tensor",
+  "api_name": "make_tensor",
+  "module_path": "torch.testing",
+  "import_path": "torch.testing.make_tensor",
+  "backend": "torch",
+  "params": {
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "int|tuple|sequence|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Single integer or a sequence of integers defining the shape of the output tensor. dtype (:class:`torch.dtype`): The data type of the returned tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "string|tensor|device",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The device of the returned tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "low": {
+      "name": "low",
+      "spec": {
+        "type": "number|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Sets the lower limit (inclusive) of the given range. If a number is provided it is clamped to the least representable finite value of the given dtype. When ``None`` (default), this value is determined based on the :attr:`dtype` (see the table above). Default: ``None``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "high": {
+      "name": "high",
+      "spec": {
+        "type": "number|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Sets the upper limit (exclusive) of the given range. If a number is provided it is clamped to the greatest representable finite value of the given dtype. When ``None`` (default) this value is determined based on the :attr:`dtype` (see the table above). Default: ``None``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "requires_grad": {
+      "name": "requires_grad",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "noncontiguous": {
+      "name": "noncontiguous",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "If `True`, the returned tensor will be noncontiguous. This argument is ignored if the constructed tensor has fewer than two elements. Mutually exclusive with ``memory_format``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "exclude_zero": {
+      "name": "exclude_zero",
+      "spec": {
+        "type": "int|float|bool|number|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "If ``True`` then zeros are replaced with the dtype's small positive value depending on the :attr:`dtype`. For bool and integer types zero is replaced with one. For floating point types it is replaced with the dtype's smallest positive normal number (the \"tiny\" value of the :attr:`dtype`'s :func:`~torch.finfo` object), and for complex types it is replaced with a complex number whose real and imaginary parts are both the smallest positive normal number representable by the complex type. Default ``False``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "exclude_zero must be positive",
+          "exclude_zero must be one of True, tiny, False"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "memory_format": {
+      "name": "memory_format",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The memory format of the returned tensor. Mutually exclusive with ``noncontiguous``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: make_tensor() got an unexpected keyword argument 'shape'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "make_tensor() got an unexpected keyword argument 'shape'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: make_tensor() got an unexpected keyword argument 'shape'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.testing.make_tensor.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

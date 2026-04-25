@@ -1,0 +1,48 @@
+{
+  "api_name": "logsumexp",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x is required"
+      ]
+    },
+    "axis": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An integer or a tuple of integers specifying the axis/axes along which to compute the sum. If `None`, the sum is computed over all elements. Defaults to `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    },
+    "keepdims": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "A boolean indicating whether to keep the dimensions of the input tensor when computing the sum. Defaults to `False`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "A tensor containing the logarithm of the sum of exponentials of elements in `x`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,52 @@
+{
+  "api_name": "svd_lowrank",
+  "module_path": "torch.functional",
+  "params": {
+    "A": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor of size :math:`(*, m, n)`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "q": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "a slightly overestimated rank of A.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "niter": {
+      "type": "int|number",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "the number of subspace iterations to conduct; niter must be a nonnegative integer, and defaults to 2",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "M": {
+      "type": "callable|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the input tensor's mean of size :math:`(*, m, n)`, which will be broadcasted to the size of A in this function.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Return the singular value decomposition ``(U, S, V)`` of a matrix,"
+  },
+  "constraints": []
+}

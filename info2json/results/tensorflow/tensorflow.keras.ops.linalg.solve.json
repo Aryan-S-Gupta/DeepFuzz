@@ -1,0 +1,32 @@
+{
+  "api_name": "solve",
+  "module_path": "tensorflow.keras.ops.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor of shape `(..., M, M)` representing the coefficients matrix.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "b": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A tensor of shape `(..., M)` or `(..., M, N)` representing the right-hand side or \"dependent variable\" matrix.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "'(..., M)' or '(..., M, N)'",
+    "description": "A tensor of shape `(..., M)` or `(..., M, N)` representing the solution of the linear system. Returned shape is identical to `b`."
+  },
+  "constraints": []
+}

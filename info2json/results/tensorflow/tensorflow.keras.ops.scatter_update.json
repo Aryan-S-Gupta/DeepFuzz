@@ -1,0 +1,42 @@
+{
+  "api_name": "scatter_update",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "inputs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor, the tensor to be updated.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "indices": {
+      "type": "tuple|list|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor or list/tuple of shape `(N, inputs.ndim)`, specifying indices to update. `N` is the number of indices to update, must be equal to the first dimension of `updates`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "updates": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor, the new values to be put to `inputs` at `indices`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A tensor, has the same shape and dtype as `inputs`."
+  },
+  "constraints": []
+}

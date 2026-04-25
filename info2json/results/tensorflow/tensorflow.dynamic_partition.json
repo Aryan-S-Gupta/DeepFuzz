@@ -1,0 +1,64 @@
+{
+  "api_name": "dynamic_partition",
+  "module_path": "tensorflow",
+  "params": {
+    "data": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "data.shape must start with partitions.shape",
+        "data, partitions, and outputs[i] must have the same type."
+      ]
+    },
+    "partitions": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `int32`. Any shape. Indices in the range `[0, num_partitions)`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "partitions values must be in range [0, num_partitions)",
+        "data, partitions, and outputs[i] must have the same type."
+      ]
+    },
+    "num_partitions": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int` that is `>= 1`. The number of partitions to output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "num_partitions >= 1"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "num_partitions",
+    "description": "A list of `num_partitions` `Tensor` objects with the same type as `data`."
+  },
+  "constraints": [
+    "data, partitions, and outputs[i] must have the same type."
+  ]
+}

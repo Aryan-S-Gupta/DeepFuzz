@@ -1,0 +1,44 @@
+{
+  "api_name": "round",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "decimals": {
+      "type": "int|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, default=0. Number of decimal points to which the input needs to be rounded. It must be specified statically. Not implemented for ``decimals < 0``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "decimals >= 0"
+      ]
+    },
+    "out": {
+      "type": "Unused by JAX",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Unused by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "float32",
+    "description": "An array containing the rounded values to the specified ``decimals`` with same shape and dtype as ``a``."
+  },
+  "constraints": []
+}

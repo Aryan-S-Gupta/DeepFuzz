@@ -1,0 +1,52 @@
+{
+  "api_name": "reduce_prod",
+  "module_path": "tensorflow",
+  "params": {
+    "input_tensor": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The tensor to reduce. Should have numeric type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The reduced tensor. @compatibility(numpy) Equivalent to np.prod @end_compatibility"
+  },
+  "constraints": []
+}

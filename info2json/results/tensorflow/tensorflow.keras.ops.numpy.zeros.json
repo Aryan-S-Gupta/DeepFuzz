@@ -1,0 +1,26 @@
+{
+  "api_name": "zeros",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "shape": {
+      "type": "tuple|list|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Shape of the new tensor. dtype: Desired data type of the tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be a non-empty sequence"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "Tensor of zeros with the given shape and dtype."
+  },
+  "constraints": [
+    "dtype must be a valid numpy dtype string"
+  ]
+}

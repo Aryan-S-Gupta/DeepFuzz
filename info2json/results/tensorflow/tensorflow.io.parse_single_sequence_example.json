@@ -1,0 +1,62 @@
+{
+  "api_name": "parse_single_sequence_example",
+  "module_path": "tensorflow.io",
+  "params": {
+    "serialized": {
+      "type": "string|number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar (0-D Tensor) of type string, a single binary serialized `SequenceExample` proto.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "context_features": {
+      "type": "dict",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A mapping of feature keys to `FixedLenFeature` or `VarLenFeature` or `RaggedFeature` values. These features are associated with a `SequenceExample` as a whole.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sequence_features": {
+      "type": "dict",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A mapping of feature keys to `FixedLenSequenceFeature` or `VarLenFeature` or `RaggedFeature` values. These features are associated with data within the `FeatureList` section of the `SequenceExample` proto.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "example_name": {
+      "type": "number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A scalar (0-D Tensor) of strings (optional), the name of the serialized proto.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for this operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|dict|tensor",
+    "numbers": "2",
+    "description": "A tuple of two `dict`s, each mapping keys to `Tensor`s and `SparseTensor`s and `RaggedTensor`s. * The first dict contains the context key/values. * The second dict contains the feature_list key/values."
+  },
+  "constraints": []
+}

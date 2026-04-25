@@ -1,0 +1,26 @@
+{
+  "api_name": "conjugate",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "inpuat array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x shape must be broadcast-compatible when input is an Array",
+        "jax.numpy.real(output) == jax.numpy.real(x)",
+        "jax.numpy.imag(output) == -jax.numpy.imag(x)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "complex128",
+    "description": "An array containing the complex-conjugate of ``x``."
+  },
+  "constraints": []
+}

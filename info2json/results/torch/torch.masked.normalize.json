@@ -1,0 +1,64 @@
+{
+  "api_name": "normalize",
+  "module_path": "torch.masked",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ord": {
+      "type": "int|float|list",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "the order of vector norm. Default: 2. See :func:`torch.linalg.vector_norm` for a list of supported norms.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the dimension along which normalize is computed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "eps": {
+      "type": "float|tensor|dtype",
+      "size": "",
+      "default": "1e-12",
+      "flag": "Optional",
+      "description": "small value to avoid division by zero. Default: 1e-12. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. If specified, the input tensor is casted to :attr:`dtype` before the operation is performed. Default: None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mask": {
+      "type": "bool|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the boolean tensor containing the binary mask of validity of input tensor elements. Default: None that is equivalent to ``torch.ones(input.shape, dtype=torch.bool)``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

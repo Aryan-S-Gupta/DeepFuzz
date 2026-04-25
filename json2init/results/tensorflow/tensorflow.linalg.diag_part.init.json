@@ -1,0 +1,96 @@
+{
+  "api_full_name": "tensorflow.linalg.diag_part",
+  "api_name": "diag_part",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.diag_part",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A `Tensor` with `rank k >= 2`. name: A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "k": {
+      "name": "k",
+      "spec": {
+        "type": "string|int",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "Diagonal offset(s). Positive value means superdiagonal, 0 refers to the main diagonal, and negative value means subdiagonals. `k` can be a single integer (for a single diagonal) or a pair of integers specifying the low and high ends of a matrix band. `k[0]` must not be larger than `k[1]`. padding_value: The value to fill the area outside the specified diagonal band with. Default is 0. align: Some diagonals are shorter than `max_diag_len` and need to be padded. `align` is a string specifying how superdiagonals and subdiagonals should be aligned, respectively. There are four possible alignments: \"RIGHT_LEFT\" (default), \"LEFT_RIGHT\", \"LEFT_LEFT\", and \"RIGHT_RIGHT\". \"RIGHT_LEFT\" aligns superdiagonals to the right (left-pads the row) and subdiagonals to the left (right-pads the row). It is the packing format LAPACK uses. cuSPARSE uses \"LEFT_RIGHT\", which is the opposite alignment.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "k must be positive"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A Tensor containing diagonals of `input`. Has the same type as `input`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Missing required positional argument"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Missing required positional argument",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.diag_part.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

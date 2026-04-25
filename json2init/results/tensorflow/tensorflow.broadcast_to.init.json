@@ -1,0 +1,129 @@
+{
+  "api_full_name": "tensorflow.broadcast_to",
+  "api_name": "broadcast_to",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.broadcast_to",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. A Tensor to broadcast.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "int|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. An 1-D `int` Tensor. The shape of the desired output.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "int32",
+          "int64",
+          "int"
+        ],
+        "constraints": [
+          "shape must be 1-D",
+          "shape must be one of int32, int64, int",
+          "input and shape must be compatible for broadcasting"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__BroadcastTo_device_/job:localhost/replica:0/task:0/device:CPU:0}} shape must be a vector of {int32,int64}, got shape [] [Op:BroadcastTo] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__BroadcastTo_device_/job:localhost/replica:0/task:0/device:CPU:0}} shape must be a vector of {int32,int64}, got shape [] [Op:BroadcastTo] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 883, in broadcast_to\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__BroadcastTo_device_/job:localhost/replica:0/task:0/device:CPU:0}} shape must be a vector of {int32,int64}, got shape [] [Op:BroadcastTo] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.broadcast_to.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

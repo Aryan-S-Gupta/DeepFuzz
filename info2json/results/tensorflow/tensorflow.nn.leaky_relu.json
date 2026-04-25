@@ -1,0 +1,59 @@
+{
+  "api_name": "leaky_relu",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "features": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` representing preactivation values. Must be one of the following types: `float16`, `float32`, `float64`, `int32`, `int64`.",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "float16",
+        "float32",
+        "float64"
+      ],
+      "enum_values": [
+        "float16",
+        "float32",
+        "float64",
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "features must be one of float16, float32, float64, int32, int64",
+        "features is not None"
+      ]
+    },
+    "alpha": {
+      "type": "float|callable",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Slope of the activation function at x < 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "alpha >= 0"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float16, float32, float64",
+    "description": "The activation value."
+  },
+  "constraints": []
+}

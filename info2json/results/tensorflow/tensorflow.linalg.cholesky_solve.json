@@ -1,0 +1,47 @@
+{
+  "api_name": "cholesky_solve",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "chol": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be `float32` or `float64`, shape is `[..., M, M]`. Cholesky factorization of `A`, e.g. `chol = tf.linalg.cholesky(A)`. For that reason, only the lower triangular parts (including the diagonal) of the last two dimensions of `chol` are used. The strictly upper part is assumed to be zero and not accessed.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rhs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`, same type as `chol`, shape is `[..., M, K]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name to give this `Op`. Defaults to `cholesky_solve`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "[..., M, K]",
+    "description": "Solution to `A x = rhs`, shape `[..., M, K]`."
+  },
+  "constraints": [
+    "chol must be float32 or float64"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "api_name": "mul",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor or number to multiply input by.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out parameter is optional"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [
+    "Supports broadcasting to a common shape"
+  ]
+}

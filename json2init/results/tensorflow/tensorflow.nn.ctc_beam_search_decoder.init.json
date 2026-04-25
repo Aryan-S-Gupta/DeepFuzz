@@ -1,0 +1,148 @@
+{
+  "api_full_name": "tensorflow.nn.ctc_beam_search_decoder",
+  "api_name": "ctc_beam_search_decoder",
+  "module_path": "tensorflow.nn",
+  "import_path": "tensorflow.nn.ctc_beam_search_decoder",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "float|tensor",
+        "size": "3-D",
+        "default": "",
+        "flag": "Required",
+        "description": "3-D `float` `Tensor`, size `[max_time, batch_size, num_classes]`. The logits.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "sequence_length": {
+      "name": "sequence_length",
+      "spec": {
+        "type": "sequence",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "1-D `int32` vector containing sequence lengths, having size `[batch_size]`.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "sequence_length must be 1-D"
+        ]
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "beam_width": {
+      "name": "beam_width",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "0",
+        "flag": "Required",
+        "description": "An int scalar >= 0 (beam search beam width).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          ">= 0",
+          "beam_width must be non-negative",
+          "top_paths <= beam_width"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "top_paths": {
+      "name": "top_paths",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An int scalar >= 0, <= beam_width (controls output size).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "top_paths must be non-negative",
+          "top_paths <= beam_width"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|tuple|list|sequence",
+    "numbers": "1",
+    "description": "A tuple `(decoded, log_probabilities)` where A list of length top_paths, where `decoded[j]` is a `SparseTensor` containing the decoded outputs: `decoded[j].indices`: Indices matrix `[total_decoded_outputs[j], 2]`; The rows store: `[batch, time]`. `decoded[j].values`: Values vector, size `[total_decoded_outputs[j]]`. The vector stores the decoded classes for beam `j`. `decoded[j].dense_shape`: Shape vector, size `(2)`. The shape values are: `[batch_size, max_decoded_length[j]]`. log_probability: A `float` matrix `[batch_size, top_paths]` containing sequence log-probabilities."
+  },
+  "constraints": [
+    "top_paths <= beam_width"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'beam_width' of 0 must be at least minimum 1\n\t; NodeDef: {{node CTCBeamSearchDecoder}}; Op<name=CTCBeamSearchDecoder; signature=inputs:T, sequence_length:int32 -> decoded_indices:top_paths*int64, decoded_values:top_paths*int64, decoded_shape:top_paths*int64, log_probability:T; attr=beam_width:int,min=1; attr=top_paths:int,min=1; attr=merge_repeated:bool,default=true; attr=T:type,default=DT_FLOAT,allowed=[DT_FLOAT, DT_DOUBLE]> [Op:CTCBeamSearchDecoder]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'beam_width' of 0 must be at least minimum 1\n\t; NodeDef: {{node CTCBeamSearchDecoder}}; Op<name=CTCBeamSearchDecoder; signature=inputs:T, sequence_length:int32 -> decoded_indices:top_paths*int64, decoded_values:top_paths*int64, decoded_shape:top_paths*int64, log_probability:T; attr=beam_width:int,min=1; attr=top_paths:int,min=1; attr=merge_repeated:bool,default=true; attr=T:type,default=DT_FLOAT,allowed=[DT_FLOAT, DT_DOUBLE]> [Op:CTCBeamSearchDecoder]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'beam_width' of 0 must be at least minimum 1\n\t; NodeDef: {{node CTCBeamSearchDecoder}}; Op<name=CTCBeamSearchDecoder; signature=inputs:T, sequence_length:int32 -> decoded_indices:top_paths*int64, decoded_values:top_paths*int64, decoded_shape:top_paths*int64, log_probability:T; attr=beam_width:int,min=1; attr=top_paths:int,min=1; attr=merge_repeated:bool,default=true; attr=T:type,default=DT_FLOAT,allowed=[DT_FLOAT, DT_DOUBLE]> [Op:CTCBeamSearchDecoder]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.ctc_beam_search_decoder.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

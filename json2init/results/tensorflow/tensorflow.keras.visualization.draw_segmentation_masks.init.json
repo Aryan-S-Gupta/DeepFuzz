@@ -1,0 +1,226 @@
+{
+  "api_full_name": "tensorflow.keras.visualization.draw_segmentation_masks",
+  "api_name": "draw_segmentation_masks",
+  "module_path": "tensorflow.keras.visualization",
+  "import_path": "tensorflow.keras.visualization.draw_segmentation_masks",
+  "backend": "tensorflow",
+  "params": {
+    "images": {
+      "name": "images",
+      "spec": {
+        "type": "tensor",
+        "size": "4D",
+        "default": "",
+        "flag": "Required",
+        "description": "A batch of images as a 4D tensor or NumPy array. Shape should be (batch_size, height, width, channels).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "segmentation_masks": {
+      "name": "segmentation_masks",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A batch of segmentation masks as a 3D or 4D tensor or NumPy array. Shape should be (batch_size, height, width) or (batch_size, height, width, 1). The values represent class indices starting from 1 up to `num_classes`. Class 0 is reserved for the background and will be ignored if `ignore_index` is not 0.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "num_classes": {
+      "name": "num_classes",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The number of segmentation classes. If `None`, it is inferred from the maximum value in `segmentation_masks`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "color_mapping": {
+      "name": "color_mapping",
+      "spec": {
+        "type": "dict",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A dictionary mapping class indices to RGB colors. If `None`, a default color palette is generated. The keys should be integers starting from 1 up to `num_classes`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dict",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": {}
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "alpha": {
+      "name": "alpha",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The opacity of the segmentation masks. Must be in the range `[0, 1]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "the opacity of the segmentation masks. must be in the range `[0",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: the opacity of the segmentation masks. must be in the range `[0"
+    },
+    "blend": {
+      "name": "blend",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "Whether to blend the masks with the input image using the `alpha` value. If `False`, the masks are drawn directly on the images without blending. Defaults to `True`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "whether to blend the masks with the input image using the `alpha` value. if `false`",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: whether to blend the masks with the input image using the `alpha` value. if `false`"
+    },
+    "ignore_index": {
+      "name": "ignore_index",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "The class index to ignore. Mask pixels with this value will not be drawn. Defaults to -1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "the class index to ignore. mask pixels with this value will not be drawn. defaults to -1.",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: the class index to ignore. mask pixels with this value will not be drawn. defaults to -1."
+    },
+    "data_format": {
+      "name": "data_format",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "the `image_data_format` value found",
+        "flag": "Optional",
+        "description": "Image data format, either `\"channels_last\"` or `\"channels_first\"`. Defaults to the `image_data_format` value found in your Keras config file at `~/.keras/keras.json`. If you never set it, then it will be `\"channels_last\"`.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "channels_last",
+          "channels_first",
+          "image_data_format"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "image data format",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: image data format"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A NumPy array of the images with the segmentation masks overlaid."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'alpha' unresolved: unhandled chosen type: the opacity of the segmentation masks. must be in the range `[0"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.visualization.draw_segmentation_masks.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

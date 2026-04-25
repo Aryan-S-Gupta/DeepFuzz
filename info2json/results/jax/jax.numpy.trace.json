@@ -1,0 +1,62 @@
+{
+  "api_name": "trace",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have ``a.ndim >= 2``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "offset": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "optional, int, default=0. Diagonal offset from the main diagonal. Can be positive or negative.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis1": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, default=0. The first axis along which to take the sum of diagonal. Must be a static integer value.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis2": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, default=1. The second axis along which to take the sum of diagonal. Must be a static integer value. dtype: optional. The dtype of the output array. Should be provided as static argument in JIT compilation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Not used by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of dimension x.ndim-2 containing the sum of the diagonal elements along axes (axis1, axis2)"
+  },
+  "constraints": []
+}

@@ -1,0 +1,64 @@
+{
+  "api_name": "igammac",
+  "module_path": "tensorflow.math",
+  "params": {
+    "a": {
+      "type": "float|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `bfloat16`, `half`, `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64",
+        "bfloat16"
+      ],
+      "enum_values": [
+        "bfloat16",
+        "half",
+        "float32",
+        "float64"
+      ],
+      "constraints": [
+        "a must be one of bfloat16, half, float32, float64",
+        "The 'a' parameter must be one of the following types: bfloat16, half, float32, float64.",
+        "The 'x' parameter must have the same type as 'a'.",
+        "If 'a' or 'x' is a tensor, it must not be empty."
+      ]
+    },
+    "x": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `a`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have the same shape as 'a'.",
+        "x must have the same dtype as a",
+        "The 'x' parameter must have the same type as 'a'.",
+        "If 'a' or 'x' is a tensor, it must not be empty."
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `a`."
+  },
+  "constraints": [
+    "The 'x' parameter must have the same type as 'a'.",
+    "If 'a' or 'x' is a tensor, it must not be empty."
+  ]
+}

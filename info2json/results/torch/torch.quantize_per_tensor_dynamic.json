@@ -1,0 +1,40 @@
+{
+  "api_name": "quantize_per_tensor_dynamic",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "float|list|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "float tensor or list of tensors to quantize dtype (:class:`torch.dtype`): the desired data type of returned tensor. Has to be one of the quantized dtypes: ``torch.quint8``, ``torch.qint8``",
+      "dtype_candidates": [],
+      "enum_values": [
+        "torch.dtype",
+        "torch.quint8",
+        "torch.qint8"
+      ],
+      "constraints": []
+    },
+    "reduce_range": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a flag to indicate whether to reduce the range of quantized data by 1 bit, it's required to avoid instruction overflow for some hardwares",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A newly (dynamically) quantized tensor"
+  },
+  "constraints": [
+    "input and dtype are positional arguments"
+  ]
+}

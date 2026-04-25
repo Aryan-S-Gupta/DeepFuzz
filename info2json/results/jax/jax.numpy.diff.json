@@ -1,0 +1,62 @@
+{
+  "api_name": "diff",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have ``a.ndim >= 1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "n": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int, optional, default=1. Order of the difference. Specifies the number of times the difference is computed. If n=0, no difference is computed and input is returned as is.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional, default=-1. Specifies the axis along which the difference is computed. The difference is computed along ``axis -1`` by default.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "prepend": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array, optional, default=None. Specifies the values to be prepended along ``axis`` before computing the difference.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "append": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array, optional, default=None. Specifies the values to be appended along ``axis`` before computing the difference.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the n-th order difference between the elements of ``a``."
+  },
+  "constraints": []
+}

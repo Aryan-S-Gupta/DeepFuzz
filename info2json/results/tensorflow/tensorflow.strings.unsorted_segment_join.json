@@ -1,0 +1,70 @@
+{
+  "api_name": "unsorted_segment_join",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "inputs": {
+      "type": "string|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `tf.Tensor` objects of type `tf.string`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "segment_ids": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor whose shape is a prefix of `inputs.shape` and whose type must be `tf.int32` or `tf.int64`. Negative segment ids are not supported.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_segments": {
+      "type": "number|any",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar of type `tf.int32` or `tf.int64`. Must be non-negative and larger than any segment id.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "num_segments must be non-negative"
+      ]
+    },
+    "separator": {
+      "type": "",
+      "size": "",
+      "default": "\"\"",
+      "flag": "Optional",
+      "description": "The separator to use when joining. Defaults to `\"\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `tf.string` tensor representing the concatenated values, using the given separator."
+  },
+  "constraints": []
+}

@@ -1,0 +1,34 @@
+{
+  "api_full_name": "tensorflow.is_symbolic_tensor",
+  "api_name": "is_symbolic_tensor",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.is_symbolic_tensor",
+  "backend": "tensorflow",
+  "params": {},
+  "output": {
+    "type": "boolean",
+    "numbers": "0 and 1",
+    "description": "True if `tensor` is a symbolic tensor (not an eager tensor)."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: is_symbolic_tensor() missing 1 required positional argument: 'tensor'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "is_symbolic_tensor() missing 1 required positional argument: 'tensor'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: is_symbolic_tensor() missing 1 required positional argument: 'tensor'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.is_symbolic_tensor.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

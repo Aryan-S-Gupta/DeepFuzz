@@ -1,0 +1,38 @@
+{
+  "api_name": "softmax",
+  "module_path": "tensorflow.keras.ops.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must have numeric data type",
+        "input tensor x and output tensor must have the same shape",
+        "softmax function formula: f(x) = exp(x) / sum(exp(x))"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Integer, axis along which the softmax is applied.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be a valid axis index for input tensor x"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating point",
+    "description": "A tensor with the same shape as `x`."
+  },
+  "constraints": []
+}

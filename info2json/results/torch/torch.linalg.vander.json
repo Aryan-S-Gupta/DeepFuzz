@@ -1,0 +1,37 @@
+{
+  "api_name": "vander",
+  "module_path": "torch.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "NA",
+      "flag": "Required",
+      "description": "tensor of shape `(*, n)` where `*` is zero or more batch dimensions consisting of vectors.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Unlike `numpy.vander`, this function returns the powers of :attr:`x` in ascending order."
+      ]
+    },
+    "N": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Number of columns in the output. Default: `x.size(-1)`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "NA",
+    "description": "Returns the Vandermonde matrix :math:`V` If N = None, then `N = x.size(-1)` so that the output is a square matrix."
+  },
+  "constraints": [
+    "Supports inputs of float, double, cfloat, cdouble, and integral dtypes.",
+    "The output has the same batch dimensions as the input."
+  ]
+}

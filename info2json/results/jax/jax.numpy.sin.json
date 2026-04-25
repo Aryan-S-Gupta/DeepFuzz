@@ -1,0 +1,24 @@
+{
+  "api_name": "sin",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "array or scalar. Angle in radians.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "jax.numpy.sin accepts only one parameter: x"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "floating-point",
+    "description": "An array containing the sine of each element in ``x``, promotes to inexact dtype."
+  },
+  "constraints": []
+}

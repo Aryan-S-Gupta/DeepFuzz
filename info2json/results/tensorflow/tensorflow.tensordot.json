@@ -1,0 +1,75 @@
+{
+  "api_name": "tensordot",
+  "module_path": "tensorflow",
+  "params": {
+    "a": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`Tensor` of type `float32` or `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "If axes is a list or Tensor, the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for a and b, respectively. The number of axes for a and b must be equal.",
+        "If axes=0, computes the outer product between a and b."
+      ]
+    },
+    "b": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`Tensor` with the same type as `a`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "b must have the same dtype as a",
+        "If axes is a list or Tensor, the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for a and b, respectively. The number of axes for a and b must be equal.",
+        "If axes=0, computes the outer product between a and b."
+      ]
+    },
+    "axes": {
+      "type": "list|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Either a scalar `N`, or a list or an `int32` `Tensor` of shape [2, k]. If axes is a scalar, sum over the last N axes of a and the first N axes of b in order. If axes is a list or `Tensor` the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for `a` and `b`, respectively. The number of axes for `a` and `b` must be equal. If `axes=0`, computes the outer product between `a` and `b`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [
+        "N",
+        "int32"
+      ],
+      "constraints": [
+        "If axes is a scalar, sum over the last N axes of a and the first N axes of b in order",
+        "axes must be one of N, int32",
+        "If axes is a list or Tensor, the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for a and b, respectively. The number of axes for a and b must be equal.",
+        "If axes=0, computes the outer product between a and b."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with the same type as `a`."
+  },
+  "constraints": [
+    "If axes is a list or Tensor, the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for a and b, respectively. The number of axes for a and b must be equal.",
+    "If axes=0, computes the outer product between a and b."
+  ]
+}

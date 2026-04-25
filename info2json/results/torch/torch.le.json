@@ -1,0 +1,44 @@
+{
+  "api_name": "le",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor to compare",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "number|tensor",
+      "size": "Scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor or value to compare",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input, other shapes must be broadcast-compatible"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "attr:`input` is less than or equal to :attr:`other` and False elsewhere"
+  },
+  "constraints": []
+}

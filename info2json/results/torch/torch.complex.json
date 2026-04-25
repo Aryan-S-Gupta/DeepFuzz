@@ -1,0 +1,55 @@
+{
+  "api_name": "complex",
+  "module_path": "torch",
+  "params": {
+    "real": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The real part of the complex tensor. Must be half, float or double.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be half, float or double.",
+        "Input real and imag tensors must have the same shape."
+      ]
+    },
+    "imag": {
+      "type": "float|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The imaginary part of the complex tensor. Must be same dtype as :attr:`real`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have same dtype as real.",
+        "Input real and imag tensors must have the same shape."
+      ]
+    },
+    "out": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If the inputs are ``torch.float32``, must be ``torch.complex64``. If the inputs are ``torch.float64``, must be ``torch.complex128``.",
+      "dtype_candidates": [
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "Complex",
+    "description": ""
+  },
+  "constraints": [
+    "Input real and imag tensors must have the same shape."
+  ]
+}

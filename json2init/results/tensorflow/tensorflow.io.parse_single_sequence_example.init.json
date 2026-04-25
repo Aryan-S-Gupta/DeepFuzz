@@ -1,0 +1,153 @@
+{
+  "api_full_name": "tensorflow.io.parse_single_sequence_example",
+  "api_name": "parse_single_sequence_example",
+  "module_path": "tensorflow.io",
+  "import_path": "tensorflow.io.parse_single_sequence_example",
+  "backend": "tensorflow",
+  "params": {
+    "serialized": {
+      "name": "serialized",
+      "spec": {
+        "type": "string|number|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A scalar (0-D Tensor) of type string, a single binary serialized `SequenceExample` proto.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bytes",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "bytes",
+        "value": {
+          "__kind__": "bytes_b64",
+          "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC"
+        }
+      },
+      "mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "context_features": {
+      "name": "context_features",
+      "spec": {
+        "type": "dict",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A mapping of feature keys to `FixedLenFeature` or `VarLenFeature` or `RaggedFeature` values. These features are associated with a `SequenceExample` as a whole.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dict",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": {},
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "sequence_features": {
+      "name": "sequence_features",
+      "spec": {
+        "type": "dict",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A mapping of feature keys to `FixedLenSequenceFeature` or `VarLenFeature` or `RaggedFeature` values. These features are associated with data within the `FeatureList` section of the `SequenceExample` proto.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dict",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": {},
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "example_name": {
+      "name": "example_name",
+      "spec": {
+        "type": "number|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Optional",
+        "description": "A scalar (0-D Tensor) of strings (optional), the name of the serialized proto.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for this operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for this operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for this operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tuple|dict|tensor",
+    "numbers": "2",
+    "description": "A tuple of two `dict`s, each mapping keys to `Tensor`s and `SparseTensor`s and `RaggedTensor`s. * The first dict contains the context key/values. * The second dict contains the feature_list key/values."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Both context_features and sequence_features are None, but at least one should have values."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Both context_features and sequence_features are None, but at least one should have values.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/parsing_ops.py\", line 782, in parse_single_sequence_example\n    raise ValueError(\"Both context_features and sequence_features are None, but\"\n                     \" at least one should have values.\")\nValueError: Both context_features and sequence_features are None, but at least one should have values.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.parse_single_sequence_example.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

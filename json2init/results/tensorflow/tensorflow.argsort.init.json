@@ -1,0 +1,143 @@
+{
+  "api_full_name": "tensorflow.argsort",
+  "api_name": "argsort",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.argsort",
+  "backend": "tensorflow",
+  "params": {
+    "values": {
+      "name": "values",
+      "spec": {
+        "type": "number|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "1-D or higher **numeric** `Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "values must be 1-D"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The axis along which to sort. The default is -1, which sorts the last axis.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "the axis along which to sort. the default is -1",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: the axis along which to sort. the default is -1"
+    },
+    "direction": {
+      "name": "direction",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The direction in which to sort the values (`'ASCENDING'` or `'DESCENDING'`).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "the direction in which to sort the values (`'ascending'` or `'descending'`).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: the direction in which to sort the values (`'ascending'` or `'descending'`)."
+    },
+    "stable": {
+      "name": "stable",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "If True, equal elements in the original tensor will not be re-ordered in the returned order. Unstable sort is not yet implemented, but will eventually be the default for performance reasons. If you require a stable order, pass `stable=True` for forwards compatibility.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Optional name for the operation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "optional name for the operation.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: optional name for the operation."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An int32 `Tensor` with the same shape as `values`. The indices that would sort each slice of the given `values` along the given `axis`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'axis' unresolved: unhandled chosen type: the axis along which to sort. the default is -1",
+    "required param 'direction' unresolved: unhandled chosen type: the direction in which to sort the values (`'ascending'` or `'descending'`).",
+    "required param 'name' unresolved: unhandled chosen type: optional name for the operation."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.argsort.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

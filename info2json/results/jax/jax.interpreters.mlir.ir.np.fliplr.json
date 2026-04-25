@@ -1,0 +1,26 @@
+{
+  "api_name": "fliplr",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "m": {
+      "type": "tensor",
+      "size": "2-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array, must be at least 2-D.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be at least 2-D",
+        "m must be 2-D",
+        "m's axis 1 (left/right) elements are reversed in f"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray A view of `m` with the columns reversed. Since a view is returned, this operation is :math:`\\mathcal O(1)`."
+  },
+  "constraints": []
+}

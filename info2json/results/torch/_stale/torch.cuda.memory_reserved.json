@@ -1,0 +1,24 @@
+{
+  "api_name": "memory_reserved",
+  "module_path": "torch.cuda",
+  "params": {
+    "device": {
+      "type": "torch.device|int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`,",
+      "constraints": [
+        "Must be a valid torch.device or int, if provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "statistic",
+    "numbers": "single",
+    "description": "memory reserved on the selected device"
+  },
+  "constraints": [
+    "The returned memory statistic unit is bytes"
+  ]
+}

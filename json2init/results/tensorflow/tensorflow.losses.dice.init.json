@@ -1,0 +1,142 @@
+{
+  "api_full_name": "tensorflow.losses.dice",
+  "api_name": "dice",
+  "module_path": "tensorflow.losses",
+  "import_path": "tensorflow.losses.dice",
+  "backend": "tensorflow",
+  "params": {
+    "y_true": {
+      "name": "y_true",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "tensor of true targets.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "y_true and y_pred shapes must be broadcast-compatible"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_pred": {
+      "name": "y_pred",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "tensor of predicted targets.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "y_true and y_pred shapes must be broadcast-compatible"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tuple",
+        "size": "",
+        "default": "()",
+        "flag": "Optional",
+        "description": "tuple for which dimensions the loss is calculated",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "axis values must satisfy axis <= rank(input)"
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Dice loss value."
+  },
+  "constraints": [
+    "y_true and y_pred shapes must be broadcast-compatible"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.losses.dice.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

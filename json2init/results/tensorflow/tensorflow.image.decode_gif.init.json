@@ -1,0 +1,72 @@
+{
+  "api_full_name": "tensorflow.image.decode_gif",
+  "api_name": "decode_gif",
+  "module_path": "tensorflow.image",
+  "import_path": "tensorflow.image.decode_gif",
+  "backend": "tensorflow",
+  "params": {
+    "contents": {
+      "name": "contents",
+      "spec": {
+        "type": "string|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `string`. 0-D. The GIF-encoded image.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bytes",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "bytes",
+        "value": {
+          "__kind__": "bytes_b64",
+          "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC"
+        }
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `uint8`."
+  },
+  "constraints": [
+    "name must be a valid TensorFlow name"
+  ],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.decode_gif.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

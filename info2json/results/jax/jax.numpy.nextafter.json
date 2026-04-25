@@ -1,0 +1,38 @@
+{
+  "api_name": "nextafter",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the value after which the next number is found.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have broadcast-compatible shapes"
+      ]
+    },
+    "y": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the direction towards which the next number is found. ``x`` and ``y`` should either have same shape or be broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "real",
+    "description": "An array containing the next representable number of ``x`` in the direction of ``y``."
+  },
+  "constraints": [
+    "x and y must have broadcast-compatible shapes"
+  ]
+}

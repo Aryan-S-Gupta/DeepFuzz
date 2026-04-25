@@ -1,0 +1,25 @@
+{
+  "api_name": "setbufsize",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "size": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int Size of buffer.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be a positive integer.",
+        "Output bufsize will be the same as the input size parameter if set successfully."
+      ]
+    }
+  },
+  "output": {
+    "type": "string|int",
+    "numbers": "single",
+    "description": "------- int Previous size of ufunc buffer in bytes."
+  },
+  "constraints": []
+}

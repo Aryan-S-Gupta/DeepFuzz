@@ -1,0 +1,122 @@
+{
+  "api_full_name": "tensorflow.keras.ops.nn.adaptive_average_pool",
+  "api_name": "adaptive_average_pool",
+  "module_path": "tensorflow.keras.ops.nn",
+  "import_path": "tensorflow.keras.ops.nn.adaptive_average_pool",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor of rank 4. Input tensor of shape: - If `data_format=\"channels_last\"`: `(batch_size, height, width, channels)`. - If `data_format=\"channels_first\"`: `(batch_size, channels, height, width)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "output_size": {
+      "name": "output_size",
+      "spec": {
+        "type": "int|tuple|list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Integer or tuple/list of 2 integers, specifying the target output spatial dimensions `(output_height, output_width)`. If a single integer is provided, the same value is used for both dimensions.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "data_format": {
+      "name": "data_format",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "the value found in your Keras config file at",
+        "flag": "Optional",
+        "description": "string, either `\"channels_last\"` or `\"channels_first\"`. Defaults to the value found in your Keras config file at `~/.keras/keras.json`. If never set, defaults to `\"channels_last\"`.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "channels_last",
+          "channels_first"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "channels_last"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of rank 4 representing the adaptive average pooled result."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: adaptive_average_pool supports 1D, 2D, or 3D inputs only."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "adaptive_average_pool supports 1D, 2D, or 3D inputs only.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/nn.py\", line 1423, in adaptive_average_pool\n    return backend.nn.adaptive_average_pool(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        inputs, output_size=output_size, data_format=data_format\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/nn.py\", line 734, in adaptive_average_pool\n    raise ValueError(\n        \"adaptive_average_pool supports 1D, 2D, or 3D inputs only.\"\n    )\nValueError: adaptive_average_pool supports 1D, 2D, or 3D inputs only.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.nn.adaptive_average_pool.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

@@ -1,0 +1,50 @@
+{
+  "api_name": "trim_zeros",
+  "module_path": "jax.numpy",
+  "params": {
+    "filt": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "filt and output must have same dtype"
+      ]
+    },
+    "trim": {
+      "type": "string",
+      "size": "",
+      "default": "fb",
+      "flag": "Optional",
+      "description": "string, optional, default = ``fb``. Specifies from which end the input is trimmed.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "f",
+        "b",
+        "fb"
+      ],
+      "constraints": [
+        "must be one of 'f', 'b', or 'fb'"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional axis or axes along which to trim. If not specified, trim along all axes of the array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array containing the trimmed input with same dtype as ``filt``."
+  },
+  "constraints": []
+}

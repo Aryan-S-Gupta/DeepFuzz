@@ -1,0 +1,239 @@
+{
+  "api_full_name": "tensorflow.keras.ops.separable_conv",
+  "api_name": "separable_conv",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.separable_conv",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor of rank N+2. `inputs` has shape `(batch_size,) + inputs_spatial_shape + (num_channels,)` if `data_format=\"channels_last\"`, or `(batch_size, num_channels) + inputs_spatial_shape` if `data_format=\"channels_first\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "depthwise_kernel": {
+      "name": "depthwise_kernel",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor of rank N+2. `depthwise_kernel` has shape [kernel_spatial_shape, num_input_channels, num_channels_multiplier], `num_input_channels` should match the number of channels in `inputs`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "pointwise_kernel": {
+      "name": "pointwise_kernel",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor of rank N+2. `pointwise_kernel` has shape `(*ones_like(kernel_spatial_shape), num_input_channels * num_channels_multiplier, num_output_channels)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "strides": {
+      "name": "strides",
+      "spec": {
+        "type": "int|tuple|list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int or int tuple/list of `len(inputs_spatial_shape)`, specifying the strides of the convolution along each spatial dimension. If `strides` is int, then every spatial dimension shares the same `strides`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "string, either `\"valid\"` or `\"same\"`. `\"valid\"` means no padding is applied, and `\"same\"` results in padding evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input when `strides=1`.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "valid",
+          "same"
+        ],
+        "constraints": [
+          "padding must be one of valid, same"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "valid"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "data_format": {
+      "name": "data_format",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A string, either `\"channels_last\"` or `\"channels_first\"`. `data_format` determines the ordering of the dimensions in the inputs. If `data_format=\"channels_last\"`, `inputs` is of shape `(batch_size, ..., channels)` while if `data_format=\"channels_first\"`, `inputs` is of shape `(batch_size, channels, ...)`.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "channels_last",
+          "channels_first"
+        ],
+        "constraints": [
+          "data_format must be one of channels_last, channels_first"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "channels_last"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "dilation_rate": {
+      "name": "dilation_rate",
+      "spec": {
+        "type": "int|tuple|list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int or int tuple/list of `len(inputs_spatial_shape)`, specifying the dilation rate to use for dilated convolution. If `dilation_rate` is int, then every spatial dimension shares the same `dilation_rate`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of rank N+2, the result of the depthwise conv operation."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Shape (1,) must have rank 4"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Shape (1,) must have rank 4",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/nn.py\", line 1737, in separable_conv\n    return backend.nn.separable_conv(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~^\n        inputs,\n        ^^^^^^^\n    ...<5 lines>...\n        dilation_rate,\n        ^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/nn.py\", line 954, in separable_conv\n    return tf.nn.separable_conv2d(\n           ~~~~~~~~~~~~~~~~~~~~~~^\n        inputs,\n        ^^^^^^^\n    ...<5 lines>...\n        dilations=dilation_rate,\n        ^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/tensor_shape.py\", line 1127, in with_rank\n    raise ValueError(\"Shape %s must have rank %d\" % (self, rank))\nValueError: Shape (1,) must have rank 4\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.separable_conv.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

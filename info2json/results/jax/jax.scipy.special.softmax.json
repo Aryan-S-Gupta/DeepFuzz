@@ -1,0 +1,37 @@
+{
+  "api_name": "softmax",
+  "module_path": "jax.scipy.special",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x cannot be None"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "the axis or axes along which the softmax should be computed. The softmax output summed across these dimensions should sum to :math:`1`. ``None`` means all axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy 0 <= axis < rank(x) if axis >= 0 else axis <= -rank(x)",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of the same shape as ``x``."
+  },
+  "constraints": []
+}

@@ -1,0 +1,25 @@
+{
+  "api_name": "sum",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Returns the sum of all elements in the input tensor or the sum of each row of the input tensor in the given dimension dim"
+  },
+  "constraints": [
+    "input must be a Tensor",
+    "dim, keepdim, and dtype are optional parameters"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "api_name": "arctan",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be promoted to inexact dtype",
+        "x values must be within (-inf, inf)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real or complex",
+    "description": "An array containing the inverse trigonometric tangent of each element ``x`` in radians in the range ``[-pi/2, pi/2]``, promoting to inexact dtype."
+  },
+  "constraints": []
+}

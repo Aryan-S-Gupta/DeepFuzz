@@ -1,0 +1,42 @@
+{
+  "api_name": "rsf2csf",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "T": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., N, N)`` containing the real Schur form of the input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "Z": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., N, N)`` containing the corresponding Schur transformation matrix.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "check_finite": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A tuple of arrays ``(T, Z)`` of the same shape as the inputs, containing the Complex Schur form and the associated Schur transformation matrix."
+  },
+  "constraints": []
+}

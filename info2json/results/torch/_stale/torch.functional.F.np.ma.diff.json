@@ -1,0 +1,50 @@
+{
+  "api_name": "diff",
+  "module_path": "torch.functional.F.np.ma",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(a) <= axis < rank(a)"
+      ]
+    },
+    "n": {
+      "type": "int|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional The number of times values are differenced. If zero, the input is returned as-is.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "n >= 0"
+      ]
+    },
+    "axis": {
+      "type": "int|number|tensor",
+      "size": "Scalar",
+      "default": "the",
+      "flag": "Optional",
+      "description": "int, optional The axis along which the difference is taken, default is the last axis. Values to prepend or append to `a` along axis prior to performing the difference. Scalar values are expanded to arrays with length 1 in the direction of axis and the shape of the input array in along all other axes. Otherwise the dimension and shape must match `a` except along axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(a) <= axis < rank(a)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|any",
+    "numbers": "1",
+    "description": "------- MaskedArray The n-th differences. The shape of the output is the same as `a` except along `axis` where the dimension is smaller by `n`. The type of the output is the same as the type of the difference between any two elements of `a`. This is the same as the type of `a` in most cases. A notable exception is `datetime64`, which results in a `timedelta64` output array."
+  },
+  "constraints": [
+    "axis must satisfy -rank(a) <= axis < rank(a)"
+  ]
+}

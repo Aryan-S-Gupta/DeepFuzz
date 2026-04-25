@@ -1,0 +1,62 @@
+{
+  "api_name": "slice",
+  "module_path": "jax.lax",
+  "params": {
+    "operand": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an array to slice",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "operand, start_indices, limit_indices must have the same shape"
+      ]
+    },
+    "start_indices": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a sequence of ``operand.ndim`` start indices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "operand, start_indices, limit_indices must have the same shape"
+      ]
+    },
+    "limit_indices": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a sequence of ``operand.ndim`` limit indices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "operand, start_indices, limit_indices must have the same shape"
+      ]
+    },
+    "strides": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "an optional sequence of ``operand.ndim`` strides.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "strides is optional and defaults to None"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The sliced array"
+  },
+  "constraints": [
+    "operand, start_indices, limit_indices must have the same shape"
+  ]
+}

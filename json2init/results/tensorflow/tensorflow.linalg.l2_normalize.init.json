@@ -1,0 +1,140 @@
+{
+  "api_full_name": "tensorflow.linalg.l2_normalize",
+  "api_name": "l2_normalize",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.l2_normalize",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "number",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Dimension along which to normalize. A scalar or a vector of integers.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "axis must satisfy -rank(x) <= axis < rank(x)"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "epsilon": {
+      "name": "epsilon",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A lower bound value for the norm. Will use `sqrt(epsilon)` as the divisor if `norm < sqrt(epsilon)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a lower bound value for the norm. will use `sqrt(epsilon)` as the divisor if `norm < sqrt(epsilon)`.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a lower bound value for the norm. will use `sqrt(epsilon)` as the divisor if `norm < sqrt(epsilon)`."
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for this operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for this operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for this operation (optional)."
+    },
+    "dim": {
+      "name": "dim",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Deprecated, do not use.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "deprecated",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: deprecated"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with the same shape as `x`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'epsilon' unresolved: unhandled chosen type: a lower bound value for the norm. will use `sqrt(epsilon)` as the divisor if `norm < sqrt(epsilon)`.",
+    "required param 'dim' unresolved: unhandled chosen type: deprecated"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.l2_normalize.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

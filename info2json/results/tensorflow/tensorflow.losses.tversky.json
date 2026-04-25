@@ -1,0 +1,62 @@
+{
+  "api_name": "tversky",
+  "module_path": "tensorflow.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "coefficient controlling incidence of false positives.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "beta": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "coefficient controlling incidence of false negatives.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tuple for which dimensions the loss is calculated.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Tversky loss value. Reference: - [Salehi et al., 2017](https://arxiv.org/abs/1706.05721)"
+  },
+  "constraints": []
+}

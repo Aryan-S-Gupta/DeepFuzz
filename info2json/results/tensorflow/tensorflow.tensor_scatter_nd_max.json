@@ -1,0 +1,68 @@
+{
+  "api_name": "tensor_scatter_nd_max",
+  "module_path": "tensorflow",
+  "params": {
+    "indices": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. Index tensor.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "indices must be one of int32, int64",
+        "`indices`, `updates`, and output types must be consistent with `tensor`"
+      ]
+    },
+    "updates": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `tensor`. Updates to scatter into output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have the same type as `tensor`",
+        "`indices`, `updates`, and output types must be consistent with `tensor`"
+      ]
+    },
+    "bad_indices_policy": {
+      "type": "string",
+      "size": "",
+      "default": "\"\"",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Allowed values: '', 'keep', 'skip'"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `tensor`."
+  },
+  "constraints": [
+    "`indices`, `updates`, and output types must be consistent with `tensor`"
+  ]
+}

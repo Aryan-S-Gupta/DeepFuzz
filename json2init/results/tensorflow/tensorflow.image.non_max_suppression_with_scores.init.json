@@ -1,0 +1,194 @@
+{
+  "api_full_name": "tensorflow.image.non_max_suppression_with_scores",
+  "api_name": "non_max_suppression_with_scores",
+  "module_path": "tensorflow.image",
+  "import_path": "tensorflow.image.non_max_suppression_with_scores",
+  "backend": "tensorflow",
+  "params": {
+    "boxes": {
+      "name": "boxes",
+      "spec": {
+        "type": "float|tensor",
+        "size": "2-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A 2-D float `Tensor` of shape `[num_boxes, 4]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1,
+          4
+        ],
+        "dtype": "float32",
+        "fill": 0.5,
+        "backend": "tensorflow",
+        "preset": "boxes"
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "scores": {
+      "name": "scores",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A 1-D float `Tensor` of shape `[num_boxes]` representing a single score corresponding to each box (each row of boxes).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "max_output_size": {
+      "name": "max_output_size",
+      "spec": {
+        "type": "int|number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A scalar integer `Tensor` representing the maximum number of boxes to be selected by non-max suppression.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "iou_threshold": {
+      "name": "iou_threshold",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A 0-D float tensor representing the threshold for deciding whether boxes overlap too much with respect to IOU.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "score_threshold": {
+      "name": "score_threshold",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A 0-D float tensor representing the threshold for deciding when to remove boxes based on score.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "soft_nms_sigma": {
+      "name": "soft_nms_sigma",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A 0-D float tensor representing the sigma parameter for Soft NMS; see Bodla et al (c.f. https://arxiv.org/abs/1704.04503). When `soft_nms_sigma=0.0` (which is default), we fall back to standard (hard) NMS.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "int|float|tensor",
+    "numbers": "1",
+    "description": "A 1-D integer `Tensor` of shape `[M]` representing the selected indices from the boxes tensor, where `M <= max_output_size`. selected_scores: A 1-D float tensor of shape `[M]` representing the corresponding scores for each selected box, where `M <= max_output_size`. Scores only differ from corresponding input scores when using Soft NMS (i.e. when `soft_nms_sigma>0`)"
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.non_max_suppression_with_scores.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

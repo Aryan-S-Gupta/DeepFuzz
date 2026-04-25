@@ -1,0 +1,43 @@
+{
+  "api_name": "reduce_xor",
+  "module_path": "jax.lax",
+  "params": {
+    "operand": {
+      "type": "int|bool|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array over which to compute the reduction. Must have boolean or integer dtype.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "must have boolean or integer dtype.",
+        "operand and axes are required parameters."
+      ]
+    },
+    "axes": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of zero or more unique integers specifying the axes over which to reduce. Each entry must satisfy ``0 <= axis < operand.ndim``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be a sequence of zero or more unique integers.",
+        "each entry must satisfy `0 <= axis < operand.ndim`.",
+        "operand and axes are required parameters."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array of the same dtype as ``operand``, with shape corresponding to the dimensions of ``operand.shape`` with ``axes`` removed."
+  },
+  "constraints": [
+    "operand and axes are required parameters."
+  ]
+}

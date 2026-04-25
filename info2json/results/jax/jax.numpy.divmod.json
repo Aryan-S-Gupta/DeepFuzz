@@ -1,0 +1,38 @@
+{
+  "api_name": "divmod",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array, the dividend",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same shape"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array, the divisor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "2",
+    "description": "A tuple of arrays ``(x1 // x2, x1 % x2)``."
+  },
+  "constraints": [
+    "x1 and x2 must have the same shape"
+  ]
+}

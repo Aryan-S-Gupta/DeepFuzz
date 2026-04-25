@@ -1,0 +1,53 @@
+{
+  "api_name": "hspmm",
+  "module_path": "torch",
+  "params": {
+    "mat1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the first sparse matrix to be matrix multiplied",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "mat1 and mat2 shapes must allow matrix multiplication",
+        "out tensor shape is inferred from mat1, mat2, and operation semantics"
+      ]
+    },
+    "mat2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the second strided matrix to be matrix multiplied",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "mat1 and mat2 shapes must allow matrix multiplication",
+        "out tensor shape is inferred from mat1, mat2, and operation semantics"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out tensor shape is inferred from mat1, mat2, and operation semantics"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(1 + 1)-dimensional",
+    "description": ":ref:`hybrid COO matrix`"
+  },
+  "constraints": [
+    "mat1 and mat2 shapes must allow matrix multiplication",
+    "out tensor shape is inferred from mat1, mat2, and operation semantics"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "api_name": "ones",
+  "module_path": "torch",
+  "params": {
+    "size": {
+      "type": "int|tuple|list|sequence|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a sequence of integers defining the shape of the output tensor. Can be a variable number of arguments or a collection like a list or tuple.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "if ``None``, uses a global default (see :func:`torch",
+      "flag": "Optional",
+      "description": "the output tensor. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. Default: if ``None``, uses a global default (see :func:`torch.set_default_dtype`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tensor",
+      "size": "",
+      "default": "torch",
+      "flag": "Optional",
+      "description": "the desired layout of returned Tensor. Default: ``torch.strided``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "if ``None``, uses the current device for the default tensor type",
+      "flag": "Optional",
+      "description": "the desired device of returned tensor. Default: if ``None``, uses the current device for the default tensor type (see :func:`torch.set_default_device`). :attr:`device` will be the CPU for CPU tensor types and the current CUDA device for CUDA tensor types.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "requires_grad": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

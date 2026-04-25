@@ -1,0 +1,38 @@
+{
+  "api_name": "lcm",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input array. The elements must have integer dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 elements must have integer dtype"
+      ]
+    },
+    "x2": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input array. The elements must have integer dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 elements must have integer dtype"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the least common multiple of the corresponding elements from the absolute values of `x1` and `x2`."
+  },
+  "constraints": [
+    "x1 and x2 elements must have integer dtype"
+  ]
+}

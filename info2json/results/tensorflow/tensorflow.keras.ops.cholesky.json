@@ -1,0 +1,34 @@
+{
+  "api_name": "cholesky",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "upper": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If True, returns the upper-triangular Cholesky factor. If False (default), returns the lower-triangular Cholesky factor.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor of shape `(..., M, M)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(..., M, M)",
+    "description": "A tensor of shape `(..., M, M)` representing the Cholesky factor of `x`."
+  },
+  "constraints": []
+}

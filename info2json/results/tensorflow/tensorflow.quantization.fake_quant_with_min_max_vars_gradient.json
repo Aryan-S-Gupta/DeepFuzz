@@ -1,0 +1,94 @@
+{
+  "api_name": "fake_quant_with_min_max_vars_gradient",
+  "module_path": "tensorflow.quantization",
+  "params": {
+    "gradients": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32`. Backpropagated gradients above the FakeQuantWithMinMaxVars operation.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "inputs": {
+      "type": "float|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32`. Values passed as inputs to the FakeQuantWithMinMaxVars operation. min, max: Quantization interval, scalar floats.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "min": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32`.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "max": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32`.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_bits": {
+      "type": "int",
+      "size": "",
+      "default": "8",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `8`. The bitwidth of the quantization; between 2 and 8, inclusive.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "narrow_range": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`. Whether to quantize into 2^num_bits - 1 distinct values.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "narrow_range must be one of bool, False"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (backprops_wrt_input, backprop_wrt_min, backprop_wrt_max). A `Tensor` of type `float32`. backprop_wrt_min: A `Tensor` of type `float32`. backprop_wrt_max: A `Tensor` of type `float32`."
+  },
+  "constraints": []
+}

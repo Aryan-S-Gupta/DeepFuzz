@@ -1,0 +1,38 @@
+{
+  "api_name": "result_type",
+  "module_path": "torch",
+  "params": {
+    "tensor1": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an input tensor or number",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "tensor1 and tensor2 must be of the same dtype"
+      ]
+    },
+    "tensor2": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an input tensor or number",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "tensor1 and tensor2 must be of the same dtype"
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "",
+    "description": "the :class:`torch.dtype` that would result from performing an arithmetic operation"
+  },
+  "constraints": [
+    "tensor1 and tensor2 must be of the same dtype"
+  ]
+}

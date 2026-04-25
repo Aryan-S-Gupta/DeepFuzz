@@ -1,0 +1,42 @@
+{
+  "api_name": "categorical_generalized_cross_entropy",
+  "module_path": "tensorflow.keras.losses",
+  "params": {
+    "y_true": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Ground truth labels. Expected to contain *integer class indices* with shape `[batch_size]` or `[batch_size, 1]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The predicted class probabilities, with shape `[batch_size, num_classes]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "q": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Float in range `(0, 1)`. It is the noise parameter. Controls the behavior of the loss: - As `q` approaches 0: Behaves more like cross entropy - As `q` approaches 1: Behaves more like mean absolute error",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "GCE loss values",
+    "numbers": "[batch_size]",
+    "description": "GCE loss values with shape `[batch_size]`. ```"
+  },
+  "constraints": []
+}

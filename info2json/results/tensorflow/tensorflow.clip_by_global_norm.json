@@ -1,0 +1,54 @@
+{
+  "api_name": "clip_by_global_norm",
+  "module_path": "tensorflow",
+  "params": {
+    "t_list": {
+      "type": "tuple|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tuple or list of mixed `Tensors`, `IndexedSlices`, or None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "clip_norm": {
+      "type": "number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 0-D (scalar) `Tensor` > 0. The clipping ratio.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "clip_norm must be positive"
+      ]
+    },
+    "use_norm": {
+      "type": "float|number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A 0-D (scalar) `Tensor` of type `float` (optional). The global norm to use. If not provided, `global_norm()` is used to compute the norm.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list|number|tensor",
+    "numbers": "1",
+    "description": "A list of `Tensors` of the same type as `list_t`. global_norm: A 0-D (scalar) `Tensor` representing the global norm."
+  },
+  "constraints": []
+}

@@ -1,0 +1,42 @@
+{
+  "api_name": "overlap_and_add",
+  "module_path": "tensorflow.signal",
+  "params": {
+    "signal": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A [..., frames, frame_length] `Tensor`. All dimensions may be unknown, and rank must be at least 2.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "frame_step": {
+      "type": "int|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer or scalar `Tensor` denoting overlap offsets. Must be less than or equal to `frame_length`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with shape `[..., output_size]` containing the overlap-added frames of `signal`'s inner-most two dimensions."
+  },
+  "constraints": []
+}

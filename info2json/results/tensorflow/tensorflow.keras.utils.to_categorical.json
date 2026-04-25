@@ -1,0 +1,32 @@
+{
+  "api_name": "to_categorical",
+  "module_path": "tensorflow.keras.utils",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array-like with class values to be converted into a matrix (integers from 0 to `num_classes - 1`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_classes": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Total number of classes. If `None`, this would be inferred as `max(x) + 1`. Defaults to `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A binary matrix representation of the input as a NumPy array. The class axis is placed last."
+  },
+  "constraints": []
+}

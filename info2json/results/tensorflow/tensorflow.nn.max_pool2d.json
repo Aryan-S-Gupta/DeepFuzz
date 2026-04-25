@@ -1,0 +1,80 @@
+{
+  "api_name": "max_pool2d",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 4-D `Tensor` of the format specified by `data_format`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ksize": {
+      "type": "int|list|tensor",
+      "size": "4 dims",
+      "default": "",
+      "flag": "Required",
+      "description": "An int or list of `ints` that has length `1`, `2` or `4`. The size of the window for each dimension of the input tensor. If only one integer is specified, then we apply the same window for all 4 dims. If two are provided then we use those for H, W dimensions and keep N, C dimension window size = 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "strides": {
+      "type": "int|list|tensor",
+      "size": "4 dims",
+      "default": "",
+      "flag": "Required",
+      "description": "An int or list of `ints` that has length `1`, `2` or `4`. The stride of the sliding window for each dimension of the input tensor. If only one integer is specified, we apply the same stride to all 4 dims. If two are provided we use those for the H, W dimensions and keep N, C of stride = 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding": {
+      "type": "string|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Either the `string` `\"SAME\"` or `\"VALID\"` indicating the type of padding algorithm to use, or a list indicating the explicit paddings at the start and end of each dimension. See [here](https://www.tensorflow.org/api_docs/python/tf/nn#notes_on_padding_2) for more information. When explicit padding is used and data_format is `\"NHWC\"`, this should be in the form `[[0, 0], [pad_top, pad_bottom], [pad_left, pad_right], [0, 0]]`. When explicit padding used and data_format is `\"NCHW\"`, this should be in the form `[[0, 0], [0, 0], [pad_top, pad_bottom], [pad_left, pad_right]]`. When using explicit padding, the size of the paddings cannot be greater than the sliding window size.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "string",
+        "SAME",
+        "VALID",
+        "NHWC",
+        "NCHW"
+      ],
+      "constraints": [
+        "padding must be one of string, SAME, VALID, NHWC, NCHW"
+      ]
+    },
+    "data_format": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A string. 'NHWC', 'NCHW' and 'NCHW_VECT_C' are supported.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of format specified by `data_format`. The max pooled output tensor."
+  },
+  "constraints": []
+}

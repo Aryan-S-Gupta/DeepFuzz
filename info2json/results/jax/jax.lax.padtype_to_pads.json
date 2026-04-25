@@ -1,0 +1,61 @@
+{
+  "api_name": "padtype_to_pads",
+  "module_path": "jax.lax",
+  "params": {
+    "in_shape": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Sequence of integers specifying the input spatial shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "window_shape": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Sequence of integers specifying the kernel/window spatial shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "window_strides": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Sequence of integers specifying the spatial strides.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Either a padding string (``'SAME'``, ``'SAME_LOWER'``, or ``'VALID'``) or a ``PaddingType`` enum value. Other values will result in an error.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "SAME",
+        "SAME_LOWER",
+        "VALID",
+        "PaddingType"
+      ],
+      "constraints": [
+        "must be one of 'SAME', 'SAME_LOWER', or 'VALID'",
+        "padding must be one of SAME, SAME_LOWER, VALID, PaddingType",
+        "padding must be specified or a PaddingType enum value"
+      ]
+    }
+  },
+  "output": {
+    "type": "int|list",
+    "numbers": "one for each spatial dimension",
+    "description": "A list of ``(low, high)`` integer tuples, one for each spatial dimension, specifying the padding to apply before and after each dimension."
+  },
+  "constraints": []
+}

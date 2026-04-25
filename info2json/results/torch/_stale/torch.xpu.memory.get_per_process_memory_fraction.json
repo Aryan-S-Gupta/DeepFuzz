@@ -1,0 +1,22 @@
+{
+  "api_name": "get_per_process_memory_fraction",
+  "module_path": "torch.xpu.memory",
+  "params": {
+    "device": {
+      "type": "string|int|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. It uses the current device, given by :func:`~torch.xpu.current_device`, if :attr:`device` is ``None`` (default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float",
+    "numbers": "1",
+    "description": "The memory fraction in the range 0.0 to 1.0."
+  },
+  "constraints": []
+}

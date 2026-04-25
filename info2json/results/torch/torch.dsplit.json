@@ -1,0 +1,35 @@
+{
+  "api_name": "dsplit",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor to split.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "indices_or_sections": {
+      "type": "int|tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "See argument in :func:`torch.tensor_split`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if int, must evenly divide the split dimension",
+        "input and indices_or_sections must satisfy :func:`torch.tensor_split` constraints"
+      ]
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "",
+    "description": "Splits input into multiple tensors"
+  },
+  "constraints": []
+}

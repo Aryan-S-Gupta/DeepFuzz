@@ -1,0 +1,25 @@
+{
+  "api_name": "square",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "jax.numpy.square is equivalent to jax.numpy.power(x, 2)",
+        "input x can be any numeric type (int, float, complex), and its shape can be any dimension"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "same shape as input x, but with each element replaced by its square",
+    "description": "An array containing the square of the elements of ``x``."
+  },
+  "constraints": []
+}

@@ -1,0 +1,57 @@
+{
+  "api_name": "pad",
+  "module_path": "torch.distributions.transforms",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "pad": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "m-elements tuple, where :math:`\\frac{m}{2} \\leq` input dimensions and :math:`m` is even.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "m must be even",
+        "input and pad must have compatible shapes"
+      ]
+    },
+    "mode": {
+      "type": "'constant', 'reflect', 'replicate' or 'circular'",
+      "size": "",
+      "default": "constant",
+      "flag": "Optional",
+      "description": "``'constant'``, ``'reflect'``, ``'replicate'`` or ``'circular'``. Default: ``'constant'``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "value": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "fill value for ``'constant'`` padding. Default: ``0``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "value must be one of constant, 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "padded input tensor with added dimensions based on pad tuple"
+  },
+  "constraints": []
+}

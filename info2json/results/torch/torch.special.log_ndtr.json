@@ -1,0 +1,36 @@
+{
+  "api_name": "log_ndtr",
+  "module_path": "torch.special",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input and out must have compatible shapes (if provided)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "the result of log_ndtr operation"
+  },
+  "constraints": [
+    "input tensor values must be finite"
+  ]
+}

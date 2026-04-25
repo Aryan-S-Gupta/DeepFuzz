@@ -1,0 +1,26 @@
+{
+  "api_name": "spacing",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "int|float|bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "real-valued array. Integer or boolean types will be cast to float.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "x shape must match x.shape in docstring examples"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "Array of same shape as ``x`` containing spacing between each entry of ``x`` and its closest adjacent value."
+  },
+  "constraints": []
+}

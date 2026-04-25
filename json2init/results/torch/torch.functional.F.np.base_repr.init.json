@@ -1,0 +1,110 @@
+{
+  "api_full_name": "torch.functional.F.np.base_repr",
+  "api_name": "base_repr",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.base_repr",
+  "backend": "torch",
+  "params": {
+    "number": {
+      "name": "number",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int The value to convert. Positive and negative values are handled.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "number must be positive"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "base": {
+      "name": "base",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int, optional Convert `number` to the `base` number system. The valid range is 2-36, the default value is 2.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "0 (no padding)",
+        "flag": "Optional",
+        "description": "int, optional Number of zeros padded on the left. Default is 0 (no padding).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|number",
+    "numbers": "1",
+    "description": "------- str String representation of `number` in `base` system."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "str",
+      "value": "1"
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.base_repr.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

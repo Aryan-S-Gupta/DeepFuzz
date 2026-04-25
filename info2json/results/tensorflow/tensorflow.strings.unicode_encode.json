@@ -1,0 +1,70 @@
+{
+  "api_name": "unicode_encode",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "input": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `N+1` dimensional potentially ragged integer tensor with shape `[D1...DN, num_chars]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "output_encoding": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Unicode encoding that should be used to encode each code point sequence. Can be `\"UTF-8\"`, `\"UTF-16-BE\"`, or `\"UTF-32-BE\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "errors": {
+      "type": "number|any",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "Specifies the response when a code point that is not a [Unicode scalar value](https://www.unicode.org/glossary/#unicode_scalar_value) is encountered (optional). One of: * `'replace'`: Replace non-scalar-value with the `replacement_char`. (default) * `'ignore'`: Skip non-scalar-value . * `'strict'`: Raise an exception for any non-scalar-value.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "replace",
+        "ignore",
+        "strict"
+      ],
+      "constraints": [
+        "errors must be one of replace, ignore, strict"
+      ]
+    },
+    "replacement_char": {
+      "type": "number|any",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "The replacement character to be used in place of any invalid input when `errors='replace'`. Any Unicode scalar value may be used. The default value is the default Unicode replacement character which is 0xFFFD (U+65533).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "replacement_char must be one of replace"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor|dtype",
+    "numbers": "1",
+    "description": "A `N` dimensional `string` tensor with shape `[D1...DN]`. #### Example: >>> input = tf.ragged.constant( ... [[71, 246, 246, 100, 110, 105, 103, 104, 116], [128522]]) >>> print(unicode_encode(input, 'UTF-8')) tf.Tensor([b'G\\xc3\\xb6\\xc3\\xb6dnight' b'\\xf0\\x9f\\x98\\x8a'], shape=(2,), dtype=string)"
+  },
+  "constraints": []
+}

@@ -1,0 +1,35 @@
+{
+  "api_name": "expand_dims",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "integer or sequence of integers specifying positions of axes to add.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must satisfy 0 <= axis < rank(a)+1",
+        "axis must satisfy -rank(input) <= axis < rank(input)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Copy of ``a`` with added dimensions."
+  },
+  "constraints": []
+}

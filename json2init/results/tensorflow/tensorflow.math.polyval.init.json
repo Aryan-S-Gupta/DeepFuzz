@@ -1,0 +1,129 @@
+{
+  "api_full_name": "tensorflow.math.polyval",
+  "api_name": "polyval",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.polyval",
+  "backend": "tensorflow",
+  "params": {
+    "coeffs": {
+      "name": "coeffs",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A list of `Tensor` representing the coefficients of the polynomial.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "coeffs list size corresponds to polynomial degree n"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` representing the variable of the polynomial.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `tensor` of the shape as the expression p(x) with usual broadcasting rules for element-wise addition and multiplication applied. @compatibility(numpy) Equivalent to numpy.polyval. @end_compatibility"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Argument coeffs must be list type. Received type <class 'tensorflow.python.framework.ops.EagerTensor'>."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Argument coeffs must be list type. Received type <class 'tensorflow.python.framework.ops.EagerTensor'>.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/math_ops.py\", line 5516, in polyval\n    raise ValueError(\n        f\"Argument coeffs must be list type. Received type {type(coeffs)}.\")\nValueError: Argument coeffs must be list type. Received type <class 'tensorflow.python.framework.ops.EagerTensor'>.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.polyval.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

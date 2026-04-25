@@ -1,0 +1,99 @@
+{
+  "api_full_name": "tensorflow.math.bessel_i0e",
+  "api_name": "bessel_i0e",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.bessel_i0e",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` or `SparseTensor`. Must be one of the following types: `half`, `float32`, `float64`.",
+        "dtype_candidates": [
+          "float32",
+          "float64"
+        ],
+        "enum_values": [
+          "SparseTensor",
+          "half",
+          "float32",
+          "float64"
+        ],
+        "constraints": [
+          "x cannot be None",
+          "x must be one of SparseTensor, half, float32, float64",
+          "x and output must have compatible types"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "''",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`. @compatibility(scipy) Equivalent to scipy.special.i0e @end_compatibility If `x` is a `SparseTensor`, returns `SparseTensor(x.indices, tf.math.bessel_i0e(x.values, ...), x.dense_shape)`"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.bessel_i0e.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

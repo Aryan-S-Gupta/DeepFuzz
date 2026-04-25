@@ -1,0 +1,40 @@
+{
+  "api_name": "tensorinv",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array to be inverted. Must have ``prod(a.shape[:ind]) == prod(a.shape[ind:])``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input array a must have rank >= ind+1"
+      ]
+    },
+    "ind": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "positive integer specifying the number of indices in the tensor product.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be provided",
+        "ind must be positive",
+        "input array a must have rank >= ind+1"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "*a.shape[ind:], *a.shape[:ind]",
+    "description": "array of shape ``(*a.shape[ind:], *a.shape[:ind])`` containing the tensor inverse of ``a``."
+  },
+  "constraints": [
+    "input array a must have rank >= ind+1"
+  ]
+}

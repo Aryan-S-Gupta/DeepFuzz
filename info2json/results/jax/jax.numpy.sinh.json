@@ -1,0 +1,26 @@
+{
+  "api_name": "sinh",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "-1j * jnp.sin(1j * x) is equivalent to jnp.sinh(x)",
+        "jax.numpy.sinh and -1j * jnp.sin(1j * x) should have the same dtype",
+        "x can be a scalar or an array of any shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real or complex",
+    "description": "An array containing the hyperbolic sine of each element of ``x``, promoting to inexact dtype."
+  },
+  "constraints": []
+}

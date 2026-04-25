@@ -1,0 +1,70 @@
+{
+  "api_full_name": "torch.fx.experimental.symbolic_shapes.sympy.intersection",
+  "api_name": "intersection",
+  "module_path": "torch.fx.experimental.symbolic_shapes.sympy",
+  "import_path": "torch.fx.experimental.symbolic_shapes.sympy.intersection",
+  "backend": "torch",
+  "params": {
+    "pairwise": {
+      "name": "pairwise",
+      "spec": {
+        "type": "keyword argument",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Can be either True or False",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "keyword argument",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: keyword argument"
+    },
+    "entities": {
+      "name": "entities",
+      "spec": {
+        "type": "sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "sequence of GeometryEntity",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "1",
+    "description": "======= list of GeometryEntity"
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'pairwise' unresolved: unhandled chosen type: keyword argument"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.intersection.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

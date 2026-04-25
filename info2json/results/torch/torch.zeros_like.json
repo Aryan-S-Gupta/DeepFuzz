@@ -1,0 +1,64 @@
+{
+  "api_name": "zeros_like",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the size of :attr:`input` will determine size of the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired layout of returned tensor. Default: if ``None``, defaults to the layout of :attr:`input`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired device of returned tensor. Default: if ``None``, defaults to the device of :attr:`input`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "requires_grad": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "memory_format": {
+      "type": "tensor",
+      "size": "",
+      "default": "torch.preserve_format",
+      "flag": "Optional",
+      "description": "the desired memory format of returned Tensor. Default: ``torch.preserve_format``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

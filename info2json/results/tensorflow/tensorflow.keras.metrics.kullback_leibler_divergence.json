@@ -1,0 +1,46 @@
+{
+  "api_name": "kullback_leibler_divergence",
+  "module_path": "tensorflow.keras.metrics",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of true targets.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "y_true shape must match y_pred shape",
+        "y_true and y_pred dtype must be float32"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of predicted targets.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "y_true shape must match y_pred shape",
+        "y_true and y_pred dtype must be float32"
+      ]
+    }
+  },
+  "output": {
+    "type": "loss",
+    "numbers": "[batch_size, d0, .. dN-1]",
+    "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": [
+    "y_true shape must match y_pred shape",
+    "y_true and y_pred dtype must be float32",
+    "batch_size, d0, .. dN-1 are positive integers"
+  ]
+}

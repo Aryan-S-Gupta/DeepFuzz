@@ -1,0 +1,174 @@
+{
+  "api_full_name": "tensorflow.math.betainc",
+  "api_name": "betainc",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.betainc",
+  "backend": "tensorflow",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`.",
+        "dtype_candidates": [
+          "float32",
+          "float64"
+        ],
+        "enum_values": [
+          "float32",
+          "float64"
+        ],
+        "constraints": [
+          "a must be one of float32, float64",
+          "a, b, and x must be the same shape and type",
+          "if a <= 0 or b <= 0, I_x(a, b) = 0"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "b": {
+      "name": "b",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `a`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "b must have the same dtype as a",
+          "a, b, and x must be the same shape and type",
+          "if a <= 0 or b <= 0, I_x(a, b) = 0"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `a`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x must have the same dtype as a",
+          "a, b, and x must be the same shape and type",
+          "x must be in range [0, 1] inclusive"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `a`."
+  },
+  "constraints": [
+    "a, b, and x must be the same shape and type",
+    "if a <= 0 or b <= 0, I_x(a, b) = 0"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.betainc.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

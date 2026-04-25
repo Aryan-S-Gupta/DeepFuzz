@@ -1,0 +1,66 @@
+{
+  "api_name": "isin",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "element": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "test_elements": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The values against which to test each value of `element`. This argument is flattened if it is an array or array_like. See notes for behavior with non-array-like parameters.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "assume_unique": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, optional If True, the input arrays are both assumed to be unique, which can speed up the calculation. Default is False.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "invert": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, optional If True, the values in the returned array are inverted, as if calculating `element not in test_elements`. Default is False. ``np.isin(a, b, invert=True)`` is equivalent to (but faster than) ``np.invert(np.isin(a, b))``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "kind": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{None, 'sort', 'table'}, optional The algorithm to use. This will not affect the final result, but will affect the speed and memory use. The default, None, will select automatically based on memory considerations.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "------- ndarray, bool Has the same shape as `element`. The values `element[isin]` are in `test_elements`."
+  },
+  "constraints": []
+}

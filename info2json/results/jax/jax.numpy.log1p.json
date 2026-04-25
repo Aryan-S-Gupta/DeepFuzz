@@ -1,0 +1,25 @@
+{
+  "api_name": "log1p",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "jnp.log1p(x) for small values of x is more accurate than jnp.log(x+1)",
+        "For values very close to 0, jnp.log1p(x) is more accurate than jnp.log(x+1)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real",
+    "description": "An array containing the logarithm of one plus of each element in ``x``, promotes to inexact dtype."
+  },
+  "constraints": []
+}

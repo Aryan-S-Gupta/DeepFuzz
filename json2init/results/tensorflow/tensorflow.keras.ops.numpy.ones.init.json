@@ -1,0 +1,71 @@
+{
+  "api_full_name": "tensorflow.keras.ops.numpy.ones",
+  "api_name": "ones",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "import_path": "tensorflow.keras.ops.numpy.ones",
+  "backend": "tensorflow",
+  "params": {
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "tuple|list|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Shape of the new tensor. dtype: Desired data type of the tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "shape must be compatible with tensorflow data types"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "Tensor of ones with the given shape and dtype."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: ones() missing 1 required positional argument: 'shape'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "ones() missing 1 required positional argument: 'shape'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: ones() missing 1 required positional argument: 'shape'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.ones.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

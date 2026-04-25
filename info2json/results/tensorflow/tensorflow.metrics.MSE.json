@@ -1,0 +1,38 @@
+{
+  "api_name": "MSE",
+  "module_path": "tensorflow.metrics",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Ground truth values with shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true shape must match y_pred shape"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true shape must match y_pred shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "[batch_size, d0, .. dN-1]",
+    "description": "Mean squared error values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": [
+    "y_true shape must match y_pred shape"
+  ]
+}

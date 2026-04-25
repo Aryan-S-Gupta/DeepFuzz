@@ -1,0 +1,36 @@
+{
+  "api_name": "gelu",
+  "module_path": "jax.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x type must be supported by JAX's array type system"
+      ]
+    },
+    "approximate": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "whether to use the approximate or exact formulation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "unspecified"
+  },
+  "constraints": [
+    "approximate must be boolean"
+  ]
+}

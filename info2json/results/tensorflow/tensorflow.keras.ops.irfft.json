@@ -1,0 +1,37 @@
+{
+  "api_name": "irfft",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "float|tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tuple of the real and imaginary parts of the input tensor. Both tensors in the tuple should be of floating type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fft_length": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An integer representing the number of the fft length. If not specified, it is inferred from the length of the last axis of `x`. Defaults to `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be even",
+        "x's shape can have any number of dimensions, but its last axis length must be even when fft_length is not specified"
+      ]
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "3 or more, depending on the input's last axis length",
+    "description": "A tensor containing the inverse real-valued Fast Fourier Transform along the last axis of `x`."
+  },
+  "constraints": [
+    "x's elements must be numeric"
+  ]
+}

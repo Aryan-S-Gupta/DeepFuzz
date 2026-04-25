@@ -1,0 +1,42 @@
+{
+  "api_name": "cumsum",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array to be accumulated.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "integer axis along which to accumulate. If None (default), then array will be flattened and accumulated along the flattened axis. dtype: optionally specify the dtype of the output. If not specified, then the output dtype will match the input dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the accumulated sum along the given axis."
+  },
+  "constraints": []
+}

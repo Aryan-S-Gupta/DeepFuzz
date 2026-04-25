@@ -1,0 +1,48 @@
+{
+  "api_name": "astype",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array to convert dtype: output dtype",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x, dtype must be provided"
+      ]
+    },
+    "copy": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "if True, then always return a copy. If False (default) then only return a copy if necessary.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "string|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optionally specify the device to which the output will be committed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array with the same shape as ``x``, containing values of the specified dtype."
+  },
+  "constraints": [
+    "dtype conversions follow numpy rules"
+  ]
+}

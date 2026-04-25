@@ -1,0 +1,72 @@
+{
+  "api_name": "cross",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array. ``a.shape[axisa]`` indicates the dimension of the cross product, and must be 2 or 3.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "b": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array. Must have ``b.shape[axisb] == a.shape[axisb]``, and other dimensions of ``a`` and ``b`` must be broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axisa": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "specicy the axis of ``a`` along which to compute the cross product.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axisb": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "specicy the axis of ``b`` along which to compute the cross product.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axisc": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "specicy the axis of ``c`` along which the cross product result will be stored.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "if specified, this overrides ``axisa``, ``axisb``, and ``axisc`` with a single value.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The array ``c`` containing the (batched) cross product of ``a`` and ``b`` along the specified axes."
+  },
+  "constraints": []
+}

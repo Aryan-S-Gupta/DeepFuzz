@@ -1,0 +1,48 @@
+{
+  "api_name": "slice",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "inputs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor, the tensor to be updated.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "start_indices": {
+      "type": "tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list/tuple of shape `(inputs.ndim,)`, specifying the starting indices for updating.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "start_indices and shape must have same length as inputs.ndim"
+      ]
+    },
+    "shape": {
+      "type": "tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The full shape of the returned slice.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "start_indices and shape must have same length as inputs.ndim"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A tensor, has the same shape and dtype as `inputs`."
+  },
+  "constraints": [
+    "start_indices and shape must have same length as inputs.ndim"
+  ]
+}

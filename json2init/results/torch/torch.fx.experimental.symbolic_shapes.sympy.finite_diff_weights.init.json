@@ -1,0 +1,113 @@
+{
+  "api_full_name": "torch.fx.experimental.symbolic_shapes.sympy.finite_diff_weights",
+  "api_name": "finite_diff_weights",
+  "module_path": "torch.fx.experimental.symbolic_shapes.sympy",
+  "import_path": "torch.fx.experimental.symbolic_shapes.sympy.finite_diff_weights",
+  "backend": "torch",
+  "params": {
+    "order": {
+      "name": "order",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int Up to what derivative order weights should be calculated. 0 corresponds to interpolation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "x_list": {
+      "name": "x_list",
+      "spec": {
+        "type": "sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "sequence Sequence of (unique) values for the independent variable. It is useful (but not necessary) to order ``x_list`` from nearest to furthest from ``x0``; see examples below.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "x0": {
+      "name": "x0",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "S",
+        "flag": "Optional",
+        "description": "Number or Symbol Root or value of the independent variable for which the finite difference weights should be generated. Default is ``S.One``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x0 must be one of S.One"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "1",
+    "description": "======= list A list of sublists, each corresponding to coefficients for increasing derivative order, and each containing lists of coefficients for increasing subsets of x_list."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "list",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.finite_diff_weights.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

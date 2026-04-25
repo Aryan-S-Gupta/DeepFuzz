@@ -1,0 +1,52 @@
+{
+  "api_name": "sparse_top_k_categorical_accuracy",
+  "module_path": "tensorflow.keras.metrics",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor of shape `(batch_size)` representing indices or IDs of true categories.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If `from_sorted_ids=False`, a tensor of shape `(batch_size, num_categories)` containing the scores for each sample for all possible categories. If `from_sorted_ids=True`, a tensor of shape `(batch_size, N)` containing indices or IDs of the top `N` categories in order from highest score to lowest score.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "number",
+      "size": "",
+      "default": "5",
+      "flag": "Optional",
+      "description": "(Optional) Number of top elements to look at for computing accuracy. Defaults to `5`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "from_sorted_ids": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "(Optional) Whether `y_pred` is sorted category IDs or scores for all categories (the default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor with the same shape as `y_true` containing ones where `y_true` is in the top `k` and zeros elsewhere."
+  },
+  "constraints": []
+}

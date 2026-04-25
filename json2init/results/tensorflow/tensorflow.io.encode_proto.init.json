@@ -1,0 +1,199 @@
+{
+  "api_full_name": "tensorflow.io.encode_proto",
+  "api_name": "encode_proto",
+  "module_path": "tensorflow.io",
+  "import_path": "tensorflow.io.encode_proto",
+  "backend": "tensorflow",
+  "params": {
+    "sizes": {
+      "name": "sizes",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `int32`. Tensor of int32 with shape `[batch_shape, len(field_names)]`.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "values": {
+      "name": "values",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A list of `Tensor` objects. List of tensors containing values for the corresponding field.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "field_names": {
+      "name": "field_names",
+      "spec": {
+        "type": "list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A list of `strings`. List of strings containing proto field names.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          "field"
+        ],
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "message_type": {
+      "name": "message_type",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `string`. Name of the proto message type to decode.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "descriptor_source": {
+      "name": "descriptor_source",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"local://\"",
+        "flag": "Optional",
+        "description": "An optional `string`. Defaults to `\"local://\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Expected string for argument 'message_type' not tf.float32."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Expected string for argument 'message_type' not tf.float32.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_encode_proto_ops.py\", line 104, in encode_proto\n    return encode_proto_eager_fallback(\n        sizes, values, field_names=field_names, message_type=message_type,\n        descriptor_source=descriptor_source, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_encode_proto_ops.py\", line 174, in encode_proto_eager_fallback\n    message_type = _execute.make_str(message_type, \"message_type\")\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 165, in make_str\n    raise TypeError(\"Expected string for argument '%s' not %s.\" %\n                    (arg_name, repr(v)))\nTypeError: Expected string for argument 'message_type' not tf.float32.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.encode_proto.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

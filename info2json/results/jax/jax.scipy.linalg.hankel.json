@@ -1,0 +1,44 @@
+{
+  "api_name": "hankel",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., N)`` specifying the first column.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "N must be > 0",
+        "Leading dimensions of c and r must be broadcast-compatible",
+        "For N-dimensional c and/or r, the result is a batch of Hankel matrices"
+      ]
+    },
+    "r": {
+      "type": "tensor",
+      "size": "",
+      "default": "zeros_like(c)",
+      "flag": "Optional",
+      "description": "(optional) array of shape ``(..., M)`` specifying the last row. Leading dimensions must be broadcast-compatible with those of ``c``. If not specified, ``r`` defaults to ``zeros_like(c)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "M must be >= 0",
+        "Leading dimensions of c and r must be broadcast-compatible",
+        "r[0] is ignored in the result",
+        "For N-dimensional c and/or r, the result is a batch of Hankel matrices"
+      ]
+    }
+  },
+  "output": {
+    "type": "Hankel matrix",
+    "numbers": "1",
+    "description": "A Hankel matrix of shape ``(..., N, M)``."
+  },
+  "constraints": [
+    "Leading dimensions of c and r must be broadcast-compatible",
+    "For N-dimensional c and/or r, the result is a batch of Hankel matrices"
+  ]
+}

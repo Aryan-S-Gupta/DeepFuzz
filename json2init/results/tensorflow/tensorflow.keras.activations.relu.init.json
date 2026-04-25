@@ -1,0 +1,142 @@
+{
+  "api_full_name": "tensorflow.keras.activations.relu",
+  "api_name": "relu",
+  "module_path": "tensorflow.keras.activations",
+  "import_path": "tensorflow.keras.activations.relu",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x cannot be None"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "negative_slope": {
+      "name": "negative_slope",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "A `float` that controls the slope for values lower than the threshold.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "negative_slope must be one of float"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "max_value": {
+      "name": "max_value",
+      "spec": {
+        "type": "float|callable",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A `float` that sets the saturation threshold (the largest value the function will return).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "max_value must be one of float"
+        ]
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable"
+    },
+    "threshold": {
+      "name": "threshold",
+      "spec": {
+        "type": "float|callable",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A `float` giving the threshold value of the activation function below which values will be damped or set to zero.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "threshold must be one of float"
+        ]
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable"
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A tensor with the same shape and dtype as input `x`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.activations.relu.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

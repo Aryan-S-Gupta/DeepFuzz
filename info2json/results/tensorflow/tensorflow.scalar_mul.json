@@ -1,0 +1,42 @@
+{
+  "api_name": "scalar_mul",
+  "module_path": "tensorflow",
+  "params": {
+    "scalar": {
+      "type": "number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 0-D scalar `Tensor`. Must have known shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or `IndexedSlices` to be scaled.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "`scalar * x` of the same type (`Tensor` or `IndexedSlices`) as `x`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,59 @@
+{
+  "api_full_name": "torch.quantization.default_placeholder_observer.get_buffer",
+  "api_name": "get_buffer",
+  "module_path": "torch.quantization.default_placeholder_observer",
+  "import_path": "torch.quantization.default_placeholder_observer.get_buffer",
+  "backend": "torch",
+  "params": {
+    "target": {
+      "name": "target",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The fully-qualified string name of the buffer to look for. (See ``get_submodule`` for how to specify a fully-qualified string.)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The buffer referenced by ``target``"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Module.get_buffer() missing 1 required positional argument: 'self'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Module.get_buffer() missing 1 required positional argument: 'self'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: Module.get_buffer() missing 1 required positional argument: 'self'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.quantization.default_placeholder_observer.get_buffer.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

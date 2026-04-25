@@ -1,0 +1,25 @@
+{
+  "api_name": "sobel_edges",
+  "module_path": "tensorflow.image",
+  "params": {
+    "image": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Image tensor with shape [batch_size, h, w, d] and type float32 or float64. The image(s) must be 2x2 or larger.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Tensor holding edge maps for each channel. Returns a tensor with shape [batch_size, h, w, d, 2] where the last two dimensions hold [[dy[0], dx[0]], [dy[1], dx[1]], ..., [dy[d-1], dx[d-1]]] calculated using the Sobel filter."
+  },
+  "constraints": []
+}

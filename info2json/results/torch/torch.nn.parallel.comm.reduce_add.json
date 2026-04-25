@@ -1,0 +1,37 @@
+{
+  "api_name": "reduce_add",
+  "module_path": "torch.nn.parallel.comm",
+  "params": {
+    "inputs": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an iterable of tensors to add.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "destination": {
+      "type": "int|device",
+      "size": "",
+      "default": "current device)",
+      "flag": "Optional",
+      "description": "a device on which the output will be placed (default: current device).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "destination must be an valid integer representing a device"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|device",
+    "numbers": "1",
+    "description": "A tensor containing an elementwise sum of all inputs, placed on the :attr:`destination` device."
+  },
+  "constraints": [
+    "All inputs should have matching shapes, dtype, and layout.",
+    "The output tensor will be of the same shape, dtype, and layout."
+  ]
+}

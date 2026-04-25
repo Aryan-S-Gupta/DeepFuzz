@@ -1,0 +1,64 @@
+{
+  "api_name": "matrix_rank",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "a": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(Batch of) `float`-like matrix-shaped `Tensor`(s) which are to be pseudo-inverted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "tol": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Threshold below which the singular value is counted as 'zero'. Default value: `None` (i.e., `eps * max(rows, cols) * max(singular_val)`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Default value: `eps * max(rows, cols) * max(singular_val)`",
+        "tol must be one of zero"
+      ]
+    },
+    "validate_args": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "When `True`, additional assertions might be embedded in the graph. Default value: `False` (i.e., no graph assertions are added).",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "validate_args must be one of True, False"
+      ]
+    },
+    "name": {
+      "type": "string|callable",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Python `str` prefixed to ops created by this function. Default value: 'matrix_rank'.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Default value: 'matrix_rank'",
+        "name must be one of str, matrix_rank"
+      ]
+    }
+  },
+  "output": {
+    "type": "number",
+    "numbers": "1",
+    "description": "(Batch of) `int32` scalars representing the number of non-zero singular values."
+  },
+  "constraints": [
+    "matrix_rank output must be 1"
+  ]
+}

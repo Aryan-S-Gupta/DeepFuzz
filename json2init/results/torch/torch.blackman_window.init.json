@@ -1,0 +1,180 @@
+{
+  "api_full_name": "torch.blackman_window",
+  "api_name": "blackman_window",
+  "module_path": "torch",
+  "import_path": "torch.blackman_window",
+  "backend": "torch",
+  "params": {
+    "window_length": {
+      "name": "window_length",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the size of returned window",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "periodic": {
+      "name": "periodic",
+      "spec": {
+        "type": "bool|callable",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "If True, returns a window to be used as periodic function. If False, return a symmetric window.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable"
+    },
+    "layout": {
+      "name": "layout",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "torch.strided",
+        "flag": "Optional",
+        "description": "the desired layout of returned window tensor. Only ``torch.strided`` (dense layout) is supported.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "tensor|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the desired device of returned tensor. Default: if ``None``, uses the current device for the default tensor type (see :func:`torch.set_default_device`). :attr:`device` will be the CPU for CPU tensor types and the current CUDA device for CUDA tensor types.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "requires_grad": {
+      "name": "requires_grad",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A 1-D tensor of size :math:`(\\text{window\\_length},)` containing the window"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "Tensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "device": "cpu",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.blackman_window.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

@@ -1,0 +1,40 @@
+{
+  "api_name": "reverse",
+  "module_path": "tensorflow",
+  "params": {
+    "axis": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 1-D. The indices of the dimensions to reverse. Must be in the range `[-rank(tensor), rank(tensor))`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `tensor`."
+  },
+  "constraints": [
+    "t and dims must have compatible shapes"
+  ]
+}

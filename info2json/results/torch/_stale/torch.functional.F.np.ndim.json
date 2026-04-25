@@ -1,0 +1,25 @@
+{
+  "api_name": "ndim",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array. If it is not already an ndarray, a conversion is attempted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Conversion to ndarray is attempted if not already one",
+        "Input array a must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "int|number",
+    "numbers": "single",
+    "description": "------- int The number of dimensions in `a`. Scalars are zero-dimensional."
+  },
+  "constraints": []
+}

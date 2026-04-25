@@ -1,0 +1,44 @@
+{
+  "api_name": "combinations",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "1D vector.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "r": {
+      "type": "int|number",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "number of elements to combine",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "with_replacement": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "whether to allow duplication in combination",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "1",
+    "description": "A tensor equivalent to converting all the input tensors into lists, do `itertools.combinations` or `itertools.combinations_with_replacement` on these lists, and finally convert the resulting list into tensor."
+  },
+  "constraints": []
+}

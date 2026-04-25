@@ -1,0 +1,61 @@
+{
+  "api_name": "unwrap",
+  "module_path": "jax.numpy",
+  "params": {
+    "p": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "discont": {
+      "type": "sequence|number",
+      "size": "",
+      "default": "period / 2",
+      "flag": "Optional",
+      "description": "the maximum allowable discontinuity in the sequence. The default is ``period / 2``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be non-negative",
+        "discont must be less than or equal to period"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "the axis along which to unwrap; defaults to -1",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must satisfy -rank(p) <= axis < rank(p)"
+      ]
+    },
+    "period": {
+      "type": "number",
+      "size": "",
+      "default": "math:`2\\pi",
+      "flag": "Optional",
+      "description": "the period of the signal, which defaults to :math:`2\\pi`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "discont must be less than or equal to period"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An unwrapped copy of ``p``."
+  },
+  "constraints": [
+    "discont must be less than or equal to period"
+  ]
+}

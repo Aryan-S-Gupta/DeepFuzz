@@ -1,0 +1,50 @@
+{
+  "api_name": "tile",
+  "module_path": "tensorflow",
+  "params": {
+    "input": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Can be of any rank.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "multiples": {
+      "type": "number|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 1-D. Length must be the same as the number of dimensions in `input`",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "Same type as input.",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": [
+    "input and multiples must have the same number of dimensions."
+  ]
+}

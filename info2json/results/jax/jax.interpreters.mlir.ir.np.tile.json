@@ -1,0 +1,39 @@
+{
+  "api_name": "tile",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "A": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "A.shape and reps.shape must satisfy broadcasting rules"
+      ]
+    },
+    "reps": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like The number of repetitions of `A` along each axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be broadcastable to max(d, A.ndim) dimensions",
+        "A.shape and reps.shape must satisfy broadcasting rules"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The tiled output array."
+  },
+  "constraints": [
+    "A.shape and reps.shape must satisfy broadcasting rules"
+  ]
+}

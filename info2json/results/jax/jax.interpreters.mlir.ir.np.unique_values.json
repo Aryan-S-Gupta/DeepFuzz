@@ -1,0 +1,44 @@
+{
+  "api_name": "unique_values",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array. It will be flattened if it is not already 1-D.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be 1-D"
+      ]
+    },
+    "equal_nan": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sorted": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The unique elements of an input array."
+  },
+  "constraints": []
+}

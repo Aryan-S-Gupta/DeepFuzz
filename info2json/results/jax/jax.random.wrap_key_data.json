@@ -1,0 +1,41 @@
+{
+  "api_name": "wrap_key_data",
+  "module_path": "jax.random",
+  "params": {
+    "key_bits_array": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a ``uint32`` array with trailing shape corresponding to the key shape of the PRNG implementation specified by ``impl``.",
+      "dtype_candidates": [
+        "uint32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "key_bits_array trailing shape must match impl's key shape"
+      ]
+    },
+    "impl": {
+      "type": "string",
+      "size": "",
+      "default": "jax.random.key",
+      "flag": "Optional",
+      "description": "optional, specifies a PRNG implementation, as in ``random.key``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be a valid PRNG implementation",
+        "key_bits_array trailing shape must match impl's key shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "dtype is a subdtype of `jax.dtypes.prng_key` corresponding to `impl`",
+    "description": "A PRNG key array, whose dtype is a subdtype of ``jax.dtypes.prng_key`` corresponding to ``impl``, and whose shape equals the leading shape of ``key_bits_array.shape`` up to the key bit dimensions."
+  },
+  "constraints": [
+    "key_bits_array trailing shape must match impl's key shape"
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "api_full_name": "torch.stft",
+  "api_name": "stft",
+  "module_path": "torch",
+  "import_path": "torch.stft",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the input tensor of shape `(B?, L)` where `B?` is an optional batch dimension",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "n_fft": {
+      "name": "n_fft",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "size of Fourier transform",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "hop_length": {
+      "name": "hop_length",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "None`` (treated as equal to ``floor(n_fft / 4)``)",
+        "flag": "Optional",
+        "description": "the distance between neighboring sliding window frames. Default: ``None`` (treated as equal to ``floor(n_fft / 4)``)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "win_length": {
+      "name": "win_length",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "None`` (treated as equal to :attr:`n_fft`)",
+        "flag": "Optional",
+        "description": "the size of window frame and STFT filter. Default: ``None`` (treated as equal to :attr:`n_fft`)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "window": {
+      "name": "window",
+      "spec": {
+        "type": "callable|tensor",
+        "size": "1d",
+        "default": "None`` (treated as window of all :math:`1` s)",
+        "flag": "Optional",
+        "description": "the optional window function. Shape must be 1d and `<= n_fft` Default: ``None`` (treated as window of all :math:`1` s)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable"
+    },
+    "center": {
+      "name": "center",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "whether to pad :attr:`input` on both sides so that the :math:`t`-th frame is centered at time :math:`t \\times \\text{hop\\_length}`. Default: ``True``",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "pad_mode": {
+      "name": "pad_mode",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"reflect\"",
+        "flag": "Optional",
+        "description": "controls the padding method used when :attr:`center` is ``True``. Default: ``\"reflect\"``",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "center"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "normalized": {
+      "name": "normalized",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "controls whether to return the normalized STFT results Default: ``False``",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "onesided": {
+      "name": "onesided",
+      "spec": {
+        "type": "float|bool",
+        "size": "",
+        "default": "True`` for real :attr:`input` and :attr:`window`, ``False`` otherwise",
+        "flag": "Optional",
+        "description": "controls whether to return half of results to avoid redundancy for real inputs. Default: ``True`` for real :attr:`input` and :attr:`window`, ``False`` otherwise.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "return_complex": {
+      "name": "return_complex",
+      "spec": {
+        "type": "float|bool|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "whether to return a complex tensor, or a real tensor with an extra last dimension for the real and imaginary components.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|number|tensor",
+    "numbers": "1",
+    "description": "A tensor containing the STFT result with shape `(B?, N, T, C?)` where - `B?` is an optional batch dimension from the input. - `N` is the number of frequency samples, `(n_fft // 2) + 1` for `onesided=True`, or otherwise `n_fft`. - `T` is the number of frames, `1 + L // hop_length` for `center=True`, or `1 + (L - n_fft) // hop_length` otherwise. - `C?` is an optional length-2 dimension of real and imaginary components, present when `return_complex=False`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: stft() missing 1 required positional argument: 'input'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "stft() missing 1 required positional argument: 'input'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: stft() missing 1 required positional argument: 'input'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.stft.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

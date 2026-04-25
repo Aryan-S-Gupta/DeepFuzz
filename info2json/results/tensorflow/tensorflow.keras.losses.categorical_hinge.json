@@ -1,0 +1,32 @@
+{
+  "api_name": "categorical_hinge",
+  "module_path": "tensorflow.keras.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The ground truth values. `y_true` values are expected to be either `{-1, +1}` or `{0, 1}` (i.e. a one-hot-encoded tensor) with shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Categorical hinge loss values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": []
+}

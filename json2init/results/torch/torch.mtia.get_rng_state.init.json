@@ -1,0 +1,62 @@
+{
+  "api_full_name": "torch.mtia.get_rng_state",
+  "api_name": "get_rng_state",
+  "module_path": "torch.mtia",
+  "import_path": "torch.mtia.get_rng_state",
+  "backend": "torch",
+  "params": {
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "int|device",
+        "size": "",
+        "default": "'mtia'`` (i",
+        "flag": "Optional",
+        "description": "The device to return the RNG state of. Default: ``'mtia'`` (i.e., ``torch.device('mtia')``, the current mtia device).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "device default is 'mtia' if not provided"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Returns the random number generator state as a ByteTensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Torch not compiled with MTIA enabled. Ensure you have `import mtia.host_runtime.torch_mtia.dynamic_library` in your python src file and include `//mtia/host_runtime/torch_mtia:torch_mtia` as your target dependency!"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AssertionError",
+    "error": "Torch not compiled with MTIA enabled. Ensure you have `import mtia.host_runtime.torch_mtia.dynamic_library` in your python src file and include `//mtia/host_runtime/torch_mtia:torch_mtia` as your target dependency!",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/workspace/pytorch/torch/mtia/__init__.py\", line 323, in get_rng_state\n    return torch.zeros([1], dtype=torch.uint8, device=device)\n  File \"/workspace/pytorch/torch/mtia/__init__.py\", line 67, in _lazy_init\n    raise AssertionError(\nAssertionError: Torch not compiled with MTIA enabled. Ensure you have `import mtia.host_runtime.torch_mtia.dynamic_library` in your python src file and include `//mtia/host_runtime/torch_mtia:torch_mtia` as your target dependency!\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.mtia.get_rng_state.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

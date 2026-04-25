@@ -1,0 +1,52 @@
+{
+  "api_name": "clip_by_value",
+  "module_path": "tensorflow",
+  "params": {
+    "t": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or `IndexedSlices`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "clip_value_min": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "The minimum value to clip to. A scalar `Tensor` or one that is broadcastable to the shape of `t`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "clip_value_max": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "The maximum value to clip to. A scalar `Tensor` or one that is broadcastable to the shape of `t`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A clipped `Tensor` or `IndexedSlices`."
+  },
+  "constraints": []
+}

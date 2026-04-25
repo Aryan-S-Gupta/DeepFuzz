@@ -1,0 +1,94 @@
+{
+  "api_full_name": "torch.as_tensor",
+  "api_name": "as_tensor",
+  "module_path": "torch",
+  "import_path": "torch.as_tensor",
+  "backend": "torch",
+  "params": {
+    "data": {
+      "name": "data",
+      "spec": {
+        "type": "tuple|list|number|tensor|dtype",
+        "size": "scalar",
+        "default": "if ``None``, infers data type from :attr:`data",
+        "flag": "Optional",
+        "description": "Initial data for the tensor. Can be a list, tuple, NumPy ``ndarray``, scalar, and other types. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. Default: if ``None``, infers data type from :attr:`data`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "tensor|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the device of the constructed tensor. If None and data is a tensor then the device of data is used. If None and data is not a tensor then the result tensor is constructed on the current device.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: as_tensor() missing 1 required positional arguments: \"data\""
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "as_tensor() missing 1 required positional arguments: \"data\"",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: as_tensor() missing 1 required positional arguments: \"data\"\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.as_tensor.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

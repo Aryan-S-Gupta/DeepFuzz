@@ -1,0 +1,26 @@
+{
+  "api_name": "shape",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a must be an array or similar array-like object."
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "1",
+    "description": "------- tuple of ints The elements of the shape tuple give the lengths of the corresponding array dimensions."
+  },
+  "constraints": [
+    "The output shape's length is equal to the number of array dimensions."
+  ]
+}

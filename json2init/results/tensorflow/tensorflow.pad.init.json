@@ -1,0 +1,130 @@
+{
+  "api_full_name": "tensorflow.pad",
+  "api_name": "pad",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.pad",
+  "backend": "tensorflow",
+  "params": {
+    "paddings": {
+      "name": "paddings",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `int32`.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "mode": {
+      "name": "mode",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "One of \"CONSTANT\", \"REFLECT\", or \"SYMMETRIC\" (case-insensitive)",
+        "dtype_candidates": [],
+        "enum_values": [
+          "CONSTANT",
+          "REFLECT",
+          "SYMMETRIC"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "one of \"constant\"",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: one of \"constant\""
+    },
+    "constant_values": {
+      "name": "constant_values",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "In \"CONSTANT\" mode, the scalar pad value to use. Must be same type as `tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `tensor`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'mode' unresolved: unhandled chosen type: one of \"constant\"",
+    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.pad.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

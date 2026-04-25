@@ -1,0 +1,24 @@
+{
+  "api_name": "eigh",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "'(empty)'",
+      "flag": "Optional",
+      "description": "string, optional name of the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "Eigenvalues. Shape is `[..., N]`. Sorted in non-decreasing order. v: Eigenvectors. Shape is `[..., N, N]`. The columns of the inner most matrices contain eigenvectors of the corresponding matrices in `tensor`"
+  },
+  "constraints": [
+    "N must be consistent across all dimensions"
+  ]
+}

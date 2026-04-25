@@ -1,0 +1,34 @@
+{
+  "api_name": "tril",
+  "module_path": "jax.numpy",
+  "params": {
+    "m": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have ``m.ndim >= 2``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "k: optional, int, default=0. Specifies the sub-diagonal above which the elements of the array are set to zero. ``k=0`` refers to main diagonal, ``k<0`` refers to sub-diagonal below the main diagonal and ``k>0`` refers to sub-diagonal above the main diagonal.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array with same shape as input containing the lower triangle of the given array with elements above the sub-diagonal specified by ``k`` are set to zero."
+  },
+  "constraints": [
+    "m.ndim >= 2"
+  ]
+}

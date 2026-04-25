@@ -1,0 +1,70 @@
+{
+  "api_name": "tversky",
+  "module_path": "tensorflow.keras.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "coefficient controlling incidence of false positives.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "alpha and beta must be in range (0, 1]",
+        "if alpha is not provided, it defaults to 0.5"
+      ]
+    },
+    "beta": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "coefficient controlling incidence of false negatives.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "alpha and beta must be in range (0, 1]",
+        "if beta is not provided, it defaults to 0.5"
+      ]
+    },
+    "axis": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tuple for which dimensions the loss is calculated.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "number",
+    "numbers": "1",
+    "description": "Tversky loss value. Reference: - [Salehi et al., 2017](https://arxiv.org/abs/1706.05721)"
+  },
+  "constraints": [
+    "alpha and beta must be in range (0, 1]"
+  ]
+}

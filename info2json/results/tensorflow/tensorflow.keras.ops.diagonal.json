@@ -1,0 +1,61 @@
+{
+  "api_name": "diagonal",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be 2-D or higher",
+        "x's dimensionality must be at least 2"
+      ]
+    },
+    "offset": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "Offset of the diagonal from the main diagonal. Can be positive or negative. Defaults to `0`.(main diagonal).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "offset must be positive"
+      ]
+    },
+    "axis1": {
+      "type": "int",
+      "size": "2-D",
+      "default": "0",
+      "flag": "Optional",
+      "description": "Axis to be used as the first axis of the 2-D sub-arrays. Defaults to `0`.(first axis).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis1 must be 2-D"
+      ]
+    },
+    "axis2": {
+      "type": "int",
+      "size": "2-D",
+      "default": "1` (second axis)",
+      "flag": "Optional",
+      "description": "Axis to be used as the second axis of the 2-D sub-arrays. Defaults to `1` (second axis).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis2 must be 2-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Tensor of diagonals."
+  },
+  "constraints": []
+}

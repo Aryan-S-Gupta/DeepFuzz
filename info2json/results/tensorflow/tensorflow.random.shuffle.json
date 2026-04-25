@@ -1,0 +1,44 @@
+{
+  "api_name": "shuffle",
+  "module_path": "tensorflow.random",
+  "params": {
+    "value": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A Tensor to be shuffled.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "value must have at least 2 dimensions"
+      ]
+    },
+    "seed": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A Python integer. Used to create a random seed for the distribution. See `tf.random.set_seed` for behavior.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of same shape and type as `value`, shuffled along its first dimension."
+  },
+  "constraints": []
+}

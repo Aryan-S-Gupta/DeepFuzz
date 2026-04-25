@@ -1,0 +1,148 @@
+{
+  "api_full_name": "tensorflow.hessians",
+  "api_name": "hessians",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.hessians",
+  "backend": "tensorflow",
+  "params": {
+    "ys": {
+      "name": "ys",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` or list of tensors to be differentiated.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "xs": {
+      "name": "xs",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` or list of tensors to be used for differentiation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "gate_gradients": {
+      "name": "gate_gradients",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "See `gradients()` documentation for details.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "see `gradients()` documentation for details.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: see `gradients()` documentation for details."
+    },
+    "aggregation_method": {
+      "name": "aggregation_method",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "See `gradients()` documentation for details.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "see `gradients()` documentation for details.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: see `gradients()` documentation for details."
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "'hessians'",
+        "flag": "Optional",
+        "description": "Optional name to use for grouping all the gradient ops together. defaults to 'hessians'.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "optional name to use for grouping all the gradient ops together. defaults to 'hessians'.",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: optional name to use for grouping all the gradient ops together. defaults to 'hessians'."
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "1",
+    "description": "A list of Hessian matrices of `sum(ys)` for each `x` in `xs`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'gate_gradients' unresolved: unhandled chosen type: see `gradients()` documentation for details.",
+    "required param 'aggregation_method' unresolved: unhandled chosen type: see `gradients()` documentation for details."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.hessians.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

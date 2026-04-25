@@ -1,0 +1,164 @@
+{
+  "api_full_name": "torch.clamp",
+  "api_name": "clamp",
+  "module_path": "torch",
+  "import_path": "torch.clamp",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "min": {
+      "name": "min",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "lower-bound of the range to be clamped to",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "if given, must be less than max",
+          "min must be less than or equal to max if both are given",
+          "input, min, max, and out must have compatible shapes"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "max": {
+      "name": "max",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "upper-bound of the range to be clamped to",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "if given, must be greater than min",
+          "min must be less than or equal to max if both are given",
+          "input, min, max, and out must have compatible shapes"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "out": {
+      "name": "out",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the output tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "input, min, max, and out must have compatible shapes"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "returns the clamped tensor"
+  },
+  "constraints": [
+    "min must be less than or equal to max if both are given",
+    "input, min, max, and out must have compatible shapes"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: torch.clamp: At least one of 'min' or 'max' must not be None"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "RuntimeError",
+    "error": "torch.clamp: At least one of 'min' or 'max' must not be None",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nRuntimeError: torch.clamp: At least one of 'min' or 'max' must not be None\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.clamp.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

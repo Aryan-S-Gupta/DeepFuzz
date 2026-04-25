@@ -1,0 +1,33 @@
+{
+  "api_name": "isdtype",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "kind": {
+      "type": "string|int|float|bool|tuple|number|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or str or tuple of dtypes/strs. dtype or dtype kind. Allowed dtype kinds are: * ``'bool'`` : boolean kind * ``'signed integer'`` : signed integer data types * ``'unsigned integer'`` : unsigned integer data types * ``'integral'`` : integer data types * ``'real floating'`` : real-valued floating-point data types * ``'complex floating'`` : complex floating-point data types * ``'numeric'`` : numeric data types",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "'bool'",
+        "'signed integer'",
+        "'unsigned integer'",
+        "'integral'",
+        "'real floating'",
+        "'complex floating'",
+        "'numeric'",
+        "dtype and kind must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool"
+  },
+  "constraints": []
+}

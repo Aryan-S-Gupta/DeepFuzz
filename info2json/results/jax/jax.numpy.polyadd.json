@@ -1,0 +1,44 @@
+{
+  "api_name": "polyadd",
+  "module_path": "jax.numpy",
+  "params": {
+    "a1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array of polynomial coefficients.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have numeric dtype.",
+        "a1 and a2 must have broadcast-compatible shapes.",
+        "Output shape is determined by broadcasting shapes of a1 and a2."
+      ]
+    },
+    "a2": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "Array of polynomial coefficients.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have numeric dtype.",
+        "a2 must be 1-D",
+        "a1 and a2 must have broadcast-compatible shapes.",
+        "Output shape is determined by broadcasting shapes of a1 and a2."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "N-D",
+    "description": "An array containing the coefficients of the sum of input polynomials."
+  },
+  "constraints": [
+    "a1 and a2 must have broadcast-compatible shapes.",
+    "Output shape is determined by broadcasting shapes of a1 and a2."
+  ]
+}

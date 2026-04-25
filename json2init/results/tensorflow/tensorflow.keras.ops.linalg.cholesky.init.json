@@ -1,0 +1,95 @@
+{
+  "api_full_name": "tensorflow.keras.ops.linalg.cholesky",
+  "api_name": "cholesky",
+  "module_path": "tensorflow.keras.ops.linalg",
+  "import_path": "tensorflow.keras.ops.linalg.cholesky",
+  "backend": "tensorflow",
+  "params": {
+    "upper": {
+      "name": "upper",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If True, returns the upper-triangular Cholesky factor. If False (default), returns the lower-triangular Cholesky factor.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor of shape `(..., M, M)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(..., M, M)",
+    "description": "A tensor of shape `(..., M, M)` representing the Cholesky factor of `x`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Expected input to have rank >= 2. Received input with shape (1,)."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Expected input to have rank >= 2. Received input with shape (1,).",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/linalg.py\", line 38, in cholesky\n    return _cholesky(x, upper=upper)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/linalg.py\", line 43, in _cholesky\n    _assert_2d(x)\n    ~~~~~~~~~~^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/linalg.py\", line 705, in _assert_2d\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Expected input to have rank >= 2. Received input with shape (1,).\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.linalg.cholesky.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

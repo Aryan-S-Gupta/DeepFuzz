@@ -1,0 +1,77 @@
+{
+  "api_full_name": "tensorflow.keras.losses.categorical_hinge",
+  "api_name": "categorical_hinge",
+  "module_path": "tensorflow.keras.losses",
+  "import_path": "tensorflow.keras.losses.categorical_hinge",
+  "backend": "tensorflow",
+  "params": {
+    "y_true": {
+      "name": "y_true",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The ground truth values. `y_true` values are expected to be either `{-1, +1}` or `{0, 1}` (i.e. a one-hot-encoded tensor) with shape = `[batch_size, d0, .. dN]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_pred": {
+      "name": "y_pred",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "the predicted values with shape = `[batch_size",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: the predicted values with shape = `[batch_size"
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Categorical hinge loss values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'y_pred' unresolved: unhandled chosen type: the predicted values with shape = `[batch_size"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.losses.categorical_hinge.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

@@ -1,0 +1,59 @@
+{
+  "api_full_name": "torch.xpu.memory.get_per_process_memory_fraction",
+  "api_name": "get_per_process_memory_fraction",
+  "module_path": "torch.xpu.memory",
+  "import_path": "torch.xpu.memory.get_per_process_memory_fraction",
+  "backend": "torch",
+  "params": {
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "string|int|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "selected device. It uses the current device, given by :func:`~torch.xpu.current_device`, if :attr:`device` is ``None`` (default).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float",
+    "numbers": "1",
+    "description": "The memory fraction in the range 0.0 to 1.0."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: module 'torch.xpu.memory' has no attribute 'get_per_process_memory_fraction'"
+  ],
+  "smoke_test": {
+    "attempted": false,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "module 'torch.xpu.memory' has no attribute 'get_per_process_memory_fraction'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.xpu.memory.get_per_process_memory_fraction.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

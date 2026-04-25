@@ -1,0 +1,48 @@
+{
+  "api_name": "equal",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have compatible shapes"
+      ]
+    },
+    "y": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have compatible shapes"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "bool",
+    "description": "A `tf.Tensor` of type bool with the same size as that of x or y."
+  },
+  "constraints": [
+    "x and y must have compatible shapes"
+  ]
+}

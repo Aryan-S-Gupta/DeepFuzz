@@ -1,0 +1,130 @@
+{
+  "api_full_name": "tensorflow.keras.preprocessing.image.random_brightness",
+  "api_name": "random_brightness",
+  "module_path": "tensorflow.keras.preprocessing.image",
+  "import_path": "tensorflow.keras.preprocessing.image.random_brightness",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "3D",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor. Must be 3D.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x must be 3-D",
+          "x must be 3D."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "brightness_range": {
+      "name": "brightness_range",
+      "spec": {
+        "type": "tuple",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tuple of floats; brightness range.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must be a tuple."
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "scale": {
+      "name": "scale",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "Whether to rescale the image such that minimum and maximum values are 0 and 255 respectively. Default: True.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Numpy image tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: `brightness_range should be tuple or list of two floats. Received: (1,)"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "`brightness_range should be tuple or list of two floats. Received: (1,)",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/legacy/preprocessing/image.py\", line 1752, in random_brightness\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: `brightness_range should be tuple or list of two floats. Received: (1,)\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.preprocessing.image.random_brightness.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

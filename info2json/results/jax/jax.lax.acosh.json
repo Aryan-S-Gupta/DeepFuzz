@@ -1,0 +1,25 @@
+{
+  "api_name": "acosh",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have floating-point or complex type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have floating-point or complex type.",
+        "x and output must have broadcast-compatible shapes."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "floating-point or complex",
+    "description": "Array of the same shape and dtype as ``x`` containing the element-wise inverse hyperbolic cosine."
+  },
+  "constraints": []
+}

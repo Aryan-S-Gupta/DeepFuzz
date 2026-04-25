@@ -1,0 +1,22 @@
+{
+  "api_name": "frexp",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "real-valued array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "int|tuple",
+    "numbers": "2",
+    "description": "A tuple ``(mantissa, exponent)`` where ``mantissa`` is a floating point value between -1 and 1, and ``exponent`` is an integer such that ``x == mantissa * 2 ** exponent``."
+  },
+  "constraints": []
+}

@@ -1,0 +1,265 @@
+{
+  "api_full_name": "tensorflow.gradients",
+  "api_name": "gradients",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.gradients",
+  "backend": "tensorflow",
+  "params": {
+    "ys": {
+      "name": "ys",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` or list of tensors to be differentiated.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "xs": {
+      "name": "xs",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` or list of tensors to be used for differentiation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "grad_ys": {
+      "name": "grad_ys",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional. A `Tensor` or list of tensors the same size as `ys` and holding the gradients computed for each y in `ys`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "'gradients'",
+        "flag": "Optional",
+        "description": "Optional name to use for grouping all the gradient ops together. defaults to 'gradients'.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "optional name to use for grouping all the gradient ops together. defaults to 'gradients'.",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: optional name to use for grouping all the gradient ops together. defaults to 'gradients'."
+    },
+    "gate_gradients": {
+      "name": "gate_gradients",
+      "spec": {
+        "type": "tuple",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "If True, add a tuple around the gradients returned for an operations. This avoids some race conditions.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "aggregation_method": {
+      "name": "aggregation_method",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Specifies the method used to combine gradient terms. Accepted values are constants defined in the class `AggregationMethod`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "aggregation_method must be one of AggregationMethod"
+        ]
+      },
+      "chosen_type": "specifies the method used to combine gradient terms. accepted values are constants defined in the class `aggregationmethod`.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: specifies the method used to combine gradient terms. accepted values are constants defined in the class `aggregationmethod`."
+    },
+    "stop_gradients": {
+      "name": "stop_gradients",
+      "spec": {
+        "type": "list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional. A `Tensor` or list of tensors not to differentiate through.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "unconnected_gradients": {
+      "name": "unconnected_gradients",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional. Specifies the gradient value returned when the given input tensors are unconnected. Accepted values are constants defined in the class `tf.UnconnectedGradients` and the default value is `none`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "unconnected_gradients must be one of tf.UnconnectedGradients"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "1",
+    "description": "A list of `Tensor` of length `len(xs)` where each tensor is the `sum(dy/dx)` for y in `ys` and for x in `xs`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'aggregation_method' unresolved: unhandled chosen type: specifies the method used to combine gradient terms. accepted values are constants defined in the class `aggregationmethod`."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.gradients.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

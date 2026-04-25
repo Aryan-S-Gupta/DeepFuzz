@@ -1,0 +1,24 @@
+{
+  "api_name": "population_count",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array. Must have integer dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have integer dtype."
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor|dtype",
+    "numbers": "same shape and dtype as `x`",
+    "description": "An array of the same shape and dtype as ``x``, containing the number of set bits in the input."
+  },
+  "constraints": []
+}

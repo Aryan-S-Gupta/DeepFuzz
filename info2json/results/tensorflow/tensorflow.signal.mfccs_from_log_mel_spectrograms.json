@@ -1,0 +1,38 @@
+{
+  "api_name": "mfccs_from_log_mel_spectrograms",
+  "module_path": "tensorflow.signal",
+  "params": {
+    "log_mel_spectrograms": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `[..., num_mel_bins]` `float32`/`float64` `Tensor` of log-magnitude mel-scale spectrograms.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "..., num_mel_bins",
+    "description": "A `[..., num_mel_bins]` `float32`/`float64` `Tensor` of the MFCCs of `log_mel_spectrograms`."
+  },
+  "constraints": [
+    "log_mel_spectrograms shape must match the rank expected by the function.",
+    "num_mel_bins in output matches num_mel_bins in input."
+  ]
+}

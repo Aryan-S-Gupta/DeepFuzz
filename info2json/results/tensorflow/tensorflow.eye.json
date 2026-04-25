@@ -1,0 +1,66 @@
+{
+  "api_name": "eye",
+  "module_path": "tensorflow",
+  "params": {
+    "num_rows": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Non-negative `int32` scalar `Tensor` giving the number of rows in each batch matrix.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "num_rows must be non-negative",
+        "num_rows >= 0"
+      ]
+    },
+    "num_columns": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "num_rows",
+      "flag": "Optional",
+      "description": "Optional non-negative `int32` scalar `Tensor` giving the number of columns in each batch matrix. Defaults to `num_rows`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "num_columns must be non-negative",
+        "num_columns >= 0"
+      ]
+    },
+    "batch_shape": {
+      "type": "tuple|list|tensor|dtype",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A list or tuple of Python integers or a 1-D `int32` `Tensor`. If provided, the returned `Tensor` will have leading batch dimensions of this shape. dtype: The type of an element in the resulting `Tensor`",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "batch_shape must be 1-D"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "\"eye\"",
+      "flag": "Optional",
+      "description": "A name for this `Op`. Defaults to \"eye\".",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "batch_shape + [num_rows, num_columns]",
+    "description": "A `Tensor` of shape `batch_shape + [num_rows, num_columns]`"
+  },
+  "constraints": []
+}

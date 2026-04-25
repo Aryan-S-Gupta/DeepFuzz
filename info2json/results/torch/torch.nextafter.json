@@ -1,0 +1,46 @@
+{
+  "api_name": "nextafter",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the first input tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the second input tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input rank must match with other rank"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out shape should be broadcastable to (input.shape,)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1D",
+    "description": "The result of nextafter operation on input and other tensors"
+  },
+  "constraints": []
+}

@@ -1,0 +1,48 @@
+{
+  "api_name": "decode_compressed",
+  "module_path": "tensorflow.io",
+  "params": {
+    "bytes": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. A Tensor of string which is compressed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "compression_type": {
+      "type": "string|number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "An optional `string`. Defaults to `\"\"`. A scalar containing either (i) the empty string (no compression), (ii) \"ZLIB\", or (iii) \"GZIP\".",
+      "dtype_candidates": [],
+      "enum_values": [
+        "string",
+        "ZLIB",
+        "GZIP"
+      ],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": [
+    "bytes must not be empty string or null"
+  ]
+}

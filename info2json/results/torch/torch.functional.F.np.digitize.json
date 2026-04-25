@@ -1,0 +1,44 @@
+{
+  "api_name": "digitize",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "x": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array to be binned. Prior to NumPy 1.10.0, this array had to be 1-dimensional, but can now have any shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bins": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array of bins. It has to be 1-dimensional and monotonic.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "right": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "bool, optional Indicating whether the intervals include the right or the left bin edge. Default behavior is (right==False) indicating that the interval does not include the right edge. The left bin end is open in this case, i.e., bins[i-1] <= x < bins[i] is the default behavior for monotonically increasing bins.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray of ints Output array of indices, of same shape as `x`."
+  },
+  "constraints": []
+}

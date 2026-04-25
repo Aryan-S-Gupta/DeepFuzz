@@ -1,0 +1,34 @@
+{
+  "api_name": "add_n",
+  "module_path": "tensorflow.math",
+  "params": {
+    "inputs": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `tf.Tensor` or `tf.IndexedSlices` objects, each with the same shape and type. `tf.IndexedSlices` objects will be converted into dense tensors prior to adding.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `tf.Tensor` of the same shape and type as the elements of `inputs`."
+  },
+  "constraints": [
+    "Inputs must be non-empty."
+  ]
+}

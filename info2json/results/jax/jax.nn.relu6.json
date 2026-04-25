@@ -1,0 +1,26 @@
+{
+  "api_name": "relu6",
+  "module_path": "jax.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x can take any shape, since no shape information is provided in the docstring"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array."
+  },
+  "constraints": [
+    "abla relu6(0) = 0 and abla relu6(6) = 0 are statements about the function's behavior but do not impose constraints on its input or output"
+  ]
+}

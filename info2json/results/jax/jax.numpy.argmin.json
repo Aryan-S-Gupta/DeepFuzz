@@ -1,0 +1,58 @@
+{
+  "api_name": "argmin",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input array a must be provided"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "optional integer specifying the axis along which to find the minimum value. If ``axis`` is not specified, ``a`` will be flattened.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(input) <= axis < rank(input) if specified"
+      ]
+    },
+    "out": {
+      "type": "unused",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool|number|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "if True, then return an array with the same number of dimensions as ``a``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "an array containing the index of the minimum value along the specified axis."
+  },
+  "constraints": []
+}

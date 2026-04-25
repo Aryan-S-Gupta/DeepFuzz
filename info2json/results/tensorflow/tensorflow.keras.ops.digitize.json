@@ -1,0 +1,37 @@
+{
+  "api_name": "digitize",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array to be binned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape must be at least 1-D"
+      ]
+    },
+    "bins": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "Array of bins. It has to be one-dimensional and monotonically increasing.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "bins must be 1-D",
+        "bins must be monotonically increasing"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32 or int64",
+    "description": "Output array of indices, of same shape as `x`."
+  },
+  "constraints": []
+}

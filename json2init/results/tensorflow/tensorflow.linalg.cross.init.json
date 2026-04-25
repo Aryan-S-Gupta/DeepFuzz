@@ -1,0 +1,154 @@
+{
+  "api_full_name": "tensorflow.linalg.cross",
+  "api_name": "cross",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.cross",
+  "backend": "tensorflow",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`, `int32`, `uint8`, `int16`, `int8`, `int64`, `bfloat16`, `uint16`, `half`, `uint32`, `uint64`. A tensor containing 3-element vectors.",
+        "dtype_candidates": [
+          "int8",
+          "int16",
+          "int32",
+          "int64",
+          "uint8",
+          "uint16",
+          "uint32",
+          "uint64",
+          "float32",
+          "float64",
+          "bfloat16"
+        ],
+        "enum_values": [
+          "float32",
+          "float64",
+          "int32",
+          "uint8",
+          "int16",
+          "int8",
+          "int64",
+          "bfloat16",
+          "uint16",
+          "half",
+          "uint32",
+          "uint64"
+        ],
+        "constraints": [
+          "must be one of the following types: float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64",
+          "a must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64",
+          "a and b must be the same shape"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "b": {
+      "name": "b",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `a`. Another tensor, of same type and shape as `a`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "must have the same type as a",
+          "b must have the same dtype as a",
+          "a and b must be the same shape"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `a`."
+  },
+  "constraints": [
+    "a and b must be the same shape"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [1] [Op:Cross] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [1] [Op:Cross] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 2737, in cross\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [1] [Op:Cross] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.cross.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

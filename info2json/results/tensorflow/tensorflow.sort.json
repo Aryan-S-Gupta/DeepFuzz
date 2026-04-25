@@ -1,0 +1,59 @@
+{
+  "api_name": "sort",
+  "module_path": "tensorflow",
+  "params": {
+    "values": {
+      "type": "number|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "1-D or higher **numeric** `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "values must be 1-D",
+        "values.dtype must be a float or int type"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "-1, which sorts the last",
+      "flag": "Optional",
+      "description": "The axis along which to sort. The default is -1, which sorts the last axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "direction": {
+      "type": "string",
+      "size": "",
+      "default": "'ASCENDING'",
+      "flag": "Optional",
+      "description": "The direction in which to sort the values (`'ASCENDING'` or `'DESCENDING'`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "'ASCENDING'",
+        "'DESCENDING'",
+        "direction must be one of ASCENDING, DESCENDING"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A `Tensor` with the same dtype and shape as `values`, with the elements sorted along the given `axis`."
+  },
+  "constraints": []
+}

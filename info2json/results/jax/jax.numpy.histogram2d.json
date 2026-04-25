@@ -1,0 +1,72 @@
+{
+  "api_name": "histogram2d",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "one-dimensional array of x-values for points to be binned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "one-dimensional array of y-values for points to be binned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bins": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "10)",
+      "flag": "Optional",
+      "description": "Specify the number of bins in the histogram (default: 10). ``bins`` may also be an array specifying the locations of the bin edges, or a pair of integers or pair of arrays specifying the number of bins in each dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "range": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Pair of arrays or lists of the form ``[[xmin, xmax], [ymin, ymax]]`` specifying the range of the data in each dimension. If not specified, the range is inferred from the data.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "weights": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional array specifying the weights of the data points. Should be the same shape as ``x`` and ``y``. If not specified, each data point is weighted equally.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "density": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If True, return the normalized histogram in units of counts per unit area. If False (default) return the (weighted) counts per bin.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A tuple of arrays ``(histogram, x_edges, y_edges)``, where ``histogram`` contains the aggregated data, and ``x_edges`` and ``y_edges`` specify the boundaries of the bins."
+  },
+  "constraints": []
+}

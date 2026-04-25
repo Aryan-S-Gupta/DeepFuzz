@@ -1,0 +1,73 @@
+{
+  "api_full_name": "torch.functional.F.np.isfortran",
+  "api_name": "isfortran",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.isfortran",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "ndarray Input array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must be 2-D",
+          "a must be 2-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "single",
+    "description": "------- bool Returns True if the array is Fortran contiguous but *not* C contiguous."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: 'Tensor' object has no attribute 'flags'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "'Tensor' object has no attribute 'flags'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/numpy/_core/numeric.py\", line 584, in isfortran\n    return a.flags.fnc\nAttributeError: 'Tensor' object has no attribute 'flags'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.isfortran.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

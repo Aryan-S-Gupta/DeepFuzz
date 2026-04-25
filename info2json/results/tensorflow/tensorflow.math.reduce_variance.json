@@ -1,0 +1,52 @@
+{
+  "api_name": "reduce_variance",
+  "module_path": "tensorflow.math",
+  "params": {
+    "input_tensor": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The tensor to reduce. Should have real or complex type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name scope for the associated operations (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tensor|dtype",
+    "numbers": "1",
+    "description": "The reduced tensor, of the same dtype as the input_tensor. Note, for `complex64` or `complex128` input, the returned `Tensor` will be of type `float32` or `float64`, respectively. @compatibility(numpy) Equivalent to np.var Please note `np.var` has a `dtype` parameter that could be used to specify the output type. By default this is `dtype=float64`. On the other hand, `tf.math.reduce_variance` has aggressive type inference from `input_tensor`. @end_compatibility"
+  },
+  "constraints": []
+}

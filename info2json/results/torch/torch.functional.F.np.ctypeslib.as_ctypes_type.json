@@ -1,0 +1,14 @@
+{
+  "api_name": "as_ctypes_type",
+  "module_path": "torch.functional.F.np.ctypeslib",
+  "params": {},
+  "output": {
+    "type": "ctype scalar, union, array, or struct",
+    "numbers": "1",
+    "description": "------- ctype A ctype scalar, union, array, or struct"
+  },
+  "constraints": [
+    "dtype must be provided",
+    "return value is not losslessly round-trippable with np.dtype(as_ctypes_type(dt)) and as_ctypes_type(np.dtype(ctype))"
+  ]
+}

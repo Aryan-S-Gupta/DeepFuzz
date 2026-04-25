@@ -1,0 +1,48 @@
+{
+  "api_name": "pow",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "exponent": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the exponent tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Can be a single float number or a Tensor",
+        "exponent value must be non-negative when input is a tensor"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have the same shape as exponent when exponent is a tensor",
+        "input and out must have broadcast-compatible shapes if provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "returns a tensor with the result"
+  },
+  "constraints": []
+}

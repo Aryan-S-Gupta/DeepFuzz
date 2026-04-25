@@ -1,0 +1,45 @@
+{
+  "api_name": "decode_png",
+  "module_path": "tensorflow.io",
+  "params": {
+    "contents": {
+      "type": "string|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. 0-D. The PNG-encoded image.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "channels": {
+      "type": "int|number|dtype",
+      "size": "",
+      "default": "tf",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image. dtype: An optional `tf.DType` from: `tf.uint8, tf.uint16`. Defaults to `tf.uint8`.",
+      "dtype_candidates": [
+        "uint8",
+        "uint16"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1-D",
+    "description": "A `Tensor` of type `dtype`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,77 @@
+{
+  "api_name": "cross",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "a": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`, `int32`, `uint8`, `int16`, `int8`, `int64`, `bfloat16`, `uint16`, `half`, `uint32`, `uint64`. A tensor containing 3-element vectors.",
+      "dtype_candidates": [
+        "int8",
+        "int16",
+        "int32",
+        "int64",
+        "uint8",
+        "uint16",
+        "uint32",
+        "uint64",
+        "float32",
+        "float64",
+        "bfloat16"
+      ],
+      "enum_values": [
+        "float32",
+        "float64",
+        "int32",
+        "uint8",
+        "int16",
+        "int8",
+        "int64",
+        "bfloat16",
+        "uint16",
+        "half",
+        "uint32",
+        "uint64"
+      ],
+      "constraints": [
+        "must be one of the following types: float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64",
+        "a must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64",
+        "a and b must be the same shape"
+      ]
+    },
+    "b": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `a`. Another tensor, of same type and shape as `a`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must have the same type as a",
+        "b must have the same dtype as a",
+        "a and b must be the same shape"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `a`."
+  },
+  "constraints": [
+    "a and b must be the same shape"
+  ]
+}

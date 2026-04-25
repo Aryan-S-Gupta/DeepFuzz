@@ -1,0 +1,94 @@
+{
+  "api_name": "std",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|sequence|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, int or sequence of ints, default=None. Axis along which the standard deviation is computed. If None, standard deviaiton is computed along all the axes. dtype: The type of the output array. Default=None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ddof": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int, default=0. Degrees of freedom. The divisor in the standard deviation computation is ``N-ddof``, ``N`` is number of elements along given axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "where": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "optional, boolean array, default=None. The elements to be used in the standard deviation. Array should be broadcast compatible to the input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mean": {
+      "type": "callable|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "optional, mean of the input array, computed along the given axis. If provided, it will be used to compute the standard deviation instead of computing it from the input array. If specified, mean must be broadcast-compatible with the input array. In the general case, this can be achieved by computing the mean with ``keepdims=True`` and ``axis`` matching this function's ``axis`` argument.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "correction": {
+      "type": "int|float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or float, default=None. Alternative name for ``ddof``. Both ddof and correction can't be provided simultaneously.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Unused by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of the standard deviation along the given axis."
+  },
+  "constraints": []
+}

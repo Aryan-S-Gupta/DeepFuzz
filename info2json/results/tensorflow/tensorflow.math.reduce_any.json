@@ -1,0 +1,63 @@
+{
+  "api_name": "reduce_any",
+  "module_path": "tensorflow.math",
+  "params": {
+    "input_tensor": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The boolean tensor to reduce.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int32, int64",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(input_tensor) <= axis < rank(input_tensor)"
+      ]
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Required",
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|any",
+    "numbers": "bool",
+    "description": "The reduced tensor. @compatibility(numpy) Equivalent to np.any @end_compatibility"
+  },
+  "constraints": [
+    "@compatibility(numpy) Equivalent to np.any @end_compatibility"
+  ]
+}

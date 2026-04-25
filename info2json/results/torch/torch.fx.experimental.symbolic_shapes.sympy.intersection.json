@@ -1,0 +1,32 @@
+{
+  "api_name": "intersection",
+  "module_path": "torch.fx.experimental.symbolic_shapes.sympy",
+  "params": {
+    "pairwise": {
+      "type": "keyword argument",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Can be either True or False",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "entities": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of GeometryEntity",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "1",
+    "description": "======= list of GeometryEntity"
+  },
+  "constraints": []
+}

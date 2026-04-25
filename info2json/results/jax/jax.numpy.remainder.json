@@ -1,0 +1,38 @@
+{
+  "api_name": "remainder",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the dividend.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    },
+    "x2": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the divisor. ``x1`` and ``x2`` should either have same shape or be broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating point or integer",
+    "description": "An array containing the remainder of element-wise division of ``x1`` by ``x2`` with same sign as the elements of ``x2``."
+  },
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ]
+}

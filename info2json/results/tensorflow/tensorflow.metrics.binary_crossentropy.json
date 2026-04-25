@@ -1,0 +1,62 @@
+{
+  "api_name": "binary_crossentropy",
+  "module_path": "tensorflow.metrics",
+  "params": {
+    "y_true": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Ground truth values. shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The predicted values. shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "from_logits": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Whether `y_pred` is expected to be a logits tensor. By default, we assume that `y_pred` encodes a probability distribution.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "label_smoothing": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Float in `[0, 1]`. If > `0` then smooth the labels by squeezing them towards 0.5, that is, using `1. - 0.5 * label_smoothing` for the target class and `0.5 * label_smoothing` for the non-target class.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The axis along which the mean is computed. Defaults to `-1`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Binary crossentropy loss value. shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": []
+}

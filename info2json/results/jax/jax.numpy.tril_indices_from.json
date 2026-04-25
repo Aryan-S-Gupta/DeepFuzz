@@ -1,0 +1,32 @@
+{
+  "api_name": "tril_indices_from",
+  "module_path": "jax.numpy",
+  "params": {
+    "arr": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have ``arr.ndim == 2``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "optional, int, default=0. Specifies the sub-diagonal on and below which the indices of upper triangle are returned. ``k=0`` refers to main diagonal, ``k<0`` refers to sub-diagonal below the main diagonal and ``k>0`` refers to sub-diagonal above the main diagonal.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "2",
+    "description": "A tuple of two arrays containing the indices of the lower triangle, one along each axis."
+  },
+  "constraints": []
+}

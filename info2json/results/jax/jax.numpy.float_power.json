@@ -1,0 +1,38 @@
+{
+  "api_name": "float_power",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the bases.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have same shape or be broadcast compatible"
+      ]
+    },
+    "y": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the exponents. ``x`` and ``y`` should either have same shape or be broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have same shape or be broadcast compatible"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real",
+    "description": "An array containing the base ``x`` exponentials of ``y``, promoting to the inexact dtype."
+  },
+  "constraints": [
+    "x and y must have same shape or be broadcast compatible"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "api_name": "reshape",
+  "module_path": "jax.lax",
+  "params": {
+    "operand": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array to be reshaped.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "new_sizes": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of integers specifying the resulting shape. The size of the final array must match the size of the input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "new_sizes's length must match the size of the input"
+      ]
+    },
+    "dimensions": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional sequence of integers specifying the permutation order of the input shape. If specified, the length must match ``operand.shape``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "dimensions is optional"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "reshaped array."
+  },
+  "constraints": []
+}

@@ -1,0 +1,54 @@
+{
+  "api_name": "movedim",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "source": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Original positions of the dims to move. These must be unique.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be unique",
+        "input, source, and destination must be provided",
+        "source and destination dimensions must match the number of dimensions in input"
+      ]
+    },
+    "destination": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Destination positions for each of the original dims. These must also be unique.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be unique",
+        "input, source, and destination must be provided",
+        "source and destination dimensions must match the number of dimensions in input"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [
+    "input, source, and destination must be provided",
+    "source and destination dimensions must match the number of dimensions in input",
+    "moved dims cannot overlap with non-moved dims"
+  ]
+}

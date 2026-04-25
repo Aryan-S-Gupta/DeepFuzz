@@ -1,0 +1,64 @@
+{
+  "api_name": "l2_normalize",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Dimension along which to normalize. A scalar or a vector of integers.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    },
+    "epsilon": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A lower bound value for the norm. Will use `sqrt(epsilon)` as the divisor if `norm < sqrt(epsilon)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for this operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Deprecated, do not use.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with the same shape as `x`."
+  },
+  "constraints": []
+}

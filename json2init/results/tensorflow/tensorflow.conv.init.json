@@ -1,0 +1,334 @@
+{
+  "api_full_name": "tensorflow.conv",
+  "api_name": "conv",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.conv",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "A `Tensor`. Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`, `int32`. Tensor of type T and shape `batch_shape + spatial_shape + [in_channels]` in the case that `channels_last_format = true` or shape `batch_shape + [in_channels] + spatial_shape` if `channels_last_format = false`. spatial_shape is N-dimensional with `N=2` or `N=3`. Also note that `batch_shape` is dictated by the parameter `batch_dims` and defaults to 1.",
+        "dtype_candidates": [
+          "int32",
+          "float32",
+          "float64",
+          "bfloat16"
+        ],
+        "enum_values": [
+          "half",
+          "bfloat16",
+          "float32",
+          "float64",
+          "int32",
+          "batch_shape"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "filter": {
+      "name": "filter",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `input`. An `(N+2)-D` Tensor with the same type as `input` and shape `spatial_filter_shape + [in_channels, out_channels]`, where spatial_filter_shape is N-dimensional with `N=2` or `N=3`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "strides": {
+      "name": "strides",
+      "spec": {
+        "type": "list|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A list of `ints`. 1-D tensor of length `N+2`. The stride of the sliding window for each dimension of `input`. Must have `strides[0] = strides[N+1] = 1`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "strides must be 1-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `string` from: `\"SAME\", \"VALID\", \"EXPLICIT\"`. The type of padding algorithm to use.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "explicit_paddings": {
+      "name": "explicit_paddings",
+      "spec": {
+        "type": "list",
+        "size": "",
+        "default": "[]",
+        "flag": "Optional",
+        "description": "An optional list of `ints`. Defaults to `[]`. If `padding` is `\"EXPLICIT\"`, the list of explicit padding amounts. For the ith dimension, the amount of padding inserted before and after the dimension is `explicit_paddings[2 * i]` and `explicit_paddings[2 * i + 1]`, respectively. If `padding` is not `\"EXPLICIT\"`, `explicit_paddings` must be empty.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "list",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "data_format": {
+      "name": "data_format",
+      "spec": {
+        "type": "string",
+        "size": "2D",
+        "default": "\"CHANNELS_LAST\"",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"CHANNELS_FIRST\", \"CHANNELS_LAST\"`. Defaults to `\"CHANNELS_LAST\"`. Used to set the data format. By default `CHANNELS_FIRST`, uses `NHWC (2D) / NDHWC (3D)` or if `CHANNELS_LAST`, uses `NCHW (2D) / NCDHW (3D)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "data_format must be 2-D"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "dilations": {
+      "name": "dilations",
+      "spec": {
+        "type": "list|tensor",
+        "size": "1-D",
+        "default": "[]",
+        "flag": "Optional",
+        "description": "An optional list of `ints`. Defaults to `[]`. 1-D tensor of length `N+2`. The dilation factor for each dimension of `input`. If set to `k > 1`, there will be `k-1` skipped cells between each filter element on that dimension. The dimension order is determined by the value of `channels_last_format`, see above for details. Dilations in the batch and depth dimensions must be 1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "dilations must be 1-D",
+          "dilations must be one of ints, k-1, channels_last_format"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "batch_dims": {
+      "name": "batch_dims",
+      "spec": {
+        "type": "int|number|tensor",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `1`. A positive integer specifying the number of batch dimensions for the input tensor. Should be less than the rank of the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "batch_dims must be positive"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "groups": {
+      "name": "groups",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `1`. A positive integer specifying the number of groups in which the input is split along the channel axis. Each group is convolved separately with `filters / groups` filters. The output is the concatenation of all the groups results along the channel axis. Input channels and filters must both be divisible by groups.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "groups must be positive"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: conv() missing 1 required positional argument: 'input'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "conv() missing 1 required positional argument: 'input'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: conv() missing 1 required positional argument: 'input'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.conv.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

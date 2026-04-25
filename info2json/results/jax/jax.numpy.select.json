@@ -1,0 +1,32 @@
+{
+  "api_name": "select",
+  "module_path": "jax.numpy",
+  "params": {
+    "condlist": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of array-like conditions. All entries must be mutually broadcast-compatible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "choicelist": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "value to return when every condition is False (default: 0)",
+      "flag": "Optional",
+      "description": "sequence of array-like values to choose. Must have the same length as ``condlist``, and all entries must be broadcast-compatible with entries of ``condlist``. default: value to return when every condition is False (default: 0).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Array of selected values from ``choicelist`` corresponding to the first ``True`` entry in ``condlist`` at each location."
+  },
+  "constraints": []
+}

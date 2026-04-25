@@ -1,0 +1,76 @@
+{
+  "api_name": "empty_permuted",
+  "module_path": "torch",
+  "params": {
+    "size": {
+      "type": "int|tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the shape of the output tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "physical_layout": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the ordering of dimensions physically in memory",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired layout of returned Tensor. Default: ``torch.strided``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired device of returned tensor. Default: if ``None``, uses the current device for the default tensor type (see :func:`torch.set_default_device`). :attr:`device` will be the CPU for CPU tensor types and the current CUDA device for CUDA tensor types.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "requires_grad": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "pin_memory": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If set, returned tensor would be allocated in the pinned memory. Works only for CPU tensors. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

@@ -1,0 +1,56 @@
+{
+  "api_name": "isin",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor or array-like structure to test.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x2": {
+      "type": "list|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Values against which each element of `x1` is tested. Can be a tensor, list, or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "assume_unique": {
+      "type": "bool",
+      "size": "",
+      "default": "False)",
+      "flag": "Optional",
+      "description": "Boolean (default: False). If True, assumes both `x1` and `x2` contain only unique elements. This can speed up the computation. If False, duplicates will be handled correctly but may impact performance.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "invert": {
+      "type": "bool",
+      "size": "",
+      "default": "False)",
+      "flag": "Optional",
+      "description": "A boolean (default: False). If True, inverts the result. Entries will be `True` where `x1` elements are not in `x2`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "A boolean tensor of the same shape as `x1` indicating element-wise membership in `x2`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,35 @@
+{
+  "api_name": "is_strictly_increasing",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Numeric `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be 1-D",
+        "x's values must be unique"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "\"is_strictly_increasing\"",
+      "flag": "Optional",
+      "description": "A name for this operation (optional). Defaults to \"is_strictly_increasing\"",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "Boolean `Tensor`, equal to `True` iff `x` is strictly increasing."
+  },
+  "constraints": []
+}

@@ -1,0 +1,24 @@
+{
+  "api_name": "sinc",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array; will be promoted to an inexact type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of the same shape as ``x`` containing the result."
+  },
+  "constraints": [
+    "jax.numpy.sinc(0.0) returns 1.0"
+  ]
+}

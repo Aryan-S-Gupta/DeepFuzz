@@ -1,0 +1,25 @@
+{
+  "api_name": "ceil",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar. Must not have complex dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must not have complex dtype.",
+        "x cannot have complex dtype."
+      ]
+    }
+  },
+  "output": {
+    "type": "int|tensor|dtype",
+    "numbers": "real",
+    "description": "An array with same shape and dtype as ``x`` containing the values rounded to the nearest integer that is greater than or equal to the value itself."
+  },
+  "constraints": []
+}

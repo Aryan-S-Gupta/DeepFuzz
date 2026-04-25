@@ -1,0 +1,34 @@
+{
+  "api_name": "argsort",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x cannot be None"
+      ]
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "-1` (the last axis)",
+      "flag": "Optional",
+      "description": "Axis along which to sort. Defaults to `-1` (the last axis). If `None`, the flattened tensor is used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "Tensor of indices that sort `x` along the specified `axis`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,24 @@
+{
+  "api_name": "get_rng_state",
+  "module_path": "torch.mtia",
+  "params": {
+    "device": {
+      "type": "int|device",
+      "size": "",
+      "default": "'mtia'`` (i",
+      "flag": "Optional",
+      "description": "The device to return the RNG state of. Default: ``'mtia'`` (i.e., ``torch.device('mtia')``, the current mtia device).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "device default is 'mtia' if not provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Returns the random number generator state as a ByteTensor."
+  },
+  "constraints": []
+}

@@ -1,0 +1,41 @@
+{
+  "api_name": "log_ndtr",
+  "module_path": "jax.scipy.special",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an array of type `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "x.dtype is either float32 or float64",
+        "TypeError: if x.dtype is not float32 or float64"
+      ]
+    },
+    "series_order": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Positive Python integer. Maximum depth to evaluate the asymptotic expansion. This is the `N` above.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "series_order > 0",
+        "series_order must be positive"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "an array with `dtype=x.dtype`."
+  },
+  "constraints": []
+}

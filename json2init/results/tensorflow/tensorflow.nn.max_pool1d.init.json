@@ -1,0 +1,198 @@
+{
+  "api_full_name": "tensorflow.nn.max_pool1d",
+  "api_name": "max_pool1d",
+  "module_path": "tensorflow.nn",
+  "import_path": "tensorflow.nn.max_pool1d",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "3-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A 3-D `Tensor` of the format specified by `data_format`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "ksize": {
+      "name": "ksize",
+      "spec": {
+        "type": "int|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An int or list of `ints` that has length `1` or `3`. The size of the window for each dimension of the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "strides": {
+      "name": "strides",
+      "spec": {
+        "type": "int|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An int or list of `ints` that has length `1` or `3`. The stride of the sliding window for each dimension of the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "string|list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Either the `string` `\"SAME\"` or `\"VALID\"` indicating the type of padding algorithm to use, or a list indicating the explicit paddings at the start and end of each dimension. See [here](https://www.tensorflow.org/api_docs/python/tf/nn#notes_on_padding_2) for more information. When explicit padding is used and data_format is `\"NWC\"`, this should be in the form `[[0, 0], [pad_left, pad_right], [0, 0]]`. When explicit padding used and data_format is `\"NCW\"`, this should be in the form `[[0, 0], [0, 0], [pad_left, pad_right]]`. When using explicit padding, the size of the paddings cannot be greater than the sliding window size.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "string",
+          "SAME",
+          "VALID",
+          "NWC",
+          "NCW"
+        ],
+        "constraints": [
+          "padding must be one of string, SAME, VALID, NWC, NCW"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "data_format": {
+      "name": "data_format",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"NWC\"",
+        "flag": "Optional",
+        "description": "An optional string from: \"NWC\", \"NCW\". Defaults to \"NWC\".",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "NWC"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of format specified by `data_format`. The max pooled output tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'padding' of \"string\" is not in the list of allowed values: \"SAME\", \"VALID\", \"EXPLICIT\"\n\t; NodeDef: {{node MaxPool}}; Op<name=MaxPool; signature=input:T -> output:T; attr=T:type,default=DT_FLOAT,allowed=[DT_HALF, DT_BFLOAT16, DT_FLOAT, DT_DOUBLE, DT_INT32, DT_INT64, DT_UINT8, DT_INT16, DT_INT8, DT_UINT16, DT_QINT8]; attr=ksize:list(int),min=4; attr=strides:list(int),min=4; attr=padding:string,allowed=[\"SAME\", \"VALID\", \"EXPLICIT\"]; attr=explicit_paddings:list(int),default=[]; attr=data_format:string,default=\"NHWC\",allowed=[\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"]> [Op:MaxPool] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'padding' of \"string\" is not in the list of allowed values: \"SAME\", \"VALID\", \"EXPLICIT\"\n\t; NodeDef: {{node MaxPool}}; Op<name=MaxPool; signature=input:T -> output:T; attr=T:type,default=DT_FLOAT,allowed=[DT_HALF, DT_BFLOAT16, DT_FLOAT, DT_DOUBLE, DT_INT32, DT_INT64, DT_UINT8, DT_INT16, DT_INT8, DT_UINT16, DT_QINT8]; attr=ksize:list(int),min=4; attr=strides:list(int),min=4; attr=padding:string,allowed=[\"SAME\", \"VALID\", \"EXPLICIT\"]; attr=explicit_paddings:list(int),default=[]; attr=data_format:string,default=\"NHWC\",allowed=[\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"]> [Op:MaxPool] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'padding' of \"string\" is not in the list of allowed values: \"SAME\", \"VALID\", \"EXPLICIT\"\n\t; NodeDef: {{node MaxPool}}; Op<name=MaxPool; signature=input:T -> output:T; attr=T:type,default=DT_FLOAT,allowed=[DT_HALF, DT_BFLOAT16, DT_FLOAT, DT_DOUBLE, DT_INT32, DT_INT64, DT_UINT8, DT_INT16, DT_INT8, DT_UINT16, DT_QINT8]; attr=ksize:list(int),min=4; attr=strides:list(int),min=4; attr=padding:string,allowed=[\"SAME\", \"VALID\", \"EXPLICIT\"]; attr=explicit_paddings:list(int),default=[]; attr=data_format:string,default=\"NHWC\",allowed=[\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"]> [Op:MaxPool] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.max_pool1d.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

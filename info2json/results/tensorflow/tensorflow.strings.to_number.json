@@ -1,0 +1,49 @@
+{
+  "api_name": "to_number",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "input": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out_type": {
+      "type": "string|float|number|dtype",
+      "size": "",
+      "default": "tf",
+      "flag": "Optional",
+      "description": "An optional `tf.DType` from: `tf.float32, tf.float64, tf.int32, tf.int64, tf.uint32, tf.uint64`. Defaults to `tf.float32`. The numeric type to interpret each string in `string_tensor` as.",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "uint32",
+        "uint64",
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `out_type`."
+  },
+  "constraints": []
+}

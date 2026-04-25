@@ -1,0 +1,67 @@
+{
+  "api_name": "isin",
+  "module_path": "jax.numpy",
+  "params": {
+    "element": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array of elements for which membership will be checked.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "test_elements": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array of test values to check for the presence of each element.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "invert": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If True, return ``~isin(element, test_elements)``. Default is False.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "assume_unique": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "if true, input arrays are assumed to be unique, which can lead to more efficient computation. If the input arrays are not unique and assume_unique is set to True, the results are undefined.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "method": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "string specifying the method used to compute the result. Supported options are 'compare_all', 'binary_search', 'sort', and 'auto' (default).",
+      "dtype_candidates": [],
+      "enum_values": [
+        "compare_all",
+        "binary_search",
+        "sort",
+        "auto"
+      ],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "A boolean array of shape ``element.shape`` that specifies whether each element appears in ``test_elements``."
+  },
+  "constraints": []
+}

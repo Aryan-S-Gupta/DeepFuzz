@@ -1,0 +1,55 @@
+{
+  "api_name": "cosine_similarity",
+  "module_path": "tensorflow.keras.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have broadcast-compatible shapes.",
+        "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have broadcast-compatible shapes.",
+        "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+      ]
+    },
+    "axis": {
+      "type": "int32",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "Axis along which to determine similarity. Defaults to `-1`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Must be a valid axis value."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Cosine similarity tensor."
+  },
+  "constraints": [
+    "y_true and y_pred must have broadcast-compatible shapes.",
+    "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+  ]
+}

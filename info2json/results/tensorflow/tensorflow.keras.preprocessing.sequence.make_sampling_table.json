@@ -1,0 +1,36 @@
+{
+  "api_name": "make_sampling_table",
+  "module_path": "tensorflow.keras.preprocessing.sequence",
+  "params": {
+    "size": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Int, number of possible words to sample.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "size > 0"
+      ]
+    },
+    "sampling_factor": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The sampling factor in the word2vec formula.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "sampling_factor > 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float",
+    "description": "A 1D Numpy array of length `size` where the ith entry is the probability that a word of rank i should be sampled."
+  },
+  "constraints": []
+}

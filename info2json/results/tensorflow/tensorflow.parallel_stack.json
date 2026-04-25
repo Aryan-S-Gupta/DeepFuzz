@@ -1,0 +1,36 @@
+{
+  "api_name": "parallel_stack",
+  "module_path": "tensorflow",
+  "params": {
+    "values": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `Tensor` objects with the same shape and type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Packs the list of tensors in `values` into a tensor with rank one higher than each tensor in `values`, by packing them along the first dimension."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for this operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A stacked `Tensor` with the same type as `values`."
+  },
+  "constraints": [
+    "Requires that the shape of inputs be known at graph construction time."
+  ]
+}

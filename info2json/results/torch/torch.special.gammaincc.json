@@ -1,0 +1,53 @@
+{
+  "api_name": "gammaincc",
+  "module_path": "torch.special",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the first non-negative input tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the second non-negative input tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "other must be non-negative",
+        "input and other must be non-negative tensors",
+        "if both input and other are zero or either is negative, then out[i]=NaN",
+        "out has the same shape as the broadcasted shapes of input and other"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if both input and other are zero or either is negative, then out[i]=NaN",
+        "out has the same shape as the broadcasted shapes of input and other"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "resulting tensor from the operation"
+  },
+  "constraints": [
+    "if both input and other are zero or either is negative, then out[i]=NaN",
+    "out has the same shape as the broadcasted shapes of input and other"
+  ]
+}

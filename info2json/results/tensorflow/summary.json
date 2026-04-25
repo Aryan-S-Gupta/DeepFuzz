@@ -1,0 +1,35 @@
+{
+  "processed": 939,
+  "succeeded": 934,
+  "failed": 5,
+  "failures": [
+    {
+      "api_full_name": "tensorflow.gather_nd",
+      "error": "ValueError: tensorflow.gather_nd: size field looks like prose for bad_indices_policy"
+    },
+    {
+      "api_full_name": "tensorflow.io.decode_csv",
+      "error": "ValueError: tensorflow.io.decode_csv: size field looks like prose for use_quote_delim"
+    },
+    {
+      "api_full_name": "tensorflow.math.logical_xor",
+      "error": "ValueError: tensorflow.math.logical_xor: prose default leaked into default field for name"
+    },
+    {
+      "api_full_name": "tensorflow.nn.local_response_normalization",
+      "error": "ValueError: tensorflow.nn.local_response_normalization: size field looks like prose for bias"
+    },
+    {
+      "api_full_name": "tensorflow.nn.lrn",
+      "error": "ValueError: tensorflow.nn.lrn: size field looks like prose for bias"
+    }
+  ],
+  "input": "doc2info/results/tensorflow/accepted.csv",
+  "outdir": "info2json/results/tensorflow",
+  "model": "mixtral:8x7b",
+  "host": "http://localhost:11434",
+  "total_requested": 951,
+  "num_predict": 320,
+  "num_ctx": 2048,
+  "temperature": 0.0
+}

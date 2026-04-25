@@ -1,0 +1,45 @@
+{
+  "api_name": "reshape",
+  "module_path": "tensorflow",
+  "params": {
+    "shape": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. Defines the shape of the output tensor.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "At most one component can be -1",
+        "shape must be one of int32, int64",
+        "-1 can be used to infer the shape"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional string. A name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `tensor`."
+  },
+  "constraints": [
+    "The total number of elements must remain constant",
+    "If -1 is used, it will be computed so that the total size remains constant"
+  ]
+}

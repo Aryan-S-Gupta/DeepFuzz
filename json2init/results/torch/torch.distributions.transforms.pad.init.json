@@ -1,0 +1,154 @@
+{
+  "api_full_name": "torch.distributions.transforms.pad",
+  "api_name": "pad",
+  "module_path": "torch.distributions.transforms",
+  "import_path": "torch.distributions.transforms.pad",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "N-dimensional tensor",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "pad": {
+      "name": "pad",
+      "spec": {
+        "type": "tuple",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "m-elements tuple, where :math:`\\frac{m}{2} \\leq` input dimensions and :math:`m` is even.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "m must be even",
+          "input and pad must have compatible shapes"
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          0,
+          0
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "mode": {
+      "name": "mode",
+      "spec": {
+        "type": "'constant', 'reflect', 'replicate' or 'circular'",
+        "size": "",
+        "default": "constant",
+        "flag": "Optional",
+        "description": "``'constant'``, ``'reflect'``, ``'replicate'`` or ``'circular'``. Default: ``'constant'``",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "'constant'",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: 'constant'"
+    },
+    "value": {
+      "name": "value",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "fill value for ``'constant'`` padding. Default: ``0``",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "value must be one of constant, 0"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "padded input tensor with added dimensions based on pad tuple"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "Tensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "device": "cpu",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.distributions.transforms.pad.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

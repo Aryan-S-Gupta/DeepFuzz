@@ -1,0 +1,32 @@
+{
+  "api_name": "broadcast_coalesced",
+  "module_path": "torch.nn.parallel.comm",
+  "params": {
+    "devices": {
+      "type": "string|int|sequence|device",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an iterable of GPU devices, among which to broadcast.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "buffer_size": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "maximum size of the buffer used for coalescing",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "1",
+    "description": "attr:`tensor`, placed on :attr:`devices`."
+  },
+  "constraints": []
+}

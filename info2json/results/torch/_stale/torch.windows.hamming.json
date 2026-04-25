@@ -1,0 +1,86 @@
+{
+  "api_name": "hamming",
+  "module_path": "torch.windows",
+  "params": {
+    "M": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the length of the window. In other words, the number of points of the returned window.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sym": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "If `False`, returns a periodic window suitable for use in spectral analysis. If `True`, returns a symmetric window suitable for use in filter design. Default: `True`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The coefficient :math:`\\alpha` in the equation above.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "beta": {
+      "type": "float|tensor|dtype",
+      "size": "",
+      "default": "if ``None``, uses a global default (see :func:`torch",
+      "flag": "Optional",
+      "description": "The coefficient :math:`\\beta` in the equation above. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. Default: if ``None``, uses a global default (see :func:`torch.set_default_dtype`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tensor",
+      "size": "",
+      "default": "torch",
+      "flag": "Optional",
+      "description": "the desired layout of returned Tensor. Default: ``torch.strided``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "if ``None``, uses the current device for the default tensor type",
+      "flag": "Optional",
+      "description": "the desired device of returned tensor. Default: if ``None``, uses the current device for the default tensor type (see :func:`torch.set_default_device`). :attr:`device` will be the CPU for CPU tensor types and the current CUDA device for CUDA tensor types.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "requires_grad": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

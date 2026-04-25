@@ -1,0 +1,64 @@
+{
+  "api_name": "tridiagonal_matmul",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "diagonals": {
+      "type": "float|tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or tuple of `Tensor`s describing left-hand sides. The shape depends of `diagonals_format`, see description above. Must be `float32`, `float64`, `complex64`, or `complex128`.",
+      "dtype_candidates": [
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rhs": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of shape [..., M, N] and with the same dtype as `diagonals`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "rhs must have the same dtype as diagonals"
+      ]
+    },
+    "diagonals_format": {
+      "type": "sequence",
+      "size": "",
+      "default": "compact",
+      "flag": "Optional",
+      "description": "one of `sequence`, or `compact`. Default is `compact`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "sequence",
+        "compact"
+      ],
+      "constraints": [
+        "diagonals_format must be one of sequence, compact"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name to give this `Op` (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of shape [..., M, N] containing the result of multiplication."
+  },
+  "constraints": []
+}

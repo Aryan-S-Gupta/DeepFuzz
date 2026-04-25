@@ -1,0 +1,52 @@
+{
+  "api_name": "complex",
+  "module_path": "tensorflow.dtypes",
+  "params": {
+    "real": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [
+        "float32",
+        "float64"
+      ],
+      "constraints": [
+        "real must be one of float32, float64"
+      ]
+    },
+    "imag": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `real`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "imag must have the same dtype as real"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `complex64` or `complex128`."
+  },
+  "constraints": []
+}

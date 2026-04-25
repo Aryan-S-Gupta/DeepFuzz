@@ -1,0 +1,44 @@
+{
+  "api_name": "polysub",
+  "module_path": "jax.numpy",
+  "params": {
+    "a1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array of minuend polynomial coefficients.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a1 and a2 must have broadcast-compatible shapes.",
+        "a1 and a2 must be at least 1-D.",
+        "Returned array shape is determined by broadcasting shapes of a1 and a2, and then removing dimensions with size 1."
+      ]
+    },
+    "a2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array of subtrahend polynomial coefficients.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a1 and a2 must have broadcast-compatible shapes.",
+        "a1 and a2 must be at least 1-D.",
+        "Returned array shape is determined by broadcasting shapes of a1 and a2, and then removing dimensions with size 1."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "An array containing the coefficients of the difference of two polynomials."
+  },
+  "constraints": [
+    "a1 and a2 must have broadcast-compatible shapes.",
+    "a1 and a2 must be at least 1-D.",
+    "Returned array shape is determined by broadcasting shapes of a1 and a2, and then removing dimensions with size 1."
+  ]
+}

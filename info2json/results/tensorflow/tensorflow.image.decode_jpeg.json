@@ -1,0 +1,98 @@
+{
+  "api_name": "decode_jpeg",
+  "module_path": "tensorflow.image",
+  "params": {
+    "contents": {
+      "type": "string|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. 0-D. The JPEG-encoded image.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "channels": {
+      "type": "int|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ratio": {
+      "type": "int",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `1`. Downscaling ratio.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fancy_upscaling": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `True`. If true use a slower but nicer upscaling of the chroma planes (yuv420/422 only).",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "try_recover_truncated": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`. If true try to recover an image from truncated input.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "acceptable_fraction": {
+      "type": "float",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "An optional `float`. Defaults to `1`. The minimum required fraction of lines before a truncated input is accepted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dct_method": {
+      "type": "string",
+      "size": "",
+      "default": "\"\" which maps to a system-specific",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"\"`. string specifying a hint about the algorithm used for decompression. Defaults to \"\" which maps to a system-specific default. Currently valid values are [\"INTEGER_FAST\", \"INTEGER_ACCURATE\"]. The hint may be ignored (e.g., the internal jpeg library changes to a version that does not have that specific option.)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "dct_method must be one of string, INTEGER_FAST, INTEGER_ACCURATE"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `uint8`."
+  },
+  "constraints": []
+}

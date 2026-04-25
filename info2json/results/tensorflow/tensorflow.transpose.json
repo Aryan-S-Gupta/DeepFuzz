@@ -1,0 +1,54 @@
+{
+  "api_name": "transpose",
+  "module_path": "tensorflow",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "perm": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A permutation of the dimensions of `a`. This should be a vector.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "conjugate": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional bool. Setting it to `True` is mathematically equivalent to tf.math.conj(tf.transpose(input)).",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A transposed `Tensor`."
+  },
+  "constraints": []
+}

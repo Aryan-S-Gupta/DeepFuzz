@@ -1,0 +1,62 @@
+{
+  "api_full_name": "tensorflow.as_dtype",
+  "api_name": "as_dtype",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.as_dtype",
+  "backend": "tensorflow",
+  "params": {
+    "type_value": {
+      "name": "type_value",
+      "spec": {
+        "type": "string|int|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A value that can be converted to a `tf.DType` object.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must be one of the following: existing tf.DType objects, a DataType enum, or numpy.dtype",
+          "type_value must be one of tf.DType",
+          "type_value and returned DType are interned (i.e. a single instance of each dtype is stored in a map)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "A `DType` corresponding to `type_value`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "DType"
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.as_dtype.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

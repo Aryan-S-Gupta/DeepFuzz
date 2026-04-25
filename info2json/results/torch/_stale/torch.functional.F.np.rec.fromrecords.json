@@ -1,0 +1,37 @@
+{
+  "api_name": "fromrecords",
+  "module_path": "torch.functional.F.np.rec",
+  "params": {
+    "recList": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence data in the same field may be heterogeneous - they will be promoted to the highest data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shape": {
+      "type": "int|tuple|callable|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints, optional shape of each array. If `dtype` is ``None``, these arguments are passed to `numpy.format_parser` to construct a dtype. See that function for detailed documentation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Required if recList is not a list of records with explicit shapes."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- np.recarray record array consisting of given recList rows."
+  },
+  "constraints": [
+    "formats, names, titles, aligned, byteorder are not supported due to insufficient information.",
+    "pickle.loads(pickle.dumps(r)) should return the original record array, but this is not included in the constraints as it involves external libraries and functions."
+  ]
+}

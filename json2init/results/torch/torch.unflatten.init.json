@@ -1,0 +1,127 @@
+{
+  "api_full_name": "torch.unflatten",
+  "api_name": "unflatten",
+  "module_path": "torch",
+  "import_path": "torch.unflatten",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "dim": {
+      "name": "dim",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Dimension to be unflattened, specified as an index into ``input.shape``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "The product of sizes must equal input.shape[dim] when sizes doesn't contain -1"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "sizes": {
+      "name": "sizes",
+      "spec": {
+        "type": "int|tuple",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "New shape of the unflattened dimension. One of its elements can be `-1` in which case the corresponding output dimension is inferred. Otherwise, the product of ``sizes`` *must* equal ``input.shape[dim]``.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "-1"
+        ],
+        "constraints": [
+          "sizes must be one of -1",
+          "The product of sizes must equal input.shape[dim] when sizes doesn't contain -1"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A View of input with the specified dimension unflattened."
+  },
+  "constraints": [
+    "The product of sizes must equal input.shape[dim] when sizes doesn't contain -1"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: unflatten(): argument 'sizes' must be tuple of ints, not int"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "unflatten(): argument 'sizes' must be tuple of ints, not int",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: unflatten(): argument 'sizes' must be tuple of ints, not int\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.unflatten.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

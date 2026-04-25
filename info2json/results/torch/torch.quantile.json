@@ -1,0 +1,76 @@
+{
+  "api_name": "quantile",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "q": {
+      "type": "float|number|tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "a scalar or 1D tensor of values in the range [0, 1].",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "q must be 1-D"
+      ]
+    },
+    "dim": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the dimension to reduce.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "keepdim": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "whether the output tensor has :attr:`dim` retained or not. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "interpolation": {
+      "type": "string",
+      "size": "",
+      "default": "linear",
+      "flag": "Optional",
+      "description": "interpolation method to use when the desired quantile lies between two data points. Can be ``linear``, ``lower``, ``higher``, ``midpoint`` and ``nearest``. Default is ``linear``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

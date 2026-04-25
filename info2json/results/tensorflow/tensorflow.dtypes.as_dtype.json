@@ -1,0 +1,29 @@
+{
+  "api_name": "as_dtype",
+  "module_path": "tensorflow.dtypes",
+  "params": {
+    "type_value": {
+      "type": "string|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A value that can be converted to a `tf.DType` object.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "DataType"
+      ],
+      "constraints": [
+        "Must be one of: existing tf.DType objects, a `DataType` enum, or a numpy.dtype",
+        "type_value must be one of tf.DType"
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "A `DType` corresponding to `type_value`."
+  },
+  "constraints": [
+    "Input and output DTypes are interned (i.e. a single instance of each dtype is stored in a map)"
+  ]
+}

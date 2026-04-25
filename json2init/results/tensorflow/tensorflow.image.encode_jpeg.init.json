@@ -1,0 +1,324 @@
+{
+  "api_full_name": "tensorflow.image.encode_jpeg",
+  "api_name": "encode_jpeg",
+  "module_path": "tensorflow.image",
+  "import_path": "tensorflow.image.encode_jpeg",
+  "backend": "tensorflow",
+  "params": {
+    "image": {
+      "name": "image",
+      "spec": {
+        "type": "tensor",
+        "size": "3-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `uint8`. 3-D with shape `[height, width, channels]`.",
+        "dtype_candidates": [
+          "uint8"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "image must be 3-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1,
+          1,
+          1,
+          3
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "format": {
+      "name": "format",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"\"",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"\", \"grayscale\", \"rgb\"`. Defaults to `\"\"`. Per pixel image format.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "quality": {
+      "name": "quality",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "95",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `95`. Quality of the compression from 0 to 100 (higher is better and slower).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "progressive": {
+      "name": "progressive",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`. If True, create a JPEG that loads progressively (coarse to fine).",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "optimize_size": {
+      "name": "optimize_size",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`. If True, spend CPU/RAM to reduce size with no quality change.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "chroma_downsampling": {
+      "name": "chroma_downsampling",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `True`. See http://en.wikipedia.org/wiki/Chroma_subsampling.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "density_unit": {
+      "name": "density_unit",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"in\"",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"in\", \"cm\"`. Defaults to `\"in\"`. Unit used to specify `x_density` and `y_density`: pixels per inch (`'in'`) or centimeter (`'cm'`).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "x_density": {
+      "name": "x_density",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "300",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `300`. Horizontal pixels per density unit.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_density": {
+      "name": "y_density",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "300",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `300`. Vertical pixels per density unit.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "xmp_metadata": {
+      "name": "xmp_metadata",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"\"",
+        "flag": "Optional",
+        "description": "An optional `string`. Defaults to `\"\"`. If not empty, embed this XMP metadata in the image header.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: cannot compute EncodeJpeg as input #0(zero-based) was expected to be a uint8 tensor but is a float tensor [Op:EncodeJpeg] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "cannot compute EncodeJpeg as input #0(zero-based) was expected to be a uint8 tensor but is a float tensor [Op:EncodeJpeg] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: cannot compute EncodeJpeg as input #0(zero-based) was expected to be a uint8 tensor but is a float tensor [Op:EncodeJpeg] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.encode_jpeg.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

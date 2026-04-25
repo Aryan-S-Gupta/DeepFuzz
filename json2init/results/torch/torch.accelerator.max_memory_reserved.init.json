@@ -1,0 +1,61 @@
+{
+  "api_full_name": "torch.accelerator.max_memory_reserved",
+  "api_name": "max_memory_reserved",
+  "module_path": "torch.accelerator",
+  "import_path": "torch.accelerator.max_memory_reserved",
+  "backend": "torch",
+  "params": {
+    "device_index": {
+      "name": "device_index",
+      "spec": {
+        "type": "string|int|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the index of the device to target. If not given, use :func:`torch.accelerator.current_device_index` by default. If a :class:`torch.device` or str is provided, its type must match the current :ref:`accelerator<accelerators>` device type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "device_index must match current accelerator device type if provided"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|int",
+    "numbers": "bytes",
+    "description": "the peak memory reserved by PyTorch (in bytes) within the current process."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: module 'torch.accelerator' has no attribute 'max_memory_reserved'"
+  ],
+  "smoke_test": {
+    "attempted": false,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "module 'torch.accelerator' has no attribute 'max_memory_reserved'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.accelerator.max_memory_reserved.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

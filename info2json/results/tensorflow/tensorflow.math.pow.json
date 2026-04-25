@@ -1,0 +1,67 @@
+{
+  "api_name": "pow",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float16`, `float32`, `float64`, `int32`, `int64`, `complex64`, or `complex128`.",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "float16",
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have the same type",
+        "x and y must have broadcast-compatible shapes"
+      ]
+    },
+    "y": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float16`, `float32`, `float64`, `int32`, `int64`, `complex64`, or `complex128`.",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "float16",
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have the same type",
+        "x and y must have broadcast-compatible shapes"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`."
+  },
+  "constraints": [
+    "x and y must have the same type",
+    "x and y must have broadcast-compatible shapes"
+  ]
+}

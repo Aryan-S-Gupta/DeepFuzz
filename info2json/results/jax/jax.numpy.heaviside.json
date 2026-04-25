@@ -1,0 +1,43 @@
+{
+  "api_name": "heaviside",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar. ``complex`` dtype are not supported.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "complex dtype is not supported"
+      ]
+    },
+    "x2": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the return values when ``x1`` is ``0``. ``complex`` dtype are not supported. ``x1`` and ``x2`` must either have same shape or broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "0",
+        "complex"
+      ],
+      "constraints": [
+        "complex dtype is not supported",
+        "x1 and x2 must have same shape or broadcast compatible",
+        "x2 must be one of 0, complex"
+      ]
+    }
+  },
+  "output": {
+    "type": "callable|tensor|dtype",
+    "numbers": "real",
+    "description": "An array containing the heaviside step function of ``x1``, promoting to inexact dtype."
+  },
+  "constraints": [
+    "x and y must have broadcast-compatible shapes"
+  ]
+}

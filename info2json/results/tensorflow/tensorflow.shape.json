@@ -1,0 +1,51 @@
+{
+  "api_name": "shape",
+  "module_path": "tensorflow",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or `SparseTensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out_type": {
+      "type": "tf.int32|tf.int64",
+      "size": "",
+      "default": "tf",
+      "flag": "Optional",
+      "description": "(Optional) The specified output type of the operation (`int32` or `int64`). Defaults to `tf.int32`. (Note: there is an experimental flag, `tf_shape_default_int64` that changes the default to `tf.int64`. This is an unsupported, experimental setting that causes known breakages.)",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "out_type is either int32 or int64, defaults to tf.int32"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "name is an optional string parameter for naming the operation"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "A `Tensor` of type `out_type`."
+  },
+  "constraints": [
+    "input must be a Tensor or SparseTensor"
+  ]
+}

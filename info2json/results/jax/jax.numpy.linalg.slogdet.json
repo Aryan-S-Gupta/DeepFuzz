@@ -1,0 +1,32 @@
+{
+  "api_name": "slogdet",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, M)`` for which to compute the sign and log determinant.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "method": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the method to use for determinant computation. Options are",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A tuple of arrays ``(sign, logabsdet)``, each of shape ``a.shape[:-2]`` - ``sign`` is the sign of the determinant. - ``logabsdet`` is the natural log of the determinant's absolute value."
+  },
+  "constraints": []
+}

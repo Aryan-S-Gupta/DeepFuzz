@@ -1,0 +1,68 @@
+{
+  "api_name": "roll",
+  "module_path": "tensorflow",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shift": {
+      "type": "number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. Dimension must be 0-D or 1-D. `shift[i]` specifies the number of places by which elements are shifted positively (towards larger indices) along the dimension specified by `axis[i]`. Negative shifts will roll the elements in the opposite direction.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "shift must be one of int32, int64"
+      ]
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. Dimension must be 0-D or 1-D. `axis[i]` specifies the dimension that the shift `shift[i]` should occur. If the same axis is referenced more than once, the total shift for that axis will be the sum of all the shifts that belong to that axis.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "axis must be one of int32, int64"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": []
+}

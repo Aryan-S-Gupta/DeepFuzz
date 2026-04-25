@@ -1,0 +1,49 @@
+{
+  "api_name": "polydiv",
+  "module_path": "jax.numpy",
+  "params": {
+    "u": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array of dividend polynomial coefficients.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "v": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array of divisor polynomial coefficients.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "trim_leading_zeros": {
+      "type": "bool|callable",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "Default is ``False``. If ``True`` removes the leading zeros in the return value to match the result of numpy. But prevents the function from being able to be used in compiled code. Due to differences in accumulation of floating point arithmetic errors, the cutoff for values to be considered zero may lead to inconsistent results between NumPy and JAX, and even between different JAX backends. The result may lead to inconsistent output shapes when ``trim_leading_zeros=True``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Prevent function from being used in compiled code.",
+        "trim_leading_zeros must be one of False, True, JAX",
+        "trim_leading_zeros=True may lead to inconsistent results between NumPy and JAX, and even between different JAX backends.",
+        "The result may lead to inconsistent output shapes when trim_leading_zeros=True."
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple|dtype",
+    "numbers": "2",
+    "description": "A tuple of quotient and remainder arrays. The dtype of the output is always promoted to inexact."
+  },
+  "constraints": []
+}

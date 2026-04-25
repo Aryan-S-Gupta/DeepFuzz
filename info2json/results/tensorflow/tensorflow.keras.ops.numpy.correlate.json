@@ -1,0 +1,51 @@
+{
+  "api_name": "correlate",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "First 1-dimensional input tensor of length M.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Second 1-dimensional input tensor of length N.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mode": {
+      "type": "string",
+      "size": "",
+      "default": "valid",
+      "flag": "Optional",
+      "description": "Either `valid`, `same` or `full`. By default the mode is set to `valid`, which returns an output of length max(M, N) - min(M, N) + 1. `same` returns an output of length max(M, N). `full` mode returns the convolution at each point of overlap, with an output length of N+M-1",
+      "dtype_candidates": [],
+      "enum_values": [
+        "valid",
+        "same",
+        "full"
+      ],
+      "constraints": [
+        "must be one of: valid, same, full",
+        "mode must be one of valid, same, full"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "single-dimensional",
+    "description": "Output tensor, cross-correlation of `x1` and `x2`."
+  },
+  "constraints": [
+    "M and N must be positive integers"
+  ]
+}

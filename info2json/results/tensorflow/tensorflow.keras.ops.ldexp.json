@@ -1,0 +1,39 @@
+{
+  "api_name": "ldexp",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x1": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Float input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same shape."
+      ]
+    },
+    "x2": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Integer exponent tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be a tensor.",
+        "x1 and x2 must have the same shape."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Output tensor"
+  },
+  "constraints": [
+    "x1 and x2 must have the same shape."
+  ]
+}

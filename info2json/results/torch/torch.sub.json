@@ -1,0 +1,56 @@
+{
+  "api_name": "sub",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor or number to subtract from :attr:`input`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input and other support broadcasting to a common shape"
+      ]
+    },
+    "alpha": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "the multiplier for :attr:`other`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "alpha >= 0"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "a new Tensor with subtracted values"
+  },
+  "constraints": []
+}

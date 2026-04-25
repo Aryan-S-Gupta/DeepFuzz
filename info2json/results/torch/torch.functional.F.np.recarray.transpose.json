@@ -1,0 +1,26 @@
+{
+  "api_name": "transpose",
+  "module_path": "torch.functional.F.np.recarray",
+  "params": {
+    "axes": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "None, tuple of ints, or `n` ints",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If ints, must be same number as input array dimensions"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray View of the array with its axes suitably permuted."
+  },
+  "constraints": [
+    "Input array must be at least 1-D"
+  ]
+}

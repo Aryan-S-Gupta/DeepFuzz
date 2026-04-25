@@ -1,0 +1,141 @@
+{
+  "api_full_name": "tensorflow.io.decode_image",
+  "api_name": "decode_image",
+  "module_path": "tensorflow.io",
+  "import_path": "tensorflow.io.decode_image",
+  "backend": "tensorflow",
+  "params": {
+    "contents": {
+      "name": "contents",
+      "spec": {
+        "type": "string|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `string`. 0-D. The encoded image bytes.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bytes",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "bytes",
+        "value": {
+          "__kind__": "bytes_b64",
+          "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC"
+        }
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "channels": {
+      "name": "channels",
+      "spec": {
+        "type": "int|number|tensor|dtype",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image. dtype: The desired DType of the returned `Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional)",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)"
+    },
+    "expand_animations": {
+      "name": "expand_animations",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "4-D",
+        "default": "True",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `True`. Controls the shape of the returned op's output. If `True`, the returned op will produce a 4-D tensor for all GIFs and WebP images, animated or not, and a 3-D tensor in all other cases. If, `False`, the returned op will produce a 3-D tensor for all file types and will truncate animations to the first frame.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "expand_animations must be 4-D"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "`Tensor` with type `dtype` and a 3- or 4-dimensional shape, depending on the file type and the value of the `expand_animations` parameter."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1,
+        1,
+        3
+      ],
+      "dtype": "uint8",
+      "numel": 3,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.decode_image.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

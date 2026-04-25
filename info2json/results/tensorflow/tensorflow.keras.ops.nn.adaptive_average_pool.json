@@ -1,0 +1,45 @@
+{
+  "api_name": "adaptive_average_pool",
+  "module_path": "tensorflow.keras.ops.nn",
+  "params": {
+    "inputs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of rank 4. Input tensor of shape: - If `data_format=\"channels_last\"`: `(batch_size, height, width, channels)`. - If `data_format=\"channels_first\"`: `(batch_size, channels, height, width)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "output_size": {
+      "type": "int|tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Integer or tuple/list of 2 integers, specifying the target output spatial dimensions `(output_height, output_width)`. If a single integer is provided, the same value is used for both dimensions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "data_format": {
+      "type": "string",
+      "size": "",
+      "default": "the value found in your Keras config file at",
+      "flag": "Optional",
+      "description": "string, either `\"channels_last\"` or `\"channels_first\"`. Defaults to the value found in your Keras config file at `~/.keras/keras.json`. If never set, defaults to `\"channels_last\"`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "channels_last",
+        "channels_first"
+      ],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of rank 4 representing the adaptive average pooled result."
+  },
+  "constraints": []
+}

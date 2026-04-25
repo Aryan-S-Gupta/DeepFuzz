@@ -1,0 +1,71 @@
+{
+  "api_full_name": "torch.nn.utils.rnn.invert_permutation",
+  "api_name": "invert_permutation",
+  "module_path": "torch.nn.utils.rnn",
+  "import_path": "torch.nn.utils.rnn.invert_permutation",
+  "backend": "torch",
+  "params": {
+    "permutation": {
+      "name": "permutation",
+      "spec": {
+        "type": "tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Optional",
+        "description": "a 1-D tensor of indices to invert",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "permutation must be 1-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Returns the inverse of ``permutation``."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: invert_permutation() missing 1 required positional argument: 'permutation'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "invert_permutation() missing 1 required positional argument: 'permutation'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: invert_permutation() missing 1 required positional argument: 'permutation'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.nn.utils.rnn.invert_permutation.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

@@ -1,0 +1,60 @@
+{
+  "api_name": "required_space_to_batch_paddings",
+  "module_path": "tensorflow",
+  "params": {
+    "input_shape": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int32 Tensor of shape [N].",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "block_shape": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int32 Tensor of shape [N].",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "base_paddings": {
+      "type": "tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "Optional int32 Tensor of shape [N, 2]. Specifies the minimum amount of padding to use. All elements must be >= 0. If not specified, defaults to 0.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "base_paddings must be non-negative"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "string. Optional name prefix.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "(paddings, crops), where: `paddings` and `crops` are int32 Tensors of rank 2 and shape [N, 2] satisfying: paddings[i, 0] = base_paddings[i, 0]. 0 <= paddings[i, 1] - base_paddings[i, 1] < block_shape[i] (input_shape[i] + paddings[i, 0] + paddings[i, 1]) % block_shape[i] == 0 crops[i, 0] = 0 crops[i, 1] = paddings[i, 1] - base_paddings[i, 1] ValueError if called with incompatible shapes."
+  },
+  "constraints": []
+}

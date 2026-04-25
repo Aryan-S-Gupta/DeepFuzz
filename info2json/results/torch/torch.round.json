@@ -1,0 +1,48 @@
+{
+  "api_name": "round",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "decimals": {
+      "type": "int|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "Number of decimal places to round to (default: 0). If decimals is negative, it specifies the number of positions to the left of the decimal point.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "decimals >= -inf"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out's dtype must be the same as input's dtype if provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The return type of output is same as that of input's dtype. integers (e.g. `round(2.5)` is 2). overflow for low precision dtypes. Eg. `round(tensor([10000], dtype=torch.float16), decimals=3)` is `inf`."
+  },
+  "constraints": [
+    "input's dtype must be one of: float, double"
+  ]
+}

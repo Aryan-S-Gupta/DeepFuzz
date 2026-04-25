@@ -1,0 +1,58 @@
+{
+  "api_name": "polygamma",
+  "module_path": "tensorflow.math",
+  "params": {
+    "a": {
+      "type": "float|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [
+        "float32",
+        "float64"
+      ],
+      "constraints": [
+        "a must be one of float32, float64",
+        "a and x must have the same data type"
+      ]
+    },
+    "x": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `a`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must have the same dtype as a",
+        "a and x must have the same data type"
+      ]
+    },
+    "name": {
+      "type": "text",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "name is optional"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `a`."
+  },
+  "constraints": [
+    "a and x must have the same data type"
+  ]
+}

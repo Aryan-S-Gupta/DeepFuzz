@@ -1,0 +1,38 @@
+{
+  "api_name": "diagonal",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, N)`` from which the diagonal will be extracted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "offset": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "positive or negative offset from the main diagonal.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        ">= 0",
+        "offset must be positive",
+        "offset >= -M + 1 and offset <= N - 1"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Array of shape ``(..., K)`` where ``K`` is the length of the specified diagonal."
+  },
+  "constraints": [
+    "M == N or M > 1 and N > 1"
+  ]
+}

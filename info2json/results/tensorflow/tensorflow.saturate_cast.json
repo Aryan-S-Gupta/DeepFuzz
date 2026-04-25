@@ -1,0 +1,36 @@
+{
+  "api_name": "saturate_cast",
+  "module_path": "tensorflow",
+  "params": {
+    "value": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. dtype: The desired output `DType`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "name must satisfy: is string or name is None"
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "`value` safely cast to `dtype`."
+  },
+  "constraints": [
+    "dtype must be a valid TensorFlow data type."
+  ]
+}

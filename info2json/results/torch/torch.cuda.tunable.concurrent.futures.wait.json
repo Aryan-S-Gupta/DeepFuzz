@@ -1,0 +1,38 @@
+{
+  "api_name": "wait",
+  "module_path": "torch.cuda.tunable.concurrent.futures",
+  "params": {
+    "fs": {
+      "type": "sequence|Future",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The sequence of Futures (possibly created by different Executors) to wait upon.",
+      "constraints": []
+    },
+    "timeout": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The maximum number of seconds to wait. If None, then there is no limit on the wait time.",
+      "constraints": []
+    },
+    "return_when": {
+      "type": "callable",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Indicates when this function should return. The options",
+      "constraints": [
+        "return_when must be one of FIRST_COMPLETED, FIRST_EXCEPTION, ALL_COMPLETED"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple[set, set]",
+    "numbers": "2",
+    "description": "A named 2-tuple of sets. The first set, named 'done', contains the futures that completed (is finished or cancelled) before the wait completed. The second set, named 'not_done', contains uncompleted futures. Duplicate futures given to *fs* are removed and will be returned only once."
+  },
+  "constraints": []
+}

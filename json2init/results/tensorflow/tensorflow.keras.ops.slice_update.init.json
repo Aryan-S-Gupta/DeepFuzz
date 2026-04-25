@@ -1,0 +1,142 @@
+{
+  "api_full_name": "tensorflow.keras.ops.slice_update",
+  "api_name": "slice_update",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.slice_update",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A tensor, the tensor to be updated.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "start_indices": {
+      "name": "start_indices",
+      "spec": {
+        "type": "tuple|list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A list/tuple of shape `(inputs.ndim,)`, specifying the starting indices for updating.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must contain integers"
+        ]
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "updates": {
+      "name": "updates",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A tensor, the new values to be put to `inputs` at `indices`. `updates` must have the same rank as `inputs`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Size of each dim must not exceed Di - start_indices[i]",
+          "updates must be one of indices",
+          "inputs, updates, and output have the same dtype"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A tensor, has the same shape and dtype as `inputs`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.slice_update.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

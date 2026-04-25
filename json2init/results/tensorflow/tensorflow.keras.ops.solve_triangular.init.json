@@ -1,0 +1,108 @@
+{
+  "api_full_name": "tensorflow.keras.ops.solve_triangular",
+  "api_name": "solve_triangular",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.solve_triangular",
+  "backend": "tensorflow",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A tensor of shape `(..., M, M)` representing the coefficients matrix.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "a tensor shape compatible with '(..., M, M)', where M is a positive integer"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "b": {
+      "name": "b",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A tensor of shape `(..., M)` or `(..., M, N)` representing the right-hand side or \"dependent variable\" matrix.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "b tensor shape compatible with either '(..., M)' or '(..., M, N)', where M and N are positive integers",
+          "if b is not provided, the output will be of shape '(...)'"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "'(..., M)' or '(..., M, N)'",
+    "description": "A tensor of shape `(..., M)` or `(..., M, N)` representing the solution of the linear system. Returned shape is identical to `b`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: solve_triangular() missing 1 required positional argument: 'b'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "solve_triangular() missing 1 required positional argument: 'b'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: solve_triangular() missing 1 required positional argument: 'b'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.solve_triangular.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

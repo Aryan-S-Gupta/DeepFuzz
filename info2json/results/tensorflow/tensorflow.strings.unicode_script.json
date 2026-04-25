@@ -1,0 +1,36 @@
+{
+  "api_name": "unicode_script",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `int32`. A Tensor of int32 Unicode code points.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "multiple",
+    "description": "A `Tensor` of type `int32`."
+  },
+  "constraints": [
+    "Input and output have the same shape."
+  ]
+}

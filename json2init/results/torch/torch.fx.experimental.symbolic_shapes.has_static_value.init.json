@@ -1,0 +1,60 @@
+{
+  "api_full_name": "torch.fx.experimental.symbolic_shapes.has_static_value",
+  "api_name": "has_static_value",
+  "module_path": "torch.fx.experimental.symbolic_shapes",
+  "import_path": "torch.fx.experimental.symbolic_shapes.has_static_value",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "int|float|bool",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Object to test",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "",
+    "description": "Returns true if given a constant, or a symbolic expression with a fixed value"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: module 'torch.fx.experimental.symbolic_shapes' has no attribute 'has_static_value'"
+  ],
+  "smoke_test": {
+    "attempted": false,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "module 'torch.fx.experimental.symbolic_shapes' has no attribute 'has_static_value'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.has_static_value.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

@@ -1,0 +1,46 @@
+{
+  "api_name": "logit",
+  "module_path": "torch.special",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "eps": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the epsilon for input clamp bound. Default: ``None``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "eps must be float or None"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out must be Tensor or None"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Returns a new tensor with the logit of the elements of input"
+  },
+  "constraints": []
+}

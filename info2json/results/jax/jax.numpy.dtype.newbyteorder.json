@@ -1,0 +1,30 @@
+{
+  "api_name": "newbyteorder",
+  "module_path": "jax.numpy.dtype",
+  "params": {
+    "new_order": {
+      "type": "string|any",
+      "size": "",
+      "default": "S",
+      "flag": "Optional",
+      "description": "string, optional Byte order to force; a value from the byte order specifications below. The default value ('S') results in swapping the current byte order. `new_order` codes can be any of:",
+      "dtype_candidates": [],
+      "enum_values": [
+        "S",
+        "I"
+      ],
+      "constraints": [
+        "- new_order must be one of: 'S', '<', '>', '=', '|', 'I'",
+        "new_order must be one of S"
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype New dtype object with the given change to the byte order."
+  },
+  "constraints": [
+    "- The newbyteorder function returns a new dtype object, not changing the original one"
+  ]
+}

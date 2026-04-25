@@ -1,0 +1,56 @@
+{
+  "api_name": "decode_image",
+  "module_path": "tensorflow.image",
+  "params": {
+    "contents": {
+      "type": "string|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. 0-D. The encoded image bytes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "channels": {
+      "type": "int|number|tensor|dtype",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image. dtype: The desired DType of the returned `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "expand_animations": {
+      "type": "bool|tensor",
+      "size": "4-D",
+      "default": "True",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `True`. Controls the shape of the returned op's output. If `True`, the returned op will produce a 4-D tensor for all GIFs and WebP images, animated or not, and a 3-D tensor in all other cases. If, `False`, the returned op will produce a 3-D tensor for all file types and will truncate animations to the first frame.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "expand_animations must be 4-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "`Tensor` with type `dtype` and a 3- or 4-dimensional shape, depending on the file type and the value of the `expand_animations` parameter."
+  },
+  "constraints": []
+}

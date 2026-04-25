@@ -1,0 +1,124 @@
+{
+  "api_full_name": "tensorflow.image.decode_webp",
+  "api_name": "decode_webp",
+  "module_path": "tensorflow.image",
+  "import_path": "tensorflow.image.decode_webp",
+  "backend": "tensorflow",
+  "params": {
+    "contents": {
+      "name": "contents",
+      "spec": {
+        "type": "string|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `string`. 0-D. The WebP-encoded image.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bytes",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "bytes",
+        "value": {
+          "__kind__": "bytes_b64",
+          "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC"
+        }
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "channels": {
+      "name": "channels",
+      "spec": {
+        "type": "int|number|dtype",
+        "size": "",
+        "default": "tf",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image. dtype: An optional `tf.DType` from: `tf.uint8`. Defaults to `tf.uint8`.",
+        "dtype_candidates": [
+          "uint8"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "channels must currently match that of the underlying file."
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A `Tensor` of type `dtype`."
+  },
+  "constraints": [
+    "dtype is one of: tf.uint8"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1,
+        1,
+        3
+      ],
+      "dtype": "uint8",
+      "numel": 3,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.decode_webp.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

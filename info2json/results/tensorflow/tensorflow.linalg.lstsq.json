@@ -1,0 +1,64 @@
+{
+  "api_name": "lstsq",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "matrix": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`Tensor` of shape `[..., M, N]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rhs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`Tensor` of shape `[..., M, K]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "l2_regularizer": {
+      "type": "float|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "0-D `double` `Tensor`. Ignored if `fast=False`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fast": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "bool. Defaults to `True`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "string, optional name of the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "`Tensor` of shape `[..., N, K]` whose inner-most 2 dimensions form `M`-by-`K` matrices that solve the equations `matrix[..., :, :] * output[..., :, :] = rhs[..., :, :]` in the least squares sense."
+  },
+  "constraints": []
+}

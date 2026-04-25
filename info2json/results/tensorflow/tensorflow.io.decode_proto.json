@@ -1,0 +1,103 @@
+{
+  "api_name": "decode_proto",
+  "module_path": "tensorflow.io",
+  "params": {
+    "bytes": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. Tensor of serialized protos with shape `batch_shape`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "message_type": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `string`. Name of the proto message type to decode.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "field_names": {
+      "type": "list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `strings`. List of strings containing proto field names. An extension field can be decoded by using its full name, e.g. EXT_PACKAGE.EXT_FIELD_NAME.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "output_types": {
+      "type": "list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `tf.DTypes`. List of TF types to use for the respective field in field_names.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "descriptor_source": {
+      "type": "string",
+      "size": "",
+      "default": "\"local://\"",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"local://\"`. Either the special value `local://` or a path to a file containing a serialized `FileDescriptorSet`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "string",
+        "FileDescriptorSet"
+      ],
+      "constraints": [
+        "descriptor_source must be one of string, FileDescriptorSet"
+      ]
+    },
+    "message_format": {
+      "type": "string",
+      "size": "",
+      "default": "\"binary\"",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"binary\"`. Either `binary` or `text`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "string",
+        "binary",
+        "text"
+      ],
+      "constraints": []
+    },
+    "sanitize": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`. Whether to sanitize the result or not.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|list|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (sizes, values). A `Tensor` of type `int32`. values: A list of `Tensor` objects of type `output_types`."
+  },
+  "constraints": []
+}

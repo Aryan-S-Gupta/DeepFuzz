@@ -1,0 +1,96 @@
+{
+  "api_full_name": "tensorflow.keras.ops.linalg.qr",
+  "api_name": "qr",
+  "module_path": "tensorflow.keras.ops.linalg",
+  "import_path": "tensorflow.keras.ops.linalg.qr",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor of shape `(..., M, N)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "mode": {
+      "name": "mode",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "reduced",
+        "flag": "Optional",
+        "description": "A string specifying the mode of the QR decomposition. - 'reduced': Returns the reduced QR decomposition. (default) - 'complete': Returns the complete QR decomposition.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          ">> 'reduced' or 'complete'"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "reduced"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple containing two tensors. The first tensor of shape `(..., M, K)` is the orthogonal matrix `q` and the second tensor of shape `(..., K, N)` is the upper triangular matrix `r`, where `K = min(M, N)`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__Qr_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor 0 must have rank >= 2, got 1 [Op:Qr] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__Qr_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor 0 must have rank >= 2, got 1 [Op:Qr] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/linalg.py\", line 472, in qr\n    return backend.linalg.qr(x, mode=mode)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/linalg.py\", line 179, in qr\n    return tf.linalg.qr(x)\n           ~~~~~~~~~~~~^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 2194, in qr\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Qr_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor 0 must have rank >= 2, got 1 [Op:Qr] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.linalg.qr.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

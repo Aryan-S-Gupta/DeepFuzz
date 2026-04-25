@@ -1,0 +1,37 @@
+{
+  "api_full_name": "tensorflow.experimental.dtensor.unpack",
+  "api_name": "unpack",
+  "module_path": "tensorflow.experimental.dtensor",
+  "import_path": "tensorflow.experimental.dtensor.unpack",
+  "backend": "tensorflow",
+  "params": {},
+  "output": {
+    "type": "list",
+    "numbers": "variable",
+    "description": "The individual component tensors of the DTensor. This will include only the client-local components, i.e. the components placed on the local devices."
+  },
+  "constraints": [
+    "unpack(pack(tensors)) == tensors",
+    "pack(unpack(dtensor)) == dtensor"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: unpack() missing 1 required positional argument: 'tensor'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "unpack() missing 1 required positional argument: 'tensor'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: unpack() missing 1 required positional argument: 'tensor'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.experimental.dtensor.unpack.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

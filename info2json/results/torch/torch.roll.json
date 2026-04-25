@@ -1,0 +1,51 @@
+{
+  "api_name": "roll",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shifts": {
+      "type": "int|tuple|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The number of places by which the elements of the tensor are shifted. If shifts is a tuple, dims must be a tuple of the same size, and each dimension will be rolled by the corresponding value",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if tuple, must be same size as dims",
+        "shifts and dims must be provided if input is a tensor"
+      ]
+    },
+    "dims": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Axis along which to roll",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if tuple, must be same size as shifts",
+        "shifts and dims must be provided if input is a tensor",
+        "dims must satisfy -rank(input) <= dims < rank(input)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Rolled tensor"
+  },
+  "constraints": [
+    "shifts and dims must be provided if input is a tensor"
+  ]
+}

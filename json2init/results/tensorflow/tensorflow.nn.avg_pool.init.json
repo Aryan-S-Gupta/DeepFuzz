@@ -1,0 +1,202 @@
+{
+  "api_full_name": "tensorflow.nn.avg_pool",
+  "api_name": "avg_pool",
+  "module_path": "tensorflow.nn",
+  "import_path": "tensorflow.nn.avg_pool",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Tensor of rank N+2, of shape `[batch_size] + input_spatial_shape + [num_channels]` if `data_format` does not start with \"NC\" (default), or `[batch_size, num_channels] + input_spatial_shape` if data_format starts with \"NC\". Pooling happens over the spatial dimensions only.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "ksize": {
+      "name": "ksize",
+      "spec": {
+        "type": "int|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An int or list of `ints` that has length `1`, `N` or `N+2`. The size of the window for each dimension of the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "strides": {
+      "name": "strides",
+      "spec": {
+        "type": "int|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An int or list of `ints` that has length `1`, `N` or `N+2`. The stride of the sliding window for each dimension of the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A string, either `'VALID'` or `'SAME'`. The padding algorithm. See [here](https://www.tensorflow.org/api_docs/python/tf/nn#notes_on_padding_2) for more information.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "VALID",
+          "SAME"
+        ],
+        "constraints": [
+          "padding must be one of VALID, SAME"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "VALID"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "data_format": {
+      "name": "data_format",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A string. Specifies the channel dimension. For N=1 it can be either \"NWC\" (default) or \"NCW\", for N=2 it can be either \"NHWC\" (default) or \"NCHW\" and for N=3 either \"NDHWC\" (default) or \"NCDHW\".",
+        "dtype_candidates": [],
+        "enum_values": [
+          "NWC",
+          "NCW",
+          "NHWC",
+          "NCHW",
+          "NDHWC",
+          "NCDHW"
+        ],
+        "constraints": [
+          "data_format must be one of NWC, NCW, NHWC, NCHW, NDHWC, NCDHW"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "NWC"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional name for the operation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "optional name for the operation.",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: optional name for the operation."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of format specified by `data_format`. The average pooled output tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Missing required positional argument"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Missing required positional argument",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.avg_pool.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

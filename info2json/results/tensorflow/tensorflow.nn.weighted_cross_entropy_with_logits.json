@@ -1,0 +1,58 @@
+{
+  "api_name": "weighted_cross_entropy_with_logits",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "labels": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of the same type and shape as `logits`, with values between 0 and 1 inclusive.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "logits": {
+      "type": "float|tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32` or `float64`, any real numbers.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "pos_weight": {
+      "type": "number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A coefficient to use on the positive examples, typically a scalar but otherwise broadcastable to the shape of `logits`. Its value should be non-negative.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "pos_weight must be non-negative",
+        "pos_weight must be positive"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of the same shape as `logits` with the componentwise weighted logistic losses."
+  },
+  "constraints": []
+}

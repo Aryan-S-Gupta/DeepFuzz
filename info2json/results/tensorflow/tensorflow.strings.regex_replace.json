@@ -1,0 +1,72 @@
+{
+  "api_name": "regex_replace",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "input": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "string `Tensor`, the source strings to process.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "pattern": {
+      "type": "string|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "string or scalar string `Tensor`, regular expression to use, see more details at https://github.com/google/re2/wiki/Syntax",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input, pattern, rewrite, replace_global must have same shape"
+      ]
+    },
+    "rewrite": {
+      "type": "string|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "string or scalar string `Tensor`, value to use in match replacement, supports backslash-escaped digits (\\1 to \\9) which can be to insert text matching corresponding parenthesized group.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input, pattern, rewrite, replace_global must have same shape"
+      ]
+    },
+    "replace_global": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "`bool`, if `True` replace all non-overlapping matches, else replace only the first match.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "input, pattern, rewrite, replace_global must have same shape"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "string `Tensor` of the same shape as `input` with specified replacements."
+  },
+  "constraints": [
+    "input, pattern, rewrite, replace_global must have same shape"
+  ]
+}

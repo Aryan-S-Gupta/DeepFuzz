@@ -1,0 +1,96 @@
+{
+  "api_full_name": "torch.hsplit",
+  "api_name": "hsplit",
+  "module_path": "torch",
+  "import_path": "torch.hsplit",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "tensor to split.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "indices_or_sections": {
+      "name": "indices_or_sections",
+      "spec": {
+        "type": "int|tuple|list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "See argument in :func:`torch.tensor_split`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "must evenly divide the split dimension if an integer",
+          "input and indices_or_sections must be provided"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "",
+    "description": "Each tensor is a subsection of the input tensor"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: hsplit() received an invalid combination of arguments - got (indices_or_sections=int, input=Tensor, ), but expected one of:\n * (Tensor input, int sections)\n      didn't match because some of the keywords were incorrect: indices_or_sections\n * (Tensor input, tuple of ints indices)\n      didn't match because some of the keywords were incorrect: indices_or_sections\n"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "hsplit() received an invalid combination of arguments - got (indices_or_sections=int, input=Tensor, ), but expected one of:\n * (Tensor input, int sections)\n      didn't match because some of the keywords were incorrect: indices_or_sections\n * (Tensor input, tuple of ints indices)\n      didn't match because some of the keywords were incorrect: indices_or_sections\n",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: hsplit() received an invalid combination of arguments - got (indices_or_sections=int, input=Tensor, ), but expected one of:\n * (Tensor input, int sections)\n      didn't match because some of the keywords were incorrect: indices_or_sections\n * (Tensor input, tuple of ints indices)\n      didn't match because some of the keywords were incorrect: indices_or_sections\n\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.hsplit.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

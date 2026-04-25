@@ -1,0 +1,22 @@
+{
+  "api_name": "lu",
+  "module_path": "jax.lax.linalg",
+  "params": {
+    "x": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A batch of matrices with shape ``[..., m, n]``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|sequence|tensor|dtype",
+    "numbers": "1",
+    "description": "A tuple ``(lu, pivots, permutation)``. ``lu`` is a batch of matrices with the same shape and dtype as ``x`` math:`L` matrix in its lower triangle and the :math:`U` matrix in its upper triangle. The (unit) diagonal elements of :math:`L` are not represented explicitly. ``pivots`` is an int32 array with shape ``[..., min(m, n)]`` representing a sequence of row swaps that should be performed on :math:`A`. ``permutation`` is an alternative representation of the sequence of row swaps as a permutation, represented as an int32 array with shape ``[..., m]``."
+  },
+  "constraints": []
+}

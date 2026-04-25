@@ -1,0 +1,40 @@
+{
+  "api_name": "reshape",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and newshape must be compatible."
+      ]
+    },
+    "newshape": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The new shape should be compatible with the original shape. One shape dimension can be -1 in which case the value is inferred from the length of the array and remaining dimensions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "One dimension can be -1, indicating that its size is inferred from the length of the array and remaining dimensions.",
+        "x and newshape must be compatible.",
+        "newshape cannot have -1 in more than one dimension."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "single",
+    "description": "The reshaped tensor."
+  },
+  "constraints": [
+    "x and newshape must be compatible."
+  ]
+}

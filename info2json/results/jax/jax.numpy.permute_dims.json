@@ -1,0 +1,34 @@
+{
+  "api_name": "permute_dims",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axes": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "tuple of integers in range ``[0, a.ndim)`` specifying the axes permutation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "elements in range [0, a.ndim)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "a copy of ``a`` with axes permuted."
+  },
+  "constraints": []
+}

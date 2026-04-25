@@ -1,0 +1,45 @@
+{
+  "api_name": "tril",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "diagonal": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "the diagonal to consider",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be non-negative",
+        "diagonal must be less than rank(input)"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Returns the lower triangular part of the matrix (2-D tensor) or batch of matrices"
+  },
+  "constraints": []
+}

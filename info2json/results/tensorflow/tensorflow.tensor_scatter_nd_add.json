@@ -1,0 +1,70 @@
+{
+  "api_name": "tensor_scatter_nd_add",
+  "module_path": "tensorflow",
+  "params": {
+    "indices": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. Index tensor.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "indices must be one of int32, int64",
+        "indices.shape[-1] <= tensor.shape.rank",
+        "updates.shape == indices.shape[:-1] + tensor.shape[indices.shape[-1]:]"
+      ]
+    },
+    "updates": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `tensor`. Updates to scatter into output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "updates.shape == indices.shape[:-1] + tensor.shape[indices.shape[-1]:]"
+      ]
+    },
+    "bad_indices_policy": {
+      "type": "string",
+      "size": "",
+      "default": "\"\"",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"\"`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "IGNORE"
+      ],
+      "constraints": [
+        "must be one of: \"\", \"DEFAULT\", or \"IGNORE\""
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `tensor`."
+  },
+  "constraints": [
+    "updates.shape == indices.shape[:-1] + tensor.shape[indices.shape[-1]:]"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "api_name": "hypot",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor, representing the first leg of the right triangle.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor, representing the second leg of the right triangle.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "A tensor with a shape determined by broadcasting `x1` and `x2`."
+  },
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ]
+}

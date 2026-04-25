@@ -1,0 +1,193 @@
+{
+  "api_full_name": "torch.functional.F.np.nanprod",
+  "api_name": "nanprod",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.nanprod",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like Array containing numbers whose product is desired. If `a` is not an array, a conversion is attempted.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|tuple|tensor",
+        "size": "",
+        "default": "to compute",
+        "flag": "Optional",
+        "description": "{int, tuple of int, None}, optional Axis or axes along which the product is computed. The default is to compute the product of the flattened array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "out": {
+      "name": "out",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "ndarray, optional Alternate output array in which to place the result. The default is ``None``. If provided, it must have the same shape as the expected output, but the type will be cast if necessary. See :ref:`ufuncs-output-type` for more details. The casting of NaN to integer can yield unexpected results.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "keepdims": {
+      "name": "keepdims",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "bool, optional If True, the axes which are reduced are left in the result as dimensions with size one. With this option, the result will broadcast correctly against the original `arr`.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "initial": {
+      "name": "initial",
+      "spec": {
+        "type": "number",
+        "size": "scalar",
+        "default": "",
+        "flag": "Optional",
+        "description": "scalar, optional The starting value for this product. See `~numpy.ufunc.reduce` for details.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "where": {
+      "name": "where",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "array_like of bool, optional Elements to include in the product. See `~numpy.ufunc.reduce` for details.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray A new array holding the result is returned unless `out` is specified, in which case it is returned."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "float32"
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.nanprod.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

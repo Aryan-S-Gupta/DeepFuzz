@@ -1,0 +1,159 @@
+{
+  "api_full_name": "tensorflow.fill",
+  "api_name": "fill",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.fill",
+  "backend": "tensorflow",
+  "params": {
+    "dims": {
+      "name": "dims",
+      "spec": {
+        "type": "sequence|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A 1-D sequence of non-negative numbers. Represents the shape of the output `tf.Tensor`. Entries should be of type: `int32`, `int64`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "dims must be 1-D",
+          "dims must be non-negative"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "value": {
+      "name": "value",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A value to fill the returned `tf.Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "value must be one of tf.Tensor"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional string. The name of the output `tf.Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "layout": {
+      "name": "layout",
+      "spec": {
+        "type": "tf.experimental.dtensor.Layout",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional, `tf.experimental.dtensor.Layout`. If provided, the result is a [DTensor](https://www.tensorflow.org/guide/dtensor_overview) with the provided layout.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tf.experimental.dtensor.layout",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: tf.experimental.dtensor.layout"
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A `tf.Tensor` with shape `dims` and the same dtype as `value`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        0
+      ],
+      "dtype": "float32",
+      "numel": 0,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.fill.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

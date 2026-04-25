@@ -1,0 +1,65 @@
+{
+  "api_full_name": "torch.functional.F.np.ma.column_stack",
+  "api_name": "column_stack",
+  "module_path": "torch.functional.F.np.ma",
+  "import_path": "torch.functional.F.np.ma.column_stack",
+  "backend": "torch",
+  "params": {
+    "tup": {
+      "name": "tup",
+      "spec": {
+        "type": "sequence",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "sequence of 1-D or 2-D arrays. Arrays to stack. All of them must have the same first dimension.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "All arrays in tup must have the same first dimension.",
+          "tup must be 1-D"
+        ]
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- 2-D array The array formed by stacking the given arrays."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: _fromnxfunction_seq.__call__() missing 1 required positional argument: 'x'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "_fromnxfunction_seq.__call__() missing 1 required positional argument: 'x'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: _fromnxfunction_seq.__call__() missing 1 required positional argument: 'x'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.ma.column_stack.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

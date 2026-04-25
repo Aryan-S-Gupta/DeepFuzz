@@ -1,0 +1,290 @@
+{
+  "api_full_name": "tensorflow.quantization.quantize",
+  "api_name": "quantize",
+  "module_path": "tensorflow.quantization",
+  "import_path": "tensorflow.quantization.quantize",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `float32`.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "min_range": {
+      "name": "min_range",
+      "spec": {
+        "type": "float|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `float32`. The minimum value of the quantization range. This value may be adjusted by the op depending on other parameters. The adjusted value is written to `output_min`. If the `axis` attribute is specified, this must be a 1-D tensor whose size matches the `axis` dimension of the input and output tensors.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "min_range must be 1-D",
+          "min_range must be one of float32, output_min"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "max_range": {
+      "name": "max_range",
+      "spec": {
+        "type": "float|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `float32`. The maximum value of the quantization range. This value may be adjusted by the op depending on other parameters. The adjusted value is written to `output_max`. If the `axis` attribute is specified, this must be a 1-D tensor whose size matches the `axis` dimension of the input and output tensors.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "max_range must be 1-D",
+          "max_range must be one of float32, output_max"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "T": {
+      "name": "T",
+      "spec": {
+        "type": "dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `tf.DType` from: `tf.qint8, tf.quint8, tf.qint32, tf.qint16, tf.quint16`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "mode": {
+      "name": "mode",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"MIN_COMBINED\"",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"`. Defaults to `\"MIN_COMBINED\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "round_mode": {
+      "name": "round_mode",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"HALF_AWAY_FROM_ZERO\"",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"HALF_AWAY_FROM_ZERO\", \"HALF_TO_EVEN\"`. Defaults to `\"HALF_AWAY_FROM_ZERO\"`. `round_mode='HALF_TO_EVEN'` only supported for mode 'SCALED'.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "narrow_range": {
+      "name": "narrow_range",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `-1`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "ensure_minimum_range": {
+      "name": "ensure_minimum_range",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "An optional `float`. Defaults to `0.01`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (output, output_min, output_max). A `Tensor` of type `T`. output_min: A `Tensor` of type `float32`. output_max: A `Tensor` of type `float32`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'T' of float is not in the list of allowed values: qint8, quint8, qint32, qint16, quint16\n\t; NodeDef: {{node QuantizeV2}}; Op<name=QuantizeV2; signature=input:float, min_range:float, max_range:float -> output:T, output_min:float, output_max:float; attr=T:type,allowed=[DT_QINT8, DT_QUINT8, DT_QINT32, DT_QINT16, DT_QUINT16]; attr=mode:string,default=\"MIN_COMBINED\",allowed=[\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"]; attr=round_mode:string,default=\"HALF_AWAY_FROM_ZERO\",allowed=[\"HALF_AWAY_FROM_ZERO\", \"HALF_TO_EVEN\"]; attr=narrow_range:bool,default=false; attr=axis:int,default=-1; attr=ensure_minimum_range:float,default=0.01> [Op:QuantizeV2]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'T' of float is not in the list of allowed values: qint8, quint8, qint32, qint16, quint16\n\t; NodeDef: {{node QuantizeV2}}; Op<name=QuantizeV2; signature=input:float, min_range:float, max_range:float -> output:T, output_min:float, output_max:float; attr=T:type,allowed=[DT_QINT8, DT_QUINT8, DT_QINT32, DT_QINT16, DT_QUINT16]; attr=mode:string,default=\"MIN_COMBINED\",allowed=[\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"]; attr=round_mode:string,default=\"HALF_AWAY_FROM_ZERO\",allowed=[\"HALF_AWAY_FROM_ZERO\", \"HALF_TO_EVEN\"]; attr=narrow_range:bool,default=false; attr=axis:int,default=-1; attr=ensure_minimum_range:float,default=0.01> [Op:QuantizeV2]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'T' of float is not in the list of allowed values: qint8, quint8, qint32, qint16, quint16\n\t; NodeDef: {{node QuantizeV2}}; Op<name=QuantizeV2; signature=input:float, min_range:float, max_range:float -> output:T, output_min:float, output_max:float; attr=T:type,allowed=[DT_QINT8, DT_QUINT8, DT_QINT32, DT_QINT16, DT_QUINT16]; attr=mode:string,default=\"MIN_COMBINED\",allowed=[\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"]; attr=round_mode:string,default=\"HALF_AWAY_FROM_ZERO\",allowed=[\"HALF_AWAY_FROM_ZERO\", \"HALF_TO_EVEN\"]; attr=narrow_range:bool,default=false; attr=axis:int,default=-1; attr=ensure_minimum_range:float,default=0.01> [Op:QuantizeV2]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.quantization.quantize.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

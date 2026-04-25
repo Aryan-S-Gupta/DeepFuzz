@@ -1,0 +1,41 @@
+{
+  "api_name": "vdot",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input tensor. If complex, its complex conjugate is taken before calculation of the dot product.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same number of elements.",
+        "If x1 or x2 is complex, their complex conjugates are taken before calculation of the dot product."
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same number of elements.",
+        "If x1 or x2 is complex, their complex conjugates are taken before calculation of the dot product."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Output tensor."
+  },
+  "constraints": [
+    "x1 and x2 must have the same number of elements.",
+    "If x1 or x2 is complex, their complex conjugates are taken before calculation of the dot product."
+  ]
+}

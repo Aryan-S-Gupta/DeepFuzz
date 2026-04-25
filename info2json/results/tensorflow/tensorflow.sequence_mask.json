@@ -1,0 +1,44 @@
+{
+  "api_name": "sequence_mask",
+  "module_path": "tensorflow",
+  "params": {
+    "lengths": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "integer tensor, all its values <= maxlen.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape: variable"
+      ]
+    },
+    "maxlen": {
+      "type": "int|number|tensor|dtype",
+      "size": "scalar",
+      "default": "the maximum value in `lengths",
+      "flag": "Optional",
+      "description": "scalar integer tensor, size of last dimension of returned tensor. Default is the maximum value in `lengths`. dtype: output type of the resulting tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "name of the op.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "lengths.shape + (maxlen,)",
+    "description": "A mask tensor of shape `lengths.shape + (maxlen,)`, cast to specified dtype."
+  },
+  "constraints": []
+}

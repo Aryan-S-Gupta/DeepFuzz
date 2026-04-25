@@ -1,0 +1,106 @@
+{
+  "api_name": "draw_bounding_boxes",
+  "module_path": "tensorflow.keras.visualization",
+  "params": {
+    "images": {
+      "type": "tensor",
+      "size": "4D",
+      "default": "",
+      "flag": "Required",
+      "description": "A batch of images as a 4D tensor or NumPy array. Shape should be `(batch_size, height, width, channels)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bounding_boxes": {
+      "type": "dict|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A dictionary containing bounding box data. Should have the following keys: - `boxes`: A tensor or array of shape `(batch_size, num_boxes, 4)` containing the bounding box coordinates in the specified format. - `labels`: A tensor or array of shape `(batch_size, num_boxes)` containing the class labels for each bounding box. - `confidences` (Optional): A tensor or array of shape `(batch_size, num_boxes)` containing the confidence scores for each bounding box.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bounding_box_format": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A string specifying the format of the bounding boxes. Refer [keras-io](TODO)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "class_mapping": {
+      "type": "dict",
+      "size": "",
+      "default": "None (no labels displayed)",
+      "flag": "Optional",
+      "description": "A dictionary mapping class IDs (integers) to class labels (strings). Used to display class labels next to the bounding boxes. Defaults to None (no labels displayed).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "color": {
+      "type": "tuple|list",
+      "size": "",
+      "default": "(128, 128, 128)",
+      "flag": "Optional",
+      "description": "A tuple or list representing the RGB color of the bounding boxes. For example, `(255, 0, 0)` for red. Defaults to `(128, 128, 128)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "line_thickness": {
+      "type": "int",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "An integer specifying the thickness of the bounding box lines. Defaults to `2`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "text_thickness": {
+      "type": "int",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "An integer specifying the thickness of the text labels. Defaults to `1`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "font_scale": {
+      "type": "float",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "A float specifying the scale of the font used for text labels. Defaults to `1.0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "data_format": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A string, either `\"channels_last\"` or `\"channels_first\"`, specifying the order of dimensions in the input images. Defaults to the `image_data_format` value found in your Keras config file at `~/.keras/keras.json`. If you never set it, then it will be \"channels_last\".",
+      "dtype_candidates": [],
+      "enum_values": [
+        "channels_last",
+        "channels_first",
+        "image_data_format"
+      ],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A NumPy array of the annotated images with the bounding boxes drawn. The array will have the same shape as the input `images`."
+  },
+  "constraints": []
+}

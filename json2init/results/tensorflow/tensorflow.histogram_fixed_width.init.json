@@ -1,0 +1,128 @@
+{
+  "api_full_name": "tensorflow.histogram_fixed_width",
+  "api_name": "histogram_fixed_width",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.histogram_fixed_width",
+  "backend": "tensorflow",
+  "params": {
+    "values": {
+      "name": "values",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Numeric `Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "value_range": {
+      "name": "value_range",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Shape [2] `Tensor` of same `dtype` as `values`. values <= value_range[0] will be mapped to hist[0], values >= value_range[1] will be mapped to hist[-1].",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "nbins": {
+      "name": "nbins",
+      "spec": {
+        "type": "number|tensor|dtype",
+        "size": "Scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Scalar `int32 Tensor`. Number of histogram bins. dtype: dtype for returned histogram.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "'histogram_fixed_width')",
+        "flag": "Required",
+        "description": "A name for this operation (defaults to 'histogram_fixed_width').",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for this operation (defaults to 'histogram_fixed_width').",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for this operation (defaults to 'histogram_fixed_width')."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A 1-D `Tensor` holding histogram of values."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for this operation (defaults to 'histogram_fixed_width')."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.histogram_fixed_width.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

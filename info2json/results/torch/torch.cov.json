@@ -1,0 +1,56 @@
+{
+  "api_name": "cov",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "number|tensor",
+      "size": "2D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 2D matrix containing multiple variables and observations, or a Scalar or 1D vector representing a single variable.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "correction": {
+      "type": "int",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "difference between the sample size and sample degrees of freedom. Defaults to Bessel's correction, ``correction = 1`` which returns the unbiased estimate, even if both :attr:`fweights` and :attr:`aweights` are specified. ``correction = 0`` will return the simple average. Defaults to ``1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fweights": {
+      "type": "number|tensor|dtype",
+      "size": "1D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A Scalar or 1D tensor of observation vector frequencies representing the number of times each observation should be repeated. Its numel must equal the number of columns of :attr:`input`. Must have integral dtype. Ignored if ``None``. Defaults to ``None``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "fweights must be 1-D"
+      ]
+    },
+    "aweights": {
+      "type": "number|tensor|dtype",
+      "size": "1D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A Scalar or 1D array of observation vector weights. These relative weights are typically large for observations considered \"important\" and smaller for observations considered less \"important\". Its numel must equal the number of columns of :attr:`input`. Must have floating point dtype. Ignored if ``None``. Defaults to ``None``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "aweights must be 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "(Tensor) The covariance matrix of the variables. .. seealso:: :func:`torch.corrcoef` normalized covariance matrix."
+  },
+  "constraints": []
+}

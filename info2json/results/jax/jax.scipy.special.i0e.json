@@ -1,0 +1,26 @@
+{
+  "api_name": "i0e",
+  "module_path": "jax.scipy.special",
+  "params": {
+    "x": {
+      "type": "float|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array, real-valued",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be real-valued",
+        "x's shape is broadcast-compatible with i0's shape",
+        "output.shape == x.shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "callable|tensor",
+    "numbers": "real-valued",
+    "description": "array of bessel function values."
+  },
+  "constraints": []
+}

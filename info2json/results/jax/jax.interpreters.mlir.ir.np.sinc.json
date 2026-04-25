@@ -1,0 +1,25 @@
+{
+  "api_name": "sinc",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray Array (possibly multi-dimensional) of values for which to calculate ``sinc(x)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x's type must be numeric",
+        "x's shape can be any"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray ``sinc(x)``, which has the same shape as the input."
+  },
+  "constraints": []
+}

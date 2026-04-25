@@ -1,0 +1,101 @@
+{
+  "api_name": "make_tensor",
+  "module_path": "torch.testing",
+  "params": {
+    "shape": {
+      "type": "int|tuple|sequence|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Single integer or a sequence of integers defining the shape of the output tensor. dtype (:class:`torch.dtype`): The data type of the returned tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "string|tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The device of the returned tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "low": {
+      "type": "number|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Sets the lower limit (inclusive) of the given range. If a number is provided it is clamped to the least representable finite value of the given dtype. When ``None`` (default), this value is determined based on the :attr:`dtype` (see the table above). Default: ``None``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "high": {
+      "type": "number|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Sets the upper limit (exclusive) of the given range. If a number is provided it is clamped to the greatest representable finite value of the given dtype. When ``None`` (default) this value is determined based on the :attr:`dtype` (see the table above). Default: ``None``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "requires_grad": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "noncontiguous": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If `True`, the returned tensor will be noncontiguous. This argument is ignored if the constructed tensor has fewer than two elements. Mutually exclusive with ``memory_format``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "exclude_zero": {
+      "type": "int|float|bool|number|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If ``True`` then zeros are replaced with the dtype's small positive value depending on the :attr:`dtype`. For bool and integer types zero is replaced with one. For floating point types it is replaced with the dtype's smallest positive normal number (the \"tiny\" value of the :attr:`dtype`'s :func:`~torch.finfo` object), and for complex types it is replaced with a complex number whose real and imaginary parts are both the smallest positive normal number representable by the complex type. Default ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "exclude_zero must be positive",
+        "exclude_zero must be one of True, tiny, False"
+      ]
+    },
+    "memory_format": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The memory format of the returned tensor. Mutually exclusive with ``noncontiguous``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

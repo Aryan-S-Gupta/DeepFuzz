@@ -1,0 +1,38 @@
+{
+  "api_name": "fmax",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "float|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    },
+    "x2": {
+      "type": "float|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar. x1 and x1 must either have same shape or be broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the element-wise maximum of x1 and x2."
+  },
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "api_full_name": "torch.accelerator.memory.get_memory_info",
+  "api_name": "get_memory_info",
+  "module_path": "torch.accelerator.memory",
+  "import_path": "torch.accelerator.memory.get_memory_info",
+  "backend": "torch",
+  "params": {
+    "device_index": {
+      "name": "device_index",
+      "spec": {
+        "type": "string|int|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the index of the device to target. If not given, use :func:`torch.accelerator.current_device_index` by default. If a :class:`torch.device` or str is provided, its type must match the current :ref:`accelerator<accelerators>` device type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|int|tuple|device",
+    "numbers": "2",
+    "description": "a tuple of two integers (free_memory, total_memory) in bytes. The first value is the free memory on the device (available across all processes and applications), The second value is the device's total hardware memory capacity."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: module 'torch.accelerator' has no attribute 'memory'"
+  ],
+  "smoke_test": {
+    "attempted": false,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "module 'torch.accelerator' has no attribute 'memory'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.accelerator.memory.get_memory_info.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

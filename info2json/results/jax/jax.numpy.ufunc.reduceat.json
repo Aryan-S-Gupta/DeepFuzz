@@ -1,0 +1,52 @@
+{
+  "api_name": "reduceat",
+  "module_path": "jax.numpy.ufunc",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array to reduce",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "indices": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a 1-dimensional array of increasing integer values which encodes segments of the array to be reduced.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "integer specifying the axis along which to reduce: default=0. dtype: optionally specify the dtype of the output array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the reduced values."
+  },
+  "constraints": []
+}

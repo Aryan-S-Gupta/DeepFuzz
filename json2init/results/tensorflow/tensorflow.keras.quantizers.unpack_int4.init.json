@@ -1,0 +1,63 @@
+{
+  "api_full_name": "tensorflow.keras.quantizers.unpack_int4",
+  "api_name": "unpack_int4",
+  "module_path": "tensorflow.keras.quantizers",
+  "import_path": "tensorflow.keras.quantizers.unpack_int4",
+  "backend": "tensorflow",
+  "params": {
+    "packed": {
+      "name": "packed",
+      "spec": {
+        "type": "number|tensor|dtype|any",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "An int8 tensor containing packed int4 values along the specified axis. Each int8 value encodes two int4 values. orig_len: The original (unpadded) length of the axis that was packed. This is used to remove any padding that may have been added during packing to ensure an even number of rows. axis: The axis along which the tensor was packed. Defaults to 0. dtype: The data type of the input and unpacked tensor. Can be `\"int8\"` or `\"uint8\"`. Defaults to `\"int8\"`.",
+        "dtype_candidates": [
+          "int8",
+          "uint8"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int8",
+    "description": "An int8 tensor with the same shape as the original (unpacked) tensor, with values in the range [-8, 7]."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: unpack_int4() missing 2 required positional arguments: 'packed' and 'orig_len'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "unpack_int4() missing 2 required positional arguments: 'packed' and 'orig_len'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: unpack_int4() missing 2 required positional arguments: 'packed' and 'orig_len'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.quantizers.unpack_int4.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

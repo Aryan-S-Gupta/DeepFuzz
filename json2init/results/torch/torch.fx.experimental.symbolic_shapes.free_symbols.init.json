@@ -1,0 +1,71 @@
+{
+  "api_full_name": "torch.fx.experimental.symbolic_shapes.free_symbols",
+  "api_name": "free_symbols",
+  "module_path": "torch.fx.experimental.symbolic_shapes",
+  "import_path": "torch.fx.experimental.symbolic_shapes.free_symbols",
+  "backend": "torch",
+  "params": {
+    "val": {
+      "name": "val",
+      "spec": {
+        "type": "tuple|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The value to extract symbols from. Can be a symbolic type (SymInt, SymFloat, SymBool), a container (tuple, list), a tensor, or None.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "val must be SymInt, SymFloat, SymBool, tuple, list, tensor or None"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "OrderedSet[sympy.Symbol]",
+    "numbers": "1",
+    "description": "An ordered set of all free symbols found in the value."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: free_symbols() missing 1 required positional argument: 'val'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "free_symbols() missing 1 required positional argument: 'val'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: free_symbols() missing 1 required positional argument: 'val'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.free_symbols.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

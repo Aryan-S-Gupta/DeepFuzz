@@ -1,0 +1,41 @@
+{
+  "api_name": "add",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1's and x2's shapes must be broadcast-compatible.",
+        "x1 and x2's dtypes must be numeric."
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1's and x2's shapes must be broadcast-compatible.",
+        "x1 and x2's dtypes must be numeric."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "numeric",
+    "description": "The tensor containing the element-wise sum of `x1` and `x2`."
+  },
+  "constraints": [
+    "x1's and x2's shapes must be broadcast-compatible.",
+    "x1 and x2's dtypes must be numeric."
+  ]
+}

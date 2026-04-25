@@ -1,0 +1,37 @@
+{
+  "api_name": "random_flip_up_down",
+  "module_path": "tensorflow.image",
+  "params": {
+    "image": {
+      "type": "tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "4-D Tensor of shape `[batch, height, width, channels]` or 3-D Tensor of shape `[height, width, channels]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "image must be 4-D",
+        "ValueError raised if the shape of `image` not supported."
+      ]
+    },
+    "seed": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A Python integer. Used to create a random seed. See `tf.compat.v1.set_random_seed` for behavior.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Seed does not affect other random operations unless they are called with the same seed value."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of the same type and shape as `image`."
+  },
+  "constraints": []
+}

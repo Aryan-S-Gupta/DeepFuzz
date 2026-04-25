@@ -1,0 +1,25 @@
+{
+  "api_name": "hard_silu",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape can be anything",
+        "if -3 <= x <= 3, then output = x * (x + 3) / 6"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "A tensor with the same shape as `x`."
+  },
+  "constraints": []
+}

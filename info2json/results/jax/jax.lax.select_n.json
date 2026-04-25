@@ -1,0 +1,39 @@
+{
+  "api_name": "select_n",
+  "module_path": "jax.lax",
+  "params": {
+    "which": {
+      "type": "int|bool|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "determines which case should be returned. Must be an array containing either a boolean or integer values. May either be a scalar or have shape matching ``cases``. For each array element, the value of ``which`` determines which of ``cases`` is taken. ``which`` must be in the range ``[0 .. len(cases))``; for values outside that range the behavior is implementation-defined.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "shape matches cases or is scalar"
+      ]
+    },
+    "cases": {
+      "type": "list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a non-empty list of array cases. All must have equal dtypes and equal shapes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "all elements have equal dtype and shape",
+        "len(params.cases) > 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array with shape and dtype equal to the cases, whose values are chosen according to ``which``."
+  },
+  "constraints": []
+}

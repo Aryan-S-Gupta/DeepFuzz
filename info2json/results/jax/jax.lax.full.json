@@ -1,0 +1,49 @@
+{
+  "api_name": "full",
+  "module_path": "jax.lax",
+  "params": {
+    "shape": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of integers, describing the shape of the output array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape must be a sequence of integers describing the shape of the output array."
+      ]
+    },
+    "fill_value": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the value to fill the new array with. dtype: the type of the output array, or `None`. If not `None`, `fill_value` will be cast to `dtype`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "fill_value can be of any type."
+      ]
+    },
+    "sharding": {
+      "type": "future|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "an optional sharding specification for the resulting array, note, sharding will currently be ignored in jitted mode, this might change in the future.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be an optional sharding specification",
+        "sharding is an optional sharding specification for the resulting array."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "N-D",
+    "description": "Returns an array of `shape` filled with `fill_value`."
+  },
+  "constraints": []
+}

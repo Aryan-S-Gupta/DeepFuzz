@@ -1,0 +1,48 @@
+{
+  "api_name": "slice_update",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "inputs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor, the tensor to be updated.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "start_indices": {
+      "type": "tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list/tuple of shape `(inputs.ndim,)`, specifying the starting indices for updating.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must contain integers"
+      ]
+    },
+    "updates": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tensor, the new values to be put to `inputs` at `indices`. `updates` must have the same rank as `inputs`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Size of each dim must not exceed Di - start_indices[i]",
+        "updates must be one of indices",
+        "inputs, updates, and output have the same dtype"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A tensor, has the same shape and dtype as `inputs`."
+  },
+  "constraints": []
+}

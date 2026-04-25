@@ -1,0 +1,109 @@
+{
+  "api_full_name": "tensorflow.io.parse_tensor",
+  "api_name": "parse_tensor",
+  "module_path": "tensorflow.io",
+  "import_path": "tensorflow.io.parse_tensor",
+  "backend": "tensorflow",
+  "params": {
+    "serialized": {
+      "name": "serialized",
+      "spec": {
+        "type": "string|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `string`. A scalar string containing a serialized TensorProto proto.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bytes",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "bytes",
+        "value": {
+          "__kind__": "bytes_b64",
+          "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC"
+        }
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "out_type": {
+      "name": "out_type",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `tf.DType`. The type of the serialized tensor. The provided type must match the type of the serialized tensor and no implicit conversion will take place.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `out_type`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__ParseTensor_device_/job:localhost/replica:0/task:0/device:CPU:0}} Could not parse `serialized` as TensorProto, base64: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC [Op:ParseTensor]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__ParseTensor_device_/job:localhost/replica:0/task:0/device:CPU:0}} Could not parse `serialized` as TensorProto, base64: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC [Op:ParseTensor]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_parsing_ops.py\", line 2170, in parse_tensor\n    return parse_tensor_eager_fallback(\n        serialized, out_type=out_type, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_parsing_ops.py\", line 2218, in parse_tensor_eager_fallback\n    _result = _execute.execute(b\"ParseTensor\", 1, inputs=_inputs_flat,\n                               attrs=_attrs, ctx=ctx, name=name)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 53, in quick_execute\n    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,\n                                        inputs, attrs, num_outputs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ParseTensor_device_/job:localhost/replica:0/task:0/device:CPU:0}} Could not parse `serialized` as TensorProto, base64: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC [Op:ParseTensor]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.parse_tensor.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

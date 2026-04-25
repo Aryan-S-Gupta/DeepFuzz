@@ -1,0 +1,51 @@
+{
+  "api_name": "cross",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array, with ``x1.shape[axis] == 3``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1.shape[axis] == 3",
+        "x1, x2 must have broadcast-compatible shapes"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array, with ``x2.shape[axis] == 3``, and other axes broadcast-compatible with ``x1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x2.shape[axis] == 3",
+        "Broadcast compatible with x1",
+        "x1, x2 must have broadcast-compatible shapes"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "-1)",
+      "flag": "Optional",
+      "description": "axis along which to take the cross product (default: -1).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real",
+    "description": "array containing the result of the cross-product"
+  },
+  "constraints": [
+    "x1, x2 must have broadcast-compatible shapes"
+  ]
+}

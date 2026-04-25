@@ -1,0 +1,25 @@
+{
+  "api_name": "eigvalsh",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "optional name of the operation",
+      "flag": "Optional",
+      "description": "string, optional name of the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "...N]",
+    "description": "Eigenvalues. Shape is `[..., N]`. The vector `e[..., :]` contains the `N` eigenvalues of `tensor[..., :, :]`."
+  },
+  "constraints": [
+    "N must be positive integer",
+    "tf.linalg.eigh's first output is used and second output is possibly ignored"
+  ]
+}

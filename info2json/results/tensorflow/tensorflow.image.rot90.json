@@ -1,0 +1,45 @@
+{
+  "api_name": "rot90",
+  "module_path": "tensorflow.image",
+  "params": {
+    "image": {
+      "type": "tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "4-D Tensor of shape `[batch, height, width, channels]` or 3-D Tensor of shape `[height, width, channels]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar integer tensor. The number of times the image(s) are rotated by 90 degrees.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for this operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A rotated tensor of the same type and shape as `image`."
+  },
+  "constraints": [
+    "ValueError: if the shape of `image` not supported.",
+    "k must be a scalar integer tensor."
+  ]
+}

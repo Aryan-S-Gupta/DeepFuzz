@@ -1,0 +1,51 @@
+{
+  "api_name": "append",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "When `axis` is specified, `x1` and `x2` must have compatible shapes."
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "When `axis` is specified, `x1` and `x2` must have compatible shapes."
+      ]
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Axis along which tensor `x2` is appended to tensor `x1`. If `None`, both tensors are flattened before use.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "When `axis` is specified, `x1` and `x2` must have compatible shapes.",
+        "If `axis` is not specified, both tensors are flattened before use."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor with the values of `x2` appended to `x1`."
+  },
+  "constraints": [
+    "When `axis` is specified, `x1` and `x2` must have compatible shapes."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "api_name": "unpack_int4",
+  "module_path": "tensorflow.keras.quantizers",
+  "params": {
+    "packed": {
+      "type": "number|tensor|dtype|any",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An int8 tensor containing packed int4 values along the specified axis. Each int8 value encodes two int4 values. orig_len: The original (unpadded) length of the axis that was packed. This is used to remove any padding that may have been added during packing to ensure an even number of rows. axis: The axis along which the tensor was packed. Defaults to 0. dtype: The data type of the input and unpacked tensor. Can be `\"int8\"` or `\"uint8\"`. Defaults to `\"int8\"`.",
+      "dtype_candidates": [
+        "int8",
+        "uint8"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int8",
+    "description": "An int8 tensor with the same shape as the original (unpacked) tensor, with values in the range [-8, 7]."
+  },
+  "constraints": []
+}

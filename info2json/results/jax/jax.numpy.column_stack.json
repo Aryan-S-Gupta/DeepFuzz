@@ -1,0 +1,27 @@
+{
+  "api_name": "column_stack",
+  "module_path": "jax.numpy",
+  "params": {
+    "tup": {
+      "type": "sequence|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "a sequence of arrays to stack; each must have the same leading dimension. Input arrays will be promoted to at least rank 2. If a single array is given it will be treated equivalently to `tup = unstack(tup)`, but the implementation will avoid explicit unstacking. dtype: optional dtype of the resulting array. If not specified, the dtype will be determined via type promotion rules described in :ref:`type-promotion`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "tup must have at least one element",
+        "All elements in tup must have the same leading dimension and be promoted to at least rank 2."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "the stacked result."
+  },
+  "constraints": [
+    "If only one array is given, it will be treated as if unstacked."
+  ]
+}

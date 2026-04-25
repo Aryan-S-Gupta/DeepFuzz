@@ -1,0 +1,27 @@
+{
+  "api_name": "invert",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "int|bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array, must be boolean or integer typed.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "must be boolean or integer typed",
+        "x and output must have the same shape and dtype"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array of the same shape and dtype as ```x``, with the bits inverted."
+  },
+  "constraints": []
+}

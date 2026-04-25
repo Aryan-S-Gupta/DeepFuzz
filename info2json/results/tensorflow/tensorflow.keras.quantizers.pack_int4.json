@@ -1,0 +1,27 @@
+{
+  "api_name": "pack_int4",
+  "module_path": "tensorflow.keras.quantizers",
+  "params": {
+    "arr": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An `int8` or `uint8` tensor containing int4 values in the range `[-8, 7]`. axis: The axis along which to pack the tensor. Defaults to 0. dtype: The data type of the input and packed tensor. Can be `\"int8\"` or `\"uint8\"`. Defaults to `\"int8\"`.",
+      "dtype_candidates": [
+        "int8",
+        "uint8"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "arr must be one of int8, uint8"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple|number|tensor|any",
+    "numbers": "1",
+    "description": "A tuple `(packed, packed_shape, orig_rows)` where `packed` is the packed int8 tensor with int4 values stored in nibbles, `packed_shape` is the shape of the packed tensor, and `orig_rows` is the original (unpacked) row count prior to any padding that may have been inserted when an odd number of rows is supplied."
+  },
+  "constraints": []
+}

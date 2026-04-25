@@ -1,0 +1,58 @@
+{
+  "api_name": "ctc_greedy_decoder",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "inputs": {
+      "type": "float|tensor",
+      "size": "3-D",
+      "default": "",
+      "flag": "Required",
+      "description": "3-D `float` `Tensor` sized `[max_time, batch_size, num_classes]`. The logits.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sequence_length": {
+      "type": "sequence",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "1-D `int32` vector containing sequence lengths, having size `[batch_size]`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "sequence_length must be 1-D"
+      ]
+    },
+    "merge_repeated": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "Boolean. Default: True.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "blank_index": {
+      "type": "",
+      "size": "",
+      "default": "num_classes - 1",
+      "flag": "Optional",
+      "description": "(Optional). Default: `num_classes - 1`. Define the class index to use for the blank label. Negative values will start from num_classes, ie, -1 will reproduce the ctc_greedy_decoder behavior of using num_classes - 1 for the blank symbol, which corresponds to the default.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tuple|list|sequence",
+    "numbers": "1",
+    "description": "A tuple `(decoded, neg_sum_logits)` where A single-element list. `decoded[0]` is an `SparseTensor` containing the decoded outputs s.t.: `decoded.indices`: Indices matrix `(total_decoded_outputs, 2)`. The rows store: `[batch, time]`. `decoded.values`: Values vector, size `(total_decoded_outputs)`. The vector stores the decoded classes. `decoded.dense_shape`: Shape vector, size `(2)`. The shape values are: `[batch_size, max_decoded_length]` neg_sum_logits: A `float` matrix `(batch_size x 1)` containing, for the sequence found, the negative of the sum of the greatest logit at each timeframe."
+  },
+  "constraints": []
+}

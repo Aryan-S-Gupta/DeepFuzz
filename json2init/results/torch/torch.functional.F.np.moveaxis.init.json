@@ -1,0 +1,130 @@
+{
+  "api_full_name": "torch.functional.F.np.moveaxis",
+  "api_name": "moveaxis",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.moveaxis",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "np.ndarray The array whose axes should be reordered.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "source": {
+      "name": "source",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int or sequence of int Original positions of the axes to move. These must be unique.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Unique values required.",
+          "source and destination must have the same length.",
+          "Each value in source should be unique.",
+          "The output shape depends on the provided source and destination axes."
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "destination": {
+      "name": "destination",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int or sequence of int Destination positions for each of the original axes. These must also be unique.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Unique values required.",
+          "source and destination must have the same length.",
+          "Each value in destination should be unique.",
+          "The output shape depends on the provided source and destination axes."
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- np.ndarray Array with moved axes. This array is a view of the input array."
+  },
+  "constraints": [
+    "source and destination must have the same length.",
+    "The output shape depends on the provided source and destination axes."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: moveaxis() missing 2 required positional arguments: 'source' and 'destination'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "moveaxis() missing 2 required positional arguments: 'source' and 'destination'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: moveaxis() missing 2 required positional arguments: 'source' and 'destination'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.moveaxis.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

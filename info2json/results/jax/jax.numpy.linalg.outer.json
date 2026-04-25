@@ -1,0 +1,44 @@
+{
+  "api_name": "outer",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same shape",
+        "x1 and x2 cannot be empty",
+        "x1 and x2 can only be 1-dimensional arrays"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same shape",
+        "x1 and x2 cannot be empty",
+        "x1 and x2 can only be 1-dimensional arrays"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "array containing the outer product of ``x1`` and ``x2``"
+  },
+  "constraints": [
+    "x1 and x2 must have the same shape",
+    "x1 and x2 cannot be empty",
+    "x1 and x2 can only be 1-dimensional arrays"
+  ]
+}

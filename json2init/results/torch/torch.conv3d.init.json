@@ -1,0 +1,210 @@
+{
+  "api_full_name": "torch.conv3d",
+  "api_name": "conv3d",
+  "module_path": "torch",
+  "import_path": "torch.conv3d",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "input tensor of shape :math:`(\\text{minibatch} , \\text{in\\_channels} , iT , iH , iW)`",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "weight": {
+      "name": "weight",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "filters of shape :math:`(\\text{out\\_channels} , \\frac{\\text{in\\_channels}}{\\text{groups}} , kT , kH , kW)`",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "filters of shape :math:`(\\text{out\\_channels}",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: filters of shape :math:`(\\text{out\\_channels}"
+    },
+    "bias": {
+      "name": "bias",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "optional bias tensor of shape :math:`(\\text{out\\_channels})`. Default: None",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "stride": {
+      "name": "stride",
+      "spec": {
+        "type": "tuple|number",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "the stride of the convolving kernel. Can be a single number or a tuple `(sT, sH, sW)`. Default: 1",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "string|tuple|number|any",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "implicit paddings on both sides of the input. Can be a string {'valid', 'same'}, single number or a tuple `(padT, padH, padW)`. Default: 0 ``padding='valid'`` is the same as no padding. ``padding='same'`` pads the input so the output has the same shape as the input. However, this mode doesn't support any stride values other than 1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "padding must be one of valid, same"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "dilation": {
+      "name": "dilation",
+      "spec": {
+        "type": "tuple|number",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "the spacing between kernel elements. Can be a single number or a tuple `(dT, dH, dW)`. Default: 1",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "groups": {
+      "name": "groups",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "split input into groups, :math:`\\text{in\\_channels}` should be divisible by the number of groups. Default: 1",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'weight' unresolved: unhandled chosen type: filters of shape :math:`(\\text{out\\_channels}"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/torch/torch.conv3d.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

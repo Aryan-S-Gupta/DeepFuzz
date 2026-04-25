@@ -1,0 +1,27 @@
+{
+  "api_name": "arcsinh",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "-`inf` < x < `inf`"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real or complex",
+    "description": "An array of same shape as ``x`` containing the inverse of hyperbolic sine of each element of ``x``, promoting to inexact dtype."
+  },
+  "constraints": [
+    "nan for values outside the range (-`inf`, `inf`)",
+    "dtype: float32 or complex64"
+  ]
+}

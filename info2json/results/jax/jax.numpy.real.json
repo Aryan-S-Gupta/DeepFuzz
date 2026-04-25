@@ -1,0 +1,24 @@
+{
+  "api_name": "real",
+  "module_path": "jax.numpy",
+  "params": {
+    "val": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "val can be a number or a JAX array-like object"
+      ]
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "floating point",
+    "description": "An array containing the real part of the elements of ``val``."
+  },
+  "constraints": []
+}

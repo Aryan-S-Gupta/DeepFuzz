@@ -1,0 +1,158 @@
+{
+  "api_full_name": "torch.take_along_dim",
+  "api_name": "take_along_dim",
+  "module_path": "torch",
+  "import_path": "torch.take_along_dim",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "indices": {
+      "name": "indices",
+      "spec": {
+        "type": "int|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the indices into :attr:`input`. Must have long dtype.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "must have long dtype",
+          "indices must have same shape as input.size(dim)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "dim": {
+      "name": "dim",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "dimension to select along. Default: 0",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "indices must have same shape as input.size(dim)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "out": {
+      "name": "out",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the output tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Selected values from input at the 1-dimensional indices from indices along the given dim."
+  },
+  "constraints": [
+    "indices must have same shape as input.size(dim)"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: take_along_dim(): argument 'indices' must be Tensor, not int"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "take_along_dim(): argument 'indices' must be Tensor, not int",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: take_along_dim(): argument 'indices' must be Tensor, not int\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.take_along_dim.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

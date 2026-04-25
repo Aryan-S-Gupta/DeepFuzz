@@ -1,0 +1,44 @@
+{
+  "api_name": "select",
+  "module_path": "jax.lax",
+  "params": {
+    "pred": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "boolean array",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "on_true": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array containing entries to return where ``pred`` is True. Must have the same shape as ``pred``, and the same shape and dtype as ``on_false``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "on_false": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array containing entries to return where ``pred`` is False. Must have the same shape as ``pred``, and the same shape and dtype as ``on_true``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "array with same shape and dtype as ``on_true`` and ``on_false``."
+  },
+  "constraints": []
+}

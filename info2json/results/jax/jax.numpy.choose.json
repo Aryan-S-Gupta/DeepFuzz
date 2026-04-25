@@ -1,0 +1,58 @@
+{
+  "api_name": "choose",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an N-dimensional array of integer indices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "choices": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an array or sequence of arrays. All arrays in the sequence must be mutually broadcast compatible with ``a``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mode": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "specify the out-of-bounds indexing mode; one of ``'raise'`` (default), ``'wrap'``, or ``'clip'``. Note that the default mode of ``'raise'`` is not compatible with JAX transformations.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "raise",
+        "wrap",
+        "clip"
+      ],
+      "constraints": [
+        "mode must be one of raise, wrap, clip, JAX"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "an array containing stacked slices from ``choices`` at the indices specified by ``a``. The shape of the result is ``broadcast_shapes(a.shape, *(c.shape for c in choices))``."
+  },
+  "constraints": []
+}

@@ -1,0 +1,63 @@
+{
+  "api_name": "log_poisson_loss",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "targets": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of the same type and shape as `log_input`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "targets and log_input must have the same shape"
+      ]
+    },
+    "log_input": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32` or `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "targets and log_input must have the same shape"
+      ]
+    },
+    "compute_full_loss": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "whether to compute the full loss. If false, a constant term is dropped in favor of more efficient optimization.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "same shape as log_input",
+    "description": "A `Tensor` of the same shape as `log_input` with the componentwise logistic losses."
+  },
+  "constraints": [
+    "targets and log_input must have the same shape"
+  ]
+}

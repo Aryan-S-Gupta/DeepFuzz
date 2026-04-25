@@ -1,0 +1,42 @@
+{
+  "api_name": "parse_tensor",
+  "module_path": "tensorflow.io",
+  "params": {
+    "serialized": {
+      "type": "string|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. A scalar string containing a serialized TensorProto proto.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out_type": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.DType`. The type of the serialized tensor. The provided type must match the type of the serialized tensor and no implicit conversion will take place.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `out_type`."
+  },
+  "constraints": []
+}

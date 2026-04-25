@@ -1,0 +1,154 @@
+{
+  "api_full_name": "tensorflow.math.argmax",
+  "api_name": "argmax",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.argmax",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "An integer, the axis to reduce across. Default to 0.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "output_type": {
+      "name": "output_type",
+      "spec": {
+        "type": "string|dtype",
+        "size": "",
+        "default": "tf.int64",
+        "flag": "Optional",
+        "description": "An optional output dtype (`tf.int32` or `tf.int64`). Defaults to `tf.int64`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "tf.int32",
+          "tf.int64"
+        ],
+        "constraints": [
+          "must be one of: 'tf.int32', 'tf.int64'"
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "int32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional name for the operation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int64",
+    "description": "A `Tensor` of type `output_type`."
+  },
+  "constraints": [
+    "input must have numeric values"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "int64",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.argmax.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

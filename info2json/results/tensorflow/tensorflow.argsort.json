@@ -1,0 +1,64 @@
+{
+  "api_name": "argsort",
+  "module_path": "tensorflow",
+  "params": {
+    "values": {
+      "type": "number|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "1-D or higher **numeric** `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "values must be 1-D"
+      ]
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The axis along which to sort. The default is -1, which sorts the last axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "direction": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The direction in which to sort the values (`'ASCENDING'` or `'DESCENDING'`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "stable": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If True, equal elements in the original tensor will not be re-ordered in the returned order. Unstable sort is not yet implemented, but will eventually be the default for performance reasons. If you require a stable order, pass `stable=True` for forwards compatibility.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An int32 `Tensor` with the same shape as `values`. The indices that would sort each slice of the given `values` along the given `axis`."
+  },
+  "constraints": []
+}

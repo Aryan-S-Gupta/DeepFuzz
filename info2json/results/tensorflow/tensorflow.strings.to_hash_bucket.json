@@ -1,0 +1,45 @@
+{
+  "api_name": "to_hash_bucket",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "input": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_buckets": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int` that is `>= 1`. The number of buckets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "num_buckets >= 1",
+        "input, num_buckets are required for the API to execute."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "to_hash_bucket",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int64",
+    "description": "A `Tensor` of type `int64`."
+  },
+  "constraints": []
+}

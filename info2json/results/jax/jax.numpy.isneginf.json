@@ -1,0 +1,25 @@
+{
+  "api_name": "isneginf",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar. ``complex`` dtype are not supported.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x cannot be of complex dtype",
+        "x and output have the same shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "A boolean array of same shape as ``x`` containing ``True`` where ``x`` is ``-inf``, and ``False`` otherwise."
+  },
+  "constraints": []
+}

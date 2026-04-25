@@ -1,0 +1,27 @@
+{
+  "api_name": "tanh",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "-1j * jnp.tan(1j * x) is equivalent to jnp.tanh(x)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real or complex",
+    "description": "An array containing the hyperbolic tangent of each element of ``x``, promoting to inexact dtype."
+  },
+  "constraints": [
+    "jax.numpy.tanh supports broadcasting",
+    "output dtype follows from input dtype and values"
+  ]
+}

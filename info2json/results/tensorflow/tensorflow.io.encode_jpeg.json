@@ -1,0 +1,132 @@
+{
+  "api_name": "encode_jpeg",
+  "module_path": "tensorflow.io",
+  "params": {
+    "image": {
+      "type": "tensor",
+      "size": "3-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `uint8`. 3-D with shape `[height, width, channels]`.",
+      "dtype_candidates": [
+        "uint8"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "image must be 3-D"
+      ]
+    },
+    "format": {
+      "type": "string",
+      "size": "",
+      "default": "\"\"",
+      "flag": "Optional",
+      "description": "An optional `string` from: `\"\", \"grayscale\", \"rgb\"`. Defaults to `\"\"`. Per pixel image format.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "quality": {
+      "type": "int",
+      "size": "",
+      "default": "95",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `95`. Quality of the compression from 0 to 100 (higher is better and slower).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "progressive": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`. If True, create a JPEG that loads progressively (coarse to fine).",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "optimize_size": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`. If True, spend CPU/RAM to reduce size with no quality change.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "chroma_downsampling": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `True`. See http://en.wikipedia.org/wiki/Chroma_subsampling.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "density_unit": {
+      "type": "string",
+      "size": "",
+      "default": "\"in\"",
+      "flag": "Optional",
+      "description": "An optional `string` from: `\"in\", \"cm\"`. Defaults to `\"in\"`. Unit used to specify `x_density` and `y_density`: pixels per inch (`'in'`) or centimeter (`'cm'`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x_density": {
+      "type": "int",
+      "size": "",
+      "default": "300",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `300`. Horizontal pixels per density unit.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_density": {
+      "type": "int",
+      "size": "",
+      "default": "300",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `300`. Vertical pixels per density unit.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "xmp_metadata": {
+      "type": "string",
+      "size": "",
+      "default": "\"\"",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"\"`. If not empty, embed this XMP metadata in the image header.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": []
+}

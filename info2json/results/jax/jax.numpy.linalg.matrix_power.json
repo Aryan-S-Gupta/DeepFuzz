@@ -1,0 +1,38 @@
+{
+  "api_name": "matrix_power",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, M)`` to be raised to the power `n`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a's shape must be broadcastable to (..., M, M)"
+      ]
+    },
+    "n": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the integer exponent to which the matrix should be raised.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "n should be an integer"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Array of shape ``(..., M, M)`` containing the matrix power of a to the n."
+  },
+  "constraints": [
+    "M > 0"
+  ]
+}

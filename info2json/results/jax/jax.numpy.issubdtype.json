@@ -1,0 +1,37 @@
+{
+  "api_name": "issubdtype",
+  "module_path": "jax.numpy",
+  "params": {
+    "arg1": {
+      "type": "string|float|number|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype-like object. In typical usage, this will be a dtype specifier, such as ``\"float32\"`` (i.e. a string), ``np.dtype('int32')`` (i.e. an instance of :class:`numpy.dtype`), ``jnp.complex64`` (i.e. a JAX scalar constructor), or ``np.uint8`` (i.e. a NumPy scalar type).",
+      "dtype_candidates": [
+        "int32",
+        "uint8",
+        "float32",
+        "complex64"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "arg2": {
+      "type": "int|number|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype-like object. In typical usage, this will be a generic scalar type, such as ``jnp.integer``, ``jnp.floating``, or ``jnp.complexfloating``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "True if arg1 represents a dtype that is equal or lower in the type hierarchy than arg2."
+  },
+  "constraints": []
+}

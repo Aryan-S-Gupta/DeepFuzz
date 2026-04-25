@@ -1,0 +1,47 @@
+{
+  "api_name": "KLD",
+  "module_path": "tensorflow.keras.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred shapes must match",
+        "y_true and y_pred must have the same number of dimensions",
+        "dtypes of y_true and y_pred must be compatible",
+        "values of y_true and y_pred must be non-negative"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred shapes must match",
+        "y_true and y_pred must have the same number of dimensions",
+        "dtypes of y_true and y_pred must be compatible",
+        "values of y_true and y_pred must be non-negative"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "-1, d0, .. dN-1",
+    "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": [
+    "y_true and y_pred shapes must match",
+    "y_true and y_pred must have the same number of dimensions",
+    "dtypes of y_true and y_pred must be compatible",
+    "values of y_true and y_pred must be non-negative"
+  ]
+}

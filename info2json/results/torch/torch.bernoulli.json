@@ -1,0 +1,46 @@
+{
+  "api_name": "bernoulli",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor of probability values for the Bernoulli distribution",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "generator": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "a pseudorandom number generator for sampling",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out can have integral dtype if provided, but input must always have floating point dtype"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Draws binary random numbers (0 or 1) from a Bernoulli distribution."
+  },
+  "constraints": [
+    "input must have floating point dtype"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "api_name": "multiply",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same shape"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have the same shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "one",
+    "description": "Output tensor, element-wise product of `x1` and `x2`."
+  },
+  "constraints": [
+    "x1 and x2 must have the same shape"
+  ]
+}

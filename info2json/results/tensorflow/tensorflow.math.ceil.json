@@ -1,0 +1,48 @@
+{
+  "api_name": "ceil",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.Tensor`. Must be one of the following types: `bfloat16`, `half`, `float32`, `float64`. `int32`",
+      "dtype_candidates": [
+        "int32",
+        "float32",
+        "float64",
+        "bfloat16"
+      ],
+      "enum_values": [
+        "tf.Tensor",
+        "bfloat16",
+        "half",
+        "float32",
+        "float64",
+        "int32"
+      ],
+      "constraints": [
+        "x can't be a string or boolean",
+        "x must be one of tf.Tensor, bfloat16, half, float32, float64, int32",
+        "x and output must have compatible types"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `tf.Tensor`. Has the same type as `x`. @compatibility(numpy) Equivalent to np.ceil @end_compatibility"
+  },
+  "constraints": []
+}

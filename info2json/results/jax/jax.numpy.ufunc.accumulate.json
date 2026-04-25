@@ -1,0 +1,52 @@
+{
+  "api_name": "accumulate",
+  "module_path": "jax.numpy.ufunc",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array over which to accumulate.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a, dtype, and out must not be used together",
+        "axis must satisfy -rank(a) <= axis < rank(a)"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "integer axis over which accumulation will be performed (default = 0) dtype: optionally specify the type of the output array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(a) <= axis < rank(a)"
+      ]
+    },
+    "out": {
+      "type": "Unused by JAX",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a, dtype, and out must not be used together"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the accumulated result."
+  },
+  "constraints": [
+    "a, dtype, and out must not be used together",
+    "axis must satisfy -rank(a) <= axis < rank(a)"
+  ]
+}

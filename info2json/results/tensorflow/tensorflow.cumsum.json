@@ -1,0 +1,96 @@
+{
+  "api_name": "cumsum",
+  "module_path": "tensorflow",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`, `int64`, `int32`, `uint8`, `uint16`, `int16`, `int8`, `complex64`, `complex128`, `qint8`, `quint8`, `qint32`, `half`.",
+      "dtype_candidates": [
+        "int8",
+        "int16",
+        "int32",
+        "int64",
+        "uint8",
+        "uint16",
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [
+        "float32",
+        "float64",
+        "int64",
+        "int32",
+        "uint8",
+        "uint16",
+        "int16",
+        "int8",
+        "complex64",
+        "complex128",
+        "qint8",
+        "quint8",
+        "qint32",
+        "half"
+      ],
+      "constraints": [
+        "x must be one of float32, float64, int64, int32, uint8, uint16, int16, int8, complex64, complex128, qint8, quint8, qint32, half"
+      ]
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "0)",
+      "flag": "Optional",
+      "description": "A `Tensor` of type `int32` (default: 0). Must be in the range `[-rank(x), rank(x))`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    },
+    "exclusive": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If `True`, perform exclusive cumsum.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "reverse": {
+      "type": "bool",
+      "size": "",
+      "default": "False)",
+      "flag": "Optional",
+      "description": "A `bool` (default: False).",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `x`."
+  },
+  "constraints": []
+}

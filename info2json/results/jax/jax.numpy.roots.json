@@ -1,0 +1,39 @@
+{
+  "api_name": "roots",
+  "module_path": "jax.numpy",
+  "params": {
+    "p": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array of polynomial coefficients having rank-1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "strip_zeros": {
+      "type": "bool|callable",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "bool, default=True. If True, then leading zeros in the coefficients will be stripped, similar to :func:`numpy.roots`. If set to False, leading zeros will not be stripped, and undefined roots will be represented by NaN values in the function output. ``strip_zeros`` must be set to ``False`` for the function to be compatible with :func:`jax.jit` and other JAX transformations.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Must be set to False for jax.jit and other JAX transformations",
+        "strip_zeros must be one of numpy.roots, False, jax.jit, JAX"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "complex64",
+    "description": "An array containing the roots of the polynomial."
+  },
+  "constraints": [
+    "jnp.roots output shape is not defined by documentation"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "api_name": "add",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1's and x2's dtypes must be compatible"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "can be broadcasted",
+        "x1's and x2's dtypes must be compatible"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "The tensor containing the element-wise sum of `x1` and `x2`."
+  },
+  "constraints": [
+    "x1's and x2's dtypes must be compatible"
+  ]
+}

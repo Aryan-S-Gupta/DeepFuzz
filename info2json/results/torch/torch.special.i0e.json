@@ -1,0 +1,36 @@
+{
+  "api_name": "i0e",
+  "module_path": "torch.special",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out shape matches input shape when provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "Computes the exponentially scaled zeroth order modified Bessel function of the first kind"
+  },
+  "constraints": [
+    "input dimensions must match the context"
+  ]
+}

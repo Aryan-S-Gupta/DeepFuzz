@@ -1,0 +1,61 @@
+{
+  "api_name": "log_softmax",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "logits": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A non-empty `Tensor`. Must be one of the following types: `half`, `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [
+        "half",
+        "float32",
+        "float64"
+      ],
+      "constraints": [
+        "must not be empty",
+        "must be 1-D or higher",
+        "logits must be one of half, float32, float64",
+        "logits must be provided for output calculation"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "-1 which",
+      "flag": "Optional",
+      "description": "The dimension softmax would be performed on. The default is -1 which indicates the last dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be an integer",
+        "must be greater than or equal to -rank(logits)",
+        "must be less than rank(logits)"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be a string",
+        "is optional"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `logits`. Same shape as `logits`."
+  },
+  "constraints": []
+}

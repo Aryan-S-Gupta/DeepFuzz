@@ -1,0 +1,52 @@
+{
+  "api_name": "trapezoid",
+  "module_path": "torch",
+  "params": {
+    "y": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Values to use when computing the trapezoidal rule.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If specified, defines spacing between values as specified above.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dx": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "constant spacing between values. If neither :attr:`x` or :attr:`dx` are specified then this defaults to 1. Effectively multiplies the result by its value.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim": {
+      "type": "int",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "The dimension along which to compute the trapezoidal rule. The last (inner-most) dimension by default.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

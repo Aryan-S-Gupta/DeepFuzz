@@ -1,0 +1,82 @@
+{
+  "api_name": "conv",
+  "module_path": "tensorflow.keras.ops.nn",
+  "params": {
+    "inputs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of rank N+2. `inputs` has shape `(batch_size,) + inputs_spatial_shape + (num_channels,)` if `data_format=\"channels_last\"`, or `(batch_size, num_channels) + inputs_spatial_shape` if `data_format=\"channels_first\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "kernel": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of rank N+2. `kernel` has shape `(kernel_spatial_shape, num_input_channels, num_output_channels)`. `num_input_channels` should match the number of channels in `inputs`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "strides": {
+      "type": "int|tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or int tuple/list of `len(inputs_spatial_shape)`, specifying the strides of the convolution along each spatial dimension. If `strides` is int, then every spatial dimension shares the same `strides`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "string, either `\"valid\"` or `\"same\"`. `\"valid\"` means no padding is applied, and `\"same\"` results in padding evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input when `strides=1`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "valid",
+        "same"
+      ],
+      "constraints": [
+        "padding must be one of valid, same"
+      ]
+    },
+    "data_format": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A string, either `\"channels_last\"` or `\"channels_first\"`. `data_format` determines the ordering of the dimensions in the inputs. If `data_format=\"channels_last\"`, `inputs` is of shape `(batch_size, ..., channels)` while if `data_format=\"channels_first\"`, `inputs` is of shape `(batch_size, channels, ...)`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "channels_last",
+        "channels_first"
+      ],
+      "constraints": [
+        "data_format must be one of channels_last, channels_first"
+      ]
+    },
+    "dilation_rate": {
+      "type": "int|tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or int tuple/list of `len(inputs_spatial_shape)`, specifying the dilation rate to use for dilated convolution. If `dilation_rate` is int, then every spatial dimension shares the same `dilation_rate`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of rank N+2, the result of the conv operation."
+  },
+  "constraints": []
+}

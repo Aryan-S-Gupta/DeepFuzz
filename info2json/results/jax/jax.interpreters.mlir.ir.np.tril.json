@@ -1,0 +1,37 @@
+{
+  "api_name": "tril",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "m": {
+      "type": "tensor",
+      "size": "shape (..., M, N)",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, shape (..., M, N) Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "M and N must be positive integers."
+      ]
+    },
+    "k": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Diagonal above which to zero elements. `k = 0` (the default) is the main diagonal, `k < 0` is below it and `k > 0` is above.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "k must be positive",
+        "k must be an integer, or left empty (equivalent to k = 0)."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray, shape (..., M, N) Lower triangle of `m`, of same shape and data-type as `m`."
+  },
+  "constraints": []
+}

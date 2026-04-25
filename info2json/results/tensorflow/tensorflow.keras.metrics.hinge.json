@@ -1,0 +1,35 @@
+{
+  "api_name": "hinge",
+  "module_path": "tensorflow.keras.metrics",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The ground truth values. `y_true` values are expected to be -1 or 1. If binary (0 or 1) labels are provided they will be converted to -1 or 1 with shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If binary (0 or 1) labels are provided they will be converted to -1 or 1",
+        "y_true tensor values must be -1 or 1"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Hinge loss values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": []
+}

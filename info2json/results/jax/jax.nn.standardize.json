@@ -1,0 +1,74 @@
+{
+  "api_name": "standardize",
+  "module_path": "jax.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array to be standardized.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "the last axis (``-1``)",
+      "flag": "Optional",
+      "description": "integer, tuple of integers, or ``None`` (all axes), representing the axes along which to standardize. Defaults to the last axis (``-1``).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mean": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optionally specify the mean used for standardization. If not specified, then ``x.mean(axis, where=where)`` will be used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "variance": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optionally specify the variance used for standardization. If not specified, then ``x.var(axis, where=where)`` will be used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "epsilon": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "correction factor added to variance to avoid division by zero; defaults to ``1E-5``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "where": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional boolean mask specifying which elements to use when computing the mean and variance.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of the same shape as ``x`` containing the standardized input."
+  },
+  "constraints": []
+}

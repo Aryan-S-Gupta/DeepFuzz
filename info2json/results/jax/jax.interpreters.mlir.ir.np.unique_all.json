@@ -1,0 +1,26 @@
+{
+  "api_name": "unique_all",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array. It will be flattened if it is not already 1-D.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- namedtuple The result containing: * values - The unique elements of an input array. * indices - The first occurring indices for each unique element. * inverse_indices - The indices from the set of unique elements that reconstruct `x`. * counts - The corresponding counts for each unique element."
+  },
+  "constraints": [
+    "out.type = namedtuple"
+  ]
+}

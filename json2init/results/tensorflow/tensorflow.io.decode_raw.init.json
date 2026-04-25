@@ -1,0 +1,141 @@
+{
+  "api_full_name": "tensorflow.io.decode_raw",
+  "api_name": "decode_raw",
+  "module_path": "tensorflow.io",
+  "import_path": "tensorflow.io.decode_raw",
+  "backend": "tensorflow",
+  "params": {
+    "input_bytes": {
+      "name": "input_bytes",
+      "spec": {
+        "type": "string|tensor|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Each element of the input Tensor is converted to an array of bytes. Currently, this must be a tensor of strings (bytes), although semantically the operation should support any input.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "out_type": {
+      "name": "out_type",
+      "spec": {
+        "type": "float|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "`DType` of the output. Acceptable types are `half`, `float`, `double`, `int32`, `uint16`, `uint8`, `int16`, `int8`, `int64`.",
+        "dtype_candidates": [
+          "int8",
+          "int16",
+          "int32",
+          "int64",
+          "uint8",
+          "uint16"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "little_endian": {
+      "name": "little_endian",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Whether the `input_bytes` data is in little-endian format. Data will be converted into host byte order if necessary.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "whether the `input_bytes` data is in little-endian format. data will be converted into host byte order if necessary.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: whether the `input_bytes` data is in little-endian format. data will be converted into host byte order if necessary."
+    },
+    "fixed_length": {
+      "name": "fixed_length",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "If set, the first `fixed_length` bytes of each element will be converted. Data will be zero-padded or truncated to the specified length. `fixed_length` must be a multiple of the size of `out_type`. `fixed_length` must be specified if the elements of `input_bytes` are of variable length.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "fixed_length"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` object storing the decoded bytes."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'little_endian' unresolved: unhandled chosen type: whether the `input_bytes` data is in little-endian format. data will be converted into host byte order if necessary."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.decode_raw.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

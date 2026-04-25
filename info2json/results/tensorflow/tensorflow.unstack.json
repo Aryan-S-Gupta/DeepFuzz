@@ -1,0 +1,56 @@
+{
+  "api_name": "unstack",
+  "module_path": "tensorflow",
+  "params": {
+    "value": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A rank `R > 0` `Tensor` to be unstacked.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "value must be positive"
+      ]
+    },
+    "num": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An `int`. The length of the dimension `axis`. Automatically inferred if `None` (the default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "the first dimension",
+      "flag": "Optional",
+      "description": "An `int`. The axis to unstack along. Defaults to the first dimension. Negative values wrap around, so the valid range is `[-R, R)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must be one of int"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "1",
+    "description": "The list of `Tensor` objects unstacked from `value`."
+  },
+  "constraints": []
+}

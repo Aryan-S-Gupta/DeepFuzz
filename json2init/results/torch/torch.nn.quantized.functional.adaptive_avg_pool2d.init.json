@@ -1,0 +1,59 @@
+{
+  "api_full_name": "torch.nn.quantized.functional.adaptive_avg_pool2d",
+  "api_name": "adaptive_avg_pool2d",
+  "module_path": "torch.nn.quantized.functional",
+  "import_path": "torch.nn.quantized.functional.adaptive_avg_pool2d",
+  "backend": "torch",
+  "params": {
+    "output_size": {
+      "name": "output_size",
+      "spec": {
+        "type": "int|float|tuple",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the target output size (single integer or double-integer tuple)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "4",
+    "description": "See :class:`~torch.ao.nn.quantized.AdaptiveAvgPool2d` for details and output shape."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: adaptive_avg_pool2d() missing 1 required positional argument: 'input'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "adaptive_avg_pool2d() missing 1 required positional argument: 'input'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: adaptive_avg_pool2d() missing 1 required positional argument: 'input'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.nn.quantized.functional.adaptive_avg_pool2d.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

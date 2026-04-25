@@ -1,0 +1,88 @@
+{
+  "api_full_name": "tensorflow.linalg.tensor_diag",
+  "api_name": "tensor_diag",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.tensor_diag",
+  "backend": "tensorflow",
+  "params": {
+    "diagonal": {
+      "name": "diagonal",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `bfloat16`, `half`, `float32`, `float64`, `int32`, `int64`, `complex64`, `complex128`. Rank k tensor where k is at most 1.",
+        "dtype_candidates": [
+          "int32",
+          "int64",
+          "float32",
+          "float64",
+          "bfloat16",
+          "complex64",
+          "complex128"
+        ],
+        "enum_values": [
+          "bfloat16",
+          "half",
+          "float32",
+          "float64",
+          "int32",
+          "int64",
+          "complex64",
+          "complex128"
+        ],
+        "constraints": [
+          "diagonal must be one of bfloat16, half, float32, float64, int32, int64, complex64, complex128",
+          "diagonal rank is at most 1"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `diagonal`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.tensor_diag.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

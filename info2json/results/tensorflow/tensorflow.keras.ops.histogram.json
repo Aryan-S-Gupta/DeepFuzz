@@ -1,0 +1,48 @@
+{
+  "api_name": "histogram",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be a tensor with a shape compatible with histogram operation"
+      ]
+    },
+    "bins": {
+      "type": "int|number",
+      "size": "",
+      "default": "10",
+      "flag": "Optional",
+      "description": "An integer representing the number of histogram bins. Defaults to 10.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be a positive integer"
+      ]
+    },
+    "range": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A tuple representing the lower and upper range of the bins. If not specified, it will use the min and max of `x`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be a tuple of length 2, where both elements are real numbers"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple containing: - A tensor representing the counts of elements in each bin. - A tensor representing the bin edges."
+  },
+  "constraints": []
+}

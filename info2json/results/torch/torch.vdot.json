@@ -1,0 +1,45 @@
+{
+  "api_name": "vdot",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "first tensor in the dot product, must be 1D. Its conjugate is used if it's complex.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "second tensor in the dot product, must be 1D.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "other must be 1-D",
+        "input and other must be the same size"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Computes the dot product of two 1D vectors along a dimension."
+  },
+  "constraints": []
+}

@@ -1,0 +1,48 @@
+{
+  "api_name": "row_splits_to_segment_ids",
+  "module_path": "tensorflow.ragged",
+  "params": {
+    "splits": {
+      "type": "int|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A sorted 1-D integer Tensor. `splits[0]` must be zero.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "splits must be 1-D"
+      ]
+    },
+    "name": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name prefix for the returned tensor (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out_type": {
+      "type": "dtype",
+      "size": "",
+      "default": "splits",
+      "flag": "Optional",
+      "description": "The dtype for the return value. Defaults to `splits.dtype`, or `tf.int64` if `splits` does not have a dtype.",
+      "dtype_candidates": [
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "out_type must be one of splits.dtype, tf.int64"
+      ]
+    }
+  },
+  "output": {
+    "type": "int|tensor",
+    "numbers": "1",
+    "description": "A sorted 1-D integer Tensor, with `shape=[splits[-1]]`"
+  },
+  "constraints": []
+}

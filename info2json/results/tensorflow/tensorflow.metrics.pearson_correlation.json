@@ -1,0 +1,55 @@
+{
+  "api_name": "pearson_correlation",
+  "module_path": "tensorflow.metrics",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have the same shape.",
+        "axis must satisfy -rank(y_true) <= axis < rank(y_true)"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have the same shape."
+      ]
+    },
+    "axis": {
+      "type": "int32",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "Axis along which to determine similarity. Defaults to `-1`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Must be a valid axis value.",
+        "axis must satisfy -rank(y_true) <= axis < rank(y_true)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Pearson Correlation Coefficient tensor."
+  },
+  "constraints": [
+    "y_true and y_pred must have the same shape.",
+    "axis must satisfy -rank(y_true) <= axis < rank(y_true)"
+  ]
+}

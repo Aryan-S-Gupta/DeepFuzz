@@ -1,0 +1,28 @@
+{
+  "api_name": "nonzero",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a can contain non-zero values"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "multiple",
+    "description": "------- tuple Indices of elements that are non-zero."
+  },
+  "constraints": [
+    "First element of the tuple is an array of indices along the first dimension.",
+    "Second element of the tuple is an array of indices along the second dimension, and so on.",
+    "To group the indices by element rather than dimension, use argwhere instead."
+  ]
+}

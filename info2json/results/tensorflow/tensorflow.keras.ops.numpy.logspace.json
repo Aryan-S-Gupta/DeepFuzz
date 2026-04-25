@@ -1,0 +1,74 @@
+{
+  "api_name": "logspace",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "start": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The starting value of the sequence.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "stop": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The final value of the sequence, unless `endpoint` is `False`. In that case, `num + 1` values are spaced over the interval in log-space, of which all but the last (a sequence of length `num`) are returned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "stop must be one of False"
+      ]
+    },
+    "num": {
+      "type": "number",
+      "size": "",
+      "default": "50",
+      "flag": "Optional",
+      "description": "Number of samples to generate. Defaults to `50`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "endpoint": {
+      "type": "",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "If `True`, `stop` is the last sample. Otherwise, it is not included. Defaults to `True`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "base": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "10",
+      "flag": "Optional",
+      "description": "The base of the log space. Defaults to `10`. dtype: The type of the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The axis in the result to store the samples. Relevant only if start or stop are array-like.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of evenly spaced samples on a log scale."
+  },
+  "constraints": []
+}

@@ -1,0 +1,135 @@
+{
+  "api_name": "csd",
+  "module_path": "jax.scipy.signal",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array representing a time series of input values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array representing the second time series of input values, the same length as ``x`` along the specified ``axis``. If not specified, then assume ``y = x`` and compute the PSD ``Pxx`` of ``x`` via Welch's method.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fs": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Sampling frequency of the inputs (default: 1.0).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "window": {
+      "type": "tuple|callable|tensor",
+      "size": "",
+      "default": "'hann'``)",
+      "flag": "Optional",
+      "description": "Data tapering window to apply to each segment. Can be a window function name, a tuple specifying a window length and function, or an array (default: ``'hann'``).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "nperseg": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Length of each segment (default: 256).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "noverlap": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Number of points to overlap between segments (default: ``nperseg // 2``).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "nfft": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Length of the FFT used, if a zero-padded FFT is desired. If ``None`` (default), the FFT length is ``nperseg``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "detrend": {
+      "type": "callable",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Specifies how to detrend each segment. Can be ``False`` (default: no detrending), ``'constant'`` (remove mean), ``'linear'`` (remove linear trend), or a callable accepting a segment and returning a detrended segment.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "return_onesided": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If True (default), return a one-sided spectrum for real inputs. If False, return a two-sided spectrum.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "scaling": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Selects between computing the power spectral density (``'density'``, default) or the power spectrum (``'spectrum'``)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Axis along which the CSD is computed (default: -1).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "average": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The type of averaging to use on the periodograms; one of ``'mean'`` (default) or ``'median'``.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "mean",
+        "median"
+      ],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "1",
+    "description": "A length-2 tuple of arrays ``(f, Pxy)``. ``f`` is the array of sample frequencies, and ``Pxy`` is the cross spectral density of `x` and `y`"
+  },
+  "constraints": []
+}

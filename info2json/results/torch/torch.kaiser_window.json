@@ -1,0 +1,76 @@
+{
+  "api_name": "kaiser_window",
+  "module_path": "torch",
+  "params": {
+    "window_length": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "length of the window.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "periodic": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "If True, returns a periodic window suitable for use in spectral analysis. If False, returns a symmetric window suitable for use in filter design.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "beta": {
+      "type": "float",
+      "size": "",
+      "default": "12.0",
+      "flag": "Optional",
+      "description": "shape parameter for the window.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tensor",
+      "size": "",
+      "default": "torch.strided",
+      "flag": "Optional",
+      "description": "the desired layout of returned window tensor. Only ``torch.strided`` (dense layout) is supported.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired device of returned tensor. Default: if ``None``, uses the current device for the default tensor type (see :func:`torch.set_default_device`). :attr:`device` will be the CPU for CPU tensor types and the current CUDA device for CUDA tensor types.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "requires_grad": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

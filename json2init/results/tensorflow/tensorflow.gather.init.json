@@ -1,0 +1,227 @@
+{
+  "api_full_name": "tensorflow.gather",
+  "api_name": "gather",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.gather",
+  "backend": "tensorflow",
+  "params": {
+    "params": {
+      "name": "params",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The `Tensor` from which to gather values. Must be at least rank `axis + 1`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "indices": {
+      "name": "indices",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The index `Tensor`. Must be one of the following types: `int32`, `int64`. The values must be in range `[0, params.shape[axis])`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "int32",
+          "int64"
+        ],
+        "constraints": [
+          "indices must be one of int32, int64"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "validate_indices": {
+      "name": "validate_indices",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Deprecated, does nothing. Indices are always validated on CPU, never validated on GPU.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "deprecated",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: deprecated"
+    },
+    "Caution": {
+      "name": "Caution",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "On CPU, if an out of bound index is found, an error is raised. On GPU, if an out of bound index is found, a 0 is stored in the corresponding output value.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Caution must be one of CPU, GPU"
+        ]
+      },
+      "chosen_type": "on cpu",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: on cpu"
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "the first non-batch dimension",
+        "flag": "Optional",
+        "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. The `axis` in `params` to gather `indices` from. Must be greater than or equal to `batch_dims`. Defaults to the first non-batch dimension. Supports negative indexes.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "int32",
+          "int64"
+        ],
+        "constraints": [
+          "axis must be one of int32, int64",
+          "axis must satisfy -rank(params) <= axis < rank(params)"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "batch_dims": {
+      "name": "batch_dims",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An `integer`. The number of batch dimensions. Must be less than or equal to `rank(indices)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `params`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'validate_indices' unresolved: unhandled chosen type: deprecated",
+    "required param 'Caution' unresolved: unhandled chosen type: on cpu"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.gather.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

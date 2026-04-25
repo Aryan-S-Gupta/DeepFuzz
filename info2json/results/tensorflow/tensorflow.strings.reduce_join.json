@@ -1,0 +1,71 @@
+{
+  "api_name": "reduce_join",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "inputs": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.string` tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|number",
+      "size": "scalar",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "Which axis to join along. The default behavior is to join all elements, producing a scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be in range [-rank(input), rank(input))",
+        "inputs, axis, and separator must be provided"
+      ]
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "separator": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "a string added between each string being joined.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "inputs, axis, and separator must be provided"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `tf.string` tensor."
+  },
+  "constraints": [
+    "inputs, axis, and separator must be provided"
+  ]
+}

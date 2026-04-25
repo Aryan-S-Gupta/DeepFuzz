@@ -1,0 +1,120 @@
+{
+  "api_full_name": "torch.functional.F.np.astype",
+  "api_name": "astype",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.astype",
+  "backend": "torch",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "ndarray Input NumPy array to cast. ``array_likes`` are explicitly not supported here.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "copy": {
+      "name": "copy",
+      "spec": {
+        "type": "bool|tensor|dtype",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "bool, optional Specifies whether to copy an array when the specified dtype matches the data type of the input array ``x``. If ``True``, a newly allocated array must always be returned. If ``False`` and the specified dtype matches the data type of the input array, the input array must be returned; otherwise, a newly allocated array must be returned. Defaults to ``True``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "string|tensor|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "str, optional The device on which to place the returned array. Default: None. For Array-API interoperability only, so must be ``\"cpu\"`` if passed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array having the specified data type."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: astype() got some positional-only arguments passed as keyword arguments: 'x'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "astype() got some positional-only arguments passed as keyword arguments: 'x'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: astype() got some positional-only arguments passed as keyword arguments: 'x'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.astype.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

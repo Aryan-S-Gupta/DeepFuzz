@@ -1,0 +1,36 @@
+{
+  "api_name": "elu",
+  "module_path": "jax.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x is required"
+      ]
+    },
+    "alpha": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array of alpha values (default: 1.0)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array."
+  },
+  "constraints": [
+    "alpha is optional with default value 1.0"
+  ]
+}

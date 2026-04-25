@@ -1,0 +1,196 @@
+{
+  "api_full_name": "tensorflow.keras.ops.stft",
+  "api_name": "stft",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.stft",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "sequence_length": {
+      "name": "sequence_length",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer representing the sequence length.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "sequence_stride": {
+      "name": "sequence_stride",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer representing the sequence hop size.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "fft_length": {
+      "name": "fft_length",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer representing the size of the FFT to apply. If not specified, uses the smallest power of 2 enclosing `sequence_length`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "window": {
+      "name": "window",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "\"hann\"",
+        "flag": "Optional",
+        "description": "A string, a tensor of the window or `None`. If `window` is a string, available values are `\"hann\"` and `\"hamming\"`. If `window` is a tensor, it will be used directly as the window and its length must be `sequence_length`. If `window` is `None`, no windowing is used. Defaults to `\"hann\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "window must be one of hann, hamming"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "None"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "center": {
+      "name": "center",
+      "spec": {
+        "type": "sequence",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "Whether to pad `x` on both sides so that the t-th sequence is centered at time `t * sequence_stride`. Otherwise, the t-th sequence begins at time `t * sequence_stride`. Defaults to `True`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple containing two tensors - the real and imaginary parts of the STFT output."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.stft.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

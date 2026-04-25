@@ -1,0 +1,115 @@
+{
+  "api_full_name": "tensorflow.math.igammac",
+  "api_name": "igammac",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.igammac",
+  "backend": "tensorflow",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "float|number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `bfloat16`, `half`, `float32`, `float64`.",
+        "dtype_candidates": [
+          "float32",
+          "float64",
+          "bfloat16"
+        ],
+        "enum_values": [
+          "bfloat16",
+          "half",
+          "float32",
+          "float64"
+        ],
+        "constraints": [
+          "a must be one of bfloat16, half, float32, float64",
+          "The 'a' parameter must be one of the following types: bfloat16, half, float32, float64.",
+          "The 'x' parameter must have the same type as 'a'.",
+          "If 'a' or 'x' is a tensor, it must not be empty."
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `a`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must have the same shape as 'a'.",
+          "x must have the same dtype as a",
+          "The 'x' parameter must have the same type as 'a'.",
+          "If 'a' or 'x' is a tensor, it must not be empty."
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `a`."
+  },
+  "constraints": [
+    "The 'x' parameter must have the same type as 'a'.",
+    "If 'a' or 'x' is a tensor, it must not be empty."
+  ],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.igammac.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

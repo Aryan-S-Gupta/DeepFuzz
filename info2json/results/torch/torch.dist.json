@@ -1,0 +1,46 @@
+{
+  "api_name": "dist",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "other": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the Right-hand-side input tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input and other must have the same shape"
+      ]
+    },
+    "p": {
+      "type": "float",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "the norm to be computed",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "p >= 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float",
+    "description": "Returns the p-norm of (input - other)"
+  },
+  "constraints": []
+}

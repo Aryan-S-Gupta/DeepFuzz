@@ -1,0 +1,44 @@
+{
+  "api_name": "searchsorted",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "sorted_sequence": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "1-D input tensor, sorted along the innermost dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "sorted_sequence must be 1-D"
+      ]
+    },
+    "values": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-D tensor of query insertion values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "side": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "'left' or 'right', specifying the direction in which to insert for the equality case (tie-breaker).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Tensor of insertion indices of same shape as `values`."
+  },
+  "constraints": []
+}

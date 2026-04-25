@@ -1,0 +1,113 @@
+{
+  "api_full_name": "tensorflow.keras.ops.digitize",
+  "api_name": "digitize",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.digitize",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input array to be binned.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "shape must be at least 1-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "bins": {
+      "name": "bins",
+      "spec": {
+        "type": "tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "Array of bins. It has to be one-dimensional and monotonically increasing.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "bins must be 1-D",
+          "bins must be monotonically increasing"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32 or int64",
+    "description": "Output array of indices, of same shape as `x`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "int32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.digitize.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

@@ -1,0 +1,72 @@
+{
+  "api_name": "avg_pool1d",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input tensor of shape :math:`(\\text{minibatch} , \\text{in\\_channels} , iW)`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "kernel_size": {
+      "type": "tuple|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the size of the window. Can be a single number or a tuple `(kW,)`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "stride": {
+      "type": "tuple|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the stride of the window. Can be a single number or a tuple `(sW,)`. Default: :attr:`kernel_size`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding": {
+      "type": "float|tuple|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "implicit zero paddings on both sides of the input. Can be a single number or a tuple `(padW,)`. Should be at most half of effective kernel size, that is :math:`((kernelSize - 1) * dilation + 1) / 2`. Default: 0",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ceil_mode": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "when True, will use `ceil` instead of `floor` to compute the output shape. Default: ``False``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "count_include_pad": {
+      "type": "",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "when True, will include the zero-padding in the averaging calculation. Default: ``True``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

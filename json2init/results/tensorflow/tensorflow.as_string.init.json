@@ -1,0 +1,246 @@
+{
+  "api_full_name": "tensorflow.as_string",
+  "api_name": "as_string",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.as_string",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "string|float|bool|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`, `int32`, `uint8`, `int16`, `int8`, `int64`, `bfloat16`, `uint16`, `half`, `uint32`, `uint64`, `complex64`, `complex128`, `bool`, `variant`, `string`.",
+        "dtype_candidates": [
+          "int8",
+          "int16",
+          "int32",
+          "int64",
+          "uint8",
+          "uint16",
+          "uint32",
+          "uint64",
+          "float32",
+          "float64",
+          "bfloat16",
+          "bool",
+          "complex64",
+          "complex128"
+        ],
+        "enum_values": [
+          "float32",
+          "float64",
+          "int32",
+          "uint8",
+          "int16",
+          "int8",
+          "int64",
+          "bfloat16",
+          "uint16",
+          "half",
+          "uint32",
+          "uint64",
+          "complex64",
+          "complex128",
+          "bool",
+          "variant",
+          "string"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "precision": {
+      "name": "precision",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `-1`. The post-decimal precision to use for floating point numbers. Only used if precision > -1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "scientific": {
+      "name": "scientific",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`. Use scientific notation for floating point numbers. Can't be specified to `True` when `shortest` is set to `True`.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "shortest": {
+      "name": "shortest",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`. Use shortest representation (either scientific or standard) for floating point numbers. Can't be specified to `True` when `scientific` is set to `True`.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [
+          "bool",
+          "False",
+          "True"
+        ],
+        "constraints": [
+          "shortest must be one of bool, False, True"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "width": {
+      "name": "width",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `-1`. Pad pre-decimal numbers to this width. Applies to both floating point and integer numbers. Only used if width > -1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "fill": {
+      "name": "fill",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"\"",
+        "flag": "Optional",
+        "description": "An optional `string`. Defaults to `\"\"`. The value to pad if width > -1. If empty, pads with spaces. Another typical value is '0'. String cannot be longer than 1 character.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "fill must be one of string, 0"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "'bytes' object has no attribute 'size'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": true,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 563, in run_smoke_test\n    result[\"result_summary\"] = summarize_python_value(out)\n                               ~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 580, in summarize_python_value\n    \"numel\": int(arr.size),\n                 ^^^^^^^^\nAttributeError: 'bytes' object has no attribute 'size'\n"
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.as_string.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

@@ -1,0 +1,145 @@
+{
+  "api_full_name": "tensorflow.keras.metrics.sparse_top_k_categorical_accuracy",
+  "api_name": "sparse_top_k_categorical_accuracy",
+  "module_path": "tensorflow.keras.metrics",
+  "import_path": "tensorflow.keras.metrics.sparse_top_k_categorical_accuracy",
+  "backend": "tensorflow",
+  "params": {
+    "y_true": {
+      "name": "y_true",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A tensor of shape `(batch_size)` representing indices or IDs of true categories.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_pred": {
+      "name": "y_pred",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "If `from_sorted_ids=False`, a tensor of shape `(batch_size, num_categories)` containing the scores for each sample for all possible categories. If `from_sorted_ids=True`, a tensor of shape `(batch_size, N)` containing indices or IDs of the top `N` categories in order from highest score to lowest score.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "k": {
+      "name": "k",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "5",
+        "flag": "Optional",
+        "description": "(Optional) Number of top elements to look at for computing accuracy. Defaults to `5`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "from_sorted_ids": {
+      "name": "from_sorted_ids",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "(Optional) Whether `y_pred` is sorted category IDs or scores for all categories (the default).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "(optional) whether `y_pred` is sorted category ids or scores for all categories (the default).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: (optional) whether `y_pred` is sorted category ids or scores for all categories (the default)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor with the same shape as `y_true` containing ones where `y_true` is in the top `k` and zeros elsewhere."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} predictions must be 2-dimensional [Op:InTopKV2] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} predictions must be 2-dimensional [Op:InTopKV2] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/metrics/accuracy_metrics.py\", line 428, in sparse_top_k_categorical_accuracy\n    matches = ops.in_top_k(y_true, y_pred, k=k)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 222, in in_top_k\n    return backend.math.in_top_k(targets, predictions, k)\n           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 47, in in_top_k\n    return tf.math.in_top_k(targets, predictions, k)\n           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} predictions must be 2-dimensional [Op:InTopKV2] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.metrics.sparse_top_k_categorical_accuracy.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

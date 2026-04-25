@@ -1250,41 +1250,6 @@ Args:
     int32, int64, complex64, complex128, string.
   y: A `tf.Tensor`. Must have the same type as x.
   name: A name for the operation (optional)"
-tensorflow.add_n,no modifiable seedable parameters,"Returns the element-wise sum of a list of tensors.
-
-All inputs in the list must have the same shape. This op does not
-[broadcast](https://docs.scipy.org/doc/numpy-1.13.0/user/basics.broadcasting.html)
-its inputs. If you need broadcasting, use `tf.math.add` (or the `+` operator)
-instead.
-
-For example:
-
->>> a = tf.constant([[3, 5], [4, 8]])
->>> b = tf.constant([[1, 6], [2, 9]])
->>> tf.math.add_n([a, b, a]).numpy()
-array([[ 7, 16],
-       [10, 25]], dtype=int32)
-
-See Also:
-
-* `tf.reduce_sum(inputs, axis=0)` - This performs the same mathematical
-  operation, but `tf.add_n` may be more efficient because it sums the
-  tensors directly. `reduce_sum` on the other hand calls
-  `tf.convert_to_tensor` on the list of tensors, unnecessarily stacking them
-  into a single tensor before summing.
-
-Args:
-  inputs: A list of `tf.Tensor` or `tf.IndexedSlices` objects, each with the
-    same shape and type. `tf.IndexedSlices` objects will be converted into
-    dense tensors prior to adding.
-  name: A name for the operation (optional).
-
-Returns:
-  A `tf.Tensor` of the same shape and type as the elements of `inputs`.
-
-Raises:
-  ValueError: If `inputs` don't all have same shape and dtype or the shape
-  cannot be inferred."
 tensorflow.approx_top_k,doc indicates side-effect/external-dependency keyword (\b(distributed|cluster|server|worker|rpc|remote)\b),"Returns min/max k values and their indices of the input operand in an approximate manner.
 
 See https://arxiv.org/abs/2206.14286 for the algorithm details.
@@ -3185,7 +3150,7 @@ Args:
 Returns:
   A function `h(x)` which returns the same values as `f(x)` and whose
   gradients are the same as those of an identity function."
-tensorflow.group,no concrete parameters; zero-arg APIs are excluded,"Create an op that groups multiple operations.
+tensorflow.group,no modifiable seedable parameters,"Create an op that groups multiple operations.
 
 When this op finishes, all ops in `inputs` have finished. This op has no
 output.
@@ -3220,23 +3185,7 @@ Returns:
 
 Raises:
   ValueError: If an unknown keyword argument is provided."
-tensorflow.guarantee_const,no modifiable seedable parameters,"Promise to the TF runtime that the input tensor is a constant. (deprecated)
-
-Deprecated: THIS FUNCTION IS DEPRECATED. It will be removed in a future version.
-Instructions for updating:
-Not for public use.
-
-The runtime is then free to make optimizations based on this.
-
-Returns the input tensor without modification.
-
-Args:
-  input: A `Tensor`.
-  name: A name for this operation.
-
-Returns:
-  A `Tensor`. Has the same dtype as `input`."
-tensorflow.identity,no modifiable seedable parameters,"Return a Tensor with the same shape and contents as input.
+tensorflow.identity,vague required param descriptions for: input,"Return a Tensor with the same shape and contents as input.
 
 The return value is not the same Tensor as the original, but contains the same
 values.  This operation is fast when used on the same device.
@@ -3281,30 +3230,6 @@ Args:
 
 Returns:
   A `Tensor` or CompositeTensor. Has the same type and contents as `input`."
-tensorflow.identity_n,no modifiable seedable parameters,"Returns a list of tensors with the same shapes and contents as the input
-
-tensors.
-
-This op can be used to override the gradient for complicated functions. For
-example, suppose y = f(x) and we wish to apply a custom function g for backprop
-such that dx = g(dy). In Python,
-
-```python
-with tf.get_default_graph().gradient_override_map(
-    {'IdentityN': 'OverrideGradientWithG'}):
-  y, _ = identity_n([f(x), x])
-
-@tf.RegisterGradient('OverrideGradientWithG')
-def ApplyG(op, dy, _):
-  return [None, g(dy)]  # Do not backprop to f(x).
-```
-
-Args:
-  input: A list of `Tensor` objects.
-  name: A name for the operation (optional).
-
-Returns:
-  A list of `Tensor` objects. Has the same type as `input`."
 tensorflow.import_graph_def,required param 'graph_def' not fuzzable: type unclear / not constructable,"Imports the graph from `graph_def` into the current default `Graph`. (deprecated arguments)
 
 Deprecated: SOME ARGUMENTS ARE DEPRECATED: `(op_dict)`. They will be removed in a future version.
@@ -3905,31 +3830,6 @@ Raises:
     `adjoint_b` are both set to `True`.
   TypeError: If output_type is specified but the types of `a`, `b` and
     `output_type` is not (u)int8, (u)int8 and int32."
-tensorflow.matrix_square_root,no modifiable seedable parameters,"Computes the matrix square root of one or more square matrices:
-
-matmul(sqrtm(A), sqrtm(A)) = A
-
-The input matrix should be invertible. If the input matrix is real, it should
-have no eigenvalues which are real and negative (pairs of complex conjugate
-eigenvalues are allowed).
-
-The matrix square root is computed by first reducing the matrix to
-quasi-triangular form with the real Schur decomposition. The square root
-of the quasi-triangular matrix is then computed directly. Details of
-the algorithm can be found in: Nicholas J. Higham, ""Computing real
-square roots of a real matrix"", Linear Algebra Appl., 1987.
-
-The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
-form square matrices. The output is a tensor of the same shape as the input
-containing the matrix square root for all input submatrices `[..., :, :]`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `float64`, `float32`, `half`, `complex64`, `complex128`.
-    Shape is `[..., M, M]`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
 tensorflow.meshgrid,no concrete parameters; zero-arg APIs are excluded,"Broadcasts parameters for evaluation on an N-D grid.
 
 Given N one-dimensional coordinate arrays `*args`, returns a list `outputs`
@@ -4330,7 +4230,7 @@ array([[1., 1., 1.],
        [1., 1., 1.]], dtype=float32)>
 >>> make_variables(4, tf.random_uniform_initializer(minval=-1., maxval=1.))
 (<tf.Variable...shape=(4,) dtype=float32...>, <tf.Variable...shape=(4, 4) ..."
-tensorflow.print,no concrete parameters; zero-arg APIs are excluded,"Print the specified inputs.
+tensorflow.print,no modifiable seedable parameters,"Print the specified inputs.
 
 A TensorFlow operator that prints the specified inputs to a desired
 output stream or logging level. The inputs may be dense or sparse Tensors,
@@ -4688,34 +4588,6 @@ Args:
     random values to generate (exclusive).
   seed: A Python integer. Used to create random seeds. See
     `tf.random.set_seed` for behavior."
-tensorflow.rank,no modifiable seedable parameters,"Returns the rank of a tensor.
-
-See also `tf.shape`.
-
-Returns a 0-D `int32` `Tensor` representing the rank of `input`.
-
-For example:
-
-```python
-# shape of tensor 't' is [2, 2, 3]
-t = tf.constant([[[1, 1, 1], [2, 2, 2]], [[3, 3, 3], [4, 4, 4]]])
-tf.rank(t)  # 3
-```
-
-**Note**: The rank of a tensor is not the same as the rank of a matrix. The
-rank of a tensor is the number of indices required to uniquely select each
-element of the tensor. Rank is also known as ""order"", ""degree"", or ""ndims.""
-
-Args:
-  input: A `Tensor` or `SparseTensor`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `int32`.
-
-@compatibility(numpy)
-Equivalent to np.ndim
-@end_compatibility"
 tensorflow.recompute_grad,no modifiable seedable parameters,"Defines a function as a recompute-checkpoint for the tape auto-diff.
 
 Tape checkpointing is a technique to reduce the memory consumption of the
@@ -4996,73 +4868,6 @@ Examples:
   fibonaccis = scan(lambda a, _: (a[1], a[0] + a[1]), elems, initializer)
   # fibonaccis == ([1, 1, 2, 3, 5, 8], [1, 2, 3, 5, 8, 13])
   ```"
-tensorflow.shape,no modifiable seedable parameters,"Returns a tensor containing the shape of the input tensor.
-
-See also `tf.size`, `tf.rank`.
-
-`tf.shape` returns a 1-D integer tensor representing the shape of `input`.
-For a scalar input, the tensor returned has a shape of (0,) and its value is
-the empty vector (i.e. []).
-
-For example:
-
->>> tf.shape(1.)
-<tf.Tensor: shape=(0,), dtype=int32, numpy=array([], dtype=int32)>
-
->>> t = tf.constant([[[1, 1, 1], [2, 2, 2]], [[3, 3, 3], [4, 4, 4]]])
->>> tf.shape(t)
-<tf.Tensor: shape=(3,), dtype=int32, numpy=array([2, 2, 3], dtype=int32)>
-
-Note: When using symbolic tensors, such as when using the Keras API,
-tf.shape() will return the shape of the symbolic tensor.
-
->>> a = tf.keras.layers.Input((None, 10))
->>> tf.shape(a)
-<... shape=(3,) dtype=int32...>
-
-In these cases, using `tf.Tensor.shape` will return more informative results.
-
->>> a.shape
-TensorShape([None, None, 10])
-
-(The first `None` represents the as yet unknown batch size.)
-
-`tf.shape` and `Tensor.shape` should be identical in eager mode.  Within
-`tf.function` or within a `compat.v1` context, not all dimensions may be
-known until execution time. Hence, when defining custom layers and models
-for graph mode, prefer the dynamic `tf.shape(x)` over the static `x.shape`.
-
-Args:
-  input: A `Tensor` or `SparseTensor`.
-  out_type: (Optional) The specified output type of the operation (`int32` or
-    `int64`). Defaults to `tf.int32`. (Note: there is an experimental
-    flag, `tf_shape_default_int64` that changes the default to `tf.int64`.
-    This is an unsupported, experimental setting that causes known breakages.)
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `out_type`."
-tensorflow.shape_n,no modifiable seedable parameters,"Returns shape of a list of tensors.
-
-Given a list of tensors, `tf.shape_n` is much faster than applying `tf.shape`
-to each tensor individually.
->>> a = tf.ones([1, 2])
->>> b = tf.ones([2, 3])
->>> c = tf.ones([3, 4])
->>> tf.shape_n([a, b, c])
-[<tf.Tensor: shape=(2,), dtype=int32, numpy=array([1, 2], dtype=int32)>,
-<tf.Tensor: shape=(2,), dtype=int32, numpy=array([2, 3], dtype=int32)>,
-<tf.Tensor: shape=(2,), dtype=int32, numpy=array([3, 4], dtype=int32)>]
-
-Args:
-  input: A list of at least 1 `Tensor` object with the same dtype.
-  out_type: The specified output type of the operation (`int32` or `int64`).
-    Defaults to `tf.int32`(optional).
-  name: A name for the operation (optional).
-
-Returns:
-  A list of `Tensor` specifying the shape of each input tensor with type of
-  `out_type`."
 tensorflow.sign,missing required param descriptions for: x,"Returns an element-wise indication of the sign of a number.
 
 `y = sign(x) = -1 if x < 0; 0 if x == 0; 1 if x > 0`.
@@ -5264,72 +5069,6 @@ Returns:
 
     If `x` is a `SparseTensor`, returns
     `SparseTensor(x.indices, tf.math.square(x.values, ...), x.dense_shape)`"
-tensorflow.stop_gradient,no modifiable seedable parameters,"Stops gradient computation.
-
-When executed in a graph, this op outputs its input tensor as-is.
-
-When building ops to compute gradients, this op prevents the contribution of
-its inputs to be taken into account.  Normally, the gradient generator adds ops
-to a graph to compute the derivatives of a specified 'loss' by recursively
-finding out inputs that contributed to its computation.  If you insert this op
-in the graph it inputs are masked from the gradient generator.  They are not
-taken into account for computing gradients.
-
-This is useful any time you want to compute a value with TensorFlow but need
-to pretend that the value was a constant. For example, the softmax function
-for a vector x can be written as
-
-```python
-
-  def softmax(x):
-    numerator = tf.exp(x)
-    denominator = tf.reduce_sum(numerator)
-    return numerator / denominator
-```
-
-This however is susceptible to overflow if the values in x are large. An
-alternative more stable way is to subtract the maximum of x from each of the
-values.
-
-```python
-
-  def stable_softmax(x):
-    z = x - tf.reduce_max(x)
-    numerator = tf.exp(z)
-    denominator = tf.reduce_sum(numerator)
-    return numerator / denominator
-```
-
-However, when we backprop through the softmax to x, we dont want to backprop
-through the `tf.reduce_max(x)` (if the max values are not unique then the
-gradient could flow to the wrong input) calculation and treat that as a
-constant. Therefore, we should write this out as
-
-```python
-
-  def stable_softmax(x):
-    z = x - tf.stop_gradient(tf.reduce_max(x))
-    numerator = tf.exp(z)
-    denominator = tf.reduce_sum(numerator)
-    return numerator / denominator
-```
-
-Some other examples include:
-
-*  The *EM* algorithm where the *M-step* should not involve backpropagation
-   through the output of the *E-step*.
-*  Contrastive divergence training of Boltzmann machines where, when
-   differentiating the energy function, the training must not backpropagate
-   through the graph that generated the samples from the model.
-*  Adversarial training, where no backprop should happen through the adversarial
-   example generation process.
-
-Args:
-  input: A `Tensor`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
 tensorflow.switch_case,required param 'branch_fns' not fuzzable: non-fuzzable type cue: callable,"Create a switch/case operation, i.e.
 
 an integer-indexed conditional.
@@ -14843,7 +14582,7 @@ Returns:
 The binary elementwise APIs are:
 
 <<API_LIST>>"
-tensorflow.experimental.dispatch_for_binary_elementwise_assert_apis,"missing required param descriptions for: x_type, y_type","Decorator to override default implementation for binary elementwise assert APIs.
+tensorflow.experimental.dispatch_for_binary_elementwise_assert_apis,no modifiable seedable parameters,"Decorator to override default implementation for binary elementwise assert APIs.
 
 The decorated function (known as the ""elementwise assert handler"")
 overrides the default implementation for any binary elementwise assert API
@@ -19058,18 +18797,6 @@ tensorflow.io.VarLenFeature,classes/exceptions are excluded,"Configuration for p
 
 Fields:
   dtype: Data type of input."
-tensorflow.io.decode_base64,no modifiable seedable parameters,"Decode web-safe base64-encoded strings.
-
-Input may or may not have padding at the end. See
-[EncodeBase64](https://www.tensorflow.org/api_docs/python/tf/io/encode_base64)
-for padding. Web-safe means that input must use - and _ instead of + and /.
-
-Args:
-  input: A `Tensor` of type `string`. Base64 strings to decode.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `string`."
 tensorflow.io.decode_json_example,doc indicates side-effect/external-dependency keyword (\b(train|fit|learn|backward)\b),"Convert JSON-encoded Example records to binary protocol buffer strings.
 
 Note: This is **not** a general purpose JSON parsing op.
@@ -22565,7 +22292,7 @@ Args:
 Returns:
   The adjoint (a.k.a. Hermitian transpose a.k.a. conjugate transpose) of
   matrix."
-tensorflow.linalg.cholesky,no modifiable seedable parameters,"Computes the Cholesky decomposition of one or more square matrices.
+tensorflow.linalg.cholesky,doc indicates side-effect/external-dependency keyword (\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\b),"Computes the Cholesky decomposition of one or more square matrices.
 
 The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
 form square matrices.
@@ -22583,19 +22310,6 @@ case it might be faster to use the CPU.
 
 Args:
   input: A `Tensor`. Must be one of the following types: `float64`, `float32`, `half`, `complex64`, `complex128`.
-    Shape is `[..., M, M]`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
-tensorflow.linalg.det,no modifiable seedable parameters,"Computes the determinant of one or more square matrices.
-
-The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
-form square matrices. The output is a tensor containing the determinants
-for all input submatrices `[..., :, :]`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `half`, `float32`, `float64`, `complex64`, `complex128`.
     Shape is `[..., M, M]`.
   name: A name for the operation (optional).
 
@@ -22799,7 +22513,7 @@ Raises:
   ValueError: If
     - the format of `equation` is incorrect,
     - number of inputs or their shapes are inconsistent with `equation`."
-tensorflow.linalg.expm,no modifiable seedable parameters,"Computes the matrix exponential of one or more square matrices.
+tensorflow.linalg.expm,return not meaningful/capturable data-form,"Computes the matrix exponential of one or more square matrices.
 
 $$exp(A) = \sum_{n=0}^\infty A^n/n!$$
 
@@ -22847,31 +22561,6 @@ Returns:
 Equivalent to numpy.linalg.slogdet, although no sign is returned since only
 hermitian positive definite matrices are supported.
 @end_compatibility"
-tensorflow.linalg.logm,no modifiable seedable parameters,"Computes the matrix logarithm of one or more square matrices:
-
-
-\\(log(exp(A)) = A\\)
-
-This op is only defined for complex matrices. If A is positive-definite and
-real, then casting to a complex matrix, taking the logarithm and casting back
-to a real matrix will give the correct result.
-
-This function computes the matrix logarithm using the Schur-Parlett algorithm.
-Details of the algorithm can be found in Section 11.6.2 of:
-Nicholas J. Higham, Functions of Matrices: Theory and Computation, SIAM 2008.
-ISBN 978-0-898716-46-7.
-
-The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
-form square matrices. The output is a tensor of the same shape as the input
-containing the exponential for all input submatrices `[..., :, :]`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
-    Shape is `[..., M, M]`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
 tensorflow.linalg.lu_matrix_inverse,no modifiable seedable parameters,"Computes the inverse given the LU decomposition(s) of one or more matrices.
 
 This op is conceptually identical to,
@@ -23356,53 +23045,6 @@ Args:
     aligns superdiagonals to the right (left-pads the row) and subdiagonals to
     the left (right-pads the row). It is the packing format LAPACK uses.
     cuSPARSE uses ""LEFT_RIGHT"", which is the opposite alignment."
-tensorflow.linalg.slogdet,no modifiable seedable parameters,"Computes the sign and the log of the absolute value of the determinant of
-
-one or more square matrices.
-
-The input is a tensor of shape `[N, M, M]` whose inner-most 2 dimensions
-form square matrices. The outputs are two tensors containing the signs and
-absolute values of the log determinants for all N input submatrices
-`[..., :, :]` such that `determinant = sign*exp(log_abs_determinant)`.
-The `log_abs_determinant` is computed as `det(P)*sum(log(diag(LU)))` where `LU`
-is the `LU` decomposition of the input and `P` is the corresponding
-permutation matrix.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `half`, `float32`, `float64`, `complex64`, `complex128`.
-    Shape is `[N, M, M]`.
-  name: A name for the operation (optional).
-
-Returns:
-  A tuple of `Tensor` objects (sign, log_abs_determinant).
-
-  sign: A `Tensor`. Has the same type as `input`.
-  log_abs_determinant: A `Tensor`. Has the same type as `input`."
-tensorflow.linalg.sqrtm,no modifiable seedable parameters,"Computes the matrix square root of one or more square matrices:
-
-matmul(sqrtm(A), sqrtm(A)) = A
-
-The input matrix should be invertible. If the input matrix is real, it should
-have no eigenvalues which are real and negative (pairs of complex conjugate
-eigenvalues are allowed).
-
-The matrix square root is computed by first reducing the matrix to
-quasi-triangular form with the real Schur decomposition. The square root
-of the quasi-triangular matrix is then computed directly. Details of
-the algorithm can be found in: Nicholas J. Higham, ""Computing real
-square roots of a real matrix"", Linear Algebra Appl., 1987.
-
-The input is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions
-form square matrices. The output is a tensor of the same shape as the input
-containing the matrix square root for all input submatrices `[..., :, :]`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `float64`, `float32`, `half`, `complex64`, `complex128`.
-    Shape is `[..., M, M]`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
 tensorflow.linalg.svd,return description too vague / predicate-like,"Computes the singular value decompositions of one or more matrices.
 
 Computes the SVD of each inner matrix in `tensor` such that
@@ -23461,40 +23103,6 @@ np_a_approx = np.dot(u, np.dot(np.diag(s), v_adj))
 # tf_a_approx and np_a_approx should be numerically close.
 ```
 @end_compatibility"
-tensorflow.linalg.tensor_diag_part,no modifiable seedable parameters,"Returns the diagonal part of the tensor.
-
-This operation returns a tensor with the `diagonal` part
-of the `input`. The `diagonal` part is computed as follows:
-
-Assume `input` has dimensions `[D1,..., Dk, D1,..., Dk]`, then the output is a
-tensor of rank `k` with dimensions `[D1,..., Dk]` where:
-
-`diagonal[i1,..., ik] = input[i1, ..., ik, i1,..., ik]`.
-
-For a rank 2 tensor, `linalg.diag_part` and `linalg.tensor_diag_part`
-produce the same result. For rank 3 and higher, linalg.diag_part extracts
-the diagonal of each inner-most matrix in the tensor. An example where
-they differ is given below.
-
->>> x = [[[[1111,1112],[1121,1122]],
-...       [[1211,1212],[1221,1222]]],
-...      [[[2111, 2112], [2121, 2122]],
-...       [[2211, 2212], [2221, 2222]]]
-...      ]
->>> tf.linalg.tensor_diag_part(x)
-<tf.Tensor: shape=(2, 2), dtype=int32, numpy=
-array([[1111, 1212],
-       [2121, 2222]], dtype=int32)>
->>> tf.linalg.diag_part(x).shape
-TensorShape([2, 2, 2])
-
-Args:
-  input: A `Tensor` with rank `2k`.
-  name: A name for the operation (optional).
-
-Returns:
-  A Tensor containing diagonals of `input`. Has the same type as `input`, and
-  rank `k`."
 tensorflow.linalg.tridiagonal_solve,return description too vague / predicate-like,"Solves tridiagonal systems of equations.
 
 The input can be supplied in various formats: `matrix`, `sequence` and
@@ -25217,68 +24825,6 @@ Args:
     int32, int64, complex64, complex128, string.
   y: A `tf.Tensor`. Must have the same type as x.
   name: A name for the operation (optional)"
-tensorflow.math.add_n,no modifiable seedable parameters,"Returns the element-wise sum of a list of tensors.
-
-All inputs in the list must have the same shape. This op does not
-[broadcast](https://docs.scipy.org/doc/numpy-1.13.0/user/basics.broadcasting.html)
-its inputs. If you need broadcasting, use `tf.math.add` (or the `+` operator)
-instead.
-
-For example:
-
->>> a = tf.constant([[3, 5], [4, 8]])
->>> b = tf.constant([[1, 6], [2, 9]])
->>> tf.math.add_n([a, b, a]).numpy()
-array([[ 7, 16],
-       [10, 25]], dtype=int32)
-
-See Also:
-
-* `tf.reduce_sum(inputs, axis=0)` - This performs the same mathematical
-  operation, but `tf.add_n` may be more efficient because it sums the
-  tensors directly. `reduce_sum` on the other hand calls
-  `tf.convert_to_tensor` on the list of tensors, unnecessarily stacking them
-  into a single tensor before summing.
-
-Args:
-  inputs: A list of `tf.Tensor` or `tf.IndexedSlices` objects, each with the
-    same shape and type. `tf.IndexedSlices` objects will be converted into
-    dense tensors prior to adding.
-  name: A name for the operation (optional).
-
-Returns:
-  A `tf.Tensor` of the same shape and type as the elements of `inputs`.
-
-Raises:
-  ValueError: If `inputs` don't all have same shape and dtype or the shape
-  cannot be inferred."
-tensorflow.math.angle,no modifiable seedable parameters,"Returns the element-wise argument of a complex (or real) tensor.
-
-Given a tensor `input`, this operation returns a tensor of type `float` that
-is the argument of each element in `input` considered as a complex number.
-
-The elements in `input` are considered to be complex numbers of the form
-\\(a + bj\\), where *a* is the real part and *b* is the imaginary part.
-If `input` is real then *b* is zero by definition.
-
-The argument returned by this function is of the form \\(atan2(b, a)\\).
-If `input` is real, a tensor of all zeros is returned.
-
-For example:
-
-```
-input = tf.constant([-2.25 + 4.75j, 3.25 + 5.75j], dtype=tf.complex64)
-tf.math.angle(input).numpy()
-# ==> array([2.0131705, 1.056345 ], dtype=float32)
-```
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `float`, `double`,
-    `complex64`, `complex128`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `float32` or `float64`."
 tensorflow.math.approx_max_k,required param 'k' lacks constraint/type/shape/value detail,"Returns max `k` values and their indices of the input `operand` in an approximate manner.
 
 See https://arxiv.org/abs/2206.14286 for the algorithm details. This op is
@@ -25531,26 +25077,6 @@ Returns:
 
 Raises:
   TypeError: If the inputs are complex."
-tensorflow.math.imag,no modifiable seedable parameters,"Returns the imaginary part of a complex (or real) tensor.
-
-Given a tensor `input`, this operation returns a tensor of type `float` that
-is the imaginary part of each element in `input` considered as a complex
-number. If `input` is real, a tensor of all zeros is returned.
-
-For example:
-
-```python
-x = tf.constant([-2.25 + 4.75j, 3.25 + 5.75j])
-tf.math.imag(x)  # [4.75, 5.75]
-```
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `float`, `double`,
-    `complex64`, `complex128`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `float32` or `float64`."
 tensorflow.math.in_top_k,required param 'targets' not fuzzable: type unclear / not constructable,"Outputs whether the targets are in the top `K` predictions.
 
 This outputs a `batch_size` bool array, an entry `out[i]` is `true` if the
@@ -25673,26 +25199,6 @@ Returns:
 
     If `x` is a `SparseTensor`, returns
     `SparseTensor(x.indices, tf.math.negative(x.values, ...), x.dense_shape)`"
-tensorflow.math.real,no modifiable seedable parameters,"Returns the real part of a complex (or real) tensor.
-
-Given a tensor `input`, this operation returns a tensor of type `float` that
-is the real part of each element in `input` considered as a complex number.
-
-For example:
-
-```python
-x = tf.constant([-2.25 + 4.75j, 3.25 + 5.75j])
-tf.math.real(x)  # [-2.25, 3.25]
-```
-
-If `input` is already real, it is returned unchanged.
-
-Args:
-  input: A `Tensor`. Must have numeric type.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `float32` or `float64`."
 tensorflow.math.segment_max,doc indicates side-effect/external-dependency keyword (\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\b),"Computes the maximum along segments of a tensor.
 
 Read
@@ -30323,46 +29829,6 @@ Args:
 Returns:
   A `Tensor` with the same shape of `targets` with type of `bool`. Each
     element specifies if the target falls into top-k predictions."
-tensorflow.nn.isotonic_regression,no modifiable seedable parameters,"Solves isotonic regression problems along the given axis.
-
-For each vector x, the problem solved is
-
-$$\argmin_{y_1 >= y_2 >= ... >= y_n} \sum_i (x_i - y_i)^2.$$
-
-As the solution is component-wise constant, a second tensor is returned that
-encodes the segments. The problems are solved over the given axis.
-
-Consider the following example, where we solve a batch of two problems. The
-first input is [3, 1, 2], while the second [1, 3, 4] (as the axis is 1).
->>> x = tf.constant([[3, 1, 2], [1, 3, 4]], dtype=tf.float32)
->>> y, segments = tf.nn.isotonic_regression(x, axis=1)
->>> y  # The solution.
-<tf.Tensor: shape=(2, 3), dtype=float32, numpy=
-array([[3.       , 1.5      , 1.5      ],
-       [2.6666667, 2.6666667, 2.6666667]], dtype=float32)>
-
-Note that the first solution has two blocks [2] and [1.5, 1.5]. The second
-solution is constant, and thus has a single segment. These segments are
-exactly what the second returned tensor encodes:
-
->>> segments
-<tf.Tensor: shape=(2, 3), dtype=int32, numpy=
-array([[0, 1, 1],
-       [0, 0, 0]], dtype=int32)>
-
-
-Args:
-  inputs: A tensor holding the inputs.
-  decreasing: If set to False, the inequalities in the optimizing constrained
-    are flipped.
-  axis: The axis along which the problems should be solved.
-
-Returns:
-  output: The solutions, same shape as type as the input.
-  segments: An int32 tensor, same shape as the input indicating the segments
-    that have the same value. Specifically, those positions that have the same
-    value correspond to the same segment. These values start at zero, and are
-    monotonously increasing for each solution."
 tensorflow.nn.learned_unigram_candidate_sampler,required param 'num_true' lacks constraint/type/shape/value detail,"Samples a set of classes from a distribution learned during training.
 
 This operation randomly samples a tensor of sampled classes
@@ -32392,63 +31858,6 @@ Args:
 
 Returns:
     Python dict which contains the configuration of the optimizer."
-tensorflow.quantization.fake_quant_with_min_max_vars,"missing required param descriptions for: min, max","Fake-quantize the 'inputs' tensor of type float via global float scalars
-
-Fake-quantize the `inputs` tensor of type float via global float scalars
-`min` and `max` to `outputs` tensor of same shape as `inputs`.
-
-Attributes
-
-*   `[min; max]` define the clamping range for the `inputs` data.
-*   `inputs` values are quantized into the quantization range (
-`[0; 2^num_bits - 1]` when `narrow_range` is false and `[1; 2^num_bits - 1]`
-when it is true) and then de-quantized and output as floats in `[min; max]`
-interval.
-*   `num_bits` is the bitwidth of the quantization; between 2 and 16, inclusive.
-
-Before quantization, `min` and `max` values are adjusted with the following
-logic.
-It is suggested to have `min <= 0 <= max`. If `0` is not in the range of values,
-the behavior can be unexpected:
-
-*   If `0 < min < max`: `min_adj = 0` and `max_adj = max - min`.
-*   If `min < max < 0`: `min_adj = min - max` and `max_adj = 0`.
-*   If `min <= 0 <= max`: `scale = (max - min) / (2^num_bits - 1) `,
-`min_adj = scale * round(min / scale)` and `max_adj = max + min_adj - min`.
-
-This operation has a gradient and thus allows for training `min` and `max`
-values.
-
->>> constant_input = tf.constant([[1.2, -0.3, 0.7], [2.1, 0.5, -1.0]], dtype=tf.float32)
->>>
->>> min_val = -0.5
->>> max_val = 0.8
->>> num_bits = 8
->>> narrow_range = False #False:for the quantization range [0; 2^num_bits - 1]
->>>
->>> quantized_data = tf.quantization.fake_quant_with_min_max_vars(
-...   inputs=constant_input, min=min_val, max=max_val, num_bits=num_bits, narrow_range=narrow_range
-... )
->>>
->>> print(""Input:\n"", constant_input.numpy())
-Input:
-[[ 1.2 -0.3  0.7]
-[ 2.1  0.5 -1. ]]
->>> print(""Output:\n"", quantized_data.numpy())
-Output:
-[[ 0.8003921 -0.3007843  0.6984313]
-[ 0.8003921  0.4996078 -0.4996078]]
-
-Args:
-  inputs: A `Tensor` of type `float32`.
-  min: A `Tensor` of type `float32`.
-  max: A `Tensor` of type `float32`.
-  num_bits: An optional `int`. Defaults to `8`.
-  narrow_range: An optional `bool`. Defaults to `False`.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `float32`."
 tensorflow.quantization.quantize_and_dequantize,required param 'input_min' not fuzzable: type unclear / not constructable,"Quantizes then dequantizes a tensor. (deprecated)
 
 Deprecated: THIS FUNCTION IS DEPRECATED. It will be removed in a future version.
@@ -32567,7 +31976,7 @@ tensorflow.queue.RandomShuffleQueue,classes/exceptions are excluded,"A queue imp
 
 See `tf.queue.QueueBase` for a description of the methods on
 this class."
-tensorflow.ragged.cross,no modifiable seedable parameters,"Generates feature cross from a list of tensors.
+tensorflow.ragged.cross,return not meaningful/capturable data-form,"Generates feature cross from a list of tensors.
 
 The input tensors must have `rank=2`, and must all have the same number of
 rows.  The result is a `RaggedTensor` with the same number of rows as the
@@ -70901,42 +70310,6 @@ Returns:
   A `SparseTensor` whose shape is the same rank as `a` and `b`, and all but
   the last dimension the same. Elements along the last dimension contain the
   unions."
-tensorflow.signal.fft,no modifiable seedable parameters,"Fast Fourier transform.
-
-Computes the 1-dimensional discrete Fourier transform over the inner-most
-dimension of `input`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
-    A complex tensor.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
-tensorflow.signal.fft2d,no modifiable seedable parameters,"2D fast Fourier transform.
-
-Computes the 2-dimensional discrete Fourier transform over the inner-most
-2 dimensions of `input`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
-    A complex tensor.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
-tensorflow.signal.fft3d,no modifiable seedable parameters,"3D fast Fourier transform.
-
-Computes the 3-dimensional discrete Fourier transform over the inner-most 3
-dimensions of `input`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
-    A complex tensor.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
 tensorflow.signal.fftnd,missing required param descriptions for: input_tensor,"ND fast Fourier transform.
 
 Computes the n-dimensional discrete Fourier transform over
@@ -71015,79 +70388,6 @@ Returns:
 Raises:
   ValueError: If `frame_length`, `frame_step`, `pad_value`, or `axis` are not
     scalar."
-tensorflow.signal.idct,no modifiable seedable parameters,"Computes the 1D [Inverse Discrete Cosine Transform (DCT)][idct] of `input`.
-
-Currently Types I, II, III, IV are supported. Type III is the inverse of
-Type II, and vice versa.
-
-Note that you must re-normalize by 1/(2n) to obtain an inverse if `norm` is
-not `'ortho'`. That is:
-`signal == idct(dct(signal)) * 0.5 / signal.shape[-1]`.
-When `norm='ortho'`, we have:
-`signal == idct(dct(signal, norm='ortho'), norm='ortho')`.
-
-@compatibility(scipy)
-Equivalent to [scipy.fftpack.idct]
- (https://docs.scipy.org/doc/scipy-1.4.0/reference/generated/scipy.fftpack.idct.html)
- for Type-I, Type-II, Type-III and Type-IV DCT.
-@end_compatibility
-
-Args:
-  input: A `[..., samples]` `float32`/`float64` `Tensor` containing the
-    signals to take the DCT of.
-  type: The IDCT type to perform. Must be 1, 2, 3 or 4.
-  n: For future expansion. The length of the transform. Must be `None`.
-  axis: For future expansion. The axis to compute the DCT along. Must be `-1`.
-  norm: The normalization to apply. `None` for no normalization or `'ortho'`
-    for orthonormal normalization.
-  name: An optional name for the operation.
-
-Returns:
-  A `[..., samples]` `float32`/`float64` `Tensor` containing the IDCT of
-  `input`.
-
-Raises:
-  ValueError: If `type` is not `1`, `2` or `3`, `n` is not `None, `axis` is
-    not `-1`, or `norm` is not `None` or `'ortho'`.
-
-[idct]:
-https://en.wikipedia.org/wiki/Discrete_cosine_transform#Inverse_transforms"
-tensorflow.signal.ifft,no modifiable seedable parameters,"Inverse fast Fourier transform.
-
-Computes the inverse 1-dimensional discrete Fourier transform over the
-inner-most dimension of `input`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
-    A complex tensor.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
-tensorflow.signal.ifft2d,no modifiable seedable parameters,"Inverse 2D fast Fourier transform.
-
-Computes the inverse 2-dimensional discrete Fourier transform over the
-inner-most 2 dimensions of `input`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
-    A complex tensor.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
-tensorflow.signal.ifft3d,no modifiable seedable parameters,"Inverse 3D fast Fourier transform.
-
-Computes the inverse 3-dimensional discrete Fourier transform over the
-inner-most 3 dimensions of `input`.
-
-Args:
-  input: A `Tensor`. Must be one of the following types: `complex64`, `complex128`.
-    A complex tensor.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor`. Has the same type as `input`."
 tensorflow.signal.ifftnd,missing required param descriptions for: input_tensor,"ND inverse fast Fourier transform.
 
 Computes the n-dimensional inverse discrete Fourier transform over designated
@@ -72793,7 +72093,7 @@ Returns:
 
 Raises:
   TypeError: If `sp_input` is not a `SparseTensor`."
-tensorflow.strings.bytes_split,no modifiable seedable parameters,"Split string elements of `input` into bytes.
+tensorflow.strings.bytes_split,return not meaningful/capturable data-form,"Split string elements of `input` into bytes.
 
 Examples:
 
@@ -72908,19 +72208,6 @@ Raises:
 Returns:
   A `RaggedTensor` of rank `N+1`, the strings split according to the
   delimiter."
-tensorflow.strings.strip,no modifiable seedable parameters,"Strip leading and trailing whitespaces from the Tensor.
-
-Examples:
-
->>> tf.strings.strip([""\nTensorFlow"", ""     The python library    ""]).numpy()
-array([b'TensorFlow', b'The python library'], dtype=object)
-
-Args:
-  input: A `Tensor` of type `string`. A string `Tensor` of any shape.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `string`."
 tensorflow.strings.to_hash_bucket_strong,required param 'key' not fuzzable: non-fuzzable type cue: function,"Converts each string in the input Tensor to its hash mod by a number of buckets.
 
 The hash function is deterministic on the content of the string within the
@@ -73031,33 +72318,6 @@ Returns:
 [[71, 246, 246, 100, 110, 105, 103, 104, 116], [128522]]
 >>> result[1].to_list()  # offsets
 [[0, 1, 3, 5, 6, 7, 8, 9, 10], [0]]"
-tensorflow.strings.unicode_script,no modifiable seedable parameters,"Determine the script codes of a given tensor of Unicode integer code points.
-
-This operation converts Unicode code points to script codes corresponding to
-each code point. Script codes correspond to International Components for
-Unicode (ICU) UScriptCode values.
-
-See
-[ICU project docs](http://icu-project.org/apiref/icu4c/uscript_8h.html)
-for more details on script codes.
-
-For an example, see the unicode strings guide on [unicode scripts]
-(https://www.tensorflow.org/tutorials/load_data/unicode#representing_unicode).
-
-Returns -1 (USCRIPT_INVALID_CODE) for invalid codepoints. Output shape will
-match input shape.
-
-Examples:
-
->>> tf.strings.unicode_script([1, 31, 38])
-<tf.Tensor: shape=(3,), dtype=int32, numpy=array([0, 0, 0], dtype=int32)>
-
-Args:
-  input: A `Tensor` of type `int32`. A Tensor of int32 Unicode code points.
-  name: A name for the operation (optional).
-
-Returns:
-  A `Tensor` of type `int32`."
 tensorflow.strings.unicode_split,return description too vague / predicate-like,"Splits each string in `input` into a sequence of Unicode code points.
 
 `result[i1...iN, j]` is the substring of `input[i1...iN]` that encodes its
@@ -95521,7 +94781,7 @@ Args:
     column-major instead of row-major order.
   use_xla_spmd: Boolean when True, will use XLA SPMD instead of
     DTensor SPMD."
-tensorflow.experimental.dtensor.default_mesh,missing required param descriptions for: mesh,"Sets the default DTensor device mesh to use for enclosed functions.
+tensorflow.experimental.dtensor.default_mesh,no modifiable seedable parameters,"Sets the default DTensor device mesh to use for enclosed functions.
 
 This function returns a scope. All the ops and tf.functions in this scope will
 default to this DTensor mesh if a mesh cannot be inferred from any of the
@@ -117024,7 +116284,7 @@ Output shape:
     - If `data_format` is `""channels_first""`:
       `(batch_size, depth, first_padded_axis, second_padded_axis,
       third_axis_to_pad)`"
-tensorflow.keras.layers.add,no concrete parameters; zero-arg APIs are excluded,"Functional interface to the `keras.layers.Add` layer.
+tensorflow.keras.layers.add,required param 'kwargs' not fuzzable: non-fuzzable type cue: layer,"Functional interface to the `keras.layers.Add` layer.
 
 Args:
     inputs: A list of input tensors with the same shape.
@@ -117049,7 +116309,7 @@ Usage in a Keras model:
 >>> added = keras.layers.add([x1, x2])
 >>> out = keras.layers.Dense(4)(added)
 >>> model = keras.models.Model(inputs=[input1, input2], outputs=out)"
-tensorflow.keras.layers.average,no concrete parameters; zero-arg APIs are excluded,"Functional interface to the `keras.layers.Average` layer.
+tensorflow.keras.layers.average,required param 'kwargs' not fuzzable: non-fuzzable type cue: layer,"Functional interface to the `keras.layers.Average` layer.
 
 Args:
     inputs: A list of input tensors , all of the same shape.
@@ -117075,7 +116335,7 @@ Usage in a Keras model:
 >>> y = keras.layers.average([x1, x2])
 >>> out = keras.layers.Dense(4)(y)
 >>> model = keras.models.Model(inputs=[input1, input2], outputs=out)"
-tensorflow.keras.layers.concatenate,no modifiable seedable parameters,"Functional interface to the `Concatenate` layer.
+tensorflow.keras.layers.concatenate,required param 'kwargs' not fuzzable: non-fuzzable type cue: layer,"Functional interface to the `Concatenate` layer.
 
 Args:
     inputs: A list of input tensors.
@@ -117109,7 +116369,7 @@ Args:
 
 Returns:
     A tensor, the dot product of the samples from the inputs."
-tensorflow.keras.layers.maximum,no concrete parameters; zero-arg APIs are excluded,"Functional interface to the `keras.layers.Maximum` layer.
+tensorflow.keras.layers.maximum,required param 'kwargs' not fuzzable: non-fuzzable type cue: layer,"Functional interface to the `keras.layers.Maximum` layer.
 
 Args:
     inputs: A list of input tensors , all of the same shape.
@@ -117135,7 +116395,7 @@ Usage in a Keras model:
 >>> y = keras.layers.maximum([x1, x2])
 >>> out = keras.layers.Dense(4)(y)
 >>> model = keras.models.Model(inputs=[input1, input2], outputs=out)"
-tensorflow.keras.layers.minimum,no concrete parameters; zero-arg APIs are excluded,"Functional interface to the `keras.layers.Minimum` layer.
+tensorflow.keras.layers.minimum,required param 'kwargs' not fuzzable: non-fuzzable type cue: layer,"Functional interface to the `keras.layers.Minimum` layer.
 
 Args:
     inputs: A list of input tensors , all of the same shape.
@@ -117161,7 +116421,7 @@ Usage in a Keras model:
 >>> y = keras.layers.minimum([x1, x2])
 >>> out = keras.layers.Dense(4)(y)
 >>> model = keras.models.Model(inputs=[input1, input2], outputs=out)"
-tensorflow.keras.layers.multiply,no concrete parameters; zero-arg APIs are excluded,"Functional interface to the `keras.layers.Multiply` layer.
+tensorflow.keras.layers.multiply,required param 'kwargs' not fuzzable: non-fuzzable type cue: layer,"Functional interface to the `keras.layers.Multiply` layer.
 
 Args:
     inputs: A list of input tensors , all of the same shape.
@@ -117194,7 +116454,7 @@ Args:
 
 Returns:
     Python dict which contains the configuration of the layer."
-tensorflow.keras.layers.subtract,no concrete parameters; zero-arg APIs are excluded,"Functional interface to the `keras.layers.Subtract` layer.
+tensorflow.keras.layers.subtract,required param 'kwargs' not fuzzable: non-fuzzable type cue: layer,"Functional interface to the `keras.layers.Subtract` layer.
 
 Args:
     inputs: A list of input tensors of size 2, each tensor of
@@ -121478,7 +120738,7 @@ Note:
 
 Returns:
     Vector cross product(s)."
-tensorflow.keras.ops.ctc_decode,return description too vague / predicate-like,"Decodes the output of a CTC model.
+tensorflow.keras.ops.ctc_decode,required param 'inputs' not fuzzable: non-fuzzable type cue: model,"Decodes the output of a CTC model.
 
 Args:
     inputs: A tensor of shape `(batch_size, max_length, num_classes)`
@@ -121509,7 +120769,7 @@ Returns:
         each sequence. If `strategy=""beam_seatch""`, a tensor of shape
         `(batch_size, top_paths)` representing the log probability for each
         sequence."
-tensorflow.keras.ops.ctc_loss,no documented return value,"CTC (Connectionist Temporal Classification) loss.
+tensorflow.keras.ops.ctc_loss,required param 'output' not fuzzable: non-fuzzable type cue: model,"CTC (Connectionist Temporal Classification) loss.
 
 Args:
     target: A tensor of shape `(batch_size, max_length)` containing
@@ -139746,7 +139006,7 @@ Returns:
 Raises:
   ValueError: When giving unsupported dtype and no initializer or when
     trainable has been set to True with synchronization set as `ON_READ`."
-tensorflow.nn.RNNCellDeviceWrapper.apply,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellDeviceWrapper.apply,receiver-like owner 'RNNCellDeviceWrapper',"Deprecated, do NOT use!
 
 This is an alias of `self.__call__`.
 
@@ -139911,7 +139171,7 @@ Returns:
 
 Raises:
   RuntimeError: If called in Eager mode."
-tensorflow.nn.RNNCellDeviceWrapper.get_losses_for,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellDeviceWrapper.get_losses_for,receiver-like owner 'RNNCellDeviceWrapper',"Deprecated, do NOT use!
 
 Retrieves losses relevant to a specific set of inputs.
 
@@ -139958,7 +139218,7 @@ Returns:
 
 Raises:
   RuntimeError: If called in Eager mode."
-tensorflow.nn.RNNCellDeviceWrapper.get_updates_for,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellDeviceWrapper.get_updates_for,receiver-like owner 'RNNCellDeviceWrapper',"Deprecated, do NOT use!
 
 Retrieves updates relevant to a specific set of inputs.
 
@@ -140463,7 +139723,7 @@ Returns:
 Raises:
   ValueError: When giving unsupported dtype and no initializer or when
     trainable has been set to True with synchronization set as `ON_READ`."
-tensorflow.nn.RNNCellDropoutWrapper.apply,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellDropoutWrapper.apply,receiver-like owner 'RNNCellDropoutWrapper',"Deprecated, do NOT use!
 
 This is an alias of `self.__call__`.
 
@@ -140628,7 +139888,7 @@ Returns:
 
 Raises:
   RuntimeError: If called in Eager mode."
-tensorflow.nn.RNNCellDropoutWrapper.get_losses_for,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellDropoutWrapper.get_losses_for,receiver-like owner 'RNNCellDropoutWrapper',"Deprecated, do NOT use!
 
 Retrieves losses relevant to a specific set of inputs.
 
@@ -140675,7 +139935,7 @@ Returns:
 
 Raises:
   RuntimeError: If called in Eager mode."
-tensorflow.nn.RNNCellDropoutWrapper.get_updates_for,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellDropoutWrapper.get_updates_for,receiver-like owner 'RNNCellDropoutWrapper',"Deprecated, do NOT use!
 
 Retrieves updates relevant to a specific set of inputs.
 
@@ -141181,7 +140441,7 @@ Returns:
 Raises:
   ValueError: When giving unsupported dtype and no initializer or when
     trainable has been set to True with synchronization set as `ON_READ`."
-tensorflow.nn.RNNCellResidualWrapper.apply,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellResidualWrapper.apply,receiver-like owner 'RNNCellResidualWrapper',"Deprecated, do NOT use!
 
 This is an alias of `self.__call__`.
 
@@ -141346,7 +140606,7 @@ Returns:
 
 Raises:
   RuntimeError: If called in Eager mode."
-tensorflow.nn.RNNCellResidualWrapper.get_losses_for,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellResidualWrapper.get_losses_for,receiver-like owner 'RNNCellResidualWrapper',"Deprecated, do NOT use!
 
 Retrieves losses relevant to a specific set of inputs.
 
@@ -141393,7 +140653,7 @@ Returns:
 
 Raises:
   RuntimeError: If called in Eager mode."
-tensorflow.nn.RNNCellResidualWrapper.get_updates_for,no concrete parameters; zero-arg APIs are excluded,"Deprecated, do NOT use!
+tensorflow.nn.RNNCellResidualWrapper.get_updates_for,receiver-like owner 'RNNCellResidualWrapper',"Deprecated, do NOT use!
 
 Retrieves updates relevant to a specific set of inputs.
 
@@ -149323,7 +148583,7 @@ Now if we try calling it again:
 get_mixed_flavor(Apple(), Mango()) # Traces a new concrete function
 get_mixed_flavor(Apple(), Mango()) # Re-uses the traced concrete function
 ```"
-tensorflow.xla.experimental.compile,no modifiable seedable parameters,"Builds an operator that compiles and runs `computation` with XLA. (deprecated)
+tensorflow.xla.experimental.compile,required param 'computation' not fuzzable: non-fuzzable type cue: function,"Builds an operator that compiles and runs `computation` with XLA. (deprecated)
 
 Deprecated: THIS FUNCTION IS DEPRECATED. It will be removed in a future version.
 Instructions for updating:
@@ -163695,7 +162955,7 @@ tensorflow.experimental.dtensor.Layout.from_device,missing required param descri
 tensorflow.experimental.dtensor.Layout.from_proto,missing/placeholder/too short doc,Creates an instance from a LayoutProto.
 tensorflow.experimental.dtensor.Layout.from_single_device_mesh,missing required param descriptions for: mesh,Constructs a single device layout from a single device mesh.
 tensorflow.experimental.dtensor.Layout.from_string,missing/placeholder/too short doc,Creates an instance from a human-readable string.
-tensorflow.experimental.dtensor.Layout.global_shape_from_local_shape,no concrete parameters; zero-arg APIs are excluded,"global_shape_from_local_shape(self: tensorflow.python._pywrap_dtensor_device.Layout, local_shape: list[int]) -> tuple
+tensorflow.experimental.dtensor.Layout.global_shape_from_local_shape,missing required param descriptions for: local_shape,"global_shape_from_local_shape(self: tensorflow.python._pywrap_dtensor_device.Layout, local_shape: list[int]) -> tuple
 
 Returns the global shape computed from this local shape."
 tensorflow.experimental.dtensor.Layout.inner_sharded,missing/placeholder/too short doc,Returns a layout sharded on inner dimension.
@@ -163706,11 +162966,11 @@ Returns True if all tensor axes are replicated."
 tensorflow.experimental.dtensor.Layout.is_single_device,no concrete parameters; zero-arg APIs are excluded,"is_single_device(self: tensorflow.python._pywrap_dtensor_device.Layout) -> bool
 
 Returns True if the Layout represents a non-distributed device."
-tensorflow.experimental.dtensor.Layout.local_shape_from_global_shape,no concrete parameters; zero-arg APIs are excluded,"local_shape_from_global_shape(self: tensorflow.python._pywrap_dtensor_device.Layout, global_shape: list[int]) -> tuple
+tensorflow.experimental.dtensor.Layout.local_shape_from_global_shape,missing required param descriptions for: global_shape,"local_shape_from_global_shape(self: tensorflow.python._pywrap_dtensor_device.Layout, global_shape: list[int]) -> tuple
 
 Returns the local shape computed from this global shape."
 tensorflow.experimental.dtensor.Layout.mesh,missing/placeholder/too short doc,
-tensorflow.experimental.dtensor.Layout.num_shards,no concrete parameters; zero-arg APIs are excluded,"num_shards(self: tensorflow.python._pywrap_dtensor_device.Layout, idx: int) -> int
+tensorflow.experimental.dtensor.Layout.num_shards,missing required param descriptions for: idx,"num_shards(self: tensorflow.python._pywrap_dtensor_device.Layout, idx: int) -> int
 
 Returns the number of shards for tensor dimension `idx`."
 tensorflow.experimental.dtensor.Layout.offset_to_shard,no concrete parameters; zero-arg APIs are excluded,Mapping from offset in a flattened list to shard index.
@@ -163730,16 +162990,16 @@ tensorflow.experimental.dtensor.Layout.type,missing/placeholder/too short doc,
 tensorflow.experimental.dtensor.Mesh.as_proto,no concrete parameters; zero-arg APIs are excluded,"as_proto(self: tensorflow.python._pywrap_dtensor_device.Mesh) -> tensorflow::dtensor::MeshProto
 
 Returns the MeshProto protobuf message."
-tensorflow.experimental.dtensor.Mesh.contains_dim,no concrete parameters; zero-arg APIs are excluded,"contains_dim(self: tensorflow.python._pywrap_dtensor_device.Mesh, dim_name: str) -> bool
+tensorflow.experimental.dtensor.Mesh.contains_dim,missing required param descriptions for: dim_name,"contains_dim(self: tensorflow.python._pywrap_dtensor_device.Mesh, dim_name: str) -> bool
 
 Returns True if a Mesh contains the given dimension name."
 tensorflow.experimental.dtensor.Mesh.coords,missing required param descriptions for: device_idx,Converts the device index into a tensor of mesh coordinates.
-tensorflow.experimental.dtensor.Mesh.device_location,no concrete parameters; zero-arg APIs are excluded,"device_location(self: tensorflow.python._pywrap_dtensor_device.Mesh, arg0: int) -> list[int]"
+tensorflow.experimental.dtensor.Mesh.device_location,missing required param descriptions for: arg0,"device_location(self: tensorflow.python._pywrap_dtensor_device.Mesh, arg0: int) -> list[int]"
 tensorflow.experimental.dtensor.Mesh.device_type,no concrete parameters; zero-arg APIs are excluded,"device_type(self: tensorflow.python._pywrap_dtensor_device.Mesh) -> str
 
 Returns the device_type of a Mesh."
 tensorflow.experimental.dtensor.Mesh.dim_names,missing/placeholder/too short doc,
-tensorflow.experimental.dtensor.Mesh.dim_size,no concrete parameters; zero-arg APIs are excluded,"dim_size(self: tensorflow.python._pywrap_dtensor_device.Mesh, dim_name: str) -> int
+tensorflow.experimental.dtensor.Mesh.dim_size,missing required param descriptions for: dim_name,"dim_size(self: tensorflow.python._pywrap_dtensor_device.Mesh, dim_name: str) -> int
 
 Returns the size of mesh dimension."
 tensorflow.experimental.dtensor.Mesh.from_device,missing/placeholder/too short doc,Constructs a single device mesh from a device string.
@@ -206837,7 +206097,7 @@ Examples:
 >>> y = ops.image.hsv_to_rgb(x, data_format=""channels_first"")
 >>> y.shape
 (2, 3, 4, 4)"
-tensorflow.keras.ops.image.map_coordinates,no modifiable seedable parameters,"Map the input array to new coordinates by interpolation.
+tensorflow.keras.ops.image.map_coordinates,required param 'coordinates' not fuzzable: type unclear / not constructable,"Map the input array to new coordinates by interpolation.
 
 Note that interpolation near boundaries differs from the scipy function,
 because we fixed an outstanding bug
@@ -207293,7 +206553,7 @@ Example:
 array([[-3.6624e-01, -3.6624e-01, -3.6624e-01],
        [-4.6445e-09,  0.0000e+00, -1.8578e-08],
        [ 3.6624e-01,  3.6624e-01,  3.6624e-01]])"
-tensorflow.keras.ops.nn.ctc_decode,return description too vague / predicate-like,"Decodes the output of a CTC model.
+tensorflow.keras.ops.nn.ctc_decode,required param 'inputs' not fuzzable: non-fuzzable type cue: model,"Decodes the output of a CTC model.
 
 Args:
     inputs: A tensor of shape `(batch_size, max_length, num_classes)`
@@ -207324,7 +206584,7 @@ Returns:
         each sequence. If `strategy=""beam_seatch""`, a tensor of shape
         `(batch_size, top_paths)` representing the log probability for each
         sequence."
-tensorflow.keras.ops.nn.ctc_loss,no documented return value,"CTC (Connectionist Temporal Classification) loss.
+tensorflow.keras.ops.nn.ctc_loss,required param 'output' not fuzzable: non-fuzzable type cue: model,"CTC (Connectionist Temporal Classification) loss.
 
 Args:
     target: A tensor of shape `(batch_size, max_length)` containing

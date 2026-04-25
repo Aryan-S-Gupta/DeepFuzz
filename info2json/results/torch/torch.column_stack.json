@@ -1,0 +1,25 @@
+{
+  "api_name": "column_stack",
+  "module_path": "torch",
+  "params": {
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [
+    "tensors must not be empty",
+    "each tensor in tensors must have compatible shapes after reshaping to (t.numel(), 1)"
+  ]
+}

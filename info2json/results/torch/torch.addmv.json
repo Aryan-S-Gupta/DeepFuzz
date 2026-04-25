@@ -1,0 +1,72 @@
+{
+  "api_name": "addmv",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "vector to be added",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mat": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "matrix to be matrix multiplied",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "vec": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "vector to be matrix multiplied",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "beta": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "multiplier for :attr:`input` (:math:`\\beta`)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "multiplier for :math:`mat @ vec` (:math:`\\alpha`)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

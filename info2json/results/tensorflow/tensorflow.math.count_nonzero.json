@@ -1,0 +1,66 @@
+{
+  "api_name": "count_nonzero",
+  "module_path": "tensorflow.math",
+  "params": {
+    "input": {
+      "type": "string|bool|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The tensor to reduce. Should be of numeric type, `bool`, or `string`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int32 or int64 array_like",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input), rank(input))`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "input, axis, and keepdims must be compatible for reduction"
+      ]
+    },
+    "keepdims": {
+      "type": "bool|dtype",
+      "size": "",
+      "default": "tf",
+      "flag": "Optional",
+      "description": "If true, retains reduced dimensions with length 1. dtype: The output dtype; defaults to `tf.int64`.",
+      "dtype_candidates": [
+        "bool",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "input, axis, and keepdims must be compatible for reduction"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "The reduced tensor (number of nonzero values)."
+  },
+  "constraints": [
+    "input, axis, and keepdims must be compatible for reduction"
+  ]
+}

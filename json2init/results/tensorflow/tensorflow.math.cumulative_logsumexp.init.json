@@ -1,0 +1,155 @@
+{
+  "api_full_name": "tensorflow.math.cumulative_logsumexp",
+  "api_name": "cumulative_logsumexp",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.cumulative_logsumexp",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `float16`, `float32`, `float64`.",
+        "dtype_candidates": [
+          "float16",
+          "float32",
+          "float64"
+        ],
+        "enum_values": [
+          "float16",
+          "float32",
+          "float64"
+        ],
+        "constraints": [
+          "x must be one of float16, float32, float64"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "0)",
+        "flag": "Optional",
+        "description": "A `Tensor` of type `int32` or `int64` (default: 0). Must be in the range `[-rank(x), rank(x))`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "axis must satisfy -rank(x) <= axis < rank(x)"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "exclusive": {
+      "name": "exclusive",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "If `True`, perform exclusive cumulative log-sum-exp.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "if `true`",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: if `true`"
+    },
+    "reverse": {
+      "name": "reverse",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "If `True`, performs the cumulative log-sum-exp in the reverse direction.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "if `true`",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: if `true`"
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same shape and type as `x`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'exclusive' unresolved: unhandled chosen type: if `true`",
+    "required param 'reverse' unresolved: unhandled chosen type: if `true`"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.cumulative_logsumexp.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

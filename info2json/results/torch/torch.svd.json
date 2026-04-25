@@ -1,0 +1,56 @@
+{
+  "api_name": "svd",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor of size `(*, m, n)` where `*` is zero or more batch dimensions consisting of `(m, n)` matrices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "some": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "controls whether to compute the reduced or full decomposition, and consequently, the shape of returned `U` and `V`. Default: `True`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "compute_uv": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "controls whether to compute `U` and `V`. Default: `True`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tuple of tensors",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

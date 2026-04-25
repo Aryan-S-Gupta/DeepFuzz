@@ -1,0 +1,89 @@
+{
+  "api_name": "random_index_shuffle",
+  "module_path": "tensorflow",
+  "params": {
+    "index": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `uint32`, `int64`, `uint64`. A scalar tensor or a vector of dtype `dtype`. The index (or indices) to be shuffled. Must be within [0, max_index].",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "uint32",
+        "uint64"
+      ],
+      "enum_values": [
+        "int32",
+        "uint32",
+        "int64",
+        "uint64"
+      ],
+      "constraints": [
+        "index must be one of int32, uint32, int64, uint64"
+      ]
+    },
+    "seed": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `uint32`, `int64`, `uint64`. A tensor of dtype `Tseed` and shape [3] or [n, 3]. The random seed.",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "uint32",
+        "uint64"
+      ],
+      "enum_values": [
+        "int32",
+        "uint32",
+        "int64",
+        "uint64",
+        "Tseed"
+      ],
+      "constraints": [
+        "seed must be one of int32, uint32, int64, uint64, Tseed"
+      ]
+    },
+    "max_index": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `index`. A scalar tensor or vector of dtype `dtype`. The upper bound(s) of the interval (inclusive).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "max_index must have the same dtype as index"
+      ]
+    },
+    "rounds": {
+      "type": "int|number",
+      "size": "",
+      "default": "4",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `4`. The number of rounds to use the in block cipher.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `index`."
+  },
+  "constraints": []
+}

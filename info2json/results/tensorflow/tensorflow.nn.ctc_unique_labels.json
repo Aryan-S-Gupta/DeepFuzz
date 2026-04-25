@@ -1,0 +1,32 @@
+{
+  "api_name": "ctc_unique_labels",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "labels": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor of shape [batch_size, max_label_length] padded with 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "\"ctc_unique_labels\"",
+      "flag": "Optional",
+      "description": "A name for this `Op`. Defaults to \"ctc_unique_labels\".",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "1",
+    "description": "tuple of - unique labels, tensor of shape `[batch_size, max_label_length]` - indices into unique labels, shape `[batch_size, max_label_length]`"
+  },
+  "constraints": []
+}

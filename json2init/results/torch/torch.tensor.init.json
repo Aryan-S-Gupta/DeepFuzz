@@ -1,0 +1,149 @@
+{
+  "api_full_name": "torch.tensor",
+  "api_name": "tensor",
+  "module_path": "torch",
+  "import_path": "torch.tensor",
+  "backend": "torch",
+  "params": {
+    "data": {
+      "name": "data",
+      "spec": {
+        "type": "tuple|list|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Initial data for the tensor. Can be a list, tuple, NumPy ``ndarray``, scalar, and other types.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "tensor|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the device of the constructed tensor. If None and data is a tensor then the device of data is used. If None and data is not a tensor then the result tensor is constructed on the current device.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "requires_grad": {
+      "name": "requires_grad",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "pin_memory": {
+      "name": "pin_memory",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If set, returned tensor would be allocated in the pinned memory. Works only for CPU tensors. Default: ``False``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "Tensor",
+      "shape": [],
+      "dtype": "float32",
+      "device": "cpu",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.tensor.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

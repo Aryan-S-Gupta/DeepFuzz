@@ -1,0 +1,32 @@
+{
+  "api_name": "compress_nd",
+  "module_path": "torch.functional.F.np.ma",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, MaskedArray The array to operate on. If not a MaskedArray instance (or if no array elements are masked), `x` is interpreted as a MaskedArray with `mask` set to `nomask`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "tuple of ints or int, optional Which dimensions to suppress slices from can be configured with this parameter. - If axis is a tuple of ints, those are the axes to suppress slices from. - If axis is an int, then that is the only axis to suppress slices from. - If axis is None, all axis are selected.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The compressed array."
+  },
+  "constraints": []
+}

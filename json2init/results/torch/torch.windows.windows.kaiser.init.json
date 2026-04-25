@@ -1,0 +1,213 @@
+{
+  "api_full_name": "torch.windows.windows.kaiser",
+  "api_name": "kaiser",
+  "module_path": "torch.windows.windows",
+  "import_path": "torch.windows.windows.kaiser",
+  "backend": "torch",
+  "params": {
+    "M": {
+      "name": "M",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the length of the window. In other words, the number of points of the returned window.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "beta": {
+      "name": "beta",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "12",
+        "flag": "Optional",
+        "description": "shape parameter for the window. Must be non-negative. Default: 12.0",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "beta must be non-negative"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "sym": {
+      "name": "sym",
+      "spec": {
+        "type": "bool|tensor|dtype",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "If `False`, returns a periodic window suitable for use in spectral analysis. If `True`, returns a symmetric window suitable for use in filter design. Default: `True`. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. Default: if ``None``, uses a global default (see :func:`torch.set_default_dtype`).",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "layout": {
+      "name": "layout",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "torch",
+        "flag": "Optional",
+        "description": "the desired layout of returned Tensor. Default: ``torch.strided``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "tensor|device",
+        "size": "",
+        "default": "if ``None``, uses the current device for the default tensor type",
+        "flag": "Optional",
+        "description": "the desired device of returned tensor. Default: if ``None``, uses the current device for the default tensor type (see :func:`torch.set_default_device`). :attr:`device` will be the CPU for CPU tensor types and the current CUDA device for CUDA tensor types.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "requires_grad": {
+      "name": "requires_grad",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If autograd should record operations on the returned tensor. Default: ``False``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "Tensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "device": "cpu",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.windows.windows.kaiser.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

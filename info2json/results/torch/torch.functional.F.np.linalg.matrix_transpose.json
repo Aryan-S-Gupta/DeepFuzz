@@ -1,0 +1,25 @@
+{
+  "api_name": "matrix_transpose",
+  "module_path": "torch.functional.F.np.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "shape (..., M, N)",
+      "default": "NA",
+      "flag": "Required",
+      "description": "array_like Input array having shape (..., M, N) and whose two innermost dimensions form ``MxN`` matrices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "2 innermost dimensions form matrices",
+        "x is required"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array containing the transpose for each matrix and having shape (..., N, M)."
+  },
+  "constraints": []
+}

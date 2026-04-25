@@ -2652,7 +2652,7 @@ jax.Device.id,no concrete parameters; zero-arg APIs are excluded,"Integer ID of 
 Unique across all available devices of this type, including remote devices on multi-host platforms."
 jax.Device.live_buffers,missing/placeholder/too short doc,live_buffers(self) -> list
 jax.Device.local_hardware_id,no concrete parameters; zero-arg APIs are excluded,"Opaque hardware ID, e.g., the CUDA device number. In general, not guaranteed to be dense, and not guaranteed to be defined on all platforms."
-jax.Device.memory,no concrete parameters; zero-arg APIs are excluded,"memory(self, kind: str) -> jaxlib._jax.Memory"
+jax.Device.memory,missing required param descriptions for: kind,"memory(self, kind: str) -> jaxlib._jax.Memory"
 jax.Device.memory_stats,no concrete parameters; zero-arg APIs are excluded,"memory_stats(self) -> dict[str, int] | None
 
 Returns memory statistics for this device keyed by name. May not be implemented on all platforms, and different platforms may return different stats, or -1 for unavailable stats. 'bytes_in_use' is usually available. Intended for diagnostic use."
@@ -22670,7 +22670,7 @@ jax.numpy.unsignedinteger.trace,no parsable documented parameters aligned with s
 jax.numpy.unsignedinteger.transpose,missing required param descriptions for: axes,Scalar method identical to `ndarray.transpose`.
 jax.numpy.unsignedinteger.var,no parsable documented parameters aligned with signature,Scalar method identical to `ndarray.var`.
 jax.numpy.unsignedinteger.view,no concrete parameters; zero-arg APIs are excluded,Scalar method identical to `ndarray.view`.
-jax.profiler.ProfileData.find_plane_with_name,no concrete parameters; zero-arg APIs are excluded,"find_plane_with_name(self, name: str) -> jaxlib._profile_data.ProfilePlane"
+jax.profiler.ProfileData.find_plane_with_name,missing required param descriptions for: name,"find_plane_with_name(self, name: str) -> jaxlib._profile_data.ProfilePlane"
 jax.profiler.ProfileData.from_file,no concrete parameters; zero-arg APIs are excluded,"from_file(proto_file_path: str) -> jaxlib._profile_data.ProfileData
 
 Creates a ProfileData from a serialized XSpace proto file."
@@ -25121,7 +25121,7 @@ jax.tree_util.Partial.args,missing/placeholder/too short doc,tuple of arguments 
 jax.tree_util.Partial.func,missing/placeholder/too short doc,function object to use in future partial calls
 jax.tree_util.Partial.keywords,missing/placeholder/too short doc,dictionary of keyword arguments to future partial calls
 jax.tree_util.PyTreeDef.children,no concrete parameters; zero-arg APIs are excluded,children(self) -> list[jaxlib._jax.pytree.PyTreeDef]
-jax.tree_util.PyTreeDef.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib._jax.pytree.PyTreeDef, /) -> jaxlib._jax.pytree.PyTreeDef"
+jax.tree_util.PyTreeDef.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib._jax.pytree.PyTreeDef, /) -> jaxlib._jax.pytree.PyTreeDef"
 jax.tree_util.PyTreeDef.deserialize_using_proto,no concrete parameters; zero-arg APIs are excluded,"deserialize_using_proto(registry: jaxlib._jax.pytree.PyTreeRegistry, data: bytes) -> jaxlib._jax.pytree.PyTreeDef"
 jax.tree_util.PyTreeDef.flatten_up_to,missing/placeholder/too short doc,"flatten_up_to(self, tree: object | None) -> list"
 jax.tree_util.PyTreeDef.from_iterable_tree,missing/placeholder/too short doc,"from_iterable_tree(self, arg: object, /) -> object"
@@ -25135,7 +25135,7 @@ jax.tree_util.PyTreeDef.num_leaves,missing/placeholder/too short doc,(self) -> i
 jax.tree_util.PyTreeDef.num_nodes,missing/placeholder/too short doc,(self) -> int
 jax.tree_util.PyTreeDef.serialize_using_proto,missing/placeholder/too short doc,serialize_using_proto(self) -> bytes
 jax.tree_util.PyTreeDef.unflatten,missing/placeholder/too short doc,"unflatten(self, arg: Iterable[Any], /) -> Any"
-jax.tree_util.PyTreeDef.walk,no concrete parameters; zero-arg APIs are excluded,"walk(self, __f_node: Callable[[Any, Any], Any], __f_leaf: Callable[[_T], Any] | None, leaves: Iterable[Any], /) -> Any
+jax.tree_util.PyTreeDef.walk,"missing required param descriptions for: __f_node, __f_leaf, leaves","walk(self, __f_node: Callable[[Any, Any], Any], __f_leaf: Callable[[_T], Any] | None, leaves: Iterable[Any], /) -> Any
 
 Walk pytree, calling f_node(node, node_data) at nodes, and f_leaf at leaves"
 jax.tree_util.SequenceKey.idx,missing/placeholder/too short doc,(self) -> int
@@ -25508,7 +25508,7 @@ jax.interpreters.mlir.Token.context,missing/placeholder/too short doc,Context in
 jax.interpreters.mlir.Token.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
 Dumps a debug representation of the object to stderr."
-jax.interpreters.mlir.Token.get_name,no concrete parameters; zero-arg APIs are excluded,"get_name(self, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False) -> str
+jax.interpreters.mlir.Token.get_name,receiver-like owner 'Token',"get_name(self, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False) -> str
 get_name(self, state: jaxlib.mlir._mlir_libs._mlir.ir.AsmState) -> str
 
 Overloaded function.
@@ -25532,13 +25532,13 @@ jax.interpreters.mlir.Token.maybe_downcast,no concrete parameters; zero-arg APIs
 
 Downcasts the `Value` to a more specific kind if possible."
 jax.interpreters.mlir.Token.owner,no concrete parameters; zero-arg APIs are excluded,"Returns the owner of the value (`Operation` for results, `Block` for arguments)."
-jax.interpreters.mlir.Token.replace_all_uses_except,no concrete parameters; zero-arg APIs are excluded,"replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: jaxlib.mlir._mlir_libs._mlir.ir.Operation) -> None
+jax.interpreters.mlir.Token.replace_all_uses_except,"missing required param descriptions for: with_, exceptions","replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: jaxlib.mlir._mlir_libs._mlir.ir.Operation) -> None
 replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Operation]) -> None
 
 Replace all uses of this value with the `with` value, except for those
 in `exceptions`. `exceptions` can be either a single operation or a list of
 operations."
-jax.interpreters.mlir.Token.replace_all_uses_with,no concrete parameters; zero-arg APIs are excluded,"replace_all_uses_with(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.Value, /) -> None
+jax.interpreters.mlir.Token.replace_all_uses_with,missing required param descriptions for: arg,"replace_all_uses_with(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.Value, /) -> None
 
 Replace all uses of value with the new value, updating anything in the IR that uses `self` to use the other value instead."
 jax.interpreters.mlir.Token.set_type,missing/placeholder/too short doc,"set_type(self, type: _T)
@@ -27209,7 +27209,7 @@ with f.cache_info().  Clear the cache and statistics with f.cache_clear().
 Access the underlying function with f.__wrapped__.
 
 See:  https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)"
-jax.interpreters.traceback_util.functools.reduce,no concrete parameters; zero-arg APIs are excluded,"reduce(function, iterable[, initial], /) -> value
+jax.interpreters.traceback_util.functools.reduce,missing required param descriptions for: function,"reduce(function, iterable[, initial], /) -> value
 
 Apply a function of two arguments cumulatively to the items of an iterable, from left to right.
 
@@ -27918,22 +27918,22 @@ behave similar to `functools.lru_cache`. The cache is thread local."
 jax.interpreters.traceback_util.util.wrap_name,missing/placeholder/too short doc,
 jax.interpreters.traceback_util.util.wraps,missing required param descriptions for: wrapped,"Like functools.wraps, but with finer-grained control over the name and docstring
 of the resulting function."
-jax.interpreters.xla.Backend.buffer_from_pyval,no concrete parameters; zero-arg APIs are excluded,"buffer_from_pyval(self, argument: object, device: jaxlib._jax.Device | None = None, force_copy: bool = False, host_buffer_semantics: jaxlib._jax.HostBufferSemantics = HostBufferSemantics.ZERO_COPY) -> object"
-jax.interpreters.xla.Backend.compile,no concrete parameters; zero-arg APIs are excluded,"compile(self, computation: object, executable_devices: DeviceList, compile_options: CompileOptions = ...) -> Executable"
-jax.interpreters.xla.Backend.compile_and_load,no concrete parameters; zero-arg APIs are excluded,"compile_and_load(self, computation: object, executable_devices: DeviceList, compile_options: CompileOptions = ..., host_callbacks: Sequence[types.CapsuleType] = ...) -> LoadedExecutable
+jax.interpreters.xla.Backend.buffer_from_pyval,no parsable documented parameters aligned with signature,"buffer_from_pyval(self, argument: object, device: jaxlib._jax.Device | None = None, force_copy: bool = False, host_buffer_semantics: jaxlib._jax.HostBufferSemantics = HostBufferSemantics.ZERO_COPY) -> object"
+jax.interpreters.xla.Backend.compile,"missing required param descriptions for: computation, executable_devices","compile(self, computation: object, executable_devices: DeviceList, compile_options: CompileOptions = ...) -> Executable"
+jax.interpreters.xla.Backend.compile_and_load,"missing required param descriptions for: computation, executable_devices","compile_and_load(self, computation: object, executable_devices: DeviceList, compile_options: CompileOptions = ..., host_callbacks: Sequence[types.CapsuleType] = ...) -> LoadedExecutable
 compile_and_load(self, computation: object, executable_devices: DeviceList, compile_options: CompileOptions = ..., host_callbacks: Sequence[Callable[..., typing.Any]] = ...) -> LoadedExecutable
 compile_and_load(self, computation: bytes, executable_devices: collections.abc.Sequence, compile_options: jaxlib._jax.CompileOptions = <jaxlib._jax.CompileOptions object at 0xb3750f000>) -> jaxlib._jax.LoadedExecutable
 compile_and_load(self, computation: str, executable_devices: collections.abc.Sequence, compile_options: jaxlib._jax.CompileOptions = <jaxlib._jax.CompileOptions object at 0xb372da400>) -> jaxlib._jax.LoadedExecutable"
-jax.interpreters.xla.Backend.compile_and_load_ifrt_program,no concrete parameters; zero-arg APIs are excluded,"compile_and_load_ifrt_program(self, arg0: jaxlib._jax.ifrt_programs.Program, arg1: jaxlib._jax.ifrt_programs.CompileOptions, /) -> jaxlib._jax.LoadedExecutable"
-jax.interpreters.xla.Backend.compile_ifrt_program,no concrete parameters; zero-arg APIs are excluded,"compile_ifrt_program(self, arg0: jaxlib._jax.ifrt_programs.Program, arg1: jaxlib._jax.ifrt_programs.CompileOptions, /) -> jaxlib._jax.LoadedExecutable"
+jax.interpreters.xla.Backend.compile_and_load_ifrt_program,"missing required param descriptions for: arg0, arg1","compile_and_load_ifrt_program(self, arg0: jaxlib._jax.ifrt_programs.Program, arg1: jaxlib._jax.ifrt_programs.CompileOptions, /) -> jaxlib._jax.LoadedExecutable"
+jax.interpreters.xla.Backend.compile_ifrt_program,"missing required param descriptions for: arg0, arg1","compile_ifrt_program(self, arg0: jaxlib._jax.ifrt_programs.Program, arg1: jaxlib._jax.ifrt_programs.CompileOptions, /) -> jaxlib._jax.LoadedExecutable"
 jax.interpreters.xla.Backend.defragment,missing/placeholder/too short doc,defragment(self) -> None
-jax.interpreters.xla.Backend.deserialize_executable,no concrete parameters; zero-arg APIs are excluded,"deserialize_executable(self, serialized: bytes, executable_devices: jaxlib._jax.DeviceList, compile_options: jaxlib._jax.CompileOptions | None = None, host_callbacks: collections.abc.Sequence[types.CapsuleType] = []) -> jaxlib._jax.LoadedExecutable
+jax.interpreters.xla.Backend.deserialize_executable,"missing required param descriptions for: serialized, executable_devices","deserialize_executable(self, serialized: bytes, executable_devices: jaxlib._jax.DeviceList, compile_options: jaxlib._jax.CompileOptions | None = None, host_callbacks: collections.abc.Sequence[types.CapsuleType] = []) -> jaxlib._jax.LoadedExecutable
 deserialize_executable(self, serialized: bytes, executable_devices: jaxlib._jax.DeviceList, compile_options: jaxlib._jax.CompileOptions | None = None, host_callbacks: collections.abc.Sequence[collections.abc.Callable] = []) -> jaxlib._jax.LoadedExecutable
 deserialize_executable(self, serialized: bytes, executable_devices: collections.abc.Sequence, compile_options: jaxlib._jax.CompileOptions | None = None) -> jaxlib._jax.LoadedExecutable"
 jax.interpreters.xla.Backend.device_count,missing/placeholder/too short doc,device_count(self) -> int
-jax.interpreters.xla.Backend.device_from_local_hardware_id,no concrete parameters; zero-arg APIs are excluded,"device_from_local_hardware_id(self, arg: int, /) -> jaxlib._jax.Device"
+jax.interpreters.xla.Backend.device_from_local_hardware_id,missing required param descriptions for: arg,"device_from_local_hardware_id(self, arg: int, /) -> jaxlib._jax.Device"
 jax.interpreters.xla.Backend.devices,no concrete parameters; zero-arg APIs are excluded,devices(self) -> list[jaxlib._jax.Device]
-jax.interpreters.xla.Backend.get_default_layout,no concrete parameters; zero-arg APIs are excluded,"get_default_layout(self, dtype: numpy.dtype, shard_shape: collections.abc.Sequence, device: jaxlib._jax.Device) -> jaxlib._jax.PjRtLayout"
+jax.interpreters.xla.Backend.get_default_layout,"missing required param descriptions for: dtype, shard_shape, device","get_default_layout(self, dtype: numpy.dtype, shard_shape: collections.abc.Sequence, device: jaxlib._jax.Device) -> jaxlib._jax.PjRtLayout"
 jax.interpreters.xla.Backend.heap_profile,missing/placeholder/too short doc,heap_profile(self) -> bytes
 jax.interpreters.xla.Backend.host_id,missing/placeholder/too short doc,host_id(self) -> int
 jax.interpreters.xla.Backend.live_arrays,missing/placeholder/too short doc,live_arrays(self) -> list[Array]
@@ -27941,12 +27941,12 @@ jax.interpreters.xla.Backend.live_buffers,missing/placeholder/too short doc,live
 jax.interpreters.xla.Backend.live_executables,no concrete parameters; zero-arg APIs are excluded,live_executables(self) -> list[jaxlib._jax.LoadedExecutable]
 jax.interpreters.xla.Backend.local_device_count,missing/placeholder/too short doc,local_device_count(self) -> int
 jax.interpreters.xla.Backend.local_devices,no concrete parameters; zero-arg APIs are excluded,local_devices(self) -> list[jaxlib._jax.Device]
-jax.interpreters.xla.Backend.make_python_callback_from_host_send_and_recv,no concrete parameters; zero-arg APIs are excluded,"make_python_callback_from_host_send_and_recv(self, callable: collections.abc.Callable, operand_shapes: collections.abc.Sequence[jaxlib._jax.Shape], result_shapes: collections.abc.Sequence[jaxlib._jax.Shape], send_channel_ids: collections.abc.Sequence[int], recv_channel_ids: collections.abc.Sequence[int], serializer: collections.abc.Callable | None = None) -> object"
+jax.interpreters.xla.Backend.make_python_callback_from_host_send_and_recv,"missing required param descriptions for: callable, operand_shapes, result_shapes, send_channel_ids, recv_channel_ids","make_python_callback_from_host_send_and_recv(self, callable: collections.abc.Callable, operand_shapes: collections.abc.Sequence[jaxlib._jax.Shape], result_shapes: collections.abc.Sequence[jaxlib._jax.Shape], send_channel_ids: collections.abc.Sequence[int], recv_channel_ids: collections.abc.Sequence[int], serializer: collections.abc.Callable | None = None) -> object"
 jax.interpreters.xla.Backend.platform,missing/placeholder/too short doc,(self) -> str
 jax.interpreters.xla.Backend.platform_version,missing/placeholder/too short doc,(self) -> str
 jax.interpreters.xla.Backend.process_index,missing/placeholder/too short doc,process_index(self) -> int
 jax.interpreters.xla.Backend.runtime_type,missing/placeholder/too short doc,(self) -> str
-jax.interpreters.xla.Backend.serialize_executable,no concrete parameters; zero-arg APIs are excluded,"serialize_executable(self, arg: jaxlib._jax.LoadedExecutable, /) -> bytes"
+jax.interpreters.xla.Backend.serialize_executable,missing required param descriptions for: arg,"serialize_executable(self, arg: jaxlib._jax.LoadedExecutable, /) -> bytes"
 jax.interpreters.xla.Backend.task_id,missing/placeholder/too short doc,task_id(self) -> int
 jax.scipy.sparse.linalg.bicgstab,required param 'A' not fuzzable: non-fuzzable type cue: function,"Use Bi-Conjugate Gradient Stable iteration to solve ``Ax = b``.
 
@@ -31980,7 +31980,7 @@ If type(value) does not supply a method named __format__
 and format_spec is empty, then str(value) is returned.
 See also help('SPECIALMETHODS')."
 jax.version.subprocess.builtins.frozenset,missing/placeholder/too short doc,Build an immutable unordered collection of unique elements.
-jax.version.subprocess.builtins.getattr,no concrete parameters; zero-arg APIs are excluded,"getattr(object, name[, default]) -> value
+jax.version.subprocess.builtins.getattr,missing required param descriptions for: object,"getattr(object, name[, default]) -> value
 
 Get a named attribute from an object; getattr(x, 'y') is equivalent to x.y.
 When a default argument is given, it is returned when the attribute doesn't
@@ -32042,7 +32042,7 @@ jax.version.subprocess.builtins.issubclass,missing required param descriptions f
 A tuple, as in ``issubclass(x, (A, B, ...))``, may be given as the target to
 check against. This is equivalent to ``issubclass(x, A) or issubclass(x, B)
 or ...``."
-jax.version.subprocess.builtins.iter,no concrete parameters; zero-arg APIs are excluded,"iter(iterable) -> iterator
+jax.version.subprocess.builtins.iter,missing required param descriptions for: iterable,"iter(iterable) -> iterator
 iter(callable, sentinel) -> iterator
 
 Get an iterator from an object.  In the first form, the argument must
@@ -32062,7 +32062,7 @@ the local scope and vice-versa is *implementation dependent* and not
 covered by any backwards compatibility guarantees."
 jax.version.subprocess.builtins.map,classes/exceptions are excluded,"Make an iterator that computes the function using arguments from
 each of the iterables.  Stops when the shortest iterable is exhausted."
-jax.version.subprocess.builtins.max,no concrete parameters; zero-arg APIs are excluded,"max(iterable, *[, default=obj, key=func]) -> value
+jax.version.subprocess.builtins.max,missing required param descriptions for: iterable,"max(iterable, *[, default=obj, key=func]) -> value
 max(arg1, arg2, *args, *[, key=func]) -> value
 
 With a single iterable argument, return its biggest item. The
@@ -32070,7 +32070,7 @@ default keyword-only argument specifies an object to return if
 the provided iterable is empty.
 With two or more positional arguments, return the largest argument."
 jax.version.subprocess.builtins.memoryview,classes/exceptions are excluded,Create a new memoryview object which references the given object.
-jax.version.subprocess.builtins.min,no concrete parameters; zero-arg APIs are excluded,"min(iterable, *[, default=obj, key=func]) -> value
+jax.version.subprocess.builtins.min,missing required param descriptions for: iterable,"min(iterable, *[, default=obj, key=func]) -> value
 min(arg1, arg2, *args, *[, key=func]) -> value
 
 With a single iterable argument, return its smallest item. The
@@ -33215,23 +33215,23 @@ jax.version.subprocess.time.asctime,no concrete parameters; zero-arg APIs are ex
 Convert a time tuple to a string, e.g. 'Sat Jun 06 16:26:11 1998'.
 When the time tuple is not present, current time as returned by localtime()
 is used."
-jax.version.subprocess.time.clock_getres,no concrete parameters; zero-arg APIs are excluded,"clock_getres(clk_id) -> floating-point number
+jax.version.subprocess.time.clock_getres,missing required param descriptions for: clk_id,"clock_getres(clk_id) -> floating-point number
 
 Return the resolution (precision) of the specified clock clk_id."
 jax.version.subprocess.time.clock_gettime,missing required param descriptions for: clk_id,Return the time of the specified clock clk_id as a float.
 jax.version.subprocess.time.clock_gettime_ns,missing required param descriptions for: clk_id,Return the time of the specified clock clk_id as nanoseconds (int).
-jax.version.subprocess.time.clock_settime,no concrete parameters; zero-arg APIs are excluded,"clock_settime(clk_id, time)
+jax.version.subprocess.time.clock_settime,"missing required param descriptions for: clk_id, time","clock_settime(clk_id, time)
 
 Set the time of the specified clock clk_id."
-jax.version.subprocess.time.clock_settime_ns,no concrete parameters; zero-arg APIs are excluded,"clock_settime_ns(clk_id, time)
+jax.version.subprocess.time.clock_settime_ns,"missing required param descriptions for: clk_id, time","clock_settime_ns(clk_id, time)
 
 Set the time of the specified clock clk_id with nanoseconds."
-jax.version.subprocess.time.ctime,no concrete parameters; zero-arg APIs are excluded,"ctime(seconds) -> string
+jax.version.subprocess.time.ctime,missing required param descriptions for: seconds,"ctime(seconds) -> string
 
 Convert a time in seconds since the Epoch to a string in local time.
 This is equivalent to asctime(localtime(seconds)). When the time tuple is
 not present, current time as returned by localtime() is used."
-jax.version.subprocess.time.get_clock_info,no concrete parameters; zero-arg APIs are excluded,"get_clock_info(name: str) -> dict
+jax.version.subprocess.time.get_clock_info,missing required param descriptions for: name,"get_clock_info(name: str) -> dict
 
 Get information of the specified clock."
 jax.version.subprocess.time.gmtime,no concrete parameters; zero-arg APIs are excluded,"gmtime([seconds]) -> (tm_year, tm_mon, tm_mday, tm_hour, tm_min,
@@ -33301,7 +33301,7 @@ Commonly used format codes:
 
 Other codes may be available on your platform.  See documentation for
 the C library strftime function."
-jax.version.subprocess.time.strptime,no concrete parameters; zero-arg APIs are excluded,"strptime(string, format) -> struct_time
+jax.version.subprocess.time.strptime,"missing required param descriptions for: string, format","strptime(string, format) -> struct_time
 
 Parse a string to a time tuple according to a format specification.
 See the library reference manual for formatting codes (same as
@@ -33450,7 +33450,7 @@ exist on the overload as returned by ``get_overloads()``.
 
 See PEP 702 for details."
 jax.version.subprocess.warnings.WarningMessage,missing/placeholder/too short doc,
-jax.interpreters.mlir.ir.AffineAddExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineAddExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineAddExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineAddExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -33553,12 +33553,12 @@ Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineAddExpr.lhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineAddExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineAddExpr.rhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
-jax.interpreters.mlir.ir.AffineAddExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineAddExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineAddExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineAddExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineAddExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
-jax.interpreters.mlir.ir.AffineBinaryExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineBinaryExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineBinaryExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineBinaryExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -33660,12 +33660,12 @@ Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineBinaryExpr.lhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineBinaryExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineBinaryExpr.rhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
-jax.interpreters.mlir.ir.AffineBinaryExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineBinaryExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineBinaryExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineBinaryExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineBinaryExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
-jax.interpreters.mlir.ir.AffineCeilDivExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineCeilDivExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineCeilDivExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineCeilDivExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -33768,12 +33768,12 @@ Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineCeilDivExpr.lhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineCeilDivExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineCeilDivExpr.rhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
-jax.interpreters.mlir.ir.AffineCeilDivExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineCeilDivExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineCeilDivExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineCeilDivExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineCeilDivExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
-jax.interpreters.mlir.ir.AffineConstantExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineConstantExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineConstantExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineConstantExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -33874,13 +33874,13 @@ jax.interpreters.mlir.ir.AffineConstantExpr.get_symbol,no concrete parameters; z
 
 Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineConstantExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
-jax.interpreters.mlir.ir.AffineConstantExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineConstantExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineConstantExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineConstantExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineConstantExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
 jax.interpreters.mlir.ir.AffineConstantExpr.value,missing/placeholder/too short doc,(self) -> int
-jax.interpreters.mlir.ir.AffineDimExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineDimExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineDimExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineDimExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -33982,12 +33982,12 @@ jax.interpreters.mlir.ir.AffineDimExpr.get_symbol,no concrete parameters; zero-a
 Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineDimExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineDimExpr.position,missing/placeholder/too short doc,(self) -> int
-jax.interpreters.mlir.ir.AffineDimExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineDimExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineDimExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineDimExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineDimExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
-jax.interpreters.mlir.ir.AffineExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -34087,12 +34087,12 @@ jax.interpreters.mlir.ir.AffineExpr.get_symbol,no concrete parameters; zero-arg 
 
 Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
-jax.interpreters.mlir.ir.AffineExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
-jax.interpreters.mlir.ir.AffineFloorDivExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineFloorDivExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineFloorDivExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineFloorDivExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -34195,8 +34195,8 @@ Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineFloorDivExpr.lhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineFloorDivExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineFloorDivExpr.rhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
-jax.interpreters.mlir.ir.AffineFloorDivExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineFloorDivExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineFloorDivExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineFloorDivExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineFloorDivExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
@@ -34217,21 +34217,21 @@ Gets an empty affine map."
 jax.interpreters.mlir.ir.AffineMap.get_identity,no concrete parameters; zero-arg APIs are excluded,"get_identity(n_dims: int, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap
 
 Gets an identity map with the given number of dimensions."
-jax.interpreters.mlir.ir.AffineMap.get_major_submap,no concrete parameters; zero-arg APIs are excluded,"get_major_submap(self, n_results: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap"
+jax.interpreters.mlir.ir.AffineMap.get_major_submap,missing required param descriptions for: n_results,"get_major_submap(self, n_results: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap"
 jax.interpreters.mlir.ir.AffineMap.get_minor_identity,no concrete parameters; zero-arg APIs are excluded,"get_minor_identity(n_dims: int, n_results: int, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap
 
 Gets a minor identity map with the given number of dimensions and results."
-jax.interpreters.mlir.ir.AffineMap.get_minor_submap,no concrete parameters; zero-arg APIs are excluded,"get_minor_submap(self, n_results: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap"
+jax.interpreters.mlir.ir.AffineMap.get_minor_submap,missing required param descriptions for: n_results,"get_minor_submap(self, n_results: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap"
 jax.interpreters.mlir.ir.AffineMap.get_permutation,no concrete parameters; zero-arg APIs are excluded,"get_permutation(permutation: collections.abc.Sequence[int], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap
 
 Gets an affine map that permutes its inputs."
-jax.interpreters.mlir.ir.AffineMap.get_submap,no concrete parameters; zero-arg APIs are excluded,"get_submap(self, result_positions: collections.abc.Sequence[int]) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap"
+jax.interpreters.mlir.ir.AffineMap.get_submap,missing required param descriptions for: result_positions,"get_submap(self, result_positions: collections.abc.Sequence[int]) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap"
 jax.interpreters.mlir.ir.AffineMap.is_permutation,missing/placeholder/too short doc,(self) -> bool
 jax.interpreters.mlir.ir.AffineMap.is_projected_permutation,missing/placeholder/too short doc,(self) -> bool
 jax.interpreters.mlir.ir.AffineMap.n_dims,missing/placeholder/too short doc,(self) -> int
 jax.interpreters.mlir.ir.AffineMap.n_inputs,missing/placeholder/too short doc,(self) -> int
 jax.interpreters.mlir.ir.AffineMap.n_symbols,missing/placeholder/too short doc,(self) -> int
-jax.interpreters.mlir.ir.AffineMap.replace,no concrete parameters; zero-arg APIs are excluded,"replace(self, expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, replacement: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, n_result_dims: int, n_result_syms: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap"
+jax.interpreters.mlir.ir.AffineMap.replace,"missing required param descriptions for: expr, replacement, n_result_dims, n_result_syms","replace(self, expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, replacement: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, n_result_dims: int, n_result_syms: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMap"
 jax.interpreters.mlir.ir.AffineMap.results,missing/placeholder/too short doc,(self) -> mlir::python::MLIR_BINDINGS_PYTHON_DOMAIN::PyAffineMapExprList
 jax.interpreters.mlir.ir.AffineMapAttr.context,missing/placeholder/too short doc,Context that owns the `Attribute`.
 jax.interpreters.mlir.ir.AffineMapAttr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
@@ -34240,7 +34240,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.AffineMapAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(affine_map: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineMapAttr
 
 Gets an attribute wrapping an AffineMap."
-jax.interpreters.mlir.ir.AffineMapAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.AffineMapAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -34258,7 +34258,7 @@ Parses an attribute from an assembly form. Raises an `MLIRError` on failure."
 jax.interpreters.mlir.ir.AffineMapAttr.type,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
 jax.interpreters.mlir.ir.AffineMapAttr.typeid,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.TypeID
 jax.interpreters.mlir.ir.AffineMapAttr.value,missing/placeholder/too short doc,Returns the value of the AffineMap attribute
-jax.interpreters.mlir.ir.AffineModExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineModExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineModExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineModExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -34361,12 +34361,12 @@ Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineModExpr.lhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineModExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineModExpr.rhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
-jax.interpreters.mlir.ir.AffineModExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineModExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineModExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineModExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineModExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
-jax.interpreters.mlir.ir.AffineMulExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineMulExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineMulExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineMulExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -34469,12 +34469,12 @@ Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineMulExpr.lhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineMulExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineMulExpr.rhs,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
-jax.interpreters.mlir.ir.AffineMulExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineMulExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineMulExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineMulExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineMulExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
-jax.interpreters.mlir.ir.AffineSymbolExpr.compose,no concrete parameters; zero-arg APIs are excluded,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineSymbolExpr.compose,missing required param descriptions for: arg,"compose(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.AffineMap, /) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineSymbolExpr.context,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Context
 jax.interpreters.mlir.ir.AffineSymbolExpr.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
@@ -34576,8 +34576,8 @@ jax.interpreters.mlir.ir.AffineSymbolExpr.get_symbol,no concrete parameters; zer
 Gets an affine expression of a symbol at the given position."
 jax.interpreters.mlir.ir.AffineSymbolExpr.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 jax.interpreters.mlir.ir.AffineSymbolExpr.position,missing/placeholder/too short doc,(self) -> int
-jax.interpreters.mlir.ir.AffineSymbolExpr.shift_dims,no concrete parameters; zero-arg APIs are excluded,"shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
-jax.interpreters.mlir.ir.AffineSymbolExpr.shift_symbols,no concrete parameters; zero-arg APIs are excluded,"shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineSymbolExpr.shift_dims,"missing required param descriptions for: num_dims, shift","shift_dims(self, num_dims: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
+jax.interpreters.mlir.ir.AffineSymbolExpr.shift_symbols,"missing required param descriptions for: num_symbols, shift","shift_symbols(self, num_symbols: int, shift: int, offset: int = 0) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr"
 jax.interpreters.mlir.ir.AffineSymbolExpr.simplify_affine_expr,no concrete parameters; zero-arg APIs are excluded,"simplify_affine_expr(expr: jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr, num_dims: int, num_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.AffineExpr
 
 Simplify an affine expression by flattening and some amount of simple analysis."
@@ -34588,7 +34588,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.ArrayAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(attributes: list, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.ArrayAttr
 
 Gets a uniqued Array attribute"
-jax.interpreters.mlir.ir.ArrayAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.ArrayAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -34618,7 +34618,7 @@ jax.interpreters.mlir.ir.Attribute.context,missing/placeholder/too short doc,Con
 jax.interpreters.mlir.ir.Attribute.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
 Dumps a debug representation of the object to stderr."
-jax.interpreters.mlir.ir.Attribute.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.Attribute.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -34654,7 +34654,7 @@ Returns a Type object or raises an `MLIRError` if the type cannot be parsed.
 See also: https://mlir.llvm.org/docs/LangRef/#type-system"
 jax.interpreters.mlir.ir.BF16Type.typeid,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.TypeID
 jax.interpreters.mlir.ir.BF16Type.width,missing/placeholder/too short doc,Returns the width of the floating-point type
-jax.interpreters.mlir.ir.Block.add_argument,no concrete parameters; zero-arg APIs are excluded,"add_argument(self, type: jaxlib.mlir._mlir_libs._mlir.ir.Type, loc: jaxlib.mlir._mlir_libs._mlir.ir.Location) -> jaxlib.mlir._mlir_libs._mlir.ir.BlockArgument
+jax.interpreters.mlir.ir.Block.add_argument,receiver-like owner 'Block',"add_argument(self, type: jaxlib.mlir._mlir_libs._mlir.ir.Type, loc: jaxlib.mlir._mlir_libs._mlir.ir.Location) -> jaxlib.mlir._mlir_libs._mlir.ir.BlockArgument
 
 Appends an argument of the specified type to the block.
 
@@ -34664,7 +34664,7 @@ Args:
 
 Returns:
   The newly added block argument."
-jax.interpreters.mlir.ir.Block.append,no concrete parameters; zero-arg APIs are excluded,"append(self, operation: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
+jax.interpreters.mlir.ir.Block.append,receiver-like owner 'Block',"append(self, operation: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
 
 Appends an operation to this block.
 
@@ -34672,7 +34672,7 @@ If the operation is currently in another block, it will be moved.
 
 Args:
   operation: The operation to append to the block."
-jax.interpreters.mlir.ir.Block.append_to,no concrete parameters; zero-arg APIs are excluded,"append_to(self, region: jaxlib.mlir._mlir_libs._mlir.ir.Region) -> None
+jax.interpreters.mlir.ir.Block.append_to,receiver-like owner 'Block',"append_to(self, region: jaxlib.mlir._mlir_libs._mlir.ir.Region) -> None
 
 Appends this block to a region.
 
@@ -34681,16 +34681,16 @@ Transfers ownership if the block is currently owned by another region.
 Args:
   region: The region to append the block to."
 jax.interpreters.mlir.ir.Block.arguments,missing/placeholder/too short doc,Returns a list of block arguments.
-jax.interpreters.mlir.ir.Block.create_after,no concrete parameters; zero-arg APIs are excluded,"create_after(self, *arg_types, arg_locs: collections.abc.Sequence | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Block
+jax.interpreters.mlir.ir.Block.create_after,missing required param descriptions for: arg_types,"create_after(self, *arg_types, arg_locs: collections.abc.Sequence | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Block
 
 Creates and returns a new Block after this block (with given argument types and locations)."
 jax.interpreters.mlir.ir.Block.create_at_start,no concrete parameters; zero-arg APIs are excluded,"create_at_start(parent: jaxlib.mlir._mlir_libs._mlir.ir.Region, arg_types: collections.abc.Sequence = [], arg_locs: collections.abc.Sequence | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Block
 
 Creates and returns a new Block at the beginning of the given region (with given argument types and locations)."
-jax.interpreters.mlir.ir.Block.create_before,no concrete parameters; zero-arg APIs are excluded,"create_before(self, *arg_types, arg_locs: collections.abc.Sequence | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Block
+jax.interpreters.mlir.ir.Block.create_before,missing required param descriptions for: arg_types,"create_before(self, *arg_types, arg_locs: collections.abc.Sequence | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Block
 
 Creates and returns a new Block before this block (with given argument types and locations)."
-jax.interpreters.mlir.ir.Block.erase_argument,no concrete parameters; zero-arg APIs are excluded,"erase_argument(self, index: int) -> None
+jax.interpreters.mlir.ir.Block.erase_argument,receiver-like owner 'Block',"erase_argument(self, index: int) -> None
 
 Erases the argument at the specified index.
 
@@ -34706,7 +34706,7 @@ jax.interpreters.mlir.ir.BlockArgument.context,missing/placeholder/too short doc
 jax.interpreters.mlir.ir.BlockArgument.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
 Dumps a debug representation of the object to stderr."
-jax.interpreters.mlir.ir.BlockArgument.get_name,no concrete parameters; zero-arg APIs are excluded,"get_name(self, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False) -> str
+jax.interpreters.mlir.ir.BlockArgument.get_name,receiver-like owner 'BlockArgument',"get_name(self, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False) -> str
 get_name(self, state: jaxlib.mlir._mlir_libs._mlir.ir.AsmState) -> str
 
 Overloaded function.
@@ -34728,25 +34728,25 @@ Returns the string form of value as an operand (i.e., the ValueID)."
 jax.interpreters.mlir.ir.BlockArgument.location,missing/placeholder/too short doc,Returns the source location of the value.
 jax.interpreters.mlir.ir.BlockArgument.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.BlockArgument
 jax.interpreters.mlir.ir.BlockArgument.owner,missing/placeholder/too short doc,Returns the block that owns this argument.
-jax.interpreters.mlir.ir.BlockArgument.replace_all_uses_except,no concrete parameters; zero-arg APIs are excluded,"replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: jaxlib.mlir._mlir_libs._mlir.ir.Operation) -> None
+jax.interpreters.mlir.ir.BlockArgument.replace_all_uses_except,"missing required param descriptions for: with_, exceptions","replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: jaxlib.mlir._mlir_libs._mlir.ir.Operation) -> None
 replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Operation]) -> None
 
 Replace all uses of this value with the `with` value, except for those
 in `exceptions`. `exceptions` can be either a single operation or a list of
 operations."
-jax.interpreters.mlir.ir.BlockArgument.replace_all_uses_with,no concrete parameters; zero-arg APIs are excluded,"replace_all_uses_with(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.Value, /) -> None
+jax.interpreters.mlir.ir.BlockArgument.replace_all_uses_with,missing required param descriptions for: arg,"replace_all_uses_with(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.Value, /) -> None
 
 Replace all uses of value with the new value, updating anything in the IR that uses `self` to use the other value instead."
-jax.interpreters.mlir.ir.BlockArgument.set_location,no concrete parameters; zero-arg APIs are excluded,"set_location(self, loc: jaxlib.mlir._mlir_libs._mlir.ir.Location) -> None
+jax.interpreters.mlir.ir.BlockArgument.set_location,missing required param descriptions for: loc,"set_location(self, loc: jaxlib.mlir._mlir_libs._mlir.ir.Location) -> None
 
 Sets the location of this block argument."
-jax.interpreters.mlir.ir.BlockArgument.set_type,no concrete parameters; zero-arg APIs are excluded,"set_type(self, type: jaxlib.mlir._mlir_libs._mlir.ir.Type) -> None
+jax.interpreters.mlir.ir.BlockArgument.set_type,missing required param descriptions for: type,"set_type(self, type: jaxlib.mlir._mlir_libs._mlir.ir.Type) -> None
 
 Sets the type of this block argument."
 jax.interpreters.mlir.ir.BlockArgument.type,missing/placeholder/too short doc,Returns the type of the value.
 jax.interpreters.mlir.ir.BlockArgument.uses,missing/placeholder/too short doc,Returns an iterator over uses of this value.
 jax.interpreters.mlir.ir.BlockArgumentList.types,no concrete parameters; zero-arg APIs are excluded,Returns a list of types for all arguments in this argument list.
-jax.interpreters.mlir.ir.BlockList.append,no concrete parameters; zero-arg APIs are excluded,"append(self, *args, arg_locs: collections.abc.Sequence | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Block
+jax.interpreters.mlir.ir.BlockList.append,no parsable documented parameters aligned with signature,"append(self, *args, arg_locs: collections.abc.Sequence | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Block
 
 Appends a new block, with argument types as positional args.
 
@@ -34759,7 +34759,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.BoolAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(value: bool, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.BoolAttr
 
 Gets an uniqued bool attribute"
-jax.interpreters.mlir.ir.BoolAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.BoolAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -34797,13 +34797,13 @@ Returns a Type object or raises an `MLIRError` if the type cannot be parsed.
 See also: https://mlir.llvm.org/docs/LangRef/#type-system"
 jax.interpreters.mlir.ir.ComplexType.typeid,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.TypeID
 jax.interpreters.mlir.ir.Context.allow_unregistered_dialects,missing/placeholder/too short doc,Controls whether unregistered dialects are allowed in this context.
-jax.interpreters.mlir.ir.Context.append_dialect_registry,no concrete parameters; zero-arg APIs are excluded,"append_dialect_registry(self, registry: jaxlib.mlir._mlir_libs._mlir.ir.DialectRegistry) -> None
+jax.interpreters.mlir.ir.Context.append_dialect_registry,receiver-like owner 'Context',"append_dialect_registry(self, registry: jaxlib.mlir._mlir_libs._mlir.ir.DialectRegistry) -> None
 
 Appends the contents of a dialect registry to the context.
 
 Args:
   registry: A DialectRegistry containing dialects to append."
-jax.interpreters.mlir.ir.Context.attach_diagnostic_handler,no concrete parameters; zero-arg APIs are excluded,"attach_diagnostic_handler(self, callback: object) -> object
+jax.interpreters.mlir.ir.Context.attach_diagnostic_handler,missing required param descriptions for: callback,"attach_diagnostic_handler(self, callback: object) -> object
 
 Attaches a diagnostic handler that will receive callbacks."
 jax.interpreters.mlir.ir.Context.d,missing/placeholder/too short doc,Alias for `dialects`.
@@ -34811,19 +34811,19 @@ jax.interpreters.mlir.ir.Context.dialects,missing/placeholder/too short doc,Gets
 jax.interpreters.mlir.ir.Context.emit_error_diagnostics,no concrete parameters; zero-arg APIs are excluded,"Controls whether error diagnostics are emitted to diagnostic handlers.
 
 By default, error diagnostics are captured and reported through MLIRError exceptions."
-jax.interpreters.mlir.ir.Context.enable_multithreading,no concrete parameters; zero-arg APIs are excluded,"enable_multithreading(self, enable: bool) -> None
+jax.interpreters.mlir.ir.Context.enable_multithreading,receiver-like owner 'Context',"enable_multithreading(self, enable: bool) -> None
 
 Enables or disables multi-threading support in the context.
 
 Args:
   enable: Whether to enable (True) or disable (False) multi-threading."
-jax.interpreters.mlir.ir.Context.get_dialect_descriptor,no concrete parameters; zero-arg APIs are excluded,"get_dialect_descriptor(self, dialect_name: str) -> jaxlib.mlir._mlir_libs._mlir.ir.DialectDescriptor
+jax.interpreters.mlir.ir.Context.get_dialect_descriptor,missing required param descriptions for: dialect_name,"get_dialect_descriptor(self, dialect_name: str) -> jaxlib.mlir._mlir_libs._mlir.ir.DialectDescriptor
 
 Gets or loads a dialect by name, returning its descriptor object."
 jax.interpreters.mlir.ir.Context.get_num_threads,no concrete parameters; zero-arg APIs are excluded,"get_num_threads(self) -> int
 
 Gets the number of threads in the context's thread pool."
-jax.interpreters.mlir.ir.Context.is_registered_operation,no concrete parameters; zero-arg APIs are excluded,"is_registered_operation(self, operation_name: str) -> bool
+jax.interpreters.mlir.ir.Context.is_registered_operation,receiver-like owner 'Context',"is_registered_operation(self, operation_name: str) -> bool
 
 Checks whether an operation with the given name is registered.
 
@@ -34838,7 +34838,7 @@ Loads all dialects available in the registry into the context.
 
 This eagerly loads all dialects that have been registered, making them
 immediately available for use."
-jax.interpreters.mlir.ir.Context.set_thread_pool,no concrete parameters; zero-arg APIs are excluded,"set_thread_pool(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.ThreadPool, /) -> None
+jax.interpreters.mlir.ir.Context.set_thread_pool,missing required param descriptions for: arg,"set_thread_pool(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.ThreadPool, /) -> None
 
 Sets a custom thread pool for the context to use.
 
@@ -34854,7 +34854,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DenseBoolArrayAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(values: collections.abc.Sequence, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DenseBoolArrayAttr
 
 Gets a uniqued dense array attribute"
-jax.interpreters.mlir.ir.DenseBoolArrayAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseBoolArrayAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -34938,7 +34938,7 @@ Returns:
 Raises:
   ValueError: If the type of the attributes does not match the type
     specified by `shaped_type`."
-jax.interpreters.mlir.ir.DenseElementsAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseElementsAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -34967,7 +34967,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DenseF32ArrayAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(values: collections.abc.Sequence[float], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DenseF32ArrayAttr
 
 Gets a uniqued dense array attribute"
-jax.interpreters.mlir.ir.DenseF32ArrayAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseF32ArrayAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -34991,7 +34991,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DenseF64ArrayAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(values: collections.abc.Sequence[float], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DenseF64ArrayAttr
 
 Gets a uniqued dense array attribute"
-jax.interpreters.mlir.ir.DenseF64ArrayAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseF64ArrayAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35075,7 +35075,7 @@ Returns:
 Raises:
   ValueError: If the type of the attributes does not match the type
     specified by `shaped_type`."
-jax.interpreters.mlir.ir.DenseFPElementsAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseFPElementsAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35104,7 +35104,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DenseI16ArrayAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(values: collections.abc.Sequence[int], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DenseI16ArrayAttr
 
 Gets a uniqued dense array attribute"
-jax.interpreters.mlir.ir.DenseI16ArrayAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseI16ArrayAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35128,7 +35128,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DenseI32ArrayAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(values: collections.abc.Sequence[int], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DenseI32ArrayAttr
 
 Gets a uniqued dense array attribute"
-jax.interpreters.mlir.ir.DenseI32ArrayAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseI32ArrayAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35152,7 +35152,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DenseI64ArrayAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(values: collections.abc.Sequence[int], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DenseI64ArrayAttr
 
 Gets a uniqued dense array attribute"
-jax.interpreters.mlir.ir.DenseI64ArrayAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseI64ArrayAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35176,7 +35176,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DenseI8ArrayAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(values: collections.abc.Sequence[int], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DenseI8ArrayAttr
 
 Gets a uniqued dense array attribute"
-jax.interpreters.mlir.ir.DenseI8ArrayAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseI8ArrayAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35260,7 +35260,7 @@ Returns:
 Raises:
   ValueError: If the type of the attributes does not match the type
     specified by `shaped_type`."
-jax.interpreters.mlir.ir.DenseIntElementsAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseIntElementsAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35311,7 +35311,7 @@ Returns:
 Raises:
   ValueError: If the type of the buffer or array cannot be matched to an MLIR
     type or if the buffer does not meet expectations."
-jax.interpreters.mlir.ir.DenseResourceElementsAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DenseResourceElementsAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35350,7 +35350,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DictAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(value: dict = {}, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DictAttr
 
 Gets an uniqued dict attribute"
-jax.interpreters.mlir.ir.DictAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DictAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35375,7 +35375,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.DynamicAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(full_attr_name: str, attributes: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Attribute], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.DynamicAttr
 
 Create a dynamic attribute."
-jax.interpreters.mlir.ir.DynamicAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.DynamicAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35486,7 +35486,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.FlatSymbolRefAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(value: str, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.FlatSymbolRefAttr
 
 Gets a uniqued FlatSymbolRef attribute"
-jax.interpreters.mlir.ir.FlatSymbolRefAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.FlatSymbolRefAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35726,7 +35726,7 @@ Gets an uniqued float point attribute associated to a f32 type"
 jax.interpreters.mlir.ir.FloatAttr.get_f64,no concrete parameters; zero-arg APIs are excluded,"get_f64(value: float, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.FloatAttr
 
 Gets an uniqued float point attribute associated to a f64 type"
-jax.interpreters.mlir.ir.FloatAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.FloatAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35825,13 +35825,13 @@ Returns a Type object or raises an `MLIRError` if the type cannot be parsed.
 
 See also: https://mlir.llvm.org/docs/LangRef/#type-system"
 jax.interpreters.mlir.ir.IndexType.typeid,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.TypeID
-jax.interpreters.mlir.ir.InferShapedTypeOpInterface.inferReturnTypeComponents,no concrete parameters; zero-arg APIs are excluded,"inferReturnTypeComponents(self, operands: list | None = None, attributes: jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None = None, regions: types.CapsuleType | None = None, properties: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Region] | None = None, context: _mlir.ir.Context | None = None, loc: _mlir.ir.Location | None = None) -> list[jaxlib.mlir._mlir_libs._mlir.ir.ShapedTypeComponents]
+jax.interpreters.mlir.ir.InferShapedTypeOpInterface.inferReturnTypeComponents,no parsable documented parameters aligned with signature,"inferReturnTypeComponents(self, operands: list | None = None, attributes: jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None = None, regions: types.CapsuleType | None = None, properties: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Region] | None = None, context: _mlir.ir.Context | None = None, loc: _mlir.ir.Location | None = None) -> list[jaxlib.mlir._mlir_libs._mlir.ir.ShapedTypeComponents]
 
 Given the arguments required to build an operation, attempts to infer
 its return shaped type components. Raises ValueError on failure."
 jax.interpreters.mlir.ir.InferShapedTypeOpInterface.operation,missing/placeholder/too short doc,Returns an Operation for which the interface was constructed.
 jax.interpreters.mlir.ir.InferShapedTypeOpInterface.opview,no concrete parameters; zero-arg APIs are excluded,Returns an OpView subclass _instance_ for which the interface was constructed
-jax.interpreters.mlir.ir.InferTypeOpInterface.inferReturnTypes,no concrete parameters; zero-arg APIs are excluded,"inferReturnTypes(self, operands: list | None = None, attributes: jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None = None, properties: types.CapsuleType | None = None, regions: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Region] | None = None, context: _mlir.ir.Context | None = None, loc: _mlir.ir.Location | None = None) -> list[jaxlib.mlir._mlir_libs._mlir.ir.Type]
+jax.interpreters.mlir.ir.InferTypeOpInterface.inferReturnTypes,no parsable documented parameters aligned with signature,"inferReturnTypes(self, operands: list | None = None, attributes: jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None = None, properties: types.CapsuleType | None = None, regions: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Region] | None = None, context: _mlir.ir.Context | None = None, loc: _mlir.ir.Location | None = None) -> list[jaxlib.mlir._mlir_libs._mlir.ir.Type]
 
 Given the arguments required to build an operation, attempts to infer
 its return types. Raises ValueError on failure."
@@ -35868,7 +35868,7 @@ Returns:
 Raises:
   ValueError: If the block has no terminator."
 jax.interpreters.mlir.ir.InsertionPoint.block,missing/placeholder/too short doc,Returns the block that this `InsertionPoint` points to.
-jax.interpreters.mlir.ir.InsertionPoint.insert,no concrete parameters; zero-arg APIs are excluded,"insert(self, operation: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
+jax.interpreters.mlir.ir.InsertionPoint.insert,receiver-like owner 'InsertionPoint',"insert(self, operation: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
 
 Inserts an operation at this insertion point.
 
@@ -35882,7 +35882,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.IntegerAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(type: jaxlib.mlir._mlir_libs._mlir.ir.Type, value: object) -> jaxlib.mlir._mlir_libs._mlir.ir.IntegerAttr
 
 Gets an uniqued integer attribute associated to a type"
-jax.interpreters.mlir.ir.IntegerAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.IntegerAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -35907,7 +35907,7 @@ jax.interpreters.mlir.ir.IntegerSet.dump,no concrete parameters; zero-arg APIs a
 Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.IntegerSet.get,no concrete parameters; zero-arg APIs are excluded,"get(num_dims: int, num_symbols: int, exprs: list, eq_flags: collections.abc.Sequence[bool], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.IntegerSet"
 jax.interpreters.mlir.ir.IntegerSet.get_empty,no concrete parameters; zero-arg APIs are excluded,"get_empty(num_dims: int, num_symbols: int, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.IntegerSet"
-jax.interpreters.mlir.ir.IntegerSet.get_replaced,no concrete parameters; zero-arg APIs are excluded,"get_replaced(self, dim_exprs: list, symbol_exprs: list, num_result_dims: int, num_result_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.IntegerSet"
+jax.interpreters.mlir.ir.IntegerSet.get_replaced,"missing required param descriptions for: dim_exprs, symbol_exprs, num_result_dims, num_result_symbols","get_replaced(self, dim_exprs: list, symbol_exprs: list, num_result_dims: int, num_result_symbols: int) -> jaxlib.mlir._mlir_libs._mlir.ir.IntegerSet"
 jax.interpreters.mlir.ir.IntegerSet.is_canonical_empty,missing/placeholder/too short doc,(self) -> bool
 jax.interpreters.mlir.ir.IntegerSet.n_dims,missing/placeholder/too short doc,(self) -> int
 jax.interpreters.mlir.ir.IntegerSet.n_equalities,missing/placeholder/too short doc,(self) -> int
@@ -35921,7 +35921,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.IntegerSetAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(integer_set: jaxlib.mlir._mlir_libs._mlir.ir.IntegerSet) -> jaxlib.mlir._mlir_libs._mlir.ir.IntegerSetAttr
 
 Gets an attribute wrapping an IntegerSet."
-jax.interpreters.mlir.ir.IntegerSetAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.IntegerSetAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -36019,7 +36019,7 @@ jax.interpreters.mlir.ir.Location.callsite,no concrete parameters; zero-arg APIs
 Gets a Location representing a caller and callsite."
 jax.interpreters.mlir.ir.Location.child_loc,missing/placeholder/too short doc,Gets the child location from a `NameLoc`.
 jax.interpreters.mlir.ir.Location.context,missing/placeholder/too short doc,Context that owns the `Location`.
-jax.interpreters.mlir.ir.Location.emit_error,no concrete parameters; zero-arg APIs are excluded,"emit_error(self, message: str) -> None
+jax.interpreters.mlir.ir.Location.emit_error,receiver-like owner 'Location',"emit_error(self, message: str) -> None
 
 Emits an error diagnostic at this location.
 
@@ -36084,7 +36084,7 @@ jax.interpreters.mlir.ir.MemRefType.element_type,missing/placeholder/too short d
 jax.interpreters.mlir.ir.MemRefType.get,no concrete parameters; zero-arg APIs are excluded,"get(shape: collections.abc.Sequence[int], element_type: jaxlib.mlir._mlir_libs._mlir.ir.Type, layout: jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None = None, memory_space: jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None = None, loc: _mlir.ir.Location | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.MemRefType
 
 Create a memref type"
-jax.interpreters.mlir.ir.MemRefType.get_dim_size,no concrete parameters; zero-arg APIs are excluded,"get_dim_size(self, dim: int) -> int
+jax.interpreters.mlir.ir.MemRefType.get_dim_size,missing required param descriptions for: dim,"get_dim_size(self, dim: int) -> int
 
 Returns the dim-th dimension of the given ranked shaped type."
 jax.interpreters.mlir.ir.MemRefType.get_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"get_dynamic_size() -> int
@@ -36101,7 +36101,7 @@ jax.interpreters.mlir.ir.MemRefType.get_unchecked,no concrete parameters; zero-a
 Create a memref type"
 jax.interpreters.mlir.ir.MemRefType.has_rank,missing/placeholder/too short doc,Returns whether the given shaped type is ranked.
 jax.interpreters.mlir.ir.MemRefType.has_static_shape,no concrete parameters; zero-arg APIs are excluded,Returns whether the given shaped type has a static shape.
-jax.interpreters.mlir.ir.MemRefType.is_dynamic_dim,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.MemRefType.is_dynamic_dim,missing required param descriptions for: dim,"is_dynamic_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is dynamic."
 jax.interpreters.mlir.ir.MemRefType.is_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_size(dim_size: int) -> bool
@@ -36110,13 +36110,13 @@ Returns whether the given dimension size indicates a dynamic dimension."
 jax.interpreters.mlir.ir.MemRefType.is_dynamic_stride_or_offset,missing/placeholder/too short doc,"is_dynamic_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given value is used as a placeholder for dynamic strides and offsets in shaped types."
-jax.interpreters.mlir.ir.MemRefType.is_static_dim,no concrete parameters; zero-arg APIs are excluded,"is_static_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.MemRefType.is_static_dim,missing required param descriptions for: dim,"is_static_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is static."
 jax.interpreters.mlir.ir.MemRefType.is_static_size,no concrete parameters; zero-arg APIs are excluded,"is_static_size(dim_size: int) -> bool
 
 Returns whether the given dimension size indicates a static dimension."
-jax.interpreters.mlir.ir.MemRefType.is_static_stride_or_offset,no concrete parameters; zero-arg APIs are excluded,"is_static_stride_or_offset(self, dim_size: int) -> bool
+jax.interpreters.mlir.ir.MemRefType.is_static_stride_or_offset,missing required param descriptions for: dim_size,"is_static_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given shaped type stride or offset value is statically-sized."
 jax.interpreters.mlir.ir.MemRefType.layout,missing/placeholder/too short doc,The layout of the MemRef type.
@@ -36188,7 +36188,7 @@ See also: https://mlir.llvm.org/docs/LangRef/#type-system"
 jax.interpreters.mlir.ir.NoneType.typeid,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.TypeID
 jax.interpreters.mlir.ir.OpAdaptor.attributes,missing/placeholder/too short doc,Returns the attributes of the adaptor.
 jax.interpreters.mlir.ir.OpAdaptor.operands,missing/placeholder/too short doc,Returns the operands of the adaptor.
-jax.interpreters.mlir.ir.OpAttributeMap.get,no concrete parameters; zero-arg APIs are excluded,"get(self, key: str, default: object | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None
+jax.interpreters.mlir.ir.OpAttributeMap.get,missing required param descriptions for: key,"get(self, key: str, default: object | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None
 
 Gets an attribute by name or the default value, if it does not exist."
 jax.interpreters.mlir.ir.OpAttributeMap.items,no concrete parameters; zero-arg APIs are excluded,"items(self) -> list
@@ -36206,7 +36206,7 @@ jax.interpreters.mlir.ir.OpResult.context,missing/placeholder/too short doc,Cont
 jax.interpreters.mlir.ir.OpResult.dump,no concrete parameters; zero-arg APIs are excluded,"dump(self) -> None
 
 Dumps a debug representation of the object to stderr."
-jax.interpreters.mlir.ir.OpResult.get_name,no concrete parameters; zero-arg APIs are excluded,"get_name(self, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False) -> str
+jax.interpreters.mlir.ir.OpResult.get_name,receiver-like owner 'OpResult',"get_name(self, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False) -> str
 get_name(self, state: jaxlib.mlir._mlir_libs._mlir.ir.AsmState) -> str
 
 Overloaded function.
@@ -36228,13 +36228,13 @@ Returns the string form of value as an operand (i.e., the ValueID)."
 jax.interpreters.mlir.ir.OpResult.location,missing/placeholder/too short doc,Returns the source location of the value.
 jax.interpreters.mlir.ir.OpResult.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.OpResult
 jax.interpreters.mlir.ir.OpResult.owner,missing/placeholder/too short doc,Returns the operation that produces this result.
-jax.interpreters.mlir.ir.OpResult.replace_all_uses_except,no concrete parameters; zero-arg APIs are excluded,"replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: jaxlib.mlir._mlir_libs._mlir.ir.Operation) -> None
+jax.interpreters.mlir.ir.OpResult.replace_all_uses_except,"missing required param descriptions for: with_, exceptions","replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: jaxlib.mlir._mlir_libs._mlir.ir.Operation) -> None
 replace_all_uses_except(self, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value, exceptions: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Operation]) -> None
 
 Replace all uses of this value with the `with` value, except for those
 in `exceptions`. `exceptions` can be either a single operation or a list of
 operations."
-jax.interpreters.mlir.ir.OpResult.replace_all_uses_with,no concrete parameters; zero-arg APIs are excluded,"replace_all_uses_with(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.Value, /) -> None
+jax.interpreters.mlir.ir.OpResult.replace_all_uses_with,missing required param descriptions for: arg,"replace_all_uses_with(self, arg: jaxlib.mlir._mlir_libs._mlir.ir.Value, /) -> None
 
 Replace all uses of value with the new value, updating anything in the IR that uses `self` to use the other value instead."
 jax.interpreters.mlir.ir.OpResult.result_number,no concrete parameters; zero-arg APIs are excluded,Returns the position of this result in the operation's result list.
@@ -36250,7 +36250,7 @@ jax.interpreters.mlir.ir.OpView.attributes,missing/placeholder/too short doc,Ret
 jax.interpreters.mlir.ir.OpView.build_generic,no concrete parameters; zero-arg APIs are excluded,"(cls: object, results: list | None = None, operands: list | None = None, attributes: dict | None = None, successors: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Block] | None = None, regions: int | None = None, loc: jaxlib.mlir._mlir_libs._mlir.ir.Location | None = None, ip: object | None = None) -> object
 
 Builds a specific, generated OpView based on class level attributes."
-jax.interpreters.mlir.ir.OpView.clone,no concrete parameters; zero-arg APIs are excluded,"clone(self, ip: object | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Operation
+jax.interpreters.mlir.ir.OpView.clone,receiver-like owner 'OpView',"clone(self, ip: object | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Operation
 
 Creates a deep copy of the operation.
 
@@ -36271,7 +36271,7 @@ Erases the operation and frees its memory.
 
 Note:
   After erasing, any Python references to the operation become invalid."
-jax.interpreters.mlir.ir.OpView.get_asm,no concrete parameters; zero-arg APIs are excluded,"get_asm(self, binary: bool = False, large_elements_limit: int | None = None, large_resource_limit: int | None = None, enable_debug_info: bool = False, pretty_debug_info: bool = False, print_generic_op_form: bool = False, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False, assume_verified: bool = False, skip_regions: bool = False) -> object
+jax.interpreters.mlir.ir.OpView.get_asm,receiver-like owner 'OpView',"get_asm(self, binary: bool = False, large_elements_limit: int | None = None, large_resource_limit: int | None = None, enable_debug_info: bool = False, pretty_debug_info: bool = False, print_generic_op_form: bool = False, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False, assume_verified: bool = False, skip_regions: bool = False) -> object
 
 Gets the assembly form of the operation with all options available.
 
@@ -36283,7 +36283,7 @@ Args:
 Returns:
   Either a bytes or str object, depending on the setting of the `binary`
   argument."
-jax.interpreters.mlir.ir.OpView.is_before_in_block,no concrete parameters; zero-arg APIs are excluded,"is_before_in_block(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> bool
+jax.interpreters.mlir.ir.OpView.is_before_in_block,receiver-like owner 'OpView',"is_before_in_block(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> bool
 
 Checks if this operation is before another in the same block.
 
@@ -36293,10 +36293,10 @@ Args:
 Returns:
   True if this operation is before `other` in the operation list of the parent block."
 jax.interpreters.mlir.ir.OpView.location,no concrete parameters; zero-arg APIs are excluded,Returns the source location the operation was defined or derived from.
-jax.interpreters.mlir.ir.OpView.move_after,no concrete parameters; zero-arg APIs are excluded,"move_after(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
+jax.interpreters.mlir.ir.OpView.move_after,missing required param descriptions for: other,"move_after(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
 
 Puts self immediately after the other operation in its parent block."
-jax.interpreters.mlir.ir.OpView.move_before,no concrete parameters; zero-arg APIs are excluded,"move_before(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
+jax.interpreters.mlir.ir.OpView.move_before,missing required param descriptions for: other,"move_before(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
 
 Puts self immediately before the other operation in its parent block."
 jax.interpreters.mlir.ir.OpView.name,missing/placeholder/too short doc,Returns the fully qualified name of the operation.
@@ -36308,7 +36308,7 @@ jax.interpreters.mlir.ir.OpView.parent,no concrete parameters; zero-arg APIs are
 jax.interpreters.mlir.ir.OpView.parse,no concrete parameters; zero-arg APIs are excluded,"(cls: object, source: str, *, source_name: str = '', context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.OpView
 
 Parses a specific, generated OpView based on class level attributes."
-jax.interpreters.mlir.ir.OpView.print,no concrete parameters; zero-arg APIs are excluded,"print(self, state: jaxlib.mlir._mlir_libs._mlir.ir.AsmState, file: object | None = None, binary: bool = False) -> None
+jax.interpreters.mlir.ir.OpView.print,receiver-like owner 'OpView',"print(self, state: jaxlib.mlir._mlir_libs._mlir.ir.AsmState, file: object | None = None, binary: bool = False) -> None
 print(self, large_elements_limit: int | None = None, large_resource_limit: int | None = None, enable_debug_info: bool = False, pretty_debug_info: bool = False, print_generic_op_form: bool = False, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False, assume_verified: bool = False, file: object | None = None, binary: bool = False, skip_regions: bool = False) -> None
 
 Overloaded function.
@@ -36361,14 +36361,14 @@ jax.interpreters.mlir.ir.OpView.successors,missing/placeholder/too short doc,Ret
 jax.interpreters.mlir.ir.OpView.verify,no concrete parameters; zero-arg APIs are excluded,"verify(self) -> bool
 
 Verify the operation. Raises MLIRError if verification fails, and returns true otherwise."
-jax.interpreters.mlir.ir.OpView.walk,no concrete parameters; zero-arg APIs are excluded,"walk(self, callback: Callable[[Operation], WalkResult], walk_order: WalkOrder = ...) -> None
+jax.interpreters.mlir.ir.OpView.walk,receiver-like owner 'OpView',"walk(self, callback: Callable[[Operation], WalkResult], walk_order: WalkOrder = ...) -> None
 
 Walks the operation tree with a callback function.
 
 Args:
   callback: A callable that takes an Operation and returns a WalkResult.
   walk_order: The order of traversal (PRE_ORDER or POST_ORDER)."
-jax.interpreters.mlir.ir.OpView.write_bytecode,no concrete parameters; zero-arg APIs are excluded,"write_bytecode(self, file: object, desired_version: int | None = None) -> None
+jax.interpreters.mlir.ir.OpView.write_bytecode,receiver-like owner 'OpView',"write_bytecode(self, file: object, desired_version: int | None = None) -> None
 
 Write the bytecode form of the operation to a file like object.
 
@@ -36386,7 +36386,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.OpaqueAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(dialect_namespace: str, buffer: typing_extensions.Buffer, type: Type, context: Context | None = None) -> OpaqueAttr
 
 Gets an Opaque attribute."
-jax.interpreters.mlir.ir.OpaqueAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.OpaqueAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -36426,7 +36426,7 @@ jax.interpreters.mlir.ir.OpaqueType.typeid,no concrete parameters; zero-arg APIs
 jax.interpreters.mlir.ir.Operation.attached,no concrete parameters; zero-arg APIs are excluded,Reports if the operation is attached to its parent block.
 jax.interpreters.mlir.ir.Operation.attributes,missing/placeholder/too short doc,Returns a dictionary-like map of operation attributes.
 jax.interpreters.mlir.ir.Operation.block,missing/placeholder/too short doc,Returns the block containing this operation.
-jax.interpreters.mlir.ir.Operation.clone,no concrete parameters; zero-arg APIs are excluded,"clone(self, ip: object | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Operation
+jax.interpreters.mlir.ir.Operation.clone,receiver-like owner 'Operation',"clone(self, ip: object | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.Operation
 
 Creates a deep copy of the operation.
 
@@ -36463,7 +36463,7 @@ Erases the operation and frees its memory.
 
 Note:
   After erasing, any Python references to the operation become invalid."
-jax.interpreters.mlir.ir.Operation.get_asm,no concrete parameters; zero-arg APIs are excluded,"get_asm(self, binary: bool = False, large_elements_limit: int | None = None, large_resource_limit: int | None = None, enable_debug_info: bool = False, pretty_debug_info: bool = False, print_generic_op_form: bool = False, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False, assume_verified: bool = False, skip_regions: bool = False) -> object
+jax.interpreters.mlir.ir.Operation.get_asm,receiver-like owner 'Operation',"get_asm(self, binary: bool = False, large_elements_limit: int | None = None, large_resource_limit: int | None = None, enable_debug_info: bool = False, pretty_debug_info: bool = False, print_generic_op_form: bool = False, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False, assume_verified: bool = False, skip_regions: bool = False) -> object
 
 Gets the assembly form of the operation with all options available.
 
@@ -36475,7 +36475,7 @@ Args:
 Returns:
   Either a bytes or str object, depending on the setting of the `binary`
   argument."
-jax.interpreters.mlir.ir.Operation.is_before_in_block,no concrete parameters; zero-arg APIs are excluded,"is_before_in_block(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> bool
+jax.interpreters.mlir.ir.Operation.is_before_in_block,receiver-like owner 'Operation',"is_before_in_block(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> bool
 
 Checks if this operation is before another in the same block.
 
@@ -36485,10 +36485,10 @@ Args:
 Returns:
   True if this operation is before `other` in the operation list of the parent block."
 jax.interpreters.mlir.ir.Operation.location,no concrete parameters; zero-arg APIs are excluded,Returns the source location the operation was defined or derived from.
-jax.interpreters.mlir.ir.Operation.move_after,no concrete parameters; zero-arg APIs are excluded,"move_after(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
+jax.interpreters.mlir.ir.Operation.move_after,missing required param descriptions for: other,"move_after(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
 
 Puts self immediately after the other operation in its parent block."
-jax.interpreters.mlir.ir.Operation.move_before,no concrete parameters; zero-arg APIs are excluded,"move_before(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
+jax.interpreters.mlir.ir.Operation.move_before,missing required param descriptions for: other,"move_before(self, other: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
 
 Puts self immediately before the other operation in its parent block."
 jax.interpreters.mlir.ir.Operation.name,missing/placeholder/too short doc,Returns the fully qualified name of the operation.
@@ -36504,7 +36504,7 @@ jax.interpreters.mlir.ir.Operation.parent,no concrete parameters; zero-arg APIs 
 jax.interpreters.mlir.ir.Operation.parse,no concrete parameters; zero-arg APIs are excluded,"parse(source: str, *, source_name: str = '', context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.OpView
 
 Parses an operation. Supports both text assembly format and binary bytecode format."
-jax.interpreters.mlir.ir.Operation.print,no concrete parameters; zero-arg APIs are excluded,"print(self, state: jaxlib.mlir._mlir_libs._mlir.ir.AsmState, file: object | None = None, binary: bool = False) -> None
+jax.interpreters.mlir.ir.Operation.print,receiver-like owner 'Operation',"print(self, state: jaxlib.mlir._mlir_libs._mlir.ir.AsmState, file: object | None = None, binary: bool = False) -> None
 print(self, large_elements_limit: int | None = None, large_resource_limit: int | None = None, enable_debug_info: bool = False, pretty_debug_info: bool = False, print_generic_op_form: bool = False, use_local_scope: bool = False, use_name_loc_as_prefix: bool = False, assume_verified: bool = False, file: object | None = None, binary: bool = False, skip_regions: bool = False) -> None
 
 Overloaded function.
@@ -36551,7 +36551,7 @@ Overloaded function.
                binary: Whether to write bytes (True) or str (False). Defaults to False.
                skip_regions: Whether to skip printing regions. Defaults to False."
 jax.interpreters.mlir.ir.Operation.regions,missing/placeholder/too short doc,Returns the list of operation regions.
-jax.interpreters.mlir.ir.Operation.replace_uses_of_with,no concrete parameters; zero-arg APIs are excluded,"replace_uses_of_with(self, of: jaxlib.mlir._mlir_libs._mlir.ir.Value, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value) -> None
+jax.interpreters.mlir.ir.Operation.replace_uses_of_with,"missing required param descriptions for: of, with_","replace_uses_of_with(self, of: jaxlib.mlir._mlir_libs._mlir.ir.Value, with_: jaxlib.mlir._mlir_libs._mlir.ir.Value) -> None
 
 Replaces uses of the 'of' value with the 'with' value inside the operation."
 jax.interpreters.mlir.ir.Operation.result,no concrete parameters; zero-arg APIs are excluded,Shortcut to get an op result if it has only one (throws an error otherwise).
@@ -36560,14 +36560,14 @@ jax.interpreters.mlir.ir.Operation.successors,missing/placeholder/too short doc,
 jax.interpreters.mlir.ir.Operation.verify,no concrete parameters; zero-arg APIs are excluded,"verify(self) -> bool
 
 Verify the operation. Raises MLIRError if verification fails, and returns true otherwise."
-jax.interpreters.mlir.ir.Operation.walk,no concrete parameters; zero-arg APIs are excluded,"walk(self, callback: Callable[[Operation], WalkResult], walk_order: WalkOrder = ...) -> None
+jax.interpreters.mlir.ir.Operation.walk,receiver-like owner 'Operation',"walk(self, callback: Callable[[Operation], WalkResult], walk_order: WalkOrder = ...) -> None
 
 Walks the operation tree with a callback function.
 
 Args:
   callback: A callable that takes an Operation and returns a WalkResult.
   walk_order: The order of traversal (PRE_ORDER or POST_ORDER)."
-jax.interpreters.mlir.ir.Operation.write_bytecode,no concrete parameters; zero-arg APIs are excluded,"write_bytecode(self, file: object, desired_version: int | None = None) -> None
+jax.interpreters.mlir.ir.Operation.write_bytecode,receiver-like owner 'Operation',"write_bytecode(self, file: object, desired_version: int | None = None) -> None
 
 Write the bytecode form of the operation to a file like object.
 
@@ -36585,7 +36585,7 @@ jax.interpreters.mlir.ir.RankedTensorType.encoding,no concrete parameters; zero-
 jax.interpreters.mlir.ir.RankedTensorType.get,no concrete parameters; zero-arg APIs are excluded,"get(shape: collections.abc.Sequence[int], element_type: jaxlib.mlir._mlir_libs._mlir.ir.Type, encoding: jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None = None, loc: _mlir.ir.Location | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.RankedTensorType
 
 Create a ranked tensor type"
-jax.interpreters.mlir.ir.RankedTensorType.get_dim_size,no concrete parameters; zero-arg APIs are excluded,"get_dim_size(self, dim: int) -> int
+jax.interpreters.mlir.ir.RankedTensorType.get_dim_size,missing required param descriptions for: dim,"get_dim_size(self, dim: int) -> int
 
 Returns the dim-th dimension of the given ranked shaped type."
 jax.interpreters.mlir.ir.RankedTensorType.get_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"get_dynamic_size() -> int
@@ -36599,7 +36599,7 @@ jax.interpreters.mlir.ir.RankedTensorType.get_unchecked,no concrete parameters; 
 Create a ranked tensor type"
 jax.interpreters.mlir.ir.RankedTensorType.has_rank,missing/placeholder/too short doc,Returns whether the given shaped type is ranked.
 jax.interpreters.mlir.ir.RankedTensorType.has_static_shape,no concrete parameters; zero-arg APIs are excluded,Returns whether the given shaped type has a static shape.
-jax.interpreters.mlir.ir.RankedTensorType.is_dynamic_dim,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.RankedTensorType.is_dynamic_dim,missing required param descriptions for: dim,"is_dynamic_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is dynamic."
 jax.interpreters.mlir.ir.RankedTensorType.is_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_size(dim_size: int) -> bool
@@ -36608,13 +36608,13 @@ Returns whether the given dimension size indicates a dynamic dimension."
 jax.interpreters.mlir.ir.RankedTensorType.is_dynamic_stride_or_offset,missing/placeholder/too short doc,"is_dynamic_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given value is used as a placeholder for dynamic strides and offsets in shaped types."
-jax.interpreters.mlir.ir.RankedTensorType.is_static_dim,no concrete parameters; zero-arg APIs are excluded,"is_static_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.RankedTensorType.is_static_dim,missing required param descriptions for: dim,"is_static_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is static."
 jax.interpreters.mlir.ir.RankedTensorType.is_static_size,no concrete parameters; zero-arg APIs are excluded,"is_static_size(dim_size: int) -> bool
 
 Returns whether the given dimension size indicates a static dimension."
-jax.interpreters.mlir.ir.RankedTensorType.is_static_stride_or_offset,no concrete parameters; zero-arg APIs are excluded,"is_static_stride_or_offset(self, dim_size: int) -> bool
+jax.interpreters.mlir.ir.RankedTensorType.is_static_stride_or_offset,missing required param descriptions for: dim_size,"is_static_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given shaped type stride or offset value is statically-sized."
 jax.interpreters.mlir.ir.RankedTensorType.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,"maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
@@ -36637,7 +36637,7 @@ jax.interpreters.mlir.ir.ShapedType.dump,no concrete parameters; zero-arg APIs a
 
 Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.ShapedType.element_type,missing/placeholder/too short doc,Returns the element type of the shaped type.
-jax.interpreters.mlir.ir.ShapedType.get_dim_size,no concrete parameters; zero-arg APIs are excluded,"get_dim_size(self, dim: int) -> int
+jax.interpreters.mlir.ir.ShapedType.get_dim_size,missing required param descriptions for: dim,"get_dim_size(self, dim: int) -> int
 
 Returns the dim-th dimension of the given ranked shaped type."
 jax.interpreters.mlir.ir.ShapedType.get_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"get_dynamic_size() -> int
@@ -36648,7 +36648,7 @@ jax.interpreters.mlir.ir.ShapedType.get_dynamic_stride_or_offset,no concrete par
 Returns the value used to indicate dynamic strides or offsets in shaped types."
 jax.interpreters.mlir.ir.ShapedType.has_rank,missing/placeholder/too short doc,Returns whether the given shaped type is ranked.
 jax.interpreters.mlir.ir.ShapedType.has_static_shape,no concrete parameters; zero-arg APIs are excluded,Returns whether the given shaped type has a static shape.
-jax.interpreters.mlir.ir.ShapedType.is_dynamic_dim,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.ShapedType.is_dynamic_dim,missing required param descriptions for: dim,"is_dynamic_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is dynamic."
 jax.interpreters.mlir.ir.ShapedType.is_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_size(dim_size: int) -> bool
@@ -36657,13 +36657,13 @@ Returns whether the given dimension size indicates a dynamic dimension."
 jax.interpreters.mlir.ir.ShapedType.is_dynamic_stride_or_offset,missing/placeholder/too short doc,"is_dynamic_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given value is used as a placeholder for dynamic strides and offsets in shaped types."
-jax.interpreters.mlir.ir.ShapedType.is_static_dim,no concrete parameters; zero-arg APIs are excluded,"is_static_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.ShapedType.is_static_dim,missing required param descriptions for: dim,"is_static_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is static."
 jax.interpreters.mlir.ir.ShapedType.is_static_size,no concrete parameters; zero-arg APIs are excluded,"is_static_size(dim_size: int) -> bool
 
 Returns whether the given dimension size indicates a static dimension."
-jax.interpreters.mlir.ir.ShapedType.is_static_stride_or_offset,no concrete parameters; zero-arg APIs are excluded,"is_static_stride_or_offset(self, dim_size: int) -> bool
+jax.interpreters.mlir.ir.ShapedType.is_static_stride_or_offset,missing required param descriptions for: dim_size,"is_static_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given shaped type stride or offset value is statically-sized."
 jax.interpreters.mlir.ir.ShapedType.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,"maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
@@ -36710,7 +36710,7 @@ Gets a strided layout attribute."
 jax.interpreters.mlir.ir.StridedLayoutAttr.get_fully_dynamic,no concrete parameters; zero-arg APIs are excluded,"get_fully_dynamic(rank: int, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.StridedLayoutAttr
 
 Gets a strided layout attribute with dynamic offset and strides of a given rank."
-jax.interpreters.mlir.ir.StridedLayoutAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.StridedLayoutAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -36737,7 +36737,7 @@ jax.interpreters.mlir.ir.StringAttr.get,no concrete parameters; zero-arg APIs ar
 get(value: bytes, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.StringAttr
 
 Gets a uniqued string attribute"
-jax.interpreters.mlir.ir.StringAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.StringAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -36766,7 +36766,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.SymbolRefAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(symbols: collections.abc.Sequence[str], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.SymbolRefAttr
 
 Gets a uniqued SymbolRef attribute from a list of symbol names"
-jax.interpreters.mlir.ir.SymbolRefAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.SymbolRefAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -36784,7 +36784,7 @@ Parses an attribute from an assembly form. Raises an `MLIRError` on failure."
 jax.interpreters.mlir.ir.SymbolRefAttr.type,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
 jax.interpreters.mlir.ir.SymbolRefAttr.typeid,no concrete parameters; zero-arg APIs are excluded,(self) -> jaxlib.mlir._mlir_libs._mlir.ir.TypeID
 jax.interpreters.mlir.ir.SymbolRefAttr.value,no concrete parameters; zero-arg APIs are excluded,Returns the value of the SymbolRef attribute as a list[str]
-jax.interpreters.mlir.ir.SymbolTable.erase,no concrete parameters; zero-arg APIs are excluded,"erase(self, operation: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
+jax.interpreters.mlir.ir.SymbolTable.erase,receiver-like owner 'SymbolTable',"erase(self, operation: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> None
 
 Erases a symbol operation from the symbol table.
 
@@ -36799,7 +36799,7 @@ Gets the symbol name from a symbol operation."
 jax.interpreters.mlir.ir.SymbolTable.get_visibility,no concrete parameters; zero-arg APIs are excluded,"get_visibility(symbol: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> jaxlib.mlir._mlir_libs._mlir.ir.StringAttr
 
 Gets the visibility attribute of a symbol operation."
-jax.interpreters.mlir.ir.SymbolTable.insert,no concrete parameters; zero-arg APIs are excluded,"insert(self, operation: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> jaxlib.mlir._mlir_libs._mlir.ir.StringAttr
+jax.interpreters.mlir.ir.SymbolTable.insert,receiver-like owner 'SymbolTable',"insert(self, operation: jaxlib.mlir._mlir_libs._mlir.ir._OperationBase) -> jaxlib.mlir._mlir_libs._mlir.ir.StringAttr
 
 Inserts a symbol operation into the symbol table.
 
@@ -36833,7 +36833,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.TupleType.get_tuple,no concrete parameters; zero-arg APIs are excluded,"get_tuple(elements: collections.abc.Sequence[jaxlib.mlir._mlir_libs._mlir.ir.Type], context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.TupleType
 
 Create a tuple type"
-jax.interpreters.mlir.ir.TupleType.get_type,no concrete parameters; zero-arg APIs are excluded,"get_type(self, pos: int) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
+jax.interpreters.mlir.ir.TupleType.get_type,missing required param descriptions for: pos,"get_type(self, pos: int) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
 
 Returns the pos-th type in the tuple type."
 jax.interpreters.mlir.ir.TupleType.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,"maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
@@ -36870,7 +36870,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.TypeAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(value: jaxlib.mlir._mlir_libs._mlir.ir.Type, context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.TypeAttr
 
 Gets a uniqued Type attribute"
-jax.interpreters.mlir.ir.TypeAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.TypeAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -36895,7 +36895,7 @@ Dumps a debug representation of the object to stderr."
 jax.interpreters.mlir.ir.UnitAttr.get,no concrete parameters; zero-arg APIs are excluded,"get(context: _mlir.ir.Context | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.UnitAttr
 
 Create a Unit attribute."
-jax.interpreters.mlir.ir.UnitAttr.get_named,no concrete parameters; zero-arg APIs are excluded,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
+jax.interpreters.mlir.ir.UnitAttr.get_named,missing required param descriptions for: arg,"get_named(self, arg: str, /) -> jaxlib.mlir._mlir_libs._mlir.ir.NamedAttribute
 
 Binds a name to the attribute, creating a `NamedAttribute`.
 
@@ -36920,7 +36920,7 @@ jax.interpreters.mlir.ir.UnrankedMemRefType.element_type,missing/placeholder/too
 jax.interpreters.mlir.ir.UnrankedMemRefType.get,no concrete parameters; zero-arg APIs are excluded,"get(element_type: jaxlib.mlir._mlir_libs._mlir.ir.Type, memory_space: jaxlib.mlir._mlir_libs._mlir.ir.Attribute | None, loc: _mlir.ir.Location | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.UnrankedMemRefType
 
 Create a unranked memref type"
-jax.interpreters.mlir.ir.UnrankedMemRefType.get_dim_size,no concrete parameters; zero-arg APIs are excluded,"get_dim_size(self, dim: int) -> int
+jax.interpreters.mlir.ir.UnrankedMemRefType.get_dim_size,missing required param descriptions for: dim,"get_dim_size(self, dim: int) -> int
 
 Returns the dim-th dimension of the given ranked shaped type."
 jax.interpreters.mlir.ir.UnrankedMemRefType.get_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"get_dynamic_size() -> int
@@ -36934,7 +36934,7 @@ jax.interpreters.mlir.ir.UnrankedMemRefType.get_unchecked,no concrete parameters
 Create a unranked memref type"
 jax.interpreters.mlir.ir.UnrankedMemRefType.has_rank,missing/placeholder/too short doc,Returns whether the given shaped type is ranked.
 jax.interpreters.mlir.ir.UnrankedMemRefType.has_static_shape,no concrete parameters; zero-arg APIs are excluded,Returns whether the given shaped type has a static shape.
-jax.interpreters.mlir.ir.UnrankedMemRefType.is_dynamic_dim,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.UnrankedMemRefType.is_dynamic_dim,missing required param descriptions for: dim,"is_dynamic_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is dynamic."
 jax.interpreters.mlir.ir.UnrankedMemRefType.is_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_size(dim_size: int) -> bool
@@ -36943,13 +36943,13 @@ Returns whether the given dimension size indicates a dynamic dimension."
 jax.interpreters.mlir.ir.UnrankedMemRefType.is_dynamic_stride_or_offset,missing/placeholder/too short doc,"is_dynamic_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given value is used as a placeholder for dynamic strides and offsets in shaped types."
-jax.interpreters.mlir.ir.UnrankedMemRefType.is_static_dim,no concrete parameters; zero-arg APIs are excluded,"is_static_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.UnrankedMemRefType.is_static_dim,missing required param descriptions for: dim,"is_static_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is static."
 jax.interpreters.mlir.ir.UnrankedMemRefType.is_static_size,no concrete parameters; zero-arg APIs are excluded,"is_static_size(dim_size: int) -> bool
 
 Returns whether the given dimension size indicates a static dimension."
-jax.interpreters.mlir.ir.UnrankedMemRefType.is_static_stride_or_offset,no concrete parameters; zero-arg APIs are excluded,"is_static_stride_or_offset(self, dim_size: int) -> bool
+jax.interpreters.mlir.ir.UnrankedMemRefType.is_static_stride_or_offset,missing required param descriptions for: dim_size,"is_static_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given shaped type stride or offset value is statically-sized."
 jax.interpreters.mlir.ir.UnrankedMemRefType.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,"maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
@@ -36974,7 +36974,7 @@ jax.interpreters.mlir.ir.UnrankedTensorType.element_type,missing/placeholder/too
 jax.interpreters.mlir.ir.UnrankedTensorType.get,no concrete parameters; zero-arg APIs are excluded,"get(element_type: jaxlib.mlir._mlir_libs._mlir.ir.Type, loc: _mlir.ir.Location | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.UnrankedTensorType
 
 Create a unranked tensor type"
-jax.interpreters.mlir.ir.UnrankedTensorType.get_dim_size,no concrete parameters; zero-arg APIs are excluded,"get_dim_size(self, dim: int) -> int
+jax.interpreters.mlir.ir.UnrankedTensorType.get_dim_size,missing required param descriptions for: dim,"get_dim_size(self, dim: int) -> int
 
 Returns the dim-th dimension of the given ranked shaped type."
 jax.interpreters.mlir.ir.UnrankedTensorType.get_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"get_dynamic_size() -> int
@@ -36988,7 +36988,7 @@ jax.interpreters.mlir.ir.UnrankedTensorType.get_unchecked,no concrete parameters
 Create a unranked tensor type"
 jax.interpreters.mlir.ir.UnrankedTensorType.has_rank,missing/placeholder/too short doc,Returns whether the given shaped type is ranked.
 jax.interpreters.mlir.ir.UnrankedTensorType.has_static_shape,no concrete parameters; zero-arg APIs are excluded,Returns whether the given shaped type has a static shape.
-jax.interpreters.mlir.ir.UnrankedTensorType.is_dynamic_dim,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.UnrankedTensorType.is_dynamic_dim,missing required param descriptions for: dim,"is_dynamic_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is dynamic."
 jax.interpreters.mlir.ir.UnrankedTensorType.is_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_size(dim_size: int) -> bool
@@ -36997,13 +36997,13 @@ Returns whether the given dimension size indicates a dynamic dimension."
 jax.interpreters.mlir.ir.UnrankedTensorType.is_dynamic_stride_or_offset,missing/placeholder/too short doc,"is_dynamic_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given value is used as a placeholder for dynamic strides and offsets in shaped types."
-jax.interpreters.mlir.ir.UnrankedTensorType.is_static_dim,no concrete parameters; zero-arg APIs are excluded,"is_static_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.UnrankedTensorType.is_static_dim,missing required param descriptions for: dim,"is_static_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is static."
 jax.interpreters.mlir.ir.UnrankedTensorType.is_static_size,no concrete parameters; zero-arg APIs are excluded,"is_static_size(dim_size: int) -> bool
 
 Returns whether the given dimension size indicates a static dimension."
-jax.interpreters.mlir.ir.UnrankedTensorType.is_static_stride_or_offset,no concrete parameters; zero-arg APIs are excluded,"is_static_stride_or_offset(self, dim_size: int) -> bool
+jax.interpreters.mlir.ir.UnrankedTensorType.is_static_stride_or_offset,missing required param descriptions for: dim_size,"is_static_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given shaped type stride or offset value is statically-sized."
 jax.interpreters.mlir.ir.UnrankedTensorType.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,"maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
@@ -37027,7 +37027,7 @@ jax.interpreters.mlir.ir.VectorType.element_type,missing/placeholder/too short d
 jax.interpreters.mlir.ir.VectorType.get,no concrete parameters; zero-arg APIs are excluded,"get(shape: collections.abc.Sequence[int], element_type: jaxlib.mlir._mlir_libs._mlir.ir.Type, *, scalable: list | None = None, scalable_dims: collections.abc.Sequence[int] | None = None, loc: _mlir.ir.Location | None = None) -> jaxlib.mlir._mlir_libs._mlir.ir.VectorType
 
 Create a vector type"
-jax.interpreters.mlir.ir.VectorType.get_dim_size,no concrete parameters; zero-arg APIs are excluded,"get_dim_size(self, dim: int) -> int
+jax.interpreters.mlir.ir.VectorType.get_dim_size,missing required param descriptions for: dim,"get_dim_size(self, dim: int) -> int
 
 Returns the dim-th dimension of the given ranked shaped type."
 jax.interpreters.mlir.ir.VectorType.get_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"get_dynamic_size() -> int
@@ -37041,7 +37041,7 @@ jax.interpreters.mlir.ir.VectorType.get_unchecked,no concrete parameters; zero-a
 Create a vector type"
 jax.interpreters.mlir.ir.VectorType.has_rank,missing/placeholder/too short doc,Returns whether the given shaped type is ranked.
 jax.interpreters.mlir.ir.VectorType.has_static_shape,no concrete parameters; zero-arg APIs are excluded,Returns whether the given shaped type has a static shape.
-jax.interpreters.mlir.ir.VectorType.is_dynamic_dim,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.VectorType.is_dynamic_dim,missing required param descriptions for: dim,"is_dynamic_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is dynamic."
 jax.interpreters.mlir.ir.VectorType.is_dynamic_size,no concrete parameters; zero-arg APIs are excluded,"is_dynamic_size(dim_size: int) -> bool
@@ -37050,13 +37050,13 @@ Returns whether the given dimension size indicates a dynamic dimension."
 jax.interpreters.mlir.ir.VectorType.is_dynamic_stride_or_offset,missing/placeholder/too short doc,"is_dynamic_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given value is used as a placeholder for dynamic strides and offsets in shaped types."
-jax.interpreters.mlir.ir.VectorType.is_static_dim,no concrete parameters; zero-arg APIs are excluded,"is_static_dim(self, dim: int) -> bool
+jax.interpreters.mlir.ir.VectorType.is_static_dim,missing required param descriptions for: dim,"is_static_dim(self, dim: int) -> bool
 
 Returns whether the dim-th dimension of the given shaped type is static."
 jax.interpreters.mlir.ir.VectorType.is_static_size,no concrete parameters; zero-arg APIs are excluded,"is_static_size(dim_size: int) -> bool
 
 Returns whether the given dimension size indicates a static dimension."
-jax.interpreters.mlir.ir.VectorType.is_static_stride_or_offset,no concrete parameters; zero-arg APIs are excluded,"is_static_stride_or_offset(self, dim_size: int) -> bool
+jax.interpreters.mlir.ir.VectorType.is_static_stride_or_offset,missing required param descriptions for: dim_size,"is_static_stride_or_offset(self, dim_size: int) -> bool
 
 Returns whether the given shaped type stride or offset value is statically-sized."
 jax.interpreters.mlir.ir.VectorType.maybe_downcast,no concrete parameters; zero-arg APIs are excluded,"maybe_downcast(self) -> jaxlib.mlir._mlir_libs._mlir.ir.Type
@@ -50866,7 +50866,7 @@ Same dimensions - but in a tuple ``(3, 2, 1)``
 (1, 1, 0)
 (2, 0, 0)
 (2, 1, 0)"
-jax.interpreters.mlir.ir.np.fromstring,no concrete parameters; zero-arg APIs are excluded,"fromstring(string, dtype=float, count=-1, *, sep, like=None)
+jax.interpreters.mlir.ir.np.fromstring,required param 'string' lacks constraint/type/shape/value detail,"fromstring(string, dtype=float, count=-1, *, sep, like=None)
 
 A new 1-D array initialized from text data in a string.
 
@@ -60280,7 +60280,7 @@ jax.interpreters.traceback_util.types.GeneratorType.gi_suspended,missing/placeho
 jax.interpreters.traceback_util.types.GeneratorType.gi_yieldfrom,missing/placeholder/too short doc,"object being iterated by yield from, or None"
 jax.interpreters.traceback_util.types.GeneratorType.send,missing required param descriptions for: object,"send(value) -> send 'value' into generator,
 return next yielded value or raise StopIteration."
-jax.interpreters.traceback_util.types.GeneratorType.throw,no concrete parameters; zero-arg APIs are excluded,"throw(value)
+jax.interpreters.traceback_util.types.GeneratorType.throw,missing required param descriptions for: value,"throw(value)
 throw(type[,value[,tb]])
 
 Raise exception in generator, return next yielded value or raise
@@ -60296,7 +60296,7 @@ jax.interpreters.traceback_util.types.CoroutineType.cr_running,missing/placehold
 jax.interpreters.traceback_util.types.CoroutineType.cr_suspended,missing/placeholder/too short doc,
 jax.interpreters.traceback_util.types.CoroutineType.send,missing required param descriptions for: object,"send(arg) -> send 'arg' into coroutine,
 return next iterated value or raise StopIteration."
-jax.interpreters.traceback_util.types.CoroutineType.throw,no concrete parameters; zero-arg APIs are excluded,"throw(value)
+jax.interpreters.traceback_util.types.CoroutineType.throw,missing required param descriptions for: value,"throw(value)
 throw(type[,value[,traceback]])
 
 Raise exception in coroutine, return next iterated value or raise
@@ -60310,7 +60310,7 @@ jax.interpreters.traceback_util.types.AsyncGeneratorType.ag_frame,missing/placeh
 jax.interpreters.traceback_util.types.AsyncGeneratorType.ag_running,missing/placeholder/too short doc,
 jax.interpreters.traceback_util.types.AsyncGeneratorType.ag_suspended,missing/placeholder/too short doc,
 jax.interpreters.traceback_util.types.AsyncGeneratorType.asend,missing/placeholder/too short doc,asend(v) -> send 'v' in generator.
-jax.interpreters.traceback_util.types.AsyncGeneratorType.athrow,no concrete parameters; zero-arg APIs are excluded,"athrow(value)
+jax.interpreters.traceback_util.types.AsyncGeneratorType.athrow,missing required param descriptions for: value,"athrow(value)
 athrow(type[,value[,tb]])
 
 raise exception in generator.
@@ -60561,7 +60561,7 @@ jax.interpreters.traceback_util.util.math.fsum,missing required param descriptio
 Assumes IEEE-754 floating-point arithmetic."
 jax.interpreters.traceback_util.util.math.gamma,missing/placeholder/too short doc,Gamma function at x.
 jax.interpreters.traceback_util.util.math.gcd,missing/placeholder/too short doc,Greatest Common Divisor.
-jax.interpreters.traceback_util.util.math.hypot,no concrete parameters; zero-arg APIs are excluded,"hypot(*coordinates) -> value
+jax.interpreters.traceback_util.util.math.hypot,missing required param descriptions for: coordinates,"hypot(*coordinates) -> value
 
 Multidimensional Euclidean distance from the origin to a point.
 
@@ -60601,7 +60601,7 @@ jax.interpreters.traceback_util.util.math.ldexp,"missing required param descript
 
 This is essentially the inverse of frexp()."
 jax.interpreters.traceback_util.util.math.lgamma,missing required param descriptions for: x,Natural logarithm of absolute value of Gamma function at x.
-jax.interpreters.traceback_util.util.math.log,no concrete parameters; zero-arg APIs are excluded,"log(x, [base=math.e])
+jax.interpreters.traceback_util.util.math.log,missing required param descriptions for: x,"log(x, [base=math.e])
 Return the logarithm of x to the given base.
 
 If the base is not specified, returns the natural logarithm (base e) of x."

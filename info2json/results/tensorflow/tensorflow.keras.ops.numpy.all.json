@@ -1,0 +1,50 @@
+{
+  "api_name": "all",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be a tensor"
+      ]
+    },
+    "axis": {
+      "type": "int|tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An integer or tuple of integers that represent the axis along which a logical AND reduction is performed. The default (`axis=None`) is to perform a logical AND over all the dimensions of the input array. `axis` may be negative, in which case it counts for the last to the first axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    },
+    "keepdims": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If `True`, axes which are reduced are left in the result as dimensions with size one. With this option, the result will broadcast correctly against the input array. Defaults to `False`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "keepdims must be one of True, False"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "bool",
+    "description": "The tensor containing the logical AND reduction over the `axis`."
+  },
+  "constraints": []
+}

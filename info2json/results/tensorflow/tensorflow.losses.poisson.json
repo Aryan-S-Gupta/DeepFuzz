@@ -1,0 +1,34 @@
+{
+  "api_name": "poisson",
+  "module_path": "tensorflow.losses",
+  "params": {
+    "y_true": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Ground truth values. shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The predicted values. shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true shape must match y_pred shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "-1",
+    "description": "Poisson loss values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": []
+}

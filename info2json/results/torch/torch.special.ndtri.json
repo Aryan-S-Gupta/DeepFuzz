@@ -1,0 +1,36 @@
+{
+  "api_name": "ndtri",
+  "module_path": "torch.special",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "out tensor (if provided) must have the same shape as the returned tensor"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "single",
+    "description": "elementwise inverse error function of input, integrated from minus infinity to x"
+  },
+  "constraints": [
+    "input tensor shape is arbitrary"
+  ]
+}

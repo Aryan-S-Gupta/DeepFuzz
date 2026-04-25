@@ -1,0 +1,72 @@
+{
+  "api_name": "array",
+  "module_path": "jax.numpy",
+  "params": {
+    "object": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "an object that is convertible to an array. This includes JAX arrays, NumPy arrays, Python scalars, Python collections like lists and tuples, objects with a ``__jax_array__`` method, and objects supporting the Python buffer protocol. dtype: optionally specify the dtype of the output array. If not specified it will be inferred from the input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "copy": {
+      "type": "",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "specify whether to force a copy of the input. Default: True.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "order": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "not implemented in JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ndmin": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "integer specifying the minimum number of dimensions in the output array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional :class:`~jax.Device` or :class:`~jax.sharding.Sharding` to which the created array will be committed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out_sharding": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "(optional) :class:`~jax.sharding.PartitionSpec` or :class:`~jax.NamedSharding` representing the sharding of the created array (see `explicit sharding`_ for more details). This argument exists for consistency with other array creation routines across JAX. Specifying both ``out_sharding`` and ``device`` will result in an error.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A JAX array constructed from the input."
+  },
+  "constraints": []
+}

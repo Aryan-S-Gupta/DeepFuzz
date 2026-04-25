@@ -1,0 +1,34 @@
+{
+  "api_name": "matvec",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, N)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array of shape ``(..., N)``. Leading dimensions must be broadcast-compatible with leading dimensions of ``x1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Leading dimensions must be broadcast-compatible with leading dimensions of x1."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of shape ``(..., M)`` containing the batched matrix-vector product."
+  },
+  "constraints": []
+}

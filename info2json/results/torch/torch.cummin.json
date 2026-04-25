@@ -1,0 +1,49 @@
+{
+  "api_name": "cummin",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the dimension to do the operation over",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "dim must be an integer"
+      ]
+    },
+    "out": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the result tuple of two output tensors (values, indices)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be a tuple with two Tensors if provided",
+        "out is optional, and if provided, must be a tuple with two Tensors"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "2",
+    "description": "a namedtuple `(values, indices)` where `values` is the cumulative minimum of elements of input in the dimension dim. And `indices` is the index location of each maximum value found in the dimension dim."
+  },
+  "constraints": [
+    "input must be a Tensor"
+  ]
+}

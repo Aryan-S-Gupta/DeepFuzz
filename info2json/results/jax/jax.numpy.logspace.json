@@ -1,0 +1,74 @@
+{
+  "api_name": "logspace",
+  "module_path": "jax.numpy",
+  "params": {
+    "start": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Used to specify the start value. The start value is ``base ** start``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "stop": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Used to specify the stop value. The end value is ``base ** stop``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional, default=50. Number of values to generate.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "endpoint": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional, default=True. If True, then include the ``stop`` value in the result. If False, then exclude the ``stop`` value.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "base": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "scalar or array, optional, default=10. Specifies the base of the logarithm. dtype: optional. Specifies the dtype of the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional, default=0. Axis along which to generate the logspace.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of logarithm."
+  },
+  "constraints": []
+}

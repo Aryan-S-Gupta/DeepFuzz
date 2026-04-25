@@ -1,0 +1,81 @@
+{
+  "api_full_name": "tensorflow.math.special.bessel_k0",
+  "api_name": "bessel_k0",
+  "module_path": "tensorflow.math.special",
+  "import_path": "tensorflow.math.special.bessel_k0",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` or `SparseTensor`. Must be one of the following types: `half`, `float32`, `float64`.",
+        "dtype_candidates": [
+          "float32",
+          "float64"
+        ],
+        "enum_values": [
+          "SparseTensor",
+          "half",
+          "float32",
+          "float64"
+        ],
+        "constraints": [
+          "Must be one of the following types: half, float32, float64",
+          "x must be one of SparseTensor, half, float32, float64",
+          "x and output must have the same shape",
+          "The function is numerically stabler to use `k0e(x)` instead"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "one",
+    "description": "A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`. @compatibility(scipy) Equivalent to scipy.special.k0 @end_compatibility"
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.special.bessel_k0.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

@@ -1,0 +1,68 @@
+{
+  "api_name": "nan_to_num",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of values to be replaced. If it does not have an inexact dtype it will be returned unmodified.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x dtype must be inexact if specified"
+      ]
+    },
+    "copy": {
+      "type": "unused",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "nan": {
+      "type": "number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "value to substitute for NaN entries. Defaults to 0.0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "posinf": {
+      "type": "number",
+      "size": "",
+      "default": "the maximum representable value",
+      "flag": "Optional",
+      "description": "value to substitute for positive infinite entries. Defaults to the maximum representable value.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "posinf must be positive"
+      ]
+    },
+    "neginf": {
+      "type": "number",
+      "size": "",
+      "default": "the minimum representable value",
+      "flag": "Optional",
+      "description": "value to substitute for positive infinite entries. Defaults to the minimum representable value.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "neginf must be positive"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A copy of ``x`` with the requested substitutions."
+  },
+  "constraints": []
+}

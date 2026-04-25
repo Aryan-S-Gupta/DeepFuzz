@@ -1,0 +1,86 @@
+{
+  "api_name": "circle",
+  "module_path": "tensorflow.keras.losses",
+  "params": {
+    "y_true": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor with ground truth labels in integer format.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor with predicted L2 normalized embeddings.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ref_labels": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "y_true",
+      "flag": "Optional",
+      "description": "Optional integer tensor with labels for reference embeddings. If `None`, defaults to `y_true`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ref_embeddings": {
+      "type": "tensor",
+      "size": "",
+      "default": "y_pred",
+      "flag": "Optional",
+      "description": "Optional tensor with L2 normalized reference embeddings. If `None`, defaults to `y_pred`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "remove_diagonal": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "Boolean, whether to remove self-similarities from positive mask. Defaults to `True`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "remove_diagonal must be positive"
+      ]
+    },
+    "gamma": {
+      "type": "float",
+      "size": "",
+      "default": "80",
+      "flag": "Optional",
+      "description": "Float, scaling factor for the loss. Defaults to `80`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "margin": {
+      "type": "float",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "Float, relaxation factor for the loss. Defaults to `0.4`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Circle loss value."
+  },
+  "constraints": []
+}

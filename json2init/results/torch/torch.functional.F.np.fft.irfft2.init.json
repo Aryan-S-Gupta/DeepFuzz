@@ -1,0 +1,174 @@
+{
+  "api_full_name": "torch.functional.F.np.fft.irfft2",
+  "api_name": "irfft2",
+  "module_path": "torch.functional.F.np.fft",
+  "import_path": "torch.functional.F.np.fft.irfft2",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like The input array",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "s": {
+      "name": "s",
+      "spec": {
+        "type": "float|sequence",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "sequence of ints, optional Shape of the real output to the inverse FFT.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axes": {
+      "name": "axes",
+      "spec": {
+        "type": "sequence",
+        "size": "",
+        "default": "(-2, -1)``, the last two axes",
+        "flag": "Optional",
+        "description": "sequence of ints, optional The axes over which to compute the inverse fft. Default: ``(-2, -1)``, the last two axes.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "norm": {
+      "name": "norm",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "\"backward\"",
+        "flag": "Optional",
+        "description": "{\"backward\", \"ortho\", \"forward\"}, optional Normalization mode (see `numpy.fft`). Default is \"backward\". Indicates which direction of the forward/backward pair of transforms is scaled and with what normalization factor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "{\"backward\"",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: {\"backward\""
+    },
+    "out": {
+      "name": "out",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "ndarray, optional If provided, the result will be placed in this array. It should be of the appropriate shape and dtype for the last transformation.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "1",
+    "description": "------- ndarray The result of the inverse real 2-D FFT."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: index -2 is out of bounds for axis 0 with size 1"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "IndexError",
+    "error": "index -2 is out of bounds for axis 0 with size 1",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/numpy/fft/_pocketfft.py\", line 1687, in irfft2\n    return irfftn(a, s, axes, norm, out=None)\n  File \"/usr/local/lib/python3.10/dist-packages/numpy/fft/_pocketfft.py\", line 1599, in irfftn\n    s, axes = _cook_nd_args(a, s, axes, invreal=1)\n  File \"/usr/local/lib/python3.10/dist-packages/numpy/fft/_pocketfft.py\", line 704, in _cook_nd_args\n    s = take(a.shape, axes)\n  File \"/usr/local/lib/python3.10/dist-packages/numpy/_core/fromnumeric.py\", line 203, in take\n    return _wrapfunc(a, 'take', indices, axis=axis, out=out, mode=mode)\nIndexError: index -2 is out of bounds for axis 0 with size 1\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.fft.irfft2.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

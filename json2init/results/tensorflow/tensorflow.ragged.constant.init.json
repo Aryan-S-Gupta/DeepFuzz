@@ -1,0 +1,187 @@
+{
+  "api_full_name": "tensorflow.ragged.constant",
+  "api_name": "constant",
+  "module_path": "tensorflow.ragged",
+  "import_path": "tensorflow.ragged.constant",
+  "backend": "tensorflow",
+  "params": {
+    "pylist": {
+      "name": "pylist",
+      "spec": {
+        "type": "float|tuple|list|number|tensor|dtype|any",
+        "size": "scalar",
+        "default": "chosen based on the scalar values in",
+        "flag": "Optional",
+        "description": "A nested `list`, `tuple` or `np.ndarray`. Any nested element that is not a `list`, `tuple` or `np.ndarray` must be a scalar value compatible with `dtype`. dtype: The type of elements for the returned `RaggedTensor`. If not specified, then a default is chosen based on the scalar values in `pylist`. If there are no scalar values in `pylist`, then the default is `tf.float32`.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "pylist must be one of np.ndarray"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "ragged_rank": {
+      "name": "ragged_rank",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "max(0, K",
+        "flag": "Optional",
+        "description": "An integer specifying the ragged rank of the returned `RaggedTensor`. Must be nonnegative and less than `K`. Defaults to `max(0, K - 1)` if `inner_shape` is not specified. Defaults to `max(0, K - 1 - len(inner_shape))` if `inner_shape` is specified.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "inner_shape": {
+      "name": "inner_shape",
+      "spec": {
+        "type": "tuple",
+        "size": "",
+        "default": "()` if `ragged_rank",
+        "flag": "Optional",
+        "description": "A tuple of integers specifying the shape for individual inner values in the returned `RaggedTensor`. Defaults to `()` if `ragged_rank` is not specified. If `ragged_rank` is specified, then a default is chosen based on the contents of `pylist`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "inner_shape must be one of RaggedTensor"
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name prefix for the returned tensor (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "row_splits_dtype": {
+      "name": "row_splits_dtype",
+      "spec": {
+        "type": "tf.int32|tf.int64",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "data type for the constructed `RaggedTensor`'s row_splits. One of `tf.int32` or `tf.int64`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "RaggedTensor",
+          "tf.int32",
+          "tf.int64"
+        ],
+        "constraints": [
+          "row_splits_dtype must be one of RaggedTensor, tf.int32, tf.int64"
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "int32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A potentially ragged tensor with rank `K` and the specified `ragged_rank`, containing the values from `pylist`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Missing required positional argument"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Missing required positional argument",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ragged.constant.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

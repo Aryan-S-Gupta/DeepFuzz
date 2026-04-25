@@ -1,0 +1,275 @@
+{
+  "api_full_name": "tensorflow.nn.depthwise_conv2d_backprop_input",
+  "api_name": "depthwise_conv2d_backprop_input",
+  "module_path": "tensorflow.nn",
+  "import_path": "tensorflow.nn.depthwise_conv2d_backprop_input",
+  "backend": "tensorflow",
+  "params": {
+    "input_sizes": {
+      "name": "input_sizes",
+      "spec": {
+        "type": "int|tensor",
+        "size": "4-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `int32`. An integer vector representing the shape of `input`, based on `data_format`. For example, if `data_format` is 'NHWC' then `input` is a 4-D `[batch, height, width, channels]` tensor.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "input_sizes must be 4-D"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "filter": {
+      "name": "filter",
+      "spec": {
+        "type": "float|tensor",
+        "size": "4-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`. 4-D with shape `[filter_height, filter_width, in_channels, depthwise_multiplier]`.",
+        "dtype_candidates": [
+          "float32",
+          "float64",
+          "bfloat16"
+        ],
+        "enum_values": [
+          "half",
+          "bfloat16",
+          "float32",
+          "float64"
+        ],
+        "constraints": [
+          "filter must be 4-D",
+          "filter must be one of half, bfloat16, float32, float64"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "out_backprop": {
+      "name": "out_backprop",
+      "spec": {
+        "type": "tensor",
+        "size": "4-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `filter`. 4-D with shape based on `data_format`. For example, if `data_format` is 'NHWC' then out_backprop shape is `[batch, out_height, out_width, out_channels]`. Gradients w.r.t. the output of the convolution.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "out_backprop must be 4-D",
+          "out_backprop must have the same dtype as filter"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "strides": {
+      "name": "strides",
+      "spec": {
+        "type": "list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A list of `ints`. The stride of the sliding window for each dimension of the input of the convolution.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "string|list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Controls how to pad the image before applying the convolution. Can be the string `\"SAME\"` or `\"VALID\"` indicating the type of padding algorithm to use, or a list indicating the explicit paddings at the start and end of each dimension. See [here](https://www.tensorflow.org/api_docs/python/tf/nn#notes_on_padding_2) for more information. When explicit padding is used and data_format is `\"NHWC\"`, this should be in the form `[[0, 0], [pad_top, pad_bottom], [pad_left, pad_right], [0, 0]]`. When explicit padding used and data_format is `\"NCHW\"`, this should be in the form `[[0, 0], [0, 0], [pad_top, pad_bottom], [pad_left, pad_right]]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "SAME"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "data_format": {
+      "name": "data_format",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"NHWC\", \"NCHW\"`. Defaults to `\"NHWC\"`. Specify the data format of the input and output data. With the default format \"NHWC\", the data is stored in the order of: [batch, height, width, channels]. Alternatively, the format could be \"NCHW\", the data storage order of: [batch, channels, height, width].",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "dilations": {
+      "name": "dilations",
+      "spec": {
+        "type": "list|tensor",
+        "size": "1-D",
+        "default": "[1, 1, 1, 1]",
+        "flag": "Optional",
+        "description": "An optional list of `ints`. Defaults to `[1, 1, 1, 1]`. 1-D tensor of length 4. The dilation factor for each dimension of `input`. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. The dimension order is determined by the value of `data_format`, see above for details. Dilations in the batch and depth dimensions must be 1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "dilations must be 1-D",
+          "dilations must be one of ints"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `filter`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__DepthwiseConv2dNativeBackpropInput_device_/job:localhost/replica:0/task:0/device:CPU:0}} Sliding window strides field must specify 4 dimensions [Op:DepthwiseConv2dNativeBackpropInput] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__DepthwiseConv2dNativeBackpropInput_device_/job:localhost/replica:0/task:0/device:CPU:0}} Sliding window strides field must specify 4 dimensions [Op:DepthwiseConv2dNativeBackpropInput] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__DepthwiseConv2dNativeBackpropInput_device_/job:localhost/replica:0/task:0/device:CPU:0}} Sliding window strides field must specify 4 dimensions [Op:DepthwiseConv2dNativeBackpropInput] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.depthwise_conv2d_backprop_input.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

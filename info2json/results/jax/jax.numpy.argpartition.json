@@ -1,0 +1,48 @@
+{
+  "api_name": "argpartition",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array to be partitioned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a must be 1-D or higher"
+      ]
+    },
+    "kth": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "static integer index about which to partition the array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "kth must satisfy 0 <= kth < len(a)"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "static integer axis along which to partition the array; default is -1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(a) <= axis < rank(a)"
+      ]
+    }
+  },
+  "output": {
+    "type": "indices",
+    "numbers": "int32",
+    "description": "Indices which partition ``a`` at the ``kth`` value along ``axis``. The entries before ``kth`` are indices of values smaller than ``take(a, kth, axis)``, and entries after ``kth`` are indices of values larger than ``take(a, kth, axis)``"
+  },
+  "constraints": []
+}

@@ -1,0 +1,72 @@
+{
+  "api_name": "one_hot",
+  "module_path": "tensorflow",
+  "params": {
+    "indices": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of indices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "depth": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar defining the depth of the one hot dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "on_value": {
+      "type": "number",
+      "size": "",
+      "default": "1)",
+      "flag": "Optional",
+      "description": "A scalar defining the value to fill in output when `indices[j] = i`. (default: 1)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "off_value": {
+      "type": "number",
+      "size": "",
+      "default": "0)",
+      "flag": "Optional",
+      "description": "A scalar defining the value to fill in output when `indices[j] != i`. (default: 0)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The axis to fill (default: -1, a new inner-most axis). dtype: The data type of the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The one-hot tensor."
+  },
+  "constraints": []
+}

@@ -1,0 +1,52 @@
+{
+  "api_name": "diagonal",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array. Must be at least 2-dimensional.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "offset": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "optional, default=0. Diagonal offset from the main diagonal. Must be a static integer value. Can be positive or negative.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis1": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "optional, default=0. The first axis along which to take the diagonal.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis2": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "optional, default=1. The second axis along which to take the diagonal.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real or integer",
+    "description": "A 1D array for 2D input, and in general a N-1 dimensional array for N-dimensional input."
+  },
+  "constraints": []
+}

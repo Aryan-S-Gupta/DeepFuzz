@@ -1,0 +1,82 @@
+{
+  "api_name": "categorical_focal_crossentropy",
+  "module_path": "tensorflow.keras.metrics",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of one-hot true targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of predicted targets.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "list|number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A weight balancing factor for all classes, default is `0.25` as mentioned in the reference. It can be a list of floats or a scalar. In the multi-class case, alpha may be set by inverse class frequency by using `compute_class_weight` from `sklearn.utils`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "gamma": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A focusing parameter, default is `2.0` as mentioned in the reference. It helps to gradually reduce the importance given to simple examples in a smooth manner. When `gamma` = 0, there is no focal effect on the categorical crossentropy.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "from_logits": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Whether `y_pred` is expected to be a logits tensor. By default, we assume that `y_pred` encodes a probability distribution.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "label_smoothing": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Float in [0, 1]. If > `0` then smooth the labels. For example, if `0.1`, use `0.1 / num_classes` for non-target labels and `0.9 + 0.1 / num_classes` for target labels.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Defaults to `-1`. The dimension along which the entropy is computed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Categorical focal crossentropy loss value."
+  },
+  "constraints": []
+}

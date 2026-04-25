@@ -1,0 +1,125 @@
+{
+  "api_full_name": "tensorflow.linalg.inv",
+  "api_name": "inv",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.inv",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `float64`, `float32`, `half`, `complex64`, `complex128`. Shape is `[..., M, M]`.",
+        "dtype_candidates": [
+          "float32",
+          "float64",
+          "complex64",
+          "complex128"
+        ],
+        "enum_values": [
+          "float64",
+          "float32",
+          "half",
+          "complex64",
+          "complex128"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "adjoint": {
+      "name": "adjoint",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": [
+    "input must be a tensor with shape [..., M, M] and a supported numeric or complex dtype.",
+    "M must be greater than zero (i.e., the matrices must be square and invertible)."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__MatrixInverse_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor 0 must have rank >= 2, got 0 [Op:MatrixInverse]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__MatrixInverse_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor 0 must have rank >= 2, got 0 [Op:MatrixInverse]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 1557, in matrix_inverse\n    return matrix_inverse_eager_fallback(\n        input, adjoint=adjoint, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 1608, in matrix_inverse_eager_fallback\n    _result = _execute.execute(b\"MatrixInverse\", 1, inputs=_inputs_flat,\n                               attrs=_attrs, ctx=ctx, name=name)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 53, in quick_execute\n    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,\n                                        inputs, attrs, num_outputs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__MatrixInverse_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor 0 must have rank >= 2, got 0 [Op:MatrixInverse]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.inv.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

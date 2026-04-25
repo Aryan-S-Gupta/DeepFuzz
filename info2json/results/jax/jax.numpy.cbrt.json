@@ -1,0 +1,24 @@
+{
+  "api_name": "cbrt",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar. ``complex`` dtypes are not supported.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and output must have same shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real",
+    "description": "An array containing the cube root of the elements of ``x``."
+  },
+  "constraints": []
+}

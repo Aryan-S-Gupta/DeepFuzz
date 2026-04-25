@@ -1,0 +1,37 @@
+{
+  "api_name": "celu",
+  "module_path": "tensorflow.keras.ops.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x.shape is same shape as output.shape"
+      ]
+    },
+    "alpha": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "the α value for the CELU formulation. Defaults to `1.0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "alpha > 0",
+        "alpha must be one of 1.0, CELU"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor with the same shape as `x`."
+  },
+  "constraints": []
+}

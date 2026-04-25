@@ -1,0 +1,42 @@
+{
+  "api_name": "expm",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "A": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., N, N)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "upper_triangular": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "if True, then assume that ``A`` is upper-triangular. Default=False.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "max_squarings": {
+      "type": "number",
+      "size": "",
+      "default": "16)",
+      "flag": "Optional",
+      "description": "The number of squarings in the scaling-and-squaring approximation method (default: 16).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of shape ``(..., N, N)`` containing the matrix exponent of ``A``."
+  },
+  "constraints": []
+}

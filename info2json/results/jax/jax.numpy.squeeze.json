@@ -1,0 +1,40 @@
+{
+  "api_name": "squeeze",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if `axis` is not specified, all length-1 axes in `a` are removed"
+      ]
+    },
+    "axis": {
+      "type": "int|sequence|any",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "integer or sequence of integers specifying axes to remove. If any specified axis does not have a length of 1, an error is raised. If not specified, squeeze all length-1 axes in ``a``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if specified, must not have a length of 1",
+        "if `axis` is not specified, all length-1 axes in `a` are removed"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "copy of ``a`` with length-1 axes removed."
+  },
+  "constraints": [
+    "the number of dimensions in the output is less than or equal to the number of dimensions in the input",
+    "if `axis` is not specified, all length-1 axes in `a` are removed"
+  ]
+}

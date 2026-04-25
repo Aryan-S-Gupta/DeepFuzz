@@ -1,0 +1,35 @@
+{
+  "api_name": "hsplit",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tensor to split.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "indices_or_sections": {
+      "type": "int|tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "See argument in :func:`torch.tensor_split`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must evenly divide the split dimension if an integer",
+        "input and indices_or_sections must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "",
+    "description": "Each tensor is a subsection of the input tensor"
+  },
+  "constraints": []
+}

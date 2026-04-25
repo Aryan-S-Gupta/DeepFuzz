@@ -1,0 +1,40 @@
+{
+  "api_name": "row_stack",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "tup": {
+      "type": "sequence|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "sequence of ndarrays The arrays must have the same shape along all but the first axis. 1-D arrays must have the same length. In the case of a single array_like input, it will be treated as a sequence of arrays; i.e., each element along the zeroth axis is treated as a separate array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "1-D arrays must have the same length.",
+        "tup must be 1-D"
+      ]
+    },
+    "casting": {
+      "type": "string|dtype",
+      "size": "",
+      "default": "'same_kind'",
+      "flag": "Optional",
+      "description": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional Controls what kind of data casting may occur. Defaults to 'same_kind'.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Defaults to 'same_kind'."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The array formed by stacking the given arrays, will be at least 2-D."
+  },
+  "constraints": [
+    "Parameters make most sense for arrays with up to 3 dimensions.",
+    "Functions concatenate, stack and hstack are alternatives to row_stack."
+  ]
+}

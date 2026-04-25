@@ -1,0 +1,29 @@
+{
+  "api_name": "where",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "condition": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, bool Where True, yield `x`, otherwise yield `y`. Values from which to choose. `x`, `y` and `condition` need to be broadcastable to some shape.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "`condition`, `x`, and `y` need to be broadcastable to some shape.",
+        "`condition` must have the same shape as that of the output array."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array with elements from `x` where `condition` is True, and elements from `y` elsewhere."
+  },
+  "constraints": [
+    "`condition`, `x`, and `y` need to be broadcastable to some shape."
+  ]
+}

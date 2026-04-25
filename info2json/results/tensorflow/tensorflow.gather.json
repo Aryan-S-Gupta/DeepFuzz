@@ -1,0 +1,101 @@
+{
+  "api_name": "gather",
+  "module_path": "tensorflow",
+  "params": {
+    "params": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The `Tensor` from which to gather values. Must be at least rank `axis + 1`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "indices": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The index `Tensor`. Must be one of the following types: `int32`, `int64`. The values must be in range `[0, params.shape[axis])`.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "indices must be one of int32, int64"
+      ]
+    },
+    "validate_indices": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Deprecated, does nothing. Indices are always validated on CPU, never validated on GPU.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "Caution": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "On CPU, if an out of bound index is found, an error is raised. On GPU, if an out of bound index is found, a 0 is stored in the corresponding output value.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Caution must be one of CPU, GPU"
+      ]
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "the first non-batch dimension",
+      "flag": "Optional",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. The `axis` in `params` to gather `indices` from. Must be greater than or equal to `batch_dims`. Defaults to the first non-batch dimension. Supports negative indexes.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "axis must be one of int32, int64",
+        "axis must satisfy -rank(params) <= axis < rank(params)"
+      ]
+    },
+    "batch_dims": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `integer`. The number of batch dimensions. Must be less than or equal to `rank(indices)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `params`."
+  },
+  "constraints": []
+}

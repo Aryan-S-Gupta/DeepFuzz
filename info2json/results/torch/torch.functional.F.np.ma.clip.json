@@ -1,0 +1,37 @@
+{
+  "api_name": "clip",
+  "module_path": "torch.functional.F.np.ma",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array containing elements to clip. Minimum and maximum value. If ``None``, clipping is not performed on the corresponding edge. If both ``a_min`` and ``a_max`` are ``None``, the elements of the returned array stay the same. Both are broadcasted against ``a``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "ndarray, optional The results will be placed in this array. It may be the input array for in-place clipping. `out` must be of the right shape to hold the output. Its type is preserved. Array API compatible alternatives for ``a_min`` and ``a_max`` arguments. Either ``a_min`` and ``a_max`` or ``min`` and ``max`` can be passed at the same time. Default: ``None``.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "a_min",
+        "a_max",
+        "min",
+        "max"
+      ],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- MaskedArray An array with the elements of `a`, but where values < `a_min` are replaced with `a_min`, and those > `a_max` with `a_max`."
+  },
+  "constraints": []
+}

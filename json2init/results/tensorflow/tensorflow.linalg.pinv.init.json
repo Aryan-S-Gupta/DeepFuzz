@@ -1,0 +1,135 @@
+{
+  "api_full_name": "tensorflow.linalg.pinv",
+  "api_name": "pinv",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.pinv",
+  "backend": "tensorflow",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "(Batch of) `float`-like matrix-shaped `Tensor`(s) which are to be pseudo-inverted.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "rcond": {
+      "name": "rcond",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "`Tensor` of small singular value cutoffs. Singular values smaller (in modulus) than `rcond` * largest_singular_value (again, in modulus) are set to zero. Must broadcast against `tf.shape(a)[:-2]`. Default value: `10. * max(num_rows, num_cols) * np.finfo(a.dtype).eps`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "validate_args": {
+      "name": "validate_args",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "When `True`, additional assertions might be embedded in the graph. Default value: `False` (i.e., no graph assertions are added).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "when `true`",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: when `true`"
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string|callable",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Python `str` prefixed to ops created by this function. Default value: 'pinv'.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable"
+    }
+  },
+  "output": {
+    "type": "a_pinv",
+    "numbers": "1",
+    "description": "(Batch of) pseudo-inverse of input `a`. Has same shape as `a` except rightmost two dimensions are transposed."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Input `a` must have at least 2 dimensions (saw: 0)."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Input `a` must have at least 2 dimensions (saw: 0).",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/linalg/linalg_impl.py\", line 759, in _maybe_validate_matrix\n    raise ValueError('Input `a` must have at least 2 dimensions '\n                     '(saw: {}).'.format(a.shape.rank))\nValueError: Input `a` must have at least 2 dimensions (saw: 0).\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.pinv.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

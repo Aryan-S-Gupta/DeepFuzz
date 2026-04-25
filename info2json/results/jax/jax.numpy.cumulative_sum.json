@@ -1,0 +1,46 @@
+{
+  "api_name": "cumulative_sum",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be compatible with numpy.ndarray"
+      ]
+    },
+    "axis": {
+      "type": "int|dtype",
+      "size": "",
+      "default": "zero",
+      "flag": "Optional",
+      "description": "integer axis along which to accumulate. If ``x`` is one-dimensional, this argument is optional and defaults to zero. dtype: optional dtype of the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must satisfy 0 <= axis < rank(x)"
+      ]
+    },
+    "include_initial": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "if True, then include the initial value in the cumulative sum. Default is False.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the accumulated values."
+  },
+  "constraints": []
+}

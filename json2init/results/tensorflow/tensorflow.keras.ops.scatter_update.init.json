@@ -1,0 +1,129 @@
+{
+  "api_full_name": "tensorflow.keras.ops.scatter_update",
+  "api_name": "scatter_update",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.scatter_update",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A tensor, the tensor to be updated.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "indices": {
+      "name": "indices",
+      "spec": {
+        "type": "tuple|list|number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A tensor or list/tuple of shape `(N, inputs.ndim)`, specifying indices to update. `N` is the number of indices to update, must be equal to the first dimension of `updates`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "updates": {
+      "name": "updates",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A tensor, the new values to be put to `inputs` at `indices`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A tensor, has the same shape and dtype as `inputs`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'Tindices' of float is not in the list of allowed values: int16, int32, int64, uint16\n\t; NodeDef: {{node TensorScatterUpdate}}; Op<name=TensorScatterUpdate; signature=tensor:T, indices:Tindices, updates:T -> output:T; attr=T:type; attr=Tindices:type,allowed=[DT_INT16, DT_INT32, DT_INT64, DT_UINT16]; attr=bad_indices_policy:string,default=\"\"> [Op:TensorScatterUpdate] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'Tindices' of float is not in the list of allowed values: int16, int32, int64, uint16\n\t; NodeDef: {{node TensorScatterUpdate}}; Op<name=TensorScatterUpdate; signature=tensor:T, indices:Tindices, updates:T -> output:T; attr=T:type; attr=Tindices:type,allowed=[DT_INT16, DT_INT32, DT_INT64, DT_UINT16]; attr=bad_indices_policy:string,default=\"\"> [Op:TensorScatterUpdate] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/core.py\", line 392, in scatter_update\n    return backend.core.scatter_update(inputs, indices, updates)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/core.py\", line 585, in scatter_update\n    return tf.tensor_scatter_nd_update(inputs, indices, updates)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'Tindices' of float is not in the list of allowed values: int16, int32, int64, uint16\n\t; NodeDef: {{node TensorScatterUpdate}}; Op<name=TensorScatterUpdate; signature=tensor:T, indices:Tindices, updates:T -> output:T; attr=T:type; attr=Tindices:type,allowed=[DT_INT16, DT_INT32, DT_INT64, DT_UINT16]; attr=bad_indices_policy:string,default=\"\"> [Op:TensorScatterUpdate] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.scatter_update.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

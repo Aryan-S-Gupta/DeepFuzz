@@ -1,0 +1,66 @@
+{
+  "api_name": "lu_unpack",
+  "module_path": "torch",
+  "params": {
+    "LU_data": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the packed LU factorization data",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "LU_pivots": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the packed LU factorization pivots",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "unpack_data": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "flag indicating if the data should be unpacked. If ``False``, then the returned ``L`` and ``U`` are empty tensors. Default: ``True``",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "unpack_pivots": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "flag indicating if the pivots should be unpacked into a permutation matrix ``P``. If ``False``, then the returned ``P`` is an empty tensor. Default: ``True``",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "output tuple of three tensors. Ignored if `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A namedtuple ``(P, L, U)``"
+  },
+  "constraints": []
+}

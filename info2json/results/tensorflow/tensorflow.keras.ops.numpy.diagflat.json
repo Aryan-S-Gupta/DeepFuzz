@@ -1,0 +1,34 @@
+{
+  "api_name": "diagflat",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor to be flattened and placed on the diagonal.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "The diagonal to place the flattened input. Defaults to `0`. Use `k > 0` for diagonals above the main diagonal, and `k < 0` for diagonals below the main diagonal.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "k must be positive"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A 2-D tensor with the flattened input on the specified diagonal."
+  },
+  "constraints": []
+}

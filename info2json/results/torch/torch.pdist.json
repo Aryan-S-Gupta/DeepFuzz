@@ -1,0 +1,37 @@
+{
+  "api_name": "pdist",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input tensor of shape :math:`N \\times M`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "p": {
+      "type": "number",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "p value for the p-norm distance to calculate between each vector pair :math:`\\in [0, \\infty]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "p must be in the interval (0, ∞) when using 'minkowski'",
+        "'minkowski' p-norm is used when p > 0, and Hamming distance is used when p = 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "N(N-1)/2",
+    "description": "The output will have shape :math:`\\frac{1}{2} N (N - 1)`"
+  },
+  "constraints": [
+    "input must be provided"
+  ]
+}

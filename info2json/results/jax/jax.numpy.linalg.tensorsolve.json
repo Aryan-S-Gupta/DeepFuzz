@@ -1,0 +1,42 @@
+{
+  "api_name": "tensorsolve",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. After reordering via ``axes`` (see below), shape must be ``(*b.shape, *x.shape)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "b": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "right-hand-side array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axes": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional tuple specifying axes of ``a`` that should be moved to the end",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "array x such that after reordering of axes of ``a``, ``tensordot(a, x, x.ndim)`` is equivalent to ``b``."
+  },
+  "constraints": []
+}

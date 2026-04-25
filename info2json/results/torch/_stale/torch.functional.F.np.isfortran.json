@@ -1,0 +1,25 @@
+{
+  "api_name": "isfortran",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be 2-D",
+        "a must be 2-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "single",
+    "description": "------- bool Returns True if the array is Fortran contiguous but *not* C contiguous."
+  },
+  "constraints": []
+}

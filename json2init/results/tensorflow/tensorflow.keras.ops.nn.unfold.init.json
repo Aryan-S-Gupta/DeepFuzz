@@ -1,0 +1,177 @@
+{
+  "api_full_name": "tensorflow.keras.ops.nn.unfold",
+  "api_name": "unfold",
+  "module_path": "tensorflow.keras.ops.nn",
+  "import_path": "tensorflow.keras.ops.nn.unfold",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "4-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A 4-D tensor of shape `(N, C, H, W)` (**channels-first** format).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x must be 4-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "kernel_size": {
+      "name": "kernel_size",
+      "spec": {
+        "type": "int|tuple",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int or tuple of two ints, the size of the sliding window `(kH, kW)`. If a single int is given, it is used for both dimensions.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "dilation": {
+      "name": "dilation",
+      "spec": {
+        "type": "int|tuple",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "int or tuple of two ints, the spacing between kernel points (a.k.a. **dilation** or **atrous** convolution). Default: 1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "int|tuple",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "int or tuple of two ints, the amount of zero-padding to apply to both spatial dimensions. Default: 0.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "stride": {
+      "name": "stride",
+      "spec": {
+        "type": "int|tuple",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "int or tuple of two ints, the step size of the sliding window. Default: 1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "A 3-D tensor of shape `(N, C * kH * kW, L)` where `L = num_patches_H * num_patches_W` is the total number of patches extracted."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1,
+        1,
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.nn.unfold.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

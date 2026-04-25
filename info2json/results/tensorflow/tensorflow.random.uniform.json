@@ -1,0 +1,71 @@
+{
+  "api_name": "uniform",
+  "module_path": "tensorflow.random",
+  "params": {
+    "shape": {
+      "type": "int|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A 1-D integer Tensor or Python array. The shape of the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape must be 1-D"
+      ]
+    },
+    "minval": {
+      "type": "int|number|tensor|dtype",
+      "size": "scalar",
+      "default": "0",
+      "flag": "Optional",
+      "description": "A Tensor or Python value of type `dtype`, broadcastable with `shape` (for integer types, broadcasting is not supported, so it needs to be a scalar). The lower bound on the range of random values to generate (inclusive). Defaults to 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "maxval": {
+      "type": "int|float|number|tensor|dtype",
+      "size": "scalar",
+      "default": "1 if `dtype` is floating point",
+      "flag": "Optional",
+      "description": "A Tensor or Python value of type `dtype`, broadcastable with `shape` (for integer types, broadcasting is not supported, so it needs to be a scalar). The upper bound on the range of random values to generate (exclusive). Defaults to 1 if `dtype` is floating point. dtype: The type of the output: `float16`, `bfloat16`, `float32`, `float64`, `int32`, or `int64`. Defaults to `float32`.",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "float16",
+        "float32",
+        "float64",
+        "bfloat16"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "seed": {
+      "type": "int|sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A Python integer. Used in combination with `tf.random.set_seed` to create a reproducible sequence of tensors across multiple calls.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of the specified shape filled with random uniform values."
+  },
+  "constraints": []
+}

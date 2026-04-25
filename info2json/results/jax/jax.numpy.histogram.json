@@ -1,0 +1,62 @@
+{
+  "api_name": "histogram",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of values to be binned. May be any size or dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bins": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "10)",
+      "flag": "Optional",
+      "description": "Specify the number of bins in the histogram (default: 10). ``bins`` may also be an array specifying the locations of the bin edges.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "range": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tuple of scalars. Specifies the range of the data. If not specified, the range is inferred from the data.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "weights": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional array specifying the weights of the data points. Should be broadcast-compatible with ``a``. If not specified, each data point is weighted equally.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "density": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If True, return the normalized histogram in units of counts per unit length. If False (default) return the (weighted) counts per bin.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A tuple of arrays ``(histogram, bin_edges)``, where ``histogram`` contains the aggregated data, and ``bin_edges`` specifies the boundaries of the bins."
+  },
+  "constraints": []
+}

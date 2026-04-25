@@ -1,0 +1,78 @@
+{
+  "api_name": "triangular_solve",
+  "module_path": "torch",
+  "params": {
+    "b": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "multiple right-hand sides of size :math:`(*, m, k)` where :math:`*` is zero of more batch dimensions",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "A": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input triangular coefficient matrix of size :math:`(*, m, m)` where :math:`*` is zero or more batch dimensions",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "upper": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "whether :math:`A` is upper or lower triangular. Default: ``True``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "transpose": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "solves `op(A)X = b` where `op(A) = A^T` if this flag is ``True``, and `op(A) = A` if it is ``False``. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "unitriangular": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "whether :math:`A` is unit triangular. If True, the diagonal elements of :math:`A` are assumed to be 1 and not referenced from :math:`A`. Default: ``False``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "is a clone of",
+    "numbers": "1",
+    "description": "A namedtuple `(solution, cloned_coefficient)` where `cloned_coefficient` math:`A` and `solution` is the solution :math:`X` to :math:`AX = b` (or whatever variant of the system of equations, depending on the keyword arguments.)"
+  },
+  "constraints": []
+}

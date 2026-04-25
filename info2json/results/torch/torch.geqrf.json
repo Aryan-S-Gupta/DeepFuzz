@@ -1,0 +1,34 @@
+{
+  "api_name": "geqrf",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input matrix",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tuple of (Tensor, Tensor). Ignored if `None`. Default: `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "2",
+    "description": "returns a namedtuple (a, tau) as defined in `LAPACK documentation for geqrf`_"
+  },
+  "constraints": [
+    "input shape must match LAPACK geqrf requirements"
+  ]
+}

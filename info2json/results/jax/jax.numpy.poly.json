@@ -1,0 +1,25 @@
+{
+  "api_name": "poly",
+  "module_path": "jax.numpy",
+  "params": {
+    "seq_of_zeros": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar or an array of roots of the polynomial of shape ``(M,)`` or ``(M, M)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real or complex",
+    "description": "An array containing the coefficients of the polynomial. The dtype of the output is always promoted to inexact."
+  },
+  "constraints": [
+    "output dtype is always promoted to inexact",
+    "for complex-valued or square-shaped inputs, jnp.poly returns complex coefficients"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "api_full_name": "tensorflow.linalg.global_norm",
+  "api_name": "global_norm",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.global_norm",
+  "backend": "tensorflow",
+  "params": {
+    "t_list": {
+      "name": "t_list",
+      "spec": {
+        "type": "tuple|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A tuple or list of mixed `Tensors`, `IndexedSlices`, or None.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "t_list elements must be Tensors, IndexedSlices, or None."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "Unspecified",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "name must be a string or unspecified."
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|number|tensor",
+    "numbers": "1",
+    "description": "A 0-D (scalar) `Tensor` of type `float`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: `t_list` should be a sequence of tensors. Received <class 'tensorflow.python.framework.ops.EagerTensor'>."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "`t_list` should be a sequence of tensors. Received <class 'tensorflow.python.framework.ops.EagerTensor'>.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/clip_ops.py\", line 271, in global_norm\n    raise TypeError(\"`t_list` should be a sequence of tensors. Received \"\n                    f\"{type(t_list)}.\")\nTypeError: `t_list` should be a sequence of tensors. Received <class 'tensorflow.python.framework.ops.EagerTensor'>.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.global_norm.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

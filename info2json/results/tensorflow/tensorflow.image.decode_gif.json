@@ -1,0 +1,34 @@
+{
+  "api_name": "decode_gif",
+  "module_path": "tensorflow.image",
+  "params": {
+    "contents": {
+      "type": "string|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. 0-D. The GIF-encoded image.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `uint8`."
+  },
+  "constraints": [
+    "name must be a valid TensorFlow name"
+  ]
+}

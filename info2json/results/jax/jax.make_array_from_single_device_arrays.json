@@ -1,0 +1,42 @@
+{
+  "api_name": "make_array_from_single_device_arrays",
+  "module_path": "jax",
+  "params": {
+    "shape": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Shape of the output ``jax.Array``. This conveys information already included with ``sharding`` and ``arrays`` and serves as a double check.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sharding": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Sharding: A global Sharding instance which describes how the output jax.Array is laid out across devices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "arrays": {
+      "type": "tuple|list|tensor|device|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`list` or `tuple` of ``jax.Array``\\s that are each single device addressable. ``len(arrays)`` must equal ``len(sharding.addressable_devices)`` and the shape of each array must be the same. For multiprocess code, each process will call with a different ``arrays`` argument that corresponds to that processes' data. These arrays are commonly created via ``jax.device_put``. dtype: The dtype of the output ``jax.Array``. If not provided, the dtype of the first array in ``arrays`` is used. If ``arrays`` is empty, the ``dtype`` argument must be provided.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|device",
+    "numbers": "1",
+    "description": "A global ``jax.Array``, sharded as ``sharding``, with shape equal to ``shape``, and with per-device contents matching ``arrays``."
+  },
+  "constraints": []
+}

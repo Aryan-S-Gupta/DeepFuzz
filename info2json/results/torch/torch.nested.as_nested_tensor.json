@@ -1,0 +1,42 @@
+{
+  "api_name": "as_nested_tensor",
+  "module_path": "torch.nested",
+  "params": {
+    "ts": {
+      "type": "tuple|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a tensor to treat as a nested tensor OR a list / tuple of tensors with the same ndim",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "list|tensor|device",
+      "size": "",
+      "default": "if None, same :class:`torch",
+      "flag": "Optional",
+      "description": "the desired device of returned nested tensor. Default: if None, same :class:`torch.device` as leftmost tensor in the list",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tensor",
+      "size": "",
+      "default": "if None, the strided layout",
+      "flag": "Optional",
+      "description": "the desired layout of returned nested tensor. Only strided and jagged layouts are supported. Default: if None, the strided layout.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

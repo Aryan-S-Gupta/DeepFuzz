@@ -1,0 +1,45 @@
+{
+  "api_name": "chebyshev_polynomial_t",
+  "module_path": "torch.special",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "n": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Degree of the polynomial.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "n must be an integer",
+        "input tensor and n must have the same shape"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Chebyshev polynomial of the first kind Tn(input)"
+  },
+  "constraints": []
+}

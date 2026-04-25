@@ -1,0 +1,40 @@
+{
+  "api_name": "pow",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array giving the base value. Must have floating or complex type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y": {
+      "type": "int|number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "Input array giving the exponent value. Must have integer, floating, or complex type. Its dtype will be cast to that of ``x.dtype`` if necessary. If neither ``x`` nor ``y`` is a scalar, then ``x`` and ``y`` must have the same number of dimensions and be broadcast-compatible.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "x.dtype"
+      ],
+      "constraints": [
+        "If neither `x` nor `y` is a scalar, then `x` and `y` must have the same number of dimensions and be broadcast-compatible.",
+        "y must be one of x.dtype",
+        "If `y` is not provided, it defaults to 1 for each dimension."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array of the same dtype as ``x`` containing the elementwise power."
+  },
+  "constraints": [
+    "The argument dtypes must match, and will be converted if necessary."
+  ]
+}

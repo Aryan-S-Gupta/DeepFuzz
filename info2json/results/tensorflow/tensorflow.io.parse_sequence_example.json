@@ -1,0 +1,62 @@
+{
+  "api_name": "parse_sequence_example",
+  "module_path": "tensorflow.io",
+  "params": {
+    "serialized": {
+      "type": "string|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A vector (1-D Tensor) of type string containing binary serialized `SequenceExample` protos.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "context_features": {
+      "type": "dict",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A mapping of feature keys to `FixedLenFeature` or `VarLenFeature` or `RaggedFeature` values. These features are associated with a `SequenceExample` as a whole.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sequence_features": {
+      "type": "dict",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A mapping of feature keys to `FixedLenSequenceFeature` or `VarLenFeature` or `RaggedFeature` values. These features are associated with data within the `FeatureList` section of the `SequenceExample` proto.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "example_names": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A vector (1-D Tensor) of strings (optional), the name of the serialized protos.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for this operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|dict|tensor|any",
+    "numbers": "3",
+    "description": "A tuple of three `dict`s, each mapping keys to `Tensor`s, `SparseTensor`s, and `RaggedTensor`. The first dict contains the context key/values, the second dict contains the feature_list key/values, and the final dict contains the lengths of any dense feature_list features."
+  },
+  "constraints": []
+}

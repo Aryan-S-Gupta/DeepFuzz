@@ -1,0 +1,42 @@
+{
+  "api_name": "divide_no_nan",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of a floating or integer dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "y": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` with the same dtype as `x` and a compatible shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "The element-wise quotient as in `tf.math.divide(x, y)`, except that division by zero produces `0.0`, not `nan`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,26 @@
+{
+  "api_name": "cast_symbool_to_symint_guardless",
+  "module_path": "torch.fx.experimental.symbolic_shapes",
+  "params": {
+    "symbool": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A boolean value, either a concrete bool or symbolic SymBool",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "symbool must be a valid SymBool"
+      ]
+    }
+  },
+  "output": {
+    "type": "int",
+    "numbers": "1",
+    "description": "The corresponding integer value (1 for True, 0 for False) as either a concrete int or symbolic SymInt"
+  },
+  "constraints": []
+}

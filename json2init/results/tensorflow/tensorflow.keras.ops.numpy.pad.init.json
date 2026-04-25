@@ -1,0 +1,157 @@
+{
+  "api_full_name": "tensorflow.keras.ops.numpy.pad",
+  "api_name": "pad",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "import_path": "tensorflow.keras.ops.numpy.pad",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor to pad.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "pad_width": {
+      "name": "pad_width",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Number of values padded to the edges of each axis. `((before_1, after_1), ...(before_N, after_N))` unique pad widths for each axis. `((before, after),)` yields same before and after pad for each axis. `(pad,)` or `int` is a shortcut for `before = after = pad` width for all axes.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "pad_width must be one of int"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "mode": {
+      "name": "mode",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "\"constant\"",
+        "flag": "Optional",
+        "description": "One of `\"constant\"`, `\"edge\"`, `\"linear_ramp\"`, `\"maximum\"`, `\"mean\"`, `\"median\"`, `\"minimum\"`, `\"reflect\"`, `\"symmetric\"`, `\"wrap\"`, `\"empty\"`, `\"circular\"`. Defaults to `\"constant\"`.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "constant",
+          "edge",
+          "linear_ramp",
+          "maximum",
+          "mean",
+          "median",
+          "minimum",
+          "reflect",
+          "symmetric",
+          "wrap",
+          "empty",
+          "circular"
+        ],
+        "constraints": [
+          "mode must be one of constant, edge, linear_ramp, maximum, mean, median, minimum, reflect, symmetric, wrap, empty, circular"
+        ]
+      },
+      "chosen_type": "one of `\"constant\"`",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: one of `\"constant\"`"
+    },
+    "constant_values": {
+      "name": "constant_values",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "value to pad with if `mode == \"constant\"`. Defaults to `0`. A `ValueError` is raised if not None and `mode != \"constant\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "constant_values must be one of constant, 0, ValueError"
+        ]
+      },
+      "chosen_type": "value to pad with if `mode == \"constant\"`. defaults to `0`. a `valueerror` is raised if not none and `mode != \"constant\"`.",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: value to pad with if `mode == \"constant\"`. defaults to `0`. a `valueerror` is raised if not none and `mode != \"constant\"`."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Padded tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        3
+      ],
+      "dtype": "float32",
+      "numel": 3,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.pad.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

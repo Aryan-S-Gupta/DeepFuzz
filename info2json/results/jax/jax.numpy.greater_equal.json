@@ -1,0 +1,38 @@
+{
+  "api_name": "greater_equal",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must either have same shape or be broadcast compatible"
+      ]
+    },
+    "y": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar. ``x`` and ``y`` must either have same shape or be broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and y must either have same shape or be broadcast compatible"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "int64 or bool",
+    "description": "An array containing boolean values. ``True`` if the elements of ``x >= y``, and ``False`` otherwise."
+  },
+  "constraints": [
+    "x and y must either have same shape or be broadcast compatible"
+  ]
+}

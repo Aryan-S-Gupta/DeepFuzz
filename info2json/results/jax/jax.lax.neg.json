@@ -1,0 +1,24 @@
+{
+  "api_name": "neg",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "For unsigned integer inputs, this function returns `2 ** nbits - x`, where"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "same shape and dtype as `x`",
+    "description": "Array of same shape and dtype as ``x``, containing the element-wise negative."
+  },
+  "constraints": []
+}

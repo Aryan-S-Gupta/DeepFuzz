@@ -1,0 +1,36 @@
+{
+  "api_name": "ifftshift",
+  "module_path": "torch.fft",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor in FFT order",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim": {
+      "type": "int|tuple|any",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to rearrange. Only dimensions specified here will be rearranged, any other dimensions will be left in their original order. Default: All dimensions of :attr:`input`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Only dimensions specified here will be rearranged, any other dimensions will be left in their original order.",
+        "If dim is not given, all dimensions of input will be rearranged.",
+        "Default value for dim is None."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "The shifted tensor"
+  },
+  "constraints": []
+}

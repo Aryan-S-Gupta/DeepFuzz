@@ -1,0 +1,56 @@
+{
+  "api_name": "unstack",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x, num and axis must be provided"
+      ]
+    },
+    "num": {
+      "type": "int32",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The length of the dimension axis. Automatically inferred if `None`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Defaults to None",
+        "x, num and axis must be provided"
+      ]
+    },
+    "axis": {
+      "type": "int32",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The axis along which to unpack.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)",
+        "x, num and axis must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "multiple",
+    "description": "A list of tensors unpacked along the given axis."
+  },
+  "constraints": [
+    "x, num and axis must be provided"
+  ]
+}

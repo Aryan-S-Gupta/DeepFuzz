@@ -1,0 +1,36 @@
+{
+  "api_name": "diag_indices",
+  "module_path": "jax.numpy",
+  "params": {
+    "n": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int. The size of each dimension of the square array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "n > 0"
+      ]
+    },
+    "ndim": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "optional, int, default=2. The number of dimensions of the array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "ndim >= 2"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "int32",
+    "description": "A tuple of arrays, each of length `n`, containing the indices to access the main diagonal."
+  },
+  "constraints": []
+}

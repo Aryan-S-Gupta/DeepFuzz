@@ -1,0 +1,60 @@
+{
+  "api_full_name": "torch.xpu.mem_get_info",
+  "api_name": "mem_get_info",
+  "module_path": "torch.xpu",
+  "import_path": "torch.xpu.mem_get_info",
+  "backend": "torch",
+  "params": {
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "string|int|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "selected device. Returns statistic for the current device, given by :func:`~torch.xpu.current_device`, if :attr:`device` is ``None`` (default).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|int|device",
+    "numbers": "2",
+    "description": "the memory available on the device in units of bytes. int: the total memory on the device in units of bytes"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: module 'torch._C' has no attribute '_xpu_getMemoryInfo'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "module 'torch._C' has no attribute '_xpu_getMemoryInfo'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/workspace/pytorch/torch/xpu/memory.py\", line 194, in mem_get_info\n    return torch._C._xpu_getMemoryInfo(device)\nAttributeError: module 'torch._C' has no attribute '_xpu_getMemoryInfo'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.xpu.mem_get_info.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

@@ -1,0 +1,45 @@
+{
+  "api_name": "polyint",
+  "module_path": "jax.numpy",
+  "params": {
+    "p": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An array of polynomial coefficients.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "m": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Order of integration. Default is 1. It must be specified statically.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Scalar or array of ``m`` integration constant (s).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real",
+    "description": "An array of coefficients of integrated polynomial."
+  },
+  "constraints": [
+    "p, m, and k must be broadcast-compatible shapes.",
+    "m must be non-negative integer."
+  ]
+}

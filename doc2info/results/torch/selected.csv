@@ -6407,3 +6407,398 @@ Args:
 Returns:
     int: the memory available on the device in units of bytes.
     int: the total memory on the device in units of bytes"
+torch.chunk,"chunk(input: Tensor, chunks: int, dim: int = 0) -> Tuple[Tensor, ...]
+
+Attempts to split a tensor into the specified number of chunks. Each chunk is a view of
+the input tensor.
+
+
+.. note::
+
+    This function may return fewer than the specified number of chunks!
+
+.. seealso::
+
+    :func:`torch.tensor_split` a function that always returns exactly the specified number of chunks
+
+If the tensor size along the given dimension :attr:`dim` is divisible by :attr:`chunks`,
+all returned chunks will be the same size.
+If the tensor size along the given dimension :attr:`dim` is not divisible by :attr:`chunks`,
+all returned chunks will be the same size, except the last one.
+If such division is not possible, this function may return fewer
+than the specified number of chunks.
+
+Arguments:
+    input (Tensor): the tensor to split
+    chunks (int): number of chunks to return
+    dim (int): dimension along which to split the tensor
+
+Example:
+    >>> torch.arange(11).chunk(6)
+    (tensor([0, 1]),
+     tensor([2, 3]),
+     tensor([4, 5]),
+     tensor([6, 7]),
+     tensor([8, 9]),
+     tensor([10]))
+    >>> torch.arange(12).chunk(6)
+    (tensor([0, 1]),
+     tensor([2, 3]),
+     tensor([4, 5]),
+     tensor([6, 7]),
+     tensor([8, 9]),
+     tensor([10, 11]))
+    >>> torch.arange(13).chunk(6)
+    (tensor([0, 1, 2]),
+     tensor([3, 4, 5]),
+     tensor([6, 7, 8]),
+     tensor([ 9, 10, 11]),
+     tensor([12]))"
+torch.arange,"arange(start=0, end, step=1, *, out=None, dtype=None, layout=torch.strided, device=None, requires_grad=False) -> Tensor
+
+Returns a 1-D tensor of size :math:`\left\lceil \frac{\text{end} - \text{start}}{\text{step}} \right\rceil`
+with values from the interval ``[start, end)`` taken with common difference
+:attr:`step` beginning from `start`.
+
+Note: When using floating-point dtypes (especially reduced precision types like ``bfloat16``),
+the results may be affected by floating-point rounding behavior. Some values in the sequence
+might not be exactly representable in certain floating-point formats, which can lead to
+repeated values or unexpected rounding. For precise sequences, it is recommended to use
+integer dtypes instead of floating-point dtypes.
+
+Note that non-integer :attr:`step` is subject to floating point rounding errors when
+comparing against :attr:`end`; to avoid inconsistency, we advise subtracting a small epsilon from :attr:`end`
+in such cases.
+
+.. math::
+    \text{out}_{{i+1}} = \text{out}_{i} + \text{step}
+
+Args:
+    start (Number, optional): the starting value for the set of points. Default: ``0``.
+    end (Number): the ending value for the set of points
+    step (Number, optional): the gap between each pair of adjacent points. Default: ``1``.
+
+Keyword args:
+    out (Tensor, optional): the output tensor.
+    dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor.
+        Default: if ``None``, uses a global default (see :func:`torch.set_default_dtype`). If `dtype` is not given, infer the data type from the other input
+        arguments. If any of `start`, `end`, or `stop` are floating-point, the
+        `dtype` is inferred to be the default dtype, see
+        :meth:`~torch.get_default_dtype`. Otherwise, the `dtype` is inferred to
+        be `torch.int64`.
+    layout (:class:`torch.layout`, optional): the desired layout of returned Tensor.
+        Default: ``torch.strided``.
+    device (:class:`torch.device`, optional): the desired device of returned tensor.
+        Default: if ``None``, uses the current device for the default tensor type
+        (see :func:`torch.set_default_device`). :attr:`device` will be the CPU
+        for CPU tensor types and the current CUDA device for CUDA tensor types.
+    requires_grad (bool, optional): If autograd should record operations on the
+        returned tensor. Default: ``False``.
+
+Example::
+
+    >>> torch.arange(5)
+    tensor([ 0,  1,  2,  3,  4])
+    >>> torch.arange(1, 4)
+    tensor([ 1,  2,  3])
+    >>> torch.arange(1, 2.5, 0.5)
+    tensor([ 1.0000,  1.5000,  2.0000])"
+torch.gather,"gather(input, dim, index, *, sparse_grad=False, out=None) -> Tensor
+
+Gathers values along an axis specified by `dim`.
+
+For a 3-D tensor the output is specified by::
+
+    out[i][j][k] = input[index[i][j][k]][j][k]  # if dim == 0
+    out[i][j][k] = input[i][index[i][j][k]][k]  # if dim == 1
+    out[i][j][k] = input[i][j][index[i][j][k]]  # if dim == 2
+
+:attr:`input` and :attr:`index` must have the same number of dimensions.
+It is also required that ``index.size(d) <= input.size(d)`` for all
+dimensions ``d != dim``.  :attr:`out` will have the same shape as :attr:`index`.
+Note that ``input`` and ``index`` do not broadcast against each other.
+When :attr:`index` is empty, we always return an empty output with the same shape
+without further error checking.
+
+Args:
+    input (Tensor): the source tensor
+    dim (int): the axis along which to index
+    index (LongTensor): the indices of elements to gather
+
+Keyword arguments:
+    sparse_grad (bool, optional): If ``True``, gradient w.r.t. :attr:`input` will be a sparse tensor.
+    out (Tensor, optional): the destination tensor
+
+Example::
+
+    >>> t = torch.tensor([[1, 2], [3, 4]])
+    >>> torch.gather(t, 1, torch.tensor([[0, 0], [1, 0]]))
+    tensor([[ 1,  1],
+            [ 4,  3]])"
+torch.meshgrid,"Creates grids of coordinates specified by the 1D inputs in `attr`:tensors.
+
+This is helpful when you want to visualize data over some
+range of inputs. See below for a plotting example.
+
+Given :math:`N` 1D tensors :math:`T_0 \ldots T_{N-1}` as
+inputs with corresponding sizes :math:`S_0 \ldots S_{N-1}`,
+this creates :math:`N` N-dimensional tensors :math:`G_0 \ldots
+G_{N-1}`, each with shape :math:`(S_0, ..., S_{N-1})` where
+the output :math:`G_i` is constructed by expanding :math:`T_i`
+to the result shape.
+
+.. note::
+    0D inputs are treated equivalently to 1D inputs of a
+    single element.
+
+.. warning::
+    `torch.meshgrid(*tensors)` currently has the same behavior
+    as calling `numpy.meshgrid(*arrays, indexing='ij')`.
+
+    In the future `torch.meshgrid` will transition to
+    `indexing='xy'` as the default.
+
+    https://github.com/pytorch/pytorch/issues/50276 tracks
+    this issue with the goal of migrating to NumPy's behavior.
+
+.. seealso::
+
+    :func:`torch.cartesian_prod` has the same effect but it
+    collects the data in a tensor of vectors.
+
+Args:
+    tensors (list of Tensor): list of scalars or 1 dimensional tensors. Scalars will be
+        treated as tensors of size :math:`(1,)` automatically
+
+    indexing: (str, optional): the indexing mode, either ""xy""
+        or ""ij"", defaults to ""ij"". See warning for future changes.
+
+        If ""xy"" is selected, the first dimension corresponds
+        to the cardinality of the second input and the second
+        dimension corresponds to the cardinality of the first
+        input.
+
+        If ""ij"" is selected, the dimensions are in the same
+        order as the cardinality of the inputs.
+
+Returns:
+    seq (sequence of Tensors): If the input has :math:`N`
+    tensors of size :math:`S_0 \ldots S_{N-1}``, then the
+    output will also have :math:`N` tensors, where each tensor
+    is of shape :math:`(S_0, ..., S_{N-1})`.
+
+Example::
+
+    >>> x = torch.tensor([1, 2, 3])
+    >>> y = torch.tensor([4, 5, 6])
+
+    Observe the element-wise pairings across the grid, (1, 4),
+    (1, 5), ..., (3, 6). This is the same thing as the
+    cartesian product.
+    >>> grid_x, grid_y = torch.meshgrid(x, y, indexing='ij')
+    >>> grid_x
+    tensor([[1, 1, 1],
+            [2, 2, 2],
+            [3, 3, 3]])
+    >>> grid_y
+    tensor([[4, 5, 6],
+            [4, 5, 6],
+            [4, 5, 6]])
+
+    This correspondence can be seen when these grids are
+    stacked properly.
+    >>> torch.equal(torch.cat(tuple(torch.dstack([grid_x, grid_y]))),
+    ...             torch.cartesian_prod(x, y))
+    True
+
+    `torch.meshgrid` is commonly used to produce a grid for
+    plotting.
+    >>> # xdoctest: +REQUIRES(module:matplotlib)
+    >>> # xdoctest: +REQUIRES(env:DOCTEST_SHOW)
+    >>> import matplotlib.pyplot as plt
+    >>> xs = torch.linspace(-5, 5, steps=100)
+    >>> ys = torch.linspace(-5, 5, steps=100)
+    >>> x, y = torch.meshgrid(xs, ys, indexing='xy')
+    >>> z = torch.sin(torch.sqrt(x * x + y * y))
+    >>> ax = plt.axes(projection='3d')
+    >>> ax.plot_surface(x.numpy(), y.numpy(), z.numpy())
+    >>> plt.show()
+
+.. image:: ../_static/img/meshgrid.png
+    :width: 512"
+torch.relu,
+torch.sigmoid,"sigmoid(input, *, out=None) -> Tensor
+
+Alias for :func:`torch.special.expit`."
+torch.topk,"topk(input, k, dim=None, largest=True, sorted=True, *, out=None) -> (Tensor, LongTensor)
+
+Returns the :attr:`k` largest elements of the given :attr:`input` tensor along
+a given dimension.
+
+If :attr:`dim` is not given, the last dimension of the `input` is chosen.
+
+If :attr:`largest` is ``False`` then the `k` smallest elements are returned.
+
+A namedtuple of `(values, indices)` is returned with the `values` and
+`indices` of the largest `k` elements of each row of the `input` tensor in the
+given dimension `dim`.
+
+The boolean option :attr:`sorted` if ``True``, will make sure that the returned
+`k` elements are themselves sorted
+
+.. note::
+    When using `torch.topk`, the indices of tied elements are not guaranteed to be stable
+    and may vary across different invocations.
+
+Args:
+    input (Tensor): the input tensor.
+    k (int): the k in ""top-k""
+    dim (int, optional): the dimension to sort along
+    largest (bool, optional): controls whether to return largest or
+           smallest elements
+    sorted (bool, optional): controls whether to return the elements
+           in sorted order
+
+Keyword args:
+    out (tuple, optional): the output tuple of (Tensor, LongTensor) that can be
+        optionally given to be used as output buffers
+
+Example::
+
+    >>> x = torch.arange(1., 6.)
+    >>> x
+    tensor([ 1.,  2.,  3.,  4.,  5.])
+    >>> torch.topk(x, 3)
+    torch.return_types.topk(values=tensor([5., 4., 3.]), indices=tensor([4, 3, 2]))"
+torch.unique,"unique(input, sorted=True, return_inverse=False, return_counts=False, dim=None) -> tuple[Tensor, Tensor, Tensor]
+
+Returns the unique elements of the input tensor.
+
+.. note:: This function is different from :func:`torch.unique_consecutive` in the sense that
+    this function also eliminates non-consecutive duplicate values.
+
+.. note:: Currently in the CUDA implementation and the CPU implementation,
+    `torch.unique` always sort the tensor at the beginning regardless of the `sort` argument.
+    Sorting could be slow, so if your input tensor is already sorted, it is recommended to use
+    :func:`torch.unique_consecutive` which avoids the sorting.
+
+Args:
+    input (Tensor): the input tensor
+    sorted (bool): Whether to sort the unique elements in ascending order
+        before returning as output.
+    return_inverse (bool): Whether to also return the indices for where
+        elements in the original input ended up in the returned unique list.
+    return_counts (bool): Whether to also return the counts for each unique
+        element.
+    dim (int, optional): the dimension to operate upon. If ``None``, the
+        unique of the flattened input is returned. Otherwise, each of the
+        tensors indexed by the given dimension is treated as one of the
+        elements to apply the unique operation upon. See examples for more
+        details. Default: ``None``
+
+Returns:
+    (Tensor, Tensor (optional), Tensor (optional)): A tensor or a tuple of tensors containing
+
+        - **output** (*Tensor*): the output list of unique scalar elements.
+        - **inverse_indices** (*Tensor*): (optional) if
+          :attr:`return_inverse` is True, there will be an additional
+          returned tensor (same shape as input) representing the indices
+          for where elements in the original input map to in the output;
+          otherwise, this function will only return a single tensor.
+        - **counts** (*Tensor*): (optional) if
+          :attr:`return_counts` is True, there will be an additional
+          returned tensor (same shape as output or output.size(dim),
+          if dim was specified) representing the number of occurrences
+          for each unique value or tensor.
+
+Example::
+
+    >>> output = torch.unique(torch.tensor([1, 3, 2, 3], dtype=torch.long))
+    >>> output
+    tensor([1, 2, 3])
+
+    >>> output, inverse_indices = torch.unique(
+    ...     torch.tensor([1, 3, 2, 3], dtype=torch.long), sorted=True, return_inverse=True)
+    >>> output
+    tensor([1, 2, 3])
+    >>> inverse_indices
+    tensor([0, 2, 1, 2])
+
+    >>> output, inverse_indices = torch.unique(
+    ...     torch.tensor([[1, 3], [2, 3]], dtype=torch.long), sorted=True, return_inverse=True)
+    >>> output
+    tensor([1, 2, 3])
+    >>> inverse_indices
+    tensor([[0, 2],
+            [1, 2]])
+
+    >>> a = torch.tensor([
+    ...     [
+    ...         [1, 1, 0, 0],
+    ...         [1, 1, 0, 0],
+    ...         [0, 0, 1, 1],
+    ...     ],
+    ...     [
+    ...         [0, 0, 1, 1],
+    ...         [0, 0, 1, 1],
+    ...         [1, 1, 1, 1],
+    ...     ],
+    ...     [
+    ...         [1, 1, 0, 0],
+    ...         [1, 1, 0, 0],
+    ...         [0, 0, 1, 1],
+    ...     ],
+    ... ])
+
+    >>> # If we call `torch.unique(a, dim=0)`, each of the tensors `a[idx, :, :]`
+    >>> # will be compared. We can see that `a[0, :, :]` and `a[2, :, :]` match
+    >>> # each other, so one of them will be removed.
+    >>> (a[0, :, :] == a[2, :, :]).all()
+    tensor(True)
+    >>> a_unique_dim0 = torch.unique(a, dim=0)
+    >>> a_unique_dim0
+    tensor([[[0, 0, 1, 1],
+             [0, 0, 1, 1],
+             [1, 1, 1, 1]],
+            [[1, 1, 0, 0],
+             [1, 1, 0, 0],
+             [0, 0, 1, 1]]])
+
+    >>> # Notice which sub-tensors from `a` match with the sub-tensors from
+    >>> # `a_unique_dim0`:
+    >>> (a_unique_dim0[0, :, :] == a[1, :, :]).all()
+    tensor(True)
+    >>> (a_unique_dim0[1, :, :] == a[0, :, :]).all()
+    tensor(True)
+
+    >>> # For `torch.unique(a, dim=1)`, each of the tensors `a[:, idx, :]` are
+    >>> # compared. `a[:, 0, :]` and `a[:, 1, :]` match each other, so one of
+    >>> # them will be removed.
+    >>> (a[:, 0, :] == a[:, 1, :]).all()
+    tensor(True)
+    >>> torch.unique(a, dim=1)
+    tensor([[[0, 0, 1, 1],
+             [1, 1, 0, 0]],
+            [[1, 1, 1, 1],
+             [0, 0, 1, 1]],
+            [[0, 0, 1, 1],
+             [1, 1, 0, 0]]])
+
+    >>> # For `torch.unique(a, dim=2)`, the tensors `a[:, :, idx]` are compared.
+    >>> # `a[:, :, 0]` and `a[:, :, 1]` match each other. Also, `a[:, :, 2]` and
+    >>> # `a[:, :, 3]` match each other as well. So in this case, two of the
+    >>> # sub-tensors will be removed.
+    >>> (a[:, :, 0] == a[:, :, 1]).all()
+    tensor(True)
+    >>> (a[:, :, 2] == a[:, :, 3]).all()
+    tensor(True)
+    >>> torch.unique(a, dim=2)
+    tensor([[[0, 1],
+             [0, 1],
+             [1, 0]],
+            [[1, 0],
+             [1, 0],
+             [1, 1]],
+            [[0, 1],
+             [0, 1],
+             [1, 0]]])"

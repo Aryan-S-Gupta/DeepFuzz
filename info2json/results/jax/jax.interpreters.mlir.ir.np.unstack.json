@@ -1,0 +1,38 @@
+{
+  "api_name": "unstack",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray The array to be unstacked.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "stack(unstack(x, axis=axis), axis=axis) == x"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Axis along which the array will be split. Default: ``0``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "stack(unstack(x, axis=axis), axis=axis) == x"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "------- tuple of ndarrays The unstacked arrays."
+  },
+  "constraints": [
+    "stack(unstack(x, axis=axis), axis=axis) == x"
+  ]
+}

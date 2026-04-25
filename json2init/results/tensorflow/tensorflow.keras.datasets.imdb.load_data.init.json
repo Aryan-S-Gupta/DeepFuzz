@@ -1,0 +1,211 @@
+{
+  "api_full_name": "tensorflow.keras.datasets.imdb.load_data",
+  "api_name": "load_data",
+  "module_path": "tensorflow.keras.datasets.imdb",
+  "import_path": "tensorflow.keras.datasets.imdb.load_data",
+  "backend": "tensorflow",
+  "params": {
+    "path": {
+      "name": "path",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "where to cache the data (relative to `~/.keras/dataset`).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "where to cache the data (relative to `~",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: where to cache the data (relative to `~"
+    },
+    "num_words": {
+      "name": "num_words",
+      "spec": {
+        "type": "int|sequence|any",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "integer or None. Words are ranked by how often they occur (in the training set) and only the `num_words` most frequent words are kept. Any less frequent word will appear as `oov_char` value in the sequence data. If None, all words are kept. Defaults to `None`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "skip_top": {
+      "name": "skip_top",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "skip the top N most frequently occurring words (which may not be informative). These words will appear as `oov_char` value in the dataset. When 0, no words are skipped. Defaults to `0`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "skip_top must be one of 0"
+        ]
+      },
+      "chosen_type": "skip the top n most frequently occurring words (which may not be informative). these words will appear as `oov_char` value in the dataset. when 0",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: skip the top n most frequently occurring words (which may not be informative). these words will appear as `oov_char` value in the dataset. when 0"
+    },
+    "maxlen": {
+      "name": "maxlen",
+      "spec": {
+        "type": "int|sequence|any",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int or None. Maximum sequence length. Any longer sequence will be truncated. None, means no truncation. Defaults to `None`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "seed": {
+      "name": "seed",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int. Seed for reproducible data shuffling.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "start_char": {
+      "name": "start_char",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "int. The start of a sequence will be marked with this character. 0 is usually the padding character. Defaults to `1`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "oov_char": {
+      "name": "oov_char",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int. The out-of-vocabulary character. Words that were cut out because of the `num_words` or `skip_top` limits will be replaced with this character.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "index_from": {
+      "name": "index_from",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int. Index actual words with this index and higher.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "int|tuple|sequence",
+    "numbers": "1",
+    "description": "`(x_train, y_train), (x_test, y_test)`. **`x_train`, `x_test`**: lists of sequences, which are lists of indexes (integers). If the num_words argument was specific, the maximum possible index value is `num_words - 1`. If the `maxlen` argument was specified, the largest possible sequence length is `maxlen`. **`y_train`, `y_test`**: lists of integer labels (1 or 0). **Note**: The 'out of vocabulary' character is only used for words that were present in the training set but are not included because they're not making the `num_words` cut here. Words that were not seen in the training set but are in the test set have simply been skipped."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'path' unresolved: unhandled chosen type: where to cache the data (relative to `~"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.datasets.imdb.load_data.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

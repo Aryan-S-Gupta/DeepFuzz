@@ -1,0 +1,38 @@
+{
+  "api_name": "fmod",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the dividend.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 - x2 * jnp.trunc(x1 / x2) should be equivalent to the result"
+      ]
+    },
+    "x2": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Specifies the divisor. ``x1`` and ``x2`` should either have same shape or be broadcast compatible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 - x2 * jnp.trunc(x1 / x2) should be equivalent to the result"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "An array containing the result of the element-wise floating-point modulo operation of ``x1`` and ``x2`` with same sign as the elements of ``x1``."
+  },
+  "constraints": [
+    "x1 - x2 * jnp.trunc(x1 / x2) should be equivalent to the result"
+  ]
+}

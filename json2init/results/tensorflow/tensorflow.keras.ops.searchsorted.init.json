@@ -1,0 +1,115 @@
+{
+  "api_full_name": "tensorflow.keras.ops.searchsorted",
+  "api_name": "searchsorted",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.searchsorted",
+  "backend": "tensorflow",
+  "params": {
+    "sorted_sequence": {
+      "name": "sorted_sequence",
+      "spec": {
+        "type": "tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "1-D input tensor, sorted along the innermost dimension.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "sorted_sequence must be 1-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "values": {
+      "name": "values",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "N-D tensor of query insertion values.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "side": {
+      "name": "side",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "'left' or 'right', specifying the direction in which to insert for the equality case (tie-breaker).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "'left' or 'right'",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: 'left' or 'right'"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Tensor of insertion indices of same shape as `values`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'side' unresolved: unhandled chosen type: 'left' or 'right'"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.searchsorted.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

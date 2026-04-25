@@ -1,0 +1,90 @@
+{
+  "api_full_name": "tensorflow.image.is_jpeg",
+  "api_name": "is_jpeg",
+  "module_path": "tensorflow.image",
+  "import_path": "tensorflow.image.is_jpeg",
+  "backend": "tensorflow",
+  "params": {
+    "contents": {
+      "name": "contents",
+      "spec": {
+        "type": "string",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "0-D `string`. The encoded image bytes.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bytes",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "bytes",
+        "value": {
+          "__kind__": "bytes_b64",
+          "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC"
+        }
+      },
+      "mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool|number|tensor",
+    "numbers": "scalar",
+    "description": "A scalar boolean tensor indicating if 'contents' may be a JPEG image. is_jpeg is susceptible to false positives."
+  },
+  "constraints": [
+    "is_jpeg output will be true for valid JPEG images and some non-JPEG images"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "bool",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.is_jpeg.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

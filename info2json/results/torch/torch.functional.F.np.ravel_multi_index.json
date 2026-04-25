@@ -1,0 +1,58 @@
+{
+  "api_name": "ravel_multi_index",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "multi_index": {
+      "type": "int|tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tuple of array_like A tuple of integer arrays, one array for each dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dims": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tuple of ints The shape of array into which the indices from ``multi_index`` apply.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mode": {
+      "type": "tuple",
+      "size": "",
+      "default": "raise",
+      "flag": "Optional",
+      "description": "{'raise', 'wrap', 'clip'}, optional Specifies how out-of-bounds indices are handled. Can specify either one mode or a tuple of modes, one mode per index.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "raise",
+        "wrap",
+        "clip"
+      ],
+      "constraints": [
+        "mode must be one of raise, wrap, clip"
+      ]
+    },
+    "order": {
+      "type": "",
+      "size": "",
+      "default": "C",
+      "flag": "Optional",
+      "description": "{'C', 'F'}, optional Determines whether the multi-index should be viewed as indexing in row-major (C-style) or column-major (Fortran-style) order.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array of indices into the flattened version of an array of dimensions ``dims``."
+  },
+  "constraints": []
+}

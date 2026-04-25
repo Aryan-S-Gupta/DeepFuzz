@@ -1,0 +1,50 @@
+{
+  "api_name": "tensordot",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "First tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must be broadcast-compatible shapes"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Second tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must be broadcast-compatible shapes"
+      ]
+    },
+    "axes": {
+      "type": "int|list|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "- If an integer, N, sum over the last N axes of `x1` and the first N axes of `x2` in order. The sizes of the corresponding axes must match. - Or, a list of axes to be summed over, first sequence applying to `x1`, second to `x2`. Both sequences must be of the same length.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axes must be an integer or a list of integers"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The tensor dot product of the inputs."
+  },
+  "constraints": [
+    "x1 and x2 must be broadcast-compatible shapes"
+  ]
+}

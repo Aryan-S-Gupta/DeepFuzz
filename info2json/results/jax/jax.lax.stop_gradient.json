@@ -1,0 +1,24 @@
+{
+  "api_name": "stop_gradient",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array or pytree of arrays",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x type must match output type"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "input value is returned unchanged, but within autodiff will be treated as a constant."
+  },
+  "constraints": []
+}

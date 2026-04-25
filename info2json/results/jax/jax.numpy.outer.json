@@ -1,0 +1,46 @@
+{
+  "api_name": "outer",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "first input array, if not 1D it will be flattened.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a must be 1-D"
+      ]
+    },
+    "b": {
+      "type": "tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "second input array, if not 1D it will be flattened.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "b must be 1-D"
+      ]
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unsupported by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The outer product of the inputs ``a`` and ``b``. Returned array will be of shape ``(a.size, b.size)``."
+  },
+  "constraints": []
+}

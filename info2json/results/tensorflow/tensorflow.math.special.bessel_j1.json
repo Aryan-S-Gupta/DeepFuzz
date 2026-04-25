@@ -1,0 +1,45 @@
+{
+  "api_name": "bessel_j1",
+  "module_path": "tensorflow.math.special",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` or `SparseTensor`. Must be one of the following types: `half`, `float32`, `float64`.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [
+        "SparseTensor",
+        "half",
+        "float32",
+        "float64"
+      ],
+      "constraints": [
+        "Must be one of the following types: half, float32, float64",
+        "x must be one of SparseTensor, half, float32, float64"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`. @compatibility(scipy) Equivalent to scipy.special.j1 @end_compatibility"
+  },
+  "constraints": [
+    "@compatibility(scipy) Equivalent to scipy.special.j1 @end_compatibility"
+  ]
+}

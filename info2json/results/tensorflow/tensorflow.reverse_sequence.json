@@ -1,0 +1,71 @@
+{
+  "api_name": "reverse_sequence",
+  "module_path": "tensorflow",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. The input to reverse.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "seq_lengths": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 1-D with length `input.dims(batch_axis)` and `max(seq_lengths) <= input.dims(seq_axis)`",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "seq_lengths must be 1-D",
+        "seq_lengths must be one of int32, int64"
+      ]
+    },
+    "seq_axis": {
+      "type": "int",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "An `int`. The dimension which is partially reversed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "batch_axis": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `0`. The dimension along which reversal is performed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A Tensor. Has the same type as input."
+  },
+  "constraints": []
+}

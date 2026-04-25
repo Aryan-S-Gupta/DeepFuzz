@@ -1,0 +1,114 @@
+{
+  "api_full_name": "tensorflow.keras.ops.numpy.inner",
+  "api_name": "inner",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "import_path": "tensorflow.keras.ops.numpy.inner",
+  "backend": "tensorflow",
+  "params": {
+    "x1": {
+      "name": "x1",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "First input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "x2": {
+      "name": "x2",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Second input tensor. The last dimension of `x1` and `x2` must match.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "last dimension of x1 and x2 must match",
+          "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Output tensor. The shape of the output is determined by broadcasting the shapes of `x1` and `x2` after removing their last axes."
+  },
+  "constraints": [
+    "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.inner.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

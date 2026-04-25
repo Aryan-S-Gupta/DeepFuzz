@@ -1,0 +1,62 @@
+{
+  "api_name": "setxor1d",
+  "module_path": "jax.numpy",
+  "params": {
+    "ar1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "first array of values to intersect.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "ar2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "second array of values to intersect.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "assume_unique": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "if True, assume the input arrays contain unique values. This allows a more efficient implementation, but if ``assume_unique`` is True and the input arrays contain duplicates, the behavior is undefined. default: False.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "size": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "if specified, return only the first ``size`` sorted elements. If there are fewer elements than ``size`` indicates, the return value will be padded with ``fill_value``, and returned indices will be padded with an out-of-bound index.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fill_value": {
+      "type": "number",
+      "size": "",
+      "default": "the smallest value",
+      "flag": "Optional",
+      "description": "when ``size`` is specified and there are fewer than the indicated number of elements, fill the remaining entries ``fill_value``. Defaults to the smallest value in the xor result.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of values that are found in exactly one of the input arrays."
+  },
+  "constraints": []
+}

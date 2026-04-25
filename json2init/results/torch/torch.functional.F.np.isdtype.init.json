@@ -1,0 +1,69 @@
+{
+  "api_full_name": "torch.functional.F.np.isdtype",
+  "api_name": "isdtype",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.isdtype",
+  "backend": "torch",
+  "params": {
+    "kind": {
+      "name": "kind",
+      "spec": {
+        "type": "string|int|float|bool|tuple|number|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "dtype or str or tuple of dtypes/strs. dtype or dtype kind. Allowed dtype kinds are: * ``'bool'`` : boolean kind * ``'signed integer'`` : signed integer data types * ``'unsigned integer'`` : unsigned integer data types * ``'integral'`` : integer data types * ``'real floating'`` : real-valued floating-point data types * ``'complex floating'`` : complex floating-point data types * ``'numeric'`` : numeric data types",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [
+          "bool",
+          "integral",
+          "numeric"
+        ],
+        "constraints": [
+          "Must be one of: 'bool', 'signed integer', 'unsigned integer', 'integral', 'real floating', 'complex floating', 'numeric'",
+          "Input and kind parameters are required."
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: isdtype() missing 2 required positional arguments: 'dtype' and 'kind'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "isdtype() missing 2 required positional arguments: 'dtype' and 'kind'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: isdtype() missing 2 required positional arguments: 'dtype' and 'kind'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.isdtype.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

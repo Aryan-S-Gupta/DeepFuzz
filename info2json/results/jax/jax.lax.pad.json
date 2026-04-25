@@ -1,0 +1,44 @@
+{
+  "api_name": "pad",
+  "module_path": "jax.lax",
+  "params": {
+    "operand": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an array to be padded.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding_value": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the value to be inserted as padding. Must have the same dtype as ``operand``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "padding_config": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a sequence of ``(low, high, interior)`` tuples of integers, giving the amount of low, high, and interior (dilation) padding to insert in each dimension. Negative values for ``low`` and ``high`` are allowed and remove elements from the edges of the array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The ``operand`` array with padding value ``padding_value`` inserted in each dimension according to the ``padding_config``."
+  },
+  "constraints": [
+    "padding_value dtype must match operand dtype"
+  ]
+}

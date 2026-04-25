@@ -1,0 +1,68 @@
+{
+  "api_name": "addcdiv",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor to be added",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "tensor1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the numerator tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "tensor1's shape must be broadcast-compatible with input's shape"
+      ]
+    },
+    "tensor2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the denominator tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "tensor2's shape must be broadcast-compatible with input's shape"
+      ]
+    },
+    "value": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "multiplier for :math:`\\text{tensor1} / \\text{tensor2}`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [
+    "input's dtype must match the resulting tensor's dtype"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "api_name": "poly",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "seq_of_zeros": {
+      "type": "sequence|tensor",
+      "size": "shape (N,)",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like, shape (N,) or (N, N) A sequence of polynomial roots, or a square array or matrix object.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If input is the wrong shape (the input must be a 1-D or square)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1D",
+    "description": "------- ndarray 1D array of polynomial coefficients from highest to lowest degree: ``c[0] * x**(N) + c[1] * x**(N-1) + ... + c[N-1] * x + c[N]`` where c[0] always equals 1."
+  },
+  "constraints": []
+}

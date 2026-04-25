@@ -1,0 +1,213 @@
+{
+  "api_full_name": "torch.nested.nested_tensor_from_jagged",
+  "api_name": "nested_tensor_from_jagged",
+  "module_path": "torch.nested",
+  "import_path": "torch.nested.nested_tensor_from_jagged",
+  "backend": "torch",
+  "params": {
+    "values": {
+      "name": "values",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The underlying buffer in the shape of (sum_B(*), D_1, ..., D_N). The jagged dimension is packed into a single dimension, with the offsets / lengths metadata used to distinguish batch elements.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "offsets": {
+      "name": "offsets",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Offsets into the jagged dimension of shape B + 1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "lengths": {
+      "name": "lengths",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Lengths of the batch elements of shape B.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "jagged_dim": {
+      "name": "jagged_dim",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Indicates which dimension in values is the packed jagged dimension. Must be >= 1 as the batch dimension (dim=0) cannot be ragged. If None, this is set to dim=1 (i.e. the dimension immediately following the batch dimension). Default: None",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "min_seqlen": {
+      "name": "min_seqlen",
+      "spec": {
+        "type": "int|sequence|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "If set, uses the specified value as the cached minimum sequence length for the returned nested tensor. This can be a useful alternative to computing this value on-demand, possibly avoiding a GPU -> CPU sync. Default: None",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "min_seqlen must be one of GPU, CPU"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "max_seqlen": {
+      "name": "max_seqlen",
+      "spec": {
+        "type": "int|sequence|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "If set, uses the specified value as the cached maximum sequence length for the returned nested tensor. This can be a useful alternative to computing this value on-demand, possibly avoiding a GPU -> CPU sync. Default: None",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "max_seqlen must be one of GPU, CPU"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: nested_tensor_from_jagged(): At least one of offsets or lengths is required."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "RuntimeError",
+    "error": "nested_tensor_from_jagged(): At least one of offsets or lengths is required.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/workspace/pytorch/torch/nested/__init__.py\", line 442, in nested_tensor_from_jagged\n    raise RuntimeError(\nRuntimeError: nested_tensor_from_jagged(): At least one of offsets or lengths is required.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.nested.nested_tensor_from_jagged.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

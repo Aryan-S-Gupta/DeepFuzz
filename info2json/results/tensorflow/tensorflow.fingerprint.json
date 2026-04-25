@@ -1,0 +1,44 @@
+{
+  "api_name": "fingerprint",
+  "module_path": "tensorflow",
+  "params": {
+    "data": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have rank 1 or higher.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "method": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "farmhash64",
+      "flag": "Optional",
+      "description": "A `Tensor` of type `tf.string`. Fingerprint method used by this op. Currently, available method is `farmhash64`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "method must be one of: farmhash64"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2D",
+    "description": "A two-dimensional `Tensor` of type `tf.uint8`. The first dimension equals to `data`'s first dimension, and the second dimension size depends on the fingerprint algorithm."
+  },
+  "constraints": []
+}

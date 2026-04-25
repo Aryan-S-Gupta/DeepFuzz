@@ -1,0 +1,25 @@
+{
+  "api_name": "standard_cauchy",
+  "module_path": "torch.functional.F.np.random",
+  "params": {
+    "size": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints, optional Output shape. If the given shape is, e.g., ``(m, n, k)``, then ``m * n * k`` samples are drawn. Default is None, in which case a single value is returned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If size is None, a single value is returned.",
+        "If the given shape in size is, e.g., '(m, n, k)', then m * n * k samples are drawn."
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "------- ndarray or scalar The drawn samples."
+  },
+  "constraints": []
+}

@@ -1,0 +1,24 @@
+{
+  "api_name": "tensor_scatter_nd_sub",
+  "module_path": "tensorflow",
+  "params": {
+    "updated": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `tensor`."
+  },
+  "constraints": [
+    "updates.shape = indices.shape[:-1] + shape[indices.shape[-1]:]"
+  ]
+}

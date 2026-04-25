@@ -1,0 +1,34 @@
+{
+  "api_name": "select",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "condlist": {
+      "type": "bool|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "List of boolean tensors. The list of conditions which determine from which array in choicelist the output elements are taken. When multiple conditions are satisfied, the first one encountered in condlist is used.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "choicelist": {
+      "type": "list|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "List of tensors. The list of tensors from which the output elements are taken. This list has to be of the same length as `condlist`. defaults: Optional scalar value. The element inserted in the output when all conditions evaluate to `False`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Tensor where the output at position `m` is the `m`-th element of the tensor in `choicelist` where the `m`-th element of the corresponding tensor in `condlist` is `True`."
+  },
+  "constraints": []
+}

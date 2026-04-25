@@ -1,0 +1,34 @@
+{
+  "api_name": "copysign",
+  "module_path": "jax.numpy",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The array whose elements will be used to determine the sign, must be broadcast-compatible with ``x1``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x2 is required when calling the function directly with two arguments"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real",
+    "description": "An array object containing the potentially changed elements of ``x1``, always promotes to inexact dtype, and has a shape of ``jnp.broadcast_shapes(x1.shape, x2.shape)``"
+  },
+  "constraints": []
+}

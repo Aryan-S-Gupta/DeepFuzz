@@ -1,0 +1,116 @@
+{
+  "api_full_name": "tensorflow.linalg.lu",
+  "api_name": "lu",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.lu",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "float|tensor",
+        "size": "2 dimensions",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `float64`, `float32`, `half`, `complex64`, `complex128`. A tensor of shape `[..., M, M]` whose inner-most 2 dimensions form matrices of size `[M, M]`.",
+        "dtype_candidates": [
+          "float32",
+          "float64",
+          "complex64",
+          "complex128"
+        ],
+        "enum_values": [
+          "float64",
+          "float32",
+          "half",
+          "complex64",
+          "complex128"
+        ],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "output_idx_type": {
+      "name": "output_idx_type",
+      "spec": {
+        "type": "dtype",
+        "size": "",
+        "default": "tf",
+        "flag": "Optional",
+        "description": "An optional `tf.DType` from: `tf.int32, tf.int64`. Defaults to `tf.int32`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "int32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (lu, p). A `Tensor`. Has the same type as `input`. p: A `Tensor` of type `output_idx_type`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__Lu_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor must have rank >= 2, got 0 [Op:Lu]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__Lu_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor must have rank >= 2, got 0 [Op:Lu]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 1304, in lu\n    return lu_eager_fallback(\n        input, output_idx_type=output_idx_type, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 1357, in lu_eager_fallback\n    _result = _execute.execute(b\"Lu\", 2, inputs=_inputs_flat, attrs=_attrs,\n                               ctx=ctx, name=name)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 53, in quick_execute\n    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,\n                                        inputs, attrs, num_outputs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Lu_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor must have rank >= 2, got 0 [Op:Lu]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.lu.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

@@ -1,0 +1,34 @@
+{
+  "api_name": "cos",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have floating-point or complex type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must have floating-point or complex type."
+      ]
+    },
+    "accuracy": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional `lax.Tolerance` or `lax.AccuracyMode` object that selects the implementation of the op based on the requested accuracy. If the implementation cannot satisfy the requested tolerance, the compiler will return an error. If mode is specified and there are no multiple implementations available, the default implementation will be used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "float or complex",
+    "description": "Array of the same shape and dtype as ``x`` containing the element-wise cosine."
+  },
+  "constraints": []
+}

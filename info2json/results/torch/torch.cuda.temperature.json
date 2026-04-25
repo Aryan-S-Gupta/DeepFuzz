@@ -1,0 +1,23 @@
+{
+  "api_name": "temperature",
+  "module_path": "torch.cuda",
+  "params": {
+    "Centigrades": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "",
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float",
+    "numbers": "1",
+    "description": "Return the average temperature of the GPU sensor in Degrees C (Centigrades)."
+  },
+  "constraints": [
+    "device parameter is optional with default value None.",
+    "Output is a single float number."
+  ]
+}

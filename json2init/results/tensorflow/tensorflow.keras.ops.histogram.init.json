@@ -1,0 +1,127 @@
+{
+  "api_full_name": "tensorflow.keras.ops.histogram",
+  "api_name": "histogram",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.histogram",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x must be a tensor with a shape compatible with histogram operation"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "bins": {
+      "name": "bins",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "10",
+        "flag": "Optional",
+        "description": "An integer representing the number of histogram bins. Defaults to 10.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "must be a positive integer"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "range": {
+      "name": "range",
+      "spec": {
+        "type": "tuple",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A tuple representing the lower and upper range of the bins. If not specified, it will use the min and max of `x`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "must be a tuple of length 2, where both elements are real numbers"
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple containing: - A tensor representing the counts of elements in each bin. - A tensor representing the bin edges."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.histogram.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

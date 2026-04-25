@@ -1,0 +1,69 @@
+{
+  "api_name": "searchsorted",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "one-dimensional array, assumed to be in sorted order unless ``sorter`` is specified.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "v": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array of query values",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "side": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "``'left'`` (default) or ``'right'``; specifies whether insertion indices will be to the left or the right in case of ties.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sorter": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional array of indices specifying the sort order of ``a``. If specified, then the algorithm assumes that ``a[sorter]`` is in sorted order.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "method": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "one of ``'scan'`` (default), ``'scan_unrolled'``, ``'sort'`` or ``'compare_all'``. See *Note* below.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "scan",
+        "scan_unrolled",
+        "sort",
+        "compare_all"
+      ],
+      "constraints": [
+        "method must be one of scan, scan_unrolled, sort, compare_all"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Array of insertion indices of shape ``v.shape``."
+  },
+  "constraints": []
+}

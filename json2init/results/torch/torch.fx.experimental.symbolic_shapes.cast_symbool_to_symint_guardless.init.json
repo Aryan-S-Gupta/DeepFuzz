@@ -1,0 +1,63 @@
+{
+  "api_full_name": "torch.fx.experimental.symbolic_shapes.cast_symbool_to_symint_guardless",
+  "api_name": "cast_symbool_to_symint_guardless",
+  "module_path": "torch.fx.experimental.symbolic_shapes",
+  "import_path": "torch.fx.experimental.symbolic_shapes.cast_symbool_to_symint_guardless",
+  "backend": "torch",
+  "params": {
+    "symbool": {
+      "name": "symbool",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A boolean value, either a concrete bool or symbolic SymBool",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "symbool must be a valid SymBool"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "int",
+    "numbers": "1",
+    "description": "The corresponding integer value (1 for True, 0 for False) as either a concrete int or symbolic SymInt"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "int",
+      "value": 1
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.cast_symbool_to_symint_guardless.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

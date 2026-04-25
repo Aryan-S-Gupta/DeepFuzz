@@ -1,0 +1,32 @@
+{
+  "api_name": "angle",
+  "module_path": "jax.numpy",
+  "params": {
+    "z": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A complex number or an array of complex numbers.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "deg": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "Boolean. If ``True``, returns the result in degrees else returns in radians. Default is ``False``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tensor|dtype",
+    "numbers": "float",
+    "description": "An array of counterclockwise angle of each element of ``z``, with the same shape as ``z`` of dtype float."
+  },
+  "constraints": []
+}

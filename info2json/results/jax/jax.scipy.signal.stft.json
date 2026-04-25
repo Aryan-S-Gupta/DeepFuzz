@@ -1,0 +1,128 @@
+{
+  "api_name": "stft",
+  "module_path": "jax.scipy.signal",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array representing a time series of input values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fs": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Sampling frequency of the time series (default: 1.0).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "window": {
+      "type": "tuple|callable|tensor",
+      "size": "",
+      "default": "'hann'``)",
+      "flag": "Optional",
+      "description": "Data tapering window to apply to each segment. Can be a window function name, a tuple specifying a window length and function, or an array (default: ``'hann'``).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "nperseg": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Length of each segment (default: 256).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "noverlap": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Number of points to overlap between segments (default: ``nperseg // 2``).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "nfft": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Length of the FFT used, if a zero-padded FFT is desired. If ``None`` (default), the FFT length is ``nperseg``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "detrend": {
+      "type": "callable",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Specifies how to detrend each segment. Can be ``False`` (default: no detrending), ``'constant'`` (remove mean), ``'linear'`` (remove linear trend), or a callable accepting a segment and returning a detrended segment.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "return_onesided": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "If True (default), return a one-sided spectrum for real inputs. If False, return a two-sided spectrum.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "boundary": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Specifies whether the input signal is extended at both ends, and how. Options are ``None`` (no extension), ``'zeros'`` (default), ``'even'``, ``'odd'``, or ``'constant'``.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "None",
+        "zeros",
+        "even",
+        "odd",
+        "constant"
+      ],
+      "constraints": []
+    },
+    "padded": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Specifies whether the input signal is zero-padded at the end to make its length a multiple of `nperseg`. If True (default), the padded signal length is the next multiple of ``nperseg``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Axis along which the STFT is computed; the default is over the last axis (-1).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "1",
+    "description": "A length-3 tuple of arrays ``(f, t, Zxx)``. ``f`` is the Array of sample frequencies. ``t`` is the Array of segment times, and ``Zxx`` is the STFT of ``x``."
+  },
+  "constraints": []
+}

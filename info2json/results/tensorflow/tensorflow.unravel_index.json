@@ -1,0 +1,58 @@
+{
+  "api_name": "unravel_index",
+  "module_path": "tensorflow",
+  "params": {
+    "indices": {
+      "type": "int|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. An 0-D or 1-D `int` Tensor whose elements are indices into the flattened version of an array of dimensions dims.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64",
+        "int"
+      ],
+      "constraints": [
+        "indices must be one of int32, int64, int",
+        "indices and dims must have the same type"
+      ]
+    },
+    "dims": {
+      "type": "int|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A `Tensor`. Must have the same type as `indices`. An 1-D `int` Tensor. The shape of the array to use for unraveling indices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "dims must be 1-D",
+        "dims must have the same dtype as indices",
+        "indices and dims must have the same type"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1-D Tensor",
+    "description": "A `Tensor`. Has the same type as `indices`."
+  },
+  "constraints": [
+    "indices and dims must have the same type"
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "api_full_name": "tensorflow.image.decode_and_crop_jpeg",
+  "api_name": "decode_and_crop_jpeg",
+  "module_path": "tensorflow.image",
+  "import_path": "tensorflow.image.decode_and_crop_jpeg",
+  "backend": "tensorflow",
+  "params": {
+    "contents": {
+      "name": "contents",
+      "spec": {
+        "type": "string|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `string`. 0-D. The JPEG-encoded image.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bytes",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "bytes",
+        "value": {
+          "__kind__": "bytes_b64",
+          "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC"
+        }
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "crop_window": {
+      "name": "crop_window",
+      "spec": {
+        "type": "tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `int32`. 1-D. The crop window: [crop_y, crop_x, crop_height, crop_width].",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "crop_window must be 1-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "channels": {
+      "name": "channels",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "ratio": {
+      "name": "ratio",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `1`. Downscaling ratio.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "fancy_upscaling": {
+      "name": "fancy_upscaling",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `True`. If true use a slower but nicer upscaling of the chroma planes (yuv420/422 only).",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "try_recover_truncated": {
+      "name": "try_recover_truncated",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`. If true try to recover an image from truncated input.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "acceptable_fraction": {
+      "name": "acceptable_fraction",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "An optional `float`. Defaults to `1`. The minimum required fraction of lines before a truncated input is accepted.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "dct_method": {
+      "name": "dct_method",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"\" which maps to a system-specific",
+        "flag": "Optional",
+        "description": "An optional `string`. Defaults to `\"\"`. string specifying a hint about the algorithm used for decompression. Defaults to \"\" which maps to a system-specific default. Currently valid values are [\"INTEGER_FAST\", \"INTEGER_ACCURATE\"]. The hint may be ignored (e.g., the internal jpeg library changes to a version that does not have that specific option.)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "dct_method must be one of string, INTEGER_FAST, INTEGER_ACCURATE"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `uint8`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__DecodeAndCropJpeg_device_/job:localhost/replica:0/task:0/device:CPU:0}} DecodeAndCropJpeg operation can run on JPEG only, but detected PNG. [Op:DecodeAndCropJpeg]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__DecodeAndCropJpeg_device_/job:localhost/replica:0/task:0/device:CPU:0}} DecodeAndCropJpeg operation can run on JPEG only, but detected PNG. [Op:DecodeAndCropJpeg]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__DecodeAndCropJpeg_device_/job:localhost/replica:0/task:0/device:CPU:0}} DecodeAndCropJpeg operation can run on JPEG only, but detected PNG. [Op:DecodeAndCropJpeg]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.decode_and_crop_jpeg.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

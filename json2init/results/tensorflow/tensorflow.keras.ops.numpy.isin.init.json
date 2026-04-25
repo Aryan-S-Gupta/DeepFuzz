@@ -1,0 +1,152 @@
+{
+  "api_full_name": "tensorflow.keras.ops.numpy.isin",
+  "api_name": "isin",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "import_path": "tensorflow.keras.ops.numpy.isin",
+  "backend": "tensorflow",
+  "params": {
+    "x1": {
+      "name": "x1",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor or array-like structure to test.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "x2": {
+      "name": "x2",
+      "spec": {
+        "type": "list|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Values against which each element of `x1` is tested. Can be a tensor, list, or scalar.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "assume_unique": {
+      "name": "assume_unique",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False)",
+        "flag": "Optional",
+        "description": "Boolean (default: False). If True, assumes both `x1` and `x2` contain only unique elements. This can speed up the computation. If False, duplicates will be handled correctly but may impact performance.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "invert": {
+      "name": "invert",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False)",
+        "flag": "Optional",
+        "description": "A boolean (default: False). If True, inverts the result. Entries will be `True` where `x1` elements are not in `x2`.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "A boolean tensor of the same shape as `x1` indicating element-wise membership in `x2`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "bool",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.isin.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

@@ -1,0 +1,35 @@
+{
+  "api_name": "schur",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array of shape ``(..., N, N)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "T is a shape `(..., N, N)` array containing the upper-triangular Schur form of the input.",
+        "Z is a shape `(..., N, N)` array containing the unitary Schur transformation matrix."
+      ]
+    },
+    "output": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Specify whether to compute the ``\"real\"`` (default) or ``\"complex\"`` Schur decomposition.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple of arrays ``(T, Z)`` - ``T`` is a shape ``(..., N, N)`` array containing the upper-triangular Schur form of the input. - ``Z`` is a shape ``(..., N, N)`` array containing the unitary Schur transformation matrix."
+  },
+  "constraints": []
+}

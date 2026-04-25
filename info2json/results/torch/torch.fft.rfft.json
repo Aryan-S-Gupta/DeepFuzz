@@ -1,0 +1,64 @@
+{
+  "api_name": "rfft",
+  "module_path": "torch.fft",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the real input tensor",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "n": {
+      "type": "int|float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Signal length. If given, the input will either be zero-padded or trimmed to this length before computing the real FFT.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "n must be one of FFT"
+      ]
+    },
+    "dim": {
+      "type": "int|float",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "The dimension along which to take the one dimensional real FFT.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "norm": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Normalization mode. For the forward transform (:func:`~torch.fft.rfft`), these correspond to:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

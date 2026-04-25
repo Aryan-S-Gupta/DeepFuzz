@@ -1,0 +1,25 @@
+{
+  "api_name": "arcsin",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "real-valued and not in the closed range (-1, 1) returns nan",
+        "x and output must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real or complex",
+    "description": "An array containing the inverse trigonometric sine of each element of ``x`` in radians in the range ``[-pi/2, pi/2]``, promoting to inexact dtype."
+  },
+  "constraints": []
+}

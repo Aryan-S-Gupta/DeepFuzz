@@ -1,0 +1,74 @@
+{
+  "api_name": "compress",
+  "module_path": "jax.numpy",
+  "params": {
+    "condition": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "1-dimensional array of conditions. Will be converted to boolean.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array of values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "axis along which to compress. If None (default) then ``a`` will be flattened, and axis will be set to 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "size": {
+      "type": "jax.jit|jax.vmap",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional static size for output. Must be specified in order for ``compress`` to be compatible with JAX transformations like :func:`~jax.jit` or :func:`~jax.vmap`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "fill_value": {
+      "type": "",
+      "size": "",
+      "default": "0)",
+      "flag": "Optional",
+      "description": "if ``size`` is specified, fill padded entries with this value (default: 0).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "not implemented by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of dimension ``a.ndim``, compressed along the specified axis."
+  },
+  "constraints": []
+}

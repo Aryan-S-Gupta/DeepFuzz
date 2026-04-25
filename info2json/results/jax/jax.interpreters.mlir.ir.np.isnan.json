@@ -1,0 +1,42 @@
+{
+  "api_name": "isnan",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tuple|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "ndarray, None, or tuple of ndarray and None, optional A location into which the result is stored. If provided, it must have a shape that the inputs broadcast to. If not provided or None, a freshly-allocated array is returned. A tuple (possible only as a keyword argument) must have length equal to the number of outputs.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "where": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like, optional This condition is broadcast over the input. At locations where the condition is True, the `out` array will be set to the ufunc result. Elsewhere, the `out` array will retain its original value. Note that if an uninitialized `out` array is created via the default ``out=None``, locations within it where the condition is False will remain uninitialized. For other keyword-only arguments, see the :ref:`ufunc docs <ufuncs.kwargs>`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|number|tensor",
+    "numbers": "1",
+    "description": "------- ndarray or bool True where ``x`` is NaN, false otherwise. This is a scalar if `x` is a scalar."
+  },
+  "constraints": []
+}

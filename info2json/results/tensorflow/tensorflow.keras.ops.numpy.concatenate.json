@@ -1,0 +1,34 @@
+{
+  "api_name": "concatenate",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "xs": {
+      "type": "list|sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The sequence of tensors to concatenate.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "xs[i] must be a tensor for all i in range(len(xs))"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "The axis along which the tensors will be joined. Defaults to `0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The concatenated tensor."
+  },
+  "constraints": []
+}

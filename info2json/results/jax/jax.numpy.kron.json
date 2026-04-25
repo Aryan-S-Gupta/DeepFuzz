@@ -1,0 +1,35 @@
+{
+  "api_name": "kron",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "first input array with any shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "b": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "second input array with any shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A new array representing the Kronecker product of the inputs ``a`` and ``b``. The shape of the output is the element-wise product of the input shapes."
+  },
+  "constraints": [
+    "a and b must have broadcastable shapes",
+    "output shape: (m * p, n * q) where a shape: (m, n), b shape: (p, q)"
+  ]
+}

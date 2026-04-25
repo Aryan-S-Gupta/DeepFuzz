@@ -1,0 +1,53 @@
+{
+  "api_name": "logical_and",
+  "module_path": "tensorflow",
+  "params": {
+    "x": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `bool`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "x and y must have the same dtype"
+      ]
+    },
+    "y": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `bool`.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "must have broadcast-compatible shapes with x",
+        "x and y must have the same dtype"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "''",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "A `tf.Tensor` of type bool with the shape that `x` and `y` broadcast to."
+  },
+  "constraints": [
+    "x and y must have the same dtype"
+  ]
+}

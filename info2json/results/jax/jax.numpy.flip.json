@@ -1,0 +1,37 @@
+{
+  "api_name": "flip",
+  "module_path": "jax.numpy",
+  "params": {
+    "m": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "m must be a JAX array",
+        "m and output have the same shape"
+      ]
+    },
+    "axis": {
+      "type": "int|sequence|tensor",
+      "size": "",
+      "default": "None``, which flips",
+      "flag": "Optional",
+      "description": "integer or sequence of integers. Specifies along which axis or axes should the array elements be reversed. Default is ``None``, which flips along all axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must be an integer or a sequence of integers"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real",
+    "description": "An array with the elements in reverse order along ``axis``."
+  },
+  "constraints": []
+}

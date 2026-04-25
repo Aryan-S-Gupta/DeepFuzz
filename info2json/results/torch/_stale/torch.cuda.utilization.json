@@ -1,0 +1,30 @@
+{
+  "api_name": "utilization",
+  "module_path": "torch.cuda",
+  "params": {
+    "device": {
+      "type": "torch.device|int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`,",
+      "constraints": []
+    },
+    "Warning": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Each sample period may be between 1 second and 1/6 second,",
+      "constraints": [
+        "Warning: Each sample period may be between 1 second and 1/6 second, depending on the product being queried."
+      ]
+    }
+  },
+  "output": {
+    "type": "statistic",
+    "numbers": "single",
+    "description": "Returns utilization statistic for selected cuda device"
+  },
+  "constraints": []
+}

@@ -1,0 +1,24 @@
+{
+  "api_name": "is_finite",
+  "module_path": "jax.lax",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have floating-point type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must have floating-point type"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor|dtype",
+    "numbers": "same shape as x",
+    "description": "Array of boolean dtype with the same shape as ``x``, containing ``False`` where ``x`` is :math:`\\pm\\infty` or :math:`\\mathit{NaN}`, and ``True`` otherwise."
+  },
+  "constraints": []
+}

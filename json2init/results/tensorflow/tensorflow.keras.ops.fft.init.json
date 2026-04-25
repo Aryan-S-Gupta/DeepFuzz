@@ -1,0 +1,61 @@
+{
+  "api_full_name": "tensorflow.keras.ops.fft",
+  "api_name": "fft",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.fft",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tuple of the real and imaginary parts of the input tensor. Both tensors in the tuple should be of floating type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Both tensors in the tuple should be of floating type."
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple containing two tensors - the real and imaginary parts of the output tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 395, in fft\n    return backend.math.fft(x)\n           ~~~~~~~~~~~~~~~~^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 105, in fft\n    complex_input = _get_complex_tensor_from_tuple(x)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 78, in _get_complex_tensor_from_tuple\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.fft.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

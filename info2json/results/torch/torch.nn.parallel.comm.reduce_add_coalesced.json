@@ -1,0 +1,42 @@
+{
+  "api_name": "reduce_add_coalesced",
+  "module_path": "torch.nn.parallel.comm",
+  "params": {
+    "inputs": {
+      "type": "sequence|tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "iterable of iterables that contain tensors from a single device.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "destination": {
+      "type": "int|device",
+      "size": "",
+      "default": "current device)",
+      "flag": "Optional",
+      "description": "a device on which the output will be placed (default: current device).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "buffer_size": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "maximum size of the buffer used for coalescing",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor|device",
+    "numbers": "1",
+    "description": "A tuple of tensors containing an elementwise sum of each group of inputs, placed on the ``destination`` device."
+  },
+  "constraints": []
+}

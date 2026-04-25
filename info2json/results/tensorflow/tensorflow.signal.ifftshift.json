@@ -1,0 +1,44 @@
+{
+  "api_name": "ifftshift",
+  "module_path": "tensorflow.signal",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`Tensor`, input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axes": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`int` or shape `tuple` Axes over which to calculate. Defaults to None, which shifts all axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An optional name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`, The shifted tensor."
+  },
+  "constraints": [
+    "x must be a Tensor"
+  ]
+}

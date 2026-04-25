@@ -1,0 +1,47 @@
+{
+  "api_name": "upper",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "input": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. The input to be upper-cased.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "encoding": {
+      "type": "string",
+      "size": "",
+      "default": "\"\"",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"\"`. Character encoding of `input`. Allowed values are '' and 'utf-8'. Value '' is interpreted as ASCII.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Allowed values: '' or 'utf-8'",
+        "encoding must be one of string, utf-8, ASCII"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": [
+    "input parameter is required"
+  ]
+}

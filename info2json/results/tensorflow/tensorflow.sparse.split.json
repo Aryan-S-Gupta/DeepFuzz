@@ -1,0 +1,57 @@
+{
+  "api_name": "split",
+  "module_path": "tensorflow.sparse",
+  "params": {
+    "sp_input": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The `SparseTensor` to split.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_split": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A Python integer. The number of ways to split.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A 0-D `int32` `Tensor`. The dimension along which to split. Must be in range [-rank, rank), where rank is the number of dimensions in the input `SparseTensor`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "num_split",
+    "description": "`num_split` `SparseTensor` objects resulting from splitting `value`."
+  },
+  "constraints": [
+    "sp_input and num_split must be provided.",
+    "axis can be omitted, in which case it defaults to the last axis."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "api_name": "std",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "to compute the standard deviation of the",
+      "flag": "Optional",
+      "description": "Axis along which to compute standard deviation. Default is to compute the standard deviation of the flattened tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If this is set to `True`, the axes which are reduced are left in the result as dimensions with size one.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32 or float64",
+    "description": "Output tensor containing the standard deviation values."
+  },
+  "constraints": []
+}

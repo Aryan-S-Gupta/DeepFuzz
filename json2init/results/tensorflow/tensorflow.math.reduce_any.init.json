@@ -1,0 +1,139 @@
+{
+  "api_full_name": "tensorflow.math.reduce_any",
+  "api_name": "reduce_any",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.reduce_any",
+  "backend": "tensorflow",
+  "params": {
+    "input_tensor": {
+      "name": "input_tensor",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The boolean tensor to reduce.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int32, int64",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "axis must satisfy -rank(input_tensor) <= axis < rank(input_tensor)"
+        ]
+      },
+      "chosen_type": "int32",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: int32"
+    },
+    "keepdims": {
+      "name": "keepdims",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Required",
+        "description": "If true, retains reduced dimensions with length 1.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|any",
+    "numbers": "bool",
+    "description": "The reduced tensor. @compatibility(numpy) Equivalent to np.any @end_compatibility"
+  },
+  "constraints": [
+    "@compatibility(numpy) Equivalent to np.any @end_compatibility"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "bool",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.reduce_any.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

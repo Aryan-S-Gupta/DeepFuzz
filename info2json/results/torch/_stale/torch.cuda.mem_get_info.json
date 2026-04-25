@@ -1,0 +1,22 @@
+{
+  "api_name": "mem_get_info",
+  "module_path": "torch.cuda",
+  "params": {
+    "device": {
+      "type": "torch.device|str|int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`,",
+      "constraints": [
+        "Must be a valid torch.device, int, or str representing a CUDA device"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "2",
+    "description": "Returns a named tuple of type (total_memory, free_memory)"
+  },
+  "constraints": []
+}

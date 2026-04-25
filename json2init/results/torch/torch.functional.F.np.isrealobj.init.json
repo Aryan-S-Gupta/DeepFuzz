@@ -1,0 +1,60 @@
+{
+  "api_full_name": "torch.functional.F.np.isrealobj",
+  "api_name": "isrealobj",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.isrealobj",
+  "backend": "torch",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "any The input can be of any type and shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x and output must have the same shape"
+        ]
+      },
+      "chosen_type": "any",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool The return value, False if `x` is of a complex type."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "bool",
+      "value": true
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.isrealobj.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

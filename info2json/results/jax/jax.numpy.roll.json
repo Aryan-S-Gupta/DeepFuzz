@@ -1,0 +1,50 @@
+{
+  "api_name": "roll",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis is None or -rank(a) <= axis < rank(a)"
+      ]
+    },
+    "shift": {
+      "type": "int|tuple|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "the number of positions to shift the specified axis. If an integer, all axes are shifted by the same amount. If a tuple, the shift for each axis is specified individually.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shift >= 0"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "the axis or axes to roll. If ``None``, the array is flattened, shifted, and then reshaped to its original shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis is None or -rank(a) <= axis < rank(a)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A copy of ``a`` with elements rolled along the specified axis or axes."
+  },
+  "constraints": [
+    "axis is None or -rank(a) <= axis < rank(a)"
+  ]
+}

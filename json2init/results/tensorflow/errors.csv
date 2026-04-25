@@ -1,0 +1,14 @@
+api_full_name,status,reason,spec_json_path
+tensorflow.image.draw_bounding_boxes,still_broken,"Readiness reasons: smoke test failed: {{function_node __wrapped__DrawBoundingBoxesV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} The rank of the boxes tensor should be 3 [Op:DrawBoundingBoxesV2] name: 
+Smoke classification: api_runtime_error
+Smoke error: {{function_node __wrapped__DrawBoundingBoxesV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} The rank of the boxes tensor should be 3 [Op:DrawBoundingBoxesV2] name: ",info2json/results/tensorflow/tensorflow.image.draw_bounding_boxes.json
+tensorflow.io.decode_proto,doc_or_extractor_wrong,required param 'name' unresolved: unhandled chosen type: a name for the operation (optional).,info2json/results/tensorflow/tensorflow.io.decode_proto.json
+tensorflow.io.parse_sequence_example,still_broken,"Readiness reasons: smoke test failed: Both `context_features` and `sequence_features` argument are None, but at least one should have values.
+Smoke classification: api_runtime_error
+Smoke error: Both `context_features` and `sequence_features` argument are None, but at least one should have values.",info2json/results/tensorflow/tensorflow.io.parse_sequence_example.json
+tensorflow.io.parse_single_sequence_example,still_broken,"Readiness reasons: smoke test failed: Both context_features and sequence_features are None, but at least one should have values.
+Smoke classification: api_runtime_error
+Smoke error: Both context_features and sequence_features are None, but at least one should have values.",info2json/results/tensorflow/tensorflow.io.parse_single_sequence_example.json
+tensorflow.io.parse_tensor,still_broken,"Readiness reasons: smoke test failed: {{function_node __wrapped__ParseTensor_device_/job:localhost/replica:0/task:0/device:CPU:0}} Could not parse `serialized` as TensorProto, base64: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC [Op:ParseTensor]
+Smoke classification: api_runtime_error
+Smoke error: {{function_node __wrapped__ParseTensor_device_/job:localhost/replica:0/task:0/device:CPU:0}} Could not parse `serialized` as TensorProto, base64: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC [Op:ParseTensor]",info2json/results/tensorflow/tensorflow.io.parse_tensor.json

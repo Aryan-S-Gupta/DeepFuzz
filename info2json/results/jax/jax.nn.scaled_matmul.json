@@ -1,0 +1,64 @@
+{
+  "api_name": "scaled_matmul",
+  "module_path": "jax.nn",
+  "params": {
+    "lhs": {
+      "type": "tensor",
+      "size": "shape (B, M, K)",
+      "default": "",
+      "flag": "Required",
+      "description": "Operand a, shape (B, M, K).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rhs": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Operand b, shape (B, N, K).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "lhs_scales": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Shape (B, M, K_a), where `K % K_a == 0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rhs_scales": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Shape (B, N, K_b), where `K % K_b == 0`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "preferred_element_type": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Defaults to `jnp.float32`.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Array of shape (B, M, N)."
+  },
+  "constraints": []
+}

@@ -1,0 +1,37 @@
+{
+  "api_name": "count_nonzero",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must be numeric",
+        "x and output must have compatible types"
+      ]
+    },
+    "axis": {
+      "type": "int|tuple|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Axis or tuple of axes along which to count the number of non-zeros. Defaults to `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if int, must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    }
+  },
+  "output": {
+    "type": "int|tensor",
+    "numbers": "1",
+    "description": "int or tensor of ints."
+  },
+  "constraints": []
+}

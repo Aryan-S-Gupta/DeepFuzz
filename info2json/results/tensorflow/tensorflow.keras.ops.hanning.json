@@ -1,0 +1,26 @@
+{
+  "api_name": "hanning",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "Scalar or 1D Tensor. The window length.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be a non-negative integer.",
+        "x must be 1-D",
+        "x must be a valid TensorFlow tensor."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "A 1D tensor containing the Hanning window values."
+  },
+  "constraints": []
+}

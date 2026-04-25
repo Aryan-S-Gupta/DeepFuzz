@@ -1,0 +1,74 @@
+{
+  "api_name": "slice_scatter",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "src": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The tensor to embed into :attr:`input`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "the dimension to insert the slice into",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "start": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the start index of where to insert the slice",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "end": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the end index of where to insert the slice",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "step": {
+      "type": "int",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "the how many elements to skip in",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "step > 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "a tensor with fresh storage; it does not create a view."
+  },
+  "constraints": []
+}

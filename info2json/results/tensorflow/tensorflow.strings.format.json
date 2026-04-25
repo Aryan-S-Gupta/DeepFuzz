@@ -1,0 +1,62 @@
+{
+  "api_name": "format",
+  "module_path": "tensorflow.strings",
+  "params": {
+    "template": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A string template to format tensor values into.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "inputs": {
+      "type": "string|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A list of `Tensor` objects, or a single Tensor. The list of tensors to format into the template string. If a solitary tensor is passed in, the input tensor will automatically be wrapped as a list.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "placeholder": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An optional `string`. Defaults to `{}`. At each placeholder occurring in the template, a subsequent tensor will be inserted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "summarize": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An optional `int`. Defaults to `3`. When formatting the tensors, show the first and last `summarize` entries of each tensor dimension (recursively). If set to -1, all elements of the tensor will be shown.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|number|tensor",
+    "numbers": "1",
+    "description": "A scalar `Tensor` of type `string`."
+  },
+  "constraints": []
+}

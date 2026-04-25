@@ -1,0 +1,25 @@
+{
+  "api_name": "fabs",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar. Must not have a complex dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must not have a complex dtype.",
+        "x and output must have same shape."
+      ]
+    }
+  },
+  "output": {
+    "type": "float|tensor|dtype",
+    "numbers": "float",
+    "description": "An array with same shape as ``x`` and dtype float, containing the element-wise absolute values."
+  },
+  "constraints": []
+}

@@ -1,0 +1,25 @@
+{
+  "api_name": "relu",
+  "module_path": "tensorflow.keras.ops.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x values <= 0 are replaced with 0",
+        "x values > 0 remain unchanged"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "same shape as x",
+    "description": "A tensor with the same shape as `x`."
+  },
+  "constraints": []
+}

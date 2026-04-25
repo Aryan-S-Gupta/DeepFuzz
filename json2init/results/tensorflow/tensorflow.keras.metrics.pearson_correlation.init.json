@@ -1,0 +1,137 @@
+{
+  "api_full_name": "tensorflow.keras.metrics.pearson_correlation",
+  "api_name": "pearson_correlation",
+  "module_path": "tensorflow.keras.metrics",
+  "import_path": "tensorflow.keras.metrics.pearson_correlation",
+  "backend": "tensorflow",
+  "params": {
+    "y_true": {
+      "name": "y_true",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor of true targets.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must have a numeric data type.",
+          "y_true and y_pred must have broadcast-compatible shapes."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_pred": {
+      "name": "y_pred",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor of predicted targets.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must have a numeric data type.",
+          "y_true and y_pred must have broadcast-compatible shapes."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int32 or int64",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "Axis along which to determine similarity. Defaults to `-1`.",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "Must be a valid axis value for the input tensors."
+        ]
+      },
+      "chosen_type": "int32 or int64",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: int32 or int64"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Pearson Correlation Coefficient tensor."
+  },
+  "constraints": [
+    "y_true and y_pred must have broadcast-compatible shapes."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": true
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.metrics.pearson_correlation.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

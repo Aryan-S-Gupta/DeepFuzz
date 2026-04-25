@@ -1,0 +1,54 @@
+{
+  "api_name": "histogram_fixed_width",
+  "module_path": "tensorflow",
+  "params": {
+    "values": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Numeric `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "value_range": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Shape [2] `Tensor` of same `dtype` as `values`. values <= value_range[0] will be mapped to hist[0], values >= value_range[1] will be mapped to hist[-1].",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "nbins": {
+      "type": "number|tensor|dtype",
+      "size": "Scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Scalar `int32 Tensor`. Number of histogram bins. dtype: dtype for returned histogram.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "'histogram_fixed_width')",
+      "flag": "Required",
+      "description": "A name for this operation (defaults to 'histogram_fixed_width').",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A 1-D `Tensor` holding histogram of values."
+  },
+  "constraints": []
+}

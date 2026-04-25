@@ -1,0 +1,96 @@
+{
+  "api_name": "sampled_addmm",
+  "module_path": "tensorflow.sparse",
+  "params": {
+    "indices": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`tf.Tensor` containing coordinates for the rows and columns to be multiplied. Must have rank > 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "values": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`tf.Tensor` containing the values to be scaled and added to the sampled dot product.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "values must be one of tf.Tensor"
+      ]
+    },
+    "dense_shape": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`tf.Tensor` defining the dense shape of the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mat1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`tf.Tensor` to be multiplied. Must have rank > 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mat2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "`tf.Tensor` to be multiplied. Must have rank > 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "beta": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "Number to be multiplied with `values`. Defaults to 1.0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "alpha": {
+      "type": "number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "Number to be multiplied with the sampled dot product of `mat1` and `mat2`. Defaults to 1.0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "output_type": {
+      "type": "float",
+      "size": "",
+      "default": "float32",
+      "flag": "Optional",
+      "description": "The output datatype if needed. Defaults to float32.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A tuple representing the `SparseTensor` components of the result of the operation."
+  },
+  "constraints": []
+}

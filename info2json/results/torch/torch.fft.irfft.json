@@ -1,0 +1,64 @@
+{
+  "api_name": "irfft",
+  "module_path": "torch.fft",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor representing a half-Hermitian signal",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "n": {
+      "type": "int|float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Output signal length. This determines the length of the output signal. If given, the input will either be zero-padded or trimmed to this length before computing the real IFFT. Defaults to even output: ``n=2*(input.size(dim) - 1)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "n must be one of IFFT"
+      ]
+    },
+    "dim": {
+      "type": "int|float",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "The dimension along which to take the one dimensional real IFFT.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "norm": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Normalization mode. For the backward transform (:func:`~torch.fft.irfft`), these correspond to:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

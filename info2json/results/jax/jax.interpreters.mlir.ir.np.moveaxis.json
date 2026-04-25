@@ -1,0 +1,50 @@
+{
+  "api_name": "moveaxis",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "np.ndarray The array whose axes should be reordered.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape must be at least 1-D"
+      ]
+    },
+    "source": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or sequence of int Original positions of the axes to move. These must be unique.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "length(source) == length(destination)"
+      ]
+    },
+    "destination": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or sequence of int Destination positions for each of the original axes. These must also be unique.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "length(source) == length(destination)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "rank may change",
+    "description": "------- np.ndarray Array with moved axes. This array is a view of the input array."
+  },
+  "constraints": [
+    "length(source) == length(destination)"
+  ]
+}

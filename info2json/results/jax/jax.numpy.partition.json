@@ -1,0 +1,48 @@
+{
+  "api_name": "partition",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array to be partitioned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a must be a numpy array"
+      ]
+    },
+    "kth": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "static integer index about which to partition the array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "kth must be an integer"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "static integer axis along which to partition the array; default is -1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must be an integer or left unspecified (defaulted to -1)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A copy of ``a`` partitioned at the ``kth`` value along ``axis``. The entries before ``kth`` are values smaller than ``take(a, kth, axis)``, and entries after ``kth`` are indices of values larger than ``take(a, kth, axis)``"
+  },
+  "constraints": []
+}

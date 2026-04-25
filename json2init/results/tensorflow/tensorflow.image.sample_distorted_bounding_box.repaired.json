@@ -1,0 +1,122 @@
+{
+  "api_name": "sample_distorted_bounding_box",
+  "module_path": "tensorflow.image",
+  "params": {
+    "image_size": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `uint8`, `int8`, `int16`, `int32`, `int64`. 1-D, containing `[height, width, channels]`.",
+      "dtype_candidates": [
+        "int8",
+        "int16",
+        "int32",
+        "int64",
+        "uint8"
+      ],
+      "enum_values": [
+        "uint8",
+        "int8",
+        "int16",
+        "int32",
+        "int64"
+      ],
+      "constraints": []
+    },
+    "bounding_boxes": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32`. 3-D with shape `[batch, N, 4]` describing the N bounding boxes associated with the image.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "seed": {
+      "type": "int|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `0`. If `seed` is set to non-zero, the random number generator is seeded by the given `seed`. Otherwise, it is seeded by a random seed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "min_object_covered": {
+      "type": "float|tensor|any",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "A Tensor of type `float32`. Defaults to `0.1`. The cropped area of the image must contain at least this fraction of any bounding box supplied. The value of this parameter should be non-negative. In the case of 0, the cropped area does not need to overlap any of the bounding boxes supplied.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "min_object_covered must be non-negative"
+      ]
+    },
+    "aspect_ratio_range": {
+      "type": "list",
+      "size": "",
+      "default": "[0",
+      "flag": "Optional",
+      "description": "An optional list of `floats`. Defaults to `[0.75, 1.33]`. The cropped area of the image must have an aspect `ratio = width / height` within this range.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "area_range": {
+      "type": "list",
+      "size": "",
+      "default": "[0",
+      "flag": "Optional",
+      "description": "An optional list of `floats`. Defaults to `[0.05, 1]`. The cropped area of the image must contain a fraction of the supplied image within this range.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "max_attempts": {
+      "type": "int|number",
+      "size": "",
+      "default": "100",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `100`. Number of attempts at generating a cropped region of the image of the specified constraints. After `max_attempts` failures, return the entire image.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "use_image_if_no_bounding_boxes": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`. Controls behavior if no bounding boxes supplied. If true, assume an implicit bounding box covering the whole input. If false, raise an error.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (begin, size, bboxes). A `Tensor`. Has the same type as `image_size`. 1-D, containing `[offset_height, offset_width, 0]`. Provide as input to `tf.slice`. size: A `Tensor`. Has the same type as `image_size`. 1-D, containing `[target_height, target_width, -1]`. Provide as input to `tf.slice`. bboxes: A `Tensor` of type `float32`. 3-D with shape `[1, 1, 4]` containing the distorted bounding box. Provide as input to `tf.image.draw_bounding_boxes`."
+  },
+  "constraints": []
+}

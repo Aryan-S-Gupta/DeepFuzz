@@ -1,0 +1,24 @@
+{
+  "api_name": "memory_reserved",
+  "module_path": "torch.accelerator.memory",
+  "params": {
+    "device_index": {
+      "type": "string|int|device",
+      "size": "",
+      "default": "current_device_index",
+      "flag": "Optional",
+      "description": "the index of the device to target. If not given, use :func:`torch.accelerator.current_device_index` by default. If a :class:`torch.device` or str is provided, its type must match the current :ref:`accelerator<accelerators>` device type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If a torch.device or str is provided, its type must match the current accelerator device type."
+      ]
+    }
+  },
+  "output": {
+    "type": "string|int",
+    "numbers": "1",
+    "description": "the current memory reserved by PyTorch (in bytes) within the current process."
+  },
+  "constraints": []
+}

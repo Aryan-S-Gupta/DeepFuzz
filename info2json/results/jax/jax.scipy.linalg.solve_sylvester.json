@@ -1,0 +1,62 @@
+{
+  "api_name": "solve_sylvester",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "A": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Matrix of shape m x m",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "B": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Matrix of shape n x n",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "C": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Matrix of shape m x n",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "method": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "\"schur\" is the default and is accurate but slow, and \"eigen\" is an alternative that is faster but less accurate for ill-conditioned matrices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "tol": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "How close the sum of the eigenvalues from A and B can be to zero before returning matrix of NaNs",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "X",
+    "numbers": "1",
+    "description": "Matrix of shape m x n"
+  },
+  "constraints": []
+}

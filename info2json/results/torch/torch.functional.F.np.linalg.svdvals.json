@@ -1,0 +1,24 @@
+{
+  "api_name": "svdvals",
+  "module_path": "torch.functional.F.np.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "shape (..., M, N)",
+      "default": "",
+      "flag": "Required",
+      "description": "(..., M, N) array_like Input array having shape (..., M, N) and whose last two dimensions form matrices on which to perform singular value decomposition. Should have a floating-point data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Should have a floating-point data type."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array with shape (..., K) that contains the vector(s) of singular values of length K, where K = min(M, N)."
+  },
+  "constraints": []
+}

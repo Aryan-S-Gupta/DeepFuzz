@@ -153,3 +153,90 @@ This filtering stage ensures that:
 * Fuzzing avoids unsafe or impossible-to-construct inputs
 
 This makes the entire system reproducible, documentation-aligned, and library-agnostic.
+
+
+# Collect DOCS
+
+## Pytorch
+python3 doc2info/collector.py --root torch --out doc2info/torch_apis.jsonl --max-depth 5 --exclude-prefix torch.cuda --exclude-prefix torch.storage --exclude-prefix torch.sparse --exclude-prefix torch.amp --exclude-prefix torch.ao
+
+python3 doc2info/filter_accepted.py --in doc2info/torch_apis.jsonl --outdir doc2info/results
+
+<!-- python3 select_APIs_test.py --input results/torch/accepted.csv --output results/torch/selected.csv --target 100 -->
+
+## Tensorflow
+python3 doc2info/collector.py --root tensorflow --out doc2info/tf_apis.jsonl --max-depth 5 --exclude-prefix tensorflow.python --exclude-prefix tensorflow.dtensor.python --exclude-prefix tensorflow.compat.v1 --exclude-prefix tensorflow.compat.v2
+
+python3 doc2info/filter_accepted.py --in doc2info/tf_apis.jsonl --outdir doc2info/results
+
+<!-- python3 select_APIs_test.py --input results/tensorflow/accepted.csv --output results/tensorflow/selected.csv --target 100 -->
+
+# DOCS to JSON
+
+## PyTorch
+python3 info2json/info2json.py --input doc2info/results/torch/selected.csv --outdir info2json/results/torch --model mixtral:8x7b --limit 10
+
+## Tensorflow
+python3 info2json/info2json.py --input doc2info/results/tensorflow/selected.csv --outdir info2json/results/tensorflow --model mixtral:8x7b --limit 10
+
+# Validate JSON 
+## PyTorch
+python3 json_validator/json_validator.py --spec-dir info2json/results/torch --api-csv doc2info/results/torch/accepted.csv --state-dir json_validator/results/torch --repair-model mixtral:8x7b
+
+./json_validator/results/torch/repair_retry.sh
+
+## Tensorflow
+python3 json_validator/json_validator.py --spec-dir info2json/results/tensorflow --api-csv doc2info/results/tensorflow/accepted.csv --state-dir json_validator/results/tensorflow --repair-model mixtral:8x7b
+
+./json_validator/results/tensorflow/repair_retry.sh
+
+
+# INIT
+
+## PyTorch
+python3 json2init/json2init.py --spec-dir info2json/results/torch --outdir json2init/results/torch --ok-csv json_validator/results/torch/ok.csv --smoke-test --overwrite --non-strict-smoke
+
+python3 json2init/json2init_validator.py --spec-dir info2json/results/torch --api-csv doc2info/results/torch/accepted.csv --stage3-issues json2init/results/torch/issues.jsonl --outdir json2init/results/torch --ok-csv json_validator/results/torch/ok.csv --repair-model mixtral:8x7b --max-rounds 3
+
+## Tensorflow
+python3 json2init/json2init.py --spec-dir info2json/results/tensorflow --outdir json2init/results/tensorflow --ok-csv json_validator/results/tensorflow/ok.csv --smoke-test --overwrite --non-strict-smoke
+
+python3 json2init/json2init_validator.py --spec-dir info2json/results/tensorflow --api-csv doc2info/results/tensorflow/accepted.csv --stage3-issues json2init/results/tensorflow/issues.jsonl --outdir json2init/results/tensorflow --ok-csv json_validator/results/tensorflow/ok.csv --repair-model mixtral:8x7b --max-rounds 3
+
+
+<!-- 
+# JSON to INIT
+
+## PyTorch
+python3 "json2init/json2init.py" --input "info2json/results/torch" --output "json2init/results/torch" 
+
+## Tensorflow
+python3 "json2init/json2init.py" --input "info2json/results/tensorflow" --output "json2init/results/tensorflow"
+
+# INIT to TEST
+
+# PyTorch
+python3 "init2test/init2test.py" --spec-input "info2json/results/torch" --init-input "json2init/results/torch" --output "init2test/results/torch" --overwrite --execute
+
+# Tensorflow
+python3 "init2test/init2test.py" --spec-input "info2json/results/tensorflow" --init-input "json2init/results/tensorflow" --output "init2test/results/tensorflow" --overwrite --execute 
+-->
+
+
+python3 -c "import csv,json,pathlib; allow={x.strip() for x in open('doc2info/results/torch/manual_allowlist.txt',encoding='utf-8') if x.strip()}; src='doc2info/torch_apis.jsonl'; dst='doc2info/results/torch/accepted.csv'; rows=list(csv.DictReader(open(dst,encoding='utf-8'))) if pathlib.Path(dst).exists() else []; seen={r.get('api_full_name','').strip() for r in rows}; add=[]; [add.append({'api_full_name':e.get('api','').strip(),'api_doc_text':e.get('doc','')}) for e in map(json.loads, open(src,encoding='utf-8')) if e.get('api','').strip() in allow and e.get('api','').strip() not in seen]; f=open(dst,'w',encoding='utf-8',newline=''); w=csv.DictWriter(f,fieldnames=['api_full_name','api_doc_text']); w.writeheader(); w.writerows(rows+add); f.close(); print(f'added {len(add)} APIs to {dst}')" 
+
+
+
+----
+
+DOCKER (JSON-2-INIT)
+
+docker build -t deepfuzz-pytorch -f docker_setup/Dockerfile.pytorch docker_setup
+
+docker run --rm -it deepfuzz-pytorch bash -lc "python3 -c 'import torch; print(torch.__version__); print(torch.__file__)'"
+
+docker run --rm -it -v "$PWD":/workspace/DeepFuzz -w /workspace/DeepFuzz deepfuzz-pytorch bash -lc 'python3 json2init/json2init.py --spec-dir info2json/results/torch --outdir json2init/results/torch --ok-csv json_validator/results/torch/ok.csv --smoke-test --overwrite --smoke-timeout-sec 30 --non-strict-smoke'
+
+docker run --rm -it -v "$PWD":/workspace/DeepFuzz -w /workspace/DeepFuzz deepfuzz-pytorch bash -lc 'python3 json2init/json2init_validator.py --spec-dir info2json/results/torch --api-csv doc2info/results/torch/accepted.csv --stage3-issues json2init/results/torch/issues.jsonl --outdir json2init/results/torch --ok-csv json_validator/results/torch/ok.csv --primary-repair-model mistral:7b --fallback-repair-model mixtral:8x7b --fallback-after-round 3 --max-rounds 3 --smoke-timeout-sec 30 --repair-host http://host.docker.internal:11434 --only-stage3-retry'
+
+docker run --rm -it -v "$PWD":/workspace/DeepFuzz -w /workspace/DeepFuzz deepfuzz-pytorch bash -lc 'python3 json2init/json2init.py --spec-dir info2json/results/torch --outdir json2init/results/torch --ok-csv json_validator/results/torch/ok.csv --smoke-test --overwrite --smoke-timeout-sec 30 --non-strict-smoke --only-api-list json2init/results/torch/retry_api_list.txt'

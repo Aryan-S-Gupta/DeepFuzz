@@ -1,0 +1,133 @@
+{
+  "api_full_name": "torch.functional.F.np.take_along_axis",
+  "api_name": "take_along_axis",
+  "module_path": "torch.functional.F.np",
+  "import_path": "torch.functional.F.np.take_along_axis",
+  "backend": "torch",
+  "params": {
+    "arr": {
+      "name": "arr",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "ndarray (Ni..., M, Nk...) Source array",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "indices": {
+      "name": "indices",
+      "spec": {
+        "type": "tensor",
+        "size": "1d",
+        "default": "",
+        "flag": "Required",
+        "description": "ndarray (Ni..., J, Nk...) Indices to take along each 1d slice of ``arr``. This must match the dimension of ``arr``, but dimensions Ni and Nj only need to broadcast against ``arr``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "indices must be 1-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|tensor",
+        "size": "1d",
+        "default": "",
+        "flag": "Optional",
+        "description": "int or None, optional The axis to take 1d slices along. If axis is None, the input array is treated as if it had first been flattened to 1d, for consistency with `sort` and `argsort`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "axis must be 1-D"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray (Ni..., J, Nk...) The indexed result."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: take_along_axis() missing 1 required positional argument: 'axis'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "take_along_axis() missing 1 required positional argument: 'axis'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: take_along_axis() missing 1 required positional argument: 'axis'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.functional.F.np.take_along_axis.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

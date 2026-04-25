@@ -1,0 +1,41 @@
+{
+  "api_name": "logcosh",
+  "module_path": "tensorflow.keras.losses",
+  "params": {
+    "y_true": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Ground truth values with shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have the same shape",
+        "dN in both y_true and y_pred can be 0 if the batch has no elements"
+      ]
+    },
+    "y_pred": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "y_true and y_pred must have the same shape",
+        "dN in both y_true and y_pred can be 0 if the batch has no elements"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "-1, d0, ..., dN-1",
+    "description": "Logcosh error values with shape = `[batch_size, d0, .. dN-1]`."
+  },
+  "constraints": [
+    "y_true and y_pred must have the same shape",
+    "dN in both y_true and y_pred can be 0 if the batch has no elements"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "api_name": "histogramdd",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "range": {
+      "type": "float|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Defines the leftmost and rightmost bin edges in each dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "weight": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "By default, each value in the input has weight 1. If a weight tensor is passed, each N-dimensional coordinate in input contributes its associated weight towards its bin's result. The weight tensor should have the same shape as the :attr:`input` tensor excluding its innermost dimension N.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "density": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "If False (default), the result will contain the count (or total weight) in each bin. If True, each count (weight) is divided by the total count (total weight), then divided by the volume of its associated bin.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bins": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor[], int[], or int. If Tensor[], defines the sequences of bin edges. If int[], defines the number of equal-width bins in each dimension. If int, defines the number of equal-width bins for all dimensions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "sequence|tensor",
+    "numbers": "1",
+    "description": "hist (Tensor): N-dimensional Tensor containing the values of the histogram. bin_edges(Tensor[]): sequence of N 1D Tensors containing the bin edges."
+  },
+  "constraints": []
+}

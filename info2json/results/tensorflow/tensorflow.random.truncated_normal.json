@@ -1,0 +1,64 @@
+{
+  "api_name": "truncated_normal",
+  "module_path": "tensorflow.random",
+  "params": {
+    "shape": {
+      "type": "int|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A 1-D integer Tensor or Python array. The shape of the output tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape must be 1-D"
+      ]
+    },
+    "mean": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A 0-D Tensor or Python value of type `dtype`. The mean of the truncated normal distribution.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "stddev": {
+      "type": "float|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A 0-D Tensor or Python value of type `dtype`. The standard deviation of the normal distribution, before truncation. dtype: The type of the output. Restricted to floating-point types: `tf.half`, `tf.float`, `tf.double`, etc.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "seed": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A Python integer. Used to create a random seed for the distribution. See `tf.random.set_seed` for more information.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of the specified shape filled with random truncated normal values."
+  },
+  "constraints": []
+}

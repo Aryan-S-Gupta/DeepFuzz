@@ -1,0 +1,52 @@
+{
+  "api_name": "sigmoid_cross_entropy_with_logits",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "labels": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of the same type and shape as `logits`. Between 0 and 1, inclusive.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "logits and labels must have the same type and shape."
+      ]
+    },
+    "logits": {
+      "type": "float|number|tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float32` or `float64`. Any real number.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "logits and labels must have the same type and shape."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "same shape as logits with componentwise logistic losses",
+    "description": "A `Tensor` of the same shape as `logits` with the componentwise logistic losses."
+  },
+  "constraints": [
+    "logits and labels must have the same type and shape.",
+    "x < 0, to avoid overflow in exp(-x), we reformulate the loss function."
+  ]
+}

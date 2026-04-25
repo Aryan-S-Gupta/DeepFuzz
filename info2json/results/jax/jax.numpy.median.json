@@ -1,0 +1,64 @@
+{
+  "api_name": "median",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, int or sequence of ints, default=None. Axis along which the median to be computed. If None, median is computed for the flattened array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Unused by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "overwrite_input": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Unused by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "An array of the median along the given axis."
+  },
+  "constraints": []
+}

@@ -1,0 +1,27 @@
+{
+  "api_name": "sparse_plus",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape can be anything",
+        "x values less than or equal to -1 will be converted to 0",
+        "x values greater than -1 and less than 1 will be processed by (1/4) * (x + 1)^2",
+        "x values greater than or equal to 1 will remain the same"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "A tensor with the same shape as `x`."
+  },
+  "constraints": []
+}

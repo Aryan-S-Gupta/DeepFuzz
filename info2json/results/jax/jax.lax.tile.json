@@ -1,0 +1,35 @@
+{
+  "api_name": "tile",
+  "module_path": "jax.lax",
+  "params": {
+    "operand": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an array to tile.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "reps": {
+      "type": "list|sequence|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a sequence of integers representing the number of repeats for each dimension. Must have the same length as ``operand.ndim``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must have the same length as operand.ndim",
+        "reps must contain only positive integers"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "int32",
+    "description": "A tiled array with shape ``(operand.shape[0] * reps[0], ..., operand.shape[-1] * reps[-1])``."
+  },
+  "constraints": []
+}

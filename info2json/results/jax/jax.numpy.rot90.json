@@ -1,0 +1,42 @@
+{
+  "api_name": "rot90",
+  "module_path": "jax.numpy",
+  "params": {
+    "m": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "input array. Must have ``m.ndim >= 2``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional, default=1. Specifies the number of times the array is rotated. For negative values of ``k``, the array is rotated in clockwise direction.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axes": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "tuple of 2 integers, optional, default= (0, 1). The axes define the plane in which the array is rotated. Both the axes must be different.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the copy of the input, ``m`` rotated by 90 degrees."
+  },
+  "constraints": []
+}

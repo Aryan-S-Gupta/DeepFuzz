@@ -1,0 +1,25 @@
+{
+  "api_name": "cos",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or array. Angle in radians.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be an array or scalar.",
+        "x and output must have broadcast-compatible shapes."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "real",
+    "description": "An array containing the cosine of each element in ``x``, promotes to inexact dtype."
+  },
+  "constraints": []
+}

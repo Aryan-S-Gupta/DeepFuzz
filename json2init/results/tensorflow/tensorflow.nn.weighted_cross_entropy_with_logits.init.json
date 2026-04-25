@@ -1,0 +1,143 @@
+{
+  "api_full_name": "tensorflow.nn.weighted_cross_entropy_with_logits",
+  "api_name": "weighted_cross_entropy_with_logits",
+  "module_path": "tensorflow.nn",
+  "import_path": "tensorflow.nn.weighted_cross_entropy_with_logits",
+  "backend": "tensorflow",
+  "params": {
+    "labels": {
+      "name": "labels",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of the same type and shape as `logits`, with values between 0 and 1 inclusive.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 0.5,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "logits": {
+      "name": "logits",
+      "spec": {
+        "type": "float|tensor|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `float32` or `float64`, any real numbers.",
+        "dtype_candidates": [
+          "float32",
+          "float64"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "pos_weight": {
+      "name": "pos_weight",
+      "spec": {
+        "type": "number",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "A coefficient to use on the positive examples, typically a scalar but otherwise broadcastable to the shape of `logits`. Its value should be non-negative.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "pos_weight must be non-negative",
+          "pos_weight must be positive"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of the same shape as `logits` with the componentwise weighted logistic losses."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: `logits` and `labels` must have the same shape, received (() vs (1,))."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "`logits` and `labels` must have the same shape, received (() vs (1,)).",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/nn_impl.py\", line 324, in weighted_cross_entropy_with_logits_v2\n    raise ValueError(\"`logits` and `labels` must have the same shape, \"\n                     f\"received ({logits.get_shape()} vs \"\n                     f\"{labels.get_shape()}).\")\nValueError: `logits` and `labels` must have the same shape, received (() vs (1,)).\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.weighted_cross_entropy_with_logits.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

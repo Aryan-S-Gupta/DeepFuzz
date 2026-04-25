@@ -1,0 +1,72 @@
+{
+  "api_name": "non_max_suppression_overlaps",
+  "module_path": "tensorflow.image",
+  "params": {
+    "overlaps": {
+      "type": "float|tensor",
+      "size": "2-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 2-D float `Tensor` of shape `[num_boxes, num_boxes]` representing the n-by-n box overlap values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "scores": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A 1-D float `Tensor` of shape `[num_boxes]` representing a single score corresponding to each box (each row of boxes).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "max_output_size": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar integer `Tensor` representing the maximum number of boxes to be selected by non-max suppression.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "overlap_threshold": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A 0-D float tensor representing the threshold for deciding whether boxes overlap too much with respect to the provided overlap values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "score_threshold": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A 0-D float tensor representing the threshold for deciding when to remove boxes based on score.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "int|tensor",
+    "numbers": "1",
+    "description": "A 1-D integer `Tensor` of shape `[M]` representing the selected indices from the overlaps tensor, where `M <= max_output_size`."
+  },
+  "constraints": []
+}

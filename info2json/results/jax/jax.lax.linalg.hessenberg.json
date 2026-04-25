@@ -1,0 +1,24 @@
+{
+  "api_name": "hessenberg",
+  "module_path": "jax.lax.linalg",
+  "params": {
+    "a": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A floating point or complex square matrix or batch of matrices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a is input"
+      ]
+    }
+  },
+  "output": {
+    "type": "number",
+    "numbers": "1",
+    "description": "A ``(a, taus)`` pair, where the upper triangle and first subdiagonal of ``a`` contain the upper Hessenberg matrix, and the elements below the first subdiagonal contain the Householder reflectors. For each Householder reflector ``taus`` contains the scalar factors of the elementary Householder reflectors."
+  },
+  "constraints": []
+}

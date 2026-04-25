@@ -1,0 +1,146 @@
+{
+  "api_full_name": "tensorflow.nn.depth_to_space",
+  "api_name": "depth_to_space",
+  "module_path": "tensorflow.nn",
+  "import_path": "tensorflow.nn.depth_to_space",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "block_size": {
+      "name": "block_size",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An `int` that is `>= 2`. The size of the spatial block, same as in Space2Depth.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          ">= 2"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "data_format": {
+      "name": "data_format",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "\"NHWC\"",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"`. Defaults to `\"NHWC\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": [
+    "input.rank() >= 4"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'block_size' of 1 must be at least minimum 2\n\t; NodeDef: {{node DepthToSpace}}; Op<name=DepthToSpace; signature=input:T -> output:T; attr=T:type; attr=block_size:int,min=2; attr=data_format:string,default=\"NHWC\",allowed=[\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"]> [Op:DepthToSpace] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'block_size' of 1 must be at least minimum 2\n\t; NodeDef: {{node DepthToSpace}}; Op<name=DepthToSpace; signature=input:T -> output:T; attr=T:type; attr=block_size:int,min=2; attr=data_format:string,default=\"NHWC\",allowed=[\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"]> [Op:DepthToSpace] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'block_size' of 1 must be at least minimum 2\n\t; NodeDef: {{node DepthToSpace}}; Op<name=DepthToSpace; signature=input:T -> output:T; attr=T:type; attr=block_size:int,min=2; attr=data_format:string,default=\"NHWC\",allowed=[\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"]> [Op:DepthToSpace] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.depth_to_space.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

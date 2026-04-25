@@ -1,0 +1,36 @@
+{
+  "api_name": "reduce_max",
+  "module_path": "jax.lax",
+  "params": {
+    "operand": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array over which to compute maximum.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape: rank > 0"
+      ]
+    },
+    "axes": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of zero or more unique integers specifying the axes over which to reduce. Each entry must satisfy ``0 <= axis < operand.ndim``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "unique items"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "same dtype as `operand`",
+    "description": "An array of the same dtype as ``operand``, with shape corresponding to the dimensions of ``operand.shape`` with ``axes`` removed."
+  },
+  "constraints": []
+}

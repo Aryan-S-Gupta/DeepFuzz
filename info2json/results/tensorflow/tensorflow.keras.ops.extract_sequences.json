@@ -1,0 +1,44 @@
+{
+  "api_name": "extract_sequences",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sequence_length": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer representing the sequences length.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "sequence_stride": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer representing the sequences hop size.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "sequence_stride > 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "..., num_sequences, sequence_length",
+    "description": "A tensor of sequences with shape [..., num_sequences, sequence_length]."
+  },
+  "constraints": []
+}

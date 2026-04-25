@@ -1,0 +1,34 @@
+{
+  "api_name": "sqrtm",
+  "module_path": "jax.scipy.linalg",
+  "params": {
+    "A": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(N, N)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "blocksize": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Not supported in JAX; JAX always uses ``blocksize=1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "N",
+    "description": "An array of shape ``(N, N)`` containing the matrix square root of ``A``"
+  },
+  "constraints": [
+    "A must be square"
+  ]
+}

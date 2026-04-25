@@ -1,0 +1,47 @@
+{
+  "api_name": "outer",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "1-D input vector",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "vec2": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "1-D input vector",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "vec2 must be 1-D",
+        "m must match vec2's length"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional output matrix",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Output tensor of outer product"
+  },
+  "constraints": [
+    "n must match input's length"
+  ]
+}

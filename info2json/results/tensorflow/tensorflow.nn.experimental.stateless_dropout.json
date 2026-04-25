@@ -1,0 +1,78 @@
+{
+  "api_name": "stateless_dropout",
+  "module_path": "tensorflow.nn.experimental",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A floating point tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rate": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "A scalar `Tensor` with the same type as x. The probability that each element is dropped. For example, setting rate=0.1 would drop 10% of input elements.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "rate must have the same dtype as x"
+      ]
+    },
+    "seed": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An integer tensor of shape `[2]`. The seed of the random numbers.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "rng_alg": {
+      "type": "tf.random.stateless_uniform",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The algorithm used to generate the random numbers (default to `\"auto_select\"`). See the `alg` argument of `tf.random.stateless_uniform` for the supported values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "rng_alg must be one of auto_select, alg, tf.random.stateless_uniform"
+      ]
+    },
+    "noise_shape": {
+      "type": "int|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 1-D integer `Tensor`, representing the shape for randomly generated keep/drop flags.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "noise_shape must be 1-D"
+      ]
+    },
+    "name": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A name for this operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "A Tensor of the same shape and dtype of `x`."
+  },
+  "constraints": []
+}

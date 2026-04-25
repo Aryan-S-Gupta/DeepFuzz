@@ -1,0 +1,24 @@
+{
+  "api_name": "ndim",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array-like object, or any object with an ``ndim`` attribute.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a must have an 'ndim' attribute"
+      ]
+    }
+  },
+  "output": {
+    "type": "int|number",
+    "numbers": "1",
+    "description": "An integer specifying the number of dimensions of ``a``."
+  },
+  "constraints": []
+}

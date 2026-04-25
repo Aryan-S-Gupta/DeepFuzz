@@ -1,0 +1,56 @@
+{
+  "api_name": "isin",
+  "module_path": "torch",
+  "params": {
+    "elements": {
+      "type": "number|tensor",
+      "size": "Scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Input elements",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "test_elements": {
+      "type": "number|tensor",
+      "size": "Scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "Values against which to test for each input element",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "assume_unique": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If True, assumes both :attr:`elements` and :attr:`test_elements` contain unique elements, which can speed up the calculation. Default: False",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "invert": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If True, inverts the boolean return tensor, resulting in True values for elements *not* in :attr:`test_elements`. Default: False",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "attr:`elements` that is True for elements in :attr:`test_elements` and False otherwise"
+  },
+  "constraints": []
+}

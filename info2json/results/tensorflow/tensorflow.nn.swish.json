@@ -1,0 +1,38 @@
+{
+  "api_name": "swish",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "features": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` representing preactivation values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "features and beta must have the same shape"
+      ]
+    },
+    "beta": {
+      "type": "tensor",
+      "size": "",
+      "default": "1.0",
+      "flag": "Optional",
+      "description": "A 'Tensor' representing value of beta hyperparameter.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "features and beta must have the same shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The activation value."
+  },
+  "constraints": [
+    "features and beta must have the same shape"
+  ]
+}

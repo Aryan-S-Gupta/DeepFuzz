@@ -1,0 +1,46 @@
+{
+  "api_name": "zeros",
+  "module_path": "tensorflow",
+  "params": {
+    "shape": {
+      "type": "tuple|list|tensor|dtype",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `list` of integers, a `tuple` of integers, or a 1-D `Tensor` of type `int32`. dtype: The DType of an element in the resulting `Tensor`.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "shape must be 1-D"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional string. A name for the operation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "layout": {
+      "type": "tf.experimental.dtensor.Layout",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional, `tf.experimental.dtensor.Layout`. If provided, the result is a [DTensor](https://www.tensorflow.org/guide/dtensor_overview) with the provided layout.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` with all elements set to zero."
+  },
+  "constraints": []
+}

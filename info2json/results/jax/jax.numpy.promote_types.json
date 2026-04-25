@@ -1,0 +1,41 @@
+{
+  "api_name": "promote_types",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a :class:`numpy.dtype` or a dtype specifier.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a and b must be either strings, dtypes, or scalar types.",
+        "If a or b are built-in scalar types (:type:`int`, :type:`float`, or :type:`complex`), the return value will be the same as the other type."
+      ]
+    },
+    "b": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a :class:`numpy.dtype` or a dtype specifier.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a and b must be either strings, dtypes, or scalar types.",
+        "If a or b are built-in scalar types (:type:`int`, :type:`float`, or :type:`complex`), the return value will be the same as the other type."
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "class:`numpy.dtype` object."
+  },
+  "constraints": [
+    "a and b must be either strings, dtypes, or scalar types.",
+    "If a or b are built-in scalar types (:type:`int`, :type:`float`, or :type:`complex`), the return value will be the same as the other type."
+  ]
+}

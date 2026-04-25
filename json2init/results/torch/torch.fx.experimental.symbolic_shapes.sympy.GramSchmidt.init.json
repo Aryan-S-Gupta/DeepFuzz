@@ -1,0 +1,92 @@
+{
+  "api_full_name": "torch.fx.experimental.symbolic_shapes.sympy.GramSchmidt",
+  "api_name": "GramSchmidt",
+  "module_path": "torch.fx.experimental.symbolic_shapes.sympy",
+  "import_path": "torch.fx.experimental.symbolic_shapes.sympy.GramSchmidt",
+  "backend": "torch",
+  "params": {
+    "vlist": {
+      "name": "vlist",
+      "spec": {
+        "type": "list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "List of Matrix Vectors to be orthogonalized for.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "vlist must be a list of matrices."
+        ]
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "orthonormal": {
+      "name": "orthonormal",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "optional",
+        "flag": "Optional",
+        "description": "Bool, optional If true, return an orthonormal basis.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "orthonormal is optional and defaults to an empty value if not provided."
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "1",
+    "description": "======= List of Matrix Orthogonalized vectors"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: 'int' object has no attribute 'rows'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "'int' object has no attribute 'rows'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/sympy/matrices/dense.py\", line 833, in GramSchmidt\n    return MutableDenseMatrix.orthogonalize(\n  File \"/usr/local/lib/python3.10/dist-packages/sympy/matrices/matrixbase.py\", line 3321, in orthogonalize\n    return _orthogonalize(cls, *vecs, **kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/sympy/matrices/subspaces.py\", line 158, in _orthogonalize\n    all_row_vecs = (vecs[0].rows == 1)\nAttributeError: 'int' object has no attribute 'rows'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.GramSchmidt.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

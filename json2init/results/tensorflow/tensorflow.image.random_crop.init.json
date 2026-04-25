@@ -1,0 +1,140 @@
+{
+  "api_full_name": "tensorflow.image.random_crop",
+  "api_name": "random_crop",
+  "module_path": "tensorflow.image",
+  "import_path": "tensorflow.image.random_crop",
+  "backend": "tensorflow",
+  "params": {
+    "value": {
+      "name": "value",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "image",
+        "flag": "Optional",
+        "description": "Input tensor to crop.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "size": {
+      "name": "size",
+      "spec": {
+        "type": "list|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Optional",
+        "description": "1-D tensor with size the rank of `value`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Requires `value.shape >= size`",
+          "size must be 1-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "seed": {
+      "name": "seed",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Python integer. Used to create a random seed. See `tf.random.set_seed` for behavior.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name for this operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for this operation (optional).",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for this operation (optional)."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A cropped tensor of the same rank as `value` and shape `size`."
+  },
+  "constraints": [
+    "name is an optional name for this operation."
+  ],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name for this operation (optional)."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.random_crop.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

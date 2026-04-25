@@ -1,0 +1,36 @@
+{
+  "api_name": "global_norm",
+  "module_path": "tensorflow.linalg",
+  "params": {
+    "t_list": {
+      "type": "tuple|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A tuple or list of mixed `Tensors`, `IndexedSlices`, or None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "t_list elements must be Tensors, IndexedSlices, or None."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "Unspecified",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "name must be a string or unspecified."
+      ]
+    }
+  },
+  "output": {
+    "type": "float|number|tensor",
+    "numbers": "1",
+    "description": "A 0-D (scalar) `Tensor` of type `float`."
+  },
+  "constraints": []
+}

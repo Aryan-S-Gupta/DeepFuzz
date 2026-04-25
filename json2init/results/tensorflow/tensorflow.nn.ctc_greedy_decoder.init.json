@@ -1,0 +1,135 @@
+{
+  "api_full_name": "tensorflow.nn.ctc_greedy_decoder",
+  "api_name": "ctc_greedy_decoder",
+  "module_path": "tensorflow.nn",
+  "import_path": "tensorflow.nn.ctc_greedy_decoder",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "float|tensor",
+        "size": "3-D",
+        "default": "",
+        "flag": "Required",
+        "description": "3-D `float` `Tensor` sized `[max_time, batch_size, num_classes]`. The logits.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "sequence_length": {
+      "name": "sequence_length",
+      "spec": {
+        "type": "sequence",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "1-D `int32` vector containing sequence lengths, having size `[batch_size]`.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "sequence_length must be 1-D"
+        ]
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    },
+    "merge_repeated": {
+      "name": "merge_repeated",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "Boolean. Default: True.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "blank_index": {
+      "name": "blank_index",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "num_classes - 1",
+        "flag": "Optional",
+        "description": "(Optional). Default: `num_classes - 1`. Define the class index to use for the blank label. Negative values will start from num_classes, ie, -1 will reproduce the ctc_greedy_decoder behavior of using num_classes - 1 for the blank symbol, which corresponds to the default.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "(optional). default: `num_classes - 1`. define the class index to use for the blank label. negative values will start from num_classes",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: (optional). default: `num_classes - 1`. define the class index to use for the blank label. negative values will start from num_classes"
+    }
+  },
+  "output": {
+    "type": "float|tuple|list|sequence",
+    "numbers": "1",
+    "description": "A tuple `(decoded, neg_sum_logits)` where A single-element list. `decoded[0]` is an `SparseTensor` containing the decoded outputs s.t.: `decoded.indices`: Indices matrix `(total_decoded_outputs, 2)`. The rows store: `[batch, time]`. `decoded.values`: Values vector, size `(total_decoded_outputs)`. The vector stores the decoded classes. `decoded.dense_shape`: Shape vector, size `(2)`. The shape values are: `[batch_size, max_decoded_length]` neg_sum_logits: A `float` matrix `(batch_size x 1)` containing, for the sequence found, the negative of the sum of the greatest logit at each timeframe."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__CTCGreedyDecoder_device_/job:localhost/replica:0/task:0/device:CPU:0}} inputs is not a 3-Tensor [Op:CTCGreedyDecoder]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__CTCGreedyDecoder_device_/job:localhost/replica:0/task:0/device:CPU:0}} inputs is not a 3-Tensor [Op:CTCGreedyDecoder]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__CTCGreedyDecoder_device_/job:localhost/replica:0/task:0/device:CPU:0}} inputs is not a 3-Tensor [Op:CTCGreedyDecoder]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.ctc_greedy_decoder.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

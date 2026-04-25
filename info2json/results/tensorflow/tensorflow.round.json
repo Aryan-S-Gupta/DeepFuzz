@@ -1,0 +1,42 @@
+{
+  "api_name": "round",
+  "module_path": "tensorflow",
+  "params": {
+    "x": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `float16`, `float32`, `float64`, `int32`, or `int64`.",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "float16",
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Must have a shape",
+        "x and output must have the same shape and type.",
+        "x and tensorflow.round(x) must have the same rank."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of same shape and type as `x`."
+  },
+  "constraints": []
+}

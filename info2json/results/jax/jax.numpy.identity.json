@@ -1,0 +1,24 @@
+{
+  "api_name": "identity",
+  "module_path": "jax.numpy",
+  "params": {
+    "n": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "floating point",
+      "flag": "Optional",
+      "description": "integer specifying the size of each array dimension. dtype: optional dtype; defaults to floating point.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "n > 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "Identity array of shape ``(n, n)``."
+  },
+  "constraints": []
+}

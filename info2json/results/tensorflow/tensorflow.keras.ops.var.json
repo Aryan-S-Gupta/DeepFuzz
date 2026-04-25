@@ -1,0 +1,52 @@
+{
+  "api_name": "var",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [
+        "float16",
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "x.dtype must be float16, float32, or float64"
+      ]
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "Axis or axes along which the variance is computed. The default is to compute the variance of the flattened tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If this is set to `True`, the axes which are reduced are left in the result as dimensions with size one.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "Output tensor containing the variance."
+  },
+  "constraints": []
+}

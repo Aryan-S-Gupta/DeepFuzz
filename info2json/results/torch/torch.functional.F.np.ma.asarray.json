@@ -1,0 +1,32 @@
+{
+  "api_name": "asarray",
+  "module_path": "torch.functional.F.np.ma",
+  "params": {
+    "a": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input data, in any form that can be converted to a masked array. This includes lists, lists of tuples, tuples, tuples of tuples, tuples of lists, ndarrays and masked arrays.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "order": {
+      "type": "'C' or 'F'",
+      "size": "",
+      "default": "'C'",
+      "flag": "Optional",
+      "description": "{'C', 'F'}, optional Whether to use row-major ('C') or column-major ('FORTRAN') memory representation. Default is 'C'.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- MaskedArray Masked array interpretation of `a`."
+  },
+  "constraints": []
+}

@@ -1,0 +1,42 @@
+{
+  "api_name": "polyval",
+  "module_path": "jax.numpy",
+  "params": {
+    "p": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An array of polynomial coefficients of shape ``(M,)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "x": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A number or an array of numbers.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "unroll": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A number used to control the number of unrolled steps with ``lax.scan``. It must be specified statically.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of same shape as ``x``."
+  },
+  "constraints": []
+}

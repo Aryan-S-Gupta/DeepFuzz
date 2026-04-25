@@ -1,0 +1,51 @@
+{
+  "api_name": "vecdot",
+  "module_path": "torch.functional.F.np.linalg",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like First input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes over the specified axis"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Second input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes over the specified axis"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "int, optional Axis over which to compute the dot product. Default: ``-1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Default: -1",
+        "x1 and x2 must have broadcast-compatible shapes over the specified axis"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The vector dot product of the input."
+  },
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes over the specified axis"
+  ]
+}

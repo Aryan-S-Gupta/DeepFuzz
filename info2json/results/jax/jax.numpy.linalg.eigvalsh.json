@@ -1,0 +1,42 @@
+{
+  "api_name": "eigvalsh",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "a": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, M)``, containing the Hermitian (if complex) or symmetric (if real) matrix.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "UPLO": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "specifies whether the calculation is done with the lower triangular part of ``a`` (``'L'``, default) or the upper triangular part (``'U'``).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "symmetrize_input": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "if True (default) then input is symmetrized, which leads to better behavior under automatic differentiation. Note that when this is set to True, both the upper and lower triangles of the input will be used in computing the decomposition.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of shape ``(..., M)`` containing the eigenvalues, sorted in ascending order."
+  },
+  "constraints": []
+}

@@ -1,0 +1,213 @@
+{
+  "api_full_name": "tensorflow.keras.ops.istft",
+  "api_name": "istft",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.istft",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tuple of the real and imaginary parts of the input tensor. Both tensors in the tuple should be of floating type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "sequence_length": {
+      "name": "sequence_length",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer representing the sequence length.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "sequence_stride": {
+      "name": "sequence_stride",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer representing the sequence hop size.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "fft_length": {
+      "name": "fft_length",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer representing the size of the FFT that produced `stft`. Should be of type `int32`.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "length": {
+      "name": "length",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer representing the output is clipped to exactly length. If not specified, no padding or clipping take place. Defaults to `None`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "window": {
+      "name": "window",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "\"hann\"",
+        "flag": "Optional",
+        "description": "A string, a tensor of the window or `None`. If `window` is a string, available values are `\"hann\"` and `\"hamming\"`. If `window` is a tensor, it will be used directly as the window and its length must be `sequence_length`. If `window` is `None`, no windowing is used. Defaults to `\"hann\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "window must be one of hann, hamming"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "None"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "center": {
+      "name": "center",
+      "spec": {
+        "type": "sequence",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "Whether `x` was padded on both sides so that the t-th sequence is centered at time `t * sequence_stride`. Defaults to `True`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "structure_shrink",
+        "element_delta"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "int|tensor",
+    "numbers": "1",
+    "description": "A tensor containing the inverse Short-Time Fourier Transform along the last axis of `x`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 915, in istft\n    return backend.math.istft(\n           ~~~~~~~~~~~~~~~~~~^\n        x,\n        ^^\n    ...<5 lines>...\n        center=center,\n        ^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 213, in istft\n    complex_input = _get_complex_tensor_from_tuple(x)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 78, in _get_complex_tensor_from_tuple\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.istft.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

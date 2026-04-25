@@ -1,0 +1,213 @@
+{
+  "api_full_name": "tensorflow.quantization.fake_quant_with_min_max_vars_per_channel_gradient",
+  "api_name": "fake_quant_with_min_max_vars_per_channel_gradient",
+  "module_path": "tensorflow.quantization",
+  "import_path": "tensorflow.quantization.fake_quant_with_min_max_vars_per_channel_gradient",
+  "backend": "tensorflow",
+  "params": {
+    "gradients": {
+      "name": "gradients",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `float32`. Backpropagated gradients above the FakeQuantWithMinMaxVars operation, shape one of: `[d]`, `[b, d]`, `[b, h, w, d]`.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [
+          "float32"
+        ],
+        "constraints": [
+          "gradients must be one of float32"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `float32`. Values passed as inputs to the FakeQuantWithMinMaxVars operation, shape same as `gradients`. min, max: Quantization interval, floats of shape `[d]`.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "min": {
+      "name": "min",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `float32`.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "max": {
+      "name": "max",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `float32`.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "num_bits": {
+      "name": "num_bits",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "8",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `8`. The bitwidth of the quantization; between 2 and 16, inclusive.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "narrow_range": {
+      "name": "narrow_range",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`. Whether to quantize into 2^num_bits - 1 distinct values.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "narrow_range must be one of bool, False"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name for the operation (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "1",
+    "description": "A tuple of `Tensor` objects (backprops_wrt_input, backprop_wrt_min, backprop_wrt_max). A `Tensor` of type `float32`. backprop_wrt_min: A `Tensor` of type `float32`. backprop_wrt_max: A `Tensor` of type `float32`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: smoke test subprocess exited abnormally (exitcode=-6)"
+  ],
+  "smoke_test": {
+    "success": false,
+    "classification": "api_runtime_error",
+    "error": "smoke test subprocess exited abnormally (exitcode=-6)"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.quantization.fake_quant_with_min_max_vars_per_channel_gradient.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

@@ -1,0 +1,35 @@
+{
+  "api_name": "concat",
+  "module_path": "jax.numpy",
+  "params": {
+    "arrays": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "a sequence of arrays to concatenate; each must have the same shape except along the specified axis. If a single array is given it will be treated equivalently to `arrays = unstack(arrays)`, but the implementation will avoid explicit unstacking.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "arrays must not be empty",
+        "all arrays in arrays must have the same shape except along axis"
+      ]
+    },
+    "axis": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "specify the axis along which to concatenate.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "the concatenated result."
+  },
+  "constraints": []
+}

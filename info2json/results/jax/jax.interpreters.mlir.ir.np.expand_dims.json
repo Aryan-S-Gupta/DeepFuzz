@@ -1,0 +1,41 @@
+{
+  "api_name": "expand_dims",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "a must be an array",
+        "axis must be None or an int or a tuple of ints"
+      ]
+    },
+    "axis": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints Position in the expanded axes where the new axis (or axes) is placed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "if int, 0 <= axis < a.ndim + 1",
+        "if tuple, all values must satisfy -rank(input) <= axis[i] < rank(input)",
+        "axis must be None or an int or a tuple of ints"
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "------- ndarray View of `a` with the number of dimensions increased."
+  },
+  "constraints": [
+    "axis must be None or an int or a tuple of ints"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "api_name": "fftshift",
+  "module_path": "torch.fft",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor in FFT order",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim": {
+      "type": "int|tuple|any",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dimensions to rearrange. Only dimensions specified here will be rearranged, any other dimensions will be left in their original order. Default: All dimensions of :attr:`input`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "dim must be int or tuple of ints",
+        "dim must be int or tuple of ints, optional"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Reordered n-dimensional FFT data"
+  },
+  "constraints": [
+    "input must be a Tensor"
+  ]
+}

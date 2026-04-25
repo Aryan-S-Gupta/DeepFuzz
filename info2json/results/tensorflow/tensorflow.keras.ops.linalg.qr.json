@@ -1,0 +1,34 @@
+{
+  "api_name": "qr",
+  "module_path": "tensorflow.keras.ops.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor of shape `(..., M, N)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "mode": {
+      "type": "string",
+      "size": "",
+      "default": "reduced",
+      "flag": "Optional",
+      "description": "A string specifying the mode of the QR decomposition. - 'reduced': Returns the reduced QR decomposition. (default) - 'complete': Returns the complete QR decomposition.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        ">> 'reduced' or 'complete'"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple containing two tensors. The first tensor of shape `(..., M, K)` is the orthogonal matrix `q` and the second tensor of shape `(..., K, N)` is the upper triangular matrix `r`, where `K = min(M, N)`."
+  },
+  "constraints": []
+}

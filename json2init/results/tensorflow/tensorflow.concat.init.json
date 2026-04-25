@@ -1,0 +1,74 @@
+{
+  "api_full_name": "tensorflow.concat",
+  "api_name": "concat",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.concat",
+  "backend": "tensorflow",
+  "params": {
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tensor",
+        "size": "0-D",
+        "default": "axis",
+        "flag": "Optional",
+        "description": "0-D `int32` `Tensor`. Dimension along which to concatenate. Must be in the range `[-rank(values), rank(values))`. As in Python, indexing for axis is 0-based. Positive axis in the rage of `[0, rank(values))` refers to `axis`-th dimension. And negative axis refers to `axis + rank(values)`-th dimension. name: A name for the operation (optional).",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` resulting from concatenation of the input tensors."
+  },
+  "constraints": [
+    "axis must be in the range [-rank(values), rank(values))"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Missing required positional argument"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Missing required positional argument",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.concat.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

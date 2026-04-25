@@ -1,0 +1,34 @@
+{
+  "api_name": "broadcast_to",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "shape": {
+      "type": "tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the new shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "input and shape must satisfy rules of torch.broadcast_to"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Broadcasted tensor to the given shape"
+  },
+  "constraints": []
+}

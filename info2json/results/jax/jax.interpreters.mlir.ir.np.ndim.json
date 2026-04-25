@@ -1,0 +1,25 @@
+{
+  "api_name": "ndim",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like Input array. If it is not already an ndarray, a conversion is attempted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If provided, must be array_like",
+        "Input array_like 'a' must be provided for determining ndim if not using default"
+      ]
+    }
+  },
+  "output": {
+    "type": "int|number",
+    "numbers": "single",
+    "description": "------- int The number of dimensions in `a`. Scalars are zero-dimensional."
+  },
+  "constraints": []
+}

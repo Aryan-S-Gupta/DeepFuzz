@@ -1,0 +1,26 @@
+{
+  "api_name": "is_mask",
+  "module_path": "torch.functional.F.np.ma",
+  "params": {
+    "m": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array to test.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must have a MaskType dtype if mask is used."
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|dtype",
+    "numbers": "1",
+    "description": "------- bool True if `m.dtype.type` is MaskType, False otherwise."
+  },
+  "constraints": [
+    "Input must be an ndarray (or have similar attributes)"
+  ]
+}

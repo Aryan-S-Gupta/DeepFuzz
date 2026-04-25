@@ -1,0 +1,40 @@
+{
+  "api_name": "expand_dims",
+  "module_path": "torch.functional.F.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "`axis` may also be a tuple."
+      ]
+    },
+    "axis": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints Position in the expanded axes where the new axis (or axes) is placed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "-- deprecated since 1.13.0 -- Passing an axis where `axis > a.ndim` will be treated as `axis == a.ndim`, and passing `axis < -a.ndim - 1` will be treated as `axis == 0`. This behavior is deprecated.",
+        "`axis` may also be a tuple."
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "------- ndarray View of `a` with the number of dimensions increased."
+  },
+  "constraints": [
+    "`axis` may also be a tuple.",
+    "The inverse operation is 'squeeze', and another related function is 'reshape'."
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "api_full_name": "torch.nn.utils.get_total_norm",
+  "api_name": "get_total_norm",
+  "module_path": "torch.nn.utils",
+  "import_path": "torch.nn.utils.get_total_norm",
+  "backend": "torch",
+  "params": {
+    "norm_type": {
+      "name": "norm_type",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "type of the used p-norm. Can be ``'inf'`` for infinity norm.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "error_if_nonfinite": {
+      "name": "error_if_nonfinite",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "if True, an error is thrown if the total norm of :attr:`tensors` is ``nan``, ``inf``, or ``-inf``. Default: ``False``",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "foreach": {
+      "name": "foreach",
+      "spec": {
+        "type": "bool|tensor|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "use the faster foreach-based implementation. If ``None``, use the foreach implementation for CUDA and CPU native tensors and silently fall back to the slow implementation for other device types. Default: ``None``",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Total norm of the tensors (viewed as a single vector)."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: _get_total_norm() missing 1 required positional argument: 'tensors'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "_get_total_norm() missing 1 required positional argument: 'tensors'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/workspace/pytorch/torch/nn/utils/clip_grad.py\", line 38, in _no_grad_wrapper\n    return func(*args, **kwargs)\nTypeError: _get_total_norm() missing 1 required positional argument: 'tensors'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.nn.utils.get_total_norm.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

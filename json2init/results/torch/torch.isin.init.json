@@ -1,0 +1,136 @@
+{
+  "api_full_name": "torch.isin",
+  "api_name": "isin",
+  "module_path": "torch",
+  "import_path": "torch.isin",
+  "backend": "torch",
+  "params": {
+    "elements": {
+      "name": "elements",
+      "spec": {
+        "type": "number|tensor",
+        "size": "Scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Input elements",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "test_elements": {
+      "name": "test_elements",
+      "spec": {
+        "type": "number|tensor",
+        "size": "Scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Values against which to test for each input element",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "assume_unique": {
+      "name": "assume_unique",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If True, assumes both :attr:`elements` and :attr:`test_elements` contain unique elements, which can speed up the calculation. Default: False",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "invert": {
+      "name": "invert",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If True, inverts the boolean return tensor, resulting in True values for elements *not* in :attr:`test_elements`. Default: False",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "attr:`elements` that is True for elements in :attr:`test_elements` and False otherwise"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: isin() received an invalid combination of arguments - got (test_elements=float, elements=float, ), but expected one of:\n * (Tensor elements, Tensor test_elements, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n * (Number element, Tensor test_elements, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n * (Tensor elements, Number test_element, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "isin() received an invalid combination of arguments - got (test_elements=float, elements=float, ), but expected one of:\n * (Tensor elements, Tensor test_elements, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n * (Number element, Tensor test_elements, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n * (Tensor elements, Number test_element, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: isin() received an invalid combination of arguments - got (test_elements=float, elements=float, ), but expected one of:\n * (Tensor elements, Tensor test_elements, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n * (Number element, Tensor test_elements, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n * (Tensor elements, Number test_element, *, bool assume_unique = False, bool invert = False, Tensor out = None)\n\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.isin.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

@@ -1,0 +1,177 @@
+{
+  "api_full_name": "torch.histogramdd",
+  "api_name": "histogramdd",
+  "module_path": "torch",
+  "import_path": "torch.histogramdd",
+  "backend": "torch",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "range": {
+      "name": "range",
+      "spec": {
+        "type": "float|sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Defines the leftmost and rightmost bin edges in each dimension.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "weight": {
+      "name": "weight",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "By default, each value in the input has weight 1. If a weight tensor is passed, each N-dimensional coordinate in input contributes its associated weight towards its bin's result. The weight tensor should have the same shape as the :attr:`input` tensor excluding its innermost dimension N.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "density": {
+      "name": "density",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "If False (default), the result will contain the count (or total weight) in each bin. If True, each count (weight) is divided by the total count (total weight), then divided by the volume of its associated bin.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "bins": {
+      "name": "bins",
+      "spec": {
+        "type": "int|number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor[], int[], or int. If Tensor[], defines the sequences of bin edges. If int[], defines the number of equal-width bins in each dimension. If int, defines the number of equal-width bins for all dimensions.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "sequence|tensor",
+    "numbers": "1",
+    "description": "hist (Tensor): N-dimensional Tensor containing the values of the histogram. bin_edges(Tensor[]): sequence of N 1D Tensors containing the bin edges."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: histogramdd() received an invalid combination of arguments - got (bins=int, range=float, input=Tensor, ), but expected one of:\n * (Tensor input, int bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n * (Tensor input, tuple of ints bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n * (Tensor input, tuple of Tensors bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "histogramdd() received an invalid combination of arguments - got (bins=int, range=float, input=Tensor, ), but expected one of:\n * (Tensor input, int bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n * (Tensor input, tuple of ints bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n * (Tensor input, tuple of Tensors bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: histogramdd() received an invalid combination of arguments - got (bins=int, range=float, input=Tensor, ), but expected one of:\n * (Tensor input, int bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n * (Tensor input, tuple of ints bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n * (Tensor input, tuple of Tensors bins, tuple of floats range = None, Tensor weight = None, bool density = False)\n\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.histogramdd.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true
+}

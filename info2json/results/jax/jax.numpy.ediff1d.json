@@ -1,0 +1,44 @@
+{
+  "api_name": "ediff1d",
+  "module_path": "jax.numpy",
+  "params": {
+    "ary": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "input array or scalar.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "ary must be 1-D"
+      ]
+    },
+    "to_end": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "scalar or array, optional, default=None. Specifies the numbers to append to the resulting array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "to_begin": {
+      "type": "number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "scalar or array, optional, default=None. Specifies the numbers to prepend to the resulting array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the differences between the elements of the input array."
+  },
+  "constraints": []
+}

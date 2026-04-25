@@ -1,0 +1,38 @@
+{
+  "api_name": "squeeze",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int32 or int64",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "Select a subset of the entries of length one in the shape.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "axis must be in the range [-rank(x), rank(x))",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The input tensor with all or a subset of the dimensions of length 1 removed."
+  },
+  "constraints": []
+}

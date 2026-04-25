@@ -1,0 +1,25 @@
+{
+  "api_name": "svdvals",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, N)`` for which singular values will be computed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "M and N must be > 0",
+        "x shape must be compatible with (..., M, N)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float32",
+    "description": "array of singular values of shape ``(..., K)`` with ``K = min(M, N)``."
+  },
+  "constraints": []
+}

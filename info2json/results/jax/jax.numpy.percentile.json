@@ -1,0 +1,92 @@
+{
+  "api_name": "percentile",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array input.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "q": {
+      "type": "int|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar or 1-dimensional array specifying the desired quantiles. ``q`` should contain integer or floating point values between ``0`` and ``100``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "q must be one of 0, 100"
+      ]
+    },
+    "axis": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional axis or tuple of axes along which to compute the quantile",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "not implemented by JAX; will error if not None",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "overwrite_input": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "not implemented by JAX; will error if not False",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "method": {
+      "type": "",
+      "size": "",
+      "default": "linear",
+      "flag": "Optional",
+      "description": "specify the interpolation method to use. Options are one of ``[\"linear\", \"lower\", \"higher\", \"midpoint\", \"nearest\"]``. default is ``linear``.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "linear",
+        "lower",
+        "higher",
+        "midpoint",
+        "nearest"
+      ],
+      "constraints": [
+        "method must be one of linear, lower, higher, midpoint, nearest"
+      ]
+    },
+    "keepdims": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "if True, then the returned array will have the same number of dimensions as the input. Default is False.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing the specified percentiles along the specified axes."
+  },
+  "constraints": []
+}

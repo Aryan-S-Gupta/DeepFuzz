@@ -1,0 +1,32 @@
+{
+  "api_name": "as_tensor",
+  "module_path": "torch",
+  "params": {
+    "data": {
+      "type": "tuple|list|number|tensor|dtype",
+      "size": "scalar",
+      "default": "if ``None``, infers data type from :attr:`data",
+      "flag": "Optional",
+      "description": "Initial data for the tensor. Can be a list, tuple, NumPy ``ndarray``, scalar, and other types. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. Default: if ``None``, infers data type from :attr:`data`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "device": {
+      "type": "tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the device of the constructed tensor. If None and data is a tensor then the device of data is used. If None and data is not a tensor then the result tensor is constructed on the current device.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

@@ -1,0 +1,54 @@
+{
+  "api_name": "histogram_bin_edges",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of values to be binned",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bins": {
+      "type": "int|number",
+      "size": "",
+      "default": "10)",
+      "flag": "Optional",
+      "description": "Specify the number of bins in the histogram (default: 10).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "range": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "tuple of scalars. Specifies the range of the data. If not specified, the range is inferred from the data.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "range[0] must be less than or equal to range[1] if specified"
+      ]
+    },
+    "weights": {
+      "type": "unused by JAX",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "unused by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "An array of bin edges for the histogram."
+  },
+  "constraints": []
+}

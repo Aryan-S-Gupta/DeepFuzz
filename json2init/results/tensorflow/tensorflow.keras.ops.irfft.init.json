@@ -1,0 +1,89 @@
+{
+  "api_full_name": "tensorflow.keras.ops.irfft",
+  "api_name": "irfft",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.irfft",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tuple of the real and imaginary parts of the input tensor. Both tensors in the tuple should be of floating type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "fft_length": {
+      "name": "fft_length",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An integer representing the number of the fft length. If not specified, it is inferred from the length of the last axis of `x`. Defaults to `None`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Must be even",
+          "x's shape can have any number of dimensions, but its last axis length must be even when fft_length is not specified"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "3 or more, depending on the input's last axis length",
+    "description": "A tensor containing the inverse real-valued Fast Fourier Transform along the last axis of `x`."
+  },
+  "constraints": [
+    "x's elements must be numeric"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 694, in irfft\n    return backend.math.irfft(x, fft_length)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 133, in irfft\n    complex_input = _get_complex_tensor_from_tuple(x)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 78, in _get_complex_tensor_from_tuple\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.irfft.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

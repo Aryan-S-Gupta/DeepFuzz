@@ -1,0 +1,103 @@
+{
+  "api_full_name": "tensorflow.math.reduce_std",
+  "api_name": "reduce_std",
+  "module_path": "tensorflow.math",
+  "import_path": "tensorflow.math.reduce_std",
+  "backend": "tensorflow",
+  "params": {
+    "input_tensor": {
+      "name": "input_tensor",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The tensor to reduce. Should have real or complex type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "the dimensions to reduce. if `none` (the default)",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: the dimensions to reduce. if `none` (the default)"
+    },
+    "keepdims": {
+      "name": "keepdims",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "If true, retains reduced dimensions with length 1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "if true",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: if true"
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name scope for the associated operations (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name scope for the associated operations (optional).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: a name scope for the associated operations (optional)."
+    }
+  },
+  "output": {
+    "type": "float|tensor|dtype",
+    "numbers": "1",
+    "description": "The reduced tensor, of the same dtype as the input_tensor. Note, for `complex64` or `complex128` input, the returned `Tensor` will be of type `float32` or `float64`, respectively. @compatibility(numpy) Equivalent to np.std Please note `np.std` has a `dtype` parameter that could be used to specify the output type. By default this is `dtype=float64`. On the other hand, `tf.math.reduce_std` has aggressive type inference from `input_tensor`. @end_compatibility"
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'keepdims' unresolved: unhandled chosen type: if true"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.reduce_std.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

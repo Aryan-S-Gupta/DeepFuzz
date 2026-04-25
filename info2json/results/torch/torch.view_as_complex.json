@@ -1,0 +1,24 @@
+{
+  "api_name": "view_as_complex",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Returns a view of :attr:`input` as a complex tensor"
+  },
+  "constraints": [
+    "input Tensor is expected to have dtype of torch.float64 or torch.float32"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "api_name": "hard_sigmoid",
+  "module_path": "tensorflow.keras.ops.nn",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must have a shape with at least one dimension",
+        "x values must satisfy x < -2.5 or -2.5 <= x <= 2.5 or x > 2.5"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating-point",
+    "description": "A tensor with the same shape as `x`."
+  },
+  "constraints": []
+}

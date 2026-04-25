@@ -1,0 +1,34 @@
+{
+  "api_name": "poisson",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the input tensor containing the rates of the Poisson distribution",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "generator": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "a pseudorandom number generator for sampling",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Returns a tensor of the same size as :attr:`input` with each element out_i ~ Poisson(input_i)"
+  },
+  "constraints": [
+    "input must be non-negative"
+  ]
+}

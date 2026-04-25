@@ -1,0 +1,72 @@
+{
+  "api_name": "clip",
+  "module_path": "jax.numpy",
+  "params": {
+    "arr": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array to be clipped.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "min": {
+      "type": "any",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional minimum value of the clipped range; if ``None`` (default) then result will not be clipped to any minimum value. If specified, it should be broadcast-compatible with ``arr`` and ``max``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "max": {
+      "type": "any",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional maximum value of the clipped range; if ``None`` (default) then result will not be clipped to any maximum value. If specified, it should be broadcast-compatible with ``arr`` and ``min``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "a": {
+      "type": "DeprecationWarning",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "deprecated alias of the ``arr`` argument. Will result in a :class:`DeprecationWarning` if used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "a_min": {
+      "type": "DeprecationWarning",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "deprecated alias of the ``min`` argument. Will result in a :class:`DeprecationWarning` if used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "a_max": {
+      "type": "DeprecationWarning",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "deprecated alias of the ``max`` argument. Will result in a :class:`DeprecationWarning` if used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array containing values from ``arr``, with values smaller than ``min`` set to ``min``, and values larger than ``max`` set to ``max``. Wherever ``min`` is larger than ``max``, the value of ``max`` is returned."
+  },
+  "constraints": []
+}

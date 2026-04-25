@@ -1,0 +1,38 @@
+{
+  "api_name": "reduce_min",
+  "module_path": "jax.lax",
+  "params": {
+    "operand": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array over which to compute minimum.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "shape can be any"
+      ]
+    },
+    "axes": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of zero or more unique integers specifying the axes over which to reduce. Each entry must satisfy ``0 <= axis < operand.ndim``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "elements must be unique integers",
+        "elements must be in range [0, operand.ndim)",
+        "axes must be a sequence of zero or more unique integers"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array of the same dtype as ``operand``, with shape corresponding to the dimensions of ``operand.shape`` with ``axes`` removed."
+  },
+  "constraints": []
+}

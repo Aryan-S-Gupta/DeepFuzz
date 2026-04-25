@@ -1,0 +1,110 @@
+{
+  "api_full_name": "tensorflow.linalg.cholesky_solve",
+  "api_name": "cholesky_solve",
+  "module_path": "tensorflow.linalg",
+  "import_path": "tensorflow.linalg.cholesky_solve",
+  "backend": "tensorflow",
+  "params": {
+    "chol": {
+      "name": "chol",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be `float32` or `float64`, shape is `[..., M, M]`. Cholesky factorization of `A`, e.g. `chol = tf.linalg.cholesky(A)`. For that reason, only the lower triangular parts (including the diagonal) of the last two dimensions of `chol` are used. The strictly upper part is assumed to be zero and not accessed.",
+        "dtype_candidates": [
+          "float32",
+          "float64"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "rhs": {
+      "name": "rhs",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`, same type as `chol`, shape is `[..., M, K]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A name to give this `Op`. Defaults to `cholesky_solve`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "a name to give this `op`. defaults to `cholesky_solve`.",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "unresolved_reason": "unhandled chosen type: a name to give this `op`. defaults to `cholesky_solve`."
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "[..., M, K]",
+    "description": "Solution to `A x = rhs`, shape `[..., M, K]`."
+  },
+  "constraints": [
+    "chol must be float32 or float64"
+  ],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'name' unresolved: unhandled chosen type: a name to give this `op`. defaults to `cholesky_solve`."
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.cholesky_solve.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false
+}

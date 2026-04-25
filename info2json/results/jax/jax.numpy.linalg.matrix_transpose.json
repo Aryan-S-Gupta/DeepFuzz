@@ -1,0 +1,25 @@
+{
+  "api_name": "matrix_transpose",
+  "module_path": "jax.numpy.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "unspecified",
+      "flag": "Required",
+      "description": "array of shape ``(..., M, N)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "must have shape (..., M, N)",
+        "x must be an array with shape (..., M, N)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "array of shape ``(..., N, M)`` containing the matrix transpose of ``x``."
+  },
+  "constraints": []
+}

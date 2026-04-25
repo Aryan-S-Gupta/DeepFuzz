@@ -1,0 +1,25 @@
+{
+  "api_name": "blackman",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "number|tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "Scalar or 1D Tensor. Window length.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be 1-D",
+        "x must be a numeric type"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A 1D tensor containing the Blackman window values."
+  },
+  "constraints": []
+}

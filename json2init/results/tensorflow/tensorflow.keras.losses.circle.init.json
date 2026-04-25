@@ -1,0 +1,229 @@
+{
+  "api_full_name": "tensorflow.keras.losses.circle",
+  "api_name": "circle",
+  "module_path": "tensorflow.keras.losses",
+  "import_path": "tensorflow.keras.losses.circle",
+  "backend": "tensorflow",
+  "params": {
+    "y_true": {
+      "name": "y_true",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor with ground truth labels in integer format.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "y_pred": {
+      "name": "y_pred",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor with predicted L2 normalized embeddings.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "ref_labels": {
+      "name": "ref_labels",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "y_true",
+        "flag": "Optional",
+        "description": "Optional integer tensor with labels for reference embeddings. If `None`, defaults to `y_true`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "ref_embeddings": {
+      "name": "ref_embeddings",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "y_pred",
+        "flag": "Optional",
+        "description": "Optional tensor with L2 normalized reference embeddings. If `None`, defaults to `y_pred`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "unresolved_reason": ""
+    },
+    "remove_diagonal": {
+      "name": "remove_diagonal",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "Boolean, whether to remove self-similarities from positive mask. Defaults to `True`.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "remove_diagonal must be positive"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "gamma": {
+      "name": "gamma",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "80",
+        "flag": "Optional",
+        "description": "Float, scaling factor for the loss. Defaults to `80`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "margin": {
+      "name": "margin",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "Float, relaxation factor for the loss. Defaults to `0.4`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "",
+    "numbers": "1",
+    "description": "Circle loss value."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__Max_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 0 dimension(s) [Op:Max] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__Max_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 0 dimension(s) [Op:Max] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/losses/losses.py\", line 2706, in circle\n    n_loss = ops.logsumexp(\n        ops.where(negative_mask, neg_wdists, float(\"-inf\")),\n        axis=1,\n    )\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 263, in logsumexp\n    return backend.math.logsumexp(x, axis=axis, keepdims=keepdims)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 51, in logsumexp\n    return tf.math.reduce_logsumexp(x, axis=axis, keepdims=keepdims)\n           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Max_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 0 dimension(s) [Op:Max] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.losses.circle.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true
+}

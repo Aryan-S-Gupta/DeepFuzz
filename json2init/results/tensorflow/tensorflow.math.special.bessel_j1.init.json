@@ -1,0 +1,100 @@
+{
+  "api_full_name": "tensorflow.math.special.bessel_j1",
+  "api_name": "bessel_j1",
+  "module_path": "tensorflow.math.special",
+  "import_path": "tensorflow.math.special.bessel_j1",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` or `SparseTensor`. Must be one of the following types: `half`, `float32`, `float64`.",
+        "dtype_candidates": [
+          "float32",
+          "float64"
+        ],
+        "enum_values": [
+          "SparseTensor",
+          "half",
+          "float32",
+          "float64"
+        ],
+        "constraints": [
+          "Must be one of the following types: half, float32, float64",
+          "x must be one of SparseTensor, half, float32, float64"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "name": {
+      "name": "name",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A name for the operation (optional).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`. @compatibility(scipy) Equivalent to scipy.special.j1 @end_compatibility"
+  },
+  "constraints": [
+    "@compatibility(scipy) Equivalent to scipy.special.j1 @end_compatibility"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.special.bessel_j1.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

@@ -1,0 +1,41 @@
+{
+  "api_name": "rfft",
+  "module_path": "tensorflow.keras.ops",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If fft_length is not specified, it is inferred from the length of the last axis of x."
+      ]
+    },
+    "fft_length": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An integer representing the number of the fft length. If not specified, it is inferred from the length of the last axis of `x`. Defaults to `None`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "fft_length must be greater than or equal to 0",
+        "If fft_length is not specified, it is inferred from the length of the last axis of x.",
+        "Hermitian-symmetric, RFFT only returns the `fft_length / 2 + 1` unique corresponding dimension of the input, the dimension is cropped. If it is larger, the dimension is padded with zeros."
+      ]
+    }
+  },
+  "output": {
+    "type": "float|tuple|tensor",
+    "numbers": "2",
+    "description": "A tuple containing two tensors - the real and imaginary parts of the output."
+  },
+  "constraints": [
+    "The inner-most dimension of input is used.",
+    "If fft_length is not specified, it is inferred from the length of the last axis of x."
+  ]
+}

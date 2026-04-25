@@ -1,0 +1,60 @@
+{
+  "api_name": "space_to_depth",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "block_size": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "An `int` that is `>= 2`. The size of the spatial block.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        ">= 2",
+        "The input tensor's height and width must be divisible by block_size.",
+        "block_size determines the size of the spatial block to move dimensions to depth."
+      ]
+    },
+    "data_format": {
+      "type": "string",
+      "size": "",
+      "default": "\"NHWC\"",
+      "flag": "Optional",
+      "description": "An optional `string` from: `\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"`. Defaults to `\"NHWC\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "data_format indicates the data format of the input and output tensors, with a default value of 'NHWC'."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A name for the operation (optional).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "name is an optional name for the operation."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": []
+}

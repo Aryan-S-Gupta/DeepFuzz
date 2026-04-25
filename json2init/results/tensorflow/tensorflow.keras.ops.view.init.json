@@ -1,0 +1,67 @@
+{
+  "api_full_name": "tensorflow.keras.ops.view",
+  "api_name": "view",
+  "module_path": "tensorflow.keras.ops",
+  "import_path": "tensorflow.keras.ops.view",
+  "backend": "tensorflow",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor. dtype: Data-type descriptor of the returned view, e.g., float32 or int16.",
+        "dtype_candidates": [
+          "int16",
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "x and output must have the same shape."
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "Same rank and shape as x with specified dtype",
+    "description": "View of a tensor with data type dtype."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "has_nan": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.view.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true
+}

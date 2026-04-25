@@ -1,0 +1,35 @@
+{
+  "api_name": "triu",
+  "module_path": "tensorflow.keras.ops.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "k": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "Diagonal below which to zero elements. Defaults to `0`. the main diagonal. `k < 0` is below it, and `k > 0` is above it.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "k must be positive",
+        "k must be an integer"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Upper triangle of `x`, of same shape and data type as `x`."
+  },
+  "constraints": []
+}

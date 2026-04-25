@@ -1,0 +1,62 @@
+{
+  "api_name": "diff",
+  "module_path": "torch",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the tensor to compute the differences on",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "n": {
+      "type": "int|number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "the number of times to recursively compute the difference",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dim": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "the dimension to compute the difference along. Default is the last dimension. prepend, append (Tensor, optional): values to prepend or append to :attr:`input` along :attr:`dim` before computing the difference. Their dimensions must be equivalent to that of input, and their shapes must match input's shape except on :attr:`dim`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "prepend": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "append": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}
