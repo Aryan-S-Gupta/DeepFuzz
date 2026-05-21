@@ -84,7 +84,6 @@ DeepFuzz reports selected-function Python line coverage over the APIs that reach
 - Accepted APIs missing Stage 3: /Users/aryansg/Desktop/DeepFuzz/pipeline_runs/tensorflow/tensorflow-thesis-all/triage/accepted_not_stage3.txt
 - Internal APIs excluded before Stage 4: /Users/aryansg/Desktop/DeepFuzz/pipeline_runs/tensorflow/tensorflow-thesis-all/triage/internal_excluded_before_stage4.txt
 - Stage 3-ready APIs outside frozen list: /Users/aryansg/Desktop/DeepFuzz/pipeline_runs/tensorflow/tensorflow-thesis-all/triage/stage3_ready_outside_frozen.txt
-- Generated tests: /Users/aryansg/Desktop/DeepFuzz/pipeline_runs/tensorflow/tensorflow-thesis-all/generated_tests
 - Final JSON: /Users/aryansg/Desktop/DeepFuzz/pipeline_runs/tensorflow/tensorflow-thesis-all/final_report.json
 
 ## Coverage Limitations

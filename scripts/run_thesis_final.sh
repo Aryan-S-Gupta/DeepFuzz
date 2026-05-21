@@ -26,7 +26,7 @@ STAGE4_RESULTS_DIR="${STAGE4_RESULTS_DIR:-stage4/results/${LIB}-thesis-all-cover
 RUN_DIR="pipeline_runs/${LIB}/${RUN_ID}"
 RUN_API_LIST="${RUN_DIR}/api_list.txt"
 
-mkdir -p "$RUN_DIR" "${RUN_DIR}/generated_tests" "${RUN_DIR}/coverage/html" "${RUN_DIR}/triage" "${RUN_DIR}/repro"
+mkdir -p "$RUN_DIR" "${RUN_DIR}/coverage/html" "${RUN_DIR}/triage" "${RUN_DIR}/repro"
 
 if [[ -n "${THESIS_API_LIST:-}" ]]; then
   if [[ ! -f "$THESIS_API_LIST" ]]; then
@@ -76,13 +76,6 @@ if [[ "$THESIS_LIMIT" != "0" ]]; then
   stage3_args+=(--limit "$THESIS_LIMIT")
 fi
 "${stage3_args[@]}"
-
-"$PYTHON" scripts/export_generated_tests.py \
-  --lib "$LIB" \
-  --run-id "$RUN_ID" \
-  --api-list "$RUN_API_LIST" \
-  --out "${RUN_DIR}/generated_tests" \
-  --seed "$SEED"
 
 "$PYTHON" scripts/write_run_manifest.py \
   --lib "$LIB" \

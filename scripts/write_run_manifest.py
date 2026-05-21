@@ -70,7 +70,6 @@ def main() -> int:
             "jaxlib": _version("jaxlib"),
             "tensorflow": _version("tensorflow"),
             "coverage": _version("coverage"),
-            "pytest": _version("pytest"),
         },
         "ollama_models": {
             "general": os.environ.get("DEEPFUZZ_MODEL", ""),

@@ -1,7 +1,7 @@
 # DeepFuzz
 
-- DeepFuzz turns deep-learning API documentation into executable fuzz tests.
-- Thesis goal: show an end-to-end, reproducible pipeline from docs to structured specs, seeds, pytest files, isolated mutation runs, coverage, and strict bug/doc-mismatch triage.
+- DeepFuzz turns deep-learning API documentation into executable fuzzing programs.
+- Thesis goal: show an end-to-end, reproducible pipeline from docs to structured specs, seeds, isolated mutation runs, coverage, and strict bug/doc-mismatch triage.
 - Final scope: JAX, TensorFlow, and PyTorch APIs that were accepted from docs and could be turned into Stage 3 executable seeds.
 - Main metric: selected-function Python line coverage for each selected API.
 - Secondary metrics: API execution coverage, generated valid programs, package-level Python coverage, and triage counts.
@@ -45,7 +45,6 @@ export DEEPFUZZ_STRONG_REPAIR_MODEL=qwen3-coder:30b
 - Replace `<lib>` with `jax`, `tensorflow`, or `torch`.
 - Expected outputs:
   - `pipeline_runs/<lib>/<run_id>/api_list.txt`
-  - `pipeline_runs/<lib>/<run_id>/generated_tests/`
   - `pipeline_runs/<lib>/<run_id>/final_report.md`
   - `pipeline_runs/<lib>/<run_id>/final_report.json`
   - `stage4/results/<lib>-thesis-all-coverage/coverage_report.json`
@@ -56,7 +55,6 @@ source .venv311/bin/activate
 python3 scripts/select_api_subset.py --lib <lib> --all --limit 0 --ok-csv json2init/results/<lib>/ok.csv --out pipeline_runs/<lib>/<lib>-thesis-all/api_list.txt
 RUN_ID=<lib>-thesis-all SEED=1337 THESIS_API_LIST=pipeline_runs/<lib>/<lib>-thesis-all/api_list.txt STAGE4_RESULTS_DIR=stage4/results/<lib>-thesis-all-coverage COVERAGE_SCOPE=python ENABLE_PYTHON_COVERAGE=1 PYTHON_COV_SOURCE=<lib> MUTATION_BUDGET=8 THESIS_LIMIT=0 INIT_DIR=json2init/results/<lib> SPEC_DIR=info2json/results/<lib> VALIDATOR_OK_CSV=json_validator/results/<lib>/ok.csv NATIVE_COVERAGE_STATUS=unavailable_on_this_run PYTHON=python3 ./scripts/run_thesis_final.sh <lib>
 python3 scripts/read_coverage.py --stage4-results-dir stage4/results/<lib>-thesis-all-coverage
-python3 -m pytest pipeline_runs/<lib>/<lib>-thesis-all/generated_tests -q
 ```
 
 - JAX uses CPU mode for reproducibility on macOS.
@@ -106,7 +104,7 @@ python3 info2json/info2json.py --input doc2info/results/<lib>/accepted.csv --out
 python3 json_validator/json_validator.py --spec-dir info2json/results/<lib> --api-csv doc2info/results/<lib>/accepted.csv --state-dir json_validator/results/<lib> --primary-repair-model "$DEEPFUZZ_REPAIR_MODEL" --fallback-repair-model "$DEEPFUZZ_STRONG_REPAIR_MODEL" --fallback-after-round 3 --repair-host "$OLLAMA_HOST" --max-rounds 3 --repair-timeout 300 --repair-num-predict 700 --repair-num-ctx 4096 --repair-temperature 0 --only-apis pipeline_runs/<lib>/<run_id>/api_list.txt --force --external-errors-csv pipeline_runs/<lib>/<run_id>/triage/pipeline_failures.csv --external-errors-jsonl pipeline_runs/<lib>/<run_id>/triage/pipeline_failures.jsonl
 ```
 
-- Stage 3, specs to executable init seeds: materialize base seeds and smoke-test them.
+- Stage 3, specs to executable init seeds: materialize base seeds and smoke-run them.
 
 ```bash
 python3 json2init/json2init.py --spec-dir info2json/results/<lib> --outdir json2init/results/<lib> --ok-csv json_validator/results/<lib>/ok.csv --smoke-test --overwrite --reuse-existing --limit 0 --smoke-timeout-sec 30 --only-api-list pipeline_runs/<lib>/<run_id>/api_list.txt --non-strict-smoke
@@ -126,12 +124,6 @@ ENABLE_DEVICE_ORACLE=1 EDGE_ORACLE_MUTATIONS=1 RUN_ID=<run_id> THESIS_API_LIST=p
 
 - The edge oracle mutations add valid numerical probes such as NaN, infinities, signed zero, and large magnitudes for numeric tensor/scalar parameters. This is how the workflow can discover bugs similar to CPU/GPU cast divergence, float16 reduction divergence, and signed-zero activation divergence without hard-coding those APIs or expected outputs.
 
-- Generated pytest export: write replayable tests from ready Stage 3 seeds.
-
-```bash
-python3 scripts/export_generated_tests.py --lib <lib> --run-id <run_id> --api-list pipeline_runs/<lib>/<run_id>/api_list.txt --init-dir json2init/results/<lib> --out pipeline_runs/<lib>/<run_id>/generated_tests --seed 1337
-```
-
 - Run manifest: record versions, model config, API-list hash, seed, budget, and coverage scope.
 
 ```bash
@@ -150,19 +142,13 @@ python3 scripts/report.py <lib> --lib <lib> --run-id <run_id> --stage4-results-d
 python3 scripts/read_coverage.py --stage4-results-dir stage4/results/<lib>-thesis-all-coverage
 ```
 
-- Replay generated tests.
-
-```bash
-python3 -m pytest pipeline_runs/<lib>/<run_id>/generated_tests -q
-```
-
 - Stage outputs:
   - Collection/filter: `doc2info/<lib>_apis.jsonl`, `doc2info/results/<lib>/accepted.csv`, rejected CSV/summary.
   - Stage 1: `info2json/results/<lib>/*.json`.
   - Stage 2: `json_validator/results/<lib>/ok.csv` and `errors.csv`.
   - Stage 3: `json2init/results/<lib>/*.init.json`, `ok.csv`, and `errors.csv`.
   - Stage 4: `results.csv`, `execution_summary.csv`, worker JSON, coverage reports, bug reports.
-  - Final run: `pipeline_runs/<lib>/<run_id>/final_report.md`, JSON, generated tests, triage, and repro files.
+  - Final run: `pipeline_runs/<lib>/<run_id>/final_report.md`, JSON, triage, and repro files.
 
 ## Repair Commands
 
@@ -251,7 +237,7 @@ python3 stage4/known_bug_benchmarks.py --outdir stage4/results/jax-known-bug-ben
 
 ## Bug-Finding Oracles
 
-- DeepFuzz follows the VISTAFUZZ-style document-guided idea: extract standardized API information and constraints from documentation, then use those constraints to generate systematic tests. The DL-library extension is that valid tests also run through oracles that can expose silent numerical bugs.
+- DeepFuzz follows the VISTAFUZZ-style document-guided idea: extract standardized API information and constraints from documentation, then use those constraints to generate systematic programs. The DL-library extension is that valid executions also run through oracles that can expose silent numerical bugs.
 - Implementation bug candidates include native crashes, hangs, unexpected exceptions on intended-valid inputs, NaN/Inf outputs when that oracle is enabled, and CPU-vs-accelerator `differential_mismatch` results.
 - Documentation mismatch candidates are kept separate: a report belongs there only when the generated input is consistent with the documented contract but the implementation rejects it, or when documentation declares behavior that the API demonstrably does not follow.
 - Negative mutations that are accepted by permissive APIs stay in `negative_accepted_not_bug.csv`; they are audit evidence, not bug claims.
@@ -261,7 +247,7 @@ python3 stage4/known_bug_benchmarks.py --outdir stage4/results/jax-known-bug-ben
 
 - Chosen method: run coverage.py inside isolated Stage 4 workers, resolve each API's Python source span with `inspect`, and aggregate selected-function line coverage.
 - Why this is correct:
-  - It measures the function/wrapper lines targeted by each generated test.
+  - It measures the function/wrapper lines reached by generated programs.
   - It avoids pretending binary-wheel native kernels have source coverage.
   - It keeps API execution coverage separate from source-line coverage.
   - It keeps package-level Python coverage as context because whole-package denominators are huge and misleading for selected APIs.
@@ -269,7 +255,7 @@ python3 stage4/known_bug_benchmarks.py --outdir stage4/results/jax-known-bug-ben
   - API execution only: too weak; says the API ran, not how much code was touched.
   - Package-level Python coverage only: too diluted by unselected framework code.
   - Native coverage: useful but requires instrumented source builds, so it is appendix-only unless actually run.
-  - pytest-cov campaign-only: easier, but weaker for per-API repair because it cannot cleanly identify low-coverage APIs.
+  - Campaign-level coverage only: easier, but weaker for per-API repair because it cannot cleanly identify low-coverage APIs.
 
 ## Major Decisions
 
@@ -296,7 +282,6 @@ python3 stage4/known_bug_benchmarks.py --outdir stage4/results/jax-known-bug-ben
   - LLM-generated structured API contracts.
   - Schema validation and repair.
   - Dependency-aware seed materialization.
-  - Replayable pytest export.
   - Isolated mutation execution.
   - Per-API selected-function coverage.
   - Strict bug/doc-mismatch triage.
@@ -322,11 +307,5 @@ python3 stage4/known_bug_benchmarks.py --outdir stage4/results/jax-known-bug-ben
 - Compile changed Python files.
 
 ```bash
-python3 -m py_compile common/result_io.py common/model_config.py common/api_policy.py info2json/info2json.py json_validator/json_validator.py json2init/deepfuzz_common.py json2init/json2init.py stage4/stage4_worker.py stage4/stage4_coverage_runner.py stage4/known_bug_benchmarks.py scripts/select_api_subset.py scripts/export_generated_tests.py scripts/read_coverage.py scripts/write_run_manifest.py scripts/repair.py scripts/report.py
-```
-
-- Run tests.
-
-```bash
-python3 -m pytest tests -q
+python3 -m py_compile common/result_io.py common/model_config.py common/api_policy.py info2json/info2json.py json_validator/json_validator.py json2init/deepfuzz_common.py json2init/json2init.py stage4/stage4_worker.py stage4/stage4_coverage_runner.py stage4/known_bug_benchmarks.py scripts/select_api_subset.py scripts/read_coverage.py scripts/write_run_manifest.py scripts/repair.py scripts/report.py
 ```

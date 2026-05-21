@@ -1,2 +1,0 @@
-"""DeepFuzz regression tests."""
-

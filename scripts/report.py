@@ -383,9 +383,8 @@ def main() -> int:
     ][:50]
     triage_dir = run_dir / "triage"
     coverage_dir = run_dir / "coverage"
-    generated_tests_dir = run_dir / "generated_tests"
     repro_dir = run_dir / "repro"
-    for path in (triage_dir, coverage_dir, generated_tests_dir, repro_dir, coverage_dir / "html"):
+    for path in (triage_dir, coverage_dir, repro_dir, coverage_dir / "html"):
         path.mkdir(parents=True, exist_ok=True)
 
     candidate_doc_mismatches = [
@@ -417,7 +416,6 @@ def main() -> int:
         }
     write_json(coverage_dir / "selected_function_coverage.json", selected_function_payload)
 
-    generated_test_cases = len(list(generated_tests_dir.rglob("test_*.py"))) if generated_tests_dir.exists() else 0
     ready_seeds = stage3_scope.get("selected_ready", stage3_summary["total_valid"])
     base_valid_apis = _int(stage4_summary.get("base_success"))
     api_list_entries = len(selected_apis) if selected_apis else _int(stage4_summary.get("selected_apis"))
@@ -449,7 +447,6 @@ def main() -> int:
         "Accepted API execution coverage": _pct(base_valid_apis, accepted_denominator),
         "Frozen API execution coverage": _pct(base_valid_apis, frozen_apis),
         "Evaluated API execution coverage": evaluated_api_execution,
-        "Generated test cases": generated_test_cases,
         "Valid programs": _int(stage4_summary.get("total_valid_programs", stage4_summary.get("valid_programs"))),
         "Expected negative rejections": _int(stage4_summary.get("expected_negative_rejection")),
         "Invalid valid mutations": _int(stage4_summary.get("invalid_valid_mutation")),
@@ -542,7 +539,6 @@ def main() -> int:
             "internal_excluded_before_stage4": str(triage_dir / "internal_excluded_before_stage4.txt"),
             "stage4_not_executed_noninternal": str(triage_dir / "stage4_not_executed_noninternal.txt"),
             "stage3_ready_outside_frozen": str(triage_dir / "stage3_ready_outside_frozen.txt"),
-            "generated_tests": str(generated_tests_dir),
             "triage": str(triage_dir),
             "final_report": str(run_dir / "final_report.json"),
         },
@@ -611,7 +607,6 @@ def main() -> int:
         f"- Accepted APIs missing Stage 3: {triage_dir / 'accepted_not_stage3.txt'}",
         f"- Internal APIs excluded before Stage 4: {triage_dir / 'internal_excluded_before_stage4.txt'}",
         f"- Stage 3-ready APIs outside frozen list: {triage_dir / 'stage3_ready_outside_frozen.txt'}",
-        f"- Generated tests: {generated_tests_dir}",
         f"- Final JSON: {out_json}",
     ])
     if coverage_method == "api_coverage_only":
