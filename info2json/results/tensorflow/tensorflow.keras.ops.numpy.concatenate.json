@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "xs[i] must be a tensor for all i in range(len(xs))"
+        "xs must be a list of tensors"
       ]
     },
     "axis": {
@@ -22,7 +22,9 @@
       "description": "The axis along which the tensors will be joined. Defaults to `0`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "axis must be an integer"
+      ]
     }
   },
   "output": {

@@ -1,0 +1,395 @@
+{
+  "api_full_name": "torch.storage.np.core.arrayprint.format_float_positional",
+  "api_name": "format_float_positional",
+  "module_path": "torch.storage.np.core.arrayprint",
+  "import_path": "torch.storage.np.core.arrayprint.format_float_positional",
+  "backend": "torch",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|number",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "python float or numpy floating scalar Value to format.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "precision": {
+      "name": "precision",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "non-negative integer or None, optional Maximum number of digits to print. May be None if `unique` is `True`, but must be an integer if unique is `False`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "precision must be non-negative"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "unique": {
+      "name": "unique",
+      "spec": {
+        "type": "bool|number",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "boolean, optional If `True`, use a digit-generation strategy which gives the shortest representation which uniquely identifies the floating-point number from other values of the same type, by judicious rounding. If `precision` is given fewer digits than necessary can be printed, or if `min_digits` is given more can be printed, in which cases the last digit is rounded with unbiased rounding. If `False`, digits are generated as if printing an infinite-precision value and stopping after `precision` digits, rounding the remaining value with unbiased rounding",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "unique must be one of True, False"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "fractional": {
+      "name": "fractional",
+      "spec": {
+        "type": "bool|number",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "boolean, optional If `True`, the cutoffs of `precision` and `min_digits` refer to the total number of digits after the decimal point, including leading zeros. If `False`, `precision` and `min_digits` refer to the total number of significant digits, before or after the decimal point, ignoring leading zeros.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "trim": {
+      "name": "trim",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "one of 'k', '.', '0', '-', optional Controls post-processing trimming of trailing digits, as follows:",
+        "dtype_candidates": [],
+        "enum_values": [
+          "k",
+          ".",
+          "0",
+          "-"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "trim must be one of k, 0, -"
+        ]
+      },
+      "chosen_type": "one of 'k'",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: one of 'k'",
+      "call_kind": "positional_or_keyword"
+    },
+    "sign": {
+      "name": "sign",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "boolean, optional Whether to show the sign for positive values.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "sign must be positive"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "pad_left": {
+      "name": "pad_left",
+      "spec": {
+        "type": "string|int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "non-negative integer, optional Pad the left side of the string with whitespace until at least that many characters are to the left of the decimal point.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "pad_left must be non-negative"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "pad_right": {
+      "name": "pad_right",
+      "spec": {
+        "type": "string|int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "non-negative integer, optional Pad the right side of the string with whitespace until at least that many characters are to the right of the decimal point.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "pad_right must be non-negative"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "min_digits": {
+      "name": "min_digits",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "non-negative integer or None, optional Minimum number of digits to print. Only has an effect if `unique=True` in which case additional digits past those necessary to uniquely identify the value may be printed, rounding the last additional digit.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "min_digits must be non-negative"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "string",
+    "numbers": "1",
+    "description": "------- string The string representation of the floating point value"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "str",
+      "value": "1."
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "precision",
+      "unique",
+      "fractional",
+      "trim",
+      "sign",
+      "pad_left",
+      "pad_right",
+      "min_digits"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(precision_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(unique_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(fractional_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(trim_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.core.arrayprint.format_float_positional.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

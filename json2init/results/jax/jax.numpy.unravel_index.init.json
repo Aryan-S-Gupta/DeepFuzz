@@ -1,0 +1,137 @@
+{
+  "api_full_name": "jax.numpy.unravel_index",
+  "api_name": "unravel_index",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.unravel_index",
+  "backend": "jax",
+  "params": {
+    "indices": {
+      "name": "indices",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "integer array of flat indices",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "indices type must be int32 or int64"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "shape of multidimensional array to index into",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "shape elements must be positive integers"
+        ]
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "Tuple of unraveled indices"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "indices",
+      "shape"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "shape.rank == 1",
+    "shape.dtype in {int32,int64}"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(shape)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.unravel_index.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

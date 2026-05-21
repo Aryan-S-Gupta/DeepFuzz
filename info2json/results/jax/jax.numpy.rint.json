@@ -10,15 +10,18 @@
       "description": "Input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x shape must be at least 1-D"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real or complex",
+    "numbers": "real/complex",
     "description": "An array-like object containing the rounded elements of ``x``. Always promotes to inexact."
   },
-  "constraints": []
+  "constraints": [
+    "jax.numpy.rint supports 'ArrayLike' input type, which includes arrays (of any dtype), scalars, and Python iterables that can be converted to arrays.",
+    "Output array shape is the same as the input array shape.",
+    "For complex numbers, both real and imaginary parts are rounded separately."
+  ]
 }

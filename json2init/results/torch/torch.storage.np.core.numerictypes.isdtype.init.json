@@ -1,0 +1,109 @@
+{
+  "api_full_name": "torch.storage.np.core.numerictypes.isdtype",
+  "api_name": "isdtype",
+  "module_path": "torch.storage.np.core.numerictypes",
+  "import_path": "torch.storage.np.core.numerictypes.isdtype",
+  "backend": "torch",
+  "params": {
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "dtype The input dtype.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "Must be a valid NumPy dtype.",
+          "The 'dtype' and 'kind' parameters must satisfy the NumPy issubdtype function semantics."
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
+    },
+    "kind": {
+      "name": "kind",
+      "spec": {
+        "type": "string|int|float|bool|tuple|number|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "dtype or str or tuple of dtypes/strs. dtype or dtype kind. Allowed dtype kinds are: * ``'bool'`` : boolean kind * ``'signed integer'`` : signed integer data types * ``'unsigned integer'`` : unsigned integer data types * ``'integral'`` : integer data types * ``'real floating'`` : real-valued floating-point data types * ``'complex floating'`` : complex floating-point data types * ``'numeric'`` : numeric data types",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "Each element in the tuple must be a valid dtype kind string or NumPy dtype.",
+          "The 'kind' parameter can be optional, depending on the implementation.",
+          "The 'dtype' and 'kind' parameters must satisfy the NumPy issubdtype function semantics."
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool"
+  },
+  "constraints": [
+    "The 'dtype' and 'kind' parameters must satisfy the NumPy issubdtype function semantics."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: dtype argument must be a NumPy dtype, but it is a <class 'torch.dtype'>."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "dtype argument must be a NumPy dtype, but it is a <class 'torch.dtype'>.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/_core/numerictypes.py\", line 429, in isdtype\n    raise TypeError(\n    ...<2 lines>...\n    ) from None\nTypeError: dtype argument must be a NumPy dtype, but it is a <class 'torch.dtype'>.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.core.numerictypes.isdtype.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

@@ -10,7 +10,10 @@
       "description": "A tensor, the tensor to be updated.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "start_indices values must be in range [0, inputs.shape[axis]) for all axes.",
+        "The returned slice has the same dtype as `inputs`."
+      ]
     },
     "start_indices": {
       "type": "tuple|list",
@@ -21,11 +24,11 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "start_indices and shape must have same length as inputs.ndim"
+        "start_indices values must be in range [0, inputs.shape[axis]) for all axes."
       ]
     },
     "shape": {
-      "type": "tuple|list",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -33,7 +36,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "start_indices and shape must have same length as inputs.ndim"
+        "start_indices values must be in range [0, inputs.shape[axis]) for all axes."
       ]
     }
   },
@@ -43,6 +46,6 @@
     "description": "A tensor, has the same shape and dtype as `inputs`."
   },
   "constraints": [
-    "start_indices and shape must have same length as inputs.ndim"
+    "start_indices values must be in range [0, inputs.shape[axis]) for all axes."
   ]
 }

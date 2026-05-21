@@ -1,0 +1,100 @@
+{
+  "api_name": "fromrecords",
+  "module_path": "torch.storage.np.rec",
+  "params": {
+    "recList": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence data in the same field may be heterogeneous - they will be promoted to the highest data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "data-type, optional valid dtype for all arrays",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "shape": {
+      "type": "int|tuple|callable|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints, optional shape of each array. If `dtype` is ``None``, these arguments are passed to `numpy.format_parser` to construct a dtype. See that function for detailed documentation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "formats": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "names": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "titles": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "aligned": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "byteorder": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- np.recarray record array consisting of given recList rows."
+  },
+  "constraints": []
+}

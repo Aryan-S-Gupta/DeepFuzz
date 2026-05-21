@@ -1,0 +1,76 @@
+{
+  "api_name": "lrn",
+  "module_path": "tensorflow.nn",
+  "params": {
+    "input": {
+      "type": "float|tensor",
+      "size": "4-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `half`, `bfloat16`, `float32`. 4-D.",
+      "dtype_candidates": [
+        "float32",
+        "bfloat16"
+      ],
+      "enum_values": [
+        "half",
+        "bfloat16",
+        "float32"
+      ],
+      "constraints": [
+        "input must be 4-D",
+        "input must be one of half, bfloat16, float32"
+      ]
+    },
+    "depth_radius": {
+      "type": "int|float",
+      "size": "0-D",
+      "default": "5",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `5`. 0-D. Half-width of the 1-D normalization window.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bias": {
+      "type": "float",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "An optional `float`. Defaults to `1`. An offset (usually positive to avoid dividing by 0).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "bias must be positive"
+      ]
+    },
+    "alpha": {
+      "type": "float",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "An optional `float`. Defaults to `1`. A scale factor, usually positive.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "alpha must be positive"
+      ]
+    },
+    "beta": {
+      "type": "float",
+      "size": "",
+      "default": "0.5",
+      "flag": "Optional",
+      "description": "An optional `float`. Defaults to `0.5`. An exponent.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": []
+}

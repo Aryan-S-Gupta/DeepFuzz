@@ -5,6 +5,52 @@
   "import_path": "tensorflow.boolean_mask",
   "backend": "tensorflow",
   "params": {
+    "tensor": {
+      "name": "tensor",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "signature parameter tensor",
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          1.0,
+          2.0
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
     "mask": {
       "name": "mask",
       "spec": {
@@ -17,19 +63,39 @@
           "bool"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "0 < dim(mask) <= dim(tensor)",
+          "K must be known statically",
+          "mask's shape must match the first K dimensions of tensor's shape"
+        ]
       },
       "chosen_type": "bool",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": true
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "bool",
+        "values": [
+          true,
+          false
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis": {
       "name": "axis",
@@ -41,37 +107,28 @@
         "description": "A 0-D int Tensor representing the axis in `tensor` to mask from. By default, axis is 0 which will mask from the first dimension. Otherwise K + axis <= N.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "By default, axis is 0 which will mask from the first dimension. Otherwise K + axis <= dim(tensor)"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 0
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for this operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for this operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for this operation (optional)."
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -79,25 +136,62 @@
     "numbers": "1",
     "description": "(N-K+1)-dimensional tensor populated by entries in `tensor` corresponding to `True` values in `mask`."
   },
-  "constraints": [],
-  "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Missing required positional argument"
+  "constraints": [
+    "If shapes do not conform, ValueError is raised"
   ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "Missing required positional argument",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "tensor",
+      "mask"
+    ],
+    "skipped_optional": [
+      "axis"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.boolean_mask.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

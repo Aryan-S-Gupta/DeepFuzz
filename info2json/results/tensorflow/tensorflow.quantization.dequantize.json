@@ -16,7 +16,9 @@
         "qint16",
         "quint16"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of qint8, quint8, qint32, qint16, quint16"
+      ]
     },
     "min_range": {
       "type": "float|number|tensor",
@@ -49,9 +51,19 @@
     "mode": {
       "type": "string",
       "size": "",
-      "default": "\"MIN_COMBINED\"",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `string` from: `\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"`. Defaults to `\"MIN_COMBINED\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `-1`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -68,26 +80,16 @@
       "enum_values": [],
       "constraints": []
     },
-    "axis": {
-      "type": "int|float|tensor|dtype",
+    "dtype": {
+      "type": "float|tensor|dtype",
       "size": "",
-      "default": "tf",
+      "default": "tf.float32",
       "flag": "Optional",
-      "description": "An optional `int`. Defaults to `-1`. dtype: An optional `tf.DType` from: `tf.bfloat16, tf.float32`. Defaults to `tf.float32`. Type of the output tensor. Currently Dequantize supports float and bfloat16. If 'dtype' is 'bfloat16', it only supports 'MIN_COMBINED' mode.",
+      "description": "An optional `tf.DType` from: `tf.bfloat16, tf.float32`. Defaults to `tf.float32`. Type of the output tensor. Currently Dequantize supports float and bfloat16. If 'dtype' is 'bfloat16', it only supports 'MIN_COMBINED' mode.",
       "dtype_candidates": [
         "float32",
         "bfloat16"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

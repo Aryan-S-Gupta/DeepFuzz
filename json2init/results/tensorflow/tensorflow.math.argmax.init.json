@@ -15,58 +15,84 @@
         "description": "A `Tensor`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "A must be a Tensor."
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          1.0,
+          2.0
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis": {
       "name": "axis",
       "spec": {
         "type": "int",
         "size": "",
-        "default": "0",
+        "default": "",
         "flag": "Optional",
         "description": "An integer, the axis to reduce across. Default to 0.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "axis must satisfy -rank(input) <= axis < rank(input)",
+          "If axis is None, the operation reduces across all axes."
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 0
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "output_type": {
       "name": "output_type",
       "spec": {
-        "type": "string|dtype",
+        "type": "dtype",
         "size": "",
         "default": "tf.int64",
         "flag": "Optional",
@@ -75,12 +101,9 @@
           "int32",
           "int64"
         ],
-        "enum_values": [
-          "tf.int32",
-          "tf.int64"
-        ],
+        "enum_values": [],
         "constraints": [
-          "must be one of: 'tf.int32', 'tf.int64'"
+          "output_type must be either tf.int32 or tf.int64."
         ]
       },
       "chosen_type": "dtype",
@@ -91,42 +114,27 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "type_switch"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "An optional name for the operation.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "enum_switch"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int64",
+    "numbers": "1",
     "description": "A `Tensor` of type `output_type`."
   },
   "constraints": [
-    "input must have numeric values"
+    "The returned tensor contains the indices with the largest value across axes of a tensor.",
+    "In case of identity, returns the smallest index.",
+    "If there are ties for the maximum value, the smallest index is returned."
   ],
   "spec_ready": true,
   "ready_for_stage4": true,
@@ -143,12 +151,50 @@
       "shape": [],
       "dtype": "int64",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        1
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input"
+    ],
+    "skipped_optional": [
+      "axis",
+      "output_type"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank",
+    "output_type is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(output_type_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.argmax.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

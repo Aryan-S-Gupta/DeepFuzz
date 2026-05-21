@@ -20,26 +20,14 @@
       "description": "An `int` that is `>= 2`. The size of the spatial block, same as in Space2Depth.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        ">= 2"
-      ]
+      "constraints": []
     },
     "data_format": {
       "type": "string",
       "size": "",
-      "default": "\"NHWC\"",
-      "flag": "Optional",
-      "description": "An optional `string` from: `\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"`. Defaults to `\"NHWC\"`.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "description": "An optional `string` from: `\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"`. Defaults to `\"NHWC\"`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -50,7 +38,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `input`."
   },
-  "constraints": [
-    "input.rank() >= 4"
-  ]
+  "constraints": []
 }

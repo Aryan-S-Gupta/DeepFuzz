@@ -10,7 +10,9 @@
       "description": "A `Tensor` or `IndexedSlices`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Broadcasting fails if you would expand the dimensions of `t`"
+      ]
     },
     "clip_value_min": {
       "type": "number|tensor",
@@ -20,7 +22,9 @@
       "description": "The minimum value to clip to. A scalar `Tensor` or one that is broadcastable to the shape of `t`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "broadcastable to the shape of t"
+      ]
     },
     "clip_value_max": {
       "type": "number|tensor",
@@ -30,17 +34,9 @@
       "description": "The maximum value to clip to. A scalar `Tensor` or one that is broadcastable to the shape of `t`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "broadcastable to the shape of t"
+      ]
     }
   },
   "output": {

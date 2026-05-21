@@ -1,0 +1,109 @@
+{
+  "api_full_name": "torch.storage.np.einsum",
+  "api_name": "einsum",
+  "module_path": "torch.storage.np",
+  "import_path": "torch.storage.np.einsum",
+  "backend": "torch",
+  "params": {
+    "out": {
+      "name": "out",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "ndarray, optional If provided, the calculation is done into this array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "optimize": {
+      "name": "optimize",
+      "spec": {
+        "type": "list|callable",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "{False, True, 'greedy', 'optimal'}, optional Controls if intermediate optimization should occur. No optimization will occur if False and True will default to the 'greedy' algorithm. Also accepts an explicit contraction list from the ``np.einsum_path`` function. See ``np.einsum_path`` for more details. Defaults to False.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The calculation based on the Einstein summation convention."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: must specify the einstein sum subscripts string and at least one operand, or at least one operand and its corresponding subscripts list"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "must specify the einstein sum subscripts string and at least one operand, or at least one operand and its corresponding subscripts list",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/_core/einsumfunc.py\", line 1610, in einsum\n    return c_einsum(*operands, **kwargs)\nValueError: must specify the einstein sum subscripts string and at least one operand, or at least one operand and its corresponding subscripts list\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.einsum.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

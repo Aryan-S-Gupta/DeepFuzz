@@ -8,91 +8,103 @@
     "value": {
       "name": "value",
       "spec": {
-        "type": "list|number|tensor|dtype",
+        "type": "list|dtype",
         "size": "",
         "default": "",
-        "flag": "Optional",
-        "description": "A constant value (or list) of output type `dtype`. dtype: Optional type of the elements of the resulting tensor.",
+        "flag": "Required",
+        "description": "A constant value (or list) of output type `dtype`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "value type matches dtype if specified",
-          "shape is compatible with value shape"
-        ]
+        "constraints": []
       },
-      "chosen_type": "number",
-      "include_in_base_call": false,
+      "chosen_type": "list",
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Optional type of the elements of the resulting tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "shape": {
       "name": "shape",
       "spec": {
-        "type": "list|tensor",
+        "type": "tensor",
         "size": "",
         "default": "",
         "flag": "Optional",
         "description": "Optional dimensions of resulting tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "shape is compatible with value shape"
-        ]
+        "constraints": []
       },
-      "chosen_type": "tensor",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
-      },
-      "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
-      ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string|tensor",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "Optional name for the tensor.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": [
-          "name is a string or None"
-        ]
-      },
-      "chosen_type": "string",
+      "chosen_type": "list",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "test"
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
-        "string_replace",
-        "string_empty"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -100,27 +112,67 @@
     "numbers": "1",
     "description": "A Constant Tensor."
   },
-  "constraints": [
-    "shape is compatible with value shape"
-  ],
+  "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: constant() missing 1 required positional argument: 'value'"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "constant() missing 1 required positional argument: 'value'",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 142, in wrapper\n    return op(*args, **kwargs)\nTypeError: constant() missing 1 required positional argument: 'value'\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "value"
+    ],
+    "skipped_optional": [
+      "dtype",
+      "shape"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dtype is a supported dtype object",
+    "shape.rank == 1"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(shape)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.constant.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

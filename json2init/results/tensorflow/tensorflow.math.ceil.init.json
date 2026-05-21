@@ -28,9 +28,8 @@
           "int32"
         ],
         "constraints": [
-          "x can't be a string or boolean",
-          "x must be one of tf.Tensor, bfloat16, half, float32, float64, int32",
-          "x and output must have compatible types"
+          "must be one of the following types: bfloat16, half, float32, float64, int32",
+          "x must be one of tf.Tensor, bfloat16, half, float32, float64, int32"
         ]
       },
       "chosen_type": "float",
@@ -41,34 +40,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "enum_switch"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -76,7 +57,9 @@
     "numbers": "1",
     "description": "A `tf.Tensor`. Has the same type as `x`. @compatibility(numpy) Equivalent to np.ceil @end_compatibility"
   },
-  "constraints": [],
+  "constraints": [
+    "Equivalent to np.ceil"
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -92,12 +75,36 @@
       "shape": [],
       "dtype": "float32",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(x_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.ceil.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

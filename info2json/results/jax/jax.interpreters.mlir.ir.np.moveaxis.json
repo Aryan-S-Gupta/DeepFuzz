@@ -11,40 +11,39 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape must be at least 1-D"
+        "shape is any",
+        "rank(a) >= 1"
       ]
     },
     "source": {
       "type": "int|sequence",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "int or sequence of int Original positions of the axes to move. These must be unique.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "length(source) == length(destination)"
+        "length is positive, elements are in range [0, rank(a))"
       ]
     },
     "destination": {
       "type": "int|sequence",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "int or sequence of int Destination positions for each of the original axes. These must also be unique.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "length(source) == length(destination)"
+        "length is equal to source's length, elements are in range [0, rank(a))"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "rank may change",
+    "numbers": "1",
     "description": "------- np.ndarray Array with moved axes. This array is a view of the input array."
   },
-  "constraints": [
-    "length(source) == length(destination)"
-  ]
+  "constraints": []
 }

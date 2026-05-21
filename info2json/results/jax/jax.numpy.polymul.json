@@ -10,6 +10,7 @@
       "description": "1D array of polynomial coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "a1 must be 1-D"
       ]
@@ -22,33 +23,29 @@
       "description": "1D array of polynomial coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "a2 must be 1-D"
       ]
     },
     "trim_leading_zeros": {
-      "type": "bool|callable",
+      "type": "callable",
       "size": "",
       "default": "False",
       "flag": "Optional",
       "description": "Default is ``False``. If ``True`` removes the leading zeros in the return value to match the result of numpy. But prevents the function from being able to be used in compiled code. Due to differences in accumulation of floating point arithmetic errors, the cutoff for values to be considered zero may lead to inconsistent results between NumPy and JAX, and even between different JAX backends. The result may lead to inconsistent output shapes when ``trim_leading_zeros=True``.",
-      "dtype_candidates": [
-        "bool"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "prevents function from being used in compiled code",
-        "trim_leading_zeros must be one of False, True, JAX",
-        "trim_leading_zeros=True may lead to inconsistent results and output shapes due to floating point arithmetic errors."
+        "trim_leading_zeros must be one of False, True, JAX"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "inexact",
+    "numbers": "1",
     "description": "An array of the coefficients of the product of the two polynomials. The dtype of the output is always promoted to inexact."
   },
-  "constraints": [
-    "For input arrays of dtype 'complex': output dtype is always promoted to complex numbers."
-  ]
+  "constraints": []
 }

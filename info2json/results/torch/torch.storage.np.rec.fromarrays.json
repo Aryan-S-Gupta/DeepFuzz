@@ -1,0 +1,100 @@
+{
+  "api_name": "fromarrays",
+  "module_path": "torch.storage.np.rec",
+  "params": {
+    "arrayList": {
+      "type": "tuple|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "list or tuple List of array-like objects (such as lists, tuples, and ndarrays).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "data-type, optional valid dtype for all arrays",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "shape": {
+      "type": "int|tuple|callable|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints, optional Shape of the resulting array. If not provided, inferred from ``arrayList[0]``. If `dtype` is ``None``, these arguments are passed to `numpy.rec.format_parser` to construct a dtype. See that function for detailed documentation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "formats": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "names": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "titles": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "aligned": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "byteorder": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- np.recarray Record array consisting of given arrayList columns."
+  },
+  "constraints": []
+}

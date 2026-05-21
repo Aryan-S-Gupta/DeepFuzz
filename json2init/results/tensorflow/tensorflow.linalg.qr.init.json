@@ -29,27 +29,51 @@
           "M",
           "N"
         ],
-        "constraints": []
+        "constraints": [
+          "input must be one of float64, float32, half, complex64, complex128, P, M, N"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
+        "kind": "tensor",
+        "shape": [
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "full_matrices": {
       "name": "full_matrices",
       "spec": {
         "type": "bool",
         "size": "",
-        "default": "",
+        "default": "False",
         "flag": "Optional",
         "description": "An optional `bool`. Defaults to `False`. If true, compute full-sized `q` and `r`. If false (the default), compute only the leading `P` columns of `q`.",
         "dtype_candidates": [
@@ -62,32 +86,20 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -96,14 +108,53 @@
     "description": "A tuple of `Tensor` objects (q, r). A `Tensor`. Has the same type as `input`. r: A `Tensor`. Has the same type as `input`."
   },
   "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "Qr",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input"
+    ],
+    "skipped_optional": [
+      "full_matrices"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(input_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(full_matrices_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.qr.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

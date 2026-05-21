@@ -5,26 +5,123 @@
   "import_path": "tensorflow.clip_by_norm",
   "backend": "tensorflow",
   "params": {
-    "grads": {
-      "name": "grads",
+    "t": {
+      "name": "t",
       "spec": {
-        "type": "",
+        "type": "tensor",
         "size": "",
         "default": "",
         "flag": "Required",
-        "description": "",
+        "description": "A `Tensor` or `IndexedSlices`. This must be a floating point type.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "any",
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "clip_norm": {
+      "name": "clip_norm",
+      "spec": {
+        "type": "number|tensor",
+        "size": "0-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A 0-D (scalar) `Tensor` > 0. A maximum clipping value, also floating point. Note: If a negative clip_norm is provided, it will be treated as zero.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "clip_norm must be positive",
+          "If a negative clip_norm is provided, it will be treated as zero."
+        ]
+      },
+      "chosen_type": "number",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 1.0
       },
       "mutation_rules": [
-        "type_switch"
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axes": {
+      "name": "axes",
+      "spec": {
+        "type": "tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Optional",
+        "description": "A 1-D (vector) `Tensor` of type int32 containing the dimensions to use for computing the L2-norm. If `None` (the default), uses all dimensions.",
+        "dtype_candidates": [
+          "int32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "axes must be 1-D"
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          0
+        ],
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     }
@@ -34,25 +131,38 @@
     "numbers": "1",
     "description": "A clipped `Tensor` or `IndexedSlices`."
   },
-  "constraints": [],
-  "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Got an unexpected keyword argument 'grads'"
+  "constraints": [
+    "TypeError: If dtype of the input is not a floating point"
   ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "Got an unexpected keyword argument 'grads'",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Got an unexpected keyword argument 'grads'\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "numel": 2,
+      "preview": [
+        0.7071067690849304,
+        0.7071067690849304
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.clip_by_norm.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

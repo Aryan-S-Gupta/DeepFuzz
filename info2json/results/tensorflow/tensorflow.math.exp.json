@@ -25,20 +25,9 @@
         "complex128"
       ],
       "constraints": [
-        "Must be one of the following types: bfloat16, half, float32, float64, complex64, complex128.",
-        "x must be one of tf.Tensor, bfloat16, half, float32, float64, complex64, complex128",
-        "x and output must have compatible types."
+        "must be one of the following types: bfloat16, half, float32, float64, complex64, complex128",
+        "x must be one of tf.Tensor, bfloat16, half, float32, float64, complex64, complex128"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -46,5 +35,7 @@
     "numbers": "1",
     "description": "A `tf.Tensor`. Has the same type as `x`. @compatibility(numpy) Equivalent to np.exp @end_compatibility"
   },
-  "constraints": []
+  "constraints": [
+    "e denotes Euler's number and is approximately equal to 2.718281"
+  ]
 }

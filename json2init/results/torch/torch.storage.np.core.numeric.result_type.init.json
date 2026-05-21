@@ -1,0 +1,74 @@
+{
+  "api_full_name": "torch.storage.np.core.numeric.result_type",
+  "api_name": "result_type",
+  "module_path": "torch.storage.np.core.numeric",
+  "import_path": "torch.storage.np.core.numeric.result_type",
+  "backend": "torch",
+  "params": {
+    "arrays_and_dtypes": {
+      "name": "arrays_and_dtypes",
+      "spec": {
+        "type": "list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "list of arrays and dtypes The operands of some operation whose result type is needed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "items must be arrays or dtypes",
+          "arrays_and_dtypes list must contain at least one item"
+        ]
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype The result type."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: result_type() got an unexpected keyword argument 'arrays_and_dtypes'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "result_type() got an unexpected keyword argument 'arrays_and_dtypes'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\nTypeError: result_type() got an unexpected keyword argument 'arrays_and_dtypes'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.core.numeric.result_type.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

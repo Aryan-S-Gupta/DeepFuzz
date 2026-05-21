@@ -1,0 +1,272 @@
+{
+  "api_full_name": "jax.numpy.searchsorted",
+  "api_name": "searchsorted",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.searchsorted",
+  "backend": "jax",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "one-dimensional array, assumed to be in sorted order unless ``sorter`` is specified.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "v": {
+      "name": "v",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "N-dimensional array of query values",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "side": {
+      "name": "side",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "``'left'`` (default) or ``'right'``; specifies whether insertion indices will be to the left or the right in case of ties.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "left"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "sorter": {
+      "name": "sorter",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "optional array of indices specifying the sort order of ``a``. If specified, then the algorithm assumes that ``a[sorter]`` is in sorted order.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "method": {
+      "name": "method",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "one of ``'scan'`` (default), ``'scan_unrolled'``, ``'sort'`` or ``'compare_all'``. See *Note* below.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "scan",
+          "scan_unrolled",
+          "sort",
+          "compare_all"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "method must be one of scan, scan_unrolled, sort, compare_all"
+        ]
+      },
+      "chosen_type": "one of ``'scan'`` (default)",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: one of ``'scan'`` (default)",
+      "call_kind": "keyword_only"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Array of insertion indices of shape ``v.shape``."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "a",
+      "v"
+    ],
+    "skipped_optional": [
+      "side",
+      "sorter",
+      "method"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(side_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(method_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.searchsorted.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

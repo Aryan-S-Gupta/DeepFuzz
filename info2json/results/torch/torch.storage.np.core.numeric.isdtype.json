@@ -1,0 +1,53 @@
+{
+  "api_name": "isdtype",
+  "module_path": "torch.storage.np.core.numeric",
+  "params": {
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype The input dtype.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [
+        "bool",
+        "integral",
+        "numeric"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "kind must be one of: 'bool', 'signed integer', 'unsigned integer', 'integral', 'real floating', 'complex floating', 'numeric' or a corresponding dtype, str or tuple of dtypes/strs"
+      ]
+    },
+    "kind": {
+      "type": "string|int|float|bool|tuple|number|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or str or tuple of dtypes/strs. dtype or dtype kind. Allowed dtype kinds are: * ``'bool'`` : boolean kind * ``'signed integer'`` : signed integer data types * ``'unsigned integer'`` : unsigned integer data types * ``'integral'`` : integer data types * ``'real floating'`` : real-valued floating-point data types * ``'complex floating'`` : complex floating-point data types * ``'numeric'`` : numeric data types",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [
+        "bool",
+        "integral",
+        "numeric"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "kind must be one of: 'bool', 'signed integer', 'unsigned integer', 'integral', 'real floating', 'complex floating', 'numeric' or a corresponding dtype, str or tuple of dtypes/strs"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool"
+  },
+  "constraints": [
+    "kind must be one of: 'bool', 'signed integer', 'unsigned integer', 'integral', 'real floating', 'complex floating', 'numeric' or a corresponding dtype, str or tuple of dtypes/strs",
+    "third-party dtypes are not yet supported"
+  ]
+}

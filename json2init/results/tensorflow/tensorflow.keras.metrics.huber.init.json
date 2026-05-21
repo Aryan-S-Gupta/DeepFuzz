@@ -15,31 +15,47 @@
         "description": "tensor of true targets.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "y_true.shape = y_pred.shape"
-        ]
+        "constraints": []
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          1,
+          3
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "y_pred": {
       "name": "y_pred",
@@ -51,60 +67,77 @@
         "description": "tensor of predicted targets.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "y_true.shape = y_pred.shape"
-        ]
+        "constraints": []
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          1,
+          3
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            0.9,
+            0.05,
+            0.05
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "delta": {
       "name": "delta",
       "spec": {
         "type": "float|callable",
         "size": "",
-        "default": "1",
+        "default": "1.0",
         "flag": "Optional",
         "description": "A float, the point where the Huber loss function changes from a quadratic to linear. Defaults to `1.0`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "delta >= 0"
-        ]
+        "constraints": []
       },
       "chosen_type": "callable",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
-      "unresolved_reason": "unsupported base seed type: callable"
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "number|tensor",
-    "numbers": "one scalar loss entry per sample",
+    "numbers": "one scalar loss entry per sample.",
     "description": "Tensor with one scalar loss entry per sample."
   },
   "constraints": [
-    "y_true.shape = y_pred.shape"
+    "loss calculation involves appending two values to the loss list"
   ],
   "spec_ready": true,
   "ready_for_stage4": true,
@@ -118,15 +151,36 @@
     "materialization_reasons": [],
     "result_summary": {
       "python_type": "EagerTensor",
-      "shape": [],
+      "shape": [
+        1
+      ],
       "dtype": "float32",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        0.00250000087544322
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "y_true",
+      "y_pred"
+    ],
+    "skipped_optional": [
+      "delta"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.metrics.huber.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

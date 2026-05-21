@@ -20,9 +20,7 @@
       "description": "A list/tuple of shape `(inputs.ndim,)`, specifying the starting indices for updating.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "Must contain integers"
-      ]
+      "constraints": []
     },
     "updates": {
       "type": "tensor",
@@ -33,9 +31,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Size of each dim must not exceed Di - start_indices[i]",
-        "updates must be one of indices",
-        "inputs, updates, and output have the same dtype"
+        "updates must be one of indices"
       ]
     }
   },

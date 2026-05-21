@@ -3,46 +3,44 @@
   "module_path": "tensorflow.sparse",
   "params": {
     "sp_input": {
-      "type": "",
+      "type": "SparseTensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "The `SparseTensor` to split.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If the `sp_input.dense_shape[axis]` is not an integer multiple of `num_split`, each slice starting from 0:`shape[axis] % num_split` gets extra one dimension."
+      ]
     },
     "num_split": {
       "type": "int|number",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A Python integer. The number of ways to split.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "must be a positive integer",
+        "If the `sp_input.dense_shape[axis]` is not an integer multiple of `num_split`, each slice starting from 0:`shape[axis] % num_split` gets extra one dimension."
+      ]
     },
     "axis": {
-      "type": "number|tensor",
-      "size": "",
+      "type": "int|number|tensor",
+      "size": "0-D",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A 0-D `int32` `Tensor`. The dimension along which to split. Must be in range [-rank, rank), where rank is the number of dimensions in the input `SparseTensor`.",
       "dtype_candidates": [
         "int32"
       ],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "axis must satisfy -rank(sp_input) <= axis < rank(sp_input)",
+        "If the `sp_input.dense_shape[axis]` is not an integer multiple of `num_split`, each slice starting from 0:`shape[axis] % num_split` gets extra one dimension."
+      ]
     }
   },
   "output": {
@@ -51,7 +49,6 @@
     "description": "`num_split` `SparseTensor` objects resulting from splitting `value`."
   },
   "constraints": [
-    "sp_input and num_split must be provided.",
-    "axis can be omitted, in which case it defaults to the last axis."
+    "If the `sp_input.dense_shape[axis]` is not an integer multiple of `num_split`, each slice starting from 0:`shape[axis] % num_split` gets extra one dimension."
   ]
 }

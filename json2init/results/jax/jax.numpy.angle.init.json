@@ -1,0 +1,125 @@
+{
+  "api_full_name": "jax.numpy.angle",
+  "api_name": "angle",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.angle",
+  "backend": "jax",
+  "params": {
+    "z": {
+      "name": "z",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A complex number or an array of complex numbers.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "must be compatible with shape inference",
+          "z cannot be null"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "deg": {
+      "name": "deg",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "Boolean. If ``True``, returns the result in degrees else returns in radians. Default is ``False``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "float|tensor|dtype",
+    "numbers": "float",
+    "description": "An array of counterclockwise angle of each element of ``z``, with the same shape as ``z`` of dtype float."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "z"
+    ],
+    "skipped_optional": [
+      "deg"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(deg_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.angle.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

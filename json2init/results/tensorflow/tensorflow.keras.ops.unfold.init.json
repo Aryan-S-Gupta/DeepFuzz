@@ -24,10 +24,10 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          1,
-          1,
-          1
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -35,14 +35,25 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "kernel_size": {
       "name": "kernel_size",
@@ -56,17 +67,30 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
+      "chosen_type": "tuple",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": true
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "dilation": {
       "name": "dilation",
@@ -80,17 +104,29 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
+      "chosen_type": "tuple",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          1
+        ],
+        "as_tuple": true
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "padding": {
       "name": "padding",
@@ -104,17 +140,24 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
+      "chosen_type": "string",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": "VALID"
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "string_replace",
+        "string_empty"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "stride": {
       "name": "stride",
@@ -128,17 +171,29 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
+      "chosen_type": "tuple",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          1
+        ],
+        "as_tuple": true
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -160,18 +215,46 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [
-        1,
-        1,
+        2,
+        8,
         1
       ],
       "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
+      "numel": 16,
+      "preview": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "kernel_size"
+    ],
+    "skipped_optional": [
+      "dilation",
+      "padding",
+      "stride"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.unfold.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

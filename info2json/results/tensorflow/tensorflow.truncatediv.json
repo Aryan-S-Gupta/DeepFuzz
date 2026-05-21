@@ -40,9 +40,9 @@
         "complex128"
       ],
       "constraints": [
-        "Must be one of the following types: bfloat16, half, float32, float64, uint8, int8, uint16, int16, int32, uint32, uint64, int64, complex64, complex128.",
+        "Must be one of the following types: bfloat16, half, float32, float64, uint8, int8, uint16, int16, int32, uint32, uint64, int64, complex64, complex128",
         "x must be one of bfloat16, half, float32, float64, uint8, int8, uint16, int16, int32, uint32, uint64, int64, complex64, complex128",
-        "x and y must have broadcast-compatible shapes."
+        "x and y must have broadcast-compatible shapes"
       ]
     },
     "y": {
@@ -54,20 +54,10 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have the same type as x.",
+        "Must have the same type as x",
         "y must have the same dtype as x",
-        "x and y must have broadcast-compatible shapes."
+        "x and y must have broadcast-compatible shapes"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -76,6 +66,7 @@
     "description": "A `Tensor`. Has the same type as `x`."
   },
   "constraints": [
-    "x and y must have broadcast-compatible shapes."
+    "x and y must have broadcast-compatible shapes",
+    "minval must be less than maxval"
   ]
 }

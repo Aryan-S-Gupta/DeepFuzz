@@ -10,18 +10,18 @@
       "spec": {
         "type": "number|tensor",
         "size": "1D",
-        "default": "-",
-        "flag": "Optional",
+        "default": "",
+        "flag": "Required",
         "description": "Scalar or 1D Tensor. The window length.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
           "x must be 1-D",
-          "x and output have compatible shapes"
+          "The output type is inferred from x and beta."
         ]
       },
       "chosen_type": "number",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
@@ -30,33 +30,47 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "beta": {
       "name": "beta",
       "spec": {
         "type": "float",
         "size": "",
-        "default": "-",
-        "flag": "Optional",
+        "default": "",
+        "flag": "Required",
         "description": "Float. Shape parameter for the Kaiser window.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "beta must be float"
+          "The output type is inferred from x and beta."
         ]
       },
       "chosen_type": "float",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1.0
+        "value": 0.5
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -64,25 +78,49 @@
     "numbers": "1",
     "description": "A 1D tensor containing the Kaiser window values."
   },
-  "constraints": [],
-  "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: kaiser() missing 2 required positional arguments: 'x' and 'beta'"
+  "constraints": [
+    "The output type is inferred from x and beta."
   ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "kaiser() missing 2 required positional arguments: 'x' and 'beta'",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: kaiser() missing 2 required positional arguments: 'x' and 'beta'\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "beta"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.kaiser.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -14,10 +14,20 @@
         "tup must be 1-D"
       ]
     },
+    "dtype": {
+      "type": "string|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str or dtype If provided, the destination array will have this dtype. Cannot be provided together with `out`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
     "casting": {
       "type": "",
       "size": "",
-      "default": "'same_kind'",
+      "default": "",
       "flag": "Optional",
       "description": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional Controls what kind of data casting may occur. Defaults to 'same_kind'.",
       "dtype_candidates": [],

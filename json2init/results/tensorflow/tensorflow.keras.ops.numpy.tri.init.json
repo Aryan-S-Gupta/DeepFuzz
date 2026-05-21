@@ -27,6 +27,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "M": {
@@ -35,41 +41,13 @@
         "type": "number|tensor",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "Number of columns in the tensor.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "number",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
-      },
-      "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
-      ],
-      "unresolved_reason": ""
-    },
-    "k": {
-      "name": "k",
-      "spec": {
-        "type": "float|tensor|dtype",
-        "size": "",
-        "default": "0",
-        "flag": "Optional",
-        "description": "The sub-diagonal at and below which the array is filled. `k = 0` is the main diagonal, while `k < 0` is below it, and `k > 0` is above. The default is 0. dtype: Data type of the returned tensor. The default is \"float32\".",
-        "dtype_candidates": [
-          "float32"
-        ],
-        "enum_values": [],
-        "constraints": [
-          "k must be positive"
-        ]
-      },
-      "chosen_type": "float",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
@@ -78,6 +56,76 @@
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "k": {
+      "name": "k",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "The sub-diagonal at and below which the array is filled. `k = 0` is the main diagonal, while `k < 0` is below it, and `k > 0` is above. The default is 0.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "k must be positive"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Data type of the returned tensor. The default is \"float32\".",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
       ],
       "unresolved_reason": ""
     }
@@ -102,10 +150,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 6574, in tri\n    return backend.numpy.tri(N, M=M, k=k, dtype=dtype)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2820, in tri\n    o = tf.ones([N, M], dtype=dtype)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/constant_op.py\", line 108, in convert_to_eager_tensor\n    return ops.EagerTensor(value, ctx.device_name, dtype)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: Cannot convert [1.0, 1.0] to EagerTensor of dtype int32\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 6574, in tri\n    return backend.numpy.tri(N, M=M, k=k, dtype=dtype)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2820, in tri\n    o = tf.ones([N, M], dtype=dtype)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/constant_op.py\", line 108, in convert_to_eager_tensor\n    return ops.EagerTensor(value, ctx.device_name, dtype)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: Cannot convert [1.0, 1.0] to EagerTensor of dtype int32\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.tri.json",
   "stage3_status": "retry",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

@@ -10,16 +10,17 @@
       "description": "array of shape ``(..., M, M)`` for which to compute the eigenvalues and vectors.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "M >= 1"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "2",
+    "numbers": "real or complex",
     "description": "A namedtuple ``(eigenvalues, eigenvectors)``. The namedtuple has fields: - ``eigenvalues``: an array of shape ``(..., M)`` containing the eigenvalues. - ``eigenvectors``: an array of shape ``(..., M, M)``, where column ``v[:, i]`` is the eigenvector corresponding to the eigenvalue ``w[i]``."
   },
   "constraints": [
-    "eigenvalues array shape must be (..., M)",
-    "eigenvectors array shape must be (..., M, M)"
+    "jax.numpy.linalg.eig output 'EigResult' must be used as namedtuple"
   ]
 }

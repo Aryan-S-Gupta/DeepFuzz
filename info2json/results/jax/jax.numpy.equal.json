@@ -10,6 +10,7 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "x and y must have broadcast-compatible shapes"
       ]
@@ -22,6 +23,7 @@
       "description": "input array or scalar. ``x`` and ``y`` should either have same shape or be broadcast compatible.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "x and y must have broadcast-compatible shapes"
       ]
@@ -29,7 +31,7 @@
   },
   "output": {
     "type": "bool|tensor",
-    "numbers": "1",
+    "numbers": "bool",
     "description": "A boolean array containing ``True`` where the elements of ``x == y`` and ``False`` otherwise."
   },
   "constraints": [

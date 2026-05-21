@@ -1,0 +1,28 @@
+{
+  "api_name": "hermmulx",
+  "module_path": "torch.storage.np.polynomial.hermite",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array of Hermite series coefficients ordered from low to high.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "size: n (unknown)",
+        "c must be 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "real",
+    "description": "------- ndarray Array representing the result of the multiplication."
+  },
+  "constraints": [
+    "xP_i(x) = (P_{i + 1}(x)/2 + i*P_{i - 1}(x))"
+  ]
+}

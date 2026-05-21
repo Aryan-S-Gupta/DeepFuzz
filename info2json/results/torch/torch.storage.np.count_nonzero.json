@@ -1,0 +1,47 @@
+{
+  "api_name": "count_nonzero",
+  "module_path": "torch.storage.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The array for which to count non-zeros.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple, optional Axis or tuple of axes along which to count non-zeros. Default is None, meaning that non-zeros will be counted along a flattened version of ``a``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, optional If this is set to True, the axes that are counted are left in the result as dimensions with size one. With this option, the result will broadcast correctly against the input array.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "int|number|tensor",
+    "numbers": "1",
+    "description": "------- int or array of int Number of non-zero values in the array along a given axis. Otherwise, the total number of non-zero values in the array is returned."
+  },
+  "constraints": []
+}

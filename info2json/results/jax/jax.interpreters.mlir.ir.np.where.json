@@ -12,9 +12,32 @@
         "bool"
       ],
       "enum_values": [],
+      "constraints": []
+    },
+    "x": {
+      "type": "array_like",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Values from which to choose.",
+      "dtype_candidates": [],
+      "enum_values": [],
       "constraints": [
-        "`condition`, `x`, and `y` need to be broadcastable to some shape.",
-        "`condition` must have the same shape as that of the output array."
+        "Must be broadcastable with condition and y",
+        "x and y must have broadcast-compatible shapes"
+      ]
+    },
+    "y": {
+      "type": "array_like",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Values from which to choose.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Must be broadcastable with condition and x",
+        "x and y must have broadcast-compatible shapes"
       ]
     }
   },
@@ -24,6 +47,6 @@
     "description": "------- ndarray An array with elements from `x` where `condition` is True, and elements from `y` elsewhere."
   },
   "constraints": [
-    "`condition`, `x`, and `y` need to be broadcastable to some shape."
+    "x and y must have broadcast-compatible shapes"
   ]
 }

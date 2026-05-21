@@ -1,0 +1,129 @@
+{
+  "api_full_name": "jax.lax.pow",
+  "api_name": "pow",
+  "module_path": "jax.lax",
+  "import_path": "jax.lax.pow",
+  "backend": "jax",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input array giving the base value. Must have floating or complex type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "x and y must have broadcast-compatible shapes."
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "y": {
+      "name": "y",
+      "spec": {
+        "type": "int|float|number|tensor|dtype",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "Input array giving the exponent value. Must have integer, floating, or complex type. Its dtype will be cast to that of ``x.dtype`` if necessary. If neither ``x`` nor ``y`` is a scalar, then ``x`` and ``y`` must have the same number of dimensions and be broadcast-compatible.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "x.dtype"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "If neither `x` nor `y` is a scalar, then `x` and `y` must have the same number of dimensions and be broadcast-compatible.",
+          "y must be one of x.dtype",
+          "x and y must have broadcast-compatible shapes."
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array of the same dtype as ``x`` containing the elementwise power."
+  },
+  "constraints": [
+    "x and y must have broadcast-compatible shapes."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "y"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(y_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.lax.pow.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

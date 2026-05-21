@@ -1,0 +1,86 @@
+{
+  "api_full_name": "torch.storage.np.core.numerictypes.maximum_sctype",
+  "api_name": "maximum_sctype",
+  "module_path": "torch.storage.np.core.numerictypes",
+  "import_path": "torch.storage.np.core.numerictypes.maximum_sctype",
+  "backend": "torch",
+  "params": {
+    "t": {
+      "name": "t",
+      "spec": {
+        "type": "dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "dtype or dtype specifier The input data type. This can be a `dtype` object or an object that is convertible to a `dtype`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype The highest precision data type of the same kind (`dtype.kind`) as `t`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "dtype"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "t"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(t_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.core.numerictypes.maximum_sctype.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

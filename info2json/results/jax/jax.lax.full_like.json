@@ -10,16 +10,29 @@
       "description": "example array-like, used for shape and dtype information.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "fill_value": {
-      "type": "number|tensor|dtype",
+      "type": "number|tensor",
       "size": "scalar",
       "default": "",
-      "flag": "Optional",
-      "description": "a scalar value to fill the entries of the output array. dtype: optional, a dtype parameter for the output ndarray.",
+      "flag": "Required",
+      "description": "a scalar value to fill the entries of the output array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, a dtype parameter for the output ndarray.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "shape": {
@@ -30,6 +43,7 @@
       "description": "optional, a shape parameter for the output ndarray.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "sharding": {
@@ -40,6 +54,7 @@
       "description": "an optional sharding specification for the resulting array. If not specified, the output will have the same sharding as the input, with a few exceptions/limitations in particular: 1. Sharding is not available during tracing, thus this will rely on jit. 2. If x is weakly typed or uncommitted, will use default sharding. 3. Shape is not None and is different from x.shape, default will be used.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

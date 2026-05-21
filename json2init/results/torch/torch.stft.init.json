@@ -15,14 +15,15 @@
         "description": "the input tensor of shape `(B?, L)` where `B?` is an optional batch dimension",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,12 +31,22 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -49,6 +60,7 @@
         "description": "size of Fourier transform",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -61,6 +73,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "hop_length": {
@@ -68,11 +86,12 @@
       "spec": {
         "type": "int",
         "size": "",
-        "default": "None`` (treated as equal to ``floor(n_fft / 4)``)",
+        "default": "",
         "flag": "Optional",
         "description": "the distance between neighboring sliding window frames. Default: ``None`` (treated as equal to ``floor(n_fft / 4)``)",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -85,6 +104,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "win_length": {
@@ -92,11 +117,12 @@
       "spec": {
         "type": "int",
         "size": "",
-        "default": "None`` (treated as equal to :attr:`n_fft`)",
+        "default": "",
         "flag": "Optional",
         "description": "the size of window frame and STFT filter. Default: ``None`` (treated as equal to :attr:`n_fft`)",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -107,8 +133,13 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": ""
     },
@@ -117,18 +148,28 @@
       "spec": {
         "type": "callable|tensor",
         "size": "1d",
-        "default": "None`` (treated as window of all :math:`1` s)",
+        "default": "",
         "flag": "Optional",
         "description": "the optional window function. Shape must be 1d and `<= n_fft` Default: ``None`` (treated as window of all :math:`1` s)",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "case_insensitive": false,
+        "constraints": [
+          "window must be 1-D"
+        ]
       },
       "chosen_type": "callable",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
         "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": "unsupported base seed type: callable"
     },
@@ -144,18 +185,24 @@
           "bool"
         ],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": ""
     },
@@ -164,11 +211,12 @@
       "spec": {
         "type": "string",
         "size": "",
-        "default": "\"reflect\"",
+        "default": "",
         "flag": "Optional",
         "description": "controls the padding method used when :attr:`center` is ``True``. Default: ``\"reflect\"``",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "string",
@@ -179,8 +227,13 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "string_replace",
-        "string_empty"
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": ""
     },
@@ -196,16 +249,23 @@
           "bool"
         ],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -215,25 +275,31 @@
       "spec": {
         "type": "float|bool",
         "size": "",
-        "default": "True`` for real :attr:`input` and :attr:`window`, ``False`` otherwise",
+        "default": "",
         "flag": "Optional",
         "description": "controls whether to return half of results to avoid redundancy for real inputs. Default: ``True`` for real :attr:`input` and :attr:`window`, ``False`` otherwise.",
         "dtype_candidates": [
           "bool"
         ],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": ""
     },
@@ -243,23 +309,61 @@
         "type": "float|bool|tensor",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "whether to return a complex tensor, or a real tensor with an extra last dimension for the real and imaginary components.",
         "dtype_candidates": [
           "bool"
         ],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "bool",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "align_to_window": {
+      "name": "align_to_window",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "any",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
       ],
       "unresolved_reason": ""
     }
@@ -273,21 +377,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: stft() missing 1 required positional argument: 'input'"
+    "smoke test failed: stft requires the return_complex parameter be given for real inputs, and will further require that return_complex=True in a future PyTorch release."
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "stft() missing 1 required positional argument: 'input'",
+    "classification": "api_runtime_error",
+    "error_type": "RuntimeError",
+    "error": "stft requires the return_complex parameter be given for real inputs, and will further require that return_complex=True in a future PyTorch release.",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: stft() missing 1 required positional argument: 'input'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/functional.py\", line 681, in stft\n    return _VF.stft(  # type: ignore[attr-defined]\n           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        input,\n        ^^^^^^\n    ...<7 lines>...\n        align_to_window,\n        ^^^^^^^^^^^^^^^^\n    )\n    ^\nRuntimeError: stft requires the return_complex parameter be given for real inputs, and will further require that return_complex=True in a future PyTorch release.\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.stft.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

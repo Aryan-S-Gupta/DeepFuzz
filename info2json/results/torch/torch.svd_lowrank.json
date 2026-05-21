@@ -10,17 +10,24 @@
       "description": "the input tensor of size :math:`(*, m, n)`",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "A.shape[1] == A.shape[2]",
+        "M.shape == A.shape or M is None"
+      ]
     },
     "q": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "6",
       "flag": "Optional",
       "description": "a slightly overestimated rank of A.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "q >= 0"
+      ]
     },
     "niter": {
       "type": "int|number",
@@ -30,7 +37,10 @@
       "description": "the number of subspace iterations to conduct; niter must be a nonnegative integer, and defaults to 2",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "niter >= 0"
+      ]
     },
     "M": {
       "type": "callable|tensor",
@@ -40,13 +50,19 @@
       "description": "the input tensor's mean of size :math:`(*, m, n)`, which will be broadcasted to the size of A in this function.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "M.shape[1] == M.shape[2]",
+        "M.shape == A.shape or M is None"
+      ]
     }
   },
   "output": {
-    "type": "",
-    "numbers": "1",
-    "description": "Return the singular value decomposition ``(U, S, V)`` of a matrix,"
+    "type": "tuple",
+    "numbers": "3",
+    "description": "returns the singular value decomposition (U, S, V) of a matrix A"
   },
-  "constraints": []
+  "constraints": [
+    "M.shape == A.shape or M is None"
+  ]
 }

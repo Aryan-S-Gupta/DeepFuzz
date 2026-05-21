@@ -1,0 +1,43 @@
+{
+  "api_name": "promote_types",
+  "module_path": "torch.storage.np.core.umath",
+  "params": {
+    "type1": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or dtype specifier First data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "can be 'f4', 'f8', 'i8', 'c8', 'S8', 'i1', 'u1'",
+        "type1 and type2 must be compatible for promotion"
+      ]
+    },
+    "type2": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or dtype specifier Second data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "can be 'f4', 'f8', 'i8', 'c8', 'S8', 'i1', 'u1'",
+        "type1 and type2 must be compatible for promotion"
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype The promoted data type."
+  },
+  "constraints": [
+    "type1 and type2 must be compatible for promotion",
+    "resulting dtype will always be in native byte order"
+  ]
+}

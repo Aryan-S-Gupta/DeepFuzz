@@ -15,6 +15,7 @@
         "description": "the input tensor",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
@@ -22,7 +23,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,14 +31,25 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "ord": {
       "name": "ord",
@@ -49,30 +61,7 @@
         "description": "the order of vector norm. Default: 2. See :func:`torch.linalg.vector_norm` for a list of supported norms.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "int",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
-      },
-      "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
-      ],
-      "unresolved_reason": ""
-    },
-    "dim": {
-      "name": "dim",
-      "spec": {
-        "type": "int",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "the dimension along which normalize is computed.",
-        "dtype_candidates": [],
-        "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -85,18 +74,58 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dim": {
+      "name": "dim",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "the dimension along which normalize is computed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "eps": {
       "name": "eps",
       "spec": {
-        "type": "float|tensor|dtype",
+        "type": "float",
         "size": "",
         "default": "1e-12",
         "flag": "Optional",
-        "description": "small value to avoid division by zero. Default: 1e-12. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. If specified, the input tensor is casted to :attr:`dtype` before the operation is performed. Default: None.",
+        "description": "small value to avoid division by zero. Default: 1e-12.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "float",
@@ -106,11 +135,49 @@
         "value": 1.0
       },
       "mutation_rules": [
-        "enum_switch",
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "keyword_only"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the desired data type of returned tensor. If specified, the input tensor is casted to :attr:`dtype` before the operation is performed. Default: None.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "keyword_only"
     },
     "mask": {
       "name": "mask",
@@ -124,19 +191,27 @@
           "bool"
         ],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "keyword_only"
     }
   },
   "output": {
@@ -146,23 +221,68 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: normalize() missing 1 required positional argument: 'ord'"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "normalize() missing 1 required positional argument: 'ord'",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: normalize() missing 1 required positional argument: 'ord'\n"
+    "result_summary": {
+      "python_type": "Tensor",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "device": "cpu",
+      "numel": 2,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input",
+      "ord",
+      "dim"
+    ],
+    "skipped_optional": [
+      "eps",
+      "dtype",
+      "mask"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dim valid for input rank",
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(dim)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.masked.normalize.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

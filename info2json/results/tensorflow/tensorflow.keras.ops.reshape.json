@@ -15,7 +15,7 @@
       ]
     },
     "newshape": {
-      "type": "list|tensor",
+      "type": "tuple|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -23,15 +23,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "One dimension can be -1, indicating that its size is inferred from the length of the array and remaining dimensions.",
-        "x and newshape must be compatible.",
-        "newshape cannot have -1 in more than one dimension."
+        "The new shape should be compatible with the original shape. One shape dimension can be -1 in which case the value is inferred from the length of the array and remaining dimensions.",
+        "x and newshape must be compatible."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "single",
+    "numbers": "1",
     "description": "The reshaped tensor."
   },
   "constraints": [

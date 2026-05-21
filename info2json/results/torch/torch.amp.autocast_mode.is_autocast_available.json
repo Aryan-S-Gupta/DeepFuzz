@@ -1,0 +1,32 @@
+{
+  "api_name": "is_autocast_available",
+  "module_path": "torch.amp.autocast_mode",
+  "params": {
+    "device_type": {
+      "type": "string|tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Device type to use. Possible values are: 'cuda', 'cpu', 'mtia', 'maia', 'xpu', and so on. The type is the same as the `type` attribute of a :class:`torch.device`. Thus, you may obtain the device type of a tensor using `Tensor.device.type`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "cuda",
+        "cpu",
+        "mtia",
+        "maia",
+        "xpu"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be one of the following: 'cuda', 'cpu', 'mtia', 'maia', 'xpu', etc.",
+        "device_type must be one of cuda, cpu, mtia, maia, xpu, torch.device, Tensor.device.type"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

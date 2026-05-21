@@ -11,14 +11,17 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "must be convertible to tensor",
         "x must be 1-D"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "A 1D tensor containing the Bartlett window values."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor dtype should be inferable from input's dtype"
+  ]
 }

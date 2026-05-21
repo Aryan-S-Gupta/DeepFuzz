@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true shape compatible with y_pred shape"
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "y_pred": {
@@ -23,28 +23,26 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true shape compatible with y_pred shape"
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "delta": {
       "type": "float|callable",
       "size": "",
-      "default": "1",
+      "default": "1.0",
       "flag": "Optional",
       "description": "A float, the point where the Huber loss function changes from a quadratic to linear. Defaults to `1.0`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "delta >= 0"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "number|tensor",
-    "numbers": "one scalar loss entry per sample",
+    "numbers": "one scalar loss entry per sample.",
     "description": "Tensor with one scalar loss entry per sample."
   },
   "constraints": [
-    "y_true shape compatible with y_pred shape"
+    "The shapes of y_true and y_pred must be broadcast-compatible."
   ]
 }

@@ -14,12 +14,11 @@
       "enum_values": [],
       "constraints": [
         "must have boolean or integer dtype.",
-        "operand must have boolean or integer dtype.",
-        "each entry in axes must satisfy `0 <= axis < operand.ndim`."
+        "operand must have boolean or integer dtype."
       ]
     },
     "axes": {
-      "type": "sequence",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -27,9 +26,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be a sequence of zero or more unique integers.",
-        "each entry must satisfy `0 <= axis < operand.ndim`.",
-        "each entry in axes must satisfy `0 <= axis < operand.ndim`."
+        "must be a sequence of unique integers.",
+        "each integer must satisfy `0 <= axis < operand.ndim`."
       ]
     }
   },
@@ -38,7 +36,5 @@
     "numbers": "1",
     "description": "An array of the same dtype as ``operand``, with shape corresponding to the dimensions of ``operand.shape`` with ``axes`` removed."
   },
-  "constraints": [
-    "each entry in axes must satisfy `0 <= axis < operand.ndim`."
-  ]
+  "constraints": []
 }

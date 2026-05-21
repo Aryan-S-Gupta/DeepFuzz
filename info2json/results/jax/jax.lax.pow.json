@@ -3,29 +3,33 @@
   "module_path": "jax.lax",
   "params": {
     "x": {
-      "type": "tensor|dtype",
+      "type": "float|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "Input array giving the base value. Must have floating or complex type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "x and y must have broadcast-compatible shapes."
+      ]
     },
     "y": {
-      "type": "int|number|tensor|dtype",
+      "type": "int|float|number|tensor|dtype",
       "size": "scalar",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "Input array giving the exponent value. Must have integer, floating, or complex type. Its dtype will be cast to that of ``x.dtype`` if necessary. If neither ``x`` nor ``y`` is a scalar, then ``x`` and ``y`` must have the same number of dimensions and be broadcast-compatible.",
       "dtype_candidates": [],
       "enum_values": [
         "x.dtype"
       ],
+      "case_insensitive": false,
       "constraints": [
         "If neither `x` nor `y` is a scalar, then `x` and `y` must have the same number of dimensions and be broadcast-compatible.",
         "y must be one of x.dtype",
-        "If `y` is not provided, it defaults to 1 for each dimension."
+        "x and y must have broadcast-compatible shapes."
       ]
     }
   },
@@ -35,6 +39,6 @@
     "description": "An array of the same dtype as ``x`` containing the elementwise power."
   },
   "constraints": [
-    "The argument dtypes must match, and will be converted if necessary."
+    "x and y must have broadcast-compatible shapes."
   ]
 }

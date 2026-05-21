@@ -11,12 +11,11 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be numeric",
-        "x and output must have compatible types"
+        "x must be a valid TensorFlow tensor."
       ]
     },
     "axis": {
-      "type": "int|tuple|number",
+      "type": "tuple|number",
       "size": "",
       "default": "",
       "flag": "Optional",
@@ -24,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "if int, must satisfy -rank(x) <= axis < rank(x)"
+        "If provided, axis must be an integer or a tuple of integers. Defaults to None."
       ]
     }
   },

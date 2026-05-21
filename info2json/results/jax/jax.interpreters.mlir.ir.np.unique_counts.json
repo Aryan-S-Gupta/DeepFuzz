@@ -11,43 +11,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "flattened if not already 1-D",
         "x must be 1-D"
       ]
-    },
-    "return_counts": {
-      "type": "",
-      "size": "",
-      "default": "True",
-      "flag": "Optional",
-      "description": "",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "equal_nan": {
-      "type": "",
-      "size": "",
-      "default": "False",
-      "flag": "Optional",
-      "description": "",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "sorted": {
-      "type": "",
-      "size": "",
-      "default": "False",
-      "flag": "Optional",
-      "description": "",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "2",
     "description": "------- namedtuple The result containing: * values - The unique elements of an input array. * counts - The corresponding counts for each unique element."
   },
   "constraints": []

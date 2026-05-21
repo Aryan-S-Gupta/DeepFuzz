@@ -10,14 +10,16 @@
       "description": "input array. Must have floating-point type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x must have floating-point type"
+        "Must have floating-point type.",
+        "x type must support floating-point numbers."
       ]
     }
   },
   "output": {
     "type": "int|tensor|dtype",
-    "numbers": "integer",
+    "numbers": "int",
     "description": "Array of same shape and dtype as ``x``, containing values rounded to the next integer toward positive infinity."
   },
   "constraints": []

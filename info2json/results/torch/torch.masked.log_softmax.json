@@ -10,6 +10,7 @@
       "description": "the input tensor",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "dim": {
@@ -20,6 +21,18 @@
       "description": "the dimension along which log_softmax is computed.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired data type of returned tensor. If specified, the input tensor is casted to :attr:`dtype` before the operation is performed. Default: None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "mask": {
@@ -32,6 +45,7 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

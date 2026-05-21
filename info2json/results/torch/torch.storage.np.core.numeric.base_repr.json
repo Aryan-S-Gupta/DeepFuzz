@@ -1,0 +1,50 @@
+{
+  "api_name": "base_repr",
+  "module_path": "torch.storage.np.core.numeric",
+  "params": {
+    "number": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int The value to convert. Positive and negative values are handled.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "number must be positive"
+      ]
+    },
+    "base": {
+      "type": "int|number",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "int, optional Convert `number` to the `base` number system. The valid range is 2-36, the default value is 2.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "base >= 2",
+        "base <= 36"
+      ]
+    },
+    "padding": {
+      "type": "int|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Number of zeros padded on the left. Default is 0 (no padding).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|number",
+    "numbers": "1",
+    "description": "------- str String representation of `number` in `base` system."
+  },
+  "constraints": []
+}

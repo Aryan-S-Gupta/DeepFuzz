@@ -1,0 +1,277 @@
+{
+  "api_full_name": "jax.numpy.histogram2d",
+  "api_name": "histogram2d",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.histogram2d",
+  "backend": "jax",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "one-dimensional array of x-values for points to be binned.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "y": {
+      "name": "y",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "one-dimensional array of y-values for points to be binned.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "bins": {
+      "name": "bins",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "10",
+        "flag": "Optional",
+        "description": "Specify the number of bins in the histogram (default: 10). ``bins`` may also be an array specifying the locations of the bin edges, or a pair of integers or pair of arrays specifying the number of bins in each dimension.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "range": {
+      "name": "range",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Pair of arrays or lists of the form ``[[xmin, xmax], [ymin, ymax]]`` specifying the range of the data in each dimension. If not specified, the range is inferred from the data.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "pair of arrays or lists of the form ``[[xmin",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: pair of arrays or lists of the form ``[[xmin",
+      "call_kind": "positional_or_keyword"
+    },
+    "weights": {
+      "name": "weights",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional array specifying the weights of the data points. Should be the same shape as ``x`` and ``y``. If not specified, each data point is weighted equally.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "density": {
+      "name": "density",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "If True, return the normalized histogram in units of counts per unit area. If False (default) return the (weighted) counts per bin.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "A tuple of arrays ``(histogram, x_edges, y_edges)``, where ``histogram`` contains the aggregated data, and ``x_edges`` and ``y_edges`` specify the boundaries of the bins."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 3
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "y"
+    ],
+    "skipped_optional": [
+      "bins",
+      "range",
+      "weights",
+      "density"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(weights_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.histogram2d.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x, axis, and keepdims must be compatible with TensorFlow's tensor manipulation rules."
+        "x must be a tensor."
       ]
     },
     "axis": {
@@ -23,8 +23,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(x) <= axis < rank(x)",
-        "x, axis, and keepdims must be compatible with TensorFlow's tensor manipulation rules."
+        "axis must be None, a single integer, or a tuple of integers. If axis is a tuple, it represents multiple axes along which a logical OR reduction is performed.",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
     "keepdims": {
@@ -38,17 +38,14 @@
       ],
       "enum_values": [],
       "constraints": [
-        "keepdims must be one of True, False",
-        "x, axis, and keepdims must be compatible with TensorFlow's tensor manipulation rules."
+        "keepdims must be one of True, False"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "The tensor containing the logical OR reduction over the `axis`."
   },
-  "constraints": [
-    "x, axis, and keepdims must be compatible with TensorFlow's tensor manipulation rules."
-  ]
+  "constraints": []
 }

@@ -10,17 +10,17 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x type must support unary ufunc for reciprocal"
+        "for integer inputs, np.reciprocal returns rounded integer output",
+        "if x is 0., output will be inf"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "float32",
     "description": "An array of same shape as ``x`` containing the reciprocal of each element of ``x``."
   },
-  "constraints": [
-    "for integer inputs, output is rounded integer output"
-  ]
+  "constraints": []
 }

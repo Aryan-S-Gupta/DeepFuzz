@@ -11,18 +11,21 @@
         "type": "tensor",
         "size": "",
         "default": "",
-        "flag": "Optional",
-        "description": "A `Tensor` with `rank k >= 1`. name: A name for the operation (optional).",
+        "flag": "Required",
+        "description": "A `Tensor` with `rank k >= 1`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "The diagonal tensor to be converted into a diagonal matrix.",
+          "The diagonal tensor must be either scalar, 1-D, or broadcastable to 1-D."
+        ]
       },
       "chosen_type": "tensor",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,23 +33,34 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "k": {
       "name": "k",
       "spec": {
-        "type": "string|int|number",
+        "type": "int",
         "size": "",
-        "default": "1",
+        "default": "0",
         "flag": "Optional",
-        "description": "Diagonal offset(s). Positive value means superdiagonal, 0 refers to the main diagonal, and negative value means subdiagonals. `k` can be a single integer (for a single diagonal) or a pair of integers specifying the low and high ends of a matrix band. `k[0]` must not be larger than `k[1]`. num_rows: The number of rows of the output matrix. If it is not provided, the op assumes the output matrix is a square matrix and infers the matrix size from `d_lower`, `d_upper`, and the innermost dimension of `diagonal`. num_cols: The number of columns of the output matrix. If it is not provided, the op assumes the output matrix is a square matrix and infers the matrix size from `d_lower`, `d_upper`, and the innermost dimension of `diagonal`. padding_value: The value to fill the area outside the specified diagonal band with. Default is 0. align: Some diagonals are shorter than `max_diag_len` and need to be padded. `align` is a string specifying how superdiagonals and subdiagonals should be aligned, respectively. There are four possible alignments: \"RIGHT_LEFT\" (default), \"LEFT_RIGHT\", \"LEFT_LEFT\", and \"RIGHT_RIGHT\". \"RIGHT_LEFT\" aligns superdiagonals to the right (left-pads the row) and subdiagonals to the left (right-pads the row). It is the packing format LAPACK uses. cuSPARSE uses \"LEFT_RIGHT\", which is the opposite alignment.",
+        "description": "Diagonal offset(s). Positive value means superdiagonal, 0 refers to the main diagonal, and negative value means subdiagonals. `k` can be a single integer (for a single diagonal) or a pair of integers specifying the low and high ends of a matrix band. `k[0]` must not be larger than `k[1]`.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
@@ -60,11 +74,141 @@
         "value": 1
       },
       "mutation_rules": [
-        "enum_switch",
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "num_rows": {
+      "name": "num_rows",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "The number of rows of the output matrix. If it is not provided, the op assumes the output matrix is a square matrix and infers the matrix size from `d_lower`, `d_upper`, and the innermost dimension of `diagonal`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "num_cols": {
+      "name": "num_cols",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "The number of columns of the output matrix. If it is not provided, the op assumes the output matrix is a square matrix and infers the matrix size from `d_lower`, `d_upper`, and the innermost dimension of `diagonal`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "padding_value": {
+      "name": "padding_value",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "The value to fill the area outside the specified diagonal band with. Default is 0.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "align": {
+      "name": "align",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Some diagonals are shorter than `max_diag_len` and need to be padded. `align` is a string specifying how superdiagonals and subdiagonals should be aligned, respectively. There are four possible alignments: \"RIGHT_LEFT\" (default), \"LEFT_RIGHT\", \"LEFT_LEFT\", and \"RIGHT_RIGHT\". \"RIGHT_LEFT\" aligns superdiagonals to the right (left-pads the row) and subdiagonals to the left (right-pads the row). It is the packing format LAPACK uses. cuSPARSE uses \"LEFT_RIGHT\", which is the opposite alignment.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "max_diag_len"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -74,23 +218,76 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Missing required positional argument"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "Missing required positional argument",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 4,
+      "preview": [
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "diagonal"
+    ],
+    "skipped_optional": [
+      "k",
+      "num_rows",
+      "num_cols",
+      "padding_value",
+      "align"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(num_rows_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(num_cols_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(align_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.diag.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

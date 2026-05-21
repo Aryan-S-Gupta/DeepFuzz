@@ -1,0 +1,44 @@
+{
+  "api_name": "lexsort",
+  "module_path": "torch.storage.np",
+  "params": {
+    "keys": {
+      "type": "tensor",
+      "size": "2D",
+      "default": "",
+      "flag": "Required",
+      "description": "(k, m, n, ...) array-like The `k` keys to be sorted. The *last* key (e.g, the last row if `keys` is a 2D array) is the primary sort key. Each element of `keys` along the zeroth axis must be an array-like object of the same shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "keys must be 2-D",
+        "keys must be an array-like object with a consistent shape across its zeroth axis.",
+        "axis must satisfy -rank(keys) <= axis < rank(keys)"
+      ]
+    },
+    "axis": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "int, optional Axis to be indirectly sorted. By default, sort over the last axis of each sequence. Separate slices along `axis` sorted over independently; see last example.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "keys must be an array-like object with a consistent shape across its zeroth axis.",
+        "axis must satisfy -rank(keys) <= axis < rank(keys)"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "ints",
+    "description": "------- (m, n, ...) ndarray of ints Array of indices that sort the keys along the specified axis."
+  },
+  "constraints": [
+    "keys must be an array-like object with a consistent shape across its zeroth axis.",
+    "axis must satisfy -rank(keys) <= axis < rank(keys)"
+  ]
+}

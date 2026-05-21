@@ -15,7 +15,10 @@
         "description": "int Up to what derivative order weights should be calculated. 0 corresponds to interpolation.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "case_insensitive": false,
+        "constraints": [
+          "order >= 0"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
@@ -27,7 +30,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "x_list": {
       "name": "x_list",
@@ -39,6 +49,7 @@
         "description": "sequence Sequence of (unique) values for the independent variable. It is useful (but not necessary) to order ``x_list`` from nearest to furthest from ``x0``; see examples below.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "sequence",
@@ -51,23 +62,30 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "structure_grow",
-        "structure_shrink",
-        "element_delta"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "x0": {
       "name": "x0",
       "spec": {
         "type": "number",
         "size": "",
-        "default": "S",
+        "default": "1",
         "flag": "Optional",
         "description": "Number or Symbol Root or value of the independent variable for which the finite difference weights should be generated. Default is ``S.One``.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": [
+          "x0 in x_list",
           "x0 must be one of S.One"
         ]
       },
@@ -81,7 +99,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -106,8 +131,31 @@
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "order",
+      "x_list"
+    ],
+    "skipped_optional": [
+      "x0"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(x_list_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.finite_diff_weights.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

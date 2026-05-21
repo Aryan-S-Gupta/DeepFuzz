@@ -1,0 +1,214 @@
+{
+  "api_full_name": "torch.storage.np.core.numeric.all",
+  "api_name": "all",
+  "module_path": "torch.storage.np.core.numeric",
+  "import_path": "torch.storage.np.core.numeric.all",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like Input array or object that can be converted to an array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "None or int or tuple of ints, optional Axis or axes along which a logical AND reduction is performed. The default (``axis=None``) is to perform a logical AND over all the dimensions of the input array. `axis` may be negative, in which case it counts from the last to the first axis. If this is a tuple of ints, a reduction is performed on multiple axes, instead of a single axis or all the axes as before.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          0
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "out": {
+      "name": "out",
+      "spec": {
+        "type": "float|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "ndarray, optional Alternate output array in which to place the result. It must have the same shape as the expected output and its type is preserved (e.g., if ``dtype(out)`` is float, the result will consist of 0.0's and 1.0's). See :ref:`ufuncs-output-type` for more details.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "keepdims": {
+      "name": "keepdims",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "bool, optional If this is set to True, the axes which are reduced are left in the result as dimensions with size one. With this option, the result will broadcast correctly against the input array.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "where": {
+      "name": "where",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "array_like of bool, optional Elements to include in checking for all `True` values. See `~numpy.ufunc.reduce` for details.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "where must be one of True"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "------- ndarray, bool A new boolean or array is returned unless `out` is specified, in which case a reference to `out` is returned."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: all() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:\n * ()\n * (tuple of ints dim = None, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n * (int dim, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n * (name dim, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "all() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:\n * ()\n * (tuple of ints dim = None, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n * (int dim, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n * (name dim, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py\", line 2634, in all\n    return _wrapreduction_any_all(a, np.logical_and, 'all', axis, out,\n                                  keepdims=keepdims, where=where)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py\", line 97, in _wrapreduction_any_all\n    return reduction(axis=axis, out=out, **passkwargs)\nTypeError: all() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:\n * ()\n * (tuple of ints dim = None, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n * (int dim, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n * (name dim, bool keepdim = False)\n      didn't match because some of the keywords were incorrect: out, axis\n\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.core.numeric.all.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

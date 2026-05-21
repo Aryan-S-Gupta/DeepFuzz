@@ -1,0 +1,23 @@
+{
+  "api_name": "sctype2char",
+  "module_path": "torch.storage.np.core.numerictypes",
+  "params": {
+    "sctype": {
+      "type": "string|number|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "scalar dtype or object If a scalar dtype, the corresponding string character is returned. If an object, `sctype2char` tries to infer its scalar type and then return the corresponding string character.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|number",
+    "numbers": "1",
+    "description": "------- str The string character corresponding to the scalar type."
+  },
+  "constraints": []
+}

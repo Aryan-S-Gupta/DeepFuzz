@@ -1,0 +1,27 @@
+{
+  "api_name": "as_ctypes_type",
+  "module_path": "torch.storage.np.ctypeslib",
+  "params": {
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype The dtype to convert",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be a numpy.dtype object",
+        "as_ctypes_type(np.dtype(ctype)) will not losslessly round-trip in either direction with np.dtype(as_ctypes_type(dt))",
+        "Accepts a single parameter: dtype"
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "------- ctype A ctype scalar, union, array, or struct"
+  },
+  "constraints": []
+}

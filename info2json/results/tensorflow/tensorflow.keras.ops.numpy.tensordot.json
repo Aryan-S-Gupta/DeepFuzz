@@ -10,9 +10,7 @@
       "description": "First tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x1 and x2 must be broadcast-compatible shapes"
-      ]
+      "constraints": []
     },
     "x2": {
       "type": "tensor",
@@ -22,20 +20,19 @@
       "description": "Second tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x1 and x2 must be broadcast-compatible shapes"
-      ]
+      "constraints": []
     },
     "axes": {
       "type": "int|list|sequence",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "2",
+      "flag": "Optional",
       "description": "- If an integer, N, sum over the last N axes of `x1` and the first N axes of `x2` in order. The sizes of the corresponding axes must match. - Or, a list of axes to be summed over, first sequence applying to `x1`, second to `x2`. Both sequences must be of the same length.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axes must be an integer or a list of integers"
+        "If an integer, -rank(input) <= axis < rank(input)",
+        "If a list, both sequences must be of the same length"
       ]
     }
   },
@@ -45,6 +42,6 @@
     "description": "The tensor dot product of the inputs."
   },
   "constraints": [
-    "x1 and x2 must be broadcast-compatible shapes"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

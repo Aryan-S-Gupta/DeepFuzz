@@ -1,0 +1,295 @@
+{
+  "api_full_name": "torch.storage.np.zeros_like",
+  "api_name": "zeros_like",
+  "module_path": "torch.storage.np",
+  "import_path": "torch.storage.np.zeros_like",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like The shape and data-type of `a` define these same attributes of the returned array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "data-type, optional Overrides the data type of the result.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "order": {
+      "name": "order",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "{'C', 'F', 'A', or 'K'}, optional Overrides the memory layout of the result. 'C' means C-order, 'F' means F-order, 'A' means 'F' if `a` is Fortran contiguous, 'C' otherwise. 'K' means match the layout of `a` as closely as possible.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "{'c'",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: {'c'",
+      "call_kind": "positional_or_keyword"
+    },
+    "subok": {
+      "name": "subok",
+      "spec": {
+        "type": "bool|tensor",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "bool, optional. If True, then the newly created array will use the sub-class type of `a`, otherwise it will be a base-class array. Defaults to True.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "int|sequence|number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int or sequence of ints, optional. Overrides the shape of the result. If order='K' and the number of dimensions is unchanged, will try to keep order, otherwise, order='C' is implied.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "list",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "string|tensor|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "str, optional The device on which to place the created array. Default: None. For Array-API interoperability only, so must be ``\"cpu\"`` if passed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "keyword_only"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Array of zeros with the same shape and type as `a`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "size": 2,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "a"
+    ],
+    "skipped_optional": [
+      "dtype",
+      "order",
+      "subok",
+      "shape",
+      "device"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dtype is a supported dtype object",
+    "shape.rank == 1",
+    "shape.dtype in {int32,int64}"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(order_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(shape_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.zeros_like.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

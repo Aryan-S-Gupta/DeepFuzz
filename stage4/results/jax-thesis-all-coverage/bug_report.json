@@ -1,0 +1,140 @@
+{
+  "schema_version": "2.0",
+  "target_library": "jax",
+  "target_version": "0.10.0",
+  "bugs": [
+    {
+      "bug_id": "bug-4b446a93f850132e",
+      "api": "jax.numpy.tril_indices",
+      "stage": "mutation",
+      "category": "crash_or_abort",
+      "target_library": "jax",
+      "target_version": "0.10.0",
+      "testcase": "stage4/results/jax-thesis-all-coverage/execution_results/jax.numpy.tril_indices.results.json",
+      "input": "json2init/results/jax/jax.numpy.tril_indices.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/jax/jax.numpy.tril_indices.init.json --results-json stage4/results/jax-thesis-all-coverage/repro/repro_jax.numpy.tril_indices.init.json --mutation-budget 32 --seed 1590",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured\n  self.coverage._warn(\"No contexts were measured\")\n",
+      "traceback": "isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",
+      "signature": "4b446a93f850132e",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T05:32:29Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    },
+    {
+      "bug_id": "bug-f724b12a43526cf3",
+      "api": "jax.numpy.triu_indices",
+      "stage": "mutation",
+      "category": "crash_or_abort",
+      "target_library": "jax",
+      "target_version": "0.10.0",
+      "testcase": "stage4/results/jax-thesis-all-coverage/execution_results/jax.numpy.triu_indices.results.json",
+      "input": "json2init/results/jax/jax.numpy.triu_indices.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/jax/jax.numpy.triu_indices.init.json --results-json stage4/results/jax-thesis-all-coverage/repro/repro_jax.numpy.triu_indices.init.json --mutation-budget 32 --seed 1593",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured\n  self.coverage._warn(\"No contexts were measured\")\n",
+      "traceback": "isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",
+      "signature": "f724b12a43526cf3",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T05:32:29Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    }
+  ],
+  "candidate_bugs": [
+    {
+      "bug_id": "bug-4b446a93f850132e",
+      "api": "jax.numpy.tril_indices",
+      "stage": "mutation",
+      "category": "crash_or_abort",
+      "target_library": "jax",
+      "target_version": "0.10.0",
+      "testcase": "stage4/results/jax-thesis-all-coverage/execution_results/jax.numpy.tril_indices.results.json",
+      "input": "json2init/results/jax/jax.numpy.tril_indices.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/jax/jax.numpy.tril_indices.init.json --results-json stage4/results/jax-thesis-all-coverage/repro/repro_jax.numpy.tril_indices.init.json --mutation-budget 32 --seed 1590",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured\n  self.coverage._warn(\"No contexts were measured\")\n",
+      "traceback": "isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",
+      "signature": "4b446a93f850132e",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T05:32:29Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    },
+    {
+      "bug_id": "bug-f724b12a43526cf3",
+      "api": "jax.numpy.triu_indices",
+      "stage": "mutation",
+      "category": "crash_or_abort",
+      "target_library": "jax",
+      "target_version": "0.10.0",
+      "testcase": "stage4/results/jax-thesis-all-coverage/execution_results/jax.numpy.triu_indices.results.json",
+      "input": "json2init/results/jax/jax.numpy.triu_indices.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/jax/jax.numpy.triu_indices.init.json --results-json stage4/results/jax-thesis-all-coverage/repro/repro_jax.numpy.triu_indices.init.json --mutation-budget 32 --seed 1593",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured\n  self.coverage._warn(\"No contexts were measured\")\n",
+      "traceback": "isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",
+      "signature": "f724b12a43526cf3",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T05:32:29Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    }
+  ],
+  "excluded_pipeline_issues": {
+    "count": 0,
+    "summary": "Pipeline/config/coverage/seed failures are excluded from candidate library bugs.",
+    "issues": []
+  },
+  "summary": {
+    "total_candidates": 2,
+    "reproduced": 0,
+    "known_existing_caught": 0,
+    "false_positives": 0,
+    "unresolved": 0,
+    "excluded_pipeline_issues": 0,
+    "valid_candidate_bugs": 2
+  },
+  "environment_metadata": {
+    "target_library": "jax",
+    "target_version": "0.10.0",
+    "python_version": "3.13.12 (main, Feb  3 2026, 17:53:27) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+    "seed": 1337,
+    "mutation_budget": 32,
+    "run_id": "jax-thesis-all",
+    "coverage_method": "python_coverage",
+    "target_module_version": {
+      "available": true,
+      "value": "0.10.0"
+    },
+    "jax_version": {
+      "available": true,
+      "value": "0.10.0"
+    },
+    "jax_backend": {
+      "available": true,
+      "value": "cpu"
+    },
+    "jax_devices": {
+      "available": true,
+      "value": [
+        "cpu:0"
+      ]
+    },
+    "jaxlib_version": {
+      "available": true,
+      "value": "0.10.0"
+    }
+  },
+  "coverage_method": "python_coverage"
+}

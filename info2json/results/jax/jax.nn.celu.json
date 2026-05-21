@@ -10,17 +10,25 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "must be 1D or higher",
+        "x and alpha must support arithmetic operations"
+      ]
     },
     "alpha": {
       "type": "number|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
+      "size": "scalar",
+      "default": "1.0",
+      "flag": "Optional",
       "description": "array or scalar (default: 1.0)",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "shape must match with x's if array; ignored if scalar",
+        "x and alpha must support arithmetic operations"
+      ]
     }
   },
   "output": {
@@ -28,5 +36,7 @@
     "numbers": "1",
     "description": "An array."
   },
-  "constraints": []
+  "constraints": [
+    "x and alpha must support arithmetic operations"
+  ]
 }

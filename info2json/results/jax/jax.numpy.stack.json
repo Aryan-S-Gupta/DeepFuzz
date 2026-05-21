@@ -10,28 +10,40 @@
       "description": "a sequence of arrays to stack; each must have the same shape. If a single array is given it will be treated equivalently to `arrays = unstack(arrays)`, but the implementation will avoid explicit unstacking.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "arrays must have the same shape."
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "axis": {
-      "type": "",
+      "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "specify the axis along which to stack.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "unused by JAX",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
       "type": "tensor|dtype",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "unused by JAX dtype: optional dtype of the resulting array. If not specified, the dtype will be determined via type promotion rules described in :ref:`type-promotion`.",
+      "description": "optional dtype of the resulting array. If not specified, the dtype will be determined via type promotion rules described in :ref:`type-promotion`.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

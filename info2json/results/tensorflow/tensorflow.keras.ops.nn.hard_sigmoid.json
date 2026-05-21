@@ -11,14 +11,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must have a shape with at least one dimension",
-        "x values must satisfy x < -2.5 or -2.5 <= x <= 2.5 or x > 2.5"
+        "-2.5 <= x <= 2.5 or (x < -2.5) or (x > 2.5)",
+        "x must be broadcastable to a single value."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": []

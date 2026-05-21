@@ -3,7 +3,7 @@
   "module_path": "tensorflow",
   "params": {
     "x": {
-      "type": "float|number|tensor",
+      "type": "float|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -36,9 +36,10 @@
         "uint64"
       ],
       "constraints": [
+        "must be one of the following types: bfloat16, half, float32, float64, int8, uint8, int16, uint16, int32, uint32, int64, uint64",
         "x must be one of bfloat16, half, float32, float64, int8, uint8, int16, uint16, int32, uint32, int64, uint64",
-        "x and y must have same dtype",
-        "minimum supports broadcast semantics for x and y"
+        "x and y must have broadcast-compatible shapes",
+        "minimum supports [broadcast semantics](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html) for x and y"
       ]
     },
     "y": {
@@ -50,21 +51,10 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "Must have the same type as x",
         "y must have the same dtype as x",
-        "x and y must have same dtype",
-        "minimum supports broadcast semantics for x and y"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "name is optional"
+        "x and y must have broadcast-compatible shapes",
+        "minimum supports [broadcast semantics](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html) for x and y"
       ]
     }
   },
@@ -74,7 +64,7 @@
     "description": "A `Tensor`. Has the same type as `x`."
   },
   "constraints": [
-    "x and y must have same dtype",
-    "minimum supports broadcast semantics for x and y"
+    "x and y must have broadcast-compatible shapes",
+    "minimum supports [broadcast semantics](http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html) for x and y"
   ]
 }

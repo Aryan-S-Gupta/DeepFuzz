@@ -1,0 +1,269 @@
+{
+  "api_full_name": "tensorflow.random.uniform",
+  "api_name": "uniform",
+  "module_path": "tensorflow.random",
+  "import_path": "tensorflow.random.uniform",
+  "backend": "tensorflow",
+  "params": {
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "int|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A 1-D integer Tensor or Python array. The shape of the output tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "shape must be 1-D"
+        ]
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "minval": {
+      "name": "minval",
+      "spec": {
+        "type": "int|number|tensor|dtype",
+        "size": "scalar",
+        "default": "0",
+        "flag": "Optional",
+        "description": "A Tensor or Python value of type `dtype`, broadcastable with `shape` (for integer types, broadcasting is not supported, so it needs to be a scalar). The lower bound on the range of random values to generate (inclusive). Defaults to 0.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "maxval": {
+      "name": "maxval",
+      "spec": {
+        "type": "int|number|tensor|dtype",
+        "size": "scalar",
+        "default": "",
+        "flag": "Optional",
+        "description": "A Tensor or Python value of type `dtype`, broadcastable with `shape` (for integer types, broadcasting is not supported, so it needs to be a scalar). The upper bound on the range of random values to generate (exclusive). Defaults to 1 if `dtype` is floating point.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "tf.float32",
+        "flag": "Optional",
+        "description": "The type of the output: `float16`, `bfloat16`, `float32`, `float64`, `int32`, or `int64`. Defaults to `float32`.",
+        "dtype_candidates": [
+          "int32",
+          "int64",
+          "float16",
+          "float32",
+          "float64",
+          "bfloat16"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "seed": {
+      "name": "seed",
+      "spec": {
+        "type": "int|sequence|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A Python integer. Used in combination with `tf.random.set_seed` to create a reproducible sequence of tensors across multiple calls.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A tensor of the specified shape filled with random uniform values."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 4,
+      "preview": [
+        0.9203931093215942,
+        0.9274424314498901,
+        0.8469527959823608,
+        0.654133677482605
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "shape"
+    ],
+    "skipped_optional": [
+      "minval",
+      "maxval",
+      "dtype",
+      "seed"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "shape.rank == 1",
+    "shape.dtype in {int32,int64}",
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(shape)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(minval_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(maxval_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.random.uniform.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

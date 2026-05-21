@@ -27,6 +27,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "value_range": {
@@ -46,7 +52,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -55,23 +61,34 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
     "nbins": {
       "name": "nbins",
       "spec": {
-        "type": "number|tensor|dtype",
+        "type": "number|tensor",
         "size": "Scalar",
-        "default": "",
-        "flag": "Required",
-        "description": "Scalar `int32 Tensor`. Number of histogram bins. dtype: dtype for returned histogram.",
+        "default": "100",
+        "flag": "Optional",
+        "description": "Scalar `int32 Tensor`. Number of histogram bins.",
         "dtype_candidates": [
           "int32"
         ],
@@ -79,7 +96,7 @@
         "constraints": []
       },
       "chosen_type": "number",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
@@ -88,25 +105,45 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
-    "name": {
-      "name": "name",
+    "dtype": {
+      "name": "dtype",
       "spec": {
-        "type": "",
+        "type": "dtype",
         "size": "",
-        "default": "'histogram_fixed_width')",
-        "flag": "Required",
-        "description": "A name for this operation (defaults to 'histogram_fixed_width').",
+        "default": "tf.int32",
+        "flag": "Optional",
+        "description": "dtype for returned histogram.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "If any unsupported dtype is provided, TypeError will be raised."
+        ]
       },
-      "chosen_type": "a name for this operation (defaults to 'histogram_fixed_width').",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for this operation (defaults to 'histogram_fixed_width')."
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
     }
   },
   "output": {
@@ -114,15 +151,35 @@
     "numbers": "1",
     "description": "A `Tensor` holding the indices of the binned values whose shape matches `values`."
   },
-  "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for this operation (defaults to 'histogram_fixed_width')."
+  "constraints": [
+    "name is optional unless explicitly required in the signature"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "int32",
+      "numel": 1,
+      "preview": [
+        0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.histogram_fixed_width_bins.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -22,7 +22,10 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -31,14 +34,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "output_size": {
       "name": "output_size",
@@ -52,24 +57,37 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
+      "chosen_type": "tuple",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": true
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "data_format": {
       "name": "data_format",
       "spec": {
         "type": "string",
         "size": "",
-        "default": "the value found in your Keras config file at",
+        "default": "",
         "flag": "Optional",
         "description": "string, either `\"channels_last\"` or `\"channels_first\"`. Defaults to the value found in your Keras config file at `~/.keras/keras.json`. If never set, defaults to `\"channels_last\"`.",
         "dtype_candidates": [],
@@ -77,20 +95,28 @@
           "channels_last",
           "channels_first"
         ],
-        "constraints": []
+        "constraints": [
+          "data_format must be one of channels_last, channels_first"
+        ]
       },
       "chosen_type": "string",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "channels_last"
+        "value": "NHWC"
       },
       "mutation_rules": [
         "enum_switch",
-        "string_replace",
-        "string_empty"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -100,23 +126,72 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: adaptive_average_pool supports 1D, 2D, or 3D inputs only."
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "ValueError",
-    "error": "adaptive_average_pool supports 1D, 2D, or 3D inputs only.",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/nn.py\", line 1423, in adaptive_average_pool\n    return backend.nn.adaptive_average_pool(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        inputs, output_size=output_size, data_format=data_format\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/nn.py\", line 734, in adaptive_average_pool\n    raise ValueError(\n        \"adaptive_average_pool supports 1D, 2D, or 3D inputs only.\"\n    )\nValueError: adaptive_average_pool supports 1D, 2D, or 3D inputs only.\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 16,
+      "preview": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "inputs",
+      "output_size"
+    ],
+    "skipped_optional": [
+      "data_format"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(inputs_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(data_format_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.adaptive_average_pool.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -10,18 +10,21 @@
       "description": "array object into which values will be inserted.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "arr, obj, and values must be compatible in shape and dtype for insertion",
+        "if axis is None, arr will be flattened before insertion"
+      ]
     },
     "obj": {
       "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "slice or array of indices specifying insertion locations.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "If unspecified, arr will be flattened."
+        "arr, obj, and values must be compatible in shape and dtype for insertion"
       ]
     },
     "values": {
@@ -33,7 +36,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "indices values must be in range [0, params.shape[axis])"
+        "arr, obj, and values must be compatible in shape and dtype for insertion"
       ]
     },
     "axis": {
@@ -45,8 +48,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Defaults to None.",
-        "indices values must be in range [0, params.shape[axis])"
+        "must be a valid axis index if int is provided",
+        "if axis is None, arr will be flattened before insertion"
       ]
     }
   },
@@ -56,7 +59,7 @@
     "description": "A copy of ``arr`` with values inserted at the specified locations."
   },
   "constraints": [
-    "indices dtype must be int32 or int64",
-    "indices values must be in range [0, params.shape[axis])"
+    "arr, obj, and values must be compatible in shape and dtype for insertion",
+    "if axis is None, arr will be flattened before insertion"
   ]
 }

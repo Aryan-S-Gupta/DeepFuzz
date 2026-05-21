@@ -15,16 +15,40 @@
         "description": "Input integer tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "x and output must have the same shape"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "int32",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu",
+        "fill": 1
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -37,26 +61,25 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": true,
-  "readiness_reasons": [],
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: materialization_error"
+  ],
   "smoke_test": {
-    "attempted": true,
-    "success": true,
-    "classification": "success",
+    "attempted": false,
+    "success": false,
+    "classification": "materialization_error",
     "error_type": "",
     "error": "",
-    "materialization_reasons": [],
-    "result_summary": {
-      "python_type": "EagerTensor",
-      "shape": [],
-      "dtype": "int32",
-      "numel": 1,
-      "has_nan": false
-    },
-    "runtime_supported_here": true
+    "materialization_reasons": [
+      "x: failed to materialize base seed: TypeError: Cannot convert [[2.0, 0.0], [0.0, 2.0]] to EagerTensor of dtype int32"
+    ],
+    "result_summary": {},
+    "runtime_supported_here": false
   },
-  "runtime_supported_here": true,
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.bitwise_invert.json",
-  "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

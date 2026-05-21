@@ -11,11 +11,11 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and newshape must satisfy compatibility rule"
+        "x and newshape must be compatible."
       ]
     },
     "newshape": {
-      "type": "list|tensor",
+      "type": "tuple|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -23,8 +23,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "-1 can appear at most once",
-        "x and newshape must satisfy compatibility rule"
+        "The new shape should be compatible with the original shape. One shape dimension can be -1 in which case the value is inferred from the length of the array and remaining dimensions.",
+        "x and newshape must be compatible."
       ]
     }
   },
@@ -34,6 +34,6 @@
     "description": "The reshaped tensor."
   },
   "constraints": [
-    "x and newshape must satisfy compatibility rule"
+    "x and newshape must be compatible."
   ]
 }

@@ -17,9 +17,7 @@
         "int64"
       ],
       "constraints": [
-        "indices must be one of int32, int64",
-        "indices.shape[-1] <= tensor.shape.rank",
-        "updates.shape == indices.shape[:-1] + tensor.shape[indices.shape[-1]:]"
+        "indices must be one of int32, int64"
       ]
     },
     "updates": {
@@ -30,30 +28,14 @@
       "description": "A `Tensor`. Must have the same type as `tensor`. Updates to scatter into output.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "updates.shape == indices.shape[:-1] + tensor.shape[indices.shape[-1]:]"
-      ]
+      "constraints": []
     },
     "bad_indices_policy": {
       "type": "string",
       "size": "",
-      "default": "\"\"",
-      "flag": "Optional",
-      "description": "An optional `string`. Defaults to `\"\"`.",
-      "dtype_candidates": [],
-      "enum_values": [
-        "IGNORE"
-      ],
-      "constraints": [
-        "must be one of: \"\", \"DEFAULT\", or \"IGNORE\""
-      ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "description": "An optional `string`. Defaults to `\"\"`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -64,7 +46,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `tensor`."
   },
-  "constraints": [
-    "updates.shape == indices.shape[:-1] + tensor.shape[indices.shape[-1]:]"
-  ]
+  "constraints": []
 }

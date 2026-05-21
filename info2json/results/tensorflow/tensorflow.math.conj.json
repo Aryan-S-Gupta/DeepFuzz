@@ -8,22 +8,16 @@
       "default": "",
       "flag": "Required",
       "description": "`Tensor` to conjugate. Must have numeric or variant type.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "float32",
+        "complex128"
+      ],
       "enum_values": [],
       "constraints": [
-        "Must be of the form a + bj, where a is the real part and bj is the imaginary part.",
-        "x and returned value must have the same type."
+        "Must be a tensor",
+        "If x is a complex number tensor, the elements must be of the form \\(a + bj\\), where `a` and `b` are real numbers. The returned tensor will be of the form \\(a - bj\\).",
+        "If x is not a complex number tensor, it will return a tensor of the same type as input but with float32 or complex128 dtype."
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

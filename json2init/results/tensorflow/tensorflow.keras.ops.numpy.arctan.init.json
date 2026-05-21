@@ -15,17 +15,14 @@
         "description": "Input tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "must be convertible to a tensor",
-          "x and output must have broadcast-compatible shapes"
-        ]
+        "constraints": []
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -33,19 +30,30 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "float32",
     "description": "Tensor of the inverse tangent of each element in `x`, in the interval `[-pi/2, pi/2]`."
   },
   "constraints": [],
@@ -62,16 +70,33 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [
-        1
+        2
       ],
       "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
+      "numel": 2,
+      "preview": [
+        0.7853981852531433,
+        0.7853981852531433
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.arctan.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

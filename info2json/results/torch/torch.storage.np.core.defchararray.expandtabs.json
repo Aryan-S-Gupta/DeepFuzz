@@ -1,0 +1,41 @@
+{
+  "api_name": "expandtabs",
+  "module_path": "torch.storage.np.core.defchararray",
+  "params": {
+    "a": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array-like, with ``StringDType``, ``bytes_``, or ``str_`` dtype Input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "with `StringDType` or `bytes_`` or `str_` dtype",
+        "a and tabsize must be valid for the function to execute properly"
+      ]
+    },
+    "tabsize": {
+      "type": "int|number",
+      "size": "",
+      "default": "8",
+      "flag": "Optional",
+      "description": "int, optional Replace tabs with `tabsize` number of spaces. If not given defaults to 8 spaces.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "a and tabsize must be valid for the function to execute properly"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "------- ndarray Output array of ``StringDType``, ``bytes_`` or ``str_`` dtype, depending on input type"
+  },
+  "constraints": [
+    "a and tabsize must be valid for the function to execute properly"
+  ]
+}

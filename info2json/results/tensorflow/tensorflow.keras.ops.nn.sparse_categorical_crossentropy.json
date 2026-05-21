@@ -10,7 +10,9 @@
       "description": "The target tensor representing the true class labels as integers. Its shape should match the shape of the `output` tensor except for the last dimension.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The shape should match the shape of the `output` tensor except for the last dimension."
+      ]
     },
     "output": {
       "type": "tensor",
@@ -20,27 +22,33 @@
       "description": "The output tensor representing the predicted probabilities or logits. Its shape should match the shape of the `target` tensor except for the last dimension.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The shape should match the shape of the `target` tensor except for the last dimension"
+      ]
     },
     "from_logits": {
-      "type": "tensor",
+      "type": "bool|tensor",
       "size": "",
       "default": "False",
       "flag": "Optional",
       "description": "(optional) Whether `output` is a tensor of logits or probabilities. Set it to `True` if `output` represents logits; otherwise, set it to `False` if `output` represents probabilities. Defaults to `False`.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1`, which corresponds to the last dimension",
+      "default": "-1",
       "flag": "Optional",
       "description": "(optional) The axis along which the sparse categorical cross-entropy is computed. Defaults to `-1`, which corresponds to the last dimension of the tensors.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The axis along which the sparse categorical cross-entropy is computed. Defaults to `-1`, which corresponds to the last dimension of the tensors."
+      ]
     }
   },
   "output": {

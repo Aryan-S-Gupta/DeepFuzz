@@ -10,24 +10,19 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x cannot be None"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "axis": {
-      "type": "int32 or int64",
+      "type": "int|tuple",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "the axis or axes along which the :code:`log_softmax` should be computed. ``None`` means all axes.",
-      "dtype_candidates": [
-        "int32",
-        "int64"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "axis must be less than rank(x) if provided"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {

@@ -25,22 +25,14 @@
     "validate_args": {
       "type": "",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "When `True`, additional assertions might be embedded in the graph. Default value: `False` (i.e., no graph assertions are added).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string|callable",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "Python `str` prefixed to ops created by this function. Default value: 'pinv'.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "validate_args must be one of True, False"
+      ]
     }
   },
   "output": {

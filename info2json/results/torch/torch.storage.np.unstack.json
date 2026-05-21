@@ -1,0 +1,42 @@
+{
+  "api_name": "unstack",
+  "module_path": "torch.storage.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray The array to be unstacked.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be 2D or higher",
+        "x and output must satisfy stack(unstack(x, axis=axis), axis=axis) == x"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Axis along which the array will be split. Default: ``0``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must satisfy -rank(x) <= axis < rank(x)",
+        "x and output must satisfy stack(unstack(x, axis=axis), axis=axis) == x"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "of ndarrays",
+    "description": "------- tuple of ndarrays The unstacked arrays."
+  },
+  "constraints": [
+    "x and output must satisfy stack(unstack(x, axis=axis), axis=axis) == x"
+  ]
+}

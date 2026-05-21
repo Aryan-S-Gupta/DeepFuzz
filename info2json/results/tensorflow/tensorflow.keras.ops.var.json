@@ -8,25 +8,22 @@
       "default": "",
       "flag": "Required",
       "description": "Input tensor.",
-      "dtype_candidates": [
-        "float16",
-        "float32",
-        "float64"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x.dtype must be float16, float32, or float64"
+        "x and keepdims must be compatible."
       ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "Axis or axes along which the variance is computed. The default is to compute the variance of the flattened tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "If not provided, the variance of the flattened tensor is computed.",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
@@ -40,13 +37,17 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and keepdims must be compatible."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "Output tensor containing the variance."
   },
-  "constraints": []
+  "constraints": [
+    "x and keepdims must be compatible."
+  ]
 }

@@ -1,0 +1,79 @@
+{
+  "api_full_name": "torch.storage.np.ma.core.default_fill_value",
+  "api_name": "default_fill_value",
+  "module_path": "torch.storage.np.ma.core",
+  "import_path": "torch.storage.np.ma.core.default_fill_value",
+  "backend": "torch",
+  "params": {
+    "obj": {
+      "name": "obj",
+      "spec": {
+        "type": "number|tensor|dtype",
+        "size": "scalar",
+        "default": "",
+        "flag": "Optional",
+        "description": "ndarray, dtype or scalar The array data-type or scalar for which the default fill value is returned.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "number",
+    "numbers": "1",
+    "description": "------- scalar The default fill value."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "float",
+      "value": 1e+20
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "obj"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.ma.core.default_fill_value.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

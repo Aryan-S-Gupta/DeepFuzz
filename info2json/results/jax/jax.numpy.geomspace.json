@@ -10,6 +10,7 @@
       "description": "scalar or array. Specifies the starting values.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "stop": {
@@ -20,38 +21,53 @@
       "description": "scalar or array. Specifies the stop values.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "num": {
       "type": "int|number",
       "size": "",
-      "default": "",
+      "default": "50",
       "flag": "Optional",
       "description": "int, optional, default=50. Number of values to generate.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "endpoint": {
-      "type": "bool|dtype",
+      "type": "bool",
       "size": "",
-      "default": "",
+      "default": "True",
       "flag": "Optional",
-      "description": "bool, optional, default=True. If True, then include the ``stop`` value in the result. If False, then exclude the ``stop`` value. dtype: optional. Specifies the dtype of the output.",
+      "description": "bool, optional, default=True. If True, then include the ``stop`` value in the result. If False, then exclude the ``stop`` value.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional. Specifies the dtype of the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "0",
       "flag": "Optional",
       "description": "int, optional, default=0. Axis along which to generate the geomspace.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

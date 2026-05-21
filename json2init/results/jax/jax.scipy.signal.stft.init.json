@@ -1,0 +1,428 @@
+{
+  "api_full_name": "jax.scipy.signal.stft",
+  "api_name": "stft",
+  "module_path": "jax.scipy.signal",
+  "import_path": "jax.scipy.signal.stft",
+  "backend": "jax",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Array representing a time series of input values.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "fs": {
+      "name": "fs",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "1.0",
+        "flag": "Optional",
+        "description": "Sampling frequency of the time series (default: 1.0).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "sampling frequency of the time series (default: 1.0).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: sampling frequency of the time series (default: 1.0).",
+      "call_kind": "positional_or_keyword"
+    },
+    "window": {
+      "name": "window",
+      "spec": {
+        "type": "tuple|callable|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Data tapering window to apply to each segment. Can be a window function name, a tuple specifying a window length and function, or an array (default: ``'hann'``).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable",
+      "call_kind": "positional_or_keyword"
+    },
+    "nperseg": {
+      "name": "nperseg",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "256",
+        "flag": "Optional",
+        "description": "Length of each segment (default: 256).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "length of each segment (default: 256).",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: length of each segment (default: 256).",
+      "call_kind": "positional_or_keyword"
+    },
+    "noverlap": {
+      "name": "noverlap",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Number of points to overlap between segments (default: ``nperseg // 2``).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "nfft": {
+      "name": "nfft",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Length of the FFT used, if a zero-padded FFT is desired. If ``None`` (default), the FFT length is ``nperseg``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "length of the fft used",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: length of the fft used",
+      "call_kind": "positional_or_keyword"
+    },
+    "detrend": {
+      "name": "detrend",
+      "spec": {
+        "type": "callable",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "Specifies how to detrend each segment. Can be ``False`` (default: no detrending), ``'constant'`` (remove mean), ``'linear'`` (remove linear trend), or a callable accepting a segment and returning a detrended segment.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable",
+      "call_kind": "positional_or_keyword"
+    },
+    "return_onesided": {
+      "name": "return_onesided",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "If True (default), return a one-sided spectrum for real inputs. If False, return a two-sided spectrum.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "boundary": {
+      "name": "boundary",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Specifies whether the input signal is extended at both ends, and how. Options are ``None`` (no extension), ``'zeros'`` (default), ``'even'``, ``'odd'``, or ``'constant'``.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "zeros",
+          "even",
+          "odd",
+          "constant"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "boundary must be one of zeros, even, odd, constant"
+        ]
+      },
+      "chosen_type": "specifies whether the input signal is extended at both ends",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: specifies whether the input signal is extended at both ends",
+      "call_kind": "positional_or_keyword"
+    },
+    "padded": {
+      "name": "padded",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "Specifies whether the input signal is zero-padded at the end to make its length a multiple of `nperseg`. If True (default), the padded signal length is the next multiple of ``nperseg``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "specifies whether the input signal is zero-padded at the end to make its length a multiple of `nperseg`. if true (default)",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: specifies whether the input signal is zero-padded at the end to make its length a multiple of `nperseg`. if true (default)",
+      "call_kind": "positional_or_keyword"
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "Axis along which the STFT is computed; the default is over the last axis (-1).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tuple|tensor",
+    "numbers": "1",
+    "description": "A length-3 tuple of arrays ``(f, t, Zxx)``. ``f`` is the Array of sample frequencies. ``t`` is the Array of segment times, and ``Zxx`` is the STFT of ``x``."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 3
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "fs",
+      "window",
+      "nperseg",
+      "noverlap",
+      "nfft",
+      "detrend",
+      "return_onesided",
+      "boundary",
+      "padded",
+      "axis"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(nfft_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(detrend_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(boundary_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(padded_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.scipy.signal.stft.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

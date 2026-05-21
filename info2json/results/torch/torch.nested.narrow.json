@@ -10,6 +10,7 @@
       "description": "the dimension where narrow will be applied. Only `dim=1` is supported for the jagged layout, while strided supports all dim",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "start": {
@@ -20,6 +21,7 @@
       "description": "starting element for the narrow operation",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "length": {
@@ -30,21 +32,23 @@
       "description": "number of elements taken during the narrow op",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "layout": {
       "type": "tensor",
       "size": "",
-      "default": "if None, the strided layout",
+      "default": "torch.strided",
       "flag": "Optional",
       "description": "the desired layout of returned nested tensor. Only strided and jagged layouts are supported. Default: if None, the strided layout.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },

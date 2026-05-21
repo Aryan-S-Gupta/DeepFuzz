@@ -1,0 +1,45 @@
+{
+  "api_name": "record",
+  "module_path": "torch.storage.np.testing.suppress_warnings",
+  "params": {
+    "category": {
+      "type": "class",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "class, optional Warning class to filter",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "message": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "string, optional Regular expression matching the warning message.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "module": {
+      "type": "module",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "module, optional Module to filter for. Note that the module (and its file) must match exactly and cannot be a submodule. This may make it unreliable for external modules.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "1",
+    "description": "------- list A list which will be filled with all matched warnings."
+  },
+  "constraints": []
+}

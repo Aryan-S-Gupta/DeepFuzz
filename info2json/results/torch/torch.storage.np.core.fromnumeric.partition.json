@@ -1,0 +1,67 @@
+{
+  "api_name": "partition",
+  "module_path": "torch.storage.np.core.fromnumeric",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array to be sorted.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "kth": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or sequence of ints Element index to partition by. The k-th value of the element will be in its final sorted position and all smaller elements will be moved before it and all equal or greater elements behind it. The order of all elements in the partitions is undefined. If provided with a sequence of k-th it will partition all elements indexed by k-th of them into their sorted position at once.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "int or None, optional Axis along which to sort. If None, the array is flattened before sorting. The default is -1, which sorts along the last axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "kind": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'introselect'}, optional Selection algorithm. Default is 'introselect'.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "order": {
+      "type": "string|list|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str or list of str, optional When `a` is an array with fields defined, this argument specifies which fields to compare first, second, etc. A single field can be specified as a string. Not all fields need be specified, but unspecified fields will still be used, in the order in which they come up in the dtype, to break ties.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Array of the same type and shape as `a`."
+  },
+  "constraints": []
+}

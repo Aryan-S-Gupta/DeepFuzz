@@ -20,14 +20,34 @@
       "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
+        "kind": "tensor",
+        "shape": [
+          1,
+          3
+        ],
+        "dtype": "float32",
+        "values": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "y_pred": {
       "name": "y_pred",
@@ -46,29 +66,47 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          1,
+          3
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            0.9,
+            0.05,
+            0.05
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "ref_labels": {
       "name": "ref_labels",
       "spec": {
         "type": "int|tensor",
         "size": "",
-        "default": "y_true",
+        "default": "",
         "flag": "Optional",
         "description": "Optional integer tensor with labels for reference embeddings. If `None`, defaults to `y_true`.",
         "dtype_candidates": [],
@@ -83,17 +121,23 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "ref_embeddings": {
       "name": "ref_embeddings",
       "spec": {
         "type": "tensor",
         "size": "",
-        "default": "y_pred",
+        "default": "",
         "flag": "Optional",
         "description": "Optional tensor with L2 normalized reference embeddings. If `None`, defaults to `y_pred`.",
         "dtype_candidates": [],
@@ -105,7 +149,8 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -114,14 +159,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "remove_diagonal": {
       "name": "remove_diagonal",
@@ -143,13 +190,20 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "gamma": {
       "name": "gamma",
@@ -167,20 +221,27 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1.0
+        "value": 0.5
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "margin": {
       "name": "margin",
       "spec": {
         "type": "float",
         "size": "",
-        "default": "0",
+        "default": "0.4",
         "flag": "Optional",
         "description": "Float, relaxation factor for the loss. Defaults to `0.4`.",
         "dtype_candidates": [],
@@ -197,7 +258,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -207,23 +275,68 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: {{function_node __wrapped__Max_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 0 dimension(s) [Op:Max] name: "
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "InvalidArgumentError",
-    "error": "{{function_node __wrapped__Max_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 0 dimension(s) [Op:Max] name: ",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/losses/losses.py\", line 2706, in circle\n    n_loss = ops.logsumexp(\n        ops.where(negative_mask, neg_wdists, float(\"-inf\")),\n        axis=1,\n    )\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 263, in logsumexp\n    return backend.math.logsumexp(x, axis=axis, keepdims=keepdims)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 51, in logsumexp\n    return tf.math.reduce_logsumexp(x, axis=axis, keepdims=keepdims)\n           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Max_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid reduction dimension (1 for input with 0 dimension(s) [Op:Max] name: \n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        3
+      ],
+      "dtype": "float32",
+      "numel": 3,
+      "preview": [
+        0.0,
+        30.2759952545166,
+        30.2759952545166
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "y_true",
+      "y_pred"
+    ],
+    "skipped_optional": [
+      "ref_labels",
+      "ref_embeddings",
+      "remove_diagonal",
+      "gamma",
+      "margin"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(ref_labels_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(ref_embeddings_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.losses.circle.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

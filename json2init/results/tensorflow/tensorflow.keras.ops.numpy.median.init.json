@@ -15,14 +15,16 @@
         "description": "Input tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "x and keepdims must be compatible."
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,66 +32,94 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis": {
       "name": "axis",
       "spec": {
-        "type": "tensor",
+        "type": "int|tensor",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "Axis or axes along which the medians are computed. Defaults to `axis=None` which is to compute the median(s) along a flattened version of the array.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "If not provided, computes the median(s) along a flattened version of the array.",
+          "axis must satisfy -rank(x) <= axis < rank(x)"
+        ]
       },
-      "chosen_type": "tensor",
-      "include_in_base_call": true,
+      "chosen_type": "int",
+      "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "kind": "literal",
+        "value": 0
       },
       "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "scalar_delta",
+        "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "keepdims": {
       "name": "keepdims",
       "spec": {
-        "type": "",
+        "type": "bool",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "If this is set to `True`, the axes which are reduce are left in the result as dimensions with size one.",
-        "dtype_candidates": [],
+        "dtype_candidates": [
+          "bool"
+        ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "x and keepdims must be compatible."
+        ]
       },
-      "chosen_type": "if this is set to `true`",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: if this is set to `true`"
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -98,16 +128,59 @@
     "description": "The output tensor."
   },
   "constraints": [
-    "x must be compatible with the array API."
+    "x and keepdims must be compatible."
   ],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'keepdims' unresolved: unhandled chosen type: if this is set to `true`"
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "axis",
+      "keepdims"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.median.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

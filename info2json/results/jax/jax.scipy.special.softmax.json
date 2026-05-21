@@ -10,20 +10,19 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x cannot be None"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "axis": {
-      "type": "int",
+      "type": "int|tuple",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "the axis or axes along which the softmax should be computed. The softmax output summed across these dimensions should sum to :math:`1`. ``None`` means all axes.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "axis must satisfy 0 <= axis < rank(x) if axis >= 0 else axis <= -rank(x)",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     }

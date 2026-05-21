@@ -10,6 +10,7 @@
       "description": "int. Dimension of the rows of the returned array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "M": {
@@ -20,16 +21,31 @@
       "description": "optional, int. Dimension of the columns of the returned array. If not specified, then ``M = N``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "k": {
-      "type": "int|float|tensor|dtype",
+      "type": "int|tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "optional, int, default=0. Specifies the sub-diagonal on and below which the array is filled with ones. ``k=0`` refers to main diagonal, ``k<0`` refers to sub-diagonal below the main diagonal and ``k>0`` refers to sub-diagonal above the main diagonal.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "k must be positive"
+      ]
+    },
+    "dtype": {
+      "type": "float|tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "optional, int, default=0. Specifies the sub-diagonal on and below which the array is filled with ones. ``k=0`` refers to main diagonal, ``k<0`` refers to sub-diagonal below the main diagonal and ``k>0`` refers to sub-diagonal above the main diagonal. dtype: optional, data type of the returned array. The default type is float.",
+      "description": "optional, data type of the returned array. The default type is float.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

@@ -10,16 +10,18 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "if x is complex, output will also be complex",
-        "if x is negative real number, output will be nan"
+        "if x is negative, returns nan"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "complex or float",
+    "numbers": "complex64, float32",
     "description": "An array containing the non-negative square root of the elements of ``x``."
   },
-  "constraints": []
+  "constraints": [
+    "output dtype matches input dtype when possible"
+  ]
 }

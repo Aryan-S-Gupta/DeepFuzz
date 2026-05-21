@@ -12,7 +12,11 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "0 < dim(mask) <= dim(tensor)",
+        "K must be known statically",
+        "mask's shape must match the first K dimensions of tensor's shape"
+      ]
     },
     "axis": {
       "type": "int|tensor",
@@ -22,17 +26,9 @@
       "description": "A 0-D int Tensor representing the axis in `tensor` to mask from. By default, axis is 0 which will mask from the first dimension. Otherwise K + axis <= N.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for this operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "By default, axis is 0 which will mask from the first dimension. Otherwise K + axis <= dim(tensor)"
+      ]
     }
   },
   "output": {
@@ -40,5 +36,7 @@
     "numbers": "1",
     "description": "(N-K+1)-dimensional tensor populated by entries in `tensor` corresponding to `True` values in `mask`."
   },
-  "constraints": []
+  "constraints": [
+    "If shapes do not conform, ValueError is raised"
+  ]
 }

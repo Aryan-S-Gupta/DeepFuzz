@@ -11,7 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x shape must match output shape"
+        "x and output must have broadcast-compatible shapes",
+        "Note that `y[0]` is the Nyquist component only if `len(x)` is even"
       ]
     },
     "axes": {
@@ -22,17 +23,9 @@
       "description": "`int` or shape `tuple`, optional Axes over which to shift. Default is None, which shifts all axes.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "An optional name for the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Defaults to None, which shifts all axes"
+      ]
     }
   },
   "output": {

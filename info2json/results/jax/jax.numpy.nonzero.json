@@ -10,42 +10,38 @@
       "description": "N-dimensional array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "fill_value type matches a type"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "size": {
       "type": "int|number",
       "size": "",
-      "default": "zero",
+      "default": "",
       "flag": "Optional",
       "description": "optional static integer specifying the number of nonzero entries to return. If there are more nonzero elements than the specified ``size``, then indices will be truncated at the end. If there are fewer nonzero elements than the specified size, then indices will be padded with ``fill_value``, which defaults to zero.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "size must be nonzero",
-        "size must be statically specified for use within JAX transformations"
+        "size must be nonzero"
       ]
     },
     "fill_value": {
-      "type": "int|float",
+      "type": "",
       "size": "",
-      "default": "0",
+      "default": "",
       "flag": "Optional",
       "description": "optional padding value when ``size`` is specified. Defaults to 0.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "fill_value type matches a type"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "tuple",
-    "numbers": "one or more",
+    "numbers": "1",
     "description": "Tuple of JAX Arrays of length ``a.ndim``, containing the indices of each nonzero value."
   },
-  "constraints": [
-    "fill_value type matches a type"
-  ]
+  "constraints": []
 }

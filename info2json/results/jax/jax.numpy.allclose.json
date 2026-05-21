@@ -10,9 +10,8 @@
       "description": "first input array to compare.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "a, b: broadcast-compatible shapes"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "b": {
       "type": "tensor",
@@ -22,28 +21,29 @@
       "description": "second input array to compare.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "a, b: broadcast-compatible shapes"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "rtol": {
-      "type": "number",
+      "type": "ArrayLike",
       "size": "",
       "default": "1e-05",
       "flag": "Optional",
       "description": "relative tolerance used for approximate equality. Default = 1e-05.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "atol": {
-      "type": "number",
+      "type": "ArrayLike",
       "size": "",
       "default": "1e-08",
       "flag": "Optional",
       "description": "absolute tolerance used for approximate equality. Default = 1e-08.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "equal_nan": {
@@ -56,15 +56,14 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "bool|number|tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "Boolean scalar array indicating whether the input arrays are element-wise approximately equal within the specified tolerances."
   },
-  "constraints": [
-    "a, b: broadcast-compatible shapes"
-  ]
+  "constraints": []
 }

@@ -2,14 +2,39 @@
   "api_name": "binary_cross_entropy_with_logits",
   "module_path": "torch.distributions.bernoulli",
   "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of arbitrary shape as unnormalized scores (often referred to as logits).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "target": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Tensor of the same shape as input with values between 0 and 1",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "target must have the same shape as input"
+      ]
+    },
     "weight": {
       "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "a manual rescaling weight if provided it's repeated to match input tensor shape",
+      "description": "a manual rescaling weight. If provided, the dimension of weight supports :ref:`broadcasting to a common shape <broadcasting-semantics>` with respect to the input (and target) shape.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "size_average": {
@@ -22,6 +47,7 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "reduce": {
@@ -34,19 +60,22 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "reduction": {
       "type": "string|number",
       "size": "",
-      "default": "'mean'",
+      "default": "",
       "flag": "Optional",
       "description": "Specifies the reduction to apply to the output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will be applied, ``'mean'``: the sum of the output will be divided by the number of elements in the output, ``'sum'``: the output will be summed. Note: :attr:`size_average` and :attr:`reduce` are in the process of being deprecated, and in the meantime, specifying either of those two args will override :attr:`reduction`. Default: ``'mean'``",
       "dtype_candidates": [],
       "enum_values": [
+        "none",
         "mean",
         "sum"
       ],
+      "case_insensitive": false,
       "constraints": []
     },
     "pos_weight": {
@@ -57,33 +86,15 @@
       "description": "a weight of positive examples to be broadcasted with target. Must be a tensor with equal size along the class dimension to the number of classes. Pay close attention to PyTorch's broadcasting semantics in order to achieve the desired operations. For a target of size [B, C, H, W] (where B is batch size) pos_weight of size [B, C, H, W] will apply different pos_weights to each element of the batch or [C, H, W] the same pos_weights across the batch. To apply the same positive weight along all spatial dimensions for a 2D multi-class target [C, H, W] use: [C, 1, 1]. Default: ``None``",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
+        "pos_weight must be 2-D",
         "pos_weight must be positive"
       ]
-    },
-    "input": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Tensor of arbitrary shape as unnormalized scores (often referred to as logits).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "target": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Tensor of the same shape as input with values between 0 and 1",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },

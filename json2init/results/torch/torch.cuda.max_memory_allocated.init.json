@@ -8,11 +8,14 @@
     "device": {
       "name": "device",
       "spec": {
-        "type": "torch.device|int",
+        "type": "int|device",
         "size": "",
         "default": "",
         "flag": "Optional",
-        "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`,",
+        "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -22,16 +25,23 @@
         "value": 1
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "enum_switch",
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "int",
     "numbers": "",
-    "description": "peak allocated memory since the beginning of statistic for the current device."
+    "description": ""
   },
   "constraints": [],
   "spec_ready": true,
@@ -50,8 +60,28 @@
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "device"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(device_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.cuda.max_memory_allocated.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -1,0 +1,240 @@
+{
+  "api_full_name": "tensorflow.random.poisson",
+  "api_name": "poisson",
+  "module_path": "tensorflow.random",
+  "import_path": "tensorflow.random.poisson",
+  "backend": "tensorflow",
+  "params": {
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "int|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A 1-D integer Tensor or Python array. The shape of the output samples to be drawn per \"rate\"-parameterized distribution.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "shape must be 1-D"
+        ]
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "lam": {
+      "name": "lam",
+      "spec": {
+        "type": "tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A Tensor or Python value or N-D array of type `dtype`. `lam` provides the rate parameter(s) describing the poisson distribution(s) to sample.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "tf.float32",
+        "flag": "Optional",
+        "description": "The type of the output: `float16`, `float32`, `float64`, `int32` or `int64`.",
+        "dtype_candidates": [
+          "int32",
+          "int64",
+          "float16",
+          "float32",
+          "float64"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "seed": {
+      "name": "seed",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A Python integer. Used to create a random seed for the distributions. See `tf.random.set_seed` for behavior.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "a `Tensor` of shape `tf.concat([shape, tf.shape(lam)], axis=0)` with values of type `dtype`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 8,
+      "preview": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        4.0,
+        1.0,
+        3.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "shape",
+      "lam"
+    ],
+    "skipped_optional": [
+      "dtype",
+      "seed"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "shape.rank == 1",
+    "shape.dtype in {int32,int64}",
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(shape)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(lam_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.random.poisson.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

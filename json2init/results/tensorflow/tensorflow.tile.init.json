@@ -1,0 +1,129 @@
+{
+  "api_full_name": "tensorflow.tile",
+  "api_name": "tile",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.tile",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Can be of any rank.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "The output tensor's i'th dimension has `params.input.dims(i) * params.multiples[i]` elements, dimension. For example, tiling a tensor by a 1-D tensor produces a tensor with the specified shape and dtype."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "multiples": {
+      "name": "multiples",
+      "spec": {
+        "type": "number|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 1-D. Length must be the same as the number of dimensions in `input`",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "int32",
+          "int64"
+        ],
+        "constraints": [
+          "1-D.",
+          "Must be one of the following types: `int32`, `int64`.",
+          "Length must be the same as the number of dimensions in input",
+          "multiples must be 1-D",
+          "multiples must be one of int32, int64",
+          "The output tensor's i'th dimension has `params.input.dims(i) * params.multiples[i]` elements, dimension. For example, tiling a tensor by a 1-D tensor produces a tensor with the specified shape and dtype."
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": [
+    "The output tensor's i'th dimension has `params.input.dims(i) * params.multiples[i]` elements, dimension. For example, tiling a tensor by a 1-D tensor produces a tensor with the specified shape and dtype."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Cannot convert 1.0 to EagerTensor of dtype int32"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Cannot convert 1.0 to EagerTensor of dtype int32",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 12183, in tile\n    _result = pywrap_tfe.TFE_Py_FastPathExecute(\n      _ctx, \"Tile\", name, input, multiples)\nTypeError: Cannot convert 1.0 to EagerTensor of dtype int32\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.tile.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

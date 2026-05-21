@@ -18,30 +18,21 @@
         "float64"
       ],
       "constraints": [
-        "must be non-empty",
-        "logits must be one of half, float32, float64",
-        "logits must be non-empty Tensor"
+        "must be one of the following types: half, float32, float64",
+        "logits must be one of half, float32, float64"
       ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "-1 which",
+      "default": "",
       "flag": "Optional",
       "description": "The dimension softmax would be performed on. The default is -1 which indicates the last dimension.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "unspecified",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The dimension softmax would be performed on. The default is -1 which indicates the last dimension. Must satisfy -rank(input) <= axis < rank(input)"
+      ]
     }
   },
   "output": {

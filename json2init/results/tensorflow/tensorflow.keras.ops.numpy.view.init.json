@@ -8,40 +8,96 @@
     "x": {
       "name": "x",
       "spec": {
-        "type": "float|tensor|dtype",
+        "type": "tensor",
         "size": "",
         "default": "",
         "flag": "Required",
-        "description": "Input tensor. dtype: Data-type descriptor of the returned view, e.g., float32 or int16.",
+        "description": "Input tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x and dtype must be provided"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "string|float",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Data-type descriptor of the returned view, e.g., float32 or int16.",
         "dtype_candidates": [
           "int16",
           "float32"
         ],
         "enum_values": [],
         "constraints": [
-          "must be a tensor",
-          "x and output must have the same shape"
+          "Data-type descriptor of the returned view, e.g., float32 or int16.",
+          "x and dtype must be provided"
         ]
       },
-      "chosen_type": "float",
-      "include_in_base_call": true,
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
+        "kind": "dtype",
+        "value": "float32"
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "noop_clone",
+        "type_switch"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "single",
+    "numbers": "1",
     "description": "View of a tensor with data type dtype."
   },
-  "constraints": [],
+  "constraints": [
+    "x and dtype must be provided"
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -54,15 +110,47 @@
     "materialization_reasons": [],
     "result_summary": {
       "python_type": "EagerTensor",
-      "shape": [],
+      "shape": [
+        2
+      ],
       "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
+      "numel": 2,
+      "preview": [
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "dtype"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.view.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

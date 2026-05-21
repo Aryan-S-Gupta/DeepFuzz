@@ -7,16 +7,28 @@ import csv
 import json
 import os
 import re
+import sys
 import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
-import requests
+try:
+    import requests
+except Exception:  # pragma: no cover
+    requests = None
 
 try:
     import pandas as pd
 except Exception:
     pd = None
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from common.pipeline_contract import API_DOC_TEXT, API_FULL_NAME, SIGNATURE, read_api_records
+from common.model_config import check_model_backend, load_model_config
+from common.result_io import atomic_write_csv, atomic_write_json, read_csv_dicts
 
 
 PROMPT_TEMPLATE = """You are an expert API reverse-engineering assistant.
@@ -84,6 +96,12 @@ Rules:
 15. Do not invent hidden semantics. If the documentation does not support a rule, omit it.
 16. Keep descriptions short and documentation-grounded.
 17. Output exactly one JSON object and nothing else.
+18. Only "description" may contain natural-language prose.
+19. "type", "default", "size", "shape", "dtype", "required", "enum", and "constraints" must be machine-readable only.
+20. If a machine field cannot be inferred, use the empty string "" instead of prose.
+21. Never put text like "a name for this operation", "if true", "defaults to ...", "on CPU", or "the direction in which ..." into executable fields.
+22. For TensorFlow APIs, omit optional "name" parameters unless the signature makes them required.
+23. Never create fake parameters from headings or prose such as Caution, Note, grads, types, matrix, scatter, or updated.
 """
 
 
@@ -99,6 +117,13 @@ BAD_PARAM_NAMES = {
     "default", "defaults", "note", "notes", "example", "examples",
     "dtype", "tensor", "tensors", "list", "tuple", "type",
     "if", "use", "see", "then", "else",
+    "caution", "warning", "warn", "grads", "types", "matrix", "scatter", "updated",
+    "examples", "description", "returns", "raises",
+}
+COMMON_REAL_PARAM_NAMES = {
+    "input", "inputs", "target", "output", "weight", "bias", "value", "data",
+    "x", "y", "axis", "axes", "dim", "dims", "index", "indices", "shape",
+    "size", "dtype", "device",
 }
 BAD_RETURN_TYPES = {"note", "notes", "example", "examples", "warning", "warnings"}
 
@@ -128,6 +153,11 @@ TYPE_CANON = [
     (r"\bdtype\b", "dtype"),
 ]
 
+DTYPE_NAMES = (
+    "int8", "int16", "int32", "int64", "uint8", "uint16", "uint32", "uint64",
+    "float16", "float32", "float64", "bfloat16", "bool", "complex64", "complex128",
+)
+
 HELPER_FUNCTION_TYPES = {
     "torch.accelerator.current_device_index",
     "torch.cuda.current_device",
@@ -139,11 +169,63 @@ PROSE_DEFAULT_PATTERNS = [
     r"\bif not given\b",
     r"\bcurrent device\b",
     r"\bcurrent device index\b",
+    r"\ba name for\b",
+    r"\bthe direction\b",
+    r"\bthe dimension\b",
+    r"\bif true\b",
+    r"\bwhether\b",
 ]
+
+PROSE_FIELD_PATTERNS = [
+    r"\ba name for\b",
+    r"\bif true\b",
+    r"\bif false\b",
+    r"\bwhether\b",
+    r"\bdefaults?\s+to\b",
+    r"\bthe direction\b",
+    r"\bthe dimension\b",
+    r"\bon cpu\b",
+    r"\bused to\b",
+    r"\bwill be\b",
+    r"\bmust be\b",
+    r"\bshould be\b",
+    r"\bwhen\b",
+    r"\bwhere\b",
+]
+
+MACHINE_DEFAULT_RE = re.compile(
+    r"^(?:None|null|True|False|true|false|[-+]?\d+(?:\.\d+)?(?:e[-+]?\d+)?|"
+    r"['\"][A-Za-z0-9_.:/ -]{0,80}['\"]|\[\]|\{\}|\(\)|"
+    r"(?:tf|tensorflow|torch|np|numpy)\.[A-Za-z_][\w.]*)$",
+    re.I,
+)
+
+MACHINE_SIZE_RE = re.compile(
+    r"^(?:scalar|rank\s*[0-9]+|[0-9]+\s*[- ]?d(?:im(?:ension)?s?)?|"
+    r"shape\s*(?:=|:)?\s*\[[^\]]*\]|shape\s*(?:=|:)?\s*\([^)]*\)|"
+    r"\[[0-9,\s-]*\]|\([0-9,\s-]*\)|tuple of length [0-9]+|list of length [0-9]+)$",
+    re.I,
+)
+
+MACHINE_TYPE_RE = re.compile(r"^[A-Za-z_][\w.\[\], |/:-]{0,160}$")
+
+
+def looks_like_prose(value: str) -> bool:
+    s = clean_text(value)
+    if not s:
+        return False
+    low = s.lower()
+    if any(re.search(pat, low) for pat in PROSE_FIELD_PATTERNS):
+        return True
+    words = re.findall(r"[A-Za-z]+", s)
+    return len(words) > 8 and not any(ch in s for ch in "[]()|,")
 
 
 def cleanup_type_field(type_str: str) -> str:
-    parts = [p.strip() for p in clean_text(type_str).split("|") if p.strip()]
+    raw = clean_text(type_str)
+    if looks_like_prose(raw) or not MACHINE_TYPE_RE.match(raw):
+        raw = extract_supported_types("", raw)
+    parts = [p.strip() for p in raw.split("|") if p.strip()]
     out: List[str] = []
     seen = set()
 
@@ -160,13 +242,38 @@ def cleanup_type_field(type_str: str) -> str:
 
 
 def cleanup_default_field(default_str: str) -> str:
+    if isinstance(default_str, str) and default_str.strip().lower() in {"none", "null"}:
+        return "None"
     s = clean_text(default_str)
     if not s:
         return ""
+    explicit = re.search(
+        r"\bdefaults?\s+(?:to|is)\s+(`?['\"]?(None|null|True|False|true|false|[-+]?\d+(?:\.\d+)?(?:e[-+]?\d+)?)[`'\"]?)",
+        s,
+        flags=re.I,
+    )
+    if explicit:
+        return cleanup_default_field(explicit.group(2))
+    explicit = re.search(
+        r"\bdefault\s*:\s*(`?['\"]?(None|null|True|False|true|false|[-+]?\d+(?:\.\d+)?(?:e[-+]?\d+)?)[`'\"]?)",
+        s,
+        flags=re.I,
+    )
+    if explicit:
+        return cleanup_default_field(explicit.group(2))
     low = s.lower()
     if any(re.search(pat, low) for pat in PROSE_DEFAULT_PATTERNS):
-        return "None"
-    return s
+        return ""
+    s = s.strip("` ")
+    if MACHINE_DEFAULT_RE.match(s):
+        return s
+    literal = re.match(r"^(?:[-+]?\d+(?:\.\d+)?|True|False|None|null|true|false)\b", s)
+    if literal:
+        return literal.group(0)
+    quoted = re.match(r"^[`'\"]([^`'\"]{0,80})[`'\"]$", s)
+    if quoted:
+        return json.dumps(quoted.group(1))
+    return ""
 
 
 def cleanup_size_field(size_str: str) -> str:
@@ -174,7 +281,13 @@ def cleanup_size_field(size_str: str) -> str:
     if not s:
         return ""
     bad_words = {"executor", "executors", "created", "different", "wait", "upon"}
-    if any(w in s.lower() for w in bad_words):
+    if any(w in s.lower() for w in bad_words) or looks_like_prose(s):
+        return ""
+    if MACHINE_SIZE_RE.match(s):
+        return s
+    if re.match(r"^\(?\s*(?:samples|batch|n|m|height|width|channels|rows|cols|[0-9]+)(?:\s*,\s*(?:samples|batch|n|m|height|width|channels|rows|cols|[0-9]+))*\s*\)?$", s, flags=re.I):
+        return s
+    if len(s.split()) > 4:
         return ""
     return s
 
@@ -270,29 +383,30 @@ def normalize_constraint_list(raw: Any) -> List[str]:
     return out
 
 
-def read_apis(input_path: str) -> Iterable[Tuple[str, str]]:
+def read_apis(input_path: str) -> Iterable[Tuple[str, str, str]]:
     suffix = Path(input_path).suffix.lower()
-    if suffix == ".csv":
-        with open(input_path, "r", encoding="utf-8", newline="") as f:
-            for row in csv.DictReader(f):
-                api = str(row.get("api_full_name", "") or "").strip()
-                doc = str(row.get("api_doc_text", "") or "")
-                if api:
-                    yield api, doc
-        return
-
-    if suffix in {".xlsx", ".xls"}:
-        if pd is None:
-            raise RuntimeError("pandas/openpyxl is required for Excel input")
-        df = pd.read_excel(input_path).fillna("")
-        for _, row in df.iterrows():
-            api = str(row.get("api_full_name", "") or "").strip()
-            doc = str(row.get("api_doc_text", "") or "")
+    if suffix in {".csv", ".xlsx", ".xls"}:
+        for row in read_api_records(input_path):
+            api = str(row.get(API_FULL_NAME, "") or "").strip()
+            doc = str(row.get(API_DOC_TEXT, "") or "")
+            signature = str(row.get(SIGNATURE, "") or "")
             if api:
-                yield api, doc
+                yield api, doc, signature
         return
 
     raise ValueError(f"Unsupported input file: {input_path}")
+
+
+def load_api_filter(path: str) -> Optional[set[str]]:
+    if not path:
+        return None
+    names: set[str] = set()
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            name = line.strip()
+            if name:
+                names.add(name)
+    return names
 
 
 def sanitize_filename(api_full_name: str) -> str:
@@ -306,6 +420,9 @@ def blank_param_spec() -> Dict[str, Any]:
         "default": "",
         "flag": "",
         "description": "",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": False,
         "constraints": [],
     }
 
@@ -321,9 +438,7 @@ def blank_spec() -> Dict[str, Any]:
 
 
 def write_json(path: str, data: Any) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    atomic_write_json(path, data)
 
 
 def is_suspicious_param_name(name: str) -> bool:
@@ -332,6 +447,8 @@ def is_suspicious_param_name(name: str) -> bool:
         return True
     if n in {"self", "cls"}:
         return True
+    if n in COMMON_REAL_PARAM_NAMES:
+        return False
     if n in BAD_PARAM_NAMES:
         return True
     if len(n) > 64:
@@ -405,6 +522,8 @@ def call_ollama(
     num_predict: int = 320,
     num_ctx: int = 2048,
 ) -> str:
+    if requests is None:
+        raise RuntimeError("requests is required for Ollama calls; install requirements.txt")
     url = host.rstrip("/") + "/api/generate"
     payload = {
         "model": model,
@@ -816,6 +935,18 @@ def parse_return_info(doc: str) -> Tuple[str, str, str]:
     return ret_type, ret_numbers, ret_desc
 
 
+def extract_dtype_candidates(*texts: str) -> List[str]:
+    out: List[str] = []
+    seen = set()
+    for text in texts:
+        t = str(text or "")
+        for dtype in DTYPE_NAMES:
+            if re.search(rf"\b{re.escape(dtype)}\b", t, flags=re.I) and dtype not in seen:
+                seen.add(dtype)
+                out.append(dtype)
+    return out
+
+
 def extract_literal_choices(*texts: str, param_names: Sequence[str]) -> List[str]:
     out: List[str] = []
     seen = set()
@@ -1015,8 +1146,8 @@ def compact_doc_for_prompt(doc: str) -> str:
 
     return "\n".join(kept[:250])
 
-def build_prompt(api_full_name: str, doc: str) -> str:
-    sig_line = find_signature_line(doc)
+def build_prompt(api_full_name: str, doc: str, signature: str = "") -> str:
+    sig_line = clean_text(signature) or find_signature_line(doc)
     sig_params, _, _ = parse_signature_params(sig_line)
 
     if sig_params:
@@ -1043,12 +1174,12 @@ def build_prompt(api_full_name: str, doc: str) -> str:
     )
 
 
-def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict[str, Any]:
+def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str, signature: str = "") -> Dict[str, Any]:
     if not isinstance(spec, dict):
         spec = blank_spec()
 
     module_path, _, api_name = api_full_name.rpartition(".")
-    sig_line = find_signature_line(doc)
+    sig_line = clean_text(signature) or find_signature_line(doc)
     sig_params, sig_defaults, sig_ret = parse_signature_params(sig_line)
 
     doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map = parse_doc_params(
@@ -1077,6 +1208,11 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
 
     final_params: Dict[str, Dict[str, Any]] = {}
     for name in supported_names:
+        lname = clean_text(name).lower()
+        if api_full_name.startswith("tensorflow.") and lname == "name":
+            continue
+        if is_suspicious_param_name(name):
+            continue
         llm_p = llm_params.get(name, {}) if isinstance(llm_params.get(name, {}), dict) else {}
 
         raw_type_text = clean_text(doc_type_map.get(name, "")) or clean_text(llm_p.get("type", ""))
@@ -1106,14 +1242,20 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
         param_obj = blank_param_spec()
         param_obj.update(
             {
-                "type": inferred_type,
-                "size": size,
-                "default": default,
+                "type": cleanup_type_field(inferred_type),
+                "size": cleanup_size_field(size),
+                "default": cleanup_default_field(default),
                 "flag": flag,
                 "description": desc,
+                "dtype_candidates": extract_dtype_candidates(raw_type_text, desc),
+                "enum_values": extract_literal_choices(raw_type_text, desc, param_names=supported_names),
+                "case_insensitive": False,
                 "constraints": normalize_constraint_list(llm_p.get("constraints")),
             }
         )
+        if api_full_name.startswith("jax.") and lname == "padding":
+            param_obj["enum_values"] = ["VALID", "SAME", "SAME_LOWER"]
+            param_obj["case_insensitive"] = True
         final_params[name] = param_obj
 
     raw_output = spec.get("output") if isinstance(spec.get("output"), dict) else {}
@@ -1185,13 +1327,15 @@ def validate_spec(spec: Dict[str, Any], api_full_name: str) -> None:
         t = clean_text(meta.get("type", ""))
         if any(x in t for x in HELPER_FUNCTION_TYPES):
             raise ValueError(f"{api_full_name}: helper function leaked into type for {name}")
+        if t and looks_like_prose(t):
+            raise ValueError(f"{api_full_name}: type field looks like prose for {name}")
 
         dflt = clean_text(meta.get("default", ""))
-        if dflt and "default" in dflt.lower() and dflt != "None":
+        if dflt and ("default" in dflt.lower() or looks_like_prose(dflt)) and dflt != "None":
             raise ValueError(f"{api_full_name}: prose default leaked into default field for {name}")
 
         sz = clean_text(meta.get("size", ""))
-        if sz and len(sz.split()) > 6:
+        if sz and (len(sz.split()) > 6 or looks_like_prose(sz)):
             raise ValueError(f"{api_full_name}: size field looks like prose for {name}")
 
     out_t = clean_text(spec["output"].get("type", ""))
@@ -1202,6 +1346,7 @@ def validate_spec(spec: Dict[str, Any], api_full_name: str) -> None:
 def process_one(
     api_full_name: str,
     api_doc_text: str,
+    signature: str,
     outdir: str,
     model: str,
     host: str,
@@ -1212,7 +1357,7 @@ def process_one(
     num_ctx: int,
     temperature: float,
 ) -> Tuple[bool, str]:
-    prompt = build_prompt(api_full_name=api_full_name, doc=api_doc_text)
+    prompt = build_prompt(api_full_name=api_full_name, doc=api_doc_text, signature=signature)
     last_err = ""
 
     for attempt in range(1, retries + 1):
@@ -1227,7 +1372,7 @@ def process_one(
                 num_ctx=num_ctx,
             )
             parsed = extract_json(raw)
-            normalized = normalize_schema(parsed, api_full_name, api_doc_text)
+            normalized = normalize_schema(parsed, api_full_name, api_doc_text, signature=signature)
             validate_spec(normalized, api_full_name)
             out_path = os.path.join(outdir, sanitize_filename(api_full_name))
             write_json(out_path, normalized)
@@ -1268,8 +1413,12 @@ def process_file(
     num_predict: int = 320,
     num_ctx: int = 2048,
     temperature: float = 0.0,
+    only_api_list: str = "",
 ) -> None:
     items = list(read_apis(input_path))
+    api_filter = load_api_filter(only_api_list)
+    if api_filter is not None:
+        items = [(api, doc, signature) for api, doc, signature in items if api in api_filter]
     if limit > 0:
         items = items[:limit]
 
@@ -1288,12 +1437,57 @@ def process_file(
         except Exception:
             processed_specs = []
 
-    failure_rows: List[Dict[str, str]] = []
-    if os.path.exists(failures_csv):
-        with open(failures_csv, "r", encoding="utf-8", newline="") as f:
-            failure_rows = list(csv.DictReader(f))
+    failure_rows: List[Dict[str, str]] = list(read_csv_dicts(failures_csv))
+    failure_by_api: Dict[str, Dict[str, str]] = {
+        str(row.get("api_full_name", "") or "").strip(): dict(row)
+        for row in failure_rows
+        if str(row.get("api_full_name", "") or "").strip()
+    }
 
-    for idx, (api, doc) in enumerate(items, start=1):
+    def flush_failures() -> None:
+        rows = [failure_by_api[key] for key in sorted(failure_by_api)]
+        atomic_write_csv(failures_csv, rows, ["api_full_name", "error", "classification"])
+
+    pending_items = [
+        (api, doc, signature)
+        for api, doc, signature in items
+        if overwrite or not os.path.exists(os.path.join(outdir, sanitize_filename(api)))
+    ]
+    cfg = load_model_config()
+    health_ok, health_message = check_model_backend(model, host, backend=cfg.backend)
+    if pending_items and not health_ok:
+        for api, _doc, _signature in pending_items:
+            failure_by_api[api] = {
+                "api_full_name": api,
+                "error": health_message,
+                "classification": "environment_model_unavailable",
+            }
+        summary.update({
+            "input": input_path,
+            "outdir": outdir,
+            "model": model,
+            "host": host,
+            "model_backend": cfg.backend,
+            "model_backend_available": False,
+            "model_backend_message": health_message,
+            "status": "environment_model_unavailable",
+            "total_requested": len(items),
+            "pending_without_generation": len(pending_items),
+            "num_predict": num_predict,
+            "num_ctx": num_ctx,
+            "temperature": temperature,
+        })
+        write_json(summary_path, summary)
+        flush_failures()
+        print(f"[model-unavailable] {health_message}")
+        return
+    summary.update({
+        "model_backend": cfg.backend,
+        "model_backend_available": bool(health_ok),
+        "model_backend_message": health_message,
+    })
+
+    for idx, (api, doc, signature) in enumerate(items, start=1):
         out_path = os.path.join(outdir, sanitize_filename(api))
         if os.path.exists(out_path) and not overwrite:
             print(f"[skip] {idx}/{len(items)} {api}")
@@ -1302,6 +1496,7 @@ def process_file(
         ok, msg = process_one(
             api_full_name=api,
             api_doc_text=doc,
+            signature=signature,
             outdir=outdir,
             model=model,
             host=host,
@@ -1317,6 +1512,8 @@ def process_file(
 
         if ok:
             summary["succeeded"] = int(summary.get("succeeded", 0)) + 1
+            failure_by_api.pop(api, None)
+            flush_failures()
             print(f"[ok] {idx}/{len(items)} {api} -> {msg}")
             if combined_out:
                 try:
@@ -1327,14 +1524,12 @@ def process_file(
                     pass
         else:
             summary["failed"] = int(summary.get("failed", 0)) + 1
-            failure = {"api_full_name": api, "error": msg}
+            classification = "environment_model_unavailable" if "connection" in msg.lower() or "model" in msg.lower() else "generation_or_normalization_error"
+            failure = {"api_full_name": api, "error": msg, "classification": classification}
             summary.setdefault("failures", []).append(failure)
-            failure_rows.append(failure)
+            failure_by_api[api] = failure
             print(f"[error] {idx}/{len(items)} {api}: {msg}")
-            with open(failures_csv, "w", encoding="utf-8", newline="") as f:
-                w = csv.DictWriter(f, fieldnames=["api_full_name", "error"])
-                w.writeheader()
-                w.writerows(failure_rows)
+            flush_failures()
 
         summary.update({
             "input": input_path,
@@ -1371,6 +1566,7 @@ def main() -> int:
     ap.add_argument("--num-predict", type=int, default=320, help="Ollama num_predict")
     ap.add_argument("--num-ctx", type=int, default=2048, help="Ollama num_ctx")
     ap.add_argument("--temperature", type=float, default=0.0, help="Ollama temperature")
+    ap.add_argument("--only-api-list", default="", help="Optional newline-delimited api_full_name allowlist")
     args = ap.parse_args()
 
     process_file(
@@ -1387,6 +1583,7 @@ def main() -> int:
         num_predict=args.num_predict,
         num_ctx=args.num_ctx,
         temperature=args.temperature,
+        only_api_list=args.only_api_list,
     )
     return 0
 

@@ -10,8 +10,9 @@
       "description": "scalar or array. Specifies the value after which the next number is found.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x and y must have broadcast-compatible shapes"
+        "x and y must have same shape or be broadcast compatible"
       ]
     },
     "y": {
@@ -22,17 +23,19 @@
       "description": "scalar or array. Specifies the direction towards which the next number is found. ``x`` and ``y`` should either have same shape or be broadcast compatible.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x and y must have broadcast-compatible shapes"
+        "must have same shape or be broadcast compatible with x",
+        "x and y must have same shape or be broadcast compatible"
       ]
     }
   },
   "output": {
     "type": "number|tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "An array containing the next representable number of ``x`` in the direction of ``y``."
   },
   "constraints": [
-    "x and y must have broadcast-compatible shapes"
+    "x and y must have same shape or be broadcast compatible"
   ]
 }

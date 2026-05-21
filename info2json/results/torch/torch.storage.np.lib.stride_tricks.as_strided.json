@@ -1,0 +1,71 @@
+{
+  "api_name": "as_strided",
+  "module_path": "torch.storage.np.lib.stride_tricks",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray Array to create a new.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "shape": {
+      "type": "int|sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "sequence of int, optional The shape of the new array. Defaults to ``x.shape``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "strides": {
+      "type": "int|sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "sequence of int, optional The strides of the new array. Defaults to ``x.strides``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "subok": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, optional If True, subclasses are preserved.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "writeable": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "bool, optional If set to False, the returned array will always be readonly. Otherwise it will be writable if the original array was. It is advisable to set this to False if possible (see Notes).",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray"
+  },
+  "constraints": []
+}

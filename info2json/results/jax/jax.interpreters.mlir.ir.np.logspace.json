@@ -47,9 +47,19 @@
     "base": {
       "type": "",
       "size": "",
-      "default": "10",
+      "default": "10.0",
       "flag": "Optional",
       "description": "array_like, optional The base of the log space. The step size between the elements in ``ln(samples) / ln(base)`` (or ``log_base(samples)``) is uniform. Default is 10.0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "int|float|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "dtype The type of the output array. If `dtype` is not given, the data type is inferred from `start` and `stop`. The inferred type will never be an integer; `float` is chosen even if the arguments would produce an array of integers.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -57,7 +67,7 @@
     "axis": {
       "type": "int|tensor",
       "size": "",
-      "default": "",
+      "default": "0",
       "flag": "Optional",
       "description": "int, optional The axis in the result to store the samples. Relevant only if start, stop, or base are array-like. By default (0), the samples will be along a new axis inserted at the beginning. Use -1 to get an axis at the end.",
       "dtype_candidates": [],

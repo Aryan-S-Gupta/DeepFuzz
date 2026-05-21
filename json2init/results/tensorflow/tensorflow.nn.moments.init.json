@@ -22,7 +22,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,14 +30,25 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axes": {
       "name": "axes",
@@ -49,127 +60,136 @@
         "description": "Array of ints. Axes along which to compute mean and variance.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "axes must be chosen from [0, 1, 2, 3]"
-        ]
+        "constraints": []
       },
-      "chosen_type": "tensor",
+      "chosen_type": "tuple",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
+        "kind": "literal",
+        "value": [
+          0
         ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "as_tuple": false
       },
       "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "shift": {
       "name": "shift",
       "spec": {
-        "type": "Not used in the current implementation",
+        "type": "",
         "size": "",
         "default": "",
         "flag": "Optional",
         "description": "Not used in the current implementation.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "shift is not used in the current implementation"
-        ]
+        "constraints": []
       },
-      "chosen_type": "not used in the current implementation",
+      "chosen_type": "not used in the current implementation.",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: not used in the current implementation"
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: not used in the current implementation.",
+      "call_kind": "positional_or_keyword"
     },
     "keepdims": {
       "name": "keepdims",
       "spec": {
-        "type": "bool",
+        "type": "",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "produce moments with the same dimensionality as the input.",
-        "dtype_candidates": [
-          "bool"
-        ],
+        "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "bool",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "Name used to scope the operations that compute the moments.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "scalar_delta"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "2",
+    "numbers": "1",
     "description": "Two `Tensor` objects: `mean` and `variance`."
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Value for attr 'Tidx' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Mean}}; Op<name=Mean; signature=input:T, reduction_indices:Tidx -> output:T; attr=keep_dims:bool,default=false; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_COMPLEX64, DT_INT64, DT_QINT8, DT_QUINT8, DT_QINT32, DT_BFLOAT16, DT_QINT16, DT_QUINT16, DT_UINT16, DT_COMPLEX128, DT_HALF, DT_UINT32, DT_UINT64]; attr=Tidx:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Mean] name: mean"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "InvalidArgumentError",
-    "error": "Value for attr 'Tidx' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Mean}}; Op<name=Mean; signature=input:T, reduction_indices:Tidx -> output:T; attr=keep_dims:bool,default=false; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_COMPLEX64, DT_INT64, DT_QINT8, DT_QUINT8, DT_QINT32, DT_BFLOAT16, DT_QINT16, DT_QUINT16, DT_UINT16, DT_COMPLEX128, DT_HALF, DT_UINT32, DT_UINT64]; attr=Tidx:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Mean] name: mean",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'Tidx' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Mean}}; Op<name=Mean; signature=input:T, reduction_indices:Tidx -> output:T; attr=keep_dims:bool,default=false; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_COMPLEX64, DT_INT64, DT_QINT8, DT_QUINT8, DT_QINT32, DT_BFLOAT16, DT_QINT16, DT_QUINT16, DT_UINT16, DT_COMPLEX128, DT_HALF, DT_UINT32, DT_UINT64]; attr=Tidx:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Mean] name: mean\n"
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 2
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "axes"
+    ],
+    "skipped_optional": [
+      "shift",
+      "keepdims"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axes valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axes)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.moments.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

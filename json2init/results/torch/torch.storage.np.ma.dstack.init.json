@@ -1,0 +1,78 @@
+{
+  "api_full_name": "torch.storage.np.ma.dstack",
+  "api_name": "dstack",
+  "module_path": "torch.storage.np.ma",
+  "import_path": "torch.storage.np.ma.dstack",
+  "backend": "torch",
+  "params": {
+    "tup": {
+      "name": "tup",
+      "spec": {
+        "type": "tuple|sequence",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "sequence of arrays The arrays must have the same shape along all but the third axis. 1-D or 2-D arrays must have the same shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "arrays must have the same shape along all but the third axis",
+          "1-D or 2-D arrays must have the same shape",
+          "tup must be 1-D"
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "3+",
+    "description": "------- ndarray The array formed by stacking the given arrays, will be at least 3-D."
+  },
+  "constraints": [
+    "arrays are stacked in sequence depth wise (along third axis)"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "_fromnxfunction_seq() missing 1 required positional argument: 'arys'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/ma/extras.py\", line 267, in wrapper\n    return _fromnxfunction(npfunc, *args, **kwargs)\nTypeError: _fromnxfunction_seq() missing 1 required positional argument: 'arys'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.ma.dstack.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

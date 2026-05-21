@@ -1,0 +1,23 @@
+bug_id,api,stage,category,target_library,target_version,testcase,input,command_to_reproduce,stdout_stderr_excerpt,traceback,signature,exit_code,signal,first_seen_at,duplicate_of,status,oracle_verdict,device_oracle
+bug-4b446a93f850132e,jax.numpy.tril_indices,mutation,crash_or_abort,jax,0.10.0,stage4/results/jax-thesis-all-coverage/execution_results/jax.numpy.tril_indices.results.json,json2init/results/jax/jax.numpy.tril_indices.init.json,python3 -m stage4.stage4_worker --init-path json2init/results/jax/jax.numpy.tril_indices.init.json --results-json stage4/results/jax-thesis-all-coverage/repro/repro_jax.numpy.tril_indices.init.json --mutation-budget 32 --seed 1590,"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured
+  self.warn(msg, slug=""module-not-measured"")
+/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured
+  self.warn(msg, slug=""module-not-measured"")
+/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured
+  self.warn(msg, slug=""module-not-measured"")
+/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured
+  self.warn(msg, slug=""module-not-measured"")
+/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured
+  self.coverage._warn(""No contexts were measured"")
+","isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",4b446a93f850132e,-9,SIGKILL,2026-05-12T05:32:29Z,,candidate,candidate_implementation_bug,{}
+bug-f724b12a43526cf3,jax.numpy.triu_indices,mutation,crash_or_abort,jax,0.10.0,stage4/results/jax-thesis-all-coverage/execution_results/jax.numpy.triu_indices.results.json,json2init/results/jax/jax.numpy.triu_indices.init.json,python3 -m stage4.stage4_worker --init-path json2init/results/jax/jax.numpy.triu_indices.init.json --results-json stage4/results/jax-thesis-all-coverage/repro/repro_jax.numpy.triu_indices.init.json --mutation-budget 32 --seed 1593,"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured
+  self.warn(msg, slug=""module-not-measured"")
+/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured
+  self.warn(msg, slug=""module-not-measured"")
+/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured
+  self.warn(msg, slug=""module-not-measured"")
+/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module jax was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured
+  self.warn(msg, slug=""module-not-measured"")
+/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured
+  self.coverage._warn(""No contexts were measured"")
+","isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",f724b12a43526cf3,-9,SIGKILL,2026-05-12T05:32:29Z,,candidate,candidate_implementation_bug,{}

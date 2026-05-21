@@ -12,45 +12,45 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "should be of numeric type, or string",
+        "x and y must have broadcast-compatible shapes if input is a list or tuple"
+      ]
     },
     "axis": {
-      "type": "int32 or int64 array_like",
+      "type": "int",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input), rank(input))`.",
-      "dtype_candidates": [
-        "int32",
-        "int64"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "input, axis, and keepdims must be compatible for reduction"
+        "must satisfy -rank(input) <= axis < rank(input)",
+        "axis must satisfy -rank(input) <= axis < rank(input)"
       ]
     },
     "keepdims": {
-      "type": "bool|dtype",
-      "size": "",
-      "default": "tf",
-      "flag": "Optional",
-      "description": "If true, retains reduced dimensions with length 1. dtype: The output dtype; defaults to `tf.int64`.",
-      "dtype_candidates": [
-        "bool",
-        "int64"
-      ],
-      "enum_values": [],
-      "constraints": [
-        "input, axis, and keepdims must be compatible for reduction"
-      ]
-    },
-    "name": {
-      "type": "string",
+      "type": "bool",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "tf.int64",
+      "flag": "Optional",
+      "description": "The output dtype; defaults to `tf.int64`.",
+      "dtype_candidates": [
+        "int64"
+      ],
       "enum_values": [],
       "constraints": []
     }
@@ -60,7 +60,5 @@
     "numbers": "1",
     "description": "The reduced tensor (number of nonzero values)."
   },
-  "constraints": [
-    "input, axis, and keepdims must be compatible for reduction"
-  ]
+  "constraints": []
 }

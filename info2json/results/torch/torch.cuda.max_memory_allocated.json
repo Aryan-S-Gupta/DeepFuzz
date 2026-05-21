@@ -3,18 +3,21 @@
   "module_path": "torch.cuda",
   "params": {
     "device": {
-      "type": "torch.device|int",
+      "type": "int|device",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`,",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "int",
     "numbers": "",
-    "description": "peak allocated memory since the beginning of statistic for the current device."
+    "description": ""
   },
   "constraints": []
 }

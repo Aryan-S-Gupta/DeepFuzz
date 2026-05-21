@@ -1,0 +1,136 @@
+{
+  "api_full_name": "jax.numpy.linalg.cond",
+  "api_name": "cond",
+  "module_path": "jax.numpy.linalg",
+  "import_path": "jax.numpy.linalg.cond",
+  "backend": "jax",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array of shape ``(..., M, N)`` for which to compute the condition number.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            3.0
+          ]
+        ]
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "p": {
+      "name": "p",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the order of the norm to use. One of ``{None, 1, -1, 2, -2, inf, -inf, 'fro'}``; see :func:`jax.numpy.linalg.norm` for the meaning of these. The default is ``p = None``, which is equivalent to ``p = 2``. If not in ``{None, 2, -2}`` then ``x`` must be square, i.e. ``M = N``.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "fro",
+          "jax.numpy.linalg.norm"
+        ],
+        "constraints": [
+          "p must be one of fro"
+        ]
+      },
+      "chosen_type": "the order of the norm to use. one of ``{none",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: the order of the norm to use. one of ``{none",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "array of shape ``x.shape[:-2]`` containing the condition number."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "p"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(p_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.linalg.cond.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

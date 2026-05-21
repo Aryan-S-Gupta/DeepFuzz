@@ -10,24 +10,26 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output must have broadcast-compatible shapes"
+      ]
     },
     "axis": {
       "type": "int|tensor",
       "size": "",
-      "default": "-1`; the last axis",
+      "default": "-1",
       "flag": "Optional",
       "description": "Axis along which to sort. If `None`, the tensor is flattened before sorting. Defaults to `-1`; the last axis.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be None or an integer in range [-rank(x), rank(x))"
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "single",
+    "numbers": "1",
     "description": "Sorted tensor."
   },
   "constraints": []

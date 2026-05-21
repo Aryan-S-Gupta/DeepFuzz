@@ -10,44 +10,41 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "discont": {
-      "type": "sequence|number",
+      "type": "sequence",
       "size": "",
-      "default": "period / 2",
+      "default": "",
       "flag": "Optional",
       "description": "the maximum allowable discontinuity in the sequence. The default is ``period / 2``",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must be non-negative",
-        "discont must be less than or equal to period"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "axis": {
-      "type": "int",
+      "type": "",
       "size": "",
       "default": "-1",
       "flag": "Optional",
       "description": "the axis along which to unwrap; defaults to -1",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must satisfy -rank(p) <= axis < rank(p)"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "period": {
-      "type": "number",
+      "type": "",
       "size": "",
-      "default": "math:`2\\pi",
+      "default": "6.283185307179586",
       "flag": "Optional",
       "description": "the period of the signal, which defaults to :math:`2\\pi`",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "discont must be less than or equal to period"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
@@ -55,7 +52,5 @@
     "numbers": "1",
     "description": "An unwrapped copy of ``p``."
   },
-  "constraints": [
-    "discont must be less than or equal to period"
-  ]
+  "constraints": []
 }

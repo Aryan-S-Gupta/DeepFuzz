@@ -3,15 +3,27 @@
   "module_path": "tensorflow.keras.ops",
   "params": {
     "x": {
-      "type": "tensor|dtype",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "A tensor or variable. dtype: The target type.",
+      "description": "A tensor or variable.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and dtype cannot be empty"
+        "x and dtype must be provided"
+      ]
+    },
+    "dtype": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The target type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and dtype must be provided"
       ]
     }
   },
@@ -20,5 +32,7 @@
     "numbers": "1",
     "description": "A safely casted tensor of the specified `dtype`."
   },
-  "constraints": []
+  "constraints": [
+    "x and dtype must be provided"
+  ]
 }

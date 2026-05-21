@@ -1,0 +1,25 @@
+{
+  "api_name": "power_draw",
+  "module_path": "torch.cuda",
+  "params": {
+    "device": {
+      "type": "int|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "int",
+    "numbers": "mW",
+    "description": "average power draw of the GPU sensor"
+  },
+  "constraints": [
+    "Each sample period may be between 1 second and 1/6 second, depending on the product being queried."
+  ]
+}

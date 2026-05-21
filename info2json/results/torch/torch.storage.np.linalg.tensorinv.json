@@ -1,0 +1,39 @@
+{
+  "api_name": "tensorinv",
+  "module_path": "torch.storage.np.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Tensor to 'invert'. Its shape must be 'square', i. e., ``prod(a.shape[:ind]) == prod(a.shape[ind:])``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "prod(a.shape[:ind]) == prod(a.shape[ind:])"
+      ]
+    },
+    "ind": {
+      "type": "int|number",
+      "size": "",
+      "default": "2",
+      "flag": "Optional",
+      "description": "int, optional Number of first indices that are involved in the inverse sum. Must be a positive integer, default is 2.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "ind > 0",
+        "ind must be positive"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "ndarray",
+    "description": "------- ndarray `a`'s tensordot inverse, shape ``a.shape[ind:] + a.shape[:ind]``."
+  },
+  "constraints": []
+}

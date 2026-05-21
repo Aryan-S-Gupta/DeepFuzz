@@ -1,0 +1,210 @@
+{
+  "api_full_name": "tensorflow.reverse_sequence",
+  "api_name": "reverse_sequence",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.reverse_sequence",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. The input to reverse.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "The input to reverse.",
+          "The elements of `seq_lengths` must obey `seq_lengths[i] <= input.dims[seq_axis]`"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "seq_lengths": {
+      "name": "seq_lengths",
+      "spec": {
+        "type": "tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. 1-D with length `input.dims(batch_axis)` and `max(seq_lengths) <= input.dims(seq_axis)`",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "int32",
+          "int64"
+        ],
+        "constraints": [
+          "Must be one of the following types: `int32`, `int64`.",
+          "1-D with length `input.dims(batch_axis)` and `max(seq_lengths) <= input.dims(seq_axis)`",
+          "seq_lengths must be 1-D",
+          "seq_lengths must be one of int32, int64",
+          "The elements of `seq_lengths` must obey `seq_lengths[i] <= input.dims[seq_axis]`"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "int32",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "seq_axis": {
+      "name": "seq_axis",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An `int`. The dimension which is partially reversed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "The dimension which is partially reversed.",
+          "The elements of `seq_lengths` must obey `seq_lengths[i] <= input.dims[seq_axis]`"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "batch_axis": {
+      "name": "batch_axis",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `0`. The dimension along which reversal is performed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Defaults to `0`. The dimension along which reversal is performed."
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A Tensor. Has the same type as input."
+  },
+  "constraints": [
+    "The elements of `seq_lengths` must obey `seq_lengths[i] <= input.dims[seq_axis]`"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Expected int for argument 'seq_dim' not None."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Expected int for argument 'seq_dim' not None.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 159, in make_int\n    raise TypeError(\"Expected int for argument '%s' not %s.\" %\n                    (arg_name, repr(v)))\nTypeError: Expected int for argument 'seq_dim' not None.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.reverse_sequence.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

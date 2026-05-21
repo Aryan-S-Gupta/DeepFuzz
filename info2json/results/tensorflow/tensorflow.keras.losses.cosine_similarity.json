@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have broadcast-compatible shapes.",
-        "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+        "If either `y_true` or `y_pred` is a zero vector, cosine similarity is undefined."
       ]
     },
     "y_pred": {
@@ -24,22 +23,19 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have broadcast-compatible shapes.",
-        "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+        "If either `y_true` or `y_pred` is a zero vector, cosine similarity is undefined."
       ]
     },
     "axis": {
-      "type": "int32",
+      "type": "int",
       "size": "",
       "default": "-1",
       "flag": "Optional",
       "description": "Axis along which to determine similarity. Defaults to `-1`.",
-      "dtype_candidates": [
-        "int32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be a valid axis value."
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },
@@ -49,7 +45,6 @@
     "description": "Cosine similarity tensor."
   },
   "constraints": [
-    "y_true and y_pred must have broadcast-compatible shapes.",
-    "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+    "If either `y_true` or `y_pred` is a zero vector, cosine similarity is undefined."
   ]
 }

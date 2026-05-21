@@ -10,21 +10,25 @@
       "description": "A 2-D float `Tensor` of shape `[num_boxes, 4]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "boxes must be 2-D"
+      ]
     },
     "scores": {
       "type": "float|tensor",
-      "size": "",
+      "size": "1-D",
       "default": "",
       "flag": "Required",
       "description": "A 1-D float `Tensor` of shape `[num_boxes]` representing a single score corresponding to each box (each row of boxes).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "scores must be 1-D"
+      ]
     },
     "max_output_size": {
       "type": "int|number|tensor",
-      "size": "",
+      "size": "scalar",
       "default": "",
       "flag": "Required",
       "description": "A scalar integer `Tensor` representing the maximum number of boxes to be selected by non-max suppression.",
@@ -34,9 +38,9 @@
     },
     "iou_threshold": {
       "type": "float|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
+      "size": "0-D",
+      "default": "0.5",
+      "flag": "Optional",
       "description": "A 0-D float tensor representing the threshold for deciding whether boxes overlap too much with respect to IOU.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -44,9 +48,9 @@
     },
     "score_threshold": {
       "type": "float|tensor",
-      "size": "",
+      "size": "0-D",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A 0-D float tensor representing the threshold for deciding when to remove boxes based on score.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -54,20 +58,10 @@
     },
     "soft_nms_sigma": {
       "type": "float|tensor",
-      "size": "",
-      "default": "",
+      "size": "0-D",
+      "default": "0.0",
       "flag": "Optional",
       "description": "A 0-D float tensor representing the sigma parameter for Soft NMS; see Bodla et al (c.f. https://arxiv.org/abs/1704.04503). When `soft_nms_sigma=0.0` (which is default), we fall back to standard (hard) NMS.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

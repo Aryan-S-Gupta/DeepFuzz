@@ -15,6 +15,7 @@
         "description": "a tensor to treat as a nested tensor OR a list / tuple of tensors with the same ndim",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
@@ -22,7 +23,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,12 +31,53 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "list|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "the desired type of returned nested tensor. Default: if None, same :class:`torch.dtype` as leftmost tensor in the list.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
       ],
       "unresolved_reason": ""
     },
@@ -44,11 +86,12 @@
       "spec": {
         "type": "list|tensor|device",
         "size": "",
-        "default": "if None, same :class:`torch",
+        "default": "",
         "flag": "Optional",
         "description": "the desired device of returned nested tensor. Default: if None, same :class:`torch.device` as leftmost tensor in the list",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
@@ -56,7 +99,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -64,12 +107,22 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -78,11 +131,12 @@
       "spec": {
         "type": "tensor",
         "size": "",
-        "default": "if None, the strided layout",
+        "default": "",
         "flag": "Optional",
         "description": "the desired layout of returned nested tensor. Only strided and jagged layouts are supported. Default: if None, the strided layout.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
@@ -90,7 +144,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -98,18 +152,28 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },
@@ -128,10 +192,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/workspace/pytorch/torch/nested/__init__.py\", line 88, in as_nested_tensor\n    raise RuntimeError(\nRuntimeError: as_nested_tensor(): Expected tensor argument to have dim() > 1\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/nested/__init__.py\", line 88, in as_nested_tensor\n    raise RuntimeError(\n        \"as_nested_tensor(): Expected tensor argument to have dim() > 1\"\n    )\nRuntimeError: as_nested_tensor(): Expected tensor argument to have dim() > 1\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.nested.as_nested_tensor.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

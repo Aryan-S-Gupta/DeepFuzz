@@ -11,14 +11,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape is arbitrary",
-        "x and return value must have compatible shapes"
+        "The shape of x is not known from the documentation.",
+        "For `x <= -1`, `f(x) = 0`.",
+        "For `-1 < x < 1`, `f(x) = 0.5 * (x + 1)`.",
+        "For `x >= 1`, `f(x) = 1`."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floats in range [0, 1]",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": []

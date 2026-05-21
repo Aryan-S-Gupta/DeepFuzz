@@ -1,0 +1,26 @@
+{
+  "api_name": "laggauss",
+  "module_path": "torch.storage.np.polynomial.laguerre",
+  "params": {
+    "deg": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int Number of sample points and weights. It must be >= 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "deg must be >= 1",
+        "deg is a required parameter"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "------- ndarray 1-D ndarray containing the sample points. y : ndarray 1-D ndarray containing the weights."
+  },
+  "constraints": []
+}

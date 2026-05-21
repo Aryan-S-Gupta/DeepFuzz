@@ -13,11 +13,21 @@
       "constraints": []
     },
     "axis": {
-      "type": "int|tensor|dtype",
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "integer specifying the axis over which to reduce. default=0",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "integer specifying the axis over which to reduce. default=0 dtype: optionally specify the type of the output array.",
+      "description": "optionally specify the type of the output array.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -26,7 +36,7 @@
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Unused by JAX",
       "dtype_candidates": [],
       "enum_values": [],
@@ -35,7 +45,7 @@
     "keepdims": {
       "type": "",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "If True, reduced axes are left in the result with size 1. If False (default) then reduced axes are squeezed out.",
       "dtype_candidates": [],

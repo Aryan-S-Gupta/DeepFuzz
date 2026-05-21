@@ -17,21 +17,27 @@
           "bool"
         ],
         "enum_values": [],
-        "constraints": [
-          "symbool must be a valid SymBool"
-        ]
+        "case_insensitive": false,
+        "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -52,12 +58,24 @@
     "materialization_reasons": [],
     "result_summary": {
       "python_type": "int",
-      "value": 1
+      "value": 0
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "symbool"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.cast_symbool_to_symint_guardless.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

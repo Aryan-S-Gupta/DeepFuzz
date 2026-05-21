@@ -1,0 +1,70 @@
+{
+  "api_full_name": "torch.storage.np.linalg.eigvals",
+  "api_name": "eigvals",
+  "module_path": "torch.storage.np.linalg",
+  "import_path": "torch.storage.np.linalg.eigvals",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "(..., M, M) array_like A complex- or real-valued matrix whose eigenvalues will be computed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "M must be an integer",
+          "a must be passed as an argument"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "1",
+    "description": "------- (..., M,) ndarray The eigenvalues, each repeated according to its multiplicity. They are not necessarily ordered, nor are they necessarily real for real matrices."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: 0-dimensional array given. Array must be at least two-dimensional"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "LinAlgError",
+    "error": "0-dimensional array given. Array must be at least two-dimensional",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 241, in _assert_stacked_square\n    m, n = a.shape[-2:]\n    ^^^^\nValueError: not enough values to unpack (expected 2, got 0)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 1241, in eigvals\n    _assert_stacked_square(a)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 243, in _assert_stacked_square\n    raise LinAlgError('%d-dimensional array given. Array must be '\n            'at least two-dimensional' % a.ndim)\nnumpy.linalg.LinAlgError: 0-dimensional array given. Array must be at least two-dimensional\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.linalg.eigvals.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

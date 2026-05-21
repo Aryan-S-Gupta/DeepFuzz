@@ -10,26 +10,29 @@
       "description": "array of values to be binned. May be any size or dimension.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "bins": {
       "type": "number|tensor",
       "size": "",
-      "default": "10)",
+      "default": "10",
       "flag": "Optional",
       "description": "Specify the number of bins in the histogram (default: 10). ``bins`` may also be an array specifying the locations of the bin edges.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "range": {
       "type": "tuple",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "tuple of scalars. Specifies the range of the data. If not specified, the range is inferred from the data.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "weights": {
@@ -40,6 +43,7 @@
       "description": "An optional array specifying the weights of the data points. Should be broadcast-compatible with ``a``. If not specified, each data point is weighted equally.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "density": {
@@ -50,6 +54,7 @@
       "description": "If True, return the normalized histogram in units of counts per unit length. If False (default) return the (weighted) counts per bin.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

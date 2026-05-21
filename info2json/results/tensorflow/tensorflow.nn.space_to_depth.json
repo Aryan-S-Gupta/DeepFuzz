@@ -10,7 +10,11 @@
       "description": "A `Tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "4-D",
+        "The height and width dimensions of the input tensor must be divisible by block_size.",
+        "For an input tensor with larger depth, the output element shape will have a depth equal to the product of block_size * block_size."
+      ]
     },
     "block_size": {
       "type": "int",
@@ -21,34 +25,19 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        ">= 2",
-        "The input tensor's height and width must be divisible by block_size.",
-        "block_size determines the size of the spatial block to move dimensions to depth."
+        "The height and width dimensions of the input tensor must be divisible by block_size.",
+        "For an input tensor with larger depth, the output element shape will have a depth equal to the product of block_size * block_size."
       ]
     },
     "data_format": {
       "type": "string",
       "size": "",
-      "default": "\"NHWC\"",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `string` from: `\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"`. Defaults to `\"NHWC\"`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "data_format indicates the data format of the input and output tensors, with a default value of 'NHWC'."
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "name is an optional name for the operation."
-      ]
+      "constraints": []
     }
   },
   "output": {
@@ -56,5 +45,8 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `input`."
   },
-  "constraints": []
+  "constraints": [
+    "The height and width dimensions of the input tensor must be divisible by block_size.",
+    "For an input tensor with larger depth, the output element shape will have a depth equal to the product of block_size * block_size."
+  ]
 }

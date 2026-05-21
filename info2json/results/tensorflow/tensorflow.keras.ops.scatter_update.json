@@ -10,7 +10,10 @@
       "description": "A tensor, the tensor to be updated.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If indices is a 2D tensor of shape (num_updates, n), then updates must be a (num_updates, inputs.shape[n:])-D tensor.",
+        "If indices is a 2D tensor of shape (num_updates, k), where k < n, then updates must be a (num_updates, inputs.shape[k:])-D tensor."
+      ]
     },
     "indices": {
       "type": "tuple|list|number|tensor",
@@ -20,7 +23,11 @@
       "description": "A tensor or list/tuple of shape `(N, inputs.ndim)`, specifying indices to update. `N` is the number of indices to update, must be equal to the first dimension of `updates`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "N is the number of indices to update, must be equal to the first dimension of updates.",
+        "If indices is a 2D tensor of shape (num_updates, n), then updates must be a (num_updates, inputs.shape[n:])-D tensor.",
+        "If indices is a 2D tensor of shape (num_updates, k), where k < n, then updates must be a (num_updates, inputs.shape[k:])-D tensor."
+      ]
     },
     "updates": {
       "type": "tensor",
@@ -30,7 +37,10 @@
       "description": "A tensor, the new values to be put to `inputs` at `indices`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If indices is a 2D tensor of shape (num_updates, n), then updates must be a (num_updates, inputs.shape[n:])-D tensor.",
+        "If indices is a 2D tensor of shape (num_updates, k), where k < n, then updates must be a (num_updates, inputs.shape[k:])-D tensor."
+      ]
     }
   },
   "output": {
@@ -38,5 +48,8 @@
     "numbers": "1",
     "description": "A tensor, has the same shape and dtype as `inputs`."
   },
-  "constraints": []
+  "constraints": [
+    "If indices is a 2D tensor of shape (num_updates, n), then updates must be a (num_updates, inputs.shape[n:])-D tensor.",
+    "If indices is a 2D tensor of shape (num_updates, k), where k < n, then updates must be a (num_updates, inputs.shape[k:])-D tensor."
+  ]
 }

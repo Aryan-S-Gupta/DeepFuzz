@@ -1,0 +1,3620 @@
+{
+  "schema_version": "3.0",
+  "library": "tensorflow",
+  "phase": "oracle_round_2",
+  "total_error_records": 418,
+  "unique_failed_apis": 199,
+  "root_cause_by_api": {
+    "tensorflow.image.central_crop": {
+      "root_stage": "stage4_runtime",
+      "error_count": 4,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.image.central_crop",
+        "stage": "stage4_runtime",
+        "error_type": "invalid_valid_mutation",
+        "message": "central_fraction must be within (0, 1]",
+        "signature": "286f6f2a1a64928d",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.image.central_crop.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failures.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.image.encode_jpeg": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.image.encode_jpeg",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=12 < 60",
+        "message": "selected_function_line_coverage_percent=12 < 60",
+        "signature": "0c4ad3a527a578f2",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.image.encode_png": {
+      "root_stage": "stage4_runtime",
+      "error_count": 3,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.image.encode_png",
+        "stage": "stage4_runtime",
+        "error_type": "AttributeError",
+        "message": "'bytes' object has no attribute 'dtype'",
+        "signature": "9c5ce3a8028340f7",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.image.encode_png.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.io.decode_compressed": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.io.decode_compressed",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25.5319 < 60",
+        "message": "selected_function_line_coverage_percent=25.5319 < 60",
+        "signature": "63581577eba2c3a8",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.io.encode_jpeg": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.io.encode_jpeg",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=12 < 60",
+        "message": "selected_function_line_coverage_percent=12 < 60",
+        "signature": "269c7034da6f1407",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.io.encode_png": {
+      "root_stage": "stage4_runtime",
+      "error_count": 3,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.io.encode_png",
+        "stage": "stage4_runtime",
+        "error_type": "AttributeError",
+        "message": "'bytes' object has no attribute 'dtype'",
+        "signature": "0a810c13e15bfad5",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.io.encode_png.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.io.parse_tensor": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.io.parse_tensor",
+        "stage": "stage4_coverage",
+        "error_type": "uncovered_api",
+        "message": "Stage 4 did not cover API; valid_programs=0 bugs=0",
+        "signature": "2060a88480caa948",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.adaptive_average_pool": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.adaptive_average_pool",
+        "stage": "stage4_runtime",
+        "error_type": "ValueError",
+        "message": "too many values to unpack (expected 2)",
+        "signature": "15eca903a9c50472",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.adaptive_average_pool.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.adaptive_max_pool": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.adaptive_max_pool",
+        "stage": "stage4_runtime",
+        "error_type": "invalid_valid_mutation",
+        "message": "too many values to unpack (expected 2)",
+        "signature": "3a4a9882b4fe600f",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.adaptive_max_pool.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failures.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.cholesky": {
+      "root_stage": "stage4_coverage",
+      "error_count": 4,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.cholesky",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=0 below threshold 60; missing_lines=[24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]",
+        "signature": "2282eeea6f837d1f",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.inv": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.inv",
+        "stage": "stage4_runtime",
+        "error_type": "invalid_valid_mutation",
+        "message": "{{function_node __wrapped__MatrixInverse_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input is not invertible. [Op:MatrixInverse] name:",
+        "signature": "16635219cb66f522",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.inv.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failures.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.kaiser": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.kaiser",
+        "stage": "stage4_runtime",
+        "error_type": "invalid_valid_mutation",
+        "message": "{{function_node __wrapped__Range_device_/job:localhost/replica:0/task:0/device:CPU:0}} Requires start <= limit when delta > 0: 0.5/-0.4 [Op:Range] name:",
+        "signature": "6e1bfff519bbde52",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.kaiser.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failures.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.linalg.cholesky": {
+      "root_stage": "stage4_runtime",
+      "error_count": 4,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.linalg.cholesky",
+        "stage": "stage4_runtime",
+        "error_type": "ValueError",
+        "message": "Cholesky decomposition failed: {{function_node __wrapped__CheckNumerics_device_/job:localhost/replica:0/task:0/device:CPU:0}} Cholesky : Tensor had NaN values [Op:CheckNumerics] name:",
+        "signature": "165637cab4396d03",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.linalg.cholesky.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.linalg.inv": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.linalg.inv",
+        "stage": "stage4_runtime",
+        "error_type": "InvalidArgumentError",
+        "message": "{{function_node __wrapped__MatrixInverse_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input is not invertible. [Op:MatrixInverse] name:",
+        "signature": "38c2ce544dcaf543",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.linalg.inv.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.linalg.solve": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.linalg.solve",
+        "stage": "stage4_runtime",
+        "error_type": "InvalidArgumentError",
+        "message": "{{function_node __wrapped__MatrixSolve_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input matrix is not invertible. [Op:MatrixSolve] name:",
+        "signature": "62bb0c9b95bdff08",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.linalg.solve.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.nn.adaptive_average_pool": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.nn.adaptive_average_pool",
+        "stage": "stage4_runtime",
+        "error_type": "ValueError",
+        "message": "too many values to unpack (expected 2)",
+        "signature": "560999b0a9ea0181",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.nn.adaptive_average_pool.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.nn.adaptive_max_pool": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.nn.adaptive_max_pool",
+        "stage": "stage4_runtime",
+        "error_type": "invalid_valid_mutation",
+        "message": "too many values to unpack (expected 2)",
+        "signature": "3587d3fa649e226b",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.nn.adaptive_max_pool.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failures.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.nn.relu": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.nn.relu",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=0 below threshold 60; missing_lines=[28, 29, 30, 36, 37, 38, 39, 40, 41]",
+        "signature": "362ee8a2d4989610",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.relu": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.relu",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=0 below threshold 60; missing_lines=[28, 29, 30, 36, 37, 38, 39, 40, 41]",
+        "signature": "8063ba0145d4a962",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.segment_max": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.segment_max",
+        "stage": "stage4_runtime",
+        "error_type": "InvalidArgumentError",
+        "message": "{{function_node __wrapped__UnsortedSegmentMax_device_/job:localhost/replica:0/task:0/device:CPU:0}} segment_ids[0] = 1 is out of range [0, 1) [Op:UnsortedSegmentMax] name:",
+        "signature": "4dc79edaaef0beaf",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.segment_max.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.solve": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.solve",
+        "stage": "stage4_runtime",
+        "error_type": "invalid_valid_mutation",
+        "message": "{{function_node __wrapped__MatrixSolve_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input matrix is not invertible. [Op:MatrixSolve] name:",
+        "signature": "03f85aaaf1b530dd",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.solve.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failures.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.keras.ops.stft": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.keras.ops.stft",
+        "stage": "stage4_runtime",
+        "error_type": "ValueError",
+        "message": "`fft_length` must equal or larger than `sequence_length`. Received: sequence_length=3, fft_length=2",
+        "signature": "7b4ef3aafb49c341",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.stft.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.less": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.less",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.9535 below threshold 60; missing_lines=[5284, 5285, 5286, 5287, 5320, 5321, 5322, 5323, 5324, 5325, 5327, 5328, 5329, 5331, 5332, 5333, 5334, 5337, 5338, 5339, 5341, 5343, 5344, 5346, 5347, 5349, 5350, 5353, 5354, 5355, 5356, 5357, 5358, 5359, 5360, 5362, 5363]",
+        "signature": "05751e3bd9736609",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.less_equal": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.less_equal",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.9535 below threshold 60; missing_lines=[5385, 5386, 5387, 5388, 5421, 5422, 5423, 5424, 5425, 5426, 5428, 5429, 5430, 5432, 5433, 5434, 5435, 5438, 5439, 5440, 5442, 5444, 5445, 5447, 5448, 5450, 5451, 5454, 5455, 5456, 5457, 5458, 5459, 5460, 5461, 5463, 5464]",
+        "signature": "38b3ae253f0f7657",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.linalg.banded_triangular_solve": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.linalg.banded_triangular_solve",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[350, 351]",
+        "signature": "b37af3834c553763",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.linalg.diag": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.linalg.diag",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=28.5714 below threshold 60; missing_lines=[2076, 2077, 2078, 2079, 2233]",
+        "signature": "420feab545a5b99d",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.linalg.inv": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.linalg.inv",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=12.766 below threshold 60; missing_lines=[1514, 1515, 1516, 1517, 1518, 1548, 1549, 1550, 1551, 1552, 1553, 1555, 1556, 1557, 1559, 1560, 1561, 1562, 1565, 1566, 1567, 1569, 1571, 1572, 1574, 1575, 1576, 1577, 1578, 1580, 1581, 1584, 1585, 1586, 1587, 1588, 1589, 1591, 1592, 1594, 1595]",
+        "signature": "b1d06c2be3d054a1",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.linalg.l2_normalize": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.linalg.l2_normalize",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=38.8889 below threshold 60; missing_lines=[541, 543, 544, 545, 587, 588, 589, 591, 592, 593, 594]",
+        "signature": "58285d43fa551d0c",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.linalg.qr": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.linalg.qr",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=14.5833 below threshold 60; missing_lines=[2148, 2149, 2150, 2151, 2152, 2193, 2194, 2195, 2196, 2197, 2198, 2200, 2201, 2202, 2204, 2205, 2206, 2207, 2210, 2211, 2212, 2214, 2216, 2217, 2219, 2220, 2221, 2222, 2223, 2225, 2226, 2229, 2230, 2231, 2232, 2233, 2234, 2236, 2237, 2239, 2240]",
+        "signature": "8d95d1c6cbdb4d77",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.logical_and": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.logical_and",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "5d8486fc679ea8b3",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.logical_not": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.logical_not",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.907 below threshold 60; missing_lines=[5979, 5980, 5981, 5982, 6003, 6005, 6012, 6015, 6016, 6017, 6018, 6021, 6022, 6023, 6025, 6027, 6028, 6030, 6031, 6033, 6034, 6037, 6038, 6039, 6040, 6041, 6042, 6043, 6044, 6046, 6047]",
+        "signature": "43bac1fffd5bdcde",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.logical_or": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.logical_or",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "98eabed9a00df7a1",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.acos": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.acos",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "4432c7e659960f39",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.acosh": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.acosh",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.907 below threshold 60; missing_lines=[229, 230, 231, 232, 256, 258, 265, 268, 269, 270, 271, 274, 275, 276, 278, 280, 281, 283, 284, 286, 287, 290, 291, 292, 293, 294, 295, 296, 297, 299, 300]",
+        "signature": "b3d03fd4b2cc69d6",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.argmax": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.argmax",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[271, 272, 273, 307, 315, 316, 317, 318, 319, 321]",
+        "signature": "53f84f93eef64325",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.argmin": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.argmin",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[346, 347, 348]",
+        "signature": "3d06f225c54048a3",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.atan2": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.atan2",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "03467d846b09fb46",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.bessel_i0": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.bessel_i0",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[253, 254, 255, 256]",
+        "signature": "0e6bf5ef9136bdf9",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.bessel_i0e": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.bessel_i0e",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[282, 283, 284, 285]",
+        "signature": "58f5736a509a3826",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.bessel_i1": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.bessel_i1",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[309, 310, 311, 312]",
+        "signature": "be95826afa9c0dbc",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.bessel_i1e": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.bessel_i1e",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[338, 339, 340, 341]",
+        "signature": "80507a3f74f0a088",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.betainc": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.betainc",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.2727 below threshold 60; missing_lines=[1842, 1843, 1844, 1845, 1846, 1878, 1880, 1887, 1890, 1891, 1892, 1893, 1896, 1897, 1898, 1900, 1902, 1903, 1905, 1906, 1908, 1909, 1912, 1913, 1914, 1915, 1916, 1917, 1918, 1919, 1921, 1922]",
+        "signature": "249df54361c633c1",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.ceil": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.ceil",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=16.6667 below threshold 60; missing_lines=[5704, 5705, 5706, 5707, 5708]",
+        "signature": "0f0df13336e825e7",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.conj": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.conj",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=37.5 below threshold 60; missing_lines=[4430, 4431, 4432, 4433, 4434, 4475, 4476, 4477, 4481, 4485]",
+        "signature": "a29ff7820be4715a",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.cos": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.cos",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.907 below threshold 60; missing_lines=[2521, 2522, 2523, 2524, 2550, 2552, 2559, 2562, 2563, 2564, 2565, 2568, 2569, 2570, 2572, 2574, 2575, 2577, 2578, 2580, 2581, 2584, 2585, 2586, 2587, 2588, 2589, 2590, 2591, 2593, 2594]",
+        "signature": "2b67c7e0e8cc8376",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.cosh": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.cosh",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "70c636c99d5f01dc",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.count_nonzero": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.count_nonzero",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=58.3333 < 60",
+        "message": "selected_function_line_coverage_percent=58.3333 < 60",
+        "signature": "44fea503fe6aefa7",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.digamma": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.digamma",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.2727 < 60",
+        "message": "selected_function_line_coverage_percent=27.2727 < 60",
+        "signature": "cd46f94577861d4e",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.divide": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.divide",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=30 below threshold 60; missing_lines=[470, 471, 472, 473, 496, 500, 501]",
+        "signature": "27475335ef8c8b48",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.divide_no_nan": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.divide_no_nan",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=47.8261 below threshold 60; missing_lines=[1596, 1597, 1598, 1599, 1600, 1631, 1632, 1636, 1640, 1641, 1646, 1647]",
+        "signature": "446578188109427b",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.equal": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.equal",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=20 below threshold 60; missing_lines=[1860, 1861, 1862, 1863]",
+        "signature": "45e0bfc91edc21cf",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.erfc": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.erfc",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.2727 < 60",
+        "message": "selected_function_line_coverage_percent=27.2727 < 60",
+        "signature": "08d9ac8802f45384",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.exp": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.exp",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "4ae608ac43f850f5",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.expm1": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.expm1",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.2727 < 60",
+        "message": "selected_function_line_coverage_percent=27.2727 < 60",
+        "signature": "6f0f05a2145efb84",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.floor": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.floor",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=20 below threshold 60; missing_lines=[5905, 5906, 5907, 5908]",
+        "signature": "0014f49f31873786",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.floormod": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.floormod",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.6364 < 60",
+        "message": "selected_function_line_coverage_percent=13.6364 < 60",
+        "signature": "168f0acbfecdf2c3",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.greater": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.greater",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.9535 below threshold 60; missing_lines=[4245, 4246, 4247, 4248, 4281, 4282, 4283, 4284, 4285, 4286, 4288, 4289, 4290, 4292, 4293, 4294, 4295, 4298, 4299, 4300, 4302, 4304, 4305, 4307, 4308, 4310, 4311, 4314, 4315, 4316, 4317, 4318, 4319, 4320, 4321, 4323, 4324]",
+        "signature": "38657fe9949d2bbc",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.greater_equal": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.greater_equal",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "6183189722194f00",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.igamma": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.igamma",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.6364 < 60",
+        "message": "selected_function_line_coverage_percent=13.6364 < 60",
+        "signature": "3069830599106bc3",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.igammac": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.igammac",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.6364 below threshold 60; missing_lines=[4698, 4699, 4700, 4701, 4702, 4733, 4734, 4735, 4736, 4737, 4738, 4740, 4741, 4742, 4744, 4745, 4746, 4747, 4750, 4751, 4752, 4754, 4756, 4757, 4759, 4760, 4762, 4763, 4766, 4767, 4768, 4769, 4770, 4771, 4772, 4773, 4775, 4776]",
+        "signature": "686ae884b37aa7c6",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.is_finite": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.is_finite",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.2727 below threshold 60; missing_lines=[4996, 4997, 4998, 4999, 5000, 5027, 5029, 5036, 5039, 5040, 5041, 5042, 5045, 5046, 5047, 5049, 5051, 5052, 5054, 5055, 5057, 5058, 5061, 5062, 5063, 5064, 5065, 5066, 5067, 5068, 5070, 5071]",
+        "signature": "0fcfeb95704780e0",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.is_inf": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.is_inf",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.2727 < 60",
+        "message": "selected_function_line_coverage_percent=27.2727 < 60",
+        "signature": "0704aebdb0b6d325",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.is_nan": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.is_nan",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.2727 below threshold 60; missing_lines=[5188, 5189, 5190, 5191, 5192, 5219, 5221, 5228, 5231, 5232, 5233, 5234, 5237, 5238, 5239, 5241, 5243, 5244, 5246, 5247, 5249, 5250, 5253, 5254, 5255, 5256, 5257, 5258, 5259, 5260, 5262, 5263]",
+        "signature": "88266b26a4d4860c",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.is_non_decreasing": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.is_non_decreasing",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=42.8571 below threshold 60; missing_lines=[1996, 2002, 2003, 2005]",
+        "signature": "890744f1f42b07e0",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.is_strictly_increasing": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.is_strictly_increasing",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=42.8571 < 60",
+        "message": "selected_function_line_coverage_percent=42.8571 < 60",
+        "signature": "5ab89042c173d659",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.l2_normalize": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.l2_normalize",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=38.8889 < 60",
+        "message": "selected_function_line_coverage_percent=38.8889 < 60",
+        "signature": "820ee15afd908cc0",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.less": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.less",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.9535 below threshold 60; missing_lines=[5284, 5285, 5286, 5287, 5320, 5321, 5322, 5323, 5324, 5325, 5327, 5328, 5329, 5331, 5332, 5333, 5334, 5337, 5338, 5339, 5341, 5343, 5344, 5346, 5347, 5349, 5350, 5353, 5354, 5355, 5356, 5357, 5358, 5359, 5360, 5362, 5363]",
+        "signature": "864da0c3f20e8dca",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.less_equal": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.less_equal",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.9535 below threshold 60; missing_lines=[5385, 5386, 5387, 5388, 5421, 5422, 5423, 5424, 5425, 5426, 5428, 5429, 5430, 5432, 5433, 5434, 5435, 5438, 5439, 5440, 5442, 5444, 5445, 5447, 5448, 5450, 5451, 5454, 5455, 5456, 5457, 5458, 5459, 5460, 5461, 5463, 5464]",
+        "signature": "5931942b664d12c4",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.lgamma": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.lgamma",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.2727 below threshold 60; missing_lines=[5486, 5487, 5488, 5489, 5490, 5516, 5518, 5525, 5528, 5529, 5530, 5531, 5534, 5535, 5536, 5538, 5540, 5541, 5543, 5544, 5546, 5547, 5550, 5551, 5552, 5553, 5554, 5555, 5556, 5557, 5559, 5560]",
+        "signature": "6632fabd330e32ee",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.log": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.log",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.2727 below threshold 60; missing_lines=[5656, 5657, 5658, 5659, 5660, 5685, 5687, 5694, 5697, 5698, 5699, 5700, 5703, 5704, 5705, 5707, 5709, 5710, 5712, 5713, 5715, 5716, 5719, 5720, 5721, 5722, 5723, 5724, 5725, 5726, 5728, 5729]",
+        "signature": "269315bb6782a004",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.log1p": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.log1p",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.2727 < 60",
+        "message": "selected_function_line_coverage_percent=27.2727 < 60",
+        "signature": "4466571dd8d254ee",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.log_sigmoid": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.log_sigmoid",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=37.5 below threshold 60; missing_lines=[4203, 4204, 4205, 4206, 4207]",
+        "signature": "008ca34bdc87e583",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.logical_and": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.logical_and",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.907 below threshold 60; missing_lines=[5840, 5841, 5842, 5843, 5915, 5917, 5924, 5927, 5928, 5929, 5930, 5933, 5934, 5935, 5937, 5939, 5940, 5942, 5943, 5945, 5946, 5949, 5950, 5951, 5952, 5953, 5954, 5955, 5956, 5958, 5959]",
+        "signature": "b65c0c43b68aadd1",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.logical_not": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.logical_not",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "15c62e50b54b24e0",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.logical_or": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.logical_or",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.907 below threshold 60; missing_lines=[6066, 6067, 6068, 6069, 6141, 6143, 6150, 6153, 6154, 6155, 6156, 6159, 6160, 6161, 6163, 6165, 6166, 6168, 6169, 6171, 6172, 6175, 6176, 6177, 6178, 6179, 6180, 6181, 6182, 6184, 6185]",
+        "signature": "0171e354307dfb06",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.logical_xor": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.logical_xor",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=16.6667 below threshold 60; missing_lines=[1784, 1785, 1786, 1787, 1788]",
+        "signature": "565176dabe04c1a8",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.maximum": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.maximum",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "31f624b59181ec75",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.minimum": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.minimum",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "07d3c7a40eadb0e6",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.mod": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.mod",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.6364 below threshold 60; missing_lines=[4151, 4152, 4153, 4154, 4155, 4180, 4181, 4182, 4183, 4184, 4185, 4187, 4188, 4189, 4191, 4192, 4193, 4194, 4197, 4198, 4199, 4201, 4203, 4204, 4206, 4207, 4209, 4210, 4213, 4214, 4215, 4216, 4217, 4218, 4219, 4220, 4222, 4223]",
+        "signature": "5d1641a8ce649412",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.multiply_no_nan": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.multiply_no_nan",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=58.3333 below threshold 60; missing_lines=[1651, 1652, 1653, 1654, 1675]",
+        "signature": "81794e0e8f4ddaf8",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.nextafter": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.nextafter",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "78ca8f7d862be8bf",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.not_equal": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.not_equal",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "64dff683e4a8ee9d",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.pow": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.pow",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[697, 698, 699, 700]",
+        "signature": "1355e5bb6ea0919e",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.reciprocal": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.reciprocal",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.2727 < 60",
+        "message": "selected_function_line_coverage_percent=27.2727 < 60",
+        "signature": "bb393f9d3f6365ac",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.reciprocal_no_nan": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.reciprocal_no_nan",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[5533, 5534, 5535, 5536]",
+        "signature": "2a7b97f13d30fb04",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.reduce_euclidean_norm": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.reduce_euclidean_norm",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=40 < 60",
+        "message": "selected_function_line_coverage_percent=40 < 60",
+        "signature": "852397bed61fb0ba",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.reduce_max": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.reduce_max",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[3045, 3046, 3047]",
+        "signature": "96e59aa4763c13f3",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.reduce_mean": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.reduce_mean",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=40 < 60",
+        "message": "selected_function_line_coverage_percent=40 < 60",
+        "signature": "4510aeaf67c62763",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.reduce_min": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.reduce_min",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=40 below threshold 60; missing_lines=[2917, 2918, 2919]",
+        "signature": "3c1e926eacc8dbd6",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.reduce_prod": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.reduce_prod",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=40 < 60",
+        "message": "selected_function_line_coverage_percent=40 < 60",
+        "signature": "146e66db5b19b898",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.reduce_sum": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.reduce_sum",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[2227, 2228, 2229]",
+        "signature": "0b36c5cad4904164",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.rint": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.rint",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.2727 < 60",
+        "message": "selected_function_line_coverage_percent=27.2727 < 60",
+        "signature": "60b2912bafffaefe",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.round": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.round",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=37.5 below threshold 60; missing_lines=[942, 943, 944, 945, 966]",
+        "signature": "6ac2f787ea1d3da5",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.rsqrt": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.rsqrt",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=16.6667 below threshold 60; missing_lines=[5849, 5850, 5851, 5852, 5853]",
+        "signature": "07c65f089af4997c",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.scalar_mul": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.scalar_mul",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=28.5714 below threshold 60; missing_lines=[688, 689, 690, 691, 692]",
+        "signature": "0d846015c5c4277c",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.sigmoid": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.sigmoid",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=42.8571 below threshold 60; missing_lines=[4150, 4151, 4152, 4153]",
+        "signature": "4b5fd87398f7b41a",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.sinh": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.sinh",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.907 below threshold 60; missing_lines=[10469, 10470, 10471, 10472, 10497, 10499, 10506, 10509, 10510, 10511, 10512, 10515, 10516, 10517, 10519, 10521, 10522, 10524, 10525, 10527, 10528, 10531, 10532, 10533, 10534, 10535, 10536, 10537, 10538, 10540, 10541]",
+        "signature": "190b704c151e81b3",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.softsign": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.softsign",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "1908eab8d46a7918",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_i0": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_i0",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "34ba2912f07002c9",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_i0e": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_i0e",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[282, 283, 284, 285]",
+        "signature": "07c2273148b76cb9",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_i1": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_i1",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "10315d601b385788",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_i1e": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_i1e",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "97975c9874418cec",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_j0": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_j0",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "b44d812807235d23",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_j1": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_j1",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[504, 505, 506, 507]",
+        "signature": "67e3757c73e17531",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_k0": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_k0",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[365, 366, 367, 368]",
+        "signature": "c58454fd42bc01df",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_k0e": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_k0e",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "a1c7ab7e5ab9df68",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_k1": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_k1",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[421, 422, 423, 424]",
+        "signature": "2b263071bbb85e94",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_k1e": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_k1e",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "72ecc61e86842fa6",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_y0": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_y0",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[531, 532, 533, 534]",
+        "signature": "c96a8c358e43174b",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.bessel_y1": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.bessel_y1",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[558, 559, 560, 561]",
+        "signature": "3038893583c80882",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.dawsn": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.dawsn",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "69588060de19b4a9",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.expint": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.expint",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "2d61a2f09e7d9e1e",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.fresnel_cos": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.fresnel_cos",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "112b756fad3b9178",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.fresnel_sin": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.fresnel_sin",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[193, 194, 195, 196]",
+        "signature": "190fb222cff73494",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.special.spence": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.special.spence",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[223, 224, 225, 226]",
+        "signature": "1849533f09f9a1ce",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.squared_difference": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.squared_difference",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.6364 < 60",
+        "message": "selected_function_line_coverage_percent=13.6364 < 60",
+        "signature": "2cf4fd34308fb883",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.subtract": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.subtract",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "040c6462d29ffe34",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.top_k": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.top_k",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[5820, 5821, 5822]",
+        "signature": "1cded7e12b8c07f4",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.xlogy": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.xlogy",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "54362cc19dd344b9",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.math.zeta": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.math.zeta",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.6364 < 60",
+        "message": "selected_function_line_coverage_percent=13.6364 < 60",
+        "signature": "2f27b011fdb250b2",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.maximum": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.maximum",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "0c468521da588499",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.minimum": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.minimum",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "96b3db1cf569f74d",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.avg_pool": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.avg_pool",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=55.5556 < 60",
+        "message": "selected_function_line_coverage_percent=55.5556 < 60",
+        "signature": "b8b46d44e1d44f80",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.elu": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.elu",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "c425df30e0bf462e",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.gelu": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.gelu",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[3702, 3703, 3704, 3705, 3747, 3748]",
+        "signature": "ca777193fc9090c1",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.l2_loss": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.l2_loss",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.907 below threshold 60; missing_lines=[5723, 5724, 5725, 5726, 5747, 5749, 5756, 5759, 5760, 5761, 5762, 5765, 5766, 5767, 5769, 5771, 5772, 5774, 5775, 5777, 5778, 5781, 5782, 5783, 5784, 5785, 5786, 5787, 5788, 5790, 5791]",
+        "signature": "35417550af395859",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.l2_normalize": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.l2_normalize",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=38.8889 below threshold 60; missing_lines=[541, 543, 544, 545, 587, 588, 589, 591, 592, 593, 594]",
+        "signature": "26cd1dbe7516ca29",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.leaky_relu": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.leaky_relu",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=45.4545 below threshold 60; missing_lines=[3667, 3668, 3669, 3670, 3696, 3698]",
+        "signature": "082d240014bb6631",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.max_pool": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.max_pool",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=54.5455 below threshold 60; missing_lines=[4710, 4711, 4712, 4810, 4811, 4813, 4818, 4824, 4827, 4834]",
+        "signature": "a4c7425b772ea024",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.max_pool2d": {
+      "root_stage": "stage4_runtime",
+      "error_count": 2,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.max_pool2d",
+        "stage": "stage4_runtime",
+        "error_type": "InvalidArgumentError",
+        "message": "Value for attr 'padding' of \"string\" is not in the list of allowed values: \"SAME\", \"VALID\", \"EXPLICIT\"\n\t; NodeDef: {{node MaxPool}}; Op<name=MaxPool; signature=input:T -> output:T; attr=T:type,default=DT_FLOAT,allowed=[DT_HALF, DT_BFLOAT16, DT_FLOAT, DT_DOUBLE, DT_INT32, DT_INT64, DT_UINT8, DT_INT16, DT_INT8, DT_UINT16, DT_QINT8]; attr=ksize:list(int),min=4; attr=strides:list(int),min=4; attr=padding:string,allowed=[\"SAME\", \"VALID\", \"EXPLICIT\"]; attr=explicit_paddings:list(int),default=[]; attr=data_format:string,default=\"NHWC\",allowed=[\"NHWC\", \"NCHW\", \"NCHW_VECT_C\"]> [Op:MaxPool] name:",
+        "signature": "aa0a373d783196b9",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.nn.max_pool2d.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.moments": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.moments",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "09a49fbe11310272",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.normalize_moments": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.normalize_moments",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=58.3333 < 60",
+        "message": "selected_function_line_coverage_percent=58.3333 < 60",
+        "signature": "03ce52796475b2da",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.relu": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.relu",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "857a5f4ffa65a8df",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.selu": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.selu",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.907 below threshold 60; missing_lines=[11835, 11836, 11837, 11838, 11862, 11864, 11871, 11874, 11875, 11876, 11877, 11880, 11881, 11882, 11884, 11886, 11887, 11889, 11890, 11892, 11893, 11896, 11897, 11898, 11899, 11900, 11901, 11902, 11903, 11905, 11906]",
+        "signature": "cf2161ccccc88949",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.sigmoid": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.sigmoid",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=42.8571 < 60",
+        "message": "selected_function_line_coverage_percent=42.8571 < 60",
+        "signature": "1ae56e6750d9d935",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.silu": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.silu",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=47.0588 < 60",
+        "message": "selected_function_line_coverage_percent=47.0588 < 60",
+        "signature": "1b3a57934ab83813",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.softsign": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.softsign",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "33efb92bf56a5047",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.space_to_batch": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.space_to_batch",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "34857b6a92fde652",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.space_to_depth": {
+      "root_stage": "stage4_coverage",
+      "error_count": 4,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.space_to_depth",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[3804, 3805, 3806]",
+        "signature": "0f4bd666083f39b1",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.swish": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.swish",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=47.0588 < 60",
+        "message": "selected_function_line_coverage_percent=47.0588 < 60",
+        "signature": "a8c354c04965bc7b",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.top_k": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.top_k",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "9456fd11df56fbc9",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.nn.weighted_moments": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.nn.weighted_moments",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[1404, 1405, 1406]",
+        "signature": "3a96f4da3acbc101",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.not_equal": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.not_equal",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "4e6982fd1306d0b5",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.ones": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.ones",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=54.1667 < 60",
+        "message": "selected_function_line_coverage_percent=54.1667 < 60",
+        "signature": "295aab5fdc73b2a5",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.ones_like": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.ones_like",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "252f6ded3c5a00dc",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.pow": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.pow",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[697, 698, 699, 700]",
+        "signature": "25453c0f13e8e77f",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.quantization.fake_quant_with_min_max_args": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.quantization.fake_quant_with_min_max_args",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=21.4286 < 60",
+        "message": "selected_function_line_coverage_percent=21.4286 < 60",
+        "signature": "9ba3a7873af9b30a",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.quantization.fake_quant_with_min_max_args_gradient": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.quantization.fake_quant_with_min_max_args_gradient",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=21.4286 below threshold 60; missing_lines=[2865, 2866, 2867, 2868, 2869, 2894, 2896, 2903, 2907, 2908, 2909, 2910, 2918, 2919, 2920, 2922, 2924, 2925, 2927, 2928, 2929, 2930, 2931, 2932, 2933, 2934, 2935, 2936, 2937, 2938, 2939, 2940, 2946, 2947, 2955, 2956, 2957, 2958, 2959, 2960, 2963, 2964, 2966, 2967]",
+        "signature": "2abacd904dad9672",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.quantization.fake_quant_with_min_max_vars_gradient": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.quantization.fake_quant_with_min_max_vars_gradient",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=23.5294 < 60",
+        "message": "selected_function_line_coverage_percent=23.5294 < 60",
+        "signature": "0f6ce333c1a854a6",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.quantization.fake_quant_with_min_max_vars_per_channel": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.quantization.fake_quant_with_min_max_vars_per_channel",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=12 < 60",
+        "message": "selected_function_line_coverage_percent=12 < 60",
+        "signature": "7ca57466cd2aa35c",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.quantization.fake_quant_with_min_max_vars_per_channel_gradient": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.quantization.fake_quant_with_min_max_vars_per_channel_gradient",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.7255 < 60",
+        "message": "selected_function_line_coverage_percent=13.7255 < 60",
+        "signature": "06dfe65c7c1f6a58",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.ragged.boolean_mask": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.ragged.boolean_mask",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=23.0769 < 60",
+        "message": "selected_function_line_coverage_percent=23.0769 < 60",
+        "signature": "c0abac384262172e",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.ragged.constant": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.ragged.constant",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=37.5 < 60",
+        "message": "selected_function_line_coverage_percent=37.5 < 60",
+        "signature": "038ee15fc3ef2c67",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.ragged.segment_ids_to_row_splits": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.ragged.segment_ids_to_row_splits",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "5720f9d695f8e773",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.random.shuffle": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.random.shuffle",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "79b6242be745a493",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.realdiv": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.realdiv",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.9535 below threshold 60; missing_lines=[8145, 8146, 8147, 8148, 8171, 8172, 8173, 8174, 8175, 8176, 8178, 8179, 8180, 8182, 8183, 8184, 8185, 8188, 8189, 8190, 8192, 8194, 8195, 8197, 8198, 8200, 8201, 8204, 8205, 8206, 8207, 8208, 8209, 8210, 8211, 8213, 8214]",
+        "signature": "319d29b7878a1d6e",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.reduce_max": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.reduce_max",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[3045, 3046, 3047]",
+        "signature": "2fed9f34665ac94b",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.reduce_mean": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.reduce_mean",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=40 < 60",
+        "message": "selected_function_line_coverage_percent=40 < 60",
+        "signature": "27787c768dc2dc73",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.reduce_min": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.reduce_min",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=40 < 60",
+        "message": "selected_function_line_coverage_percent=40 < 60",
+        "signature": "02635158da7c5c48",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.reduce_prod": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.reduce_prod",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=40 < 60",
+        "message": "selected_function_line_coverage_percent=40 < 60",
+        "signature": "7074289883c26fc5",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.reduce_sum": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.reduce_sum",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "3feafde66d3d7e4c",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.required_space_to_batch_paddings": {
+      "root_stage": "stage4_runtime",
+      "error_count": 4,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.required_space_to_batch_paddings",
+        "stage": "stage4_runtime",
+        "error_type": "ValueError",
+        "message": "Shapes (3,) and [2] are incompatible",
+        "signature": "115649cf318fd158",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.required_space_to_batch_paddings.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.round": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.round",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=37.5 < 60",
+        "message": "selected_function_line_coverage_percent=37.5 < 60",
+        "signature": "209284e1ab0dbd7c",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.saturate_cast": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.saturate_cast",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=51.4286 < 60",
+        "message": "selected_function_line_coverage_percent=51.4286 < 60",
+        "signature": "ec0623cb3d43f50e",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.scalar_mul": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.scalar_mul",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=28.5714 < 60",
+        "message": "selected_function_line_coverage_percent=28.5714 < 60",
+        "signature": "2d2c9a5449b2305d",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.sigmoid": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.sigmoid",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=42.8571 below threshold 60; missing_lines=[4150, 4151, 4152, 4153]",
+        "signature": "15510d7952075fa9",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.signal.fftshift": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.signal.fftshift",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=42.8571 below threshold 60; missing_lines=[612, 613, 614, 646, 647, 649, 651, 652]",
+        "signature": "2e243b96fb190b9b",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.signal.hamming_window": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.signal.hamming_window",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "ed943f7871808047",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.signal.hann_window": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.signal.hann_window",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[145, 146, 147]",
+        "signature": "72054b1c5aea9ce8",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.signal.ifftshift": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.signal.ifftshift",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=42.8571 below threshold 60; missing_lines=[657, 658, 659, 691, 692, 694, 696, 697]",
+        "signature": "3cbdbfaa86f919f1",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.sinh": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.sinh",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=27.907 < 60",
+        "message": "selected_function_line_coverage_percent=27.907 < 60",
+        "signature": "50c56020eb1e2377",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.size": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.size",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[762, 763, 764, 796]",
+        "signature": "e3db7d1ba3d82217",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.sort": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.sort",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=40 below threshold 60; missing_lines=[29, 30, 31]",
+        "signature": "1e1f2c14b279d27a",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.space_to_batch": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.space_to_batch",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "5d003d535986f6e7",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.space_to_batch_nd": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.space_to_batch_nd",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=27.2727 below threshold 60; missing_lines=[10155, 10156, 10157, 10158, 10159, 10297, 10299, 10306, 10309, 10310, 10311, 10312, 10316, 10317, 10318, 10320, 10322, 10323, 10325, 10326, 10329, 10330, 10334, 10335, 10336, 10337, 10338, 10339, 10342, 10343, 10345, 10346]",
+        "signature": "430c69826025b94c",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.squeeze": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.squeeze",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "a29695dc3d7361ee",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.stack": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.stack",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=21.4286 below threshold 60; missing_lines=[24, 25, 26, 75, 76, 78, 79, 80, 81, 82, 85]",
+        "signature": "49b7f7e27415a7d9",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.as_string": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.as_string",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=10.1695 below threshold 60; missing_lines=[27, 28, 29, 30, 31, 79, 80, 81, 82, 83, 84, 86, 87, 88, 91, 92, 93, 94, 99, 100, 101, 103, 105, 106, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 127, 128, 133, 134, 135, 136, 137, 138, 143, 144, 146, 147]",
+        "signature": "86cb0bad89d6e813",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.join": {
+      "root_stage": "stage4_runtime",
+      "error_count": 3,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.join",
+        "stage": "stage4_runtime",
+        "error_type": "AttributeError",
+        "message": "'bytes' object has no attribute 'dtype'",
+        "signature": "38a073a97b49e6dc",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.strings.join.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failure.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.length": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.length",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "757b51eb1207bfac",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.lower": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.lower",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.0435 < 60",
+        "message": "selected_function_line_coverage_percent=13.0435 < 60",
+        "signature": "2f5d794ac86604ce",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.reduce_join": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.reduce_join",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=57.1429 < 60",
+        "message": "selected_function_line_coverage_percent=57.1429 < 60",
+        "signature": "5ccf11da19e4ddbf",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.regex_full_match": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.regex_full_match",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=28.5714 < 60",
+        "message": "selected_function_line_coverage_percent=28.5714 < 60",
+        "signature": "40a4a2ff6fb309d9",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.regex_replace": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.regex_replace",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[74, 76, 77, 78, 79, 109]",
+        "signature": "5bb35226b2a0a558",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.to_hash_bucket": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.to_hash_bucket",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "470cf00593d3a9bf",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.to_hash_bucket_fast": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.to_hash_bucket_fast",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=28.8889 < 60",
+        "message": "selected_function_line_coverage_percent=28.8889 < 60",
+        "signature": "895f8d245c6d7d6a",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.to_number": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.to_number",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=20 below threshold 60; missing_lines=[462, 463, 464, 465]",
+        "signature": "ad46156273294bc3",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.strings.upper": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.strings.upper",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.0435 below threshold 60; missing_lines=[1814, 1815, 1816, 1817, 1842, 1843, 1844, 1845, 1846, 1847, 1849, 1850, 1851, 1853, 1854, 1855, 1856, 1859, 1860, 1861, 1863, 1865, 1866, 1868, 1869, 1870, 1871, 1872, 1874, 1875, 1878, 1879, 1880, 1881, 1882, 1883, 1884, 1885, 1887, 1888]",
+        "signature": "39cebe472c1014ff",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.subtract": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.subtract",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "423c7287e5a51593",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.transpose": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.transpose",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[1826, 1827, 1828]",
+        "signature": "7988bcbe28c56cd0",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.truncatediv": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.truncatediv",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=13.9535 < 60",
+        "message": "selected_function_line_coverage_percent=13.9535 < 60",
+        "signature": "0fb4cc87c752a444",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.truncatemod": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.truncatemod",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=13.9535 below threshold 60; missing_lines=[12772, 12773, 12774, 12775, 12799, 12800, 12801, 12802, 12803, 12804, 12806, 12807, 12808, 12810, 12811, 12812, 12813, 12816, 12817, 12818, 12820, 12822, 12823, 12825, 12826, 12828, 12829, 12832, 12833, 12834, 12835, 12836, 12837, 12838, 12839, 12841, 12842]",
+        "signature": "3ae2c5755b870ca0",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.tuple": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.tuple",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "2585bb7534f17446",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.type_spec_from_value": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.type_spec_from_value",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=23.0769 below threshold 60; missing_lines=[960, 961, 996, 997, 998, 999, 1000, 1001, 1002, 1005]",
+        "signature": "94b33229975f76d2",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.unique": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.unique",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=25 < 60",
+        "message": "selected_function_line_coverage_percent=25 < 60",
+        "signature": "0ff4661fafb11f51",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.unique_with_counts": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.unique_with_counts",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=25 below threshold 60; missing_lines=[1691, 1692, 1693]",
+        "signature": "3815eaa3b0f77a86",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.unravel_index": {
+      "root_stage": "stage4_runtime",
+      "error_count": 4,
+      "stages": [
+        "stage4_coverage",
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.unravel_index",
+        "stage": "stage4_runtime",
+        "error_type": "invalid_valid_mutation",
+        "message": "{{function_node __wrapped__UnravelIndex_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input dims cannot contain a dim of zero, but dims contains zero at index 0 [Op:UnravelIndex]",
+        "signature": "189e671e37074a9b",
+        "payload_ref": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.unravel_index.results.json",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/failures.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.zeros": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.zeros",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=51.8519 < 60",
+        "message": "selected_function_line_coverage_percent=51.8519 < 60",
+        "signature": "017354ab9596f50f",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "tensorflow.zeros_like": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "tensorflow",
+        "api_full_name": "tensorflow.zeros_like",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=20 < 60",
+        "message": "selected_function_line_coverage_percent=20 < 60",
+        "signature": "5cff0dc69f4209cd",
+        "payload_ref": "",
+        "source_file": "stage4/results/tensorflow-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    }
+  },
+  "by_root_stage": {
+    "stage1_info2json": 0,
+    "stage2_json_validation": 0,
+    "stage3_init_generation": 0,
+    "stage4_coverage": 180,
+    "stage4_runtime": 19
+  },
+  "errors_csv": "/Users/aryansg/Desktop/DeepFuzz/pipeline_runs/tensorflow/tensorflow-thesis-all/repair/oracle_round_2_errors.csv",
+  "api_list": "/Users/aryansg/Desktop/DeepFuzz/pipeline_runs/tensorflow/tensorflow-thesis-all/repair/oracle_round_2_api_list.txt",
+  "model_config": {
+    "extraction_model": "mixtral:8x7b",
+    "fast_repair_model": "qwen3-coder:30b",
+    "strong_repair_model": "qwen3-coder:30b",
+    "host": "http://localhost:11434",
+    "backend": "ollama"
+  }
+}

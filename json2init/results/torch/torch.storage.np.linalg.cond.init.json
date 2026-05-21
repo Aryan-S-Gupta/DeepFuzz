@@ -1,0 +1,102 @@
+{
+  "api_full_name": "torch.storage.np.linalg.cond",
+  "api_name": "cond",
+  "module_path": "torch.storage.np.linalg",
+  "import_path": "torch.storage.np.linalg.cond",
+  "backend": "torch",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "(..., M, N) array_like The matrix whose condition number is sought.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "p": {
+      "name": "p",
+      "spec": {
+        "type": "number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "{None, 1, -1, 2, -2, inf, -inf, 'fro'}, optional Order of the norm used in the condition number computation:",
+        "dtype_candidates": [],
+        "enum_values": [
+          "fro"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "p must be one of: None, 1, -1, 2, -2, inf, -inf, 'fro'"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "float|number",
+    "numbers": "1",
+    "description": "------- {float, inf} The condition number of the matrix. May be infinite."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: 0-dimensional array given. Array must be at least two-dimensional"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "LinAlgError",
+    "error": "0-dimensional array given. Array must be at least two-dimensional",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 2000, in cond\n    s = svd(x, compute_uv=False)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 1827, in svd\n    _assert_stacked_2d(a)\n    ~~~~~~~~~~~~~~~~~~^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 235, in _assert_stacked_2d\n    raise LinAlgError('%d-dimensional array given. Array must be '\n            'at least two-dimensional' % a.ndim)\nnumpy.linalg.LinAlgError: 0-dimensional array given. Array must be at least two-dimensional\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.linalg.cond.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

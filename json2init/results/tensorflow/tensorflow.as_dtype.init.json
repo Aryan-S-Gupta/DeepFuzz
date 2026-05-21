@@ -16,9 +16,9 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Must be one of the following: existing tf.DType objects, a DataType enum, or numpy.dtype",
+          "Can be converted to a `tf.DType` object.",
           "type_value must be one of tf.DType",
-          "type_value and returned DType are interned (i.e. a single instance of each dtype is stored in a map)"
+          "Returns A `DType` corresponding to `type_value`. TypeError: If `type_value` cannot be converted to a `DType`."
         ]
       },
       "chosen_type": "int",
@@ -31,7 +31,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -51,12 +58,25 @@
     "error": "",
     "materialization_reasons": [],
     "result_summary": {
-      "python_type": "DType"
+      "python_type": "DType",
+      "dtype": "float32"
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "type_value"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.as_dtype.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

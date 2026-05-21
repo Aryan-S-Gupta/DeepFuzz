@@ -41,7 +41,7 @@
     "replacement_char": {
       "type": "number|any",
       "size": "scalar",
-      "default": "",
+      "default": "65533",
       "flag": "Optional",
       "description": "The replacement character to be used in place of any invalid input when `errors='replace'`. Any Unicode scalar value may be used. The default value is the default Unicode replacement character which is 0xFFFD (U+65533).",
       "dtype_candidates": [],
@@ -49,16 +49,6 @@
       "constraints": [
         "replacement_char must be one of replace"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

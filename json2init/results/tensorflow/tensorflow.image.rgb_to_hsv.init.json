@@ -25,10 +25,11 @@
           "float64"
         ],
         "constraints": [
-          "Must be one of the following types: half, bfloat16, float32, float64.",
+          "Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`.",
           "1-D or higher rank.",
           "images must be 1-D",
-          "images must be one of half, bfloat16, float32, float64, RGB"
+          "images must be one of half, bfloat16, float32, float64, RGB",
+          "The output tensor has the same shape as the `images` tensor."
         ]
       },
       "chosen_type": "float",
@@ -36,41 +37,26 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          1,
-          1,
-          3
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
-        "backend": "tensorflow"
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "''",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": [
-          "name must be a string."
-        ]
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -80,31 +66,24 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": true,
-  "readiness_reasons": [],
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__RGBToHSV_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must have 3 channels but input only has 2 channels. [Op:RGBToHSV] name: "
+  ],
   "smoke_test": {
     "attempted": true,
-    "success": true,
-    "classification": "success",
-    "error_type": "",
-    "error": "",
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "FailedPreconditionError",
+    "error": "{{function_node __wrapped__RGBToHSV_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must have 3 channels but input only has 2 channels. [Op:RGBToHSV] name: ",
     "materialization_reasons": [],
-    "result_summary": {
-      "python_type": "EagerTensor",
-      "shape": [
-        1,
-        1,
-        1,
-        3
-      ],
-      "dtype": "float32",
-      "numel": 3,
-      "has_nan": false
-    },
-    "runtime_supported_here": true
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_image_ops.py\", line 3491, in rgb_to_hsv\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.FailedPreconditionError: {{function_node __wrapped__RGBToHSV_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must have 3 channels but input only has 2 channels. [Op:RGBToHSV] name: \n"
   },
-  "runtime_supported_here": true,
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.rgb_to_hsv.json",
-  "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

@@ -53,7 +53,7 @@
     "nms_threshold": {
       "type": "float|number|tensor",
       "size": "scalar",
-      "default": "0",
+      "default": "0.7",
       "flag": "Optional",
       "description": "A scalar float `Tensor` for non-maximal-suppression threshold. Defaults to 0.7.",
       "dtype_candidates": [],
@@ -83,19 +83,9 @@
     "post_nms_topn": {
       "type": "int|number",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "An integer. Maximum number of rois in the output.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
+      "default": "300",
       "flag": "Optional",
-      "description": "A name for this operation (optional).",
+      "description": "An integer. Maximum number of rois in the output.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

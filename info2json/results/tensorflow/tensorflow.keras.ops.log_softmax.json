@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x must satisfy rank(x) >= 1"
+        "x and output must have broadcast-compatible shapes"
       ]
     },
     "axis": {
@@ -23,14 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy 0 <= axis < rank(x)"
+        "-rank(x) <= axis < rank(x)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same shape as x",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "minval must be less than maxval(output)"
+  ]
 }

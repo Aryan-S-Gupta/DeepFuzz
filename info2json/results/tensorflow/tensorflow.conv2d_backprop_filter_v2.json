@@ -19,7 +19,10 @@
         "float32",
         "float64"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be 4-D",
+        "input must be one of half, bfloat16, float32, float64"
+      ]
     },
     "filter": {
       "type": "tensor",
@@ -30,7 +33,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "filter must be 4-D"
+        "filter must be 4-D",
+        "filter must have the same dtype as input"
       ]
     },
     "out_backprop": {
@@ -42,7 +46,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "out_backprop must be 4-D"
+        "out_backprop must be 4-D",
+        "out_backprop must have the same dtype as input"
       ]
     },
     "strides": {
@@ -80,7 +85,7 @@
     "explicit_paddings": {
       "type": "list",
       "size": "",
-      "default": "[]",
+      "default": "",
       "flag": "Optional",
       "description": "An optional list of `ints`. Defaults to `[]`. If `padding` is `\"EXPLICIT\"`, the list of explicit padding amounts. For the ith dimension, the amount of padding inserted before and after the dimension is `explicit_paddings[2 * i]` and `explicit_paddings[2 * i + 1]`, respectively. If `padding` is not `\"EXPLICIT\"`, `explicit_paddings` must be empty.",
       "dtype_candidates": [],
@@ -90,7 +95,7 @@
     "data_format": {
       "type": "string",
       "size": "",
-      "default": "\"NHWC\"",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `string` from: `\"NHWC\", \"NCHW\"`. Defaults to `\"NHWC\"`. Specify the data format of the input and output data. With the default format \"NHWC\", the data is stored in the order of: [batch, in_height, in_width, in_channels]. Alternatively, the format could be \"NCHW\", the data storage order of: [batch, in_channels, in_height, in_width].",
       "dtype_candidates": [],
@@ -100,7 +105,7 @@
     "dilations": {
       "type": "list|tensor",
       "size": "1-D",
-      "default": "[1, 1, 1, 1]",
+      "default": "",
       "flag": "Optional",
       "description": "An optional list of `ints`. Defaults to `[1, 1, 1, 1]`. 1-D tensor of length 4. The dilation factor for each dimension of `input`. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. The dimension order is determined by the value of `data_format`, see above for details. Dilations in the batch and depth dimensions must be 1.",
       "dtype_candidates": [],
@@ -109,16 +114,6 @@
         "dilations must be 1-D",
         "dilations must be one of ints"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

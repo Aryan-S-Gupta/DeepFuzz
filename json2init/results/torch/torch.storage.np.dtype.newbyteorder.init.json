@@ -1,0 +1,76 @@
+{
+  "api_full_name": "torch.storage.np.dtype.newbyteorder",
+  "api_name": "newbyteorder",
+  "module_path": "torch.storage.np.dtype",
+  "import_path": "torch.storage.np.dtype.newbyteorder",
+  "backend": "torch",
+  "params": {
+    "new_order": {
+      "name": "new_order",
+      "spec": {
+        "type": "string|any",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "string, optional Byte order to force; a value from the byte order specifications below. The default value ('S') results in swapping the current byte order. `new_order` codes can be any of:",
+        "dtype_candidates": [],
+        "enum_values": [
+          "S",
+          "I"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "Must be one of: 'S', '<', '>', '=', '|', 'I'",
+          "new_order must be one of S",
+          "new_order codes can be any of: 'S', '<', '>', '=', '|', 'I'"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "S"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype New dtype object with the given change to the byte order."
+  },
+  "constraints": [
+    "Input and output dtypes must have the same size and type, excluding byte order."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: unbound method dtype.newbyteorder() needs an argument"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "unbound method dtype.newbyteorder() needs an argument",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\nTypeError: unbound method dtype.newbyteorder() needs an argument\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.dtype.newbyteorder.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

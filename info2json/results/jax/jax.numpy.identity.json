@@ -3,15 +3,29 @@
   "module_path": "jax.numpy",
   "params": {
     "n": {
-      "type": "int|tensor|dtype",
+      "type": "int|tensor",
       "size": "",
-      "default": "floating point",
-      "flag": "Optional",
-      "description": "integer specifying the size of each array dimension. dtype: optional dtype; defaults to floating point.",
+      "default": "",
+      "flag": "Required",
+      "description": "integer specifying the size of each array dimension.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "n > 0"
+      ]
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional dtype; defaults to floating point.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be DTypeLike or None"
       ]
     }
   },

@@ -10,9 +10,9 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "jnp.log1p(x) for small values of x is more accurate than jnp.log(x+1)",
-        "For values very close to 0, jnp.log1p(x) is more accurate than jnp.log(x+1)"
+        "`x` and output must have broadcast-compatible shapes"
       ]
     }
   },

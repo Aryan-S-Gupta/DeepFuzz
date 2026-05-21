@@ -21,7 +21,7 @@
         "constraints": []
       },
       "chosen_type": "number",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
@@ -31,33 +31,136 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "orig_len": {
+      "name": "orig_len",
+      "spec": {
+        "type": "number|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "The original (unpadded) length of the axis that was packed. This is used to remove any padding that may have been added during packing to ensure an even number of rows.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "The axis along which the tensor was packed. Defaults to 0.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The data type of the input and unpacked tensor. Can be `\"int8\"` or `\"uint8\"`. Defaults to `\"int8\"`.",
+        "dtype_candidates": [
+          "int8",
+          "uint8"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
       "unresolved_reason": ""
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int8",
+    "numbers": "1",
     "description": "An int8 tensor with the same shape as the original (unpacked) tensor, with values in the range [-8, 7]."
   },
   "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: unpack_int4() missing 2 required positional arguments: 'packed' and 'orig_len'"
+    "smoke test failed: 'float' object has no attribute 'dtype'"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "unpack_int4() missing 2 required positional arguments: 'packed' and 'orig_len'",
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "'float' object has no attribute 'dtype'",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: unpack_int4() missing 2 required positional arguments: 'packed' and 'orig_len'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/quantizers/quantizers.py\", line 650, in unpack_int4\n    if backend.standardize_dtype(packed.dtype) not in (\"int8\", \"uint8\"):\n                                 ^^^^^^^^^^^^\nAttributeError: 'float' object has no attribute 'dtype'\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.quantizers.unpack_int4.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

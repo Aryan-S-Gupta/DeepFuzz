@@ -10,17 +10,9 @@
       "description": "A tensor of numeric type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "A tensor of numeric type."
+      ]
     }
   },
   "output": {
@@ -28,5 +20,7 @@
     "numbers": "1",
     "description": "The fraction of zeros in `value`, with type `float32`."
   },
-  "constraints": []
+  "constraints": [
+    "The output has type float32."
+  ]
 }

@@ -10,11 +10,13 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output must have the same element type."
+      ]
     }
   },
   "output": {
-    "type": "indices",
+    "type": "tensor",
     "numbers": "1",
     "description": "Indices of elements that are non-zero."
   },

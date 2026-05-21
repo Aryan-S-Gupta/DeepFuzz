@@ -30,6 +30,18 @@
       "description": "int, optional The sub-diagonal at and below which the array is filled. `k` = 0 is the main diagonal, while `k` < 0 is below it, and `k` > 0 is above. The default is 0.",
       "dtype_candidates": [],
       "enum_values": [],
+      "constraints": [
+        "k must be positive"
+      ]
+    },
+    "dtype": {
+      "type": "float|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "dtype, optional Data type of the returned array. The default is float.",
+      "dtype_candidates": [],
+      "enum_values": [],
       "constraints": []
     },
     "like": {

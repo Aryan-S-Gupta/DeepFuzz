@@ -2,12 +2,40 @@
   "api_name": "tensor_scatter_nd_sub",
   "module_path": "tensorflow",
   "params": {
-    "updated": {
-      "type": "",
+    "indices": {
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. Index tensor.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "indices must be one of int32, int64"
+      ]
+    },
+    "updates": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must have the same type as `tensor`. Updates to scatter into output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "bad_indices_policy": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\"\"`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -18,7 +46,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `tensor`."
   },
-  "constraints": [
-    "updates.shape = indices.shape[:-1] + shape[indices.shape[-1]:]"
-  ]
+  "constraints": []
 }

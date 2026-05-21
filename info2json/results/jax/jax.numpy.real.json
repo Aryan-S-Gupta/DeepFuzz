@@ -10,15 +10,17 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "val can be a number or a JAX array-like object"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "float|tensor",
-    "numbers": "floating point",
+    "numbers": "floating",
     "description": "An array containing the real part of the elements of ``val``."
   },
-  "constraints": []
+  "constraints": [
+    "jax.numpy.real accepts either a scalar or an array-like object as input.",
+    "The output is always an array with floating point numbers, even if the input is an integer array or a single integer value."
+  ]
 }

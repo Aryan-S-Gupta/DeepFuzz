@@ -1,0 +1,120 @@
+{
+  "api_full_name": "torch.storage.np.core.numeric.where",
+  "api_name": "where",
+  "module_path": "torch.storage.np.core.numeric",
+  "import_path": "torch.storage.np.core.numeric.where",
+  "backend": "torch",
+  "params": {
+    "condition": {
+      "name": "condition",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like, bool Where True, yield `x`, otherwise yield `y`. Values from which to choose. `x`, `y` and `condition` need to be broadcastable to some shape.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "must be a boolean array_like",
+          "`x`, `y` and `condition` need to be broadcastable to some shape"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    },
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "array_like",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Values from which to choose.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "`x`, `y` and `condition` need to be broadcastable to some shape"
+        ]
+      },
+      "chosen_type": "array_like",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: array_like"
+    },
+    "y": {
+      "name": "y",
+      "spec": {
+        "type": "array_like",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Values from which to choose.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "`x`, `y` and `condition` need to be broadcastable to some shape"
+        ]
+      },
+      "chosen_type": "array_like",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: array_like"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array with elements from `x` where `condition` is True, and elements from `y` elsewhere."
+  },
+  "constraints": [
+    "`x`, `y` and `condition` need to be broadcastable to some shape"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: where() got some positional-only arguments passed as keyword arguments: 'condition'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "where() got some positional-only arguments passed as keyword arguments: 'condition'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\nTypeError: where() got some positional-only arguments passed as keyword arguments: 'condition'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.core.numeric.where.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

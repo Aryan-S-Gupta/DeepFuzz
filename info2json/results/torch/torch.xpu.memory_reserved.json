@@ -10,13 +10,16 @@
       "description": "selected device. Returns statistic for the current device, given by :func:`~torch.xpu.current_device`, if :attr:`device` is ``None`` (default).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "device must be torch.device or int or str"
+      ]
     }
   },
   "output": {
-    "type": "string|device",
+    "type": "int",
     "numbers": "single",
-    "description": "Return the current GPU memory managed by the caching allocator in bytes for a given device."
+    "description": "statistic for the current device"
   },
   "constraints": []
 }

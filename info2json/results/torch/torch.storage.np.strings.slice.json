@@ -1,0 +1,56 @@
+{
+  "api_name": "slice",
+  "module_path": "torch.storage.np.strings",
+  "params": {
+    "a": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array-like, with ``StringDType``, ``bytes_``, or ``str_`` dtype Input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "start": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "None, an integer or an array of integers The start of the slice, broadcasted to `a`'s shape",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "stop": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "None, an integer or an array of integers The end of the slice, broadcasted to `a`'s shape",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "step": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "None, an integer or an array of integers The step for the slice, broadcasted to `a`'s shape",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "------- ndarray Output array of ``StringDType``, ``bytes_`` or ``str_`` dtype, depending on input type"
+  },
+  "constraints": []
+}

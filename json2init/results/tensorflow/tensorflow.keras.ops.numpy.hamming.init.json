@@ -16,9 +16,9 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "must be a positive integer",
+          "Must be a scalar or 1-dimensional tensor.",
           "x must be 1-D",
-          "x and output must have broadcast-compatible shapes"
+          "The output tensor shape must match the input tensor shape if x is a multi-dimensional tensor."
         ]
       },
       "chosen_type": "number",
@@ -31,12 +31,19 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "[0.08, 0.54, 1., 0.54, 0.08]",
     "description": "A 1D tensor containing the Hamming window values."
   },
   "constraints": [],
@@ -57,12 +64,28 @@
       ],
       "dtype": "float32",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.hamming.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

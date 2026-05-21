@@ -27,6 +27,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "sequence_length": {
@@ -45,10 +51,16 @@
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 2
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -75,6 +87,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "fft_length": {
@@ -95,11 +113,18 @@
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 2
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -110,20 +135,26 @@
         "type": "int",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "An integer representing the output is clipped to exactly length. If not specified, no padding or clipping take place. Defaults to `None`.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "int",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -133,7 +164,7 @@
       "spec": {
         "type": "string|tensor",
         "size": "",
-        "default": "\"hann\"",
+        "default": "",
         "flag": "Optional",
         "description": "A string, a tensor of the window or `None`. If `window` is a string, available values are `\"hann\"` and `\"hamming\"`. If `window` is a tensor, it will be used directly as the window and its length must be `sequence_length`. If `window` is `None`, no windowing is used. Defaults to `\"hann\"`.",
         "dtype_candidates": [],
@@ -153,6 +184,13 @@
         "string_replace",
         "string_empty"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
       "unresolved_reason": ""
     },
     "center": {
@@ -167,19 +205,23 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "sequence",
+      "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": [
-          1
-        ]
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
-        "structure_grow",
-        "structure_shrink",
-        "element_delta"
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     }
@@ -204,10 +246,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 915, in istft\n    return backend.math.istft(\n           ~~~~~~~~~~~~~~~~~~^\n        x,\n        ^^\n    ...<5 lines>...\n        center=center,\n        ^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 213, in istft\n    complex_input = _get_complex_tensor_from_tuple(x)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 78, in _get_complex_tensor_from_tuple\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 915, in istft\n    return backend.math.istft(\n           ~~~~~~~~~~~~~~~~~~^\n        x,\n        ^^\n    ...<5 lines>...\n        center=center,\n        ^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 213, in istft\n    complex_input = _get_complex_tensor_from_tuple(x)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 78, in _get_complex_tensor_from_tuple\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.istft.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

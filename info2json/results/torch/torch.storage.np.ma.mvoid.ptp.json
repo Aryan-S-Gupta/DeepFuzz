@@ -1,0 +1,58 @@
+{
+  "api_name": "ptp",
+  "module_path": "torch.storage.np.ma.mvoid",
+  "params": {
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{None, int}, optional Axis along which to find the peaks. If None (default) the flattened array is used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{None, array_like}, optional Alternative output array in which to place the result. It must have the same shape and buffer length as the expected output but the type will be cast if necessary.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "fill_value": {
+      "type": "number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "scalar or None, optional Value used to fill in the masked values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, optional If this is set to True, the axes which are reduced are left in the result as dimensions with size one. With this option, the result will broadcast correctly against the array.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray. A new array holding the result, unless ``out`` was specified, in which case a reference to ``out`` is returned."
+  },
+  "constraints": []
+}

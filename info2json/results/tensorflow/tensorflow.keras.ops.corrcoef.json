@@ -10,13 +10,19 @@
       "description": "A 2D tensor of shape `(N, D)`, where N is the number of variables and D is the number of observations.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "N > 0",
+        "D > 0",
+        "x must be 2-D"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "(N, N)",
+    "numbers": "1",
     "description": "A tensor of shape `(N, N)` representing the correlation matrix."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor has a positive definite correlation matrix."
+  ]
 }

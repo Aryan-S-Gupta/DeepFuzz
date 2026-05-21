@@ -10,18 +10,16 @@
       "description": "selected device. Returns statistic for the current device, given by :func:`~torch.xpu.current_device`, if :attr:`device` is ``None`` (default).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "Defaults to None",
-        "device must be a valid torch.device, int or str representing an XPU device"
+        "device type must be one of: torch.device, str, int, or None"
       ]
     }
   },
   "output": {
-    "type": "string|tensor|device",
-    "numbers": "single",
-    "description": "Return the current GPU memory occupied by tensors in bytes for a given device."
+    "type": "int",
+    "numbers": "",
+    "description": "statistic for the current device"
   },
-  "constraints": [
-    "output is a non-negative floating point number in GB (Gigabytes)"
-  ]
+  "constraints": []
 }

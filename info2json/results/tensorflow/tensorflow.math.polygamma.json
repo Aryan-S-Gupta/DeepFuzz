@@ -3,7 +3,7 @@
   "module_path": "tensorflow.math",
   "params": {
     "a": {
-      "type": "float|number|tensor",
+      "type": "string|float|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -17,12 +17,11 @@
         "float64"
       ],
       "constraints": [
-        "a must be one of float32, float64",
-        "a and x must have the same data type"
+        "a must be one of float32, float64"
       ]
     },
     "x": {
-      "type": "number|tensor",
+      "type": "string|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -30,20 +29,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "Has the same type as params.a",
         "x must have the same dtype as a",
-        "a and x must have the same data type"
-      ]
-    },
-    "name": {
-      "type": "text",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "name is optional"
+        "x and output have broadcast-compatible shapes"
       ]
     }
   },
@@ -52,7 +40,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `a`."
   },
-  "constraints": [
-    "a and x must have the same data type"
-  ]
+  "constraints": []
 }

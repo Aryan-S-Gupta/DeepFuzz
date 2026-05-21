@@ -1,0 +1,140 @@
+{
+  "api_full_name": "jax.numpy.roots",
+  "api_name": "roots",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.roots",
+  "backend": "jax",
+  "params": {
+    "p": {
+      "name": "p",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Array of polynomial coefficients having rank-1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "rank-1"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "strip_zeros": {
+      "name": "strip_zeros",
+      "spec": {
+        "type": "bool|callable",
+        "size": "",
+        "default": "True",
+        "flag": "Optional",
+        "description": "bool, default=True. If True, then leading zeros in the coefficients will be stripped, similar to :func:`numpy.roots`. If set to False, leading zeros will not be stripped, and undefined roots will be represented by NaN values in the function output. ``strip_zeros`` must be set to ``False`` for the function to be compatible with :func:`jax.jit` and other JAX transformations.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "strip_zeros must be set to False for the function to be compatible with jax.jit and other JAX transformations.",
+          "strip_zeros must be one of numpy.roots, False, jax.jit, JAX"
+        ]
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable",
+      "call_kind": "keyword_only"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "complex64",
+    "description": "An array containing the roots of the polynomial."
+  },
+  "constraints": [
+    "jnp.roots returns the roots with default behavior matching numpy and stripping leading zeros."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "p"
+    ],
+    "skipped_optional": [
+      "strip_zeros"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(strip_zeros_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.roots.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

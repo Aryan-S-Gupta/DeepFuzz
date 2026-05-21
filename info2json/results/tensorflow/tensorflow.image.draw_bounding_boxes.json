@@ -16,7 +16,8 @@
         "half"
       ],
       "constraints": [
-        "images must be 4-D"
+        "images must be 4-D",
+        "images must be one of float32, half"
       ]
     },
     "boxes": {
@@ -29,7 +30,9 @@
         "float32"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "boxes must be 3-D"
+      ]
     },
     "colors": {
       "type": "float|list|tensor",
@@ -44,16 +47,6 @@
       "constraints": [
         "colors must be 2-D"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

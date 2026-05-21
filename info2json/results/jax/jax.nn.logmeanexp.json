@@ -10,35 +10,37 @@
       "description": "Input array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x cannot be None or an empty array"
+        "x cannot be None or an empty array."
       ]
     },
     "axis": {
-      "type": "int32 or int64",
+      "type": "Axis",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "Axis or axes along which to reduce.",
-      "dtype_candidates": [
-        "int32",
-        "int64"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "axis must be None or a single integer or a tuple of integers",
-        "axis must satisfy -rank(x) <= axis < rank(x)"
+        "axis must satisfy -rank(x) <= axis < rank(x)",
+        "axis must satisfy -rank(input) <= axis < rank(input) if specified, else it defaults to None."
       ]
     },
     "where": {
-      "type": "tensor",
+      "type": "",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "Elements to include in the reduction. Optional.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "where must be a valid array-like object or None if not specified."
+      ]
     },
     "keepdims": {
       "type": "bool",
@@ -50,6 +52,7 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

@@ -22,7 +22,9 @@
           "float64"
         ],
         "constraints": [
-          "real must be one of float32, float64"
+          "Must be one of the following types: `float32`, `float64`",
+          "real must be one of float32, float64",
+          "TypeError: Real and imag must be correct types"
         ]
       },
       "chosen_type": "float",
@@ -34,6 +36,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -49,7 +58,9 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "imag must have the same dtype as real"
+          "Must have the same type as `real`",
+          "imag must have the same dtype as real",
+          "TypeError: Real and imag must be correct types"
         ]
       },
       "chosen_type": "float",
@@ -63,33 +74,24 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "complex64 or complex128",
     "description": "A `Tensor` of type `complex64` or `complex128`."
   },
-  "constraints": [],
+  "constraints": [
+    "TypeError: Real and imag must be correct types"
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -105,12 +107,17 @@
       "shape": [],
       "dtype": "complex64",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        "(1+1j)"
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.dtypes.complex.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

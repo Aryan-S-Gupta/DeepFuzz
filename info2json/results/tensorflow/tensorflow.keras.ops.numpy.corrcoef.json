@@ -10,7 +10,11 @@
       "description": "A 2D tensor of shape `(N, D)`, where N is the number of variables and D is the number of observations.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x must be 2D",
+        "x must be 2-D",
+        "x and output must have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {
@@ -18,7 +22,5 @@
     "numbers": "(N, N)",
     "description": "A tensor of shape `(N, N)` representing the correlation matrix."
   },
-  "constraints": [
-    "x size must be (N, D)"
-  ]
+  "constraints": []
 }

@@ -5,6 +5,63 @@
   "import_path": "tensorflow.keras.ops.cholesky_inverse",
   "backend": "tensorflow",
   "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input tensor of shape `(..., M, M)`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x must be a 3-D or higher tensor with an even number of dimensions"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2,
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
     "upper": {
       "name": "upper",
       "spec": {
@@ -23,73 +80,59 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "x": {
-      "name": "x",
-      "spec": {
-        "type": "tensor",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "Input tensor of shape `(..., M, M)`.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "tensor",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
-      },
-      "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "(..., M, M)",
+    "numbers": "1",
     "description": "A tensor of shape `(..., M, M)` representing the inverse of `x`."
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Expected input to have rank >= 2. Received input with shape (1,)."
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "ValueError",
-    "error": "Expected input to have rank >= 2. Received input with shape (1,).",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/linalg.py\", line 84, in cholesky_inverse\n    return _cholesky_inverse(x, upper=upper)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/linalg.py\", line 89, in _cholesky_inverse\n    _assert_2d(x)\n    ~~~~~~~~~~^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/linalg.py\", line 705, in _assert_2d\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Expected input to have rank >= 2. Received input with shape (1,).\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 4,
+      "preview": [
+        0.25,
+        0.0,
+        0.0,
+        0.25
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.cholesky_inverse.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

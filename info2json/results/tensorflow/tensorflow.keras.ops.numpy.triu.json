@@ -10,7 +10,9 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output have the same shape and data type."
+      ]
     },
     "k": {
       "type": "int",
@@ -21,8 +23,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "k must be positive",
-        "k must be an integer"
+        "k < 0 is below the main diagonal, k > 0 is above it",
+        "k must be positive"
       ]
     }
   },

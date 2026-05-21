@@ -10,23 +10,29 @@
       "description": "A tensor of shape `(..., M, M)` representing the coefficients matrix.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "rank(input) >= 2"
+      ]
     },
     "b": {
       "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "A tensor of shape `(..., M)` or `(..., M, N)` representing the right-hand side or \"dependent variable\" matrix.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "rank(input) >= 1"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "'(..., M)' or '(..., M, N)'",
+    "numbers": "(..., M) or (..., M, N)",
     "description": "A tensor of shape `(..., M)` or `(..., M, N)` representing the solution of the linear system. Returned shape is identical to `b`."
   },
-  "constraints": []
+  "constraints": [
+    "rank(output) >= 1"
+  ]
 }

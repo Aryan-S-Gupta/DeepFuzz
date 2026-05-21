@@ -10,19 +10,24 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "x is required"
       ]
     },
     "alpha": {
       "type": "number|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
+      "size": "scalar",
+      "default": "1.0",
+      "flag": "Optional",
       "description": "scalar or array of alpha values (default: 1.0)",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "alpha defaults to 1.0 if not provided",
+        "if alpha is provided, it must be ArrayLike"
+      ]
     }
   },
   "output": {
@@ -30,7 +35,5 @@
     "numbers": "1",
     "description": "An array."
   },
-  "constraints": [
-    "alpha is optional with default value 1.0"
-  ]
+  "constraints": []
 }

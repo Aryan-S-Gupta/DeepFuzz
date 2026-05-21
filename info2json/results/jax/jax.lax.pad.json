@@ -20,17 +20,22 @@
       "description": "the value to be inserted as padding. Must have the same dtype as ``operand``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "same dtype as operand"
+      ]
     },
     "padding_config": {
-      "type": "sequence|tensor",
+      "type": "int|tuple|sequence|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "a sequence of ``(low, high, interior)`` tuples of integers, giving the amount of low, high, and interior (dilation) padding to insert in each dimension. Negative values for ``low`` and ``high`` are allowed and remove elements from the edges of the array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "padding_config must be one of low, high",
+        "padding_config tuples have three ints"
+      ]
     }
   },
   "output": {
@@ -38,7 +43,5 @@
     "numbers": "1",
     "description": "The ``operand`` array with padding value ``padding_value`` inserted in each dimension according to the ``padding_config``."
   },
-  "constraints": [
-    "padding_value dtype must match operand dtype"
-  ]
+  "constraints": []
 }

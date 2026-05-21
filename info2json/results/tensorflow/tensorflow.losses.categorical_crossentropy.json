@@ -25,7 +25,7 @@
     "from_logits": {
       "type": "tensor",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "Whether `y_pred` is expected to be a logits tensor. By default, we assume that `y_pred` encodes a probability distribution.",
       "dtype_candidates": [],
@@ -35,8 +35,8 @@
     "label_smoothing": {
       "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0.0",
+      "flag": "Optional",
       "description": "Float in [0, 1]. If > `0` then smooth the labels. For example, if `0.1`, use `0.1 / num_classes` for non-target labels and `0.9 + 0.1 / num_classes` for target labels.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -45,8 +45,8 @@
     "axis": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "-1",
+      "flag": "Optional",
       "description": "Defaults to `-1`. The dimension along which the entropy is computed.",
       "dtype_candidates": [],
       "enum_values": [],

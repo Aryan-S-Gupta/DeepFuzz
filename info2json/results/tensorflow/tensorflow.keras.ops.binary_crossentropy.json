@@ -10,7 +10,9 @@
       "description": "The target tensor representing the true binary labels. Its shape should match the shape of the `output` tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape should match the shape of the `output` tensor."
+      ]
     },
     "output": {
       "type": "tensor",
@@ -20,17 +22,24 @@
       "description": "The output tensor representing the predicted probabilities or logits. Its shape should match the shape of the `target` tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape should match the shape of the `target` tensor."
+      ]
     },
     "from_logits": {
-      "type": "tensor",
+      "type": "bool|tensor",
       "size": "",
       "default": "False",
       "flag": "Optional",
       "description": "(optional) Whether `output` is a tensor of logits or probabilities. Set it to `True` if `output` represents logits; otherwise, set it to `False` if `output` represents probabilities. Defaults to `False`.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Defaults to `False`.",
+        "If `from_logits` is not provided, it defaults to `False`."
+      ]
     }
   },
   "output": {

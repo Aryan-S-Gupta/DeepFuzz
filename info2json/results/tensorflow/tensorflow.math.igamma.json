@@ -20,9 +20,9 @@
         "float64"
       ],
       "constraints": [
-        "Must be one of: bfloat16, half, float32, float64",
+        "must be one of the following types: bfloat16, half, float32, float64.",
         "a must be one of bfloat16, half, float32, float64",
-        "a and x must have the same shape"
+        "Compute the lower regularized incomplete Gamma function P(a, x). \\(P(a, x) = gamma(a, x) / Gamma(a) = 1 - Q(a, x)\\) \\(gamma(a, x) = \\int_{0}^{x} t^{a-1} exp(-t) dt\\) Note, above Q(a, x) (Igammac) is the upper regularized complete"
       ]
     },
     "x": {
@@ -34,20 +34,10 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have the same type as a",
+        "Must have the same type as a.",
         "x must have the same dtype as a",
-        "a and x must have the same shape"
+        "Compute the lower regularized incomplete Gamma function P(a, x). \\(P(a, x) = gamma(a, x) / Gamma(a) = 1 - Q(a, x)\\) \\(gamma(a, x) = \\int_{0}^{x} t^{a-1} exp(-t) dt\\) Note, above Q(a, x) (Igammac) is the upper regularized complete"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -56,6 +46,6 @@
     "description": "A `Tensor`. Has the same type as `a`."
   },
   "constraints": [
-    "a and x must have the same shape"
+    "Compute the lower regularized incomplete Gamma function P(a, x). \\(P(a, x) = gamma(a, x) / Gamma(a) = 1 - Q(a, x)\\) \\(gamma(a, x) = \\int_{0}^{x} t^{a-1} exp(-t) dt\\) Note, above Q(a, x) (Igammac) is the upper regularized complete"
   ]
 }

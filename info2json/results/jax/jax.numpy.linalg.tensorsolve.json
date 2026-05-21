@@ -10,7 +10,9 @@
       "description": "input array. After reordering via ``axes`` (see below), shape must be ``(*b.shape, *x.shape)``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "a.shape must be compatible with (*b.shape, *x.shape) after reordering via axes"
+      ]
     },
     "b": {
       "type": "tensor",
@@ -20,17 +22,22 @@
       "description": "right-hand-side array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "a.shape must be compatible with (*b.shape, *x.shape) after reordering via axes"
+      ]
     },
     "axes": {
-      "type": "tuple",
+      "type": "int|tuple",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "optional tuple specifying axes of ``a`` that should be moved to the end",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "a.shape must be compatible with (*b.shape, *x.shape) after reordering via axes",
+        "axes default value is None"
+      ]
     }
   },
   "output": {
@@ -38,5 +45,7 @@
     "numbers": "1",
     "description": "array x such that after reordering of axes of ``a``, ``tensordot(a, x, x.ndim)`` is equivalent to ``b``."
   },
-  "constraints": []
+  "constraints": [
+    "a.shape must be compatible with (*b.shape, *x.shape) after reordering via axes"
+  ]
 }

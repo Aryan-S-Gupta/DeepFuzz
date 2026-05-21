@@ -17,44 +17,65 @@
           "bool"
         ],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "bool",
     "numbers": "",
-    "description": "Returns true if given a constant, or a symbolic expression with a fixed value"
+    "description": "Returns true if given a constant, or a symbolic expression with a fixed value."
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: module 'torch.fx.experimental.symbolic_shapes' has no attribute 'has_static_value'"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
-    "attempted": false,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "AttributeError",
-    "error": "module 'torch.fx.experimental.symbolic_shapes' has no attribute 'has_static_value'",
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false
+    "result_summary": {
+      "python_type": "bool",
+      "value": true
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "a"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.has_static_value.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

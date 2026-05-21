@@ -1,0 +1,45 @@
+{
+  "api_name": "isdtype",
+  "module_path": "torch.storage.np.core.numerictypes",
+  "params": {
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype The input dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be a valid NumPy dtype.",
+        "The 'dtype' and 'kind' parameters must satisfy the NumPy issubdtype function semantics."
+      ]
+    },
+    "kind": {
+      "type": "string|int|float|bool|tuple|number|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or str or tuple of dtypes/strs. dtype or dtype kind. Allowed dtype kinds are: * ``'bool'`` : boolean kind * ``'signed integer'`` : signed integer data types * ``'unsigned integer'`` : unsigned integer data types * ``'integral'`` : integer data types * ``'real floating'`` : real-valued floating-point data types * ``'complex floating'`` : complex floating-point data types * ``'numeric'`` : numeric data types",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Each element in the tuple must be a valid dtype kind string or NumPy dtype.",
+        "The 'kind' parameter can be optional, depending on the implementation.",
+        "The 'dtype' and 'kind' parameters must satisfy the NumPy issubdtype function semantics."
+      ]
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool"
+  },
+  "constraints": [
+    "The 'dtype' and 'kind' parameters must satisfy the NumPy issubdtype function semantics."
+  ]
+}

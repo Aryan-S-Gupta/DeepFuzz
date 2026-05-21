@@ -10,27 +10,27 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x must be a tensor"
-      ]
+      "constraints": []
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1` (the last axis)",
+      "default": "-1",
       "flag": "Optional",
       "description": "Axis along which to sort. Defaults to `-1` (the last axis). If `None`, the flattened tensor is used.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must be -rank(x) or greater"
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "Tensor of indices that sort `x` along the specified `axis`."
   },
-  "constraints": []
+  "constraints": [
+    "indices dtype must be int32 or int64"
+  ]
 }

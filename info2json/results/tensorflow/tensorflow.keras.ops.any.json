@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x must be a tensor."
+        "x and output must have broadcast-compatible shapes"
       ]
     },
     "axis": {
@@ -23,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "If None, perform a logical OR over all dimensions.",
+        "-rank(input) <= axis < rank(input)",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
@@ -44,7 +44,7 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "The tensor containing the logical OR reduction over the `axis`."
   },
   "constraints": []

@@ -1,0 +1,159 @@
+{
+  "api_full_name": "torch.storage.np.core.numeric.base_repr",
+  "api_name": "base_repr",
+  "module_path": "torch.storage.np.core.numeric",
+  "import_path": "torch.storage.np.core.numeric.base_repr",
+  "backend": "torch",
+  "params": {
+    "number": {
+      "name": "number",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "int The value to convert. Positive and negative values are handled.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "number must be positive"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "base": {
+      "name": "base",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "2",
+        "flag": "Optional",
+        "description": "int, optional Convert `number` to the `base` number system. The valid range is 2-36, the default value is 2.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "base >= 2",
+          "base <= 36"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "padding": {
+      "name": "padding",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "int, optional Number of zeros padded on the left. Default is 0 (no padding).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "string|number",
+    "numbers": "1",
+    "description": "------- str String representation of `number` in `base` system."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "str",
+      "value": "1"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "number"
+    ],
+    "skipped_optional": [
+      "base",
+      "padding"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(base_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.core.numeric.base_repr.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

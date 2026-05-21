@@ -16,20 +16,36 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "shape_x and shape_y must be compatible for broadcasting"
+          "must be a 1-D tensor"
         ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "int32",
+        "values": [
+          2,
+          2
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "shape_y": {
       "name": "shape_y",
@@ -42,48 +58,104 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "shape_x and shape_y must be compatible for broadcasting"
+          "must be a 1-D tensor"
         ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "int32",
+        "values": [
+          2,
+          2
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "int|tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "A rank 1 integer `Tensor` representing the broadcasted shape."
   },
   "constraints": [
-    "shape_x and shape_y must be compatible for broadcasting"
+    "x and y must have broadcast-compatible shapes"
   ],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: {{function_node __wrapped__BroadcastArgs_device_/job:localhost/replica:0/task:0/device:CPU:0}} In[0] must be a vector.[] [Op:BroadcastArgs]"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "InvalidArgumentError",
-    "error": "{{function_node __wrapped__BroadcastArgs_device_/job:localhost/replica:0/task:0/device:CPU:0}} In[0] must be a vector.[] [Op:BroadcastArgs]",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__BroadcastArgs_device_/job:localhost/replica:0/task:0/device:CPU:0}} In[0] must be a vector.[] [Op:BroadcastArgs]\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2
+      ],
+      "dtype": "int32",
+      "numel": 2,
+      "preview": [
+        2,
+        2
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "shape_x",
+      "shape_y"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(shape_x)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(shape_y)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.broadcast_dynamic_shape.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

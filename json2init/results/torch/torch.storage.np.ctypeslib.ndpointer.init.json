@@ -1,0 +1,204 @@
+{
+  "api_full_name": "torch.storage.np.ctypeslib.ndpointer",
+  "api_name": "ndpointer",
+  "module_path": "torch.storage.np.ctypeslib",
+  "import_path": "torch.storage.np.ctypeslib.ndpointer",
+  "backend": "torch",
+  "params": {
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "data-type, optional Array data-type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "ndim": {
+      "name": "ndim",
+      "spec": {
+        "type": "int|number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "int, optional Number of array dimensions.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "shape": {
+      "name": "shape",
+      "spec": {
+        "type": "tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "tuple of ints, optional Array shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "flags": {
+      "name": "flags",
+      "spec": {
+        "type": "string|tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "str or tuple of str Array flags; may be one or more of:",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- ndpointer type object A type object, which is an ``_ndtpr`` instance containing dtype, ndim, shape and flags information."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "PyCSimpleType"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "dtype",
+      "ndim",
+      "shape",
+      "flags"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dtype is a supported dtype object",
+    "shape.rank == 1",
+    "shape.dtype in {int32,int64}"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(shape)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.ctypeslib.ndpointer.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

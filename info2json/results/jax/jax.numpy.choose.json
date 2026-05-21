@@ -10,6 +10,7 @@
       "description": "an N-dimensional array of integer indices.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "choices": {
@@ -20,16 +21,18 @@
       "description": "an array or sequence of arrays. All arrays in the sequence must be mutually broadcast compatible with ``a``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "unused by JAX",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "mode": {
@@ -44,6 +47,7 @@
         "wrap",
         "clip"
       ],
+      "case_insensitive": false,
       "constraints": [
         "mode must be one of raise, wrap, clip, JAX"
       ]

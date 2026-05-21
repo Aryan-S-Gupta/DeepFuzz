@@ -10,6 +10,7 @@
       "description": "input array of elements for which membership will be checked.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "test_elements": {
@@ -20,26 +21,29 @@
       "description": "N-dimensional array of test values to check for the presence of each element.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "invert": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "If True, return ``~isin(element, test_elements)``. Default is False.",
-      "dtype_candidates": [],
-      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "assume_unique": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "if true, input arrays are assumed to be unique, which can lead to more efficient computation. If the input arrays are not unique and assume_unique is set to True, the results are undefined.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "invert": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If True, return ``~isin(element, test_elements)``. Default is False.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "method": {
@@ -55,7 +59,10 @@
         "sort",
         "auto"
       ],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "method must be one of compare_all, binary_search, sort, auto"
+      ]
     }
   },
   "output": {

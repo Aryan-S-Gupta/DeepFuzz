@@ -43,7 +43,7 @@
     "axis": {
       "type": "tensor",
       "size": "",
-      "default": "0)",
+      "default": "0",
       "flag": "Optional",
       "description": "A `Tensor` of type `int32` (default: 0). Must be in the range `[-rank(x), rank(x))`.",
       "dtype_candidates": [
@@ -51,38 +51,31 @@
       ],
       "enum_values": [],
       "constraints": [
+        "-rank(x) <= axis < rank(x)",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
     "exclusive": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "If `True`, perform exclusive cumsum.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "reverse": {
       "type": "bool",
       "size": "",
-      "default": "False)",
+      "default": "False",
       "flag": "Optional",
-      "description": "A `bool` (default: False).",
+      "description": "If `True`, perform exclusive cumsum.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "",
+    "reverse": {
+      "type": "bool",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
+      "description": "A `bool` (default: False).",
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }

@@ -10,10 +10,8 @@
       "description": "Array of polynomials coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "Must be a 1-D array.",
-        "p and m are the only supported parameters from the documentation."
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "m": {
       "type": "int",
@@ -23,10 +21,10 @@
       "description": "Order of differentiation (positive integer). Default is 1. It must be specified statically.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "Must be a positive integer.",
-        "m must be positive",
-        "p and m are the only supported parameters from the documentation."
+        "m > 0",
+        "m must be positive"
       ]
     }
   },
@@ -36,7 +34,6 @@
     "description": "An array of polynomial coefficients representing the derivative."
   },
   "constraints": [
-    "The returned array's dtype will be float in JAX.",
-    "p and m are the only supported parameters from the documentation."
+    "jax.numpy.polyder output dtype is float, unlike numpy's int"
   ]
 }

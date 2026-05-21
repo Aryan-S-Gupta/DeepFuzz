@@ -13,7 +13,7 @@
       ],
       "enum_values": [],
       "constraints": [
-        "x and y must have the same shape or broadcast-compatible shapes"
+        "x and y must have broadcast-compatible shapes"
       ]
     },
     "y": {
@@ -27,19 +27,8 @@
       ],
       "enum_values": [],
       "constraints": [
-        "must have broadcast-compatible shapes with x",
-        "x and y must have the same shape or broadcast-compatible shapes"
+        "x and y must have broadcast-compatible shapes"
       ]
-    },
-    "name": {
-      "type": "text",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -48,6 +37,6 @@
     "description": "A `tf.Tensor` of type bool with the shape that `x` and `y` broadcast to."
   },
   "constraints": [
-    "x and y must have the same shape or broadcast-compatible shapes"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

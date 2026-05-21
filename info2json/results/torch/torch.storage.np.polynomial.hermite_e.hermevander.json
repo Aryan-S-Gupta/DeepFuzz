@@ -1,0 +1,46 @@
+{
+  "api_name": "hermevander",
+  "module_path": "torch.storage.np.polynomial.hermite_e",
+  "params": {
+    "x": {
+      "type": "float|number|tensor|dtype|any",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array of points. The dtype is converted to float64 or complex128 depending on whether any of the elements are complex. If `x` is scalar it is converted to a 1-D array.",
+      "dtype_candidates": [
+        "float64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x can be a scalar",
+        "x must be 1-D",
+        "x and deg must be provided"
+      ]
+    },
+    "deg": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int Degree of the resulting matrix.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "deg >= 0",
+        "x and deg must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "x.shape + (deg + 1,)",
+    "description": "------- ndarray The pseudo-Vandermonde matrix. The shape of the returned matrix is ``x.shape + (deg + 1,)``, where The last index is the degree of the corresponding HermiteE polynomial. The dtype will be the same as the converted `x`."
+  },
+  "constraints": [
+    "x and deg must be provided"
+  ]
+}

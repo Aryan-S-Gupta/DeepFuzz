@@ -10,13 +10,15 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The shapes of x and output must be broadcast-compatible."
+      ]
     },
     "threshold": {
-      "type": "",
+      "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0.5",
+      "flag": "Optional",
       "description": "Threshold value. Defaults to 0.5.",
       "dtype_candidates": [],
       "enum_values": [],

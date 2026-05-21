@@ -13,10 +13,7 @@
         "float64"
       ],
       "enum_values": [],
-      "constraints": [
-        "If axes is a list or Tensor, the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for a and b, respectively. The number of axes for a and b must be equal.",
-        "If axes=0, computes the outer product between a and b."
-      ]
+      "constraints": []
     },
     "b": {
       "type": "tensor",
@@ -27,9 +24,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "b must have the same dtype as a",
-        "If axes is a list or Tensor, the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for a and b, respectively. The number of axes for a and b must be equal.",
-        "If axes=0, computes the outer product between a and b."
+        "b must have the same dtype as a"
       ]
     },
     "axes": {
@@ -46,21 +41,8 @@
         "int32"
       ],
       "constraints": [
-        "If axes is a scalar, sum over the last N axes of a and the first N axes of b in order",
-        "axes must be one of N, int32",
-        "If axes is a list or Tensor, the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for a and b, respectively. The number of axes for a and b must be equal.",
-        "If axes=0, computes the outer product between a and b."
+        "axes must be one of N, int32"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -68,8 +50,5 @@
     "numbers": "1",
     "description": "A `Tensor` with the same type as `a`."
   },
-  "constraints": [
-    "If axes is a list or Tensor, the first and second row contain the set of unique integers specifying axes along which the contraction is computed, for a and b, respectively. The number of axes for a and b must be equal.",
-    "If axes=0, computes the outer product between a and b."
-  ]
+  "constraints": []
 }

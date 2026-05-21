@@ -10,11 +10,13 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {
-    "type": "cosine values",
+    "type": "tensor",
     "numbers": "1",
     "description": "The corresponding cosine values."
   },

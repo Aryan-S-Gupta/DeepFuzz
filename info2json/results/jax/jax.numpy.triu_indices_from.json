@@ -10,17 +10,26 @@
       "description": "input array. Must have ``arr.ndim == 2``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "arr must be 2-D",
+        "arr.ndim == 2"
+      ]
     },
     "k": {
       "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "optional, int, default=0. Specifies the sub-diagonal on and above which the indices of upper triangle are returned. ``k=0`` refers to main diagonal, ``k<0`` refers to sub-diagonal below the main diagonal and ``k>0`` refers to sub-diagonal above the main diagonal.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "k=0 refers to main diagonal, k<0 refers to sub-diagonal below the main diagonal and k>0 refers to sub-diagonal above the main diagonal.",
+        "k must be positive",
+        "k is an integer"
+      ]
     }
   },
   "output": {
@@ -28,7 +37,5 @@
     "numbers": "2",
     "description": "A tuple of two arrays containing the indices of the upper triangle, one along each axis."
   },
-  "constraints": [
-    "arr.ndim == 2"
-  ]
+  "constraints": []
 }

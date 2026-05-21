@@ -1,0 +1,197 @@
+{
+  "api_full_name": "tensorflow.strings.reduce_join",
+  "api_name": "reduce_join",
+  "module_path": "tensorflow.strings",
+  "import_path": "tensorflow.strings.reduce_join",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `tf.string` tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "string",
+        "values": [
+          "a",
+          "b"
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|number",
+        "size": "scalar",
+        "default": "",
+        "flag": "Optional",
+        "description": "Which axis to join along. The default behavior is to join all elements, producing a scalar.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "-rank(inputs) <= axis < rank(inputs)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "keepdims": {
+      "name": "keepdims",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "If true, retains reduced dimensions with length 1.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "separator": {
+      "name": "separator",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "a string added between each string being joined.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `tf.string` tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "'bytes' object has no attribute 'dtype'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": true,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 984, in run_smoke_test\n    result[\"result_summary\"] = summarize_python_value(out)\n                               ~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 1026, in summarize_python_value\n    is_float = np is not None and getattr(arr.dtype, \"kind\", \"\") in {\"f\", \"c\"}\n                                          ^^^^^^^^^\nAttributeError: 'bytes' object has no attribute 'dtype'\n"
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "inputs"
+    ],
+    "skipped_optional": [
+      "axis",
+      "keepdims",
+      "separator"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.strings.reduce_join.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

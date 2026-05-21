@@ -10,14 +10,16 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x cannot be None if flag is 'Required'"
+        "x cannot be NaN",
+        "jax.numpy.isnan(x) will return False for non-NaN numbers and finite values in x"
       ]
     }
   },
   "output": {
     "type": "bool|number|tensor",
-    "numbers": "same shape as x",
+    "numbers": "bool",
     "description": "A boolean array of same shape as ``x`` containing ``True`` where ``x`` is not a number (i.e. ``NaN``) and ``False`` otherwise."
   },
   "constraints": []

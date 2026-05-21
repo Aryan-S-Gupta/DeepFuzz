@@ -2,33 +2,28 @@
   "api_name": "matrix_transpose",
   "module_path": "tensorflow.linalg",
   "params": {
-    "matrix": {
-      "type": "",
+    "a": {
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "",
+      "description": "A `Tensor` with `rank >= 2`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "rank(a) >= 2",
+        "If a is determined statically to have rank < 2, ValueError is raised."
+      ]
     },
-    "b": {
-      "type": "",
+    "conjugate": {
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "transpose_b": {
-      "type": "",
-      "size": "",
-      "default": "True",
+      "default": "False",
       "flag": "Optional",
-      "description": "",
-      "dtype_candidates": [],
+      "description": "Optional bool. Setting it to `True` is mathematically equivalent to tf.math.conj(tf.linalg.matrix_transpose(input)).",
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }

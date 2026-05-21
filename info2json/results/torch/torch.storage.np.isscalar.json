@@ -1,0 +1,28 @@
+{
+  "api_name": "isscalar",
+  "module_path": "torch.storage.np",
+  "params": {
+    "element": {
+      "type": "any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "any Input argument, can be of any type and shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Can be of any type and shape.",
+        "The function returns True if the type of `element` is a scalar type and False otherwise."
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|number",
+    "numbers": "1",
+    "description": "------- bool True if `element` is a scalar type, False if it is not."
+  },
+  "constraints": [
+    "In most cases, np.ndim(x) == 0 should be used instead of this function for zero-dimensional numpy arrays."
+  ]
+}

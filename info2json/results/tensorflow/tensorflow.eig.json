@@ -1,24 +1,13 @@
 {
   "api_name": "eig",
   "module_path": "tensorflow",
-  "params": {
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "string, optional name of the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    }
-  },
+  "params": {},
   "output": {
-    "type": "tensor",
-    "numbers": "2",
+    "type": "Tensor",
+    "numbers": "[..., N]",
     "description": "Eigenvalues. Shape is `[..., N]`. The eigenvalues are not necessarily ordered. v: Eigenvectors. Shape is `[..., N, N]`. The columns of the inner most matrices contain eigenvectors of the corresponding matrices in `tensor`"
   },
   "constraints": [
-    "tensor shape must be at least 2-D"
+    "eigenvectors shape is [..., N, N]. The columns of the inner most matrices contain eigenvectors of the corresponding matrices in tensor."
   ]
 }

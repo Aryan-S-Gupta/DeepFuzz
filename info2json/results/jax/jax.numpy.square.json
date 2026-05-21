@@ -10,15 +10,15 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "jax.numpy.square is equivalent to jax.numpy.power(x, 2)",
-        "input x can be any numeric type (int, float, complex), and its shape can be any dimension"
+        "jnp.square is equivalent to computing jnp.power(x, 2)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same shape as input x, but with each element replaced by its square",
+    "numbers": "1",
     "description": "An array containing the square of the elements of ``x``."
   },
   "constraints": []

@@ -15,7 +15,10 @@
         "complex64"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "arg1 must be JAX/NumPy compatible dtype",
+        "arg1 and arg2 must be JAX/NumPy compatible dtypes"
+      ]
     },
     "arg2": {
       "type": "int|number|dtype",
@@ -25,7 +28,10 @@
       "description": "dtype-like object. In typical usage, this will be a generic scalar type, such as ``jnp.integer``, ``jnp.floating``, or ``jnp.complexfloating``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "arg2 must be JAX/NumPy compatible dtype",
+        "arg1 and arg2 must be JAX/NumPy compatible dtypes"
+      ]
     }
   },
   "output": {
@@ -33,5 +39,7 @@
     "numbers": "1",
     "description": "True if arg1 represents a dtype that is equal or lower in the type hierarchy than arg2."
   },
-  "constraints": []
+  "constraints": [
+    "arg1 and arg2 must be JAX/NumPy compatible dtypes"
+  ]
 }

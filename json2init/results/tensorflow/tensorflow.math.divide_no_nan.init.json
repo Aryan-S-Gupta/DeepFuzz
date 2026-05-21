@@ -15,7 +15,9 @@
         "description": "A `Tensor` of a floating or integer dtype.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "x and y must have broadcast-compatible shapes"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
@@ -27,7 +29,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "y": {
       "name": "y",
@@ -39,14 +48,18 @@
         "description": "A `Tensor` with the same dtype as `x` and a compatible shape.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "same dtype as x",
+          "y must have the same dtype as x",
+          "x and y must have broadcast-compatible shapes"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -55,48 +68,75 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "The element-wise quotient as in `tf.math.divide(x, y)`, except that division by zero produces `0.0`, not `nan`."
   },
-  "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  "constraints": [
+    "x and y must have broadcast-compatible shapes"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "numel": 2,
+      "preview": [
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "y"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(y_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.divide_no_nan.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

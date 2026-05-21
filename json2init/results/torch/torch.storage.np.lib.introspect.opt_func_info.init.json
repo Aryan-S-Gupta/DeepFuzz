@@ -1,0 +1,125 @@
+{
+  "api_full_name": "torch.storage.np.lib.introspect.opt_func_info",
+  "api_name": "opt_func_info",
+  "module_path": "torch.storage.np.lib.introspect",
+  "import_path": "torch.storage.np.lib.introspect.opt_func_info",
+  "backend": "torch",
+  "params": {
+    "func_name": {
+      "name": "func_name",
+      "spec": {
+        "type": "string|callable",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "str (optional) Regular expression to filter by function name.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "func_name and signature must be used together with re module for filtering"
+        ]
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable",
+      "call_kind": "positional_or_keyword"
+    },
+    "signature": {
+      "name": "signature",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "str (optional) Regular expression to filter by data type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "func_name and signature must be used together with re module for filtering"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "dict|callable",
+    "numbers": "1",
+    "description": "------- dict A dictionary where keys are optimized function names and values are nested dictionaries indicating supported targets based on data types."
+  },
+  "constraints": [
+    "func_name and signature must be used together with re module for filtering"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "dict",
+      "keys": [
+        "argmax",
+        "argmin",
+        "absolute",
+        "add",
+        "bitwise_and",
+        "bitwise_or",
+        "fmax",
+        "fmin",
+        "invert",
+        "logical_and",
+        "logical_not",
+        "logical_or",
+        "maximum",
+        "minimum",
+        "multiply",
+        "bitwise_count"
+      ]
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "func_name",
+      "signature"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.lib.introspect.opt_func_info.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

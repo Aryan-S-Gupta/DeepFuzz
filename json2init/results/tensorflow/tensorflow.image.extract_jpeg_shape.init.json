@@ -28,6 +28,14 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
         "type_switch"
       ],
       "unresolved_reason": ""
@@ -37,7 +45,7 @@
       "spec": {
         "type": "dtype",
         "size": "",
-        "default": "int32",
+        "default": "",
         "flag": "Optional",
         "description": "An optional `tf.DType` from: `tf.int32, tf.int64`. Defaults to `tf.int32`. (Optional) The output type of the operation (int32 or int64). Defaults to int32.",
         "dtype_candidates": [
@@ -55,31 +63,15 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "noop_clone",
         "type_switch"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "enum_switch",
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
       ],
       "unresolved_reason": ""
     }
@@ -104,10 +96,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ExtractJpegShape_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid JPEG data, size 69 [Op:ExtractJpegShape]\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ExtractJpegShape_device_/job:localhost/replica:0/task:0/device:CPU:0}} Invalid JPEG data, size 69 [Op:ExtractJpegShape]\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.extract_jpeg_shape.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

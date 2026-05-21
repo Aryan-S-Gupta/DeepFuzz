@@ -32,6 +32,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "num_columns": {
@@ -39,7 +46,7 @@
       "spec": {
         "type": "number|tensor",
         "size": "scalar",
-        "default": "num_rows",
+        "default": "",
         "flag": "Optional",
         "description": "Optional non-negative `int32` scalar `Tensor` giving the number of columns in each batch matrix. Defaults to `num_rows`.",
         "dtype_candidates": [
@@ -61,16 +68,23 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "batch_shape": {
       "name": "batch_shape",
       "spec": {
-        "type": "tuple|list|tensor|dtype",
+        "type": "tuple|list|tensor",
         "size": "1-D",
         "default": "",
-        "flag": "Required",
-        "description": "A list or tuple of Python integers or a 1-D `int32` `Tensor`. If provided, the returned `Tensor` will have leading batch dimensions of this shape. dtype: The type of an element in the resulting `Tensor`",
+        "flag": "Optional",
+        "description": "A list or tuple of Python integers or a 1-D `int32` `Tensor`. If provided, the returned `Tensor` will have leading batch dimensions of this shape.",
         "dtype_candidates": [
           "int32"
         ],
@@ -79,48 +93,61 @@
           "batch_shape must be 1-D"
         ]
       },
-      "chosen_type": "tensor",
-      "include_in_base_call": true,
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
+        "kind": "literal",
+        "value": [
+          2,
+          2
         ],
-        "dtype": "int32",
-        "fill": 1,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
-    "name": {
-      "name": "name",
+    "dtype": {
+      "name": "dtype",
       "spec": {
-        "type": "",
+        "type": "tensor",
         "size": "",
-        "default": "\"eye\"",
+        "default": "tf.float32",
         "flag": "Optional",
-        "description": "A name for this `Op`. Defaults to \"eye\".",
+        "description": "The type of an element in the resulting `Tensor`",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "a name for this `op`. defaults to \"eye\".",
+      "chosen_type": "dtype",
       "include_in_base_call": false,
-      "base_seed_spec": {},
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
       "mutation_rules": [
-        "enum_switch"
+        "noop_clone",
+        "type_switch"
       ],
-      "unresolved_reason": "unhandled chosen type: a name for this `op`. defaults to \"eye\"."
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": ""
     }
   },
   "output": {
@@ -143,10 +170,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/linalg_ops_impl.py\", line 53, in eye\n    raise TypeError(\n        'Arguments `num_rows` and `num_columns` must be positive integer '\n        f'values. Received: num_rows={num_rows}, num_columns={num_columns}')\nTypeError: Arguments `num_rows` and `num_columns` must be positive integer values. Received: num_rows=0.0, num_columns=0.0\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/linalg_ops_impl.py\", line 53, in eye\n    raise TypeError(\n        'Arguments `num_rows` and `num_columns` must be positive integer '\n        f'values. Received: num_rows={num_rows}, num_columns={num_columns}')\nTypeError: Arguments `num_rows` and `num_columns` must be positive integer values. Received: num_rows=0.0, num_columns=0.0\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.eye.json",
   "stage3_status": "retry",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

@@ -1,48 +1,47 @@
 {
-  "input": "doc2info/tf_apis.jsonl",
+  "input": "doc2info/tensorflow_apis.jsonl",
   "library": "tensorflow",
-  "total": 18903,
-  "accepted": 951,
-  "accepted_before_alias_dedup": 951,
+  "total": 29442,
+  "accepted": 922,
+  "accepted_before_alias_dedup": 922,
   "duplicate_aliases_removed": 0,
-  "rejected": 17952,
+  "rejected": 28520,
   "rejected_by_step": {
-    "1_doc": 6314,
-    "2_params": 5157,
-    "3_types": 517,
-    "4_return": 303,
-    "5_readiness": 5661
+    "1_doc": 8019,
+    "2_params": 6137,
+    "3_types": 536,
+    "4_return": 304,
+    "5_readiness": 13524
   },
   "top_reasons": {
-    "classes/exceptions are excluded": 801,
+    "classes/exceptions are excluded": 1762,
     "required param 'condition' not fuzzable: type unclear / not constructable": 2,
-    "missing/placeholder/too short doc": 6245,
-    "return description too vague / predicate-like": 71,
-    "no documented return value": 57,
+    "missing/placeholder/too short doc": 7870,
+    "return description too vague / predicate-like": 73,
+    "no documented return value": 59,
+    "no modifiable seedable parameters": 255,
     "doc indicates side-effect/external-dependency keyword (\\b(distributed|cluster|server|worker|rpc|remote)\\b)": 2,
     "return not capturable / side-effect style (\\breturns?\\s+none\\b)": 19,
-    "no modifiable seedable parameters": 223,
     "required param 'pred_fn_pairs' not fuzzable: non-fuzzable type cue: callable": 1,
     "doc indicates utility/metadata behavior (\\bchecks? whether\\b)": 2,
     "required param 'value' not fuzzable: non-fuzzable type cue: function": 1,
     "required param 'hypothesis' not fuzzable: type unclear / not constructable": 1,
     "required param 'equation' lacks constraint/type/shape/value detail": 2,
-    "no concrete parameters; zero-arg APIs are excluded": 3562,
+    "no concrete parameters; zero-arg APIs are excluded": 3585,
     "doc indicates side-effect/external-dependency keyword (\\b(train|fit|learn|backward)\\b)": 7,
     "required param 'fn' not fuzzable: non-fuzzable type cue: callable": 5,
-    "return not meaningful/capturable data-form": 156,
-    "vague required param descriptions for: input": 1,
+    "return not meaningful/capturable data-form": 153,
     "required param 'graph_def' not fuzzable: type unclear / not constructable": 2,
     "required param 'values' not fuzzable: type unclear / not constructable": 1,
     "required param 'num_batch_threads' lacks constraint/type/shape/value detail": 1,
     "required param 'conversion_func' not fuzzable: non-fuzzable type cue: function": 1,
     "missing required param descriptions for: x": 10,
-    "doc indicates side-effect/external-dependency keyword (\\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\\b)": 45,
+    "doc indicates side-effect/external-dependency keyword (\\b(save|load|open|read|write|download|upload|export|import|serialize|deserialize)\\b)": 44,
     "required param 'branch_fns' not fuzzable: non-fuzzable type cue: callable": 1,
     "required param 'indices' not fuzzable: type unclear / not constructable": 5,
     "required param 'cond' not fuzzable: non-fuzzable type cue: callable": 2,
     "receiver-like owner 'CriticalSection'": 1,
-    "reference-only doc / alias redirect": 69,
+    "reference-only doc / alias redirect": 149,
     "receiver-like owner 'DType'": 1,
     "receiver-like owner 'DeviceSpec'": 3,
     "receiver-like owner 'GradientTape'": 4,
@@ -70,7 +69,7 @@
     "required param 'contents' not fuzzable: non-fuzzable type cue: file": 1,
     "name contains side-effect keyword (\\b(camera|microphone|audio|video)\\b)": 1,
     "required param 'entity' not fuzzable: non-fuzzable type cue: callable": 1,
-    "wrapper/bridge namespace (\\.compat(?:\\.|$))": 9,
+    "wrapper/bridge namespace (\\.compat(?:\\.|$))": 7882,
     "required param 'run_eagerly' lacks constraint/type/shape/value detail": 2,
     "name contains utility/metadata keyword (\\b(importlib|metadata|inspect|typing|warnings|logging|config|backend|backends)\\b)": 8,
     "required param 'device' not fuzzable: type unclear / not constructable": 3,
@@ -78,6 +77,7 @@
     "required param 'message' not fuzzable: type unclear / not constructable": 1,
     "required param 'message' lacks constraint/type/shape/value detail": 1,
     "missing required param descriptions for: tensor": 1,
+    "missing required param descriptions for: x_type, y_type": 1,
     "required param 'source_column' not fuzzable: type unclear / not constructable": 1,
     "required param 'num_buckets' not fuzzable: type unclear / not constructable": 1,
     "required param 'vocabulary_file' not fuzzable: non-fuzzable type cue: file": 1,
@@ -118,6 +118,7 @@
     "required param 'pooling_type' not fuzzable: type unclear / not constructable": 1,
     "required param 'logits' not fuzzable: type unclear / not constructable": 1,
     "required param 'padding' lacks constraint/type/shape/value detail": 1,
+    "missing required param descriptions for: min, max": 1,
     "required param 'input_min' not fuzzable: type unclear / not constructable": 2,
     "required param 'args' not fuzzable: type unclear / not constructable": 2,
     "required param 'alg' lacks constraint/type/shape/value detail": 2,
@@ -187,6 +188,7 @@
     "receiver-like owner 'StructuredTensor'": 9,
     "required param 'layout' not fuzzable: type unclear / not constructable": 5,
     "required param 'mesh_name' not fuzzable: type unclear / not constructable": 1,
+    "missing required param descriptions for: mesh": 2,
     "missing required param descriptions for: device_type": 3,
     "required param 'checkpoint_prefix' not fuzzable: type unclear / not constructable": 2,
     "required param 'file_prefix' not fuzzable: type unclear / not constructable": 1,
@@ -230,15 +232,13 @@
     "missing required param descriptions for: policy": 3,
     "required param 'max_epochs' lacks constraint/type/shape/value detail": 1,
     "missing required param descriptions for: max_steps_per_epoch": 1,
-    "required param 'kwargs' not fuzzable: non-fuzzable type cue: layer": 8,
+    "required param 'kwargs' not fuzzable: non-fuzzable type cue: layer": 1,
     "required param 'start' lacks constraint/type/shape/value detail": 2,
     "required param 'f' not fuzzable: non-fuzzable type cue: callable": 2,
     "required param 'mean' not fuzzable: type unclear / not constructable": 2,
     "required param 'x_min' not fuzzable: type unclear / not constructable": 2,
     "required param 'true_fn' not fuzzable: non-fuzzable type cue: callable": 1,
     "required param 'x1' not fuzzable: type unclear / not constructable": 4,
-    "required param 'inputs' not fuzzable: non-fuzzable type cue: model": 2,
-    "required param 'output' not fuzzable: non-fuzzable type cue: model": 2,
     "utility-style param 'flash_attention'": 2,
     "required param 'operands' not fuzzable: type unclear / not constructable": 2,
     "required param 'axis' not fuzzable: type unclear / not constructable": 3,
@@ -314,9 +314,9 @@
     "receiver-like owner 'SpecificityAtSensitivity'": 1,
     "receiver-like owner 'TrueNegatives'": 1,
     "receiver-like owner 'TruePositives'": 1,
-    "receiver-like owner 'RNNCellDeviceWrapper'": 20,
-    "receiver-like owner 'RNNCellDropoutWrapper'": 20,
-    "receiver-like owner 'RNNCellResidualWrapper'": 20,
+    "receiver-like owner 'RNNCellDeviceWrapper'": 17,
+    "receiver-like owner 'RNNCellDropoutWrapper'": 17,
+    "receiver-like owner 'RNNCellResidualWrapper'": 17,
     "required param 'uniform_sampler' not fuzzable: non-fuzzable type cue: callable": 1,
     "receiver-like owner 'Adadelta'": 10,
     "receiver-like owner 'Adafactor'": 11,
@@ -367,7 +367,6 @@
     "receiver-like owner 'Coordinator'": 4,
     "receiver-like owner 'ExponentialMovingAverage'": 4,
     "receiver-like owner 'TrackableView'": 1,
-    "required param 'computation' not fuzzable: non-fuzzable type cue: function": 1,
     "missing required param descriptions for: job_name, task_index, device_filters": 1,
     "missing required param descriptions for: bytes": 3,
     "receiver-like owner 'CsvDataset'": 41,
@@ -390,13 +389,7 @@
     "receiver-like owner 'DTensorDataset'": 41,
     "receiver-like owner 'DVariable'": 21,
     "missing required param descriptions for: device": 1,
-    "missing required param descriptions for: mesh": 1,
-    "missing required param descriptions for: local_shape": 1,
-    "missing required param descriptions for: global_shape": 1,
-    "missing required param descriptions for: idx": 1,
-    "missing required param descriptions for: dim_name": 2,
     "missing required param descriptions for: device_idx": 1,
-    "missing required param descriptions for: arg0": 1,
     "receiver-like owner 'Converter'": 4,
     "receiver-like owner 'GFile'": 2,
     "missing required param descriptions for: file_content": 1,
@@ -581,7 +574,6 @@
     "receiver-like owner 'ZeroPadding3D'": 7,
     "required param 'identifier' not fuzzable: type unclear / not constructable": 2,
     "required param 'volumes' not fuzzable: type unclear / not constructable": 1,
-    "required param 'coordinates' not fuzzable: type unclear / not constructable": 1,
     "required param 'method' lacks constraint/type/shape/value detail": 1,
     "required param 'brightness' lacks constraint/type/shape/value detail": 1,
     "required param 'intensity' not fuzzable: type unclear / not constructable": 1,
@@ -957,8 +949,8 @@
         "reason": "no concrete parameters; zero-arg APIs are excluded"
       },
       {
-        "api_full_name": "tensorflow.identity",
-        "reason": "vague required param descriptions for: input"
+        "api_full_name": "tensorflow.group",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
       },
       {
         "api_full_name": "tensorflow.init_scope",
@@ -979,6 +971,10 @@
       {
         "api_full_name": "tensorflow.ones_initializer",
         "reason": "classes/exceptions are excluded"
+      },
+      {
+        "api_full_name": "tensorflow.print",
+        "reason": "no concrete parameters; zero-arg APIs are excluded"
       },
       {
         "api_full_name": "tensorflow.random_normal_initializer",
@@ -1031,16 +1027,16 @@
       {
         "api_full_name": "tensorflow.DeviceSpec.replace",
         "reason": "no concrete parameters; zero-arg APIs are excluded"
-      },
-      {
-        "api_full_name": "tensorflow.DeviceSpec.to_string",
-        "reason": "no concrete parameters; zero-arg APIs are excluded"
       }
     ],
     "3_types": [
       {
         "api_full_name": "tensorflow.Assert",
         "reason": "required param 'condition' not fuzzable: type unclear / not constructable"
+      },
+      {
+        "api_full_name": "tensorflow.add_n",
+        "reason": "no modifiable seedable parameters"
       },
       {
         "api_full_name": "tensorflow.broadcast_static_shape",
@@ -1087,7 +1083,15 @@
         "reason": "no modifiable seedable parameters"
       },
       {
-        "api_full_name": "tensorflow.group",
+        "api_full_name": "tensorflow.guarantee_const",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.identity",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.identity_n",
         "reason": "no modifiable seedable parameters"
       },
       {
@@ -1115,11 +1119,15 @@
         "reason": "required param 'fn' not fuzzable: non-fuzzable type cue: callable"
       },
       {
+        "api_full_name": "tensorflow.matrix_square_root",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
         "api_full_name": "tensorflow.nondifferentiable_batch_function",
         "reason": "required param 'num_batch_threads' lacks constraint/type/shape/value detail"
       },
       {
-        "api_full_name": "tensorflow.print",
+        "api_full_name": "tensorflow.rank",
         "reason": "no modifiable seedable parameters"
       },
       {
@@ -1133,6 +1141,18 @@
       {
         "api_full_name": "tensorflow.scan",
         "reason": "required param 'fn' not fuzzable: non-fuzzable type cue: callable"
+      },
+      {
+        "api_full_name": "tensorflow.shape",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.shape_n",
+        "reason": "no modifiable seedable parameters"
+      },
+      {
+        "api_full_name": "tensorflow.stop_gradient",
+        "reason": "no modifiable seedable parameters"
       },
       {
         "api_full_name": "tensorflow.switch_case",
@@ -1208,34 +1228,6 @@
       },
       {
         "api_full_name": "tensorflow.debugging.assert_proper_iterable",
-        "reason": "no modifiable seedable parameters"
-      },
-      {
-        "api_full_name": "tensorflow.debugging.check_numerics",
-        "reason": "required param 'message' lacks constraint/type/shape/value detail"
-      },
-      {
-        "api_full_name": "tensorflow.debugging.enable_check_numerics",
-        "reason": "no modifiable seedable parameters"
-      },
-      {
-        "api_full_name": "tensorflow.debugging.set_log_device_placement",
-        "reason": "no modifiable seedable parameters"
-      },
-      {
-        "api_full_name": "tensorflow.distribute.experimental_set_strategy",
-        "reason": "no modifiable seedable parameters"
-      },
-      {
-        "api_full_name": "tensorflow.experimental.dispatch_for_api",
-        "reason": "no modifiable seedable parameters"
-      },
-      {
-        "api_full_name": "tensorflow.experimental.dispatch_for_binary_elementwise_apis",
-        "reason": "no modifiable seedable parameters"
-      },
-      {
-        "api_full_name": "tensorflow.experimental.dispatch_for_binary_elementwise_assert_apis",
         "reason": "no modifiable seedable parameters"
       }
     ],

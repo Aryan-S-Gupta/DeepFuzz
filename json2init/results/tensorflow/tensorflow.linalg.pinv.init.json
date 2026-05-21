@@ -20,15 +20,37 @@
       "chosen_type": "float",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
+        "kind": "tensor",
+        "shape": [
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "rcond": {
       "name": "rcond",
@@ -47,7 +69,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -56,54 +78,46 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "validate_args": {
       "name": "validate_args",
       "spec": {
         "type": "",
         "size": "",
-        "default": "",
+        "default": "False",
         "flag": "Optional",
         "description": "When `True`, additional assertions might be embedded in the graph. Default value: `False` (i.e., no graph assertions are added).",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "validate_args must be one of True, False"
+        ]
       },
       "chosen_type": "when `true`",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
         "enum_switch"
       ],
-      "unresolved_reason": "unhandled chosen type: when `true`"
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string|callable",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "Python `str` prefixed to ops created by this function. Default value: 'pinv'.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "callable",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [
-        "enum_switch"
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
-      "unresolved_reason": "unsupported base seed type: callable"
+      "unresolved_reason": "unhandled chosen type: when `true`",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -113,23 +127,73 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Input `a` must have at least 2 dimensions (saw: 0)."
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "ValueError",
-    "error": "Input `a` must have at least 2 dimensions (saw: 0).",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/linalg/linalg_impl.py\", line 759, in _maybe_validate_matrix\n    raise ValueError('Input `a` must have at least 2 dimensions '\n                     '(saw: {}).'.format(a.shape.rank))\nValueError: Input `a` must have at least 2 dimensions (saw: 0).\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 4,
+      "preview": [
+        0.5,
+        0.0,
+        0.0,
+        0.5
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "a"
+    ],
+    "skipped_optional": [
+      "rcond",
+      "validate_args"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(a_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(rcond_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(validate_args_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.pinv.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

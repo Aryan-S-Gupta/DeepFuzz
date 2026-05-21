@@ -12,6 +12,16 @@
       "enum_values": [],
       "constraints": []
     },
+    "dtype": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "data-type, optional The desired data-type for the array. If not given, NumPy will try to use a default ``dtype`` that can represent the values (by applying promotion rules when necessary.)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
     "copy": {
       "type": "bool|sequence|tensor|dtype|any",
       "size": "",
@@ -37,7 +47,7 @@
     "subok": {
       "type": "bool|tensor",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "bool, optional If True, then sub-classes will be passed-through, otherwise the returned array will be forced to be a base-class array (default).",
       "dtype_candidates": [
@@ -49,7 +59,7 @@
     "ndmin": {
       "type": "int|number|tensor",
       "size": "",
-      "default": "",
+      "default": "0",
       "flag": "Optional",
       "description": "int, optional Specifies the minimum number of dimensions that the resulting array should have. Ones will be prepended to the shape as needed to meet this requirement.",
       "dtype_candidates": [],
@@ -59,7 +69,7 @@
     "ndmax": {
       "type": "int|number|dtype",
       "size": "",
-      "default": "",
+      "default": "0",
       "flag": "Optional",
       "description": "int, optional Specifies the maximum number of dimensions to create when inferring shape from nested sequences. By default (ndmax=0), NumPy recurses through all nesting levels (up to the compile-time constant ``NPY_MAXDIMS``). Setting ``ndmax`` stops recursion at the specified depth, preserving deeper nested structures as objects instead of promoting them to higher-dimensional arrays. In this case, ``dtype=object`` is required.",
       "dtype_candidates": [],
@@ -79,10 +89,8 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "real, integer, or complex",
+    "numbers": "1",
     "description": "------- ndarray An array object satisfying the specified requirements."
   },
-  "constraints": [
-    "-rank(input) <= axis < rank(input)"
-  ]
+  "constraints": []
 }

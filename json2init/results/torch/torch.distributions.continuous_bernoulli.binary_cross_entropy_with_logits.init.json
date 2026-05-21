@@ -5,24 +5,25 @@
   "import_path": "torch.distributions.continuous_bernoulli.binary_cross_entropy_with_logits",
   "backend": "torch",
   "params": {
-    "weight": {
-      "name": "weight",
+    "input": {
+      "name": "input",
       "spec": {
         "type": "tensor",
         "size": "",
         "default": "",
-        "flag": "Optional",
-        "description": "a manual rescaling weight if provided it's repeated to match input tensor shape",
+        "flag": "Required",
+        "description": "Tensor of arbitrary shape as unnormalized scores (often referred to as logits).",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,14 +31,119 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "target": {
+      "name": "target",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Tensor of the same shape as input with values between 0 and 1",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "target must have the same shape as input"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 0.5,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "weight": {
+      "name": "weight",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "a manual rescaling weight. If provided, the dimension of weight supports :ref:`broadcasting to a common shape <broadcasting-semantics>` with respect to the input (and target) shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "size_average": {
       "name": "size_average",
@@ -51,19 +157,27 @@
           "bool"
         ],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "reduce": {
       "name": "reduce",
@@ -77,33 +191,43 @@
           "bool"
         ],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "reduction": {
       "name": "reduction",
       "spec": {
         "type": "string|number",
         "size": "",
-        "default": "'mean'",
+        "default": "",
         "flag": "Optional",
         "description": "Specifies the reduction to apply to the output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will be applied, ``'mean'``: the sum of the output will be divided by the number of elements in the output, ``'sum'``: the output will be summed. Note: :attr:`size_average` and :attr:`reduce` are in the process of being deprecated, and in the meantime, specifying either of those two args will override :attr:`reduction`. Default: ``'mean'``",
         "dtype_candidates": [],
         "enum_values": [
+          "none",
           "mean",
           "sum"
         ],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "number",
@@ -114,10 +238,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "pos_weight": {
       "name": "pos_weight",
@@ -129,7 +259,9 @@
         "description": "a weight of positive examples to be broadcasted with target. Must be a tensor with equal size along the class dimension to the number of classes. Pay close attention to PyTorch's broadcasting semantics in order to achieve the desired operations. For a target of size [B, C, H, W] (where B is batch size) pos_weight of size [B, C, H, W] will apply different pos_weights to each element of the batch or [C, H, W] the same pos_weights across the batch. To apply the same positive weight along all spatial dimensions for a 2D multi-class target [C, H, W] use: [C, 1, 1]. Default: ``None``",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": [
+          "pos_weight must be 2-D",
           "pos_weight must be positive"
         ]
       },
@@ -143,79 +275,18 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "input": {
-      "name": "input",
-      "spec": {
-        "type": "tensor",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "Tensor of arbitrary shape as unnormalized scores (often referred to as logits).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "tensor",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "torch"
-      },
-      "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+      "valid_mutation_rules": [
+        "scalar_delta"
       ],
-      "unresolved_reason": ""
-    },
-    "target": {
-      "name": "target",
-      "spec": {
-        "type": "tensor",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "Tensor of the same shape as input with values between 0 and 1",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "tensor",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 0.5,
-        "device": "cpu",
-        "backend": "torch"
-      },
-      "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+      "negative_mutation_rules": [
+        "type_widen"
       ],
-      "unresolved_reason": ""
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },
@@ -236,12 +307,40 @@
       "dtype": "float32",
       "device": "cpu",
       "numel": 1,
-      "has_nan": false
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input",
+      "target"
+    ],
+    "skipped_optional": [
+      "weight",
+      "size_average",
+      "reduce",
+      "reduction",
+      "pos_weight"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(reduction_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.distributions.continuous_bernoulli.binary_cross_entropy_with_logits.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

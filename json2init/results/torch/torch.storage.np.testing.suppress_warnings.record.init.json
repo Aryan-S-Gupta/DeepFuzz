@@ -1,0 +1,109 @@
+{
+  "api_full_name": "torch.storage.np.testing.suppress_warnings.record",
+  "api_name": "record",
+  "module_path": "torch.storage.np.testing.suppress_warnings",
+  "import_path": "torch.storage.np.testing.suppress_warnings.record",
+  "backend": "torch",
+  "params": {
+    "category": {
+      "name": "category",
+      "spec": {
+        "type": "class",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "class, optional Warning class to filter",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "class",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: class"
+    },
+    "message": {
+      "name": "message",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "string, optional Regular expression matching the warning message.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "module": {
+      "name": "module",
+      "spec": {
+        "type": "module",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "module, optional Module to filter for. Note that the module (and its file) must match exactly and cannot be a submodule. This may make it unreliable for external modules.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "module",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: module"
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "1",
+    "description": "------- list A list which will be filled with all matched warnings."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: suppress_warnings.record() missing 1 required positional argument: 'self'"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "suppress_warnings.record() missing 1 required positional argument: 'self'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\nTypeError: suppress_warnings.record() missing 1 required positional argument: 'self'\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.testing.suppress_warnings.record.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

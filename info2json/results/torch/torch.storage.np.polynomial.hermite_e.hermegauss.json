@@ -1,0 +1,27 @@
+{
+  "api_name": "hermegauss",
+  "module_path": "torch.storage.np.polynomial.hermite_e",
+  "params": {
+    "deg": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int Number of sample points and weights. It must be >= 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "deg must be >= 1"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "------- ndarray 1-D ndarray containing the sample points. y : ndarray 1-D ndarray containing the weights."
+  },
+  "constraints": [
+    "x and y are 1-D ndarrays with broadcast-compatible shapes"
+  ]
+}

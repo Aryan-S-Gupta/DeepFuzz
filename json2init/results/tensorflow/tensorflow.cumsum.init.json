@@ -42,7 +42,8 @@
           "half"
         ],
         "constraints": [
-          "x must be one of float32, float64, int64, int32, uint8, uint16, int16, int8, complex64, complex128, qint8, quint8, qint32, half"
+          "x must be one of float32, float64, int64, int32, uint8, uint16, int16, int8, complex64, complex128, qint8, quint8, qint32, half",
+          "x must be one of the specified types"
         ]
       },
       "chosen_type": "float",
@@ -56,6 +57,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "axis": {
@@ -63,7 +71,7 @@
       "spec": {
         "type": "tensor",
         "size": "",
-        "default": "0)",
+        "default": "0",
         "flag": "Optional",
         "description": "A `Tensor` of type `int32` (default: 0). Must be in the range `[-rank(x), rank(x))`.",
         "dtype_candidates": [
@@ -71,56 +79,68 @@
         ],
         "enum_values": [],
         "constraints": [
+          "-rank(x) <= axis < rank(x)",
           "axis must satisfy -rank(x) <= axis < rank(x)"
         ]
       },
-      "chosen_type": "tensor",
+      "chosen_type": "int",
       "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "int32",
-        "fill": 1,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "kind": "literal",
+        "value": 0
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     },
     "exclusive": {
       "name": "exclusive",
       "spec": {
-        "type": "",
+        "type": "bool",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "If `True`, perform exclusive cumsum.",
-        "dtype_candidates": [],
+        "dtype_candidates": [
+          "bool"
+        ],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "if `true`",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: if `true`"
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
     },
     "reverse": {
       "name": "reverse",
       "spec": {
         "type": "bool",
         "size": "",
-        "default": "False)",
+        "default": "False",
         "flag": "Optional",
         "description": "A `bool` (default: False).",
         "dtype_candidates": [
@@ -133,31 +153,19 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -166,14 +174,25 @@
     "description": "A `Tensor`. Has the same type as `x`."
   },
   "constraints": [],
-  "spec_ready": false,
+  "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "required param 'exclusive' unresolved: unhandled chosen type: if `true`"
+    "smoke test failed: {{function_node __wrapped__Cumsum_device_/job:localhost/replica:0/task:0/device:CPU:0}} ScanOp: Expected scan axis in the range [0, 0), but got 0 [Op:Cumsum] name: "
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__Cumsum_device_/job:localhost/replica:0/task:0/device:CPU:0}} ScanOp: Expected scan axis in the range [0, 0), but got 0 [Op:Cumsum] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Cumsum_device_/job:localhost/replica:0/task:0/device:CPU:0}} ScanOp: Expected scan axis in the range [0, 0), but got 0 [Op:Cumsum] name: \n"
+  },
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.cumsum.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

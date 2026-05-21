@@ -18,7 +18,7 @@
       "type": "int|number",
       "size": "scalar",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A scalar integer indicating the number of segments. Defaults to `max(segment_ids) + 1` (or zero if `segment_ids` is empty).",
       "dtype_candidates": [],
       "enum_values": [],
@@ -27,7 +27,7 @@
     "out_type": {
       "type": "dtype",
       "size": "",
-      "default": "segment_ids",
+      "default": "",
       "flag": "Optional",
       "description": "The dtype for the return value. Defaults to `segment_ids.dtype`, or `tf.int64` if `segment_ids` does not have a dtype.",
       "dtype_candidates": [
@@ -37,16 +37,6 @@
       "constraints": [
         "out_type must be one of segment_ids.dtype, tf.int64"
       ]
-    },
-    "name": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name prefix for the returned tensor (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

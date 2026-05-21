@@ -1,0 +1,168 @@
+{
+  "api_name": "array2string",
+  "module_path": "torch.storage.np",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "max_line_width": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Inserts newlines if text is longer than `max_line_width`. Defaults to ``numpy.get_printoptions()['linewidth']``.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "linewidth"
+      ],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "precision": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or None, optional Floating point precision. Defaults to ``numpy.get_printoptions()['precision']``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "suppress_small": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional Represent numbers \"very close\" to zero as zero; default is False. Very close is defined by precision: if the precision is 8, e.g., numbers smaller (in absolute value) than 5e-9 are represented as zero. Defaults to ``numpy.get_printoptions()['suppress']``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [
+        "suppress"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "suppress_small must be one of suppress"
+      ]
+    },
+    "separator": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional Inserted between elements.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "prefix": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "formatter": {
+      "type": "string|dict|callable",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "dict of callables, optional If not None, the keys should indicate the type(s) that the respective formatting function applies to. Callables should return a string. Types that are not specified (by their corresponding keys) are handled by the default formatters. Individual types for which a formatter can be set are:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "threshold": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Total number of array elements which trigger summarization rather than full repr. Defaults to ``numpy.get_printoptions()['threshold']``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "edgeitems": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Number of array items in summary at beginning and end of each dimension. Defaults to ``numpy.get_printoptions()['edgeitems']``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "sign": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "string, either '-', '+', or ' ', optional Controls printing of the sign of floating-point types. If '+', always print the sign of positive values. If ' ', always prints a space (whitespace character) in the sign position of positive values. If '-', omit the sign character of positive values. Defaults to ``numpy.get_printoptions()['sign']``.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "-"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "sign must be positive",
+        "sign must be one of -"
+      ]
+    },
+    "floatmode": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional Controls the interpretation of the `precision` option for floating-point types. Defaults to ``numpy.get_printoptions()['floatmode']``. Can take the following values:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "suffix": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional The length of the prefix and suffix strings are used to respectively align and wrap the output. An array is typically printed as::",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "legacy": {
+      "type": "string",
+      "size": "0d",
+      "default": "",
+      "flag": "Optional",
+      "description": "string or `False`, optional If set to the string ``'1.13'`` enables 1.13 legacy printing mode. This approximates numpy 1.13 print output by including a space in the sign position of floats and different behavior for 0d arrays. If set to `False`, disables legacy mode. Unrecognized strings will be ignored with a warning for forward compatibility.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "------- str String representation of the array."
+  },
+  "constraints": []
+}

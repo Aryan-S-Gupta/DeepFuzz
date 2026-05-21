@@ -15,7 +15,9 @@
         "description": "First input tensor (integer type).",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "x1 and x2 must have broadcast-compatible shapes"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
@@ -27,7 +29,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "x2": {
       "name": "x2",
@@ -39,7 +48,9 @@
         "description": "Second input tensor (integer type).",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "x1 and x2 must have broadcast-compatible shapes"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
@@ -51,7 +62,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -59,7 +77,9 @@
     "numbers": "1",
     "description": "Output tensor, element-wise least common multiple of `x1` and `x2`."
   },
-  "constraints": [],
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -75,12 +95,29 @@
       "shape": [],
       "dtype": "int32",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        1
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x1",
+      "x2"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.lcm.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

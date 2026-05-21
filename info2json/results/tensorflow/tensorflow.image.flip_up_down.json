@@ -11,9 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape must be supported",
-        "image must be 4-D",
-        "ValueError if unsupported shape of `image`"
+        "input must be 4-D or 3-D",
+        "image must be 4-D"
       ]
     }
   },
@@ -22,5 +21,7 @@
     "numbers": "1",
     "description": "A `Tensor` of the same type and shape as `image`."
   },
-  "constraints": []
+  "constraints": [
+    "x and y must have broadcast-compatible shapes (implicit from TensorFlow API)"
+  ]
 }

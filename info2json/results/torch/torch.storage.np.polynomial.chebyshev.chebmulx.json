@@ -1,0 +1,26 @@
+{
+  "api_name": "chebmulx",
+  "module_path": "torch.storage.np.polynomial.chebyshev",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array of Chebyshev series coefficients ordered from low to high.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c must be 1-D",
+        "c must be provided for chebmulx to execute"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float64",
+    "description": "------- ndarray Array representing the result of the multiplication."
+  },
+  "constraints": []
+}

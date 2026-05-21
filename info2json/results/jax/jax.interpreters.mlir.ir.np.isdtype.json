@@ -2,6 +2,19 @@
   "api_name": "isdtype",
   "module_path": "jax.interpreters.mlir.ir.np",
   "params": {
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype The input dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "dtype and kind must be provided",
+        "kind can be a string, dtype, or tuple of dtypes/strs"
+      ]
+    },
     "kind": {
       "type": "string|int|float|bool|tuple|number|dtype",
       "size": "",
@@ -11,16 +24,15 @@
       "dtype_candidates": [
         "bool"
       ],
-      "enum_values": [],
+      "enum_values": [
+        "bool",
+        "integral",
+        "numeric"
+      ],
       "constraints": [
-        "'bool'",
-        "'signed integer'",
-        "'unsigned integer'",
-        "'integral'",
-        "'real floating'",
-        "'complex floating'",
-        "'numeric'",
-        "dtype and kind must be provided"
+        "must be one of: 'bool', 'signed integer', 'unsigned integer', 'integral', 'real floating', 'complex floating', 'numeric'",
+        "dtype and kind must be provided",
+        "kind can be a string, dtype, or tuple of dtypes/strs"
       ]
     }
   },
@@ -29,5 +41,8 @@
     "numbers": "1",
     "description": "------- bool"
   },
-  "constraints": []
+  "constraints": [
+    "dtype and kind must be provided",
+    "kind can be a string, dtype, or tuple of dtypes/strs"
+  ]
 }

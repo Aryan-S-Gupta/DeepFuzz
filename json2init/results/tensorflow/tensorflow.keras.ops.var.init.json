@@ -13,14 +13,10 @@
         "default": "",
         "flag": "Required",
         "description": "Input tensor.",
-        "dtype_candidates": [
-          "float16",
-          "float32",
-          "float64"
-        ],
+        "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "x.dtype must be float16, float32, or float64"
+          "x and keepdims must be compatible."
         ]
       },
       "chosen_type": "tensor",
@@ -28,43 +24,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
-        ],
-        "dtype": "float16",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
-      },
-      "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
-      ],
-      "unresolved_reason": ""
-    },
-    "axis": {
-      "name": "axis",
-      "spec": {
-        "type": "tensor",
-        "size": "",
-        "default": "-1",
-        "flag": "Optional",
-        "description": "Axis or axes along which the variance is computed. The default is to compute the variance of the flattened tensor.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": [
-          "axis must satisfy -rank(x) <= axis < rank(x)"
-        ]
-      },
-      "chosen_type": "tensor",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -72,14 +32,59 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Axis or axes along which the variance is computed. The default is to compute the variance of the flattened tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "If not provided, the variance of the flattened tensor is computed.",
+          "axis must satisfy -rank(x) <= axis < rank(x)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "keepdims": {
       "name": "keepdims",
@@ -93,27 +98,38 @@
           "bool"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "x and keepdims must be compatible."
+        ]
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "Output tensor containing the variance."
   },
-  "constraints": [],
+  "constraints": [
+    "x and keepdims must be compatible."
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -127,14 +143,44 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [],
-      "dtype": "float16",
+      "dtype": "float32",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        0.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "axis",
+      "keepdims"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.var.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -22,22 +22,40 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          1,
+          3
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "y_pred": {
       "name": "y_pred",
@@ -56,145 +74,195 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          1,
+          3
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            0.9,
+            0.05,
+            0.05
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "alpha": {
       "name": "alpha",
       "spec": {
         "type": "list|number",
         "size": "scalar",
-        "default": "",
-        "flag": "Required",
+        "default": "0.25",
+        "flag": "Optional",
         "description": "A weight balancing factor for all classes, default is `0.25` as mentioned in the reference. It can be a list of floats or a scalar. In the multi-class case, alpha may be set by inverse class frequency by using `compute_class_weight` from `sklearn.utils`.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "number",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
-      },
-      "mutation_rules": [
-        "enum_switch",
-        "scalar_delta",
-        "type_widen"
-      ],
-      "unresolved_reason": ""
-    },
-    "gamma": {
-      "name": "gamma",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A focusing parameter, default is `2.0` as mentioned in the reference. It helps to gradually reduce the importance given to simple examples in a smooth manner. When `gamma` = 0, there is no focal effect on the categorical crossentropy.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a focusing parameter",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [
-        "enum_switch"
-      ],
-      "unresolved_reason": "unhandled chosen type: a focusing parameter"
-    },
-    "from_logits": {
-      "name": "from_logits",
-      "spec": {
-        "type": "tensor",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "Whether `y_pred` is expected to be a logits tensor. By default, we assume that `y_pred` encodes a probability distribution.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "tensor",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
-      },
-      "mutation_rules": [
-        "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
-      ],
-      "unresolved_reason": ""
-    },
-    "label_smoothing": {
-      "name": "label_smoothing",
-      "spec": {
-        "type": "float",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "Float in [0, 1]. If > `0` then smooth the labels. For example, if `0.1`, use `0.1 / num_classes` for non-target labels and `0.9 + 0.1 / num_classes` for target labels.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
       "chosen_type": "float",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 0.5
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "gamma": {
+      "name": "gamma",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "2.0",
+        "flag": "Optional",
+        "description": "A focusing parameter, default is `2.0` as mentioned in the reference. It helps to gradually reduce the importance given to simple examples in a smooth manner. When `gamma` = 0, there is no focal effect on the categorical crossentropy.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.5
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "from_logits": {
+      "name": "from_logits",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "Whether `y_pred` is expected to be a logits tensor. By default, we assume that `y_pred` encodes a probability distribution.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "label_smoothing": {
+      "name": "label_smoothing",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "0.0",
+        "flag": "Optional",
+        "description": "Float in [0, 1]. If > `0` then smooth the labels. For example, if `0.1`, use `0.1 / num_classes` for non-target labels and `0.9 + 0.1 / num_classes` for target labels.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.5
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis": {
       "name": "axis",
       "spec": {
         "type": "",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "-1",
+        "flag": "Optional",
         "description": "Defaults to `-1`. The dimension along which the entropy is computed.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "defaults to `-1`. the dimension along which the entropy is computed.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: defaults to `-1`. the dimension along which the entropy is computed."
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": -1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -203,15 +271,91 @@
     "description": "Categorical focal crossentropy loss value."
   },
   "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'gamma' unresolved: unhandled chosen type: a focusing parameter",
-    "required param 'axis' unresolved: unhandled chosen type: defaults to `-1`. the dimension along which the entropy is computed."
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        0.00026340148178860545
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "y_true",
+      "y_pred"
+    ],
+    "skipped_optional": [
+      "alpha",
+      "gamma",
+      "from_logits",
+      "label_smoothing",
+      "axis"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "raise_contract": [
+    {
+      "when": "negative_mutation(alpha_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(gamma_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(from_logits_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(label_smoothing_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.losses.categorical_focal_crossentropy.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

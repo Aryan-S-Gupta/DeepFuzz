@@ -11,20 +11,20 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis should be in range [-rank(x), rank(x)) if specified, else -1"
+        "x and keepdims must be compatible."
       ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "Axis or axes along which the means are computed. The default is to compute the mean of the flattened tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(x) <= axis < rank(x)",
-        "axis should be in range [-rank(x), rank(x)) if specified, else -1"
+        "If not provided, the mean of the flattened tensor is computed.",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
     "keepdims": {
@@ -37,15 +37,17 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and keepdims must be compatible."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating",
+    "numbers": "1",
     "description": "Output tensor containing the mean values."
   },
   "constraints": [
-    "axis should be in range [-rank(x), rank(x)) if specified, else -1"
+    "x and keepdims must be compatible."
   ]
 }

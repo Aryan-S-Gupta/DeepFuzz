@@ -10,46 +10,51 @@
       "description": "input array. Must have ``a.ndim >= 1``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "n": {
       "type": "int|number",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1",
+      "flag": "Optional",
       "description": "int, optional, default=1. Order of the difference. Specifies the number of times the difference is computed. If n=0, no difference is computed and input is returned as is.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "-1",
       "flag": "Optional",
       "description": "int, optional, default=-1. Specifies the axis along which the difference is computed. The difference is computed along ``axis -1`` by default.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "prepend": {
       "type": "number|tensor",
-      "size": "",
+      "size": "scalar",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "scalar or array, optional, default=None. Specifies the values to be prepended along ``axis`` before computing the difference.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "append": {
       "type": "number|tensor",
-      "size": "",
+      "size": "scalar",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "scalar or array, optional, default=None. Specifies the values to be appended along ``axis`` before computing the difference.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

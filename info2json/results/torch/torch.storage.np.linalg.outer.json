@@ -1,0 +1,43 @@
+{
+  "api_name": "outer",
+  "module_path": "torch.storage.np.linalg",
+  "params": {
+    "x1": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(M,) array_like One-dimensional input array of size ``N``. Must have a numeric data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must have a numeric data type.",
+        "x1 and x2 must have the same data type."
+      ]
+    },
+    "x2": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(N,) array_like One-dimensional input array of size ``M``. Must have a numeric data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must have a numeric data type.",
+        "x1 and x2 must have the same data type."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(M, N)",
+    "description": "------- (M, N) ndarray ``out[i, j] = a[i] * b[j]``"
+  },
+  "constraints": [
+    "accepts 1-dimensional inputs only.",
+    "x1 and x2 must have the same data type."
+  ]
+}

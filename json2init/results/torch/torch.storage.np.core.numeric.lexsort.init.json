@@ -1,0 +1,111 @@
+{
+  "api_full_name": "torch.storage.np.core.numeric.lexsort",
+  "api_name": "lexsort",
+  "module_path": "torch.storage.np.core.numeric",
+  "import_path": "torch.storage.np.core.numeric.lexsort",
+  "backend": "torch",
+  "params": {
+    "keys": {
+      "name": "keys",
+      "spec": {
+        "type": "tensor",
+        "size": "2D",
+        "default": "",
+        "flag": "Required",
+        "description": "(k, m, n, ...) array-like The `k` keys to be sorted. The *last* key (e.g, the last row if `keys` is a 2D array) is the primary sort key. Each element of `keys` along the zeroth axis must be an array-like object of the same shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "shape must match between elements of `keys`",
+          "keys must be 2-D",
+          "keys must be provided"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "int, optional Axis to be indirectly sorted. By default, sort over the last axis of each sequence. Separate slices along `axis` sorted over independently; see last example.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "axis must satisfy -rank(keys) <= axis < rank(keys)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "ints",
+    "description": "------- (m, n, ...) ndarray of ints Array of indices that sort the keys along the specified axis."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: need sequence of keys with len > 0 in lexsort"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "need sequence of keys with len > 0 in lexsort",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\nTypeError: need sequence of keys with len > 0 in lexsort\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.core.numeric.lexsort.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

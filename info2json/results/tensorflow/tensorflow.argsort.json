@@ -17,39 +17,33 @@
     "axis": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "-1",
+      "flag": "Optional",
       "description": "The axis along which to sort. The default is -1, which sorts the last axis.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "axis must satisfy -rank(values) <= axis < rank(values)"
+      ]
     },
     "direction": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "The direction in which to sort the values (`'ASCENDING'` or `'DESCENDING'`).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "direction must be one of ASCENDING, DESCENDING"
+      ]
     },
     "stable": {
       "type": "tensor",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "If True, equal elements in the original tensor will not be re-ordered in the returned order. Unstable sort is not yet implemented, but will eventually be the default for performance reasons. If you require a stable order, pass `stable=True` for forwards compatibility.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Optional name for the operation.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

@@ -10,14 +10,16 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x cannot be complex for jax.numpy.sign"
+        "x values must be non-zero for defined results",
+        "complex x returns unit vector representing the sign"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape and dtype as x",
+    "numbers": "real or complex",
     "description": "An array with same shape and dtype as ``x`` containing the sign indication."
   },
   "constraints": []

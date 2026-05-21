@@ -10,7 +10,9 @@
       "description": "(Batch of) `float`-like matrix-shaped `Tensor`(s) which are to be pseudo-inverted.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Batch of"
+      ]
     },
     "tol": {
       "type": "float",
@@ -21,7 +23,6 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Default value: `eps * max(rows, cols) * max(singular_val)`",
         "tol must be one of zero"
       ]
     },
@@ -38,27 +39,12 @@
       "constraints": [
         "validate_args must be one of True, False"
       ]
-    },
-    "name": {
-      "type": "string|callable",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "Python `str` prefixed to ops created by this function. Default value: 'matrix_rank'.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "Default value: 'matrix_rank'",
-        "name must be one of str, matrix_rank"
-      ]
     }
   },
   "output": {
     "type": "number",
-    "numbers": "1",
+    "numbers": "(Batch of)",
     "description": "(Batch of) `int32` scalars representing the number of non-zero singular values."
   },
-  "constraints": [
-    "matrix_rank output must be 1"
-  ]
+  "constraints": []
 }

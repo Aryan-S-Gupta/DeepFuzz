@@ -1,0 +1,58 @@
+# Python cache and bytecode files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments and package build artifacts
+.venv/
+env/
+venv/
+pip-wheel-metadata/
+dist/
+build/
+*.egg-info/
+
+# Test and coverage outputs
+.pytest_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage_reports/
+
+# Result directories and generated pipeline data
+results/
+doc2info/results/
+info2json/results/
+json_validator/results/
+json2init/results/
+stage4/results/
+pipeline_runs/
+doc2info/*.jsonl
+
+# Native coverage and profiling artifacts
+*.gcda
+*.gcno
+*.gcov
+*.prof
+
+# Git and editor metadata
+.git/
+*.swp
+*~
+.DS_Store
+.vscode/
+.idea/
+
+# Local logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Docker build context should not include large SSH or creds files
+**/id_rsa
+**/id_rsa.pub
+**/*.pem
+**/*.key

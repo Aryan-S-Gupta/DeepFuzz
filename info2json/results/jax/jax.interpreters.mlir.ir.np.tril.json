@@ -10,9 +10,7 @@
       "description": "array_like, shape (..., M, N) Input array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "M and N must be positive integers."
-      ]
+      "constraints": []
     },
     "k": {
       "type": "int",
@@ -23,14 +21,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "k must be positive",
-        "k must be an integer, or left empty (equivalent to k = 0)."
+        "k must be positive"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "(..., M, N)",
     "description": "------- ndarray, shape (..., M, N) Lower triangle of `m`, of same shape and data-type as `m`."
   },
   "constraints": []

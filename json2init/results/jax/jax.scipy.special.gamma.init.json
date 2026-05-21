@@ -1,0 +1,83 @@
+{
+  "api_full_name": "jax.scipy.special.gamma",
+  "api_name": "gamma",
+  "module_path": "jax.scipy.special",
+  "import_path": "jax.scipy.special.gamma",
+  "backend": "jax",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "arraylike, real or complex valued. Complex inputs use a Lanczos approximation with reflection formula.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "Can be either real or complex number(s)"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "callable|tensor",
+    "numbers": "complex-valued if input is complex, real otherwise",
+    "description": "array containing the values of the gamma function. For complex inputs, the output is complex-valued."
+  },
+  "constraints": [
+    "For negative integers or non-positive numbers, 'nan+nanj' is returned",
+    "If either real or imaginary component of input is NaN, 'nan+nanj' is returned"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.scipy.special.gamma.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

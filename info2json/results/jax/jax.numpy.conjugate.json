@@ -10,16 +10,15 @@
       "description": "inpuat array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x shape must be broadcast-compatible when input is an Array",
-        "jax.numpy.real(output) == jax.numpy.real(x)",
-        "jax.numpy.imag(output) == -jax.numpy.imag(x)"
+        "- jax.numpy.real(x) = jax.numpy.imag(x)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "complex128",
+    "numbers": "complex64",
     "description": "An array containing the complex-conjugate of ``x``."
   },
   "constraints": []

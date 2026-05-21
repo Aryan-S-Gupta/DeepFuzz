@@ -8,12 +8,58 @@
     "input": {
       "name": "input",
       "spec": {
-        "type": "string|float|bool|tensor|dtype",
+        "type": "tensor",
         "size": "",
         "default": "",
         "flag": "Required",
-        "description": "A `Tensor`. dtype: A type for the returned `Tensor`. Must be `float16`, `float32`, `float64`, `int8`, `uint8`, `int16`, `uint16`, `int32`, `int64`, `complex64`, `complex128`, `bool` or `string`.",
+        "description": "A `Tensor`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "string|float|bool|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A type for the returned `Tensor`. Must be `float16`, `float32`, `float64`, `int8`, `uint8`, `int16`, `uint16`, `int32`, `int64`, `complex64`, `complex128`, `bool` or `string`.",
         "dtype_candidates": [
+          "bool",
           "int8",
           "int16",
           "int32",
@@ -23,43 +69,30 @@
           "float16",
           "float32",
           "float64",
-          "bool",
           "complex64",
           "complex128"
         ],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "bool",
-      "include_in_base_call": true,
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": true
+        "kind": "dtype",
+        "value": "float32"
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "layout": {
       "name": "layout",
@@ -77,7 +110,10 @@
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: tf.experimental.dtensor.layout"
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: tf.experimental.dtensor.layout",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -98,15 +134,47 @@
     "materialization_reasons": [],
     "result_summary": {
       "python_type": "EagerTensor",
-      "shape": [],
-      "dtype": "bool",
-      "numel": 1,
-      "has_nan": false
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "numel": 2,
+      "preview": [
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input"
+    ],
+    "skipped_optional": [
+      "dtype",
+      "layout"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(dtype_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ones_like.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

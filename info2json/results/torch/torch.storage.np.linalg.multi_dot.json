@@ -1,0 +1,38 @@
+{
+  "api_name": "multi_dot",
+  "module_path": "torch.storage.np.linalg",
+  "params": {
+    "arrays": {
+      "type": "sequence",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of array_like If the first argument is 1-D it is treated as row vector. If the last argument is 1-D it is treated as column vector. The other arguments must be 2-D.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "At least two elements in sequence",
+        "arrays must be 1-D",
+        "arrays must have at least one 1-D or 2-D element"
+      ]
+    },
+    "out": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "ndarray, optional Output argument. This must have the exact kind that would be returned if it was not used. In particular, it must have the right type, must be C-contiguous, and its dtype must be the dtype that would be returned for `dot(a, b)`. This is a performance feature. Therefore, if these conditions are not met, an exception is raised, instead of attempting to be flexible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Returns the dot product of the supplied arrays."
+  },
+  "constraints": []
+}

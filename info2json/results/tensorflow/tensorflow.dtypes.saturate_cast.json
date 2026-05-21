@@ -3,23 +3,23 @@
   "module_path": "tensorflow.dtypes",
   "params": {
     "value": {
-      "type": "tensor|dtype",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "A `Tensor`. dtype: The desired output `DType`.",
+      "description": "A `Tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "value and dtype must be compatible for safe casting"
+        "If the cast would cause overflow, the result is clamped to the minimum or maximum representable value of the destination type."
       ]
     },
-    "name": {
-      "type": "",
+    "dtype": {
+      "type": "dtype",
       "size": "",
       "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "flag": "Required",
+      "description": "The desired output `DType`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

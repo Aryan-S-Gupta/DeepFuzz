@@ -22,28 +22,39 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
-        "dtype": "float32",
-        "fill": 1.0,
+        "dtype": "int64",
+        "fill": 0,
         "device": "cpu",
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "depth": {
       "name": "depth",
       "spec": {
         "type": "number",
-        "size": "",
+        "size": "scalar",
         "default": "",
         "flag": "Required",
         "description": "A scalar defining the depth of the one hot dimension.",
@@ -51,24 +62,31 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "number",
+      "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1.0
+        "value": 2
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "on_value": {
       "name": "on_value",
       "spec": {
         "type": "number",
-        "size": "",
-        "default": "1)",
+        "size": "scalar",
+        "default": "",
         "flag": "Optional",
         "description": "A scalar defining the value to fill in output when `indices[j] = i`. (default: 1)",
         "dtype_candidates": [],
@@ -85,14 +103,21 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "off_value": {
       "name": "off_value",
       "spec": {
         "type": "number",
-        "size": "",
-        "default": "0)",
+        "size": "scalar",
+        "default": "",
         "flag": "Optional",
         "description": "A scalar defining the value to fill in output when `indices[j] != i`. (default: 0)",
         "dtype_candidates": [],
@@ -109,59 +134,76 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis": {
       "name": "axis",
       "spec": {
-        "type": "tensor|dtype",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "The axis to fill (default: -1, a new inner-most axis). dtype: The data type of the output tensor.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "tensor",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
-      },
-      "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
-      ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
         "type": "",
         "size": "",
         "default": "",
-        "flag": "Required",
-        "description": "A name for the operation (optional).",
+        "flag": "Optional",
+        "description": "The axis to fill (default: -1, a new inner-most axis).",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The data type of the output tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -170,14 +212,75 @@
     "description": "The one-hot tensor."
   },
   "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 4,
+      "preview": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "indices",
+      "depth"
+    ],
+    "skipped_optional": [
+      "on_value",
+      "off_value",
+      "axis",
+      "dtype"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank",
+    "dtype is a supported dtype object"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.one_hot.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

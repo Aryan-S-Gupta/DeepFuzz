@@ -16,7 +16,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "x cannot be None"
+          "With default values, this returns the standard ReLU activation: `max(x, 0)`, the element-wise maximum of 0 and the input tensor."
         ]
       },
       "chosen_type": "tensor",
@@ -24,7 +24,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -32,21 +32,32 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "negative_slope": {
       "name": "negative_slope",
       "spec": {
         "type": "float",
         "size": "",
-        "default": "0",
+        "default": "0.0",
         "flag": "Optional",
         "description": "A `float` that controls the slope for values lower than the threshold.",
         "dtype_candidates": [],
@@ -65,7 +76,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "max_value": {
       "name": "max_value",
@@ -83,16 +101,22 @@
       },
       "chosen_type": "callable",
       "include_in_base_call": false,
-      "base_seed_spec": {},
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
       "mutation_rules": [],
-      "unresolved_reason": "unsupported base seed type: callable"
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "threshold": {
       "name": "threshold",
       "spec": {
         "type": "float|callable",
         "size": "",
-        "default": "",
+        "default": "0.0",
         "flag": "Optional",
         "description": "A `float` giving the threshold value of the activation function below which values will be damped or set to zero.",
         "dtype_candidates": [],
@@ -101,11 +125,24 @@
           "threshold must be one of float"
         ]
       },
-      "chosen_type": "callable",
+      "chosen_type": "float",
       "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unsupported base seed type: callable"
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.5
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -113,7 +150,9 @@
     "numbers": "1",
     "description": "A tensor with the same shape and dtype as input `x`."
   },
-  "constraints": [],
+  "constraints": [
+    "Modifying default parameters allows you to use non-zero thresholds."
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -127,16 +166,37 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [
-        1
+        2
       ],
       "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
+      "numel": 2,
+      "preview": [
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "negative_slope",
+      "max_value",
+      "threshold"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.activations.relu.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

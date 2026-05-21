@@ -1,0 +1,27 @@
+{
+  "api_name": "sinc",
+  "module_path": "torch.storage.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray Array (possibly multi-dimensional) of values for which to calculate ``sinc(x)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape is arbitrary"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floating point",
+    "description": "------- ndarray ``sinc(x)``, which has the same shape as the input."
+  },
+  "constraints": [
+    "input and output shapes must match"
+  ]
+}

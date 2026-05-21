@@ -10,6 +10,7 @@
       "description": "input array. Must have floating-point or complex type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "Must have floating-point or complex type."
       ]
@@ -17,7 +18,7 @@
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "1",
+    "numbers": "same shape and dtype as x",
     "description": "Array of the same shape and dtype as ``x`` containing the element-wise arc tangent."
   },
   "constraints": []

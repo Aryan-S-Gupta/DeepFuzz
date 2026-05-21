@@ -69,7 +69,9 @@
         "binary",
         "text"
       ],
-      "constraints": []
+      "constraints": [
+        "message_format must be one of string, binary, text"
+      ]
     },
     "sanitize": {
       "type": "bool",
@@ -80,16 +82,6 @@
       "dtype_candidates": [
         "bool"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

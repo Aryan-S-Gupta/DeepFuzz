@@ -1,0 +1,189 @@
+{
+  "api_full_name": "jax.interpreters.mlir.ir.np.einsum",
+  "api_name": "einsum",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "import_path": "jax.interpreters.mlir.ir.np.einsum",
+  "backend": "jax",
+  "params": {
+    "operands": {
+      "name": "operands",
+      "spec": {
+        "type": "any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "signature parameter operands",
+        "constraints": []
+      },
+      "chosen_type": "any",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tuple",
+        "items": [
+          "i,i->",
+          {
+            "kind": "tensor",
+            "shape": [
+              2
+            ],
+            "dtype": "float32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "kind": "tensor",
+            "shape": [
+              2
+            ],
+            "dtype": "float32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              3.0,
+              4.0
+            ]
+          }
+        ]
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "var_positional"
+    },
+    "out": {
+      "name": "out",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "ndarray, optional If provided, the calculation is done into this array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "keyword_only"
+    },
+    "optimize": {
+      "name": "optimize",
+      "spec": {
+        "type": "list|callable",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "{False, True, 'greedy', 'optimal'}, optional Controls if intermediate optimization should occur. No optimization will occur if False and True will default to the 'greedy' algorithm. Also accepts an explicit contraction list from the ``np.einsum_path`` function. See ``np.einsum_path`` for more details. Defaults to False.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable",
+      "call_kind": "keyword_only"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The calculation based on the Einstein summation convention."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "float32"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [
+      "operands"
+    ],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "out",
+      "optimize"
+    ],
+    "accepts_var_keyword": true
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(optimize_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.interpreters.mlir.ir.np.einsum.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

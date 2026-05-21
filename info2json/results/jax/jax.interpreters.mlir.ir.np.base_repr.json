@@ -17,17 +17,20 @@
     "base": {
       "type": "int|number",
       "size": "",
-      "default": "",
+      "default": "2",
       "flag": "Optional",
       "description": "int, optional Convert `number` to the `base` number system. The valid range is 2-36, the default value is 2.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "base >= 2",
+        "base <= 36"
+      ]
     },
     "padding": {
       "type": "int|number",
       "size": "",
-      "default": "0 (no padding)",
+      "default": "0",
       "flag": "Optional",
       "description": "int, optional Number of zeros padded on the left. Default is 0 (no padding).",
       "dtype_candidates": [],

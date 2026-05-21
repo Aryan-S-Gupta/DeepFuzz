@@ -1,0 +1,56 @@
+{
+  "api_name": "where",
+  "module_path": "torch.storage.np.core.numeric",
+  "params": {
+    "condition": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, bool Where True, yield `x`, otherwise yield `y`. Values from which to choose. `x`, `y` and `condition` need to be broadcastable to some shape.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be a boolean array_like",
+        "`x`, `y` and `condition` need to be broadcastable to some shape"
+      ]
+    },
+    "x": {
+      "type": "array_like",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Values from which to choose.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "`x`, `y` and `condition` need to be broadcastable to some shape"
+      ]
+    },
+    "y": {
+      "type": "array_like",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Values from which to choose.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "`x`, `y` and `condition` need to be broadcastable to some shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array with elements from `x` where `condition` is True, and elements from `y` elsewhere."
+  },
+  "constraints": [
+    "`x`, `y` and `condition` need to be broadcastable to some shape"
+  ]
+}

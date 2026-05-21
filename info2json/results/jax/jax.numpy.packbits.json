@@ -10,9 +10,7 @@
       "description": "N-dimensional array of bits to pack.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "input `a` must be an N-dimensional array of bits"
-      ]
+      "constraints": []
     },
     "axis": {
       "type": "int",
@@ -23,29 +21,28 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(input) <= axis < rank(input) if specified"
+        "-rank(input) <= axis < rank(input) if axis is not None"
       ]
     },
     "bitorder": {
       "type": "string",
       "size": "",
-      "default": "big",
+      "default": "",
       "flag": "Optional",
       "description": "``\"big\"`` (default) or ``\"little\"``: specify whether the bit order is big-endian or little-endian.",
       "dtype_candidates": [],
-      "enum_values": [
-        "big",
-        "little"
-      ],
+      "enum_values": [],
       "constraints": [
-        "bitorder must be either 'big' or 'little'"
+        "'bitorder' must be 'big' or 'little'"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "uint8",
     "description": "A uint8 array of packed values."
   },
-  "constraints": []
+  "constraints": [
+    "input and output shapes may differ"
+  ]
 }

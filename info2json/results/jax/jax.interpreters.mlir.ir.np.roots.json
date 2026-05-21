@@ -5,21 +5,22 @@
     "p": {
       "type": "tensor",
       "size": "",
-      "default": "[]",
+      "default": "",
       "flag": "Required",
       "description": "array_like Rank-1 array of polynomial coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "size >= 1",
-        "p elements must be real numbers"
+        "must be a rank-1 array"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "real or complex",
     "description": "------- ndarray An array containing the roots of the polynomial."
   },
-  "constraints": []
+  "constraints": [
+    "input and output arrays must have same size"
+  ]
 }

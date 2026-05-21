@@ -10,16 +10,15 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "shape is arbitrary",
-        "x and output have the same shape"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "Output tensor of the same shape as `x`, where each element is transformed according to the tanh shrink operation."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor has the same shape as the input tensor."
+  ]
 }

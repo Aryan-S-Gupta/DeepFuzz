@@ -11,14 +11,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be provided",
-        "x and output must have compatible shapes"
+        "If x is not provided, it defaults to an empty tensor."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "float32",
     "description": "The truncated value of each element in `x`."
   },
   "constraints": []

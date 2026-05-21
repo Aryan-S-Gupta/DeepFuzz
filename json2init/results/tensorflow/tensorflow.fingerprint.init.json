@@ -22,7 +22,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,28 +30,37 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "method": {
       "name": "method",
       "spec": {
         "type": "string|tensor",
         "size": "",
-        "default": "farmhash64",
+        "default": "",
         "flag": "Optional",
         "description": "A `Tensor` of type `tf.string`. Fingerprint method used by this op. Currently, available method is `farmhash64`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "method must be one of: farmhash64"
-        ]
+        "constraints": []
       },
       "chosen_type": "string",
       "include_in_base_call": false,
@@ -61,39 +70,21 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "string_replace",
-        "string_empty"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "enum_switch"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "2D",
+    "numbers": "1",
     "description": "A two-dimensional `Tensor` of type `tf.uint8`. The first dimension equals to `data`'s first dimension, and the second dimension size depends on the fingerprint algorithm."
   },
   "constraints": [],
@@ -110,17 +101,50 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [
-        1,
+        2,
         8
       ],
       "dtype": "uint8",
-      "numel": 8,
-      "has_nan": false
+      "numel": 16,
+      "preview": [
+        42,
+        171,
+        211,
+        87,
+        251,
+        146,
+        121,
+        4
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "data"
+    ],
+    "skipped_optional": [
+      "method"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(method_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.fingerprint.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

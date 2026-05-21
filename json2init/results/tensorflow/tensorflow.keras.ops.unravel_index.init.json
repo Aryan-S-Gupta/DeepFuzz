@@ -16,25 +16,32 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "indices values must be in range [0, product(params.shape))"
+          "The type must be either int or list of ints."
         ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 0
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "shape": {
       "name": "shape",
       "spec": {
-        "type": "list|tensor",
+        "type": "tuple|tensor",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -42,58 +49,85 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "indices values must be in range [0, product(params.shape))"
+          "The elements of the tuple should be integers.",
+          "The shape parameter must have at least 2 dimensions."
         ]
       },
-      "chosen_type": "tensor",
+      "chosen_type": "list",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
+        "kind": "literal",
+        "value": [
+          2,
+          2
         ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "as_tuple": false
       },
       "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tuple",
-    "numbers": "1",
+    "numbers": "2",
     "description": "Tuple of arrays for each dimension with unraveled indices."
   },
-  "constraints": [
-    "indices values must be in range [0, product(params.shape))"
-  ],
+  "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: cannot compute FloorMod as input #1(zero-based) was expected to be a int32 tensor but is a float tensor [Op:FloorMod] name: "
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "InvalidArgumentError",
-    "error": "cannot compute FloorMod as input #1(zero-based) was expected to be a int32 tensor but is a float tensor [Op:FloorMod] name: ",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 5602, in unravel_index\n    return backend.numpy.unravel_index(indices, shape)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2360, in unravel_index\n    tf.reshape(tf.cast(indices % dim, input_dtype), indices_shape)\n                       ~~~~~~~~^~~~~\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: cannot compute FloorMod as input #1(zero-based) was expected to be a int32 tensor but is a float tensor [Op:FloorMod] name: \n"
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 2
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "indices",
+      "shape"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "shape.rank == 1",
+    "shape.dtype in {int32,int64}"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(shape)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.unravel_index.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -15,7 +15,10 @@
         "description": "an iterable of GPU devices, among which to broadcast.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "case_insensitive": false,
+        "constraints": [
+          "tensors and devices must have same length"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
@@ -27,6 +30,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "buffer_size": {
@@ -34,22 +43,65 @@
       "spec": {
         "type": "int",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "10485760",
+        "flag": "Optional",
         "description": "maximum size of the buffer used for coalescing",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "must be positive integer"
+        ]
+      },
+      "chosen_type": "list",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": ""
+    },
+    "tensors": {
+      "name": "tensors",
+      "spec": {
+        "type": "any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "signature parameter tensors",
         "constraints": []
       },
-      "chosen_type": "int",
+      "chosen_type": "any",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
       ],
       "unresolved_reason": ""
     }
@@ -63,21 +115,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: broadcast_coalesced() missing 1 required positional argument: 'tensors'"
+    "smoke test failed: 'int' object is not iterable"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "spec_or_seed_error",
     "error_type": "TypeError",
-    "error": "broadcast_coalesced() missing 1 required positional argument: 'tensors'",
+    "error": "'int' object is not iterable",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: broadcast_coalesced() missing 1 required positional argument: 'tensors'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/nn/parallel/comm.py\", line 65, in broadcast_coalesced\n    devices = [_get_device_index(d) for d in devices]\n                                             ^^^^^^^\nTypeError: 'int' object is not iterable\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.nn.parallel.comm.broadcast_coalesced.json",
   "stage3_status": "retry",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

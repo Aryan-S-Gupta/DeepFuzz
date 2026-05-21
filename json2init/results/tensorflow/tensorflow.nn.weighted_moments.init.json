@@ -15,29 +15,52 @@
         "description": "A tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "x and frequency_weights must have broadcast-compatible shapes"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axes": {
       "name": "axes",
@@ -52,30 +75,33 @@
         ],
         "enum_values": [],
         "constraints": [
+          "-rank(input) <= axis < rank(input)",
           "axes must be 1-D"
         ]
       },
-      "chosen_type": "tensor",
+      "chosen_type": "tuple",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
+        "kind": "literal",
+        "value": [
+          0
         ],
-        "dtype": "int32",
-        "fill": 1,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "as_tuple": false
       },
       "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "frequency_weights": {
       "name": "frequency_weights",
@@ -88,7 +114,8 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "frequency_weights must be positive"
+          "frequency_weights must be positive",
+          "x and frequency_weights must have broadcast-compatible shapes"
         ]
       },
       "chosen_type": "tensor",
@@ -96,7 +123,8 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -104,67 +132,113 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "keepdims": {
       "name": "keepdims",
       "spec": {
-        "type": "",
+        "type": "bool",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "Produce moments with the same dimensionality as the input.",
-        "dtype_candidates": [],
+        "dtype_candidates": [
+          "bool"
+        ],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "produce moments with the same dimensionality as the input.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: produce moments with the same dimensionality as the input."
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "Name used to scope the operation.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
       },
-      "chosen_type": "name used to scope the operation.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: name used to scope the operation."
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "2",
     "description": "`weighted_mean` and `weighted_variance`."
   },
-  "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'keepdims' unresolved: unhandled chosen type: produce moments with the same dimensionality as the input.",
-    "required param 'name' unresolved: unhandled chosen type: name used to scope the operation."
+  "constraints": [
+    "x and frequency_weights must have broadcast-compatible shapes"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "axes",
+      "frequency_weights"
+    ],
+    "skipped_optional": [
+      "keepdims"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axes valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axes)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.weighted_moments.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

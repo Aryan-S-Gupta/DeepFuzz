@@ -13,16 +13,15 @@
       ],
       "enum_values": [],
       "constraints": [
-        "num_rows must be non-negative",
-        "num_rows >= 0"
+        "num_rows must be non-negative"
       ]
     },
     "num_columns": {
-      "type": "int|number|tensor|dtype",
+      "type": "int|number|tensor",
       "size": "scalar",
-      "default": "num_rows",
+      "default": "",
       "flag": "Optional",
-      "description": "Optional non-negative integer or `int32` scalar `tensor` giving the number of columns in the resulting matrix. Defaults to `num_rows`. dtype: The type of element in the resulting `Tensor`.",
+      "description": "Optional non-negative integer or `int32` scalar `tensor` giving the number of columns in the resulting matrix. Defaults to `num_rows`.",
       "dtype_candidates": [
         "int32"
       ],
@@ -31,20 +30,20 @@
         "num_columns must be non-negative"
       ]
     },
-    "name": {
-      "type": "string",
+    "dtype": {
+      "type": "tensor",
       "size": "",
-      "default": "\"eye\"",
+      "default": "tf.float32",
       "flag": "Optional",
-      "description": "A name for this `Op`. Defaults to \"eye\".",
+      "description": "The type of element in the resulting `Tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }
   },
   "output": {
-    "type": "SparseTensor",
-    "numbers": "[num_rows, num_columns]",
+    "type": "",
+    "numbers": "1",
     "description": "A `SparseTensor` of shape [num_rows, num_columns] with ones along the diagonal."
   },
   "constraints": []

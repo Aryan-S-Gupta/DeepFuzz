@@ -15,7 +15,7 @@
     "discont": {
       "type": "float",
       "size": "",
-      "default": "period/2",
+      "default": "",
       "flag": "Optional",
       "description": "float, optional Maximum discontinuity between values, default is ``period/2``. Values below ``period/2`` are treated as if they were ``period/2``. To have an effect different from the default, `discont` should be larger than ``period/2``.",
       "dtype_candidates": [],
@@ -25,7 +25,7 @@
     "axis": {
       "type": "int",
       "size": "",
-      "default": "the last axis",
+      "default": "-1",
       "flag": "Optional",
       "description": "int, optional Axis along which unwrap will operate, default is the last axis.",
       "dtype_candidates": [],
@@ -35,7 +35,7 @@
     "period": {
       "type": "float",
       "size": "",
-      "default": "",
+      "default": "6.283185307179586",
       "flag": "Optional",
       "description": "float, optional Size of the range over which the input wraps. By default, it is ``2 pi``.",
       "dtype_candidates": [],

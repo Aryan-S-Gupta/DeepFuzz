@@ -10,14 +10,16 @@
       "description": "input array. Must have floating-point or complex type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "Must have floating-point or complex type."
+        "Must have floating-point or complex type.",
+        "x must be 1-D or higher."
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape and dtype as x",
+    "numbers": "floating-point or complex",
     "description": "Array of the same shape and dtype as ``x`` containing the element-wise arc cosine."
   },
   "constraints": []

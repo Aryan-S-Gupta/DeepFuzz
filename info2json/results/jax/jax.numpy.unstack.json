@@ -10,17 +10,24 @@
       "description": "array to unstack. Must have ``x.ndim >= 1``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "x.ndim >= 1"
+      ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "integer axis along which to unstack. Must satisfy ``-x.ndim <= axis < x.ndim``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "-x.ndim <= axis < x.ndim",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
     }
   },
   "output": {

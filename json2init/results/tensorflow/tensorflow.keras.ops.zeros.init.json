@@ -8,62 +8,147 @@
     "shape": {
       "name": "shape",
       "spec": {
-        "type": "tuple|list|tensor|dtype",
+        "type": "list|tensor",
         "size": "",
         "default": "",
         "flag": "Required",
-        "description": "Shape of the new tensor. dtype: Desired data type of the tensor.",
+        "description": "Shape of the new tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "The provided shape must be a valid tensor shape."
+        ]
       },
-      "chosen_type": "tensor",
+      "chosen_type": "list",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
+        "kind": "literal",
+        "value": [
+          2,
+          2
         ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "as_tuple": false
       },
       "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "Desired data type of the tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "If no dtype is provided, an appropriate default will be used."
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "single",
+    "numbers": "1",
     "description": "Tensor of zeros with the given shape and dtype."
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Value for attr 'index_type' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Fill}}; Op<name=Fill; signature=dims:index_type, value:T -> output:T; attr=T:type; attr=index_type:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Fill] name: "
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "InvalidArgumentError",
-    "error": "Value for attr 'index_type' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Fill}}; Op<name=Fill; signature=dims:index_type, value:T -> output:T; attr=T:type; attr=index_type:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Fill] name: ",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 7493, in zeros\n    return backend.numpy.zeros(shape, dtype=dtype)\n           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 759, in zeros\n    return tf.zeros(shape, dtype=dtype)\n           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/dtensor/python/api.py\", line 64, in call_with_layout\n    return fn(*args, **kwargs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'index_type' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Fill}}; Op<name=Fill; signature=dims:index_type, value:T -> output:T; attr=T:type; attr=index_type:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:Fill] name: \n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 4,
+      "preview": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "shape"
+    ],
+    "skipped_optional": [
+      "dtype"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "shape.rank == 1",
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(shape)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.zeros.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

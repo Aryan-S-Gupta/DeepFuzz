@@ -1,0 +1,114 @@
+{
+  "api_full_name": "jax.lax.linalg.lu",
+  "api_name": "lu",
+  "module_path": "jax.lax.linalg",
+  "import_path": "jax.lax.linalg.lu",
+  "backend": "jax",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "ArrayLike",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A batch of matrices with shape ``[..., m, n]``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "m >= 0",
+          "n >= 0",
+          "len(lu.shape) == len(x.shape)",
+          "lu.dtype == x.dtype",
+          "lu[..., :, :].shape == x[..., :, :].shape",
+          "pivots.shape[0] == min(x.shape[-2], x.shape[-1])",
+          "permutation.shape[0] == x.shape[-2]"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            3.0
+          ]
+        ]
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tuple|sequence|tensor|dtype",
+    "numbers": "3",
+    "description": "A tuple ``(lu, pivots, permutation)``. ``lu`` is a batch of matrices with the same shape and dtype as ``x`` math:`L` matrix in its lower triangle and the :math:`U` matrix in its upper triangle. The (unit) diagonal elements of :math:`L` are not represented explicitly. ``pivots`` is an int32 array with shape ``[..., min(m, n)]`` representing a sequence of row swaps that should be performed on :math:`A`. ``permutation`` is an alternative representation of the sequence of row swaps as a permutation, represented as an int32 array with shape ``[..., m]``."
+  },
+  "constraints": [
+    "pivots.dtype == 'int32'",
+    "permutation.dtype == 'int32'"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "list",
+      "length": 3
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.lax.linalg.lu.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

@@ -15,6 +15,7 @@
         "description": "the input tensor of size :math:`(*, m, n)`",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
@@ -22,7 +23,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,12 +31,22 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -44,11 +55,12 @@
       "spec": {
         "type": "int",
         "size": "",
-        "default": "",
+        "default": "6",
         "flag": "Optional",
         "description": "a slightly overestimated rank of A.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -59,6 +71,12 @@
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -73,6 +91,7 @@
         "description": "the number of subspace iterations to conduct; niter must be a nonnegative integer, and defaults to 2",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -83,6 +102,12 @@
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -97,19 +122,22 @@
         "description": "the input tensor's mean of size :math:`(*, m, n)`, which will be broadcasted to the size of A in this function.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "callable",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
       "unresolved_reason": "unsupported base seed type: callable"
     }
   },
   "output": {
-    "type": "",
-    "numbers": "1",
-    "description": "Return the singular value decomposition ``(U, S, V)`` of a matrix,"
+    "type": "tuple|tensor",
+    "numbers": "",
+    "description": ""
   },
   "constraints": [],
   "spec_ready": true,
@@ -126,10 +154,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/workspace/pytorch/torch/_lowrank.py\", line 147, in svd_lowrank\n    return _svd_lowrank(A, q=q, niter=niter, M=M)\n  File \"/workspace/pytorch/torch/_lowrank.py\", line 159, in _svd_lowrank\n    m, n = A.shape[-2:]\nValueError: not enough values to unpack (expected 2, got 1)\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/_lowrank.py\", line 146, in svd_lowrank\n    return _svd_lowrank(A, q=q, niter=niter, M=M)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/_lowrank.py\", line 158, in _svd_lowrank\n    m, n = A.shape[-2:]\n    ^^^^\nValueError: not enough values to unpack (expected 2, got 1)\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.functional.svd_lowrank.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

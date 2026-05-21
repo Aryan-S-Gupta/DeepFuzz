@@ -10,17 +10,15 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "can promote to inexact dtype",
-        "jnp.cosh(x) is equivalent to computing jnp.cos(1j * x)",
-        "jnp.cosh(x) and jnp.cos(1j * x) return the same dtype",
-        "when x is complex, jnp.cosh(x) and jnp.cos(1j * x) return the same value"
+        "jax.numpy.cosh(x) is equivalent to computing jnp.cos(1j * x)"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real or complex",
+    "numbers": "1",
     "description": "An array containing the hyperbolic cosine of each element of ``x``, promoting to inexact dtype."
   },
   "constraints": []

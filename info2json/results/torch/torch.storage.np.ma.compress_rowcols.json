@@ -1,0 +1,39 @@
+{
+  "api_name": "compress_rowcols",
+  "module_path": "torch.storage.np.ma",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "2D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, MaskedArray The array to operate on. If not a MaskedArray instance (or if no array elements are masked), `x` is interpreted as a MaskedArray with `mask` set to `nomask`. Must be a 2D array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x must be 2-D",
+        "x must be a MaskedArray instance or have masked elements."
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Axis along which to perform the operation. Default is None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "If axis is None, the operation is performed along all axes."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The compressed array."
+  },
+  "constraints": []
+}

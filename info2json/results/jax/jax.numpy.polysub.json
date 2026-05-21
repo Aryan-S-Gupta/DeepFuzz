@@ -10,10 +10,9 @@
       "description": "Array of minuend polynomial coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "a1 and a2 must have broadcast-compatible shapes.",
-        "a1 and a2 must be at least 1-D.",
-        "Returned array shape is determined by broadcasting shapes of a1 and a2, and then removing dimensions with size 1."
+        "a1 and a2 must have broadcast-compatible shapes."
       ]
     },
     "a2": {
@@ -24,21 +23,19 @@
       "description": "Array of subtrahend polynomial coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "a1 and a2 must have broadcast-compatible shapes.",
-        "a1 and a2 must be at least 1-D.",
-        "Returned array shape is determined by broadcasting shapes of a1 and a2, and then removing dimensions with size 1."
+        "a1 and a2 must have broadcast-compatible shapes."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "An array containing the coefficients of the difference of two polynomials."
   },
   "constraints": [
     "a1 and a2 must have broadcast-compatible shapes.",
-    "a1 and a2 must be at least 1-D.",
-    "Returned array shape is determined by broadcasting shapes of a1 and a2, and then removing dimensions with size 1."
+    "Returned array dtype matches input arrays' dtypes."
   ]
 }

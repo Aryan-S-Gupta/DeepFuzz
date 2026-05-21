@@ -10,6 +10,7 @@
       "description": "An array object that has ``__dlpack__`` and ``__dlpack_device__`` methods.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "device": {
@@ -20,9 +21,9 @@
       "description": "The (optional) :py:class:`Device`, representing the device on which the returned array should be placed. If given, then the result is committed to the device. If unspecified, the resulting array will be unpacked onto the same device it originated from. Setting ``device`` to a device different from the source of ``external_array`` will require a copy, meaning ``copy`` must be set to either ``True`` or ``None``.",
       "dtype_candidates": [],
       "enum_values": [
-        "True",
-        "None"
+        "True"
       ],
+      "case_insensitive": false,
       "constraints": [
         "device must be one of True"
       ]
@@ -37,6 +38,7 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

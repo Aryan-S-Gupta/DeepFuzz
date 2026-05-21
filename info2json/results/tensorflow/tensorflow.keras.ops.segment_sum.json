@@ -20,17 +20,21 @@
       "description": "A N-D tensor containing segment indices for each element in `data`. Num dims for segment ids should be strictly smaller or equal to number of dims in data.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Num dims for segment ids should be strictly smaller or equal to number of dims in data."
+      ]
     },
     "num_segments": {
       "type": "int|number",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "An integer representing the total number of segments. If not specified, it is inferred from the maximum value in `segment_ids`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If not specified, it is inferred from the maximum value in `segment_ids`."
+      ]
     },
     "sorted": {
       "type": "bool",

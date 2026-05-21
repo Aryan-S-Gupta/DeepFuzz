@@ -10,16 +10,18 @@
       "description": "the input tensor of size :math:`(*, m, m)`",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "k": {
       "type": "int|number",
       "size": "",
-      "default": "the number of :math:`X",
+      "default": "",
       "flag": "Optional",
       "description": "the number of requested eigenpairs. Default is the number of :math:`X` columns (when specified) or `1`.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "B": {
@@ -30,6 +32,7 @@
       "description": "the input tensor of size :math:`(*, m, m)`. When not specified, `B` is interpreted as identity matrix.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "X": {
@@ -40,6 +43,7 @@
       "description": "the input tensor of size :math:`(*, m, n)` where `k <= n <= m`. When specified, it is used as initial approximation of eigenvectors. X must be a dense tensor.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "n": {
@@ -50,6 +54,7 @@
       "description": "if :math:`X` is not specified then `n` specifies the size of the generated random approximation of eigenvectors. Default value for `n` is `k`. If :math:`X` is specified, any provided value of `n` is ignored and `n` is automatically set to the number of columns in :math:`X`.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "iK": {
@@ -60,6 +65,7 @@
       "description": "the input tensor of size :math:`(*, m, m)`. When specified, it will be used as preconditioner.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "niter": {
@@ -70,16 +76,18 @@
       "description": "maximum number of iterations. When reached, the iteration process is hard-stopped and the current approximation of eigenpairs is returned. For infinite iteration but until convergence criteria is met, use `-1`.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "tol": {
       "type": "float|number|tensor",
       "size": "",
-      "default": "feps ** 0",
+      "default": "",
       "flag": "Optional",
       "description": "residual tolerance for stopping criterion. Default is `feps ** 0.5` where `feps` is smallest non-zero floating-point number of the given input tensor `A` data type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "largest": {
@@ -92,6 +100,7 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "method": {
@@ -102,6 +111,7 @@
       "description": "select LOBPCG method. See the description of the function above. Default is \"ortho\".",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "tracker": {
@@ -112,6 +122,40 @@
       "description": "a function for tracing the iteration process. When specified, it is called at each iteration step with LOBPCG instance as an argument. The LOBPCG instance holds the full state of the iteration process in the following attributes:",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "ortho_iparams": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "ortho_fparams": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "ortho_bparams": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

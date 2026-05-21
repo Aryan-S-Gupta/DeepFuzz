@@ -22,7 +22,10 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -31,14 +34,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "kernel": {
       "name": "kernel",
@@ -52,43 +57,68 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "number",
+      "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
+        "kind": "tensor",
+        "shape": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "strides": {
       "name": "strides",
       "spec": {
         "type": "int|tuple|list",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "1",
+        "flag": "Optional",
         "description": "int or int tuple/list of `len(inputs_spatial_shape)`, specifying the strides of the convolution along each spatial dimension. If `strides` is int, then every spatial dimension shares the same `strides`.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
-      "include_in_base_call": true,
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          1,
+          1
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "padding": {
       "name": "padding",
@@ -96,7 +126,7 @@
         "type": "string",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "string, either `\"valid\"` or `\"same\"`. `\"valid\"` means no padding is applied, and `\"same\"` results in padding evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input when `strides=1`.",
         "dtype_candidates": [],
         "enum_values": [
@@ -108,17 +138,23 @@
         ]
       },
       "chosen_type": "string",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "valid"
+        "value": "VALID"
       },
       "mutation_rules": [
         "enum_switch",
-        "string_replace",
-        "string_empty"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "data_format": {
       "name": "data_format",
@@ -126,7 +162,7 @@
         "type": "string",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "A string, either `\"channels_last\"` or `\"channels_first\"`. `data_format` determines the ordering of the dimensions in the inputs. If `data_format=\"channels_last\"`, `inputs` is of shape `(batch_size, ..., channels)` while if `data_format=\"channels_first\"`, `inputs` is of shape `(batch_size, channels, ...)`.",
         "dtype_candidates": [],
         "enum_values": [
@@ -138,42 +174,57 @@
         ]
       },
       "chosen_type": "string",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "channels_last"
+        "value": "NHWC"
       },
       "mutation_rules": [
         "enum_switch",
-        "string_replace",
-        "string_empty"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "dilation_rate": {
       "name": "dilation_rate",
       "spec": {
         "type": "int|tuple|list",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "1",
+        "flag": "Optional",
         "description": "int or int tuple/list of `len(inputs_spatial_shape)`, specifying the dilation rate to use for dilated convolution. If `dilation_rate` is int, then every spatial dimension shares the same `dilation_rate`.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
-      "include_in_base_call": true,
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          1
+        ],
+        "as_tuple": true
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -183,23 +234,99 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: 'float' object has no attribute 'shape'"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "AttributeError",
-    "error": "'float' object has no attribute 'shape'",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/nn.py\", line 1518, in conv\n    return backend.nn.conv(\n           ~~~~~~~~~~~~~~~^\n        inputs, kernel, strides, padding, data_format, dilation_rate\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/nn.py\", line 833, in conv\n    needs_xla = needs_xla or channels != kernel.shape[-2]\n                                         ^^^^^^^^^^^^\nAttributeError: 'float' object has no attribute 'shape'\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        1,
+        1,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 4,
+      "preview": [
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "inputs",
+      "kernel"
+    ],
+    "skipped_optional": [
+      "strides",
+      "padding",
+      "data_format",
+      "dilation_rate"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(inputs_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(kernel_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(strides_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(padding_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(data_format_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dilation_rate_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.nn.conv.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

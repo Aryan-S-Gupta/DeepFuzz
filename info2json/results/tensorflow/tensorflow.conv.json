@@ -22,7 +22,9 @@
         "int32",
         "batch_shape"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of half, bfloat16, float32, float64, int32, batch_shape"
+      ]
     },
     "filter": {
       "type": "tensor",
@@ -32,7 +34,9 @@
       "description": "A `Tensor`. Must have the same type as `input`. An `(N+2)-D` Tensor with the same type as `input` and shape `spatial_filter_shape + [in_channels, out_channels]`, where spatial_filter_shape is N-dimensional with `N=2` or `N=3`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "filter must have the same dtype as input"
+      ]
     },
     "strides": {
       "type": "list|tensor",
@@ -59,7 +63,7 @@
     "explicit_paddings": {
       "type": "list",
       "size": "",
-      "default": "[]",
+      "default": "",
       "flag": "Optional",
       "description": "An optional list of `ints`. Defaults to `[]`. If `padding` is `\"EXPLICIT\"`, the list of explicit padding amounts. For the ith dimension, the amount of padding inserted before and after the dimension is `explicit_paddings[2 * i]` and `explicit_paddings[2 * i + 1]`, respectively. If `padding` is not `\"EXPLICIT\"`, `explicit_paddings` must be empty.",
       "dtype_candidates": [],
@@ -69,7 +73,7 @@
     "data_format": {
       "type": "string",
       "size": "2D",
-      "default": "\"CHANNELS_LAST\"",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `string` from: `\"CHANNELS_FIRST\", \"CHANNELS_LAST\"`. Defaults to `\"CHANNELS_LAST\"`. Used to set the data format. By default `CHANNELS_FIRST`, uses `NHWC (2D) / NDHWC (3D)` or if `CHANNELS_LAST`, uses `NCHW (2D) / NCDHW (3D)`.",
       "dtype_candidates": [],
@@ -81,7 +85,7 @@
     "dilations": {
       "type": "list|tensor",
       "size": "1-D",
-      "default": "[]",
+      "default": "",
       "flag": "Optional",
       "description": "An optional list of `ints`. Defaults to `[]`. 1-D tensor of length `N+2`. The dilation factor for each dimension of `input`. If set to `k > 1`, there will be `k-1` skipped cells between each filter element on that dimension. The dimension order is determined by the value of `channels_last_format`, see above for details. Dilations in the batch and depth dimensions must be 1.",
       "dtype_candidates": [],
@@ -114,16 +118,6 @@
       "constraints": [
         "groups must be positive"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

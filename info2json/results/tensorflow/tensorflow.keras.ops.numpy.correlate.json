@@ -6,7 +6,7 @@
       "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "First 1-dimensional input tensor of length M.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -16,7 +16,7 @@
       "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "Second 1-dimensional input tensor of length N.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -25,7 +25,7 @@
     "mode": {
       "type": "string",
       "size": "",
-      "default": "valid",
+      "default": "",
       "flag": "Optional",
       "description": "Either `valid`, `same` or `full`. By default the mode is set to `valid`, which returns an output of length max(M, N) - min(M, N) + 1. `same` returns an output of length max(M, N). `full` mode returns the convolution at each point of overlap, with an output length of N+M-1",
       "dtype_candidates": [],
@@ -35,17 +35,17 @@
         "full"
       ],
       "constraints": [
-        "must be one of: valid, same, full",
+        "'valid', 'same', 'full'",
         "mode must be one of valid, same, full"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "single-dimensional",
+    "numbers": "1",
     "description": "Output tensor, cross-correlation of `x1` and `x2`."
   },
   "constraints": [
-    "M and N must be positive integers"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

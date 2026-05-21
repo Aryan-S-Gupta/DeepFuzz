@@ -10,21 +10,24 @@
       "description": "array over which to sum. Must have numerical dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must have numerical dtype"
+        "must have a numerical dtype",
+        "operand must have numerical dtype"
       ]
     },
     "axes": {
-      "type": "sequence",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "sequence of zero or more unique integers specifying the axes over which to sum. Each entry must satisfy ``0 <= axis < operand.ndim``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "each entry must satisfy `0 <= axis < operand.ndim`",
-        "axes must be a sequence of unique integers"
+        "must be a sequence of unique integers",
+        "each integer must be in the range [0, operand.ndim)"
       ]
     }
   },

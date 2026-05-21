@@ -10,24 +10,36 @@
       "description": "array over which to sum. Must have numerical dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "Must have numerical dtype.",
-        "operand and axes are required parameters."
+        "must have numerical dtype",
+        "output has same dtype as operand"
       ]
     },
     "axes": {
-      "type": "sequence",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "sequence of zero or more unique integers specifying the axes over which to sum. Each entry must satisfy ``0 <= axis < operand.ndim``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "Must be a sequence of zero or more unique integers.",
-        "Each entry must satisfy `0 <= axis < operand.ndim`.",
-        "operand and axes are required parameters."
+        "must be sequence of unique ints",
+        "0 <= axis < operand.ndim"
       ]
+    },
+    "out_sharding": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Sharding specification for the output array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
@@ -35,7 +47,5 @@
     "numbers": "1",
     "description": "An array of the same dtype as ``operand``, with shape corresponding to the dimensions of ``operand.shape`` with ``axes`` removed."
   },
-  "constraints": [
-    "operand and axes are required parameters."
-  ]
+  "constraints": []
 }

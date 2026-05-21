@@ -1,0 +1,28 @@
+{
+  "api_name": "clock_rate",
+  "module_path": "torch.cuda",
+  "params": {
+    "device": {
+      "type": "int|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "device parameter is optional",
+        "if device is not provided, it defaults to None"
+      ]
+    }
+  },
+  "output": {
+    "type": "int",
+    "numbers": "integer",
+    "description": "clock speed of the GPU SM in MHz (megahertz) over the past sample period as given by `nvidia-smi`"
+  },
+  "constraints": [
+    "return type is an integer representing clock speed in MHz"
+  ]
+}

@@ -2,6 +2,18 @@
   "api_name": "cholesky_inverse",
   "module_path": "tensorflow.keras.ops.linalg",
   "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor of shape `(..., M, M)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be a 3-D or higher dimensional tensor"
+      ]
+    },
     "upper": {
       "type": "bool",
       "size": "",
@@ -11,16 +23,6 @@
       "dtype_candidates": [
         "bool"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "x": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Input tensor of shape `(..., M, M)`.",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

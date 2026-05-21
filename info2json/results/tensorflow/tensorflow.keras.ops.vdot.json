@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1 and x2 must have the same number of elements.",
-        "If x1 or x2 is complex, their shapes must be equal."
+        "If complex, its complex conjugate is taken before calculation of the dot product."
       ]
     },
     "x2": {
@@ -23,10 +22,7 @@
       "description": "Second input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x1 and x2 must have the same number of elements.",
-        "If x1 or x2 is complex, their shapes must be equal."
-      ]
+      "constraints": []
     }
   },
   "output": {
@@ -35,7 +31,6 @@
     "description": "Output tensor."
   },
   "constraints": [
-    "x1 and x2 must have the same number of elements.",
-    "If x1 or x2 is complex, their shapes must be equal."
+    "Multidimensional tensors are flattened before the dot product is taken."
   ]
 }

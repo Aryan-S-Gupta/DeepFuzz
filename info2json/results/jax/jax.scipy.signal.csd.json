@@ -10,6 +10,7 @@
       "description": "Array representing a time series of input values.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "y": {
@@ -20,110 +21,125 @@
       "description": "Array representing the second time series of input values, the same length as ``x`` along the specified ``axis``. If not specified, then assume ``y = x`` and compute the PSD ``Pxx`` of ``x`` via Welch's method.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "y must be one of Pxx, PSD"
+      ]
     },
     "fs": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1.0",
+      "flag": "Optional",
       "description": "Sampling frequency of the inputs (default: 1.0).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "window": {
       "type": "tuple|callable|tensor",
       "size": "",
-      "default": "'hann'``)",
+      "default": "",
       "flag": "Optional",
       "description": "Data tapering window to apply to each segment. Can be a window function name, a tuple specifying a window length and function, or an array (default: ``'hann'``).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "nperseg": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Length of each segment (default: 256).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "noverlap": {
       "type": "number",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Number of points to overlap between segments (default: ``nperseg // 2``).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "nfft": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Length of the FFT used, if a zero-padded FFT is desired. If ``None`` (default), the FFT length is ``nperseg``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "detrend": {
       "type": "callable",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Specifies how to detrend each segment. Can be ``False`` (default: no detrending), ``'constant'`` (remove mean), ``'linear'`` (remove linear trend), or a callable accepting a segment and returning a detrended segment.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "return_onesided": {
       "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "True",
+      "flag": "Optional",
       "description": "If True (default), return a one-sided spectrum for real inputs. If False, return a two-sided spectrum.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "scaling": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Selects between computing the power spectral density (``'density'``, default) or the power spectrum (``'spectrum'``)",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "-1",
+      "flag": "Optional",
       "description": "Axis along which the CSD is computed (default: -1).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "average": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "The type of averaging to use on the periodograms; one of ``'mean'`` (default) or ``'median'``.",
       "dtype_candidates": [],
       "enum_values": [
         "mean",
         "median"
       ],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "average must be one of mean, median"
+      ]
     }
   },
   "output": {

@@ -10,8 +10,9 @@
       "description": "input array. Must have floating-point or complex type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "jax.lax.log1p(1 + x) should be approximately equal to x for all x"
+        "x shape and dtype must match lax.exp(x) - 1"
       ]
     },
     "accuracy": {
@@ -22,12 +23,13 @@
       "description": "Optional `lax.Tolerance` or `lax.AccuracyMode` object that selects the implementation of the op based on the requested accuracy. If the implementation cannot satisfy the requested tolerance, the compiler will return an error. If mode is specified and there are no multiple implementations available, the default implementation will be used.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape and dtype as `x`",
+    "numbers": "1",
     "description": "Array of the same shape and dtype as ``x`` containing the element-wise exponential minus 1."
   },
   "constraints": []

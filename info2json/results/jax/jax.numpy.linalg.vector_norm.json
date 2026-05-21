@@ -10,6 +10,7 @@
       "description": "N-dimensional array for which to take the norm.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
@@ -20,6 +21,7 @@
       "description": "optional axis along which to compute the vector norm. If None (default) then ``x`` is flattened and the norm is taken over all values.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
@@ -27,33 +29,25 @@
     "keepdims": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "if True, keep the reduced dimensions in the output.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "ord": {
       "type": "string|int",
       "size": "",
-      "default": "the 2-norm",
+      "default": "2",
       "flag": "Optional",
-      "description": "A string or int specifying the type of norm; default is the 2-norm.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "See": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "func:`numpy.linalg.norm` for details on available options.",
+      "description": "A string or int specifying the type of norm; default is the 2-norm. See :func:`numpy.linalg.norm` for details on available options.",
       "dtype_candidates": [],
       "enum_values": [
         "numpy.linalg.norm"
       ],
+      "case_insensitive": false,
       "constraints": []
     }
   },

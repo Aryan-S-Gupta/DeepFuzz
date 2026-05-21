@@ -22,9 +22,7 @@
           "float64"
         ],
         "constraints": [
-          "a must be one of float32, float64",
-          "a, b, and x must be the same shape and type",
-          "if a <= 0 or b <= 0, I_x(a, b) = 0"
+          "a must be one of float32, float64"
         ]
       },
       "chosen_type": "float",
@@ -35,15 +33,21 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "b": {
       "name": "b",
       "spec": {
-        "type": "tensor",
+        "type": "float|tensor",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -51,38 +55,32 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "b must have the same dtype as a",
-          "a, b, and x must be the same shape and type",
-          "if a <= 0 or b <= 0, I_x(a, b) = 0"
+          "b must have the same dtype as a"
         ]
       },
-      "chosen_type": "tensor",
+      "chosen_type": "float",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "kind": "literal",
+        "value": 1.0
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "x": {
       "name": "x",
       "spec": {
-        "type": "tensor",
+        "type": "float|tensor",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -91,50 +89,27 @@
         "enum_values": [],
         "constraints": [
           "x must have the same dtype as a",
-          "a, b, and x must be the same shape and type",
-          "x must be in range [0, 1] inclusive"
+          "x must be in range [0, 1]"
         ]
       },
-      "chosen_type": "tensor",
+      "chosen_type": "float",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "kind": "literal",
+        "value": 1.0
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -142,10 +117,7 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `a`."
   },
-  "constraints": [
-    "a, b, and x must be the same shape and type",
-    "if a <= 0 or b <= 0, I_x(a, b) = 0"
-  ],
+  "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -158,17 +130,55 @@
     "materialization_reasons": [],
     "result_summary": {
       "python_type": "EagerTensor",
-      "shape": [
-        1
-      ],
+      "shape": [],
       "dtype": "float32",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "a",
+      "b",
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(a_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(b_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(x_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.betainc.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

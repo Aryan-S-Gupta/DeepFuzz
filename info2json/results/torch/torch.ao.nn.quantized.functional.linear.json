@@ -1,0 +1,67 @@
+{
+  "api_name": "linear",
+  "module_path": "torch.ao.nn.quantized.functional",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Quantized input of type `torch.quint8`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "weight": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Quantized weight of type `torch.qint8`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "bias": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "None or fp32 bias of type `torch.float`",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "scale": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "output scale. If None, derived from the input scale",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "zero_point": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "output zero point. If None, derived from the input zero_point",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": []
+}

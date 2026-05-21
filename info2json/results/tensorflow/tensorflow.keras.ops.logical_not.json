@@ -11,14 +11,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be compatible with the input shape of the operation",
-        "x and output must have same shape and dtype"
+        "x and output must have broadcast-compatible shapes"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "Same as x's numbers",
+    "numbers": "1",
     "description": "Output tensor, element-wise logical NOT of the input."
   },
   "constraints": []

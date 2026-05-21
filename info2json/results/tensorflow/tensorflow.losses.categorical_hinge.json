@@ -11,8 +11,10 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Values expected to be either `{-1, +1}` or `{0, 1}`.",
-        "y_true and y_pred must have the same shape"
+        "y_true and y_pred must have broadcast-compatible shapes.",
+        "y_true values are either {-1, +1} or {0, 1}",
+        "neg=maximum((1-y_true)*y_pred)",
+        "pos=sum(y_true*y_pred)"
       ]
     },
     "y_pred": {
@@ -24,16 +26,21 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape"
+        "y_true and y_pred must have broadcast-compatible shapes.",
+        "neg=maximum((1-y_true)*y_pred)",
+        "pos=sum(y_true*y_pred)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "batch_size, d0, .. dN-1",
+    "numbers": "1",
     "description": "Categorical hinge loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred must have the same shape"
+    "y_true and y_pred must have broadcast-compatible shapes.",
+    "loss = maximum(neg - pos + 1, 0)",
+    "neg=maximum((1-y_true)*y_pred)",
+    "pos=sum(y_true*y_pred)"
   ]
 }

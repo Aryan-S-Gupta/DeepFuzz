@@ -10,16 +10,15 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The function takes one parameter: x"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float64",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
-  "constraints": [
-    "f(x) = scale * alpha * (exp(x) - 1.) for x < 0, f(x) = scale * x for x >= 0",
-    "scale and alpha are internal constants with values ~1.0507 and ~1.6732"
-  ]
+  "constraints": []
 }

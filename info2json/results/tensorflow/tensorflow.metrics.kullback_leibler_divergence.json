@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "values must be in range [0, 1]",
-        "y_true and y_pred must have the same shape"
+        "Required"
       ]
     },
     "y_pred": {
@@ -24,17 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "values must be in range [0, 1]",
-        "y_true and y_pred must have the same shape"
+        "Required"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "-1, d0, .. dN-1",
+    "numbers": "[batch_size, d0, .. dN-1]",
     "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred must have the same shape"
+    "loss shape must be (2,)"
   ]
 }

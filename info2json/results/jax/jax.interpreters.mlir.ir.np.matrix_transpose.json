@@ -5,14 +5,13 @@
     "x": {
       "type": "tensor",
       "size": "shape (..., M, N)",
-      "default": "\"\"",
+      "default": "",
       "flag": "Required",
       "description": "array_like Input array having shape (..., M, N) and whose two innermost dimensions form ``MxN`` matrices.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "MxN matrices are formed by the two innermost dimensions of x.",
-        "x's size includes a variable number of leading dimensions represented by '...'."
+        "2 innermost dimensions must form square matrices"
       ]
     }
   },
@@ -21,7 +20,5 @@
     "numbers": "(..., N, M)",
     "description": "------- ndarray An array containing the transpose for each matrix and having shape (..., N, M)."
   },
-  "constraints": [
-    "The result has the transpose for each matrix along its last two dimensions."
-  ]
+  "constraints": []
 }

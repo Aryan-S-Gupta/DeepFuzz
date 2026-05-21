@@ -1,0 +1,27 @@
+{
+  "api_name": "transpose",
+  "module_path": "torch.storage.np.char.chararray",
+  "params": {
+    "axes": {
+      "type": "int|tuple|list",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "None, tuple of ints, or `n` ints",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "If None, reverses the order of the axes."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floats or integers",
+    "description": "------- ndarray View of the array with its axes suitably permuted."
+  },
+  "constraints": [
+    "Input array and output view share the same data."
+  ]
+}

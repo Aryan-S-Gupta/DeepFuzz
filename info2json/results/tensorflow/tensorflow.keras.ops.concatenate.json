@@ -3,7 +3,7 @@
   "module_path": "tensorflow.keras.ops",
   "params": {
     "xs": {
-      "type": "list|sequence|tensor",
+      "type": "sequence|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -21,7 +21,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must satisfy 0 <= axis < rank(input)"
+        "axis must be an integer.",
+        "axis must satisfy -rank(input) <= axis < rank(input)"
       ]
     }
   },

@@ -18,37 +18,20 @@
         "float64"
       ],
       "constraints": [
-        "must not be empty",
-        "must be 1-D or higher",
-        "logits must be one of half, float32, float64",
-        "logits must be provided for output calculation"
+        "must be one of the following types: half, float32, float64",
+        "logits must be one of half, float32, float64"
       ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "-1 which",
+      "default": "",
       "flag": "Optional",
       "description": "The dimension softmax would be performed on. The default is -1 which indicates the last dimension.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be an integer",
-        "must be greater than or equal to -rank(logits)",
-        "must be less than rank(logits)"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "must be a string",
-        "is optional"
+        "The dimension softmax would be performed on. The default is -1 which indicates the last dimension. Must satisfy -rank(input) <= axis < rank(input)"
       ]
     }
   },

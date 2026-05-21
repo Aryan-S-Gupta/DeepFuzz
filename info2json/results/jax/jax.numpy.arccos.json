@@ -10,15 +10,15 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "Real-valued and not in the closed interval [-1, 1] returns nan",
-        "x and output must have broadcast-compatible shapes"
+        "can be real-valued or complex"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real (if input is real) or complex",
+    "numbers": "real or complex",
     "description": "An array containing the inverse trigonometric cosine of each element of ``x`` in radians in the range ``[0, pi]``, promoting to inexact dtype."
   },
   "constraints": []

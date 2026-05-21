@@ -1,0 +1,190 @@
+{
+  "api_full_name": "tensorflow.transpose",
+  "api_name": "transpose",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.transpose",
+  "backend": "tensorflow",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`.",
+        "dtype_candidates": [
+          "complex64",
+          "complex128"
+        ],
+        "enum_values": [
+          "True",
+          "a.dtype",
+          "complex64",
+          "complex128"
+        ],
+        "constraints": [
+          "TensorFlow does not support strides, so `transpose` returns a new tensor with different shape than the input.",
+          "If conjugate is `True` and `a.dtype` is either `complex64` or `complex128`, the output tensor's dtype will be complex."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "complex64",
+        "fill": 1,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "perm": {
+      "name": "perm",
+      "spec": {
+        "type": "vector",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A permutation of the dimensions of `a`. This should be a vector.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "A permutation of the dimensions of `a`. This should be a vector."
+        ]
+      },
+      "chosen_type": "vector",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: vector",
+      "call_kind": "positional_or_keyword"
+    },
+    "conjugate": {
+      "name": "conjugate",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "Optional bool. Setting it to `True` is mathematically equivalent to tf.math.conj(tf.transpose(input)).",
+        "dtype_candidates": [
+          "bool",
+          "complex64",
+          "complex128"
+        ],
+        "enum_values": [
+          "True",
+          "a.dtype",
+          "complex64",
+          "complex128"
+        ],
+        "constraints": [
+          "If conjugate is `True` and `a.dtype` is either `complex64` or `complex128`, the output tensor's dtype will be complex."
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A transposed `Tensor`."
+  },
+  "constraints": [
+    "If conjugate is `True` and `a.dtype` is either `complex64` or `complex128`, the output tensor's dtype will be complex."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2
+      ],
+      "dtype": "complex64",
+      "numel": 2,
+      "preview": [
+        "(1+0j)",
+        "(1+0j)"
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "a"
+    ],
+    "skipped_optional": [
+      "perm",
+      "conjugate"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(a_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(conjugate_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.transpose.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

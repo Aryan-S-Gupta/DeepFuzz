@@ -10,7 +10,9 @@
       "description": "A tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and frequency_weights must have broadcast-compatible shapes"
+      ]
     },
     "axes": {
       "type": "tensor",
@@ -23,6 +25,7 @@
       ],
       "enum_values": [],
       "constraints": [
+        "-rank(input) <= axis < rank(input)",
         "axes must be 1-D"
       ]
     },
@@ -35,34 +38,29 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "frequency_weights must be positive"
+        "frequency_weights must be positive",
+        "x and frequency_weights must have broadcast-compatible shapes"
       ]
     },
     "keepdims": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "Produce moments with the same dimensionality as the input.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Name used to scope the operation.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "2",
     "description": "`weighted_mean` and `weighted_variance`."
   },
-  "constraints": []
+  "constraints": [
+    "x and frequency_weights must have broadcast-compatible shapes"
+  ]
 }

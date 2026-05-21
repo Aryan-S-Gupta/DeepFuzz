@@ -28,8 +28,8 @@
           "int64"
         ],
         "constraints": [
-          "features must be one of float16, float32, float64, int32, int64",
-          "features is not None"
+          "must be one of: 'float16', 'float32', 'float64', 'int32', 'int64'",
+          "features must be one of float16, float32, float64, int32, int64"
         ]
       },
       "chosen_type": "float",
@@ -40,70 +40,104 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "alpha": {
       "name": "alpha",
       "spec": {
         "type": "float|callable",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "0.2",
+        "flag": "Optional",
         "description": "Slope of the activation function at x < 0.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "alpha >= 0"
+          "Slope of the activation function at x < 0"
         ]
       },
-      "chosen_type": "callable",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unsupported base seed type: callable"
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
+      "chosen_type": "float",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "test"
+        "value": 0.5
       },
       "mutation_rules": [
-        "string_replace",
-        "string_empty"
+        "scalar_delta",
+        "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float16, float32, float64",
+    "numbers": "1",
     "description": "The activation value."
   },
   "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'alpha' unresolved: unsupported base seed type: callable"
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "features"
+    ],
+    "skipped_optional": [
+      "alpha"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(features_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.leaky_relu.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

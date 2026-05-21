@@ -15,7 +15,7 @@
     "axis": {
       "type": "int|tensor",
       "size": "",
-      "default": "-1, which sorts along the last axis",
+      "default": "-1",
       "flag": "Optional",
       "description": "int or None, optional Axis along which to sort. If None, the array is flattened before sorting. The default is -1, which sorts along the last axis.",
       "dtype_candidates": [],
@@ -25,7 +25,7 @@
     "kind": {
       "type": "",
       "size": "",
-      "default": "'quicksort'",
+      "default": "",
       "flag": "Optional",
       "description": "{'quicksort', 'mergesort', 'heapsort', 'stable'}, optional Sorting algorithm. The default is 'quicksort'. Note that both 'stable' and 'mergesort' use timsort or radix sort under the covers and, in general, the actual implementation will vary with data type. The 'mergesort' option is retained for backwards compatibility.",
       "dtype_candidates": [],

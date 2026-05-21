@@ -3,42 +3,38 @@
   "module_path": "torch.fx.experimental.symbolic_shapes.sympy",
   "params": {
     "eqs": {
-      "type": "list",
+      "type": "list|sequence",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "list List of expressions to be factored. Each expression is assumed to be equal to zero.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "Each element must satisfy Expr or complex type"
+      ]
     },
     "gens": {
-      "type": "list",
+      "type": "list|sequence",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "list, optional Generator(s) of the polynomial ring. If not provided, all free symbols will be used.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "kwargs": {
-      "type": "dict",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "dict, optional Same optional arguments taken by ``factor``",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "Each element must satisfy Expr type"
+      ]
     }
   },
   "output": {
     "type": "list",
-    "numbers": "int",
+    "numbers": "1",
     "description": "======= list[list[Expr]] A list of lists of expressions, where each sublist represents an irreducible subsystem. When solved, each subsystem gives one component of the solution. Only generic solutions are returned (cases not requiring parameters to be zero)."
   },
   "constraints": [
-    "gens must be symbols or a list of symbols"
+    "kwargs is optional and takes any arguments accepted by sympy's factor function"
   ]
 }

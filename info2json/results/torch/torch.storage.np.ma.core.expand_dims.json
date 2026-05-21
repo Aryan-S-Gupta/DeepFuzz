@@ -1,0 +1,36 @@
+{
+  "api_name": "expand_dims",
+  "module_path": "torch.storage.np.ma.core",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
+      "description": "int or tuple of ints Position in the expanded axes where the new axis (or axes) is placed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        ">= -a.ndim - 1"
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "------- ndarray View of `a` with the number of dimensions increased."
+  },
+  "constraints": []
+}

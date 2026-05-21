@@ -10,7 +10,10 @@
       "description": "A `Tensor`. The input to reverse.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The input to reverse.",
+        "The elements of `seq_lengths` must obey `seq_lengths[i] <= input.dims[seq_axis]`"
+      ]
     },
     "seq_lengths": {
       "type": "tensor",
@@ -27,39 +30,37 @@
         "int64"
       ],
       "constraints": [
+        "Must be one of the following types: `int32`, `int64`.",
+        "1-D with length `input.dims(batch_axis)` and `max(seq_lengths) <= input.dims(seq_axis)`",
         "seq_lengths must be 1-D",
-        "seq_lengths must be one of int32, int64"
+        "seq_lengths must be one of int32, int64",
+        "The elements of `seq_lengths` must obey `seq_lengths[i] <= input.dims[seq_axis]`"
       ]
     },
     "seq_axis": {
       "type": "int",
       "size": "",
-      "default": "1",
+      "default": "",
       "flag": "Optional",
       "description": "An `int`. The dimension which is partially reversed.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The dimension which is partially reversed.",
+        "The elements of `seq_lengths` must obey `seq_lengths[i] <= input.dims[seq_axis]`"
+      ]
     },
     "batch_axis": {
       "type": "int",
       "size": "",
-      "default": "0",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `int`. Defaults to `0`. The dimension along which reversal is performed.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Defaults to `0`. The dimension along which reversal is performed."
+      ]
     }
   },
   "output": {
@@ -67,5 +68,7 @@
     "numbers": "1",
     "description": "A Tensor. Has the same type as input."
   },
-  "constraints": []
+  "constraints": [
+    "The elements of `seq_lengths` must obey `seq_lengths[i] <= input.dims[seq_axis]`"
+  ]
 }

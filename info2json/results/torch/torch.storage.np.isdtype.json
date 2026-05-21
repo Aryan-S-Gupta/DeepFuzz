@@ -1,0 +1,42 @@
+{
+  "api_name": "isdtype",
+  "module_path": "torch.storage.np",
+  "params": {
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype The input dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be a valid NumPy dtype."
+      ]
+    },
+    "kind": {
+      "type": "string|int|float|bool|tuple|number|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or str or tuple of dtypes/strs. dtype or dtype kind. Allowed dtype kinds are: * ``'bool'`` : boolean kind * ``'signed integer'`` : signed integer data types * ``'unsigned integer'`` : unsigned integer data types * ``'integral'`` : integer data types * ``'real floating'`` : real-valued floating-point data types * ``'complex floating'`` : complex floating-point data types * ``'numeric'`` : numeric data types",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be one of the allowed dtype kinds if str, a valid NumPy dtype if dtype, or a tuple of the allowed dtype kinds if tuple."
+      ]
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool"
+  },
+  "constraints": [
+    "Third-party dtypes are not yet supported."
+  ]
+}

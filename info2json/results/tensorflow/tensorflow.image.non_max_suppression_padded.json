@@ -24,19 +24,21 @@
     },
     "max_output_size": {
       "type": "int|number|tensor",
-      "size": "",
+      "size": "scalar",
       "default": "",
       "flag": "Required",
       "description": "a scalar integer `Tensor` representing the maximum number of boxes to be selected by non max suppression. Note that setting this value to a large number may result in OOM error depending on the system workload.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "max_output_size must be one of OOM"
+      ]
     },
     "iou_threshold": {
       "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0.5",
+      "flag": "Optional",
       "description": "a float representing the threshold for deciding whether boxes overlap too much with respect to IoU (intersection over union).",
       "dtype_candidates": [],
       "enum_values": [],
@@ -46,7 +48,7 @@
       "type": "float",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "a float representing the threshold for box scores. Boxes with a score that is not larger than this threshold will be suppressed.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -55,19 +57,9 @@
     "pad_to_max_output_size": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "whether to pad the output idx to max_output_size. Must be set to True when the input is a batch of images.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "name of operation.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -75,8 +67,8 @@
     "sorted_input": {
       "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "a boolean indicating whether the input boxes and scores are sorted in descending order by the score.",
       "dtype_candidates": [
         "bool"
@@ -87,8 +79,8 @@
     "canonicalized_coordinates": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "if box coordinates are given as `[y_min, x_min, y_max, x_max]`, setting to True eliminate redundant computation to canonicalize box coordinates.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -97,8 +89,8 @@
     "tile_size": {
       "type": "int|number",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "512",
+      "flag": "Optional",
       "description": "an integer representing the number of boxes in a tile, i.e., the maximum number of boxes per image that can be used to suppress other boxes in parallel; larger tile_size means larger parallelism and potentially more redundant work.",
       "dtype_candidates": [],
       "enum_values": [],

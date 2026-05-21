@@ -15,14 +15,17 @@
         "description": "A tensor, the tensor to be updated.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "start_indices values must be in range [0, inputs.shape[axis]) for all axes.",
+          "The returned slice has the same dtype as `inputs`."
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,12 +33,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -50,28 +63,33 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "start_indices and shape must have same length as inputs.ndim"
+          "start_indices values must be in range [0, inputs.shape[axis]) for all axes."
         ]
       },
       "chosen_type": "list",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": [
-          1
-        ]
+        "value": 0
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
     "shape": {
       "name": "shape",
       "spec": {
-        "type": "tuple|list",
+        "type": "tensor",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -79,7 +97,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "start_indices and shape must have same length as inputs.ndim"
+          "start_indices values must be in range [0, inputs.shape[axis]) for all axes."
         ]
       },
       "chosen_type": "list",
@@ -87,13 +105,22 @@
       "base_seed_spec": {
         "kind": "literal",
         "value": [
-          1
-        ]
+          2,
+          2
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     }
@@ -104,26 +131,27 @@
     "description": "A tensor, has the same shape and dtype as `inputs`."
   },
   "constraints": [
-    "start_indices and shape must have same length as inputs.ndim"
+    "start_indices values must be in range [0, inputs.shape[axis]) for all axes."
   ],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: {{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected size[0] in [0, 0], but got 1 [Op:Slice]"
+    "smoke test failed: {{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected begin and size arguments to be 1-D tensors of size 1, but got shapes [] and [2] instead. [Op:Slice]"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "api_runtime_error",
     "error_type": "InvalidArgumentError",
-    "error": "{{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected size[0] in [0, 0], but got 1 [Op:Slice]",
+    "error": "{{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected begin and size arguments to be 1-D tensors of size 1, but got shapes [] and [2] instead. [Op:Slice]",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/core.py\", line 448, in slice\n    return backend.core.slice(inputs, start_indices, shape)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/core.py\", line 589, in slice\n    return tf.slice(inputs, start_indices, shape)\n           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected size[0] in [0, 0], but got 1 [Op:Slice]\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/core.py\", line 448, in slice\n    return backend.core.slice(inputs, start_indices, shape)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/core.py\", line 589, in slice\n    return tf.slice(inputs, start_indices, shape)\n           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected begin and size arguments to be 1-D tensors of size 1, but got shapes [] and [2] instead. [Op:Slice]\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.slice.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

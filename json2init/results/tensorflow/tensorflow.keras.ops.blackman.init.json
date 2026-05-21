@@ -16,6 +16,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
+          "must be convertible to TensorFlow tensor",
           "x must be 1-D"
         ]
       },
@@ -29,7 +30,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -37,7 +45,9 @@
     "numbers": "1",
     "description": "A 1D tensor containing the Blackman window values."
   },
-  "constraints": [],
+  "constraints": [
+    "The output tensor dtype must be float32"
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -55,12 +65,28 @@
       ],
       "dtype": "float32",
       "numel": 1,
-      "has_nan": true
+      "preview": [
+        NaN
+      ],
+      "has_nan": true,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.blackman.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

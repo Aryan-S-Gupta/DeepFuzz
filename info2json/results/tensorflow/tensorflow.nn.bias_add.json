@@ -22,13 +22,16 @@
     },
     "bias": {
       "type": "tensor",
-      "size": "",
+      "size": "1-D",
       "default": "",
       "flag": "Required",
       "description": "A 1-D `Tensor` with size matching the channel dimension of `value`. Must be the same type as `value` unless `value` is a quantized type, in which case a different quantized type may be used.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "bias must be 1-D",
+        "bias must have the same dtype as value"
+      ]
     },
     "data_format": {
       "type": "string",
@@ -36,16 +39,6 @@
       "default": "",
       "flag": "Optional",
       "description": "A string. 'N...C' and 'NC...' are supported. If `None` (the default) is specified then 'N..C' is assumed.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

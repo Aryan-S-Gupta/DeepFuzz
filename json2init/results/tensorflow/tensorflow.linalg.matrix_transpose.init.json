@@ -5,72 +5,82 @@
   "import_path": "tensorflow.linalg.matrix_transpose",
   "backend": "tensorflow",
   "params": {
-    "matrix": {
-      "name": "matrix",
+    "a": {
+      "name": "a",
       "spec": {
-        "type": "",
+        "type": "tensor",
         "size": "",
         "default": "",
         "flag": "Required",
-        "description": "",
+        "description": "A `Tensor` with `rank >= 2`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "rank(a) >= 2",
+          "If a is determined statically to have rank < 2, ValueError is raised."
+        ]
       },
-      "chosen_type": "any",
+      "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
       },
       "mutation_rules": [
-        "type_switch"
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
-    "b": {
-      "name": "b",
+    "conjugate": {
+      "name": "conjugate",
       "spec": {
-        "type": "",
+        "type": "bool",
         "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "any",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
-      },
-      "mutation_rules": [
-        "type_switch"
-      ],
-      "unresolved_reason": ""
-    },
-    "transpose_b": {
-      "name": "transpose_b",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "True",
+        "default": "False",
         "flag": "Optional",
-        "description": "",
-        "dtype_candidates": [],
+        "description": "Optional bool. Setting it to `True` is mathematically equivalent to tf.math.conj(tf.linalg.matrix_transpose(input)).",
+        "dtype_candidates": [
+          "bool"
+        ],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "any",
+      "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": false
       },
       "mutation_rules": [
-        "type_switch"
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     }
@@ -84,21 +94,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: Got an unexpected keyword argument 'matrix'"
+    "smoke test failed: Argument `a` should be a (batch) matrix with rank >= 2.  Received `a` = [1. 1.] with shape: (2,)"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "Got an unexpected keyword argument 'matrix'",
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "Argument `a` should be a (batch) matrix with rank >= 2.  Received `a` = [1. 1.] with shape: (2,)",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Got an unexpected keyword argument 'matrix'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/weak_tensor_ops.py\", line 88, in wrapper\n    return op(*args, **kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/array_ops.py\", line 2065, in matrix_transpose\n    raise ValueError(\"Argument `a` should be a (batch) matrix with rank \"\n                     f\">= 2.  Received `a` = {a} with shape: {a_shape}\")\nValueError: Argument `a` should be a (batch) matrix with rank >= 2.  Received `a` = [1. 1.] with shape: (2,)\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.matrix_transpose.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

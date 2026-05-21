@@ -10,26 +10,29 @@
       "description": "iterable of iterables that contain tensors from a single device.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "destination": {
       "type": "int|device",
       "size": "",
-      "default": "current device)",
+      "default": "",
       "flag": "Optional",
       "description": "a device on which the output will be placed (default: current device).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "buffer_size": {
       "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "10485760",
+      "flag": "Optional",
       "description": "maximum size of the buffer used for coalescing",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

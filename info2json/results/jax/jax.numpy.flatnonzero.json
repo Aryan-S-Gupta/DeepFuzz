@@ -10,6 +10,7 @@
       "description": "N-dimensional array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "size": {
@@ -20,38 +21,28 @@
       "description": "optional static integer specifying the number of nonzero entries to return. See :func:`jax.numpy.nonzero` for more discussion of this parameter.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must be positive or zero",
+        "size >= 0",
         "size must be nonzero"
       ]
     },
     "fill_value": {
-      "type": "number",
-      "size": "",
-      "default": "0",
-      "flag": "Optional",
-      "description": "optional padding value when ``size`` is specified. Defaults to 0.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "See": {
-      "type": "",
+      "type": "tuple",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "func:`jax.numpy.nonzero` for more discussion of this parameter.",
+      "flag": "Optional",
+      "description": "optional padding value when ``size`` is specified. Defaults to 0. See :func:`jax.numpy.nonzero` for more discussion of this parameter.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "Array containing the indices of each nonzero value in the flattened array."
   },
-  "constraints": [
-    "x must be an N-dimensional array"
-  ]
+  "constraints": []
 }

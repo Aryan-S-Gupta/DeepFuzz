@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and output must have the same shape"
+        "The operation calculates `f(x) = (x + sqrt(x^2 + b)) / 2`"
       ]
     },
     "b": {
@@ -23,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "b >= 0"
+        "The operation calculates `f(x) = (x + sqrt(x^2 + b)) / 2`"
       ]
     }
   },
@@ -32,5 +32,7 @@
     "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "The operation calculates `f(x) = (x + sqrt(x^2 + b)) / 2`"
+  ]
 }

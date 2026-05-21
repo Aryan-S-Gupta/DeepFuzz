@@ -2,25 +2,25 @@
   "api_name": "einsum_path",
   "module_path": "jax.interpreters.mlir.ir.np",
   "params": {
-    "subscripts": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "str Specifies the subscripts for summation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
     "optimize": {
       "type": "bool|tuple|list|tensor",
       "size": "",
-      "default": "greedy",
+      "default": "",
       "flag": "Optional",
       "description": "{bool, list, tuple, 'greedy', 'optimal'} Choose the type of path. If a tuple is provided, the second argument is assumed to be the maximum intermediate size created. If only a single argument is provided the largest input or output array size is used as a maximum intermediate size.",
       "dtype_candidates": [
         "bool"
       ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "einsum_call": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

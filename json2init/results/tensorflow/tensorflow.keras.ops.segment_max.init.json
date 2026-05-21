@@ -15,16 +15,14 @@
         "description": "Input tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "data.shape[:len(segment_ids.shape)] should match"
-        ]
+        "constraints": []
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -32,14 +30,25 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "segment_ids": {
       "name": "segment_ids",
@@ -51,31 +60,43 @@
         "description": "A N-D tensor containing segment indices for each element in `data`. data.shape[:len(segment_ids.shape)] should match.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "data.shape[:len(segment_ids.shape)] should match"
-        ]
+        "constraints": []
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "dtype": "int32",
+        "values": [
+          0,
+          0
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "num_segments": {
       "name": "num_segments",
@@ -99,7 +120,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "sorted": {
       "name": "sorted",
@@ -119,42 +147,79 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "A tensor containing the max of segments, where each element represents the max of the corresponding segment in `data`."
   },
-  "constraints": [
-    "data.shape[:len(segment_ids.shape)] should match"
-  ],
+  "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Value for attr 'Tindices' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node UnsortedSegmentMax}}; Op<name=UnsortedSegmentMax; signature=data:T, segment_ids:Tindices, num_segments:Tnumsegments -> output:T; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]; attr=Tindices:type,allowed=[DT_INT32, DT_INT64]; attr=Tnumsegments:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:UnsortedSegmentMax] name: "
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "InvalidArgumentError",
-    "error": "Value for attr 'Tindices' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node UnsortedSegmentMax}}; Op<name=UnsortedSegmentMax; signature=data:T, segment_ids:Tindices, num_segments:Tnumsegments -> output:T; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]; attr=Tindices:type,allowed=[DT_INT32, DT_INT64]; attr=Tnumsegments:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:UnsortedSegmentMax] name: ",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 131, in segment_max\n    return backend.math.segment_max(\n           ~~~~~~~~~~~~~~~~~~~~~~~~^\n        data, segment_ids, num_segments=num_segments, sorted=sorted\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 39, in segment_max\n    return tf.math.unsorted_segment_max(data, segment_ids, num_segments)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 12930, in unsorted_segment_max\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'Tindices' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node UnsortedSegmentMax}}; Op<name=UnsortedSegmentMax; signature=data:T, segment_ids:Tindices, num_segments:Tnumsegments -> output:T; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]; attr=Tindices:type,allowed=[DT_INT32, DT_INT64]; attr=Tnumsegments:type,default=DT_INT32,allowed=[DT_INT32, DT_INT64]> [Op:UnsortedSegmentMax] name: \n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "data",
+      "segment_ids"
+    ],
+    "skipped_optional": [
+      "num_segments",
+      "sorted"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(sorted_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.segment_max.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

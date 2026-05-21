@@ -18,11 +18,11 @@
       ],
       "constraints": [
         "x must be one of float32, float64",
-        "y is zero returns 0 even if x is NaN or infinite"
+        "x and y must have broadcast-compatible shapes"
       ]
     },
     "y": {
-      "type": "tensor|dtype",
+      "type": "float|tensor|dtype",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -30,18 +30,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y is zero returns 0 even if x is NaN or infinite"
+        "dtype compatible with x",
+        "x and y must have broadcast-compatible shapes"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "\"\"",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -50,6 +41,6 @@
     "description": "The element-wise value of the x times y."
   },
   "constraints": [
-    "y is zero returns 0 even if x is NaN or infinite"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

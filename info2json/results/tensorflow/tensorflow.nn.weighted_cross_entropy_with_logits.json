@@ -10,7 +10,11 @@
       "description": "A `Tensor` of the same type and shape as `logits`, with values between 0 and 1 inclusive.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "same type and shape as logits",
+        "values between 0 and 1 inclusive",
+        "logits and labels must have the same shape"
+      ]
     },
     "logits": {
       "type": "float|tensor|any",
@@ -23,10 +27,13 @@
         "float64"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "type: float32 or float64, any real numbers",
+        "logits and labels must have the same shape"
+      ]
     },
     "pos_weight": {
-      "type": "number",
+      "type": "number|tensor",
       "size": "scalar",
       "default": "",
       "flag": "Required",
@@ -34,19 +41,10 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "coefficient to use on the positive examples, non-negative",
         "pos_weight must be non-negative",
         "pos_weight must be positive"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -54,5 +52,7 @@
     "numbers": "1",
     "description": "A `Tensor` of the same shape as `logits` with the componentwise weighted logistic losses."
   },
-  "constraints": []
+  "constraints": [
+    "logits and labels must have the same shape"
+  ]
 }

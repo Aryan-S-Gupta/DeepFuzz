@@ -15,101 +15,99 @@
         "description": "A N-D `Tensor` with shape `input_shape = [batch] + spatial_shape + remaining_shape`, where `spatial_shape` has M dimensions.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "The input tensor must be of any data type."
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
     "block_shape": {
       "name": "block_shape",
       "spec": {
-        "type": "tensor",
+        "type": "int|tuple|tensor|dtype",
         "size": "1-D",
         "default": "",
         "flag": "Required",
-        "description": "A 1-D `Tensor` with shape [M]. Must be one of the following",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": [
-          "block_shape must be 1-D"
-        ]
-      },
-      "chosen_type": "tensor",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
-      },
-      "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
-      ],
-      "unresolved_reason": ""
-    },
-    "types": {
-      "name": "types",
-      "spec": {
-        "type": "int|tensor|dtype",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "`int32`, `int64`. All values must be >= 1. For backwards compatibility with TF 1.0, this parameter may be an int, in which case it is converted to `numpy.array([block_shape, block_shape], dtype=numpy.int64)`.",
+        "description": "A 1-D `Tensor` with shape [M]. Must be one of the following types: `int32`, `int64`. All values must be >= 1. For backwards compatibility with TF 1.0, this parameter may be an int, in which case it is converted to `numpy.array([block_shape, block_shape], dtype=numpy.int64)`.",
         "dtype_candidates": [
           "int32",
           "int64"
         ],
-        "enum_values": [],
+        "enum_values": [
+          "int32",
+          "int64"
+        ],
         "constraints": [
-          "types must be one of int32, int64"
+          "The block shape is a tuple of integers that defines the size of each block in the output tensor.",
+          "block_shape must be 1-D",
+          "If block_shape and crops are provided, the number of blocks in the output tensor must be equal to the number of elements in crops."
         ]
       },
-      "chosen_type": "int",
+      "chosen_type": "list",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          1,
+          1
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
     "crops": {
       "name": "crops",
       "spec": {
-        "type": "tensor",
+        "type": "int|tuple|list|tensor",
         "size": "2-D",
         "default": "",
         "flag": "Required",
@@ -127,52 +125,37 @@
           "reshaped_permuted"
         ],
         "constraints": [
+          "The crops list contains tuples of two integers each.",
+          "Each integer in the tuple represents the number of elements at the beginning and end of a block to be excluded from the output tensor.",
           "crops must be 2-D",
           "crops must be non-negative",
-          "crops must be one of int32, int64, i, reshaped, permuted, reshaped_permuted"
+          "crops must be one of int32, int64, i, reshaped, permuted, reshaped_permuted",
+          "If block_shape and crops are provided, the number of blocks in the output tensor must be equal to the number of elements in crops."
         ]
       },
-      "chosen_type": "tensor",
+      "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
+        "kind": "literal",
+        "value": [
           1,
           1
         ],
-        "dtype": "int32",
-        "fill": 0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -180,25 +163,28 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `input`."
   },
-  "constraints": [],
+  "constraints": [
+    "If block_shape and crops are provided, the number of blocks in the output tensor must be equal to the number of elements in crops."
+  ],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: Got an unexpected keyword argument 'types'"
+    "smoke test failed: {{function_node __wrapped__BatchToSpaceND_device_/job:localhost/replica:0/task:0/device:CPU:0}} crops should have shape [2, 2] instead of [2] [Op:BatchToSpaceND]"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "Got an unexpected keyword argument 'types'",
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__BatchToSpaceND_device_/job:localhost/replica:0/task:0/device:CPU:0}} crops should have shape [2, 2] instead of [2] [Op:BatchToSpaceND]",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Got an unexpected keyword argument 'types'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__BatchToSpaceND_device_/job:localhost/replica:0/task:0/device:CPU:0}} crops should have shape [2, 2] instead of [2] [Op:BatchToSpaceND]\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.batch_to_space.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

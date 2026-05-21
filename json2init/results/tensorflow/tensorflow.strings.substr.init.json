@@ -1,0 +1,189 @@
+{
+  "api_full_name": "tensorflow.strings.substr",
+  "api_name": "substr",
+  "module_path": "tensorflow.strings",
+  "import_path": "tensorflow.strings.substr",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `string`. Tensor of strings",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "string",
+        "values": [
+          "a",
+          "b"
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "pos": {
+      "name": "pos",
+      "spec": {
+        "type": "number|tensor",
+        "size": "Scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. Scalar defining the position of first character in each substring",
+        "dtype_candidates": [
+          "int32",
+          "int64"
+        ],
+        "enum_values": [
+          "int32",
+          "int64"
+        ],
+        "constraints": [
+          "pos must be one of int32, int64"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "len": {
+      "name": "len",
+      "spec": {
+        "type": "number|tensor",
+        "size": "Scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must have the same type as `pos`. Scalar defining the number of characters to include in each substring",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "len must have the same dtype as pos"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "unit": {
+      "name": "unit",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"BYTE\", \"UTF8_CHAR\"`. Defaults to `\"BYTE\"`. The unit that is used to create the substring. One of: `\"BYTE\"` (for defining position and length by bytes) or `\"UTF8_CHAR\"` (for the UTF-8 encoded Unicode code points). The default is `\"BYTE\"`. Results are undefined if `unit=UTF8_CHAR` and the `input` strings do not contain structurally valid UTF-8.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "string",
+          "BYTE",
+          "UTF8_CHAR"
+        ],
+        "constraints": [
+          "unit must be one of string, BYTE, UTF8_CHAR, UTF"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'T' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Substr}}; Op<name=Substr; signature=input:string, pos:T, len:T -> output:string; attr=T:type,allowed=[DT_INT32, DT_INT64]; attr=unit:string,default=\"BYTE\",allowed=[\"BYTE\", \"UTF8_CHAR\"]> [Op:Substr] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'T' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Substr}}; Op<name=Substr; signature=input:string, pos:T, len:T -> output:string; attr=T:type,allowed=[DT_INT32, DT_INT64]; attr=unit:string,default=\"BYTE\",allowed=[\"BYTE\", \"UTF8_CHAR\"]> [Op:Substr] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'T' of float is not in the list of allowed values: int32, int64\n\t; NodeDef: {{node Substr}}; Op<name=Substr; signature=input:string, pos:T, len:T -> output:string; attr=T:type,allowed=[DT_INT32, DT_INT64]; attr=unit:string,default=\"BYTE\",allowed=[\"BYTE\", \"UTF8_CHAR\"]> [Op:Substr] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.strings.substr.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

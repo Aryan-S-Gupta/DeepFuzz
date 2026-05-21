@@ -17,8 +17,8 @@
         "int64"
       ],
       "constraints": [
-        "indices must be one of int32, int64",
-        "`indices`, `updates`, and output types must be consistent with `tensor`"
+        "Must be one of the following types: int32, int64.",
+        "indices must be one of int32, int64"
       ]
     },
     "updates": {
@@ -30,28 +30,15 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have the same type as `tensor`",
-        "`indices`, `updates`, and output types must be consistent with `tensor`"
+        "Must have the same type as tensor."
       ]
     },
     "bad_indices_policy": {
       "type": "string",
       "size": "",
-      "default": "\"\"",
-      "flag": "Optional",
-      "description": "An optional `string`. Defaults to `\"\"`.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "Allowed values: '', 'keep', 'skip'"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "description": "An optional `string`. Defaults to `\"\"`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -62,7 +49,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `tensor`."
   },
-  "constraints": [
-    "`indices`, `updates`, and output types must be consistent with `tensor`"
-  ]
+  "constraints": []
 }

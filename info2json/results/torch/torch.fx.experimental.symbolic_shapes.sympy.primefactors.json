@@ -10,8 +10,38 @@
       "description": "integer Additional keyword arguments to be passed to ``factorint``. Since ``kwargs`` is new in version 1.13, ``limit`` and ``verbose`` are retained for compatibility purposes.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "n < 0 implies that all negative primes are included in the output list"
+        "n must be a positive integer"
+      ]
+    },
+    "limit": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "maximum number of factors returned, if provided. Defaults to no limit.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "limit must be non-negative",
+        "limit and verbose are optional parameters"
+      ]
+    },
+    "verbose": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "whether or not to print verbose output",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "limit and verbose are optional parameters"
       ]
     }
   },
@@ -20,5 +50,7 @@
     "numbers": "int",
     "description": "======= list(int) : List of prime numbers dividing ``n``"
   },
-  "constraints": []
+  "constraints": [
+    "limit and verbose are optional parameters"
+  ]
 }

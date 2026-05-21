@@ -17,20 +17,9 @@
       ],
       "enum_values": [],
       "constraints": [
-        "Must have a shape",
-        "x and output must have the same shape and type.",
-        "x and tensorflow.round(x) must have the same rank."
+        "x must be a Tensor",
+        "x must be a float16, float32, float64, int32, or int64 tensor"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

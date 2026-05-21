@@ -10,25 +10,25 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "where must have the same shape as x if provided"
+        "x cannot be None"
       ]
     },
     "axis": {
       "type": "int|tuple",
       "size": "",
-      "default": "",
+      "default": "-1",
       "flag": "Optional",
       "description": "the axis or axes along which the softmax should be computed. The softmax output summed across these dimensions should sum to :math:`1`. Either an integer, tuple of integers, or ``None`` (all axes).",
       "dtype_candidates": [],
       "enum_values": [
-        "1",
-        "None"
+        "1"
       ],
+      "case_insensitive": false,
       "constraints": [
         "axis must be one of 1",
-        "axis must satisfy -rank(x) <= axis < rank(x)",
-        "axis can be None, int, or tuple(int)"
+        "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
     "where": {
@@ -39,9 +39,8 @@
       "description": "Elements to include in the :code:`softmax`. The output for any masked-out element is zero.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "where must have the same shape as x if provided"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
@@ -49,7 +48,5 @@
     "numbers": "1",
     "description": "An array."
   },
-  "constraints": [
-    "where must have the same shape as x if provided"
-  ]
+  "constraints": []
 }

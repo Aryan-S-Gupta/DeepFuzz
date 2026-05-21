@@ -17,26 +17,16 @@
       ],
       "enum_values": [],
       "constraints": [
-        "x and output must have the same type"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "name is not used in this API"
+        "x must be a 1-D tensor"
       ]
     }
   },
   "output": {
     "type": "float|tensor|dtype",
-    "numbers": "1",
+    "numbers": "float32",
     "description": "A Tensor with the same type as `x`. Usage Example: >>> x = tf.constant([-128.0, 0.0, 128.0], dtype=tf.float32) >>> tf.sigmoid(x) <tf.Tensor: shape=(3,), dtype=float32, numpy=array([0. , 0.5, 1. ], dtype=float32)> @compatibility(scipy) Equivalent to scipy.special.expit @end_compatibility"
   },
-  "constraints": []
+  "constraints": [
+    "The output of sigmoid function is always between 0 and 1."
+  ]
 }

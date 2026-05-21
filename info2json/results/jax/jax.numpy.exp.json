@@ -10,9 +10,8 @@
       "description": "input array or scalar",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "For complex numbers, jnp.exp(x) = jnp.exp(real(x)) * cmath.exp(imag(x) * 1j)"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
@@ -21,6 +20,6 @@
     "description": "An array containing the exponential of each element in ``x``, promotes to inexact dtype."
   },
   "constraints": [
-    "jnp.exp follows the properties of exponential such as e^(a+b)"
+    "jax.numpy.exp follows the properties of exponential such as :math:`e^{(a+b)} = e^a * e^b`"
   ]
 }

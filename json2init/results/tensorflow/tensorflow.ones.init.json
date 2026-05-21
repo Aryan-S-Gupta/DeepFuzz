@@ -8,56 +8,74 @@
     "shape": {
       "name": "shape",
       "spec": {
-        "type": "float|tuple|list|tensor|dtype",
+        "type": "tuple|list|tensor",
         "size": "1-D",
         "default": "",
-        "flag": "Optional",
-        "description": "A `list` of integers, a `tuple` of integers, or a 1-D `Tensor` of type `int32`. dtype: Optional DType of an element in the resulting `Tensor`. Default is `tf.float32`.",
+        "flag": "Required",
+        "description": "A `list` of integers, a `tuple` of integers, or a 1-D `Tensor` of type `int32`.",
         "dtype_candidates": [
-          "int32",
-          "float32"
+          "int32"
         ],
         "enum_values": [],
         "constraints": [
           "shape must be 1-D"
         ]
       },
-      "chosen_type": "float",
-      "include_in_base_call": false,
+      "chosen_type": "tuple",
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1.0
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
-    "name": {
-      "name": "name",
+    "dtype": {
+      "name": "dtype",
       "spec": {
-        "type": "string",
+        "type": "float|tensor|dtype",
         "size": "",
-        "default": "",
+        "default": "tf.float32",
         "flag": "Optional",
-        "description": "Optional string. A name for the operation.",
-        "dtype_candidates": [],
+        "description": "Optional DType of an element in the resulting `Tensor`. Default is `tf.float32`.",
+        "dtype_candidates": [
+          "float32"
+        ],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "string",
+      "chosen_type": "dtype",
       "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
+        "kind": "dtype",
+        "value": "float32"
       },
       "mutation_rules": [
-        "string_replace",
-        "string_empty"
+        "enum_switch",
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "layout": {
       "name": "layout",
@@ -75,7 +93,10 @@
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: tf.experimental.dtensor.layout"
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: tf.experimental.dtensor.layout",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -85,23 +106,70 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Missing required positional argument"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "Missing required positional argument",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 4,
+      "preview": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "shape"
+    ],
+    "skipped_optional": [
+      "dtype",
+      "layout"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "shape.rank == 1",
+    "shape.dtype in {int32}",
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(shape_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ones.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

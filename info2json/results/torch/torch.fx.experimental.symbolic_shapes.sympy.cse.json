@@ -10,16 +10,18 @@
       "description": "list of SymPy expressions, or a single SymPy expression The expressions to reduce.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "symbols": {
       "type": "",
       "size": "",
-      "default": "a",
+      "default": "",
       "flag": "Optional",
       "description": "infinite iterator yielding unique Symbols The symbols used to label the common subexpressions which are pulled out. The ``numbered_symbols`` generator is useful. The default is a stream of symbols of the form \"x0\", \"x1\", etc. This must be an infinite iterator.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "optimizations": {
@@ -30,36 +32,40 @@
       "description": "list of (callable, callable) pairs The (preprocessor, postprocessor) pairs of external optimization functions. Optionally 'basic' can be passed for a set of predefined basic optimizations. Such 'basic' optimizations were used by default in old implementation, however they can be really slow on larger expressions. Now, no pre or post optimizations are made by default.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "postprocess": {
       "type": "callable",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "a function which accepts the two return values of cse and returns the desired form of output from cse, e.g. if you want the replacements reversed the function might be the following lambda: lambda r, e: return reversed(r), e",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "order": {
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "string, 'none' or 'canonical' The order by which Mul and Add arguments are processed. If set to 'canonical', arguments will be canonically ordered. If set to 'none', ordering will be faster but dependent on expressions hashes, thus machine dependent and variable. For large expressions where speed is a concern, use the setting order='none'.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "ignore": {
       "type": "sequence|any",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "iterable of Symbols Substitutions containing any Symbol from ``ignore`` will be ignored.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

@@ -11,19 +11,24 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "T is a shape `(..., N, N)` array containing the upper-triangular Schur form of the input.",
-        "Z is a shape `(..., N, N)` array containing the unitary Schur transformation matrix."
+        "input array 'a' must have at least 2 dimensions",
+        "last two dimensions of 'a' must match, i.e., be of size N"
       ]
     },
     "output": {
-      "type": "float",
+      "type": "string|float",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Specify whether to compute the ``\"real\"`` (default) or ``\"complex\"`` Schur decomposition.",
       "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "enum_values": [
+        "real",
+        "complex"
+      ],
+      "constraints": [
+        "must be one of ['real', 'complex']"
+      ]
     }
   },
   "output": {

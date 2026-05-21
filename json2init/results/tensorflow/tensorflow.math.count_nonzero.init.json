@@ -17,96 +17,129 @@
           "bool"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "should be of numeric type, or string",
+          "x and y must have broadcast-compatible shapes if input is a list or tuple"
+        ]
       },
       "chosen_type": "bool",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis": {
       "name": "axis",
       "spec": {
-        "type": "int32 or int64 array_like",
+        "type": "int",
         "size": "",
         "default": "",
         "flag": "Optional",
         "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input), rank(input))`.",
-        "dtype_candidates": [
-          "int32",
-          "int64"
-        ],
+        "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "input, axis, and keepdims must be compatible for reduction"
+          "must satisfy -rank(input) <= axis < rank(input)",
+          "axis must satisfy -rank(input) <= axis < rank(input)"
         ]
       },
-      "chosen_type": "int32 or int64 array_like",
+      "chosen_type": "int",
       "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: int32 or int64 array_like"
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "keepdims": {
       "name": "keepdims",
       "spec": {
-        "type": "bool|dtype",
+        "type": "bool",
         "size": "",
-        "default": "tf",
+        "default": "",
         "flag": "Optional",
-        "description": "If true, retains reduced dimensions with length 1. dtype: The output dtype; defaults to `tf.int64`.",
+        "description": "If true, retains reduced dimensions with length 1.",
         "dtype_candidates": [
-          "bool",
-          "int64"
+          "bool"
         ],
         "enum_values": [],
-        "constraints": [
-          "input, axis, and keepdims must be compatible for reduction"
-        ]
+        "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
-    "name": {
-      "name": "name",
+    "dtype": {
+      "name": "dtype",
       "spec": {
-        "type": "string",
+        "type": "dtype",
         "size": "",
-        "default": "",
+        "default": "tf.int64",
         "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
+        "description": "The output dtype; defaults to `tf.int64`.",
+        "dtype_candidates": [
+          "int64"
+        ],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "string",
+      "chosen_type": "dtype",
       "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
+        "kind": "dtype",
+        "value": "int32"
       },
       "mutation_rules": [
-        "string_replace",
-        "string_empty"
+        "noop_clone",
+        "type_switch"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -114,9 +147,7 @@
     "numbers": "1",
     "description": "The reduced tensor (number of nonzero values)."
   },
-  "constraints": [
-    "input, axis, and keepdims must be compatible for reduction"
-  ],
+  "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -132,12 +163,59 @@
       "shape": [],
       "dtype": "int64",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input"
+    ],
+    "skipped_optional": [
+      "axis",
+      "keepdims",
+      "dtype"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank",
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(input_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.count_nonzero.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

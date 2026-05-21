@@ -11,8 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have a numeric data type.",
-        "y_true and y_pred must have broadcast-compatible shapes."
+        "required",
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "y_pred": {
@@ -24,23 +24,20 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have a numeric data type.",
-        "y_true and y_pred must have broadcast-compatible shapes."
+        "required",
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "axis": {
-      "type": "int32 or int64",
+      "type": "int",
       "size": "",
       "default": "-1",
       "flag": "Optional",
       "description": "Axis along which to determine similarity. Defaults to `-1`.",
-      "dtype_candidates": [
-        "int32",
-        "int64"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be a valid axis value for the input tensors."
+        "Optional, must be in range(-len(params.y_true.shape), len(params.y_pred.shape))"
       ]
     }
   },
@@ -50,6 +47,6 @@
     "description": "Pearson Correlation Coefficient tensor."
   },
   "constraints": [
-    "y_true and y_pred must have broadcast-compatible shapes."
+    "The shapes of y_true and y_pred must be broadcast-compatible."
   ]
 }

@@ -15,21 +15,26 @@
         "description": "the index of the device to target. If not given, use :func:`torch.accelerator.current_device_index` by default. If a :class:`torch.device` or str is provided, its type must match the current :ref:`accelerator<accelerators>` device type.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": [
-          "device_index must be an int, a torch.device or a str",
-          "if device_index is a string or a torch.device, its type must match the current accelerator device type"
+          "device_index must match the current accelerator device type if provided as a torch.device or str"
         ]
       },
       "chosen_type": "int",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 0
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": ""
     }
@@ -42,21 +47,21 @@
   "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: module 'torch.accelerator' has no attribute 'memory'"
-  ],
+  "readiness_reasons": [],
   "smoke_test": {
-    "attempted": false,
+    "attempted": true,
     "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "AttributeError",
-    "error": "module 'torch.accelerator' has no attribute 'memory'",
+    "classification": "environment_unsupported",
+    "error_type": "RuntimeError",
+    "error": "device_allocator INTERNAL ASSERT FAILED at \"/Users/runner/work/pytorch/pytorch/pytorch/c10/core/CachingDeviceAllocator.h\":253, please report a bug to PyTorch. Allocator for mps is not a DeviceAllocator.",
     "materialization_reasons": [],
     "result_summary": {},
-    "runtime_supported_here": false
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/accelerator/memory.py\", line 148, in max_memory_allocated\n    return memory_stats(device_index).get(\"allocated_bytes.all.peak\", 0)\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/accelerator/memory.py\", line 95, in memory_stats\n    if not torch._C._accelerator_isAllocatorInitialized():\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nRuntimeError: device_allocator INTERNAL ASSERT FAILED at \"/Users/runner/work/pytorch/pytorch/pytorch/c10/core/CachingDeviceAllocator.h\":253, please report a bug to PyTorch. Allocator for mps is not a DeviceAllocator.\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.accelerator.memory.max_memory_allocated.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "env_only",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

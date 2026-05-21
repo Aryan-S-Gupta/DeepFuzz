@@ -11,17 +11,20 @@
         "type": "",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "where to cache the data (relative to `~/.keras/dataset`).",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "where to cache the data (relative to `~",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: where to cache the data (relative to `~"
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: where to cache the data (relative to `~",
+      "call_kind": "positional_or_keyword"
     },
     "num_words": {
       "name": "num_words",
@@ -43,10 +46,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "skip_top": {
       "name": "skip_top",
@@ -66,9 +75,17 @@
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
         "enum_switch"
       ],
-      "unresolved_reason": "unhandled chosen type: skip the top n most frequently occurring words (which may not be informative). these words will appear as `oov_char` value in the dataset. when 0"
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: skip the top n most frequently occurring words (which may not be informative). these words will appear as `oov_char` value in the dataset. when 0",
+      "call_kind": "positional_or_keyword"
     },
     "maxlen": {
       "name": "maxlen",
@@ -92,22 +109,29 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "seed": {
       "name": "seed",
       "spec": {
         "type": "int",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "113",
+        "flag": "Optional",
         "description": "int. Seed for reproducible data shuffling.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "int",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1
@@ -116,7 +140,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "start_char": {
       "name": "start_char",
@@ -140,56 +171,76 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "oov_char": {
       "name": "oov_char",
       "spec": {
         "type": "int",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "2",
+        "flag": "Optional",
         "description": "int. The out-of-vocabulary character. Words that were cut out because of the `num_words` or `skip_top` limits will be replaced with this character.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "int",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "index_from": {
       "name": "index_from",
       "spec": {
         "type": "int",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "3",
+        "flag": "Optional",
         "description": "int. Index actual words with this index and higher.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "int",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 0
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -198,14 +249,65 @@
     "description": "`(x_train, y_train), (x_test, y_test)`. **`x_train`, `x_test`**: lists of sequences, which are lists of indexes (integers). If the num_words argument was specific, the maximum possible index value is `num_words - 1`. If the `maxlen` argument was specified, the largest possible sequence length is `maxlen`. **`y_train`, `y_test`**: lists of integer labels (1 or 0). **Note**: The 'out of vocabulary' character is only used for words that were present in the training set but are not included because they're not making the `num_words` cut here. Words that were not seen in the training set but are in the test set have simply been skipped."
   },
   "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'path' unresolved: unhandled chosen type: where to cache the data (relative to `~"
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "path",
+      "num_words",
+      "skip_top",
+      "maxlen",
+      "seed",
+      "start_char",
+      "oov_char",
+      "index_from"
+    ],
+    "accepts_var_keyword": true
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(num_words_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(skip_top_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(oov_char_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.datasets.imdb.load_data.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

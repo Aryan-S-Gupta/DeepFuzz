@@ -10,35 +10,32 @@
       "description": "array of shape ``(..., N)`` specifying the first column.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "N must be > 0",
-        "Leading dimensions of c and r must be broadcast-compatible",
-        "For N-dimensional c and/or r, the result is a batch of Hankel matrices"
+        "N-dimensional",
+        "c's last dimension size must be N"
       ]
     },
     "r": {
       "type": "tensor",
       "size": "",
-      "default": "zeros_like(c)",
+      "default": "",
       "flag": "Optional",
       "description": "(optional) array of shape ``(..., M)`` specifying the last row. Leading dimensions must be broadcast-compatible with those of ``c``. If not specified, ``r`` defaults to ``zeros_like(c)``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "M must be >= 0",
-        "Leading dimensions of c and r must be broadcast-compatible",
-        "r[0] is ignored in the result",
-        "For N-dimensional c and/or r, the result is a batch of Hankel matrices"
+        "broadcast-compatible with c's leading dimensions",
+        "N-dimensional",
+        "r's first element is ignored"
       ]
     }
   },
   "output": {
-    "type": "Hankel matrix",
+    "type": "tensor",
     "numbers": "1",
     "description": "A Hankel matrix of shape ``(..., N, M)``."
   },
-  "constraints": [
-    "Leading dimensions of c and r must be broadcast-compatible",
-    "For N-dimensional c and/or r, the result is a batch of Hankel matrices"
-  ]
+  "constraints": []
 }

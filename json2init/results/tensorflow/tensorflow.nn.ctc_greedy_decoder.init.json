@@ -15,7 +15,9 @@
         "description": "3-D `float` `Tensor` sized `[max_time, batch_size, num_classes]`. The logits.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "inputs must be 3-D"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
@@ -26,6 +28,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -46,18 +55,21 @@
           "sequence_length must be 1-D"
         ]
       },
-      "chosen_type": "sequence",
+      "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": [
-          1
-        ]
+        "value": 2
       },
       "mutation_rules": [
-        "structure_grow",
-        "structure_shrink",
-        "element_delta"
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     },
@@ -79,10 +91,16 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -92,7 +110,7 @@
       "spec": {
         "type": "",
         "size": "",
-        "default": "num_classes - 1",
+        "default": "",
         "flag": "Optional",
         "description": "(Optional). Default: `num_classes - 1`. Define the class index to use for the blank label. Negative values will start from num_classes, ie, -1 will reproduce the ctc_greedy_decoder behavior of using num_classes - 1 for the blank symbol, which corresponds to the default.",
         "dtype_candidates": [],
@@ -101,9 +119,14 @@
       },
       "chosen_type": "(optional). default: `num_classes - 1`. define the class index to use for the blank label. negative values will start from num_classes",
       "include_in_base_call": false,
-      "base_seed_spec": {},
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
       "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: (optional). default: `num_classes - 1`. define the class index to use for the blank label. negative values will start from num_classes"
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": ""
     }
   },
   "output": {
@@ -126,10 +149,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__CTCGreedyDecoder_device_/job:localhost/replica:0/task:0/device:CPU:0}} inputs is not a 3-Tensor [Op:CTCGreedyDecoder]\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__CTCGreedyDecoder_device_/job:localhost/replica:0/task:0/device:CPU:0}} inputs is not a 3-Tensor [Op:CTCGreedyDecoder]\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.ctc_greedy_decoder.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

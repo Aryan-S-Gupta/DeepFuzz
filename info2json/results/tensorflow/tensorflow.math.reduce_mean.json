@@ -13,32 +13,27 @@
       "constraints": []
     },
     "axis": {
-      "type": "",
+      "type": "int",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "-rank(input_tensor) <= axis < rank(input_tensor)",
+        "x and y must have broadcast-compatible shapes if axis is None"
+      ]
     },
     "keepdims": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "If true, retains reduced dimensions with length 1.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }

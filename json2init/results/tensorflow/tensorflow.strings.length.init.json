@@ -1,0 +1,158 @@
+{
+  "api_full_name": "tensorflow.strings.length",
+  "api_name": "length",
+  "module_path": "tensorflow.strings",
+  "import_path": "tensorflow.strings.length",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `string`. The strings for which to compute the length for each element.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "The strings for which to compute the length for each element.",
+          "If `unit=UTF8_CHAR` and the `input` strings do not contain structurally valid UTF-8, results are undefined."
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "string",
+        "values": [
+          "a",
+          "b"
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "unit": {
+      "name": "unit",
+      "spec": {
+        "type": "string|number",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"BYTE\", \"UTF8_CHAR\"`. Defaults to `\"BYTE\"`. The unit that is counted to compute string length. One of: `\"BYTE\"` (for the number of bytes in each string) or `\"UTF8_CHAR\"` (for the number of UTF-8 encoded Unicode code points in each string). Results are undefined if `unit=UTF8_CHAR` and the `input` strings do not contain structurally valid UTF-8.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "string",
+          "BYTE",
+          "UTF8_CHAR"
+        ],
+        "constraints": [
+          "One of: `\"BYTE` (for the number of bytes in each string) or `\"UTF8_CHAR` (for the number of UTF-8 encoded Unicode code points in each string). Results are undefined if `unit=UTF8_CHAR` and the `input` strings do not contain structurally valid UTF-8.",
+          "unit must be one of string, BYTE, UTF8_CHAR, UTF",
+          "If `unit=UTF8_CHAR` and the `input` strings do not contain structurally valid UTF-8, results are undefined."
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `int32`."
+  },
+  "constraints": [
+    "If `unit=UTF8_CHAR` and the `input` strings do not contain structurally valid UTF-8, results are undefined."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2
+      ],
+      "dtype": "int32",
+      "numel": 2,
+      "preview": [
+        1,
+        1
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input"
+    ],
+    "skipped_optional": [
+      "unit"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(input_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(unit_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.strings.length.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

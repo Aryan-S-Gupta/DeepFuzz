@@ -9,6 +9,7 @@
       "flag": "Required",
       "description": "A `Tensor`. Must be one of the following types: `float32`, `float64`, `int32`, `uint8`, `int16`, `int8`, `int64`, `bfloat16`, `uint16`, `half`, `uint32`, `uint64`, `complex64`, `complex128`, `bool`, `variant`, `string`.",
       "dtype_candidates": [
+        "bool",
         "int8",
         "int16",
         "int32",
@@ -20,7 +21,6 @@
         "float32",
         "float64",
         "bfloat16",
-        "bool",
         "complex64",
         "complex128"
       ],
@@ -43,7 +43,9 @@
         "variant",
         "string"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64, complex64, complex128, bool, variant, string"
+      ]
     },
     "precision": {
       "type": "int",
@@ -98,7 +100,7 @@
     "fill": {
       "type": "string",
       "size": "",
-      "default": "\"\"",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `string`. Defaults to `\"\"`. The value to pad if width > -1. If empty, pads with spaces. Another typical value is '0'. String cannot be longer than 1 character.",
       "dtype_candidates": [],
@@ -106,16 +108,6 @@
       "constraints": [
         "fill must be one of string, 0"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

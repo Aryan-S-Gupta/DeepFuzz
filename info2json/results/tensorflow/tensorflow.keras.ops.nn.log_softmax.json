@@ -8,10 +8,12 @@
       "default": "",
       "flag": "Required",
       "description": "Input tensor.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "float64"
+      ],
       "enum_values": [],
       "constraints": [
-        "x must be numeric and broadcast-compatible"
+        "x and output dtype must be float64"
       ]
     },
     "axis": {
@@ -23,13 +25,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(x) <= axis < rank(x)"
+        "-rank(x) <= axis < rank(x)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same shape as x",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": []

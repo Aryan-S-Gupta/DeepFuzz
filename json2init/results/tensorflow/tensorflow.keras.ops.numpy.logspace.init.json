@@ -27,8 +27,15 @@
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -57,8 +64,16 @@
       "mutation_rules": [
         "enum_switch",
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "structure_grow",
         "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -74,14 +89,20 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "number",
+      "chosen_type": "int",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1.0
+        "value": 2
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -104,39 +125,59 @@
       "mutation_rules": [
         "enum_switch"
       ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [],
       "unresolved_reason": "unhandled chosen type: if `true`"
     },
     "base": {
       "name": "base",
       "spec": {
-        "type": "tensor|dtype",
+        "type": "",
         "size": "",
         "default": "10",
         "flag": "Optional",
-        "description": "The base of the log space. Defaults to `10`. dtype: The type of the output tensor.",
+        "description": "The base of the log space. Defaults to `10`.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "tensor",
+      "chosen_type": "the base of the log space. defaults to `10`.",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: the base of the log space. defaults to `10`."
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The type of the output tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "dtype",
       "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "kind": "dtype",
+        "value": "float32"
       },
       "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
       ],
       "unresolved_reason": ""
     },
@@ -145,32 +186,28 @@
       "spec": {
         "type": "tensor",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "0",
+        "flag": "Optional",
         "description": "The axis in the result to store the samples. Relevant only if start or stop are array-like.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "tensor",
-      "include_in_base_call": true,
+      "chosen_type": "int",
+      "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "kind": "literal",
+        "value": 0
       },
       "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     }
@@ -195,10 +232,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 4634, in logspace\n    return backend.numpy.logspace(\n           ~~~~~~~~~~~~~~~~~~~~~~^\n        start,\n        ^^^^^^\n    ...<5 lines>...\n        axis=axis,\n        ^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2017, in logspace\n    result = linspace(\n        start=start,\n    ...<4 lines>...\n        axis=axis,\n    )\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 1891, in linspace\n    dtype = dtypes.result_type(*dtypes_to_resolve)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/common/dtypes.py\", line 322, in result_type\n    return _lattice_result_type(\n        *(config.floatx() if arg is None else arg for arg in dtypes),\n    )\nValueError: Invalid dtype: list\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 4634, in logspace\n    return backend.numpy.logspace(\n           ~~~~~~~~~~~~~~~~~~~~~~^\n        start,\n        ^^^^^^\n    ...<5 lines>...\n        axis=axis,\n        ^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2017, in logspace\n    result = linspace(\n        start=start,\n    ...<4 lines>...\n        axis=axis,\n    )\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 1891, in linspace\n    dtype = dtypes.result_type(*dtypes_to_resolve)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/common/dtypes.py\", line 322, in result_type\n    return _lattice_result_type(\n        *(config.floatx() if arg is None else arg for arg in dtypes),\n    )\nValueError: Invalid dtype: list\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.logspace.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

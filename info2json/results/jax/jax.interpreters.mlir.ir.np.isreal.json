@@ -10,9 +10,7 @@
       "description": "array_like Input array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "Can be string or object arrays, but behavior may be unexpected"
-      ]
+      "constraints": []
     }
   },
   "output": {
@@ -21,6 +19,7 @@
     "description": "------- ndarray, bool Boolean array of same shape as `x`."
   },
   "constraints": [
-    "Input array's elements should be numbers for predictable results"
+    "jax.interpreters.mlir.ir.np.isreal may behave unexpectedly for string or object arrays.",
+    "For string or object arrays, isreal returns True for all elements in input array of `dtype=object` even if some elements are not real."
   ]
 }

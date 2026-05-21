@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "coeffs list size corresponds to polynomial degree n"
+        "coeffs must be a list of tensors."
       ]
     },
     "x": {
@@ -22,17 +22,9 @@
       "description": "A `Tensor` representing the variable of the polynomial.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and y must have broadcast-compatible shapes when evaluating p(x)."
+      ]
     }
   },
   "output": {

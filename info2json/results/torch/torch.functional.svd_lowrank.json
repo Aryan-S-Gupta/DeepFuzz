@@ -10,16 +10,18 @@
       "description": "the input tensor of size :math:`(*, m, n)`",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "q": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "6",
       "flag": "Optional",
       "description": "a slightly overestimated rank of A.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "niter": {
@@ -30,6 +32,7 @@
       "description": "the number of subspace iterations to conduct; niter must be a nonnegative integer, and defaults to 2",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "M": {
@@ -40,13 +43,14 @@
       "description": "the input tensor's mean of size :math:`(*, m, n)`, which will be broadcasted to the size of A in this function.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
-    "type": "",
-    "numbers": "1",
-    "description": "Return the singular value decomposition ``(U, S, V)`` of a matrix,"
+    "type": "tuple|tensor",
+    "numbers": "",
+    "description": ""
   },
   "constraints": []
 }

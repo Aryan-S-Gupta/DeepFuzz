@@ -1,0 +1,27 @@
+{
+  "api_name": "poly2leg",
+  "module_path": "torch.storage.np.polynomial.legendre",
+  "params": {
+    "pol": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array containing the polynomial coefficients",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be 1-D",
+        "pol must be 1-D",
+        "pol must be passed as a parameter"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1-D",
+    "description": "------- ndarray 1-D array containing the coefficients of the equivalent Legendre series."
+  },
+  "constraints": []
+}

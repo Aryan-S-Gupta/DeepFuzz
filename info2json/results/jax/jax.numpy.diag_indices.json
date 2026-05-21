@@ -10,8 +10,10 @@
       "description": "int. The size of each dimension of the square array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "n > 0"
+        "n > 0",
+        "jax.numpy.diag_indices(n, ndim) returns a tuple with ndim number of arrays"
       ]
     },
     "ndim": {
@@ -22,8 +24,10 @@
       "description": "optional, int, default=2. The number of dimensions of the array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "ndim >= 2"
+        "ndim >= 2",
+        "jax.numpy.diag_indices(n, ndim) returns a tuple with ndim number of arrays"
       ]
     }
   },
@@ -32,5 +36,7 @@
     "numbers": "int32",
     "description": "A tuple of arrays, each of length `n`, containing the indices to access the main diagonal."
   },
-  "constraints": []
+  "constraints": [
+    "jax.numpy.diag_indices(n, ndim) returns a tuple with ndim number of arrays"
+  ]
 }

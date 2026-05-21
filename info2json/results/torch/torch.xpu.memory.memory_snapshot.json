@@ -1,0 +1,25 @@
+{
+  "api_name": "memory_snapshot",
+  "module_path": "torch.xpu.memory",
+  "params": {
+    "mempool_id": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The memory pool id. If None, the default memory pool is used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Can be tuple[int, int] or None"
+      ]
+    }
+  },
+  "output": {
+    "type": "string|list|dict|any",
+    "numbers": "1",
+    "description": "List of memory segments and their attributes."
+  },
+  "constraints": []
+}

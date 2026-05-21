@@ -10,37 +10,32 @@
       "description": "A N-D `Tensor` with shape `input_shape = [batch] + spatial_shape + remaining_shape`, where `spatial_shape` has M dimensions.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The input tensor must be of any data type."
+      ]
     },
     "block_shape": {
-      "type": "tensor",
+      "type": "int|tuple|tensor|dtype",
       "size": "1-D",
       "default": "",
       "flag": "Required",
-      "description": "A 1-D `Tensor` with shape [M]. Must be one of the following",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "block_shape must be 1-D"
-      ]
-    },
-    "types": {
-      "type": "int|tensor|dtype",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "`int32`, `int64`. All values must be >= 1. For backwards compatibility with TF 1.0, this parameter may be an int, in which case it is converted to `numpy.array([block_shape, block_shape], dtype=numpy.int64)`.",
+      "description": "A 1-D `Tensor` with shape [M]. Must be one of the following types: `int32`, `int64`. All values must be >= 1. For backwards compatibility with TF 1.0, this parameter may be an int, in which case it is converted to `numpy.array([block_shape, block_shape], dtype=numpy.int64)`.",
       "dtype_candidates": [
         "int32",
         "int64"
       ],
-      "enum_values": [],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
       "constraints": [
-        "types must be one of int32, int64"
+        "The block shape is a tuple of integers that defines the size of each block in the output tensor.",
+        "block_shape must be 1-D",
+        "If block_shape and crops are provided, the number of blocks in the output tensor must be equal to the number of elements in crops."
       ]
     },
     "crops": {
-      "type": "tensor",
+      "type": "int|tuple|list|tensor",
       "size": "2-D",
       "default": "",
       "flag": "Required",
@@ -58,20 +53,13 @@
         "reshaped_permuted"
       ],
       "constraints": [
+        "The crops list contains tuples of two integers each.",
+        "Each integer in the tuple represents the number of elements at the beginning and end of a block to be excluded from the output tensor.",
         "crops must be 2-D",
         "crops must be non-negative",
-        "crops must be one of int32, int64, i, reshaped, permuted, reshaped_permuted"
+        "crops must be one of int32, int64, i, reshaped, permuted, reshaped_permuted",
+        "If block_shape and crops are provided, the number of blocks in the output tensor must be equal to the number of elements in crops."
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -79,5 +67,7 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `input`."
   },
-  "constraints": []
+  "constraints": [
+    "If block_shape and crops are provided, the number of blocks in the output tensor must be equal to the number of elements in crops."
+  ]
 }

@@ -8,18 +8,16 @@
       "default": "",
       "flag": "Required",
       "description": "Input tensor.",
-      "dtype_candidates": [
-        "float32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x dtype must be float32 or compatible"
+        "The function is defined as `f(x) = x / (abs(x) + 1)`"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same shape as x",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": []

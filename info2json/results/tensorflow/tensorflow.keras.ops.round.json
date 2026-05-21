@@ -10,7 +10,9 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and decimals must be provided"
+      ]
     },
     "decimals": {
       "type": "int|number",
@@ -20,7 +22,9 @@
       "description": "Number of decimal places to round to. Defaults to `0`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and decimals must be provided"
+      ]
     }
   },
   "output": {
@@ -28,5 +32,7 @@
     "numbers": "1",
     "description": "Output tensor."
   },
-  "constraints": []
+  "constraints": [
+    "x and decimals must be provided"
+  ]
 }

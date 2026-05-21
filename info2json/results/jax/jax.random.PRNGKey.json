@@ -1,0 +1,39 @@
+{
+  "api_name": "PRNGKey",
+  "module_path": "jax.random",
+  "params": {
+    "seed": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "a 64- or 32-bit integer used as the value of the key.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be a valid int or ArrayLike"
+      ]
+    },
+    "impl": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional string specifying the PRNG implementation (e.g. ``'threefry2x32'``)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "uint32",
+    "description": "A PRNG key, consumable by random functions as well as ``split`` and ``fold_in``."
+  },
+  "constraints": [
+    "PRNGSpecDesc must be a valid PRNG implementation string or None",
+    "jax_default_prng_impl config flag determines the default PRNG implementation"
+  ]
+}

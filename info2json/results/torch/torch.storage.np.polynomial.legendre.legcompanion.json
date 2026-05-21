@@ -1,0 +1,27 @@
+{
+  "api_name": "legcompanion",
+  "module_path": "torch.storage.np.polynomial.legendre",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array of Legendre series coefficients ordered from low to high degree.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "size: 1-D",
+        "c must be 1-D",
+        "c must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2D",
+    "description": "------- ndarray Scaled companion matrix of dimensions (deg, deg)."
+  },
+  "constraints": []
+}

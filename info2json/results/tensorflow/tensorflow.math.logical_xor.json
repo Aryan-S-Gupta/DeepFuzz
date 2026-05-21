@@ -1,0 +1,44 @@
+{
+  "api_name": "logical_xor",
+  "module_path": "tensorflow.math",
+  "params": {
+    "x": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.Tensor` type bool.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "requires broadcast-compatible shapes with y",
+        "x and y must have broadcast-compatible shapes"
+      ]
+    },
+    "y": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `tf.Tensor` of type bool.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "requires broadcast-compatible shapes with x",
+        "x and y must have broadcast-compatible shapes"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "1",
+    "description": "A `tf.Tensor` of type bool with the same size as that of x or y."
+  },
+  "constraints": [
+    "x and y must have broadcast-compatible shapes"
+  ]
+}

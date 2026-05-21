@@ -1,0 +1,180 @@
+{
+  "api_full_name": "jax.numpy.argpartition",
+  "api_name": "argpartition",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.argpartition",
+  "backend": "jax",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "int|float|bool|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array to be partitioned.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "a, kth, and axis must be provided",
+          "kth must be an integer in the range of [0, n) where n is the length of a when axis=-1 or n is the size of a's dimension along axis when axis!=-1",
+          "axis must satisfy -rank(a) <= axis < rank(a)"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax",
+        "values": [
+          2.0,
+          1.0
+        ]
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "kth": {
+      "name": "kth",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "static integer index about which to partition the array.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "a, kth, and axis must be provided",
+          "kth must be an integer in the range of [0, n) where n is the length of a when axis=-1 or n is the size of a's dimension along axis when axis!=-1"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "static integer axis along which to partition the array; default is -1.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "a, kth, and axis must be provided",
+          "kth must be an integer in the range of [0, n) where n is the length of a when axis=-1 or n is the size of a's dimension along axis when axis!=-1",
+          "axis must satisfy -rank(a) <= axis < rank(a)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "Indices which partition ``a`` at the ``kth`` value along ``axis``. The entries before ``kth`` are indices of values smaller than ``take(a, kth, axis)``, and entries after ``kth`` are indices of values larger than ``take(a, kth, axis)``"
+  },
+  "constraints": [
+    "a, kth, and axis must be provided",
+    "kth must be an integer in the range of [0, n) where n is the length of a when axis=-1 or n is the size of a's dimension along axis when axis!=-1",
+    "axis must satisfy -rank(a) <= axis < rank(a)"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "a",
+      "kth"
+    ],
+    "skipped_optional": [
+      "axis"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.argpartition.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

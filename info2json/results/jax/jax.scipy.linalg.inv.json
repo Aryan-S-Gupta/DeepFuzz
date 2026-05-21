@@ -5,41 +5,51 @@
     "a": {
       "type": "tensor",
       "size": "",
-      "default": "N/A",
+      "default": "",
       "flag": "Required",
       "description": "array of shape ``(..., N, N)`` specifying square array(s) to be inverted.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must contain numeric values",
-        "input arrays a must be square and numeric"
+        "N > 0 in a's shape",
+        "a and output have same number of dimensions"
       ]
     },
     "overwrite_a": {
-      "type": "unused",
+      "type": "bool",
       "size": "",
-      "default": "N/A",
+      "default": "False",
       "flag": "Optional",
       "description": "unused in JAX",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "not used for input validation"
+      ]
     },
     "check_finite": {
-      "type": "unused",
+      "type": "bool",
       "size": "",
-      "default": "N/A",
+      "default": "True",
       "flag": "Optional",
       "description": "unused in JAX",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "not used for input validation"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "N, N",
+    "numbers": "1",
     "description": "Array of shape ``(..., N, N)`` containing the inverse of the input."
   },
-  "constraints": []
+  "constraints": [
+    "jax must be installed for execution"
+  ]
 }

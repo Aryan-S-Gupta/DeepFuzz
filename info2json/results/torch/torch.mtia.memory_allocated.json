@@ -10,13 +10,16 @@
       "description": "selected device. Returns statistic for the current device, given by :func:`~torch.mtia.current_device`, if :attr:`device` is ``None`` (default).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "device must be a valid torch.device, str, int or None"
+      ]
     }
   },
   "output": {
-    "type": "string|tensor|device",
-    "numbers": "single",
-    "description": "Return the current MTIA memory occupied by tensors in bytes for a given device."
+    "type": "int",
+    "numbers": "scalar",
+    "description": "statistic for the selected device"
   },
   "constraints": []
 }

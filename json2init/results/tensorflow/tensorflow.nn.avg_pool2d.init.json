@@ -18,7 +18,9 @@
           "float64"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "input must be 4-D"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
@@ -29,6 +31,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -56,6 +65,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "strides": {
@@ -74,11 +90,24 @@
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -111,6 +140,13 @@
         "string_replace",
         "string_empty"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
       "unresolved_reason": ""
     },
     "data_format": {
@@ -119,14 +155,14 @@
         "type": "string",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "A string. 'NHWC' and 'NCHW' are supported.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "string",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": "NHWC"
@@ -136,25 +172,14 @@
         "string_replace",
         "string_empty"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "Optional name for the operation.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "optional name for the operation.",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: optional name for the operation."
     }
   },
   "output": {
@@ -177,10 +202,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__AvgPool_device_/job:localhost/replica:0/task:0/device:CPU:0}} tensor_in_shape must have 2 spatial dimensions. 0 0 [Op:AvgPool]\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__AvgPool_device_/job:localhost/replica:0/task:0/device:CPU:0}} tensor_in_shape must have 2 spatial dimensions. 0 0 [Op:AvgPool]\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.avg_pool2d.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

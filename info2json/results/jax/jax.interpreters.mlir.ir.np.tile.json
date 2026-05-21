@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "A.shape and reps.shape must satisfy broadcasting rules"
+        "A and reps must be compatible for broadcasting."
       ]
     },
     "reps": {
@@ -23,8 +23,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be broadcastable to max(d, A.ndim) dimensions",
-        "A.shape and reps.shape must satisfy broadcasting rules"
+        "reps must be broadcastable to a shape with max(reps.ndim, A.ndim) dimensions",
+        "A and reps must be compatible for broadcasting."
       ]
     }
   },
@@ -34,6 +34,6 @@
     "description": "------- ndarray The tiled output array."
   },
   "constraints": [
-    "A.shape and reps.shape must satisfy broadcasting rules"
+    "A and reps must be compatible for broadcasting."
   ]
 }

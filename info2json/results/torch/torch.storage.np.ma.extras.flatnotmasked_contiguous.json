@@ -1,0 +1,26 @@
+{
+  "api_name": "flatnotmasked_contiguous",
+  "module_path": "torch.storage.np.ma.extras",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape is arbitrary",
+        "input array 'a' must be at least 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "list|sequence",
+    "numbers": "int",
+    "description": "------- list A sorted sequence of `slice` objects (start index, end index)."
+  },
+  "constraints": []
+}

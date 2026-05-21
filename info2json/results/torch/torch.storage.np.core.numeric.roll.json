@@ -1,0 +1,45 @@
+{
+  "api_name": "roll",
+  "module_path": "torch.storage.np.core.numeric",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "shift": {
+      "type": "int|tuple|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or tuple of ints The number of places by which elements are shifted. If a tuple, then `axis` must be a tuple of the same size, and each of the given axes is shifted by the corresponding number. If an int while `axis` is a tuple of ints, then the same value is used for all given axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints, optional Axis or axes along which elements are shifted. By default, the array is flattened before shifting, after which the original shape is restored.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Output array, with the same shape as `a`."
+  },
+  "constraints": []
+}

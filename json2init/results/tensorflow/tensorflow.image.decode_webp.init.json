@@ -28,24 +28,29 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "type_switch"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "channels": {
       "name": "channels",
       "spec": {
-        "type": "int|number|dtype",
+        "type": "int|number",
         "size": "",
-        "default": "tf",
+        "default": "0",
         "flag": "Optional",
-        "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image. dtype: An optional `tf.DType` from: `tf.uint8`. Defaults to `tf.uint8`.",
-        "dtype_candidates": [
-          "uint8"
-        ],
+        "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image.",
+        "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "channels must currently match that of the underlying file."
+          "The number of channels must currently match that of the underlying file."
         ]
       },
       "chosen_type": "int",
@@ -56,34 +61,51 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
-    "name": {
-      "name": "name",
+    "dtype": {
+      "name": "dtype",
       "spec": {
-        "type": "string",
+        "type": "dtype",
         "size": "",
         "default": "",
         "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
+        "description": "An optional `tf.DType` from: `tf.uint8`. Defaults to `tf.uint8`.",
+        "dtype_candidates": [
+          "uint8"
+        ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "dtype must be tf.uint8"
+        ]
       },
-      "chosen_type": "string",
+      "chosen_type": "dtype",
       "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
+        "kind": "dtype",
+        "value": "float32"
       },
       "mutation_rules": [
-        "string_replace",
-        "string_empty"
+        "enum_switch",
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -91,9 +113,7 @@
     "numbers": "1",
     "description": "A `Tensor` of type `dtype`."
   },
-  "constraints": [
-    "dtype is one of: tf.uint8"
-  ],
+  "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -113,12 +133,57 @@
       ],
       "dtype": "uint8",
       "numel": 3,
-      "has_nan": false
+      "preview": [
+        255,
+        255,
+        255
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "contents"
+    ],
+    "skipped_optional": [
+      "channels",
+      "dtype"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(contents_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(channels_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.decode_webp.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

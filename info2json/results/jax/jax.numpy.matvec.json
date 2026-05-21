@@ -3,25 +3,33 @@
   "module_path": "jax.numpy",
   "params": {
     "x1": {
-      "type": "tensor",
+      "type": "int|float|bool|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "array of shape ``(..., M, N)``",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "x2": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "array of shape ``(..., N)``. Leading dimensions must be broadcast-compatible with leading dimensions of ``x1``.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": [
-        "Leading dimensions must be broadcast-compatible with leading dimensions of x1."
+        "Leading dimensions of x1 and x2 must be broadcast-compatible.",
+        "x1, x2 types: jax.Array or numpy.ndarray or bool or int or float or complex"
+      ]
+    },
+    "x2": {
+      "type": "int|float|bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array of shape ``(..., N)``. Leading dimensions must be broadcast-compatible with leading dimensions of ``x1``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "Leading dimensions of x1 and x2 must be broadcast-compatible.",
+        "x1, x2 types: jax.Array or numpy.ndarray or bool or int or float or complex"
       ]
     }
   },
@@ -30,5 +38,8 @@
     "numbers": "1",
     "description": "An array of shape ``(..., M)`` containing the batched matrix-vector product."
   },
-  "constraints": []
+  "constraints": [
+    "Leading dimensions of x1 and x2 must be broadcast-compatible.",
+    "x1, x2 types: jax.Array or numpy.ndarray or bool or int or float or complex"
+  ]
 }

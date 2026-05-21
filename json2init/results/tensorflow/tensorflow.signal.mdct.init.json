@@ -1,0 +1,166 @@
+{
+  "api_full_name": "tensorflow.signal.mdct",
+  "api_name": "mdct",
+  "module_path": "tensorflow.signal",
+  "import_path": "tensorflow.signal.mdct",
+  "backend": "tensorflow",
+  "params": {
+    "signals": {
+      "name": "signals",
+      "spec": {
+        "type": "float|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `[..., samples]` `float32`/`float64` `Tensor` of real-valued signals.",
+        "dtype_candidates": [
+          "float32",
+          "float64"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "frame_length": {
+      "name": "frame_length",
+      "spec": {
+        "type": "int|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer scalar `Tensor`. The window length in samples which must be divisible by 4.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "window_fn": {
+      "name": "window_fn",
+      "spec": {
+        "type": "callable|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A callable that takes a frame_length and a `dtype` keyword argument and returns a `[frame_length]` `Tensor` of samples in the provided datatype. If set to `None`, a rectangular window with a scale of 1/sqrt(2) is used. For perfect reconstruction of a signal from `mdct` followed by `inverse_mdct`, please use `tf.signal.vorbis_window`, `tf.signal.kaiser_bessel_derived_window` or `None`. If using another window function, make sure that w[n]^2 + w[n + frame_length // 2]^2 = 1 and w[n] = w[frame_length - n - 1] for n = 0,...,frame_length // 2 - 1 to achieve perfect reconstruction.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "callable",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable"
+    },
+    "pad_end": {
+      "name": "pad_end",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Whether to pad the end of `signals` with zeros when the provided frame length and step produces a frame that lies partially past its end.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "norm": {
+      "name": "norm",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "If it is None, unnormalized dct4 is used, if it is \"ortho\" orthonormal dct4 is used.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "if it is none",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: if it is none"
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "1",
+    "description": "A `[..., frames, frame_length // 2]` `Tensor` of `float32`/`float64` MDCT values where `frames` is roughly `samples // (frame_length // 2)` when `pad_end=False`."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'window_fn' unresolved: unsupported base seed type: callable",
+    "required param 'norm' unresolved: unhandled chosen type: if it is none"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.signal.mdct.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false,
+  "repair_candidate": true
+}

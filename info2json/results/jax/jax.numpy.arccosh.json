@@ -8,11 +8,15 @@
       "default": "",
       "flag": "Required",
       "description": "input array or scalar.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "complex64"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "-inf <= x < 1 returns nan for real-values",
-        "jnp.arccosh(x) returns values with same shape as x"
+        "-inf <= x < 1 returns nan for real-values.",
+        "Complex64 dtype returned when input contains complex numbers.",
+        "x and output must have broadcast-compatible shapes."
       ]
     }
   },

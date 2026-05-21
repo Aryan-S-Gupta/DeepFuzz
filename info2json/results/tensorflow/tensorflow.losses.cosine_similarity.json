@@ -11,8 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape.",
-        "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+        "required",
+        "If either `y_true` or `y_pred` is a zero vector, cosine similarity is undefined."
       ]
     },
     "y_pred": {
@@ -24,8 +24,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape.",
-        "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+        "required",
+        "If either `y_true` or `y_pred` is a zero vector, cosine similarity is undefined."
       ]
     },
     "axis": {
@@ -37,8 +37,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be a valid axis value.",
-        "axis must satisfy -rank(input) <= axis < rank(input)"
+        "Optional, must be in range(-1, rank(input))"
       ]
     }
   },
@@ -48,7 +47,6 @@
     "description": "Cosine similarity tensor."
   },
   "constraints": [
-    "y_true and y_pred must have the same shape.",
-    "If either y_true or y_pred is a zero vector, cosine similarity will be undefined."
+    "If either `y_true` or `y_pred` is a zero vector, cosine similarity is undefined."
   ]
 }

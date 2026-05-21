@@ -10,15 +10,15 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The output of swish is defined as `f(x) = x * sigmoid(x)`"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
-  "constraints": [
-    "x and output must have the same shape"
-  ]
+  "constraints": []
 }

@@ -15,14 +15,16 @@
         "description": "Input tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "num_sequences = 1 + (N - sequence_length) // sequence_stride, where N is the dimension along the last axis of x"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,14 +32,25 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "sequence_length": {
       "name": "sequence_length",
@@ -49,19 +62,28 @@
         "description": "An integer representing the sequences length.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "num_sequences = 1 + (N - sequence_length) // sequence_stride, where N is the dimension along the last axis of x"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 2
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "sequence_stride": {
       "name": "sequence_stride",
@@ -74,7 +96,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "sequence_stride > 0"
+          "num_sequences = 1 + (N - sequence_length) // sequence_stride, where N is the dimension along the last axis of x"
         ]
       },
       "chosen_type": "int",
@@ -87,15 +109,24 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "..., num_sequences, sequence_length",
+    "numbers": "[..., num_sequences, sequence_length]",
     "description": "A tensor of sequences with shape [..., num_sequences, sequence_length]."
   },
-  "constraints": [],
+  "constraints": [
+    "num_sequences = 1 + (N - sequence_length) // sequence_stride, where N is the dimension along the last axis of x"
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -110,16 +141,35 @@
       "python_type": "EagerTensor",
       "shape": [
         1,
-        1
+        2
       ],
       "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
+      "numel": 2,
+      "preview": [
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "sequence_length",
+      "sequence_stride"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.extract_sequences.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

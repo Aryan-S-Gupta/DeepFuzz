@@ -3,7 +3,7 @@
   "module_path": "tensorflow.keras.metrics",
   "params": {
     "y_true": {
-      "type": "",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -20,18 +20,15 @@
       "description": "The predicted values. shape = `[batch_size, d0, .. dN]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true shape compatible with y_pred shape"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "-1, d0, ..., dN-1",
+    "numbers": "[batch_size, d0, .. dN-1]",
     "description": "Poisson loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "d0 >= 0",
-    "N > 0"
+    "output shape must be a slice of the input shapes along all dimensions except the last one"
   ]
 }

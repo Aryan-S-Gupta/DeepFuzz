@@ -1,0 +1,109 @@
+{
+  "api_full_name": "torch.storage.np.linalg.tensorinv",
+  "api_name": "tensorinv",
+  "module_path": "torch.storage.np.linalg",
+  "import_path": "torch.storage.np.linalg.tensorinv",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like Tensor to 'invert'. Its shape must be 'square', i. e., ``prod(a.shape[:ind]) == prod(a.shape[ind:])``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "prod(a.shape[:ind]) == prod(a.shape[ind:])"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    },
+    "ind": {
+      "name": "ind",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "2",
+        "flag": "Optional",
+        "description": "int, optional Number of first indices that are involved in the inverse sum. Must be a positive integer, default is 2.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "ind > 0",
+          "ind must be positive"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "ndarray",
+    "description": "------- ndarray `a`'s tensordot inverse, shape ``a.shape[ind:] + a.shape[:ind]``."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Last 2 dimensions of the array must be square"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "LinAlgError",
+    "error": "Last 2 dimensions of the array must be square",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 526, in tensorinv\n    ia = inv(a)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 642, in inv\n    _assert_stacked_square(a)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 246, in _assert_stacked_square\n    raise LinAlgError('Last 2 dimensions of the array must be square')\nnumpy.linalg.LinAlgError: Last 2 dimensions of the array must be square\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.linalg.tensorinv.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

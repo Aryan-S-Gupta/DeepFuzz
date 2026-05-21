@@ -10,14 +10,26 @@
       "description": "A 1-D integer Tensor or Python array. The shape of the output samples to be drawn per \"rate\"-parameterized distribution.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape must be 1-D"
+      ]
     },
     "lam": {
-      "type": "float|tensor|dtype",
+      "type": "tensor|dtype",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "A Tensor or Python value or N-D array of type `dtype`. `lam` provides the rate parameter(s) describing the poisson distribution(s) to sample. dtype: The type of the output: `float16`, `float32`, `float64`, `int32` or `int64`.",
+      "description": "A Tensor or Python value or N-D array of type `dtype`. `lam` provides the rate parameter(s) describing the poisson distribution(s) to sample.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "float",
+      "size": "",
+      "default": "tf.float32",
+      "flag": "Optional",
+      "description": "The type of the output: `float16`, `float32`, `float64`, `int32` or `int64`.",
       "dtype_candidates": [
         "int32",
         "int64",
@@ -32,18 +44,8 @@
       "type": "int",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A Python integer. Used to create a random seed for the distributions. See `tf.random.set_seed` for behavior.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Optional name for the operation.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

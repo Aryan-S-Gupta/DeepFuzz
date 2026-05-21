@@ -11,7 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "a's shape must be broadcastable to (..., M, M)"
+        "M must be greater than 0",
+        "M is the same as in params.a"
       ]
     },
     "n": {
@@ -23,16 +24,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "n should be an integer"
+        "n must be an integer"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "Array of shape ``(..., M, M)`` containing the matrix power of a to the n."
   },
-  "constraints": [
-    "M > 0"
-  ]
+  "constraints": []
 }

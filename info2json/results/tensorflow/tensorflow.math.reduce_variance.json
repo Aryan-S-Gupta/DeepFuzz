@@ -10,37 +10,36 @@
       "description": "The tensor to reduce. Should have real or complex type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "should have real or complex type"
+      ]
     },
     "axis": {
-      "type": "",
+      "type": "int",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "must satisfy -rank(input_tensor) <= axis < rank(input_tensor)",
+        "Unless keepdims is true, the rank of the tensor is reduced by 1 for each of the entries in axis, which must be unique. If keepdims is true, the reduced dimensions are retained with length 1."
+      ]
     },
     "keepdims": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "If true, retains reduced dimensions with length 1.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
-      "description": "A name scope for the associated operations (optional).",
-      "dtype_candidates": [],
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Unless keepdims is true, the rank of the tensor is reduced by 1 for each of the entries in axis, which must be unique. If keepdims is true, the reduced dimensions are retained with length 1."
+      ]
     }
   },
   "output": {
@@ -48,5 +47,7 @@
     "numbers": "1",
     "description": "The reduced tensor, of the same dtype as the input_tensor. Note, for `complex64` or `complex128` input, the returned `Tensor` will be of type `float32` or `float64`, respectively. @compatibility(numpy) Equivalent to np.var Please note `np.var` has a `dtype` parameter that could be used to specify the output type. By default this is `dtype=float64`. On the other hand, `tf.math.reduce_variance` has aggressive type inference from `input_tensor`. @end_compatibility"
   },
-  "constraints": []
+  "constraints": [
+    "Unless keepdims is true, the rank of the tensor is reduced by 1 for each of the entries in axis, which must be unique. If keepdims is true, the reduced dimensions are retained with length 1."
+  ]
 }

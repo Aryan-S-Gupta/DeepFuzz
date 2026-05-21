@@ -10,16 +10,15 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must be convertible to a tensor",
-        "x and output must have broadcast-compatible shapes"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "float32",
     "description": "An array containing the absolute value of each element in `x`."
   },
-  "constraints": []
+  "constraints": [
+    "The input tensor must have a valid shape and data type."
+  ]
 }

@@ -17,7 +17,9 @@
           "float32"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "input must be 4-D"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
@@ -28,6 +30,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -48,26 +57,29 @@
           "size must be 1-D"
         ]
       },
-      "chosen_type": "tensor",
+      "chosen_type": "list",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
+        "kind": "literal",
+        "value": [
+          2,
+          2
         ],
-        "dtype": "int32",
-        "fill": 1,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -98,6 +110,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "centered": {
@@ -118,11 +137,18 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -145,11 +171,18 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -159,7 +192,7 @@
       "spec": {
         "type": "string",
         "size": "",
-        "default": "uniform",
+        "default": "",
         "flag": "Optional",
         "description": "An optional `string`. Defaults to `uniform`. indicates if the noise should be `uniform` (uniform distribution), `gaussian` (gaussian distribution), or `zero` (zero padding).",
         "dtype_candidates": [],
@@ -177,25 +210,14 @@
         "string_replace",
         "string_empty"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -207,21 +229,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: {{function_node __wrapped__ExtractGlimpseV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must be 4-dimensional (batch_size, height, width, depth)[] [Op:ExtractGlimpseV2] name: "
+    "smoke test failed: {{function_node __wrapped__ExtractGlimpseV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must be 4-dimensional (batch_size, height, width, depth)[] [Op:ExtractGlimpseV2]"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "api_runtime_error",
     "error_type": "InvalidArgumentError",
-    "error": "{{function_node __wrapped__ExtractGlimpseV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must be 4-dimensional (batch_size, height, width, depth)[] [Op:ExtractGlimpseV2] name: ",
+    "error": "{{function_node __wrapped__ExtractGlimpseV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must be 4-dimensional (batch_size, height, width, depth)[] [Op:ExtractGlimpseV2]",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ExtractGlimpseV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must be 4-dimensional (batch_size, height, width, depth)[] [Op:ExtractGlimpseV2] name: \n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__ExtractGlimpseV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} input must be 4-dimensional (batch_size, height, width, depth)[] [Op:ExtractGlimpseV2]\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.extract_glimpse.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

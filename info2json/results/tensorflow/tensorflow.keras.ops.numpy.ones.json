@@ -3,15 +3,27 @@
   "module_path": "tensorflow.keras.ops.numpy",
   "params": {
     "shape": {
-      "type": "tuple|list|tensor|dtype",
+      "type": "list|tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
-      "description": "Shape of the new tensor. dtype: Desired data type of the tensor.",
+      "flag": "Required",
+      "description": "Shape of the new tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape must be compatible with tensorflow data types"
+        "The provided shape must be a valid list."
+      ]
+    },
+    "dtype": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Desired data type of the tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If no dtype is provided, an appropriate default will be used."
       ]
     }
   },

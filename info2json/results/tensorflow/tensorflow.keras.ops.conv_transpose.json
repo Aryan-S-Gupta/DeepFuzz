@@ -25,8 +25,8 @@
     "strides": {
       "type": "int|tuple|list",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1",
+      "flag": "Optional",
       "description": "int or int tuple/list of `len(inputs_spatial_shape)`, specifying the strides of the convolution along each spatial dimension. If `strides` is int, then every spatial dimension shares the same `strides`.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -36,7 +36,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "string, either `\"valid\"` or `\"same\"`. `\"valid\"` means no padding is applied, and `\"same\"` results in padding evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input when `strides=1`.",
       "dtype_candidates": [],
       "enum_values": [
@@ -61,7 +61,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A string, either `\"channels_last\"` or `\"channels_first\"`. `data_format` determines the ordering of the dimensions in the inputs. If `data_format=\"channels_last\"`, `inputs` is of shape `(batch_size, ..., channels)` while if `data_format=\"channels_first\"`, `inputs` is of shape `(batch_size, channels, ...)`.",
       "dtype_candidates": [],
       "enum_values": [
@@ -75,8 +75,8 @@
     "dilation_rate": {
       "type": "int|tuple|list",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1",
+      "flag": "Optional",
       "description": "int or int tuple/list of `len(inputs_spatial_shape)`, specifying the dilation rate to use for dilated convolution. If `dilation_rate` is int, then every spatial dimension shares the same `dilation_rate`.",
       "dtype_candidates": [],
       "enum_values": [],

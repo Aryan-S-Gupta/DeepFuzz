@@ -45,9 +45,9 @@
           "uint64"
         ],
         "constraints": [
-          "Must be one of the following types: bfloat16, half, float32, float64, uint8, int8, uint16, int16, int32, int64, complex64, complex128, uint32, uint64.",
+          "must be one of the following types: bfloat16, half, float32, float64, uint8, int8, uint16, int16, int32, int64, complex64, complex128, uint32, uint64",
           "x must be one of bfloat16, half, float32, float64, uint8, int8, uint16, int16, int32, int64, complex64, complex128, uint32, uint64",
-          "x and y must have broadcast-compatible shapes."
+          "x and y must have broadcast-compatible shapes"
         ]
       },
       "chosen_type": "float",
@@ -58,10 +58,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "y": {
       "name": "y",
@@ -74,9 +80,9 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Must have the same type as x.",
+          "Must have the same type as x",
           "y must have the same dtype as x",
-          "x and y must have broadcast-compatible shapes."
+          "x and y must have broadcast-compatible shapes"
         ]
       },
       "chosen_type": "tensor",
@@ -84,7 +90,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -93,38 +99,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "enum_switch"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -133,8 +117,7 @@
     "description": "A `Tensor`. Has the same type as `x`."
   },
   "constraints": [
-    "x and y must have broadcast-compatible shapes.",
-    "When subtracting two input values of different shapes, tf.subtract follows the general broadcasting rules."
+    "x and y must have broadcast-compatible shapes"
   ],
   "spec_ready": true,
   "ready_for_stage4": true,
@@ -149,16 +132,49 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [
-        1
+        2
       ],
       "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
+      "numel": 2,
+      "preview": [
+        0.0,
+        0.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "y"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(x_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(y_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.subtract.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

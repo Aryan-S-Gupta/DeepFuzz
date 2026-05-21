@@ -1,0 +1,145 @@
+{
+  "api_full_name": "jax.numpy.vecmat",
+  "api_name": "vecmat",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.vecmat",
+  "backend": "jax",
+  "params": {
+    "x1": {
+      "name": "x1",
+      "spec": {
+        "type": "int|float|bool|number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array of shape ``(..., M)``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "Leading dimensions of x1 and x2 must be broadcast-compatible"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax",
+        "values": [
+          1.0,
+          2.0
+        ]
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_only"
+    },
+    "x2": {
+      "name": "x2",
+      "spec": {
+        "type": "int|float|bool|number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array of shape ``(..., M, N)``. Leading dimensions must be broadcast-compatible with leading dimensions of ``x1``.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "Leading dimensions of x1 and x2 must be broadcast-compatible"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            3.0
+          ]
+        ]
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_only"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(..., N)",
+    "description": "An array of shape ``(..., N)`` containing the batched conjugate vector-matrix product."
+  },
+  "constraints": [
+    "Leading dimensions of x1 and x2 must be broadcast-compatible"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [
+      "x1",
+      "x2"
+    ],
+    "bound_keyword": [],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.vecmat.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

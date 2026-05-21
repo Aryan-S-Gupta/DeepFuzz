@@ -1,0 +1,51 @@
+{
+  "api_name": "moveaxis",
+  "module_path": "torch.storage.np.core.numeric",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "np.ndarray The array whose axes should be reordered.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "a cannot be None."
+      ]
+    },
+    "source": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or sequence of int Original positions of the axes to move. These must be unique.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be unique."
+      ]
+    },
+    "destination": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or sequence of int Destination positions for each of the original axes. These must also be unique.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must also be unique."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- np.ndarray Array with moved axes. This array is a view of the input array."
+  },
+  "constraints": []
+}

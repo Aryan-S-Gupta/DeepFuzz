@@ -1,0 +1,103 @@
+{
+  "api_full_name": "jax.interpreters.mlir.ir.np.promote_types",
+  "api_name": "promote_types",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "import_path": "jax.interpreters.mlir.ir.np.promote_types",
+  "backend": "jax",
+  "params": {
+    "type1": {
+      "name": "type1",
+      "spec": {
+        "type": "dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "dtype or dtype specifier First data type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "out is the smallest size and smallest scalar means of type1 and type2"
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_only"
+    },
+    "type2": {
+      "name": "type2",
+      "spec": {
+        "type": "dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "dtype or dtype specifier Second data type.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "out is the smallest size and smallest scalar means of type1 and type2"
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_only"
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype The promoted data type."
+  },
+  "constraints": [
+    "out is the smallest size and smallest scalar means of type1 and type2"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "Float32DType"
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.interpreters.mlir.ir.np.promote_types.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

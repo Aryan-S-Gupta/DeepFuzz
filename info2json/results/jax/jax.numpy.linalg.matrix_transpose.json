@@ -5,14 +5,15 @@
     "x": {
       "type": "tensor",
       "size": "",
-      "default": "unspecified",
+      "default": "",
       "flag": "Required",
       "description": "array of shape ``(..., M, N)``",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must have shape (..., M, N)",
-        "x must be an array with shape (..., M, N)"
+        "2D or higher",
+        "x and output have same numbers of leading dimensions"
       ]
     }
   },

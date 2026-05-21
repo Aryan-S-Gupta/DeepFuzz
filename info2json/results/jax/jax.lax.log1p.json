@@ -10,32 +10,29 @@
       "description": "input array. Must have floating-point or complex type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "jax.lax.log1p(x, accuracy) is more accurate than lax.log(1 + x)",
-        "x can't be negative or zero for floating-point type",
-        "x can't be negative for complex type"
+        "x must support floating-point or complex type."
       ]
     },
     "accuracy": {
-      "type": "Tolerance or AccuracyMode object",
+      "type": "",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "Optional `lax.Tolerance` or `lax.AccuracyMode` object that selects the implementation of the op based on the requested accuracy. If the implementation cannot satisfy the requested tolerance, the compiler will return an error. If mode is specified and there are no multiple implementations available, the default implementation will be used.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "jax.lax.log1p(x, accuracy) is more accurate than lax.log(1 + x)",
-        "If accuracy is specified and there are no multiple implementations available, the default implementation will be used."
+        "accuracy is optional, with default value None."
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "floating-point or complex",
+    "numbers": "1",
     "description": "Array of the same shape and dtype as ``x`` containing the element-wise natural logarithm of ``x + 1``."
   },
-  "constraints": [
-    "jax.lax.log1p(x, accuracy) is more accurate than lax.log(1 + x)"
-  ]
+  "constraints": []
 }

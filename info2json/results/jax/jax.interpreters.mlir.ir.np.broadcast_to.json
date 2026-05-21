@@ -10,7 +10,9 @@
       "description": "array_like The array to broadcast.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape must be compatible with NumPy's broadcast_shapes when applied to array"
+      ]
     },
     "shape": {
       "type": "int|tuple|tensor",
@@ -20,12 +22,14 @@
       "description": "tuple or int The shape of the desired array. A single integer ``i`` is interpreted as ``(i,)``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape must be compatible with NumPy's broadcast_shapes when applied to array"
+      ]
     },
     "subok": {
       "type": "bool|tensor",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "bool, optional If True, then sub-classes will be passed-through, otherwise the returned array will be forced to be a base-class array (default).",
       "dtype_candidates": [
@@ -40,5 +44,7 @@
     "numbers": "1",
     "description": "------- array A readonly view on the original array with the given shape. It is typically not contiguous. Furthermore, more than one element of a broadcasted array may refer to a single memory location."
   },
-  "constraints": []
+  "constraints": [
+    "shape must be compatible with NumPy's broadcast_shapes when applied to array"
+  ]
 }

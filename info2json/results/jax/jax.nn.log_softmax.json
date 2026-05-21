@@ -10,21 +10,20 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "where must have the same shape as x"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "axis": {
       "type": "int|tuple",
       "size": "",
-      "default": "'None'",
+      "default": "-1",
       "flag": "Optional",
       "description": "the axis or axes along which the :code:`log_softmax` should be computed. Either an integer, tuple of integers, or ``None`` (all axes).",
       "dtype_candidates": [],
       "enum_values": [
-        "log_softmax",
-        "None"
+        "log_softmax"
       ],
+      "case_insensitive": false,
       "constraints": [
         "axis must be one of log_softmax"
       ]
@@ -33,13 +32,12 @@
       "type": "any",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Elements to include in the :code:`log_softmax`. The output for any masked-out element is minus infinity.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "where must have the same shape as x"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
@@ -47,7 +45,5 @@
     "numbers": "1",
     "description": "An array."
   },
-  "constraints": [
-    "where must have the same shape as x"
-  ]
+  "constraints": []
 }

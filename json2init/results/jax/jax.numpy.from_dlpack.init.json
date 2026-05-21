@@ -1,0 +1,184 @@
+{
+  "api_full_name": "jax.numpy.from_dlpack",
+  "api_name": "from_dlpack",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.from_dlpack",
+  "backend": "jax",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An object that implements the DLPack_ protocol via the ``__dlpack__`` and ``__dlpack_device__`` methods, or a legacy DLPack tensor on either CPU or GPU.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "__dlpack__",
+          "__dlpack_device__"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "x must be one of __dlpack__, __dlpack_device__, CPU, GPU"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_only"
+    },
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "tensor|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional :class:`~jax.Device` or :class:`~jax.sharding.Sharding`, representing the single device onto which the returned array should be placed. If given, then the result is committed to the device. If unspecified, the resulting array will be unpacked onto the same device it originated from. Setting ``device`` to a device different from the source of ``external_array`` will require a copy, meaning ``copy`` must be set to either ``True`` or ``None``.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "external_array",
+          "True"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "device must be one of external_array, True"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "keyword_only"
+    },
+    "copy": {
+      "name": "copy",
+      "spec": {
+        "type": "bool|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional boolean, controlling whether or not a copy is performed. If ``copy=True`` then a copy is always performed, even if unpacked onto the same device. If ``copy=False`` then the copy is never performed and will raise an error if necessary. When ``copy=None`` (default) then a copy may be performed if needed for a device transfer.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "keyword_only"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A JAX array of the input buffer."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [
+      "x"
+    ],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "device",
+      "copy"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(x_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(device_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.from_dlpack.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

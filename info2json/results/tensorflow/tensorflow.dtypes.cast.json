@@ -3,11 +3,11 @@
   "module_path": "tensorflow.dtypes",
   "params": {
     "x": {
-      "type": "float|list|number|tensor|dtype",
+      "type": "float|number|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "A `Tensor` or `SparseTensor` or `IndexedSlices` of numeric type. It could be `uint8`, `uint16`, `uint32`, `uint64`, `int8`, `int16`, `int32`, `int64`, `float16`, `float32`, `float64`, `complex64`, `complex128`, `bfloat16`. dtype: The destination type. The list of supported dtypes is the same as `x`.",
+      "description": "A `Tensor` or `SparseTensor` or `IndexedSlices` of numeric type. It could be `uint8`, `uint16`, `uint32`, `uint64`, `int8`, `int16`, `int32`, `int64`, `float16`, `float32`, `float64`, `complex64`, `complex128`, `bfloat16`.",
       "dtype_candidates": [
         "int8",
         "int16",
@@ -25,16 +25,14 @@
         "complex128"
       ],
       "enum_values": [],
-      "constraints": [
-        "x and dtype must have the same supported dtypes."
-      ]
+      "constraints": []
     },
-    "name": {
-      "type": "string",
+    "dtype": {
+      "type": "list",
       "size": "",
       "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "flag": "Required",
+      "description": "The destination type. The list of supported dtypes is the same as `x`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

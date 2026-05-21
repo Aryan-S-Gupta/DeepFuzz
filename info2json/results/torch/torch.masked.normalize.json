@@ -10,6 +10,7 @@
       "description": "the input tensor",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "ord": {
@@ -20,6 +21,7 @@
       "description": "the order of vector norm. Default: 2. See :func:`torch.linalg.vector_norm` for a list of supported norms.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "dim": {
@@ -30,16 +32,29 @@
       "description": "the dimension along which normalize is computed.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "eps": {
-      "type": "float|tensor|dtype",
+      "type": "float",
       "size": "",
       "default": "1e-12",
       "flag": "Optional",
-      "description": "small value to avoid division by zero. Default: 1e-12. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. If specified, the input tensor is casted to :attr:`dtype` before the operation is performed. Default: None.",
+      "description": "small value to avoid division by zero. Default: 1e-12.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired data type of returned tensor. If specified, the input tensor is casted to :attr:`dtype` before the operation is performed. Default: None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "mask": {
@@ -52,6 +67,7 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

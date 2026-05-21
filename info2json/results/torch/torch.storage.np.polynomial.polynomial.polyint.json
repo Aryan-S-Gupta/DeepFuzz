@@ -1,0 +1,82 @@
+{
+  "api_name": "polyint",
+  "module_path": "torch.storage.np.polynomial.polynomial",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array of polynomial coefficients, ordered from low to high.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c must be 1-D"
+      ]
+    },
+    "m": {
+      "type": "int",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "int, optional Order of integration, must be positive. (Default: 1)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "m must be positive"
+      ]
+    },
+    "k": {
+      "type": "list|number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "{[], list, scalar}, optional Integration constant(s). The value of the first integral at zero is the first value in the list, the value of the second integral at zero is the second value, etc. If ``k == []`` (the default), all constants are set to zero. If ``m == 1``, a single scalar can be given instead of a list.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "lbnd": {
+      "type": "number",
+      "size": "scalar",
+      "default": "0",
+      "flag": "Optional",
+      "description": "scalar, optional The lower bound of the integral. (Default: 0)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "scl": {
+      "type": "number",
+      "size": "scalar",
+      "default": "1",
+      "flag": "Optional",
+      "description": "scalar, optional Following each integration the result is *multiplied* by `scl` before the integration constant is added. (Default: 1)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Axis over which the integral is taken. (Default: 0).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Coefficient array of the integral."
+  },
+  "constraints": []
+}

@@ -23,7 +23,10 @@
       "description": "A 2-D tensor of shape `[num_boxes, 4]`. The `i`-th row of the tensor specifies the coordinates of a box in the `box_ind[i]` image and is specified in normalized coordinates `[y1, x1, y2, x2]`. A normalized coordinate value of `y` is mapped to the image coordinate at `y * (image_height - 1)`, so as the `[0, 1]` interval of normalized image height is mapped to `[0, image_height - 1]` in image height coordinates. We do allow `y1` > `y2`, in which case the sampled crop is an up-down flipped version of the original image. The width dimension is treated similarly. Normalized coordinates outside the `[0, 1]` range are allowed, in which case we use `extrapolation_value` to extrapolate the input image values.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "boxes must be 2-D",
+        "boxes must be one of i, y, y1, y2"
+      ]
     },
     "box_indices": {
       "type": "tensor",
@@ -35,7 +38,10 @@
         "int32"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "box_indices must be 1-D",
+        "box_indices must be one of i"
+      ]
     },
     "crop_size": {
       "type": "tensor",
@@ -45,7 +51,10 @@
       "description": "A 1-D tensor of 2 elements, `size = [crop_height, crop_width]`. All cropped image patches are resized to this size. The aspect ratio of the image content is not preserved. Both `crop_height` and `crop_width` need to be positive.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "crop_size must be 1-D",
+        "crop_size must be positive"
+      ]
     },
     "method": {
       "type": "string",
@@ -65,22 +74,14 @@
     "extrapolation_value": {
       "type": "float",
       "size": "",
-      "default": "0",
+      "default": "0.0",
       "flag": "Optional",
       "description": "An optional `float`. Defaults to `0.0`. Value used for extrapolation, when applicable.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "extrapolation_value must be one of float, 0.0"
+      ]
     }
   },
   "output": {

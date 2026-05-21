@@ -11,7 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape."
+        "required",
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "y_pred": {
@@ -23,20 +24,23 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape."
+        "required",
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "axis": {
-      "type": "int32",
+      "type": "int",
       "size": "",
       "default": "-1",
       "flag": "Optional",
       "description": "Axis along which to determine similarity. Defaults to `-1`.",
-      "dtype_candidates": [
-        "int32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Optional",
+        "axis must be an integer.",
+        "0 <= axis < rank(y_true)"
+      ]
     }
   },
   "output": {
@@ -45,6 +49,6 @@
     "description": "Concordance Correlation Coefficient tensor."
   },
   "constraints": [
-    "y_true and y_pred must have the same shape."
+    "The shapes of y_true and y_pred must be broadcast-compatible."
   ]
 }

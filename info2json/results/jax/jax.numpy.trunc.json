@@ -10,13 +10,17 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape and dtype as x",
+    "numbers": "real",
     "description": "An array with same shape and dtype as ``x`` containing the rounded values."
   },
-  "constraints": []
+  "constraints": [
+    "jax.random.key(42) must be called to generate a key for random number generation in examples.",
+    "minval must be less than maxval in jax.random.uniform"
+  ]
 }

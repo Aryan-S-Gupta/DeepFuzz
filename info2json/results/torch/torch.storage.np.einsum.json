@@ -1,0 +1,34 @@
+{
+  "api_name": "einsum",
+  "module_path": "torch.storage.np",
+  "params": {
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "ndarray, optional If provided, the calculation is done into this array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "optimize": {
+      "type": "list|callable",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "{False, True, 'greedy', 'optimal'}, optional Controls if intermediate optimization should occur. No optimization will occur if False and True will default to the 'greedy' algorithm. Also accepts an explicit contraction list from the ``np.einsum_path`` function. See ``np.einsum_path`` for more details. Defaults to False.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The calculation based on the Einstein summation convention."
+  },
+  "constraints": []
+}

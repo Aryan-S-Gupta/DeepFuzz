@@ -6,19 +6,20 @@
       "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A `Tensor` of the same type and shape as `logits`. Between 0 and 1, inclusive.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "logits and labels must have the same type and shape."
+        "same_type_as_logits",
+        "between_0_and_1"
       ]
     },
     "logits": {
       "type": "float|number|tensor|any",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A `Tensor` of type `float32` or `float64`. Any real number.",
       "dtype_candidates": [
         "float32",
@@ -26,27 +27,16 @@
       ],
       "enum_values": [],
       "constraints": [
-        "logits and labels must have the same type and shape."
+        "float32_or_float64"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same shape as logits with componentwise logistic losses",
+    "numbers": "same_shape_as_logits",
     "description": "A `Tensor` of the same shape as `logits` with the componentwise logistic losses."
   },
   "constraints": [
-    "logits and labels must have the same type and shape.",
-    "x < 0, to avoid overflow in exp(-x), we reformulate the loss function."
+    "logits_and_labels_have_the_same_shape"
   ]
 }

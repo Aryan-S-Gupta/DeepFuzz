@@ -10,27 +10,29 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x type must be supported by JAX's array type system"
+        "x cannot be empty"
       ]
     },
     "approximate": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "True",
+      "flag": "Optional",
       "description": "whether to use the approximate or exact formulation.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "tensor",
     "numbers": "",
-    "description": "unspecified"
+    "description": "Observed signature: (x: 'ArrayLike', approximate: 'bool' = True) -> 'Array'"
   },
-  "constraints": [
-    "approximate must be boolean"
-  ]
+  "constraints": []
 }

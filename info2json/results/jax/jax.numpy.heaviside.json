@@ -10,8 +10,10 @@
       "description": "input array or scalar. ``complex`` dtype are not supported.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "complex dtype is not supported"
+        "must have same shape as x2 or broadcast compatible",
+        "x1 and x2 must either have same shape or broadcast compatible"
       ]
     },
     "x2": {
@@ -25,19 +27,20 @@
         "0",
         "complex"
       ],
+      "case_insensitive": false,
       "constraints": [
-        "complex dtype is not supported",
-        "x1 and x2 must have same shape or broadcast compatible",
-        "x2 must be one of 0, complex"
+        "must either have same shape as x1 or be a scalar",
+        "x2 must be one of 0, complex",
+        "x1 and x2 must either have same shape or broadcast compatible"
       ]
     }
   },
   "output": {
     "type": "callable|tensor|dtype",
-    "numbers": "real",
+    "numbers": "1",
     "description": "An array containing the heaviside step function of ``x1``, promoting to inexact dtype."
   },
   "constraints": [
-    "x and y must have broadcast-compatible shapes"
+    "x1 and x2 must either have same shape or broadcast compatible"
   ]
 }

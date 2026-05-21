@@ -10,9 +10,7 @@
       "description": "Ground truth values with shape = `[batch_size, d0, .. dN]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true shape must match y_pred shape"
-      ]
+      "constraints": []
     },
     "y_pred": {
       "type": "tensor",
@@ -22,17 +20,15 @@
       "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true shape must match y_pred shape"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "Mean absolute error values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true shape must match y_pred shape"
+    "axis must be in range [-1, rank(input)-1)"
   ]
 }

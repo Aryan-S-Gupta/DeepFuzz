@@ -1,0 +1,126 @@
+{
+  "api_full_name": "jax.lax.convert_element_type",
+  "api_name": "convert_element_type",
+  "module_path": "jax.lax",
+  "import_path": "jax.lax.convert_element_type",
+  "backend": "jax",
+  "params": {
+    "operand": {
+      "name": "operand",
+      "spec": {
+        "type": "number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "an array or scalar value to be cast.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "new_dtype": {
+      "name": "new_dtype",
+      "spec": {
+        "type": "number|dtype",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "a dtype-like object (e.g. a :class:`numpy.dtype`, a scalar type, or a valid dtype name) representing the target dtype.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "If `new_dtype` is a 64-bit type and `x64 mode` is not enabled, the appropriate 32-bit type will be used in its place."
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array with the same shape as ``operand``, cast elementwise to ``new_dtype``. .. note:: If ``new_dtype`` is a 64-bit type and `x64 mode`_ is not enabled, the appropriate 32-bit type will be used in its place. If the input is a JAX array and the input dtype and output dtype match, then the input array will be returned unmodified."
+  },
+  "constraints": [
+    "If the input is a JAX array and the input dtype and output dtype match, then the input array will be returned unmodified."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "operand",
+      "new_dtype"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "new_dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(new_dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.lax.convert_element_type.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

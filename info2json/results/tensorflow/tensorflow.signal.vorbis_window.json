@@ -3,24 +3,26 @@
   "module_path": "tensorflow.signal",
   "params": {
     "window_length": {
-      "type": "int|number|tensor|dtype",
+      "type": "number|tensor",
       "size": "scalar",
       "default": "",
       "flag": "Required",
-      "description": "A scalar `Tensor` indicating the window length to generate. dtype: The data type to produce. Must be a floating point type.",
+      "description": "A scalar `Tensor` indicating the window length to generate.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
+    "dtype": {
       "type": "string",
       "size": "",
-      "default": "",
+      "default": "tf.float32",
       "flag": "Optional",
-      "description": "An optional name for the operation.",
+      "description": "The data type to produce. Must be a floating point type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "dtype must be a floating point type."
+      ]
     }
   },
   "output": {

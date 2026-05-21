@@ -12,7 +12,9 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Each element must be a boolean tensor."
+      ]
     },
     "choicelist": {
       "type": "list|number|tensor",
@@ -22,7 +24,9 @@
       "description": "List of tensors. The list of tensors from which the output elements are taken. This list has to be of the same length as `condlist`. defaults: Optional scalar value. The element inserted in the output when all conditions evaluate to `False`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "This list has to be of the same length as `condlist`. Each element can be any tensor."
+      ]
     }
   },
   "output": {
@@ -30,5 +34,7 @@
     "numbers": "1",
     "description": "Tensor where the output at position `m` is the `m`-th element of the tensor in `choicelist` where the `m`-th element of the corresponding tensor in `condlist` is `True`."
   },
-  "constraints": []
+  "constraints": [
+    "The optional 'defaults' parameter can be a scalar value."
+  ]
 }

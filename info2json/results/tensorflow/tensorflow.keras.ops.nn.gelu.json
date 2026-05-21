@@ -10,15 +10,19 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The output function for GELU is either `f(x) = 0.5 * x * (1 + tanh(sqrt(2 / pi) * (x + 0.044715 * x^3)))` or `f(x) = x * P(X <= x) = 0.5 * x * (1 + erf(x / sqrt(2)))`, where `P(X) ~ N(0, 1)`."
+      ]
     },
     "approximate": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "True",
+      "flag": "Optional",
       "description": "Approximate version of GELU activation. Defaults to `True`.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }
@@ -28,7 +32,5 @@
     "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
-  "constraints": [
-    "x and approximate must have compatible shapes"
-  ]
+  "constraints": []
 }

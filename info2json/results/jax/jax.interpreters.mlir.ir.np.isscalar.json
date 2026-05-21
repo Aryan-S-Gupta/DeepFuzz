@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Use np.ndim(x) == 0 instead of this function for most cases."
+        "element type must satisfy isscalar(element)"
       ]
     }
   },
@@ -20,7 +20,5 @@
     "numbers": "1",
     "description": "------- bool True if `element` is a scalar type, False if it is not."
   },
-  "constraints": [
-    "For most types and shapes, np.ndim(x) == 0 should be used instead."
-  ]
+  "constraints": []
 }

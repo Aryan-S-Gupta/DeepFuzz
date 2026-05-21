@@ -25,7 +25,7 @@
     "num_segments": {
       "type": "int|callable|number",
       "size": "",
-      "default": "set to be the minimum number of segments that",
+      "default": "",
       "flag": "Optional",
       "description": "optional, an int with nonnegative value indicating the number of segments. The default is set to be the minimum number of segments that would support all indices in ``segment_ids``, calculated as ``max(segment_ids) + 1``. Since `num_segments` determines the size of the output, a static value must be provided to use ``segment_min`` in a JIT-compiled function.",
       "dtype_candidates": [],
@@ -37,8 +37,8 @@
     "indices_are_sorted": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "whether ``segment_ids`` is known to be sorted.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -47,8 +47,8 @@
     "unique_indices": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "whether `segment_ids` is known to be free of duplicates.",
       "dtype_candidates": [],
       "enum_values": [],

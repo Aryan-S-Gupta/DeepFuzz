@@ -15,9 +15,8 @@
         "description": "list of equations The target system of equations",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "All elements of symbols must be present in system's free symbols"
-        ]
+        "case_insensitive": false,
+        "constraints": []
       },
       "chosen_type": "list",
       "include_in_base_call": true,
@@ -29,46 +28,25 @@
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
       ],
-      "unresolved_reason": ""
-    },
-    "symbols": {
-      "name": "symbols",
-      "spec": {
-        "type": "string|list|sequence",
-        "size": "",
-        "default": "[]",
-        "flag": "Optional",
-        "description": "list of Symbols symbols should be given as a sequence eg. list",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": [
-          "All elements of symbols must be present in system's free symbols"
-        ]
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     }
   },
   "output": {
     "type": "tuple",
-    "numbers": "Real",
+    "numbers": "1",
     "description": "======= class:`~.FiniteSet` of ordered tuple of values of `symbols` for which the `system` has solution. Order of values in the tuple is same as symbols present in the parameter `symbols`. Please note that general :class:`~.FiniteSet` is unordered, the solution returned here is not simply a :class:`~.FiniteSet` of solutions, rather it is a :class:`~.FiniteSet` of ordered tuple, i.e. the first and only argument to :class:`~.FiniteSet` is a tuple of solutions, which is ordered, and, hence ,the returned solution is ordered. Also note that solution could also have been returned as an ordered tuple, FiniteSet is just a wrapper ``{}`` around the tuple. It has no other significance except for the fact it is just used to maintain a consistent output format throughout the solveset. For the given set of equations, the respective input types are given below: .. math:: xy - 1 = 0 .. math:: 4x^2 + y^2 - 5 = 0 :: system = [x*y - 1, 4*x**2 + y**2 - 5] symbols = [x, y]"
   },
-  "constraints": [
-    "All elements of symbols must be present in system's free symbols"
-  ],
+  "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
@@ -83,10 +61,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/sympy/solvers/solveset.py\", line 4060, in nonlinsolve\n    raise ValueError(filldedent(msg))\nValueError: \nSymbols must be given, for which solution of the system is to be\nfound.\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/sympy/solvers/solveset.py\", line 4060, in nonlinsolve\n    raise ValueError(filldedent(msg))\nValueError: \nSymbols must be given, for which solution of the system is to be\nfound.\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.nonlinsolve.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

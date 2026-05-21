@@ -15,16 +15,23 @@
         "description": "the dimension where narrow will be applied. Only `dim=1` is supported for the jagged layout, while strided supports all dim",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 0
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -39,6 +46,7 @@
         "description": "starting element for the narrow operation",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -49,6 +57,12 @@
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -63,6 +77,7 @@
         "description": "number of elements taken during the narrow op",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "int",
@@ -75,6 +90,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "layout": {
@@ -82,11 +103,12 @@
       "spec": {
         "type": "tensor",
         "size": "",
-        "default": "if None, the strided layout",
+        "default": "torch.strided",
         "flag": "Optional",
         "description": "the desired layout of returned nested tensor. Only strided and jagged layouts are supported. Default: if None, the strided layout.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
@@ -94,7 +116,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -102,18 +124,56 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "tensor": {
+      "name": "tensor",
+      "spec": {
+        "type": "any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "signature parameter tensor",
+        "constraints": []
+      },
+      "chosen_type": "any",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
       ],
       "unresolved_reason": ""
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },
@@ -121,21 +181,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: narrow() missing 1 required positional argument: 'tensor'"
+    "smoke test failed: unbind(): argument 'input' (position 1) must be Tensor, not int"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "spec_or_seed_error",
     "error_type": "TypeError",
-    "error": "narrow() missing 1 required positional argument: 'tensor'",
+    "error": "unbind(): argument 'input' (position 1) must be Tensor, not int",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: narrow() missing 1 required positional argument: 'tensor'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/nested/__init__.py\", line 341, in narrow\n    nt = as_nested_tensor(torch.unbind(tensor), layout=torch.strided).narrow(\n                          ~~~~~~~~~~~~^^^^^^^^\nTypeError: unbind(): argument 'input' (position 1) must be Tensor, not int\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.nested.narrow.json",
   "stage3_status": "retry",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x must be a tensor."
+        "x and y must have broadcast-compatible shapes when performing a logical AND over all dimensions (axis=None)"
       ]
     },
     "axis": {
@@ -23,8 +23,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "If None, perform a logical AND over all dimensions.",
-        "axis must satisfy -rank(x) <= axis < rank(x)"
+        "axis must be None or a valid axis for the input tensor",
+        "axis must satisfy -rank(x) <= axis < rank(x)",
+        "x and y must have broadcast-compatible shapes when performing a logical AND over all dimensions (axis=None)"
       ]
     },
     "keepdims": {
@@ -47,5 +48,7 @@
     "numbers": "1",
     "description": "The tensor containing the logical AND reduction over the `axis`."
   },
-  "constraints": []
+  "constraints": [
+    "x and y must have broadcast-compatible shapes when performing a logical AND over all dimensions (axis=None)"
+  ]
 }

@@ -10,7 +10,9 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x must be a tensor."
+      ]
     },
     "indices_or_sections": {
       "type": "int|number",
@@ -23,22 +25,22 @@
       "constraints": []
     },
     "axis": {
-      "type": "",
+      "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "The axis along which to split. Defaults to 0.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "-rank(input) <= axis < rank(input)"
+      ]
     }
   },
   "output": {
     "type": "list|tensor",
-    "numbers": "multiple",
+    "numbers": "tensor",
     "description": "A list of sub-tensors."
   },
-  "constraints": [
-    "x must have a shape"
-  ]
+  "constraints": []
 }

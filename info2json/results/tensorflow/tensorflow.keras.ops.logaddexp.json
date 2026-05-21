@@ -10,7 +10,9 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
     },
     "x2": {
       "type": "tensor",
@@ -20,7 +22,9 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {
@@ -28,5 +32,7 @@
     "numbers": "1",
     "description": "Output tensor, element-wise logarithm of the sum of exponentiations of the inputs."
   },
-  "constraints": []
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ]
 }

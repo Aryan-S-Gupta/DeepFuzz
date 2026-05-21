@@ -1,0 +1,47 @@
+{
+  "api_name": "pad",
+  "module_path": "torch.storage.np",
+  "params": {
+    "array": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like of rank N The array to pad.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "pad_width": {
+      "type": "int|sequence|dict|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "{sequence, array_like, int, dict} Number of values padded to the edges of each axis. ``((before_1, after_1), ... (before_N, after_N))`` unique pad widths for each axis. ``(before, after)`` or ``((before, after),)`` yields same before and after pad for each axis. ``(pad,)`` or ``int`` is a shortcut for before = after = pad width for all axes. If a ``dict``, each key is an axis and its corresponding value is an ``int`` or ``int`` pair describing the padding ``(before, after)`` or ``pad`` width for that axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "pad_width must be one of int, dict, pad"
+      ]
+    },
+    "mode": {
+      "type": "string|callable",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str or function, optional One of the following string values or a user supplied function.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Padded array of rank equal to `array` with shape increased according to `pad_width`."
+  },
+  "constraints": []
+}

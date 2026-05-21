@@ -10,27 +10,22 @@
       "description": "A list of `tf.Tensor` objects of same size and `tf.string` dtype.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Each element must be a `tf.string` tensor.",
+        "The number of elements in the inputs list must be equal."
+      ]
     },
     "separator": {
       "type": "string",
       "size": "",
-      "default": "\"\"",
+      "default": "",
       "flag": "Optional",
       "description": "A string added between each string being joined.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If provided, it must be a string."
+      ]
     }
   },
   "output": {
@@ -38,7 +33,5 @@
     "numbers": "1",
     "description": "A `tf.string` tensor."
   },
-  "constraints": [
-    "inputs list must not be empty"
-  ]
+  "constraints": []
 }

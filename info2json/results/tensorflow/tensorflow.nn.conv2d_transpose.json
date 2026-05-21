@@ -10,7 +10,9 @@
       "description": "A 4-D `Tensor` of type `float` and shape `[batch, height, width, in_channels]` for `NHWC` data format or `[batch, in_channels, height, width]` for `NCHW` data format.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "input must be 4-D"
+      ]
     },
     "filters": {
       "type": "tensor",
@@ -21,7 +23,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "filters must be 4-D"
+        "filters must be 4-D",
+        "filters must have the same dtype as input"
       ]
     },
     "output_shape": {
@@ -52,7 +55,7 @@
       "type": "string|list",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Either the `string` `\"SAME\"` or `\"VALID\"` indicating the type of padding algorithm to use, or a list indicating the explicit paddings at the start and end of each dimension. See [here](https://www.tensorflow.org/api_docs/python/tf/nn#notes_on_padding_2) for more information. When explicit padding is used and data_format is `\"NHWC\"`, this should be in the form `[[0, 0], [pad_top, pad_bottom], [pad_left, pad_right], [0, 0]]`. When explicit padding used and data_format is `\"NCHW\"`, this should be in the form `[[0, 0], [0, 0], [pad_top, pad_bottom], [pad_left, pad_right]]`.",
       "dtype_candidates": [],
       "enum_values": [
@@ -70,7 +73,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A string. 'NHWC' and 'NCHW' are supported.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -79,7 +82,7 @@
     "dilations": {
       "type": "int|list|tensor",
       "size": "4-D",
-      "default": "1",
+      "default": "",
       "flag": "Optional",
       "description": "An int or list of `ints` that has length `1`, `2` or `4`, defaults to 1. The dilation factor for each dimension of`input`. If a single value is given it is replicated in the `H` and `W` dimension. By default the `N` and `C` dimensions are set to 1. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. The dimension order is determined by the value of `data_format`, see above for details. Dilations in the batch and depth dimensions if a 4-d tensor must be 1.",
       "dtype_candidates": [],
@@ -88,16 +91,6 @@
         "dilations must be 4-D",
         "dilations must be one of ints, 1, 2, 4, H, W, N, C"
       ]
-    },
-    "name": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "Optional name for the returned tensor.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

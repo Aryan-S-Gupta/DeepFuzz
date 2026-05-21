@@ -10,27 +10,21 @@
       "description": "`Tensor`, input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output must have broadcast-compatible shapes"
+      ]
     },
     "axes": {
       "type": "int|tuple",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "`int` or shape `tuple` Axes over which to calculate. Defaults to None, which shifts all axes.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "An optional name for the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Defaults to None, which shifts all axes"
+      ]
     }
   },
   "output": {
@@ -38,7 +32,5 @@
     "numbers": "1",
     "description": "A `Tensor`, The shifted tensor."
   },
-  "constraints": [
-    "x must be a Tensor"
-  ]
+  "constraints": []
 }

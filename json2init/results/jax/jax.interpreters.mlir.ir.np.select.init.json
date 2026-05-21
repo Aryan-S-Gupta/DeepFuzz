@@ -1,0 +1,158 @@
+{
+  "api_full_name": "jax.interpreters.mlir.ir.np.select",
+  "api_name": "select",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "import_path": "jax.interpreters.mlir.ir.np.select",
+  "backend": "jax",
+  "params": {
+    "condlist": {
+      "name": "condlist",
+      "spec": {
+        "type": "bool|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "list of bool ndarrays The list of conditions which determine from which array in `choicelist` the output elements are taken. When multiple conditions are satisfied, the first one encountered in `condlist` is used.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "list",
+        "items": [
+          {
+            "kind": "tensor",
+            "shape": [
+              2
+            ],
+            "dtype": "bool",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              true,
+              false
+            ]
+          }
+        ]
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "choicelist": {
+      "name": "choicelist",
+      "spec": {
+        "type": "list",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "list of ndarrays The list of arrays from which the output elements are taken. It has to be of the same length as `condlist`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "list",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "list",
+        "items": [
+          {
+            "kind": "tensor",
+            "shape": [
+              2
+            ],
+            "dtype": "float32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              1.0,
+              2.0
+            ]
+          }
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The output at position m is the m-th element of the array in `choicelist` where the m-th element of the corresponding array in `condlist` is True."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "size": 2,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "condlist",
+      "choicelist"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(condlist_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.interpreters.mlir.ir.np.select.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

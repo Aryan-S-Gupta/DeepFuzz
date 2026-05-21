@@ -10,37 +10,36 @@
       "description": "The tensor to reduce. Should have numeric type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "should have numeric type"
+      ]
     },
     "axis": {
-      "type": "",
+      "type": "int",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor)]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "must satisfy -rank(input_tensor) <= axis < rank(input_tensor)",
+        "Defaults to None"
+      ]
     },
     "keepdims": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "If true, retains reduced dimensions with length 1.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
+      "description": "If true, retains reduced dimensions with length 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Optional"
+      ]
     }
   },
   "output": {
@@ -48,5 +47,7 @@
     "numbers": "1",
     "description": "The reduced tensor, of the same dtype as the input_tensor. @compatibility(numpy) Equivalent to np.sum apart the fact that numpy upcast uint8 and int32 to int64 while tensorflow returns the same dtype as the input. @end_compatibility"
   },
-  "constraints": []
+  "constraints": [
+    "x and y must have broadcast-compatible shapes (implicit from TensorFlow API semantics)"
+  ]
 }

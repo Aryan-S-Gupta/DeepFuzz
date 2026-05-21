@@ -11,23 +11,26 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x cannot be None"
+        "must be 4-D or flattened"
       ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1` (the last axis)",
+      "default": "-1",
       "flag": "Optional",
       "description": "Axis along which to sort. Defaults to `-1` (the last axis). If `None`, the flattened tensor is used.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)",
+        "indices values must be in range [0, params.shape[axis])"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "int32 or int64",
     "description": "Tensor of indices that sort `x` along the specified `axis`."
   },
   "constraints": []

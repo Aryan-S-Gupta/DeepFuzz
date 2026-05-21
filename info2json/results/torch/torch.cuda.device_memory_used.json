@@ -1,0 +1,23 @@
+{
+  "api_name": "device_memory_used",
+  "module_path": "torch.cuda",
+  "params": {
+    "device": {
+      "type": "int|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "int",
+    "numbers": "integer",
+    "description": "used global (device) memory in bytes as given by `nvidia-smi` or `amd-smi`."
+  },
+  "constraints": []
+}

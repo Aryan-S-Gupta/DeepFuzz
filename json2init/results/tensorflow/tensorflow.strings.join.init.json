@@ -1,0 +1,131 @@
+{
+  "api_full_name": "tensorflow.strings.join",
+  "api_name": "join",
+  "module_path": "tensorflow.strings",
+  "import_path": "tensorflow.strings.join",
+  "backend": "tensorflow",
+  "params": {
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "string|list|tensor|dtype",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A list of `tf.Tensor` objects of same size and `tf.string` dtype.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Each element must be a `tf.string` tensor.",
+          "The number of elements in the inputs list must be equal."
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "string",
+        "values": [
+          "a",
+          "b"
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "separator": {
+      "name": "separator",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "A string added between each string being joined.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "If provided, it must be a string."
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `tf.string` tensor."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "'bytes' object has no attribute 'dtype'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": true,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 984, in run_smoke_test\n    result[\"result_summary\"] = summarize_python_value(out)\n                               ~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 1026, in summarize_python_value\n    is_float = np is not None and getattr(arr.dtype, \"kind\", \"\") in {\"f\", \"c\"}\n                                          ^^^^^^^^^\nAttributeError: 'bytes' object has no attribute 'dtype'\n"
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "inputs"
+    ],
+    "skipped_optional": [
+      "separator"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(inputs_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.strings.join.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

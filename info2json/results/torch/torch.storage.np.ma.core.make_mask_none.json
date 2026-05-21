@@ -1,0 +1,41 @@
+{
+  "api_name": "make_mask_none",
+  "module_path": "torch.storage.np.ma.core",
+  "params": {
+    "newshape": {
+      "type": "tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "tuple A tuple indicating the shape of the mask.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be a non-empty tuple.",
+        "newshape must not be empty."
+      ]
+    },
+    "dtype": {
+      "type": "bool|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{None, dtype}, optional If None, use a MaskType instance. Otherwise, use a new datatype with the same fields as `dtype`, converted to boolean types.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "If specified, must be a valid numpy dtype."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "boolean",
+    "description": "------- ndarray An ndarray of appropriate shape and dtype, filled with False."
+  },
+  "constraints": []
+}

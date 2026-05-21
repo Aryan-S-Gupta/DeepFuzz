@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x shape must support rank > 0"
+        "x and output must be tensors."
       ]
     },
     "axis": {
@@ -22,12 +22,14 @@
       "description": "Axis or tuple of axes along which to count the number of non-zeros. Defaults to `None`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If provided, axis must be an integer or a tuple of integers. If not provided, defaults to None."
+      ]
     }
   },
   "output": {
     "type": "int|tensor",
-    "numbers": "single or multiple",
+    "numbers": "1",
     "description": "int or tensor of ints."
   },
   "constraints": []

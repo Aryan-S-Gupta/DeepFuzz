@@ -1,0 +1,38 @@
+{
+  "api_name": "concatenate",
+  "module_path": "torch.storage.np.ma.core",
+  "params": {
+    "arrays": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "sequence of array_like The arrays must have the same shape, except in the dimension corresponding to `axis` (the first, by default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "elements must be array_like"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional The axis along which the arrays will be joined. Default is 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be a valid integer"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|any",
+    "numbers": "1",
+    "description": "------- MaskedArray The concatenated array with any masked entries preserved."
+  },
+  "constraints": []
+}

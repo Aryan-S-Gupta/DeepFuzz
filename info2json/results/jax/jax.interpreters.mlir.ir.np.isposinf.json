@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "input, if first and second arguments have different shapes"
+        "if out is provided, it must have a broadcast-compatible shape with x"
       ]
     },
     "out": {
@@ -24,7 +24,10 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "out parameter is optional",
+        "if out is provided, it must have a broadcast-compatible shape with x"
+      ]
     }
   },
   "output": {
@@ -33,6 +36,6 @@
     "description": "------- ndarray A boolean array with the same dimensions as the input. If second argument is not supplied then a boolean array is returned with values True where the corresponding element of the input is positive infinity and values False where the element of the input is not positive infinity. If a second argument is supplied the result is stored there. If the type of that array is a numeric type the result is represented as zeros and ones, if the type is boolean then as False and True. The return value `out` is then a reference to that array."
   },
   "constraints": [
-    "(IEEE 754)"
+    "if out is provided, it must have a broadcast-compatible shape with x"
   ]
 }

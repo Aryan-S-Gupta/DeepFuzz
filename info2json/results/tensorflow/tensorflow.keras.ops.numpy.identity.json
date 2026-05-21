@@ -3,21 +3,34 @@
   "module_path": "tensorflow.keras.ops.numpy",
   "params": {
     "n": {
-      "type": "int|number|tensor|dtype",
+      "type": "int|number|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "Number of rows (and columns) in the `n x n` output tensor. dtype: Data type of the output tensor.",
+      "description": "Number of rows (and columns) in the `n x n` output tensor.",
       "dtype_candidates": [],
       "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Data type of the output tensor.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
       "constraints": [
-        "n > 0"
+        "float32, float64"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "2D",
+    "numbers": "n x n",
     "description": "The identity tensor."
   },
   "constraints": []

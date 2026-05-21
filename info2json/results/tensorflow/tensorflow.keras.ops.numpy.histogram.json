@@ -20,23 +20,29 @@
       "description": "An integer representing the number of histogram bins. Defaults to 10.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "An integer representing the number of histogram bins."
+      ]
     },
     "range": {
       "type": "tuple",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A tuple representing the lower and upper range of the bins. If not specified, it will use the min and max of `x`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If specified, must be a tuple with two elements."
+      ]
     }
   },
   "output": {
     "type": "tuple|tensor",
-    "numbers": "1",
+    "numbers": "2",
     "description": "A tuple containing: - A tensor representing the counts of elements in each bin. - A tensor representing the bin edges."
   },
-  "constraints": []
+  "constraints": [
+    "The output tuple must have exactly two tensors."
+  ]
 }

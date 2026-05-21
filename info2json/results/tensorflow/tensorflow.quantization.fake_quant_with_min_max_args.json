@@ -2,13 +2,57 @@
   "api_name": "fake_quant_with_min_max_args",
   "module_path": "tensorflow.quantization",
   "params": {
-    "out": {
-      "type": "",
+    "inputs": {
+      "type": "float|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "",
+      "description": "A `Tensor` of type `float32`.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "min": {
+      "type": "float",
+      "size": "",
+      "default": "-6",
+      "flag": "Optional",
+      "description": "An optional `float`. Defaults to `-6`.",
       "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "max": {
+      "type": "float",
+      "size": "",
+      "default": "6",
+      "flag": "Optional",
+      "description": "An optional `float`. Defaults to `6`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "num_bits": {
+      "type": "int",
+      "size": "",
+      "default": "8",
+      "flag": "Optional",
+      "description": "An optional `int`. Defaults to `8`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "narrow_range": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `False`.",
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }

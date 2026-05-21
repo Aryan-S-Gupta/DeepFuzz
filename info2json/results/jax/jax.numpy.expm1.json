@@ -10,15 +10,16 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x and output must have same shape",
-        "x values must be finite"
+        "For small values of x, jnp.expm1(x) is much more accurate than jnp.exp(x)-1.",
+        "When x is very close to 0, jnp.expm1(x) provides a more accurate result than jnp.exp(x)-1."
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real",
+    "numbers": "1",
     "description": "An array containing ``exp(x)-1`` of each element in ``x``, promotes to inexact dtype."
   },
   "constraints": []

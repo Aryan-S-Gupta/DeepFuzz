@@ -24,20 +24,10 @@
         "complex128"
       ],
       "constraints": [
-        "x shape must match expected",
+        "x must be a tensor",
         "x must be one of bfloat16, half, float32, float64, complex64, complex128",
-        "x cannot be null"
+        "The output has the same type as x."
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

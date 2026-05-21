@@ -15,7 +15,10 @@
         "description": "The fully-qualified string name of the buffer to look for. (See ``get_submodule`` for how to specify a fully-qualified string.)",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "case_insensitive": false,
+        "constraints": [
+          "Must be a valid string"
+        ]
       },
       "chosen_type": "string",
       "include_in_base_call": true,
@@ -25,6 +28,12 @@
       },
       "mutation_rules": [
         "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
         "string_empty"
       ],
       "unresolved_reason": ""
@@ -50,10 +59,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: Module.get_buffer() missing 1 required positional argument: 'self'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\nTypeError: Module.get_buffer() missing 1 required positional argument: 'self'\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.quantization.default_placeholder_observer.get_buffer.json",
   "stage3_status": "retry",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

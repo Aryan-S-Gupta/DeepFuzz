@@ -8,10 +8,13 @@
       "default": "",
       "flag": "Required",
       "description": "An integer or array of integers representing flat indices.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
       "enum_values": [],
       "constraints": [
-        "indices values must be in range [0, product(params.shape))"
+        "indices dtype must be int32 or int64"
       ]
     },
     "shape": {
@@ -23,16 +26,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "indices values must be in range [0, product(params.shape))"
+        "input must be a tuple"
       ]
     }
   },
   "output": {
     "type": "tuple",
-    "numbers": "1",
+    "numbers": "2",
     "description": "Tuple of arrays for each dimension with unraveled indices."
   },
   "constraints": [
-    "indices values must be in range [0, product(params.shape))"
+    "x and y must have the same length"
   ]
 }

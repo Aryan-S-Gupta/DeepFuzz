@@ -26,47 +26,43 @@
           "float64"
         ],
         "constraints": [
-          "Must be one of the following types: bfloat16, half, float32, float64",
-          "x must be one of tf.Tensor, bfloat16, half, float32, float64",
-          "x cannot be a complex number"
+          "must be one of the following types: bfloat16, half, float32, float64",
+          "x must be one of tf.Tensor, bfloat16, half, float32, float64"
         ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "enum_switch"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -87,15 +83,45 @@
     "materialization_reasons": [],
     "result_summary": {
       "python_type": "EagerTensor",
-      "shape": [],
+      "shape": [
+        2,
+        2
+      ],
       "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
+      "numel": 4,
+      "preview": [
+        0.7071067690849304,
+        Infinity,
+        Infinity,
+        0.7071067690849304
+      ],
+      "has_nan": false,
+      "has_inf": true
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(x_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.rsqrt.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

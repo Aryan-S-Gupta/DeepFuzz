@@ -10,38 +10,49 @@
       "description": "N-dimensional array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
-      "type": "int|dtype",
+      "type": "int",
       "size": "",
-      "default": "zero",
+      "default": "",
       "flag": "Optional",
-      "description": "integer axis along which to accumulate. If ``x`` is one-dimensional, this argument is optional and defaults to zero. dtype: optional dtype of the output.",
+      "description": "integer axis along which to accumulate. If ``x`` is one-dimensional, this argument is optional and defaults to zero.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "axis must satisfy -rank(x) <= axis < rank(x) if x is not one-dimensional"
-      ]
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional dtype of the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
     },
     "include_initial": {
-      "type": "",
+      "type": "bool",
       "size": "",
       "default": "False",
       "flag": "Optional",
       "description": "if True, then include the initial value in the cumulative product. Default is False.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "An array containing the accumulated values."
   },
-  "constraints": [
-    "include_initial must be a boolean",
-    "dtype must be a valid numpy dtype or left empty for default"
-  ]
+  "constraints": []
 }

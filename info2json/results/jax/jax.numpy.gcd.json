@@ -10,8 +10,10 @@
       "description": "First input array. The elements must have integer dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have the same shape"
+        "x1 and x2 must have the same shape and integer dtype.",
+        "x1, x2, and output cannot be assigned to the same variable."
       ]
     },
     "x2": {
@@ -22,17 +24,20 @@
       "description": "Second input array. The elements must have integer dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have the same shape"
+        "x1 and x2 must have the same shape and integer dtype.",
+        "x1, x2, and output cannot be assigned to the same variable."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "int32",
     "description": "An array containing the greatest common divisors of the corresponding elements from the absolute values of `x1` and `x2`."
   },
   "constraints": [
-    "x1 and x2 must have the same shape"
+    "x1 and x2 must have the same shape and integer dtype.",
+    "x1, x2, and output cannot be assigned to the same variable."
   ]
 }

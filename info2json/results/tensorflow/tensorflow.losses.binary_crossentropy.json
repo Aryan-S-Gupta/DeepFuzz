@@ -25,7 +25,7 @@
     "from_logits": {
       "type": "tensor",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "Whether `y_pred` is expected to be a logits tensor. By default, we assume that `y_pred` encodes a probability distribution.",
       "dtype_candidates": [],
@@ -35,8 +35,8 @@
     "label_smoothing": {
       "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0.0",
+      "flag": "Optional",
       "description": "Float in `[0, 1]`. If > `0` then smooth the labels by squeezing them towards 0.5, that is, using `1. - 0.5 * label_smoothing` for the target class and `0.5 * label_smoothing` for the non-target class.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -45,8 +45,8 @@
     "axis": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "-1",
+      "flag": "Optional",
       "description": "The axis along which the mean is computed. Defaults to `-1`.",
       "dtype_candidates": [],
       "enum_values": [],

@@ -1,0 +1,51 @@
+{
+  "api_name": "bincount",
+  "module_path": "torch.storage.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "1 dimension",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, 1 dimension, nonnegative ints Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must contain nonnegative ints",
+        "must be 1-dimensional",
+        "x must be of integer dtype"
+      ]
+    },
+    "weights": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like, optional Weights, array of the same shape as `x`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "weights must have the same shape as x"
+      ]
+    },
+    "minlength": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional A minimum number of bins for the output array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray of ints The result of binning the input array. The length of `out` is equal to ``np.amax(x)+1``."
+  },
+  "constraints": []
+}

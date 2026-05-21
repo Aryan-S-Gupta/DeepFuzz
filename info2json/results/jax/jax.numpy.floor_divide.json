@@ -10,9 +10,9 @@
       "description": "Input array, the dividend",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes",
-        "x1, x2, and output types depend on input values"
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     },
     "x2": {
@@ -23,19 +23,18 @@
       "description": "Input array, the divisor",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes",
-        "x1, x2, and output types depend on input values"
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     }
   },
   "output": {
     "type": "int|tensor",
-    "numbers": "integer or floating-point",
+    "numbers": "1",
     "description": "An array-like object containing each of the quotients rounded down to the nearest integer towards negative infinity. This is equivalent to ``x1 // x2`` in Python."
   },
   "constraints": [
-    "x1 and x2 must have broadcast-compatible shapes",
-    "x1, x2, and output types depend on input values"
+    "x1 and x2 must have broadcast-compatible shapes"
   ]
 }

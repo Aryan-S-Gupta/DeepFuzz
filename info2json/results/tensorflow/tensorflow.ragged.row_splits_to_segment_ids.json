@@ -11,23 +11,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "splits must be 1-D"
+        "splits must be 1-D",
+        "The output tensor shape is determined by the input splits tensor."
       ]
-    },
-    "name": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name prefix for the returned tensor (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     },
     "out_type": {
       "type": "dtype",
       "size": "",
-      "default": "splits",
+      "default": "",
       "flag": "Optional",
       "description": "The dtype for the return value. Defaults to `splits.dtype`, or `tf.int64` if `splits` does not have a dtype.",
       "dtype_candidates": [

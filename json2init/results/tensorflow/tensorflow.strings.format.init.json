@@ -1,0 +1,172 @@
+{
+  "api_full_name": "tensorflow.strings.format",
+  "api_name": "format",
+  "module_path": "tensorflow.strings",
+  "import_path": "tensorflow.strings.format",
+  "backend": "tensorflow",
+  "params": {
+    "template": {
+      "name": "template",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A string template to format tensor values into.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "inputs": {
+      "name": "inputs",
+      "spec": {
+        "type": "string|list|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A list of `Tensor` objects, or a single Tensor. The list of tensors to format into the template string. If a solitary tensor is passed in, the input tensor will automatically be wrapped as a list.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "The list of tensors to format into the template string.",
+          "If a solitary tensor is passed in, the input tensor will automatically be wrapped as a list."
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "string",
+        "values": [
+          "a",
+          "b"
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "placeholder": {
+      "name": "placeholder",
+      "spec": {
+        "type": "string|tensor",
+        "size": "",
+        "default": "{}",
+        "flag": "Optional",
+        "description": "An optional `string`. Defaults to `{}`. At each placeholder occurring in the template, a subsequent tensor will be inserted.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "test"
+      },
+      "mutation_rules": [
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "summarize": {
+      "name": "summarize",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "3",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `3`. When formatting the tensors, show the first and last `summarize` entries of each tensor dimension (recursively). If set to -1, all elements of the tensor will be shown.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "When formatting the tensors, show the first and last summarize entries of each tensor dimension (recursively). If set to -1, all elements of the tensor will be shown."
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|number|tensor",
+    "numbers": "1",
+    "description": "A scalar `Tensor` of type `string`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: The template expects 0 tensors, but the inputs only has 1. Please ensure the number of placeholders in template matches inputs length."
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "The template expects 0 tensors, but the inputs only has 1. Please ensure the number of placeholders in template matches inputs length.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/string_ops.py\", line 167, in string_format\n    raise ValueError(f\"The template expects {template.count(placeholder)} \"\n    ...<2 lines>...\n                     \"matches inputs length.\")\nValueError: The template expects 0 tensors, but the inputs only has 1. Please ensure the number of placeholders in template matches inputs length.\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.strings.format.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

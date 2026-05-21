@@ -13,23 +13,23 @@
       "constraints": []
     },
     "periodic": {
-      "type": "bool|tensor|dtype",
+      "type": "bool|tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A bool `Tensor` indicating whether to generate a periodic or symmetric window. Periodic windows are typically used for spectral analysis while symmetric windows are typically used for digital filter design. dtype: The data type to produce. Must be a floating point type.",
+      "default": "True",
+      "flag": "Optional",
+      "description": "A bool `Tensor` indicating whether to generate a periodic or symmetric window. Periodic windows are typically used for spectral analysis while symmetric windows are typically used for digital filter design.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
+    "dtype": {
       "type": "",
       "size": "",
-      "default": "",
+      "default": "tf.float32",
       "flag": "Optional",
-      "description": "An optional name for the operation.",
+      "description": "The data type to produce. Must be a floating point type.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

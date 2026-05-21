@@ -15,7 +15,9 @@
         "description": "Tuple of the real and imaginary parts of the input tensor. Both tensors in the tuple should be of floating type.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "Both tensors in the tuple should be of floating type."
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
@@ -25,6 +27,12 @@
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -40,19 +48,26 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Must be even",
-          "x's shape can have any number of dimensions, but its last axis length must be even when fft_length is not specified"
+          "If not specified, it is inferred from the length of the last axis of `x`.",
+          "Defaults to `None`."
         ]
       },
       "chosen_type": "int",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": 2
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -60,12 +75,10 @@
   },
   "output": {
     "type": "float|tensor",
-    "numbers": "3 or more, depending on the input's last axis length",
+    "numbers": "1",
     "description": "A tensor containing the inverse real-valued Fast Fourier Transform along the last axis of `x`."
   },
-  "constraints": [
-    "x's elements must be numeric"
-  ],
+  "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
@@ -80,10 +93,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 694, in irfft\n    return backend.math.irfft(x, fft_length)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 133, in irfft\n    complex_input = _get_complex_tensor_from_tuple(x)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 78, in _get_complex_tensor_from_tuple\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 694, in irfft\n    return backend.math.irfft(x, fft_length)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 133, in irfft\n    complex_input = _get_complex_tensor_from_tuple(x)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 78, in _get_complex_tensor_from_tuple\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: Input `x` should be a tuple of two tensors - real and imaginary.Received: x=1.0\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.irfft.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

@@ -10,6 +10,7 @@
       "description": "an array or scalar value to be cast.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "new_dtype": {
@@ -20,15 +21,15 @@
       "description": "a dtype-like object (e.g. a :class:`numpy.dtype`, a scalar type, or a valid dtype name) representing the target dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must be a numpy.dtype, a scalar type, or a valid dtype name",
-        "If new_dtype is a 64-bit type and x64 mode is not enabled, the appropriate 32-bit type will be used in its place."
+        "If `new_dtype` is a 64-bit type and `x64 mode` is not enabled, the appropriate 32-bit type will be used in its place."
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape as operand",
+    "numbers": "1",
     "description": "An array with the same shape as ``operand``, cast elementwise to ``new_dtype``. .. note:: If ``new_dtype`` is a 64-bit type and `x64 mode`_ is not enabled, the appropriate 32-bit type will be used in its place. If the input is a JAX array and the input dtype and output dtype match, then the input array will be returned unmodified."
   },
   "constraints": [

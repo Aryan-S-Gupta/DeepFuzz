@@ -10,26 +10,22 @@
       "description": "Int, number of possible words to sample.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "size > 0"
-      ]
+      "constraints": []
     },
     "sampling_factor": {
       "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1e-05",
+      "flag": "Optional",
       "description": "The sampling factor in the word2vec formula.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "sampling_factor > 0"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float",
+    "numbers": "1D",
     "description": "A 1D Numpy array of length `size` where the ith entry is the probability that a word of rank i should be sampled."
   },
   "constraints": []

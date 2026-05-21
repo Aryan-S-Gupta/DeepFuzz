@@ -10,15 +10,15 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "Must be a tensor"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "Output tensor of same shape as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor has the same shape as the input tensor."
+  ]
 }

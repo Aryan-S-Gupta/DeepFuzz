@@ -19,20 +19,10 @@
         "float64"
       ],
       "constraints": [
-        "Must be one of the following types: half, float32, float64",
+        "Must be one of the following types: `half`, `float32`, `float64`.",
         "x must be one of SparseTensor, half, float32, float64",
-        "If x is a SparseTensor, returns SparseTensor(x.indices, tf.math.bessel_i1e(x.values, ...), x.dense_shape)"
+        "If `x` is a `SparseTensor`, returns `SparseTensor(x.indices, tf.math.bessel_i1e(x.values, ...), x.dense_shape)`"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

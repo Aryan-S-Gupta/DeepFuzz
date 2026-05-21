@@ -22,21 +22,32 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          4
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 0.5,
         "backend": "tensorflow",
-        "preset": "boxes"
+        "preset": "boxes",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -57,7 +68,8 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -65,12 +77,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -78,23 +100,37 @@
       "name": "max_output_size",
       "spec": {
         "type": "int|number|tensor",
-        "size": "",
+        "size": "scalar",
         "default": "",
         "flag": "Required",
         "description": "a scalar integer `Tensor` representing the maximum number of boxes to be selected by non max suppression. Note that setting this value to a large number may result in OOM error depending on the system workload.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "max_output_size must be one of OOM"
+        ]
       },
-      "chosen_type": "int",
+      "chosen_type": "list",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -103,21 +139,27 @@
       "spec": {
         "type": "float",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "0.5",
+        "flag": "Optional",
         "description": "a float representing the threshold for deciding whether boxes overlap too much with respect to IoU (intersection over union).",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "float",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -128,20 +170,26 @@
         "type": "float",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "a float representing the threshold for box scores. Boxes with a score that is not larger than this threshold will be suppressed.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "float",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -151,44 +199,44 @@
       "spec": {
         "type": "",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "whether to pad the output idx to max_output_size. Must be set to True when the input is a batch of images.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "whether to pad the output idx to max_output_size. must be set to true when the input is a batch of images.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: whether to pad the output idx to max_output_size. must be set to true when the input is a batch of images."
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "name of operation.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "as_tuple": false
       },
-      "chosen_type": "name of operation.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: name of operation."
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
     },
     "sorted_input": {
       "name": "sorted_input",
       "spec": {
         "type": "bool",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "a boolean indicating whether the input boxes and scores are sorted in descending order by the score.",
         "dtype_candidates": [
           "bool"
@@ -197,13 +245,19 @@
         "constraints": []
       },
       "chosen_type": "bool",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -213,40 +267,66 @@
       "spec": {
         "type": "",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "if box coordinates are given as `[y_min, x_min, y_max, x_max]`, setting to True eliminate redundant computation to canonicalize box coordinates.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "if box coordinates are given as `[y_min",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: if box coordinates are given as `[y_min"
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
     },
     "tile_size": {
       "name": "tile_size",
       "spec": {
         "type": "int|number",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "512",
+        "flag": "Optional",
         "description": "an integer representing the number of boxes in a tile, i.e., the maximum number of boxes per image that can be used to suppress other boxes in parallel; larger tile_size means larger parallelism and potentially more redundant work.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
-      "include_in_base_call": true,
+      "chosen_type": "list",
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     }
@@ -257,16 +337,25 @@
     "description": "a tensor with a shape of [..., num_boxes] representing the indices selected by non-max suppression. The leading dimensions are the batch dimensions of the input boxes. All numbers are within [0, num_boxes). For each image (i.e., idx[i]), only the first num_valid[i] indices (i.e., idx[i][:num_valid[i]]) are valid. num_valid: a tensor of rank 0 or higher with a shape of [...] representing the number of valid indices in idx. Its dimensions are the batch dimensions of the input boxes."
   },
   "constraints": [],
-  "spec_ready": false,
+  "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "required param 'pad_to_max_output_size' unresolved: unhandled chosen type: whether to pad the output idx to max_output_size. must be set to true when the input is a batch of images.",
-    "required param 'name' unresolved: unhandled chosen type: name of operation.",
-    "required param 'canonicalized_coordinates' unresolved: unhandled chosen type: if box coordinates are given as `[y_min"
+    "smoke test failed: in user code:\n\n\n    ValueError: Tried to convert 'paddings' to a tensor and failed. Error: Shapes must be equal rank, but are 0 and 1\n    \tFrom merging shape 0 with other shapes. for '{{node Pad/packed/1}} = Pack[N=2, T=DT_INT32, axis=0](Pad/packed/1/0, sub)' with input shapes: [], [2].\n"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "in user code:\n\n\n    ValueError: Tried to convert 'paddings' to a tensor and failed. Error: Shapes must be equal rank, but are 0 and 1\n    \tFrom merging shape 0 with other shapes. for '{{node Pad/packed/1}} = Pack[N=2, T=DT_INT32, axis=0](Pad/packed/1/0, sub)' with input shapes: [], [2].\n",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/var/folders/8m/54kkdl1j637g7q3v3df8v3sm0000gn/T/__autograph_generated_filevdz97x2_.py\", line 221, in tf__non_max_suppression_padded_v2\n    boxes = ag__.converted_call(ag__.ld(array_ops).pad, (ag__.converted_call(ag__.ld(math_ops).cast, (ag__.ld(boxes), ag__.ld(dtypes).float32), None, fscope), [[0, 0], [0, ag__.ld(pad)], [0, 0]]), None, fscope)\nValueError: in user code:\n\n\n    ValueError: Tried to convert 'paddings' to a tensor and failed. Error: Shapes must be equal rank, but are 0 and 1\n    \tFrom merging shape 0 with other shapes. for '{{node Pad/packed/1}} = Pack[N=2, T=DT_INT32, axis=0](Pad/packed/1/0, sub)' with input shapes: [], [2].\n\n"
+  },
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.non_max_suppression_padded.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

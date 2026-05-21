@@ -21,7 +21,8 @@
           "half"
         ],
         "constraints": [
-          "images must be 4-D"
+          "images must be 4-D",
+          "images must be one of float32, half"
         ]
       },
       "chosen_type": "float",
@@ -29,18 +30,26 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          1,
-          1,
-          3
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
-        "backend": "tensorflow"
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -57,24 +66,35 @@
           "float32"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "boxes must be 3-D"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          4
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 0.5,
         "backend": "tensorflow",
-        "preset": "boxes"
+        "preset": "boxes3",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -106,25 +126,14 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -136,21 +145,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: {{function_node __wrapped__DrawBoundingBoxesV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} The rank of the boxes tensor should be 3 [Op:DrawBoundingBoxesV2] name: "
+    "smoke test failed: {{function_node __wrapped__DrawBoundingBoxesV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} The batch sizes should be the same [Op:DrawBoundingBoxesV2] name: "
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "api_runtime_error",
     "error_type": "InvalidArgumentError",
-    "error": "{{function_node __wrapped__DrawBoundingBoxesV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} The rank of the boxes tensor should be 3 [Op:DrawBoundingBoxesV2] name: ",
+    "error": "{{function_node __wrapped__DrawBoundingBoxesV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} The batch sizes should be the same [Op:DrawBoundingBoxesV2] name: ",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__DrawBoundingBoxesV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} The rank of the boxes tensor should be 3 [Op:DrawBoundingBoxesV2] name: \n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__DrawBoundingBoxesV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} The batch sizes should be the same [Op:DrawBoundingBoxesV2] name: \n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.draw_bounding_boxes.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

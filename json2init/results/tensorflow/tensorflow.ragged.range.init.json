@@ -18,17 +18,23 @@
         "constraints": []
       },
       "chosen_type": "number",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "limits": {
       "name": "limits",
@@ -36,14 +42,14 @@
         "type": "number|tensor",
         "size": "scalar",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "Vector or scalar `Tensor`. Specifies the exclusive upper limits for each range.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "number",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
@@ -52,16 +58,23 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "deltas": {
       "name": "deltas",
       "spec": {
-        "type": "number|tensor|dtype",
+        "type": "number|tensor",
         "size": "scalar",
         "default": "1",
         "flag": "Optional",
-        "description": "Vector or scalar `Tensor`. Specifies the increment for each range. Defaults to `1`. dtype: The type of the elements of the resulting tensor. If not specified, then a value is chosen based on the other args.",
+        "description": "Vector or scalar `Tensor`. Specifies the increment for each range. Defaults to `1`.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
@@ -74,36 +87,55 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
-    "name": {
-      "name": "name",
+    "dtype": {
+      "name": "dtype",
       "spec": {
-        "type": "",
+        "type": "tensor",
         "size": "",
         "default": "",
-        "flag": "Required",
-        "description": "A name for the operation.",
+        "flag": "Optional",
+        "description": "The type of the elements of the resulting tensor. If not specified, then a value is chosen based on the other args.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "a name for the operation.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation."
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "row_splits_dtype": {
       "name": "row_splits_dtype",
       "spec": {
         "type": "tensor|dtype",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "tf.int64",
+        "flag": "Optional",
         "description": "`dtype` for the returned `RaggedTensor`'s `row_splits` tensor. One of `tf.int32` or `tf.int64`.",
         "dtype_candidates": [
           "int32",
@@ -115,19 +147,28 @@
           "tf.int32",
           "tf.int64"
         ],
-        "constraints": []
+        "constraints": [
+          "row_splits_dtype must be one of RaggedTensor, row_splits, tf.int32, tf.int64"
+        ]
       },
       "chosen_type": "dtype",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "dtype",
-        "value": "int32"
+        "value": "float32"
       },
       "mutation_rules": [
         "enum_switch",
-        "type_switch"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -136,14 +177,92 @@
     "description": "A `RaggedTensor` of type `dtype` with `ragged_rank=1`."
   },
   "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for the operation."
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "RaggedTensor",
+      "kind": "RaggedTensor",
+      "ragged_rank": 1,
+      "bounding_shape": [
+        1,
+        1
+      ],
+      "flat_values": {
+        "python_type": "EagerTensor",
+        "shape": [
+          1
+        ],
+        "dtype": "float32",
+        "numel": 1,
+        "preview": [
+          0.0
+        ],
+        "has_nan": false,
+        "has_inf": false
+      }
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "starts"
+    ],
+    "skipped_optional": [
+      "limits",
+      "deltas",
+      "dtype",
+      "row_splits_dtype"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dtype is a supported dtype object",
+    "row_splits_dtype is a supported dtype object"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "raise_contract": [
+    {
+      "when": "negative_mutation(starts_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(deltas_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(row_splits_dtype_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ragged.range.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

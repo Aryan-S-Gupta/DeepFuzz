@@ -10,19 +10,21 @@
       "spec": {
         "type": "tensor",
         "size": "",
-        "default": "image",
-        "flag": "Optional",
+        "default": "",
+        "flag": "Required",
         "description": "Input tensor to crop.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "Requires `value.shape >= size`"
+        ]
       },
       "chosen_type": "tensor",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,49 +32,61 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
     "size": {
       "name": "size",
       "spec": {
-        "type": "list|tensor",
+        "type": "tensor",
         "size": "1-D",
         "default": "",
-        "flag": "Optional",
+        "flag": "Required",
         "description": "1-D tensor with size the rank of `value`.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Requires `value.shape >= size`",
-          "size must be 1-D"
+          "size must be 1-D",
+          "Requires `value.shape >= size`"
         ]
       },
-      "chosen_type": "tensor",
-      "include_in_base_call": false,
+      "chosen_type": "list",
+      "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
+        "kind": "literal",
+        "value": [
+          2,
+          2
         ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "as_tuple": false
       },
       "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -82,14 +96,14 @@
         "type": "int",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "Python integer. Used to create a random seed. See `tf.random.set_seed` for behavior.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "int",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1
@@ -98,25 +112,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A name for this operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for this operation (optional).",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for this operation (optional)."
     }
   },
   "output": {
@@ -125,16 +127,27 @@
     "description": "A cropped tensor of the same rank as `value` and shape `size`."
   },
   "constraints": [
-    "name is an optional name for this operation."
+    "Requires `value.shape >= size`"
   ],
-  "spec_ready": false,
+  "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for this operation (optional)."
+    "smoke test failed: {{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected begin and size arguments to be 1-D tensors of size 1, but got shapes [2] and [2] instead. [Op:Slice] name: "
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected begin and size arguments to be 1-D tensors of size 1, but got shapes [2] and [2] instead. [Op:Slice] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Slice_device_/job:localhost/replica:0/task:0/device:CPU:0}} Expected begin and size arguments to be 1-D tensors of size 1, but got shapes [2] and [2] instead. [Op:Slice] name: \n"
+  },
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.random_crop.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

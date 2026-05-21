@@ -16,7 +16,9 @@
         "float32",
         "float64"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of float32, float64"
+      ]
     },
     "fft_length": {
       "type": "tensor",
@@ -47,7 +49,7 @@
     "Tcomplex": {
       "type": "float|dtype",
       "size": "",
-      "default": "tf",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `tf.DType` from: `tf.complex64, tf.complex128`. Defaults to `tf.complex64`. Should be `tf.complex64` when the type of `input` is `float32`. Should be `tf.complex128` when the type of `input` is `float64`.",
       "dtype_candidates": [
@@ -56,16 +58,6 @@
         "float32",
         "float64"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

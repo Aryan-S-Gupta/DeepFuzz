@@ -10,7 +10,10 @@
       "description": "An array of polynomial coefficients of shape ``(M,)``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "p.shape[0] > 0"
+      ]
     },
     "x": {
       "type": "number|tensor",
@@ -20,17 +23,23 @@
       "description": "A number or an array of numbers.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "x's shape is broadcast-compatible with the returned array's shape"
+      ]
     },
     "unroll": {
-      "type": "number",
+      "type": "int|number",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "16",
+      "flag": "Optional",
       "description": "A number used to control the number of unrolled steps with ``lax.scan``. It must be specified statically.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "unroll > 0"
+      ]
     }
   },
   "output": {

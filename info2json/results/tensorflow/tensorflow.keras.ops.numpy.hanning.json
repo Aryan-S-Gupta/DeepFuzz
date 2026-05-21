@@ -11,15 +11,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be a positive integer",
-        "x must be 1-D",
-        "x and output must have broadcast-compatible shapes"
+        "Must be broadcast-compatible with the output shape [N]",
+        "x must be 1-D"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "[0, 0.5, 1, 0.5, 0]",
     "description": "A 1D tensor containing the Hanning window values."
   },
   "constraints": []

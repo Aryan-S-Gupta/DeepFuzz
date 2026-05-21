@@ -11,8 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "If binary (0 or 1) labels are provided they will be converted to -1 or 1",
-        "y_true tensor values must be -1 or 1"
+        "values must be -1 or 1",
+        "y_true and y_pred must have broadcast-compatible shapes"
       ]
     },
     "y_pred": {
@@ -23,7 +23,9 @@
       "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "y_true and y_pred must have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {
@@ -31,5 +33,7 @@
     "numbers": "1",
     "description": "Hinge loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
-  "constraints": []
+  "constraints": [
+    "y_true and y_pred must have broadcast-compatible shapes"
+  ]
 }

@@ -10,12 +10,14 @@
       "description": "Input tensor of shape `(..., M, M)`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "input must be 3-D or higher"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "(..., M, M)",
+    "numbers": "1",
     "description": "A tensor of shape `(..., M, M)` representing the inverse of `x`."
   },
   "constraints": []

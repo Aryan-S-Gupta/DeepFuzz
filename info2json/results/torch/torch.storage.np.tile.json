@@ -1,0 +1,42 @@
+{
+  "api_name": "tile",
+  "module_path": "torch.storage.np",
+  "params": {
+    "A": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "If reps has length d, the result will have dimension of max(d, A.ndim)."
+      ]
+    },
+    "reps": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like The number of repetitions of `A` along each axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "If A.ndim < d, A is promoted to be d-dimensional by prepending new axes.",
+        "For an A of shape (2, 3, 4, 5), a reps of (2, 2) is treated as (1, 1, 2, 2).",
+        "If reps has length d, the result will have dimension of max(d, A.ndim)."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The tiled output array."
+  },
+  "constraints": [
+    "If reps has length d, the result will have dimension of max(d, A.ndim)."
+  ]
+}

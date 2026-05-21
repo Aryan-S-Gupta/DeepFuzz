@@ -10,70 +10,88 @@
       "description": "Input array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
-      "type": "int|tensor|dtype",
+      "type": "int|tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "int or array, default=None. Axis along which the sum to be computed. If None, the sum is computed along all the axes. dtype: The type of the output array. Default=None.",
+      "description": "int or array, default=None. Axis along which the sum to be computed. If None, the sum is computed along all the axes.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The type of the output array. Default=None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Unused by JAX",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "keepdims": {
       "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "initial": {
       "type": "int|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "int or array, Default=None. Initial value for the sum.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "where": {
       "type": "int|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "int or array, default=None. The elements to be used in the sum. Array should be broadcast compatible to the input.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "promote_integers": {
       "type": "int|bool|dtype",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "True",
+      "flag": "Optional",
       "description": "bool, default=True. If True, then integer inputs will be promoted to the widest available integer dtype, following numpy's behavior. If False, the result will have the same dtype as the input. ``promote_integers`` is ignored if ``dtype`` is specified.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

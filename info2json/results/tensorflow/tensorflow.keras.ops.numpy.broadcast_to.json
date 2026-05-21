@@ -10,17 +10,21 @@
       "description": "The tensor to broadcast.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and shape must be compatible for broadcasting"
+      ]
     },
     "shape": {
-      "type": "int|tensor",
+      "type": "int|tuple|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "The shape of the desired tensor. A single integer `i` is interpreted as `(i,)`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and shape must be compatible for broadcasting"
+      ]
     }
   },
   "output": {
@@ -28,5 +32,7 @@
     "numbers": "1",
     "description": "A tensor with the desired shape."
   },
-  "constraints": []
+  "constraints": [
+    "x and shape must be compatible for broadcasting"
+  ]
 }

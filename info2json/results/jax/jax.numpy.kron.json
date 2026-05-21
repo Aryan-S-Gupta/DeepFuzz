@@ -10,7 +10,11 @@
       "description": "first input array with any shape.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "shape must be at least 1-D",
+        "a and b must have broadcast-compatible shapes"
+      ]
     },
     "b": {
       "type": "tensor|any",
@@ -20,7 +24,11 @@
       "description": "second input array with any shape.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "shape must be at least 1-D",
+        "a and b must have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {
@@ -29,7 +37,6 @@
     "description": "A new array representing the Kronecker product of the inputs ``a`` and ``b``. The shape of the output is the element-wise product of the input shapes."
   },
   "constraints": [
-    "a and b must have broadcastable shapes",
-    "output shape: (m * p, n * q) where a shape: (m, n), b shape: (p, q)"
+    "a and b must have broadcast-compatible shapes"
   ]
 }

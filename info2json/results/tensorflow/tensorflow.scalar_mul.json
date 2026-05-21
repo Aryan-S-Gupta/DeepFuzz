@@ -20,17 +20,10 @@
       "description": "A `Tensor` or `IndexedSlices` to be scaled.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Must have known shape.",
+        "x and output must have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {

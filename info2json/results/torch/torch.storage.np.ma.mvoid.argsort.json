@@ -1,0 +1,80 @@
+{
+  "api_name": "argsort",
+  "module_path": "torch.storage.np.ma.mvoid",
+  "params": {
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Axis along which to sort. If None, the default, the flattened array is used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "kind": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'quicksort', 'mergesort', 'heapsort', 'stable'}, optional The sorting algorithm used.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "order": {
+      "type": "string|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str or list of str, optional When `a` is an array with fields defined, this argument specifies which fields to compare first, second, etc. Not all fields need be specified.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "endwith": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{True, False}, optional Whether missing values (if any) should be treated as the largest values (True) or the smallest values (False) When the array contains unmasked values at the same extremes of the datatype, the ordering of these values and the masked values is undefined.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "fill_value": {
+      "type": "number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "scalar or None, optional Value used internally for the masked values. If ``fill_value`` is not None, it supersedes ``endwith``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "stable": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional Only for compatibility with ``np.argsort``. Ignored.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "int|tensor",
+    "numbers": "1",
+    "description": "------- ndarray, int Array of indices that sort `a` along the specified axis. In other words, ``a[index_array]`` yields a sorted `a`."
+  },
+  "constraints": []
+}

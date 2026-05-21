@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1 and x2 must have the same shape."
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     },
     "x2": {
@@ -23,17 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be a tensor.",
-        "x1 and x2 must have the same shape."
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "Output tensor"
   },
   "constraints": [
-    "x1 and x2 must have the same shape."
+    "x1 and x2 must have broadcast-compatible shapes"
   ]
 }

@@ -10,78 +10,99 @@
       "description": "input array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
-      "type": "int|sequence|tensor|dtype",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "optional, int or sequence of ints, default=None. Axis along which the variance is computed. If None, variance is computed along all the axes. dtype: The type of the output array. Default=None.",
+      "description": "optional, int or sequence of ints, default=None. Axis along which the variance is computed. If None, variance is computed along all the axes.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
-    "ddof": {
-      "type": "int|number",
+    "dtype": {
+      "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "int, default=0. Degrees of freedom. The divisor in the variance computation is ``N-ddof``, ``N`` is number of elements along given axis.",
+      "flag": "Optional",
+      "description": "The type of the output array. Default=None.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "keepdims": {
-      "type": "bool",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
-      "dtype_candidates": [
-        "bool"
-      ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "where": {
-      "type": "bool|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "optional, boolean array, default=None. The elements to be used in the variance. Array should be broadcast compatible to the input.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "mean": {
-      "type": "callable|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "optional, mean of the input array, computed along the given axis. If provided, it will be used to compute the variance instead of computing it from the input array. If specified, mean must be broadcast-compatible with the input array. In the general case, this can be achieved by computing the mean with ``keepdims=True`` and ``axis`` matching this function's ``axis`` argument.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "correction": {
-      "type": "int|float",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "int or float, default=None. Alternative name for ``ddof``. Both ddof and correction can't be provided simultaneously.",
-      "dtype_candidates": [],
-      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Unused by JAX.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "ddof": {
+      "type": "int|number",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, default=0. Degrees of freedom. The divisor in the variance computation is ``N-ddof``, ``N`` is number of elements along given axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "where": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, boolean array, default=None. The elements to be used in the variance. Array should be broadcast compatible to the input.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "mean": {
+      "type": "callable|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, mean of the input array, computed along the given axis. If provided, it will be used to compute the variance instead of computing it from the input array. If specified, mean must be broadcast-compatible with the input array. In the general case, this can be achieved by computing the mean with ``keepdims=True`` and ``axis`` matching this function's ``axis`` argument.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "correction": {
+      "type": "int|float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or float, default=None. Alternative name for ``ddof``. Both ddof and correction can't be provided simultaneously.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

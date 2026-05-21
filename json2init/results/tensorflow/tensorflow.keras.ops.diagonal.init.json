@@ -16,8 +16,8 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "must be 2-D or higher",
-          "x's dimensionality must be at least 2"
+          "4-D or more",
+          "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
         ]
       },
       "chosen_type": "tensor",
@@ -25,8 +25,10 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          1
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -34,14 +36,25 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "offset": {
       "name": "offset",
@@ -54,7 +67,8 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "offset must be positive"
+          "offset must be positive",
+          "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
         ]
       },
       "chosen_type": "int",
@@ -67,7 +81,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis1": {
       "name": "axis1",
@@ -80,7 +101,9 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "axis1 must be 2-D"
+          "0 <= axis1 < rank(x)",
+          "axis1 must be 2-D",
+          "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
         ]
       },
       "chosen_type": "int",
@@ -93,20 +116,29 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis2": {
       "name": "axis2",
       "spec": {
         "type": "int",
         "size": "2-D",
-        "default": "1` (second axis)",
+        "default": "1",
         "flag": "Optional",
         "description": "Axis to be used as the second axis of the 2-D sub-arrays. Defaults to `1` (second axis).",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "axis2 must be 2-D"
+          "1 <= axis2 < rank(x)",
+          "axis2 must be 2-D",
+          "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
         ]
       },
       "chosen_type": "int",
@@ -119,7 +151,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -127,7 +166,9 @@
     "numbers": "1",
     "description": "Tensor of diagonals."
   },
-  "constraints": [],
+  "constraints": [
+    "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -141,16 +182,45 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [
-        1
+        2,
+        2,
+        2
       ],
       "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
+      "numel": 8,
+      "preview": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "offset",
+      "axis1",
+      "axis2"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.diagonal.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

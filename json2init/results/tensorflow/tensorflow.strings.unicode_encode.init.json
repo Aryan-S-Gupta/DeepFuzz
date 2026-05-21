@@ -1,0 +1,177 @@
+{
+  "api_full_name": "tensorflow.strings.unicode_encode",
+  "api_name": "unicode_encode",
+  "module_path": "tensorflow.strings",
+  "import_path": "tensorflow.strings.unicode_encode",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "An `N+1` dimensional potentially ragged integer tensor with shape `[D1...DN, num_chars]`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "string",
+        "values": [
+          "a",
+          "b"
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "output_encoding": {
+      "name": "output_encoding",
+      "spec": {
+        "type": "sequence",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Unicode encoding that should be used to encode each code point sequence. Can be `\"UTF-8\"`, `\"UTF-16-BE\"`, or `\"UTF-32-BE\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "UTF-8"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "errors": {
+      "name": "errors",
+      "spec": {
+        "type": "number|any",
+        "size": "scalar",
+        "default": "",
+        "flag": "Optional",
+        "description": "Specifies the response when a code point that is not a [Unicode scalar value](https://www.unicode.org/glossary/#unicode_scalar_value) is encountered (optional). One of: * `'replace'`: Replace non-scalar-value with the `replacement_char`. (default) * `'ignore'`: Skip non-scalar-value . * `'strict'`: Raise an exception for any non-scalar-value.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "replace",
+          "ignore",
+          "strict"
+        ],
+        "constraints": [
+          "errors must be one of replace, ignore, strict"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "replacement_char": {
+      "name": "replacement_char",
+      "spec": {
+        "type": "number|any",
+        "size": "scalar",
+        "default": "65533",
+        "flag": "Optional",
+        "description": "The replacement character to be used in place of any invalid input when `errors='replace'`. Any Unicode scalar value may be used. The default value is the default Unicode replacement character which is 0xFFFD (U+65533).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "replacement_char must be one of replace"
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|tensor|dtype",
+    "numbers": "1",
+    "description": "A `N` dimensional `string` tensor with shape `[D1...DN]`. #### Example: >>> input = tf.ragged.constant( ... [[71, 246, 246, 100, 110, 105, 103, 104, 116], [128522]]) >>> print(unicode_encode(input, 'UTF-8')) tf.Tensor([b'G\\xc3\\xb6\\xc3\\xb6dnight' b'\\xf0\\x9f\\x98\\x8a'], shape=(2,), dtype=string)"
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: cannot compute UnicodeEncode as input #0(zero-based) was expected to be a int32 tensor but is a string tensor [Op:UnicodeEncode] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "cannot compute UnicodeEncode as input #0(zero-based) was expected to be a int32 tensor but is a string tensor [Op:UnicodeEncode] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: cannot compute UnicodeEncode as input #0(zero-based) was expected to be a int32 tensor but is a string tensor [Op:UnicodeEncode] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.strings.unicode_encode.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

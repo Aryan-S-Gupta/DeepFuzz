@@ -5,14 +5,13 @@
     "device_index": {
       "type": "string|int|device",
       "size": "",
-      "default": "current_device_index",
+      "default": "",
       "flag": "Optional",
       "description": "the index of the device to target. If not given, use :func:`torch.accelerator.current_device_index` by default. If a :class:`torch.device` or str is provided, its type must match the current :ref:`accelerator<accelerators>` device type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must match current accelerator device type when torch.device or str"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {

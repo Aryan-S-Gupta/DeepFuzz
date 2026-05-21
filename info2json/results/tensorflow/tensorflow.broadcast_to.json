@@ -10,7 +10,9 @@
       "description": "A `Tensor`. A Tensor to broadcast.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "A must be a Tensor."
+      ]
     },
     "shape": {
       "type": "int|tensor",
@@ -28,20 +30,12 @@
         "int"
       ],
       "constraints": [
+        "An 1-D int Tensor.",
+        "The shape of the desired output.",
         "shape must be 1-D",
         "shape must be one of int32, int64, int",
-        "input and shape must be compatible for broadcasting"
+        "When broadcasting, if a tensor has fewer axes than necessary its shape is padded with the appropriate number of zeros."
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -49,5 +43,7 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `input`."
   },
-  "constraints": []
+  "constraints": [
+    "Two shapes are compatible if for each dimension pair they are either equal or one of them is one."
+  ]
 }

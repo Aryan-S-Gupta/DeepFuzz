@@ -3,41 +3,34 @@
   "module_path": "tensorflow",
   "params": {
     "value": {
-      "type": "list|number|tensor|dtype",
+      "type": "list|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A constant value (or list) of output type `dtype`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A constant value (or list) of output type `dtype`. dtype: Optional type of the elements of the resulting tensor.",
+      "description": "Optional type of the elements of the resulting tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "value type matches dtype if specified",
-        "shape is compatible with value shape"
-      ]
+      "constraints": []
     },
     "shape": {
-      "type": "list|tensor",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "Optional dimensions of resulting tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "shape is compatible with value shape"
-      ]
-    },
-    "name": {
-      "type": "string|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "Optional name for the tensor.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "name is a string or None"
-      ]
+      "constraints": []
     }
   },
   "output": {
@@ -45,7 +38,5 @@
     "numbers": "1",
     "description": "A Constant Tensor."
   },
-  "constraints": [
-    "shape is compatible with value shape"
-  ]
+  "constraints": []
 }

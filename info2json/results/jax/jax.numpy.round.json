@@ -10,6 +10,7 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "decimals": {
@@ -20,24 +21,26 @@
       "description": "int, default=0. Number of decimal points to which the input needs to be rounded. It must be specified statically. Not implemented for ``decimals < 0``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "decimals >= 0"
       ]
     },
     "out": {
-      "type": "Unused by JAX",
+      "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Unused by JAX.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "An array containing the rounded values to the specified ``decimals`` with same shape and dtype as ``a``."
   },
   "constraints": []

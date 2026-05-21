@@ -10,7 +10,9 @@
       "description": "Input integer tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and y must have broadcast-compatible shapes"
+      ]
     },
     "y": {
       "type": "int|tensor",
@@ -21,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have broadcast-compatible shapes with x"
+        "x and y must have broadcast-compatible shapes"
       ]
     }
   },
@@ -30,5 +32,7 @@
     "numbers": "1",
     "description": "Result tensor."
   },
-  "constraints": []
+  "constraints": [
+    "x and y must have broadcast-compatible shapes"
+  ]
 }

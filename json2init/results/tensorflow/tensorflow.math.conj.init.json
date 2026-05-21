@@ -13,11 +13,15 @@
         "default": "",
         "flag": "Required",
         "description": "`Tensor` to conjugate. Must have numeric or variant type.",
-        "dtype_candidates": [],
+        "dtype_candidates": [
+          "float32",
+          "complex128"
+        ],
         "enum_values": [],
         "constraints": [
-          "Must be of the form a + bj, where a is the real part and bj is the imaginary part.",
-          "x and returned value must have the same type."
+          "Must be a tensor",
+          "If x is a complex number tensor, the elements must be of the form \\(a + bj\\), where `a` and `b` are real numbers. The returned tensor will be of the form \\(a - bj\\).",
+          "If x is not a complex number tensor, it will return a tensor of the same type as input but with float32 or complex128 dtype."
         ]
       },
       "chosen_type": "number",
@@ -30,31 +34,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "scalar_delta"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -78,12 +65,28 @@
       "shape": [],
       "dtype": "float32",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.conj.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

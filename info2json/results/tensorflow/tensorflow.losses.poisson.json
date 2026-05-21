@@ -3,14 +3,16 @@
   "module_path": "tensorflow.losses",
   "params": {
     "y_true": {
-      "type": "",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "Ground truth values. shape = `[batch_size, d0, .. dN]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "output shape must be a sub-shape of the shapes of y_true and y_pred"
+      ]
     },
     "y_pred": {
       "type": "tensor",
@@ -21,14 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true shape must match y_pred shape"
+        "output shape must be a sub-shape of the shapes of y_true and y_pred"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "-1",
+    "numbers": "[batch_size, d0, .. dN-1]",
     "description": "Poisson loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
-  "constraints": []
+  "constraints": [
+    "output shape must be a sub-shape of the shapes of y_true and y_pred"
+  ]
 }

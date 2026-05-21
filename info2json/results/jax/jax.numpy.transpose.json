@@ -10,22 +10,21 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must be 2-D or higher",
-        "a and axes must be compatible with each other"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "axes": {
-      "type": "list|sequence",
+      "type": "int|sequence",
       "size": "",
-      "default": "range(a",
+      "default": "",
       "flag": "Optional",
       "description": "optionally specify the permutation using a length-`a.ndim` sequence of integers ``i`` satisfying ``0 <= i < a.ndim``. Defaults to ``range(a.ndim)[::-1]``, i.e. reverses the order of all axes.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "all elements must satisfy 0 <= i < a.ndim",
-        "a and axes must be compatible with each other"
+        "Defaults to `range(a.ndim)[::-1]`",
+        "axes argument can be specified to change the default behavior"
       ]
     }
   },
@@ -34,7 +33,5 @@
     "numbers": "1",
     "description": "transposed copy of the array."
   },
-  "constraints": [
-    "a and axes must be compatible with each other"
-  ]
+  "constraints": []
 }

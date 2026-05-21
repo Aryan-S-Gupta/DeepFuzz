@@ -41,9 +41,7 @@
           "uint64"
         ],
         "constraints": [
-          "must be one of the following types: float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64",
-          "a must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64",
-          "a and b must be the same shape"
+          "a must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64"
         ]
       },
       "chosen_type": "float",
@@ -55,6 +53,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -70,9 +75,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "must have the same type as a",
-          "b must have the same dtype as a",
-          "a and b must be the same shape"
+          "b must have the same dtype as a"
         ]
       },
       "chosen_type": "tensor",
@@ -80,7 +83,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -89,36 +92,23 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     }
@@ -128,27 +118,26 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `a`."
   },
-  "constraints": [
-    "a and b must be the same shape"
-  ],
+  "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: {{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [1] [Op:Cross] name: "
+    "smoke test failed: {{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [2] [Op:Cross] name: "
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "api_runtime_error",
     "error_type": "InvalidArgumentError",
-    "error": "{{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [1] [Op:Cross] name: ",
+    "error": "{{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [2] [Op:Cross] name: ",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 2737, in cross\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [1] [Op:Cross] name: \n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 2737, in cross\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Cross_device_/job:localhost/replica:0/task:0/device:CPU:0}} Both inputs must be of same shape: [] vs. [2] [Op:Cross] name: \n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.cross.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

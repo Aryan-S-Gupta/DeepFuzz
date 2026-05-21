@@ -10,7 +10,9 @@
       "description": "A 1-D integer Tensor or Python array. The shape of the output samples to be drawn per alpha/beta-parameterized distribution.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape must be 1-D"
+      ]
     },
     "alpha": {
       "type": "tensor|dtype",
@@ -23,11 +25,21 @@
       "constraints": []
     },
     "beta": {
-      "type": "float|tensor|dtype",
+      "type": "tensor|dtype",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "A Tensor or Python value or N-D array of type `dtype`. Defaults to 1. `beta` provides the inverse scale parameter(s) of the gamma distribution(s) to sample. Must be broadcastable with `alpha`. dtype: The type of alpha, beta, and the output: `float16`, `float32`, or `float64`.",
+      "flag": "Optional",
+      "description": "A Tensor or Python value or N-D array of type `dtype`. Defaults to 1. `beta` provides the inverse scale parameter(s) of the gamma distribution(s) to sample. Must be broadcastable with `alpha`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "float",
+      "size": "",
+      "default": "tf.float32",
+      "flag": "Optional",
+      "description": "The type of alpha, beta, and the output: `float16`, `float32`, or `float64`.",
       "dtype_candidates": [
         "float16",
         "float32",
@@ -40,18 +52,8 @@
       "type": "int",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A Python integer. Used to create a random seed for the distributions. See `tf.random.set_seed` for behavior.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Optional name for the operation.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

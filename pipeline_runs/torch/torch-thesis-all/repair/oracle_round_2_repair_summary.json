@@ -1,0 +1,790 @@
+{
+  "schema_version": "3.0",
+  "library": "torch",
+  "phase": "oracle_round_2",
+  "total_error_records": 91,
+  "unique_failed_apis": 42,
+  "root_cause_by_api": {
+    "torch.cuda.max_memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.max_memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "57a901f10a4950a7",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.max_memory_reserved": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.max_memory_reserved",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[566]",
+        "signature": "3d52a53c34d4f2f7",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.memory.max_memory_allocated": {
+      "root_stage": "stage4_runtime",
+      "error_count": 3,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.memory.max_memory_allocated",
+        "stage": "stage4_runtime",
+        "error_type": "candidate",
+        "message": "timeout_or_hang",
+        "signature": "7b8f2238e4955f22",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/bug_report.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.memory.max_memory_reserved": {
+      "root_stage": "stage4_runtime",
+      "error_count": 3,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.memory.max_memory_reserved",
+        "stage": "stage4_runtime",
+        "error_type": "candidate",
+        "message": "timeout_or_hang",
+        "signature": "41169d458df9f451",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/bug_report.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.memory.memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.memory.memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "53fb1b5859b3d020",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.memory.memory_reserved": {
+      "root_stage": "stage4_runtime",
+      "error_count": 3,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.memory.memory_reserved",
+        "stage": "stage4_runtime",
+        "error_type": "candidate",
+        "message": "timeout_or_hang",
+        "signature": "058e75f1f77f56f8",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/bug_report.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.memory.memory_stats": {
+      "root_stage": "stage4_runtime",
+      "error_count": 1,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.memory.memory_stats",
+        "stage": "stage4_runtime",
+        "error_type": "candidate",
+        "message": "timeout_or_hang",
+        "signature": "ec3ab6ce27fb4980",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/bug_report.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 3,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "06ad274aece9f374",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.memory_reserved": {
+      "root_stage": "stage4_runtime",
+      "error_count": 3,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.memory_reserved",
+        "stage": "stage4_runtime",
+        "error_type": "candidate",
+        "message": "timeout_or_hang",
+        "signature": "4d5f3c182ff698f2",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/bug_report.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.cuda.memory_stats": {
+      "root_stage": "stage4_runtime",
+      "error_count": 1,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.cuda.memory_stats",
+        "stage": "stage4_runtime",
+        "error_type": "candidate",
+        "message": "timeout_or_hang",
+        "signature": "4d8351635dcde270",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/bug_report.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.distributions.bernoulli.binary_cross_entropy_with_logits": {
+      "root_stage": "stage4_runtime",
+      "error_count": 1,
+      "stages": [
+        "stage4_runtime"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.distributions.bernoulli.binary_cross_entropy_with_logits",
+        "stage": "stage4_runtime",
+        "error_type": "candidate",
+        "message": "timeout_or_hang",
+        "signature": "36fe4ddc531669e8",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/bug_report.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.distributions.transforms.pad": {
+      "root_stage": "stage4_runtime",
+      "error_count": 4,
+      "stages": [
+        "stage4_runtime",
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.distributions.transforms.pad",
+        "stage": "stage4_runtime",
+        "error_type": "invalid_valid_mutation",
+        "message": "Padding length must be divisible by 2",
+        "signature": "5f5f5ebafb7c8c25",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/execution_results/torch.distributions.transforms.pad.results.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/failures.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.fx.experimental.symbolic_shapes.guard_scalar": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.fx.experimental.symbolic_shapes.guard_scalar",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=37.5 < 60",
+        "message": "selected_function_line_coverage_percent=37.5 < 60",
+        "signature": "60b911a450e15bad",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.fx.experimental.symbolic_shapes.has_static_value": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.fx.experimental.symbolic_shapes.has_static_value",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "23dc4d44f71b4abf",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.masked.amax": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.masked.amax",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=35.2941 below threshold 60; missing_lines=[1233, 1234, 1259, 1260, 1263, 1266, 1269, 1270, 1271, 1274, 1278]",
+        "signature": "14d074bbc4e365a5",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.masked.amin": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.masked.amin",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=35.2941 < 60",
+        "message": "selected_function_line_coverage_percent=35.2941 < 60",
+        "signature": "013ddccb210aa55f",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.masked.mean": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.masked.mean",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=43.4783 below threshold 60; missing_lines=[1385, 1386, 1415, 1431, 1432, 1434, 1436, 1437, 1438, 1439, 1440, 1443, 1447]",
+        "signature": "9a5d6aebe61505eb",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.masked.median": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.masked.median",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=58.8235 < 60",
+        "message": "selected_function_line_coverage_percent=58.8235 < 60",
+        "signature": "0aecc17104a401a7",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.masked.prod": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.masked.prod",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=44.4444 < 60",
+        "message": "selected_function_line_coverage_percent=44.4444 < 60",
+        "signature": "2e4ded0efc06507a",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.masked.std": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.masked.std",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "82e6de3779add13f",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.masked.sum": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.masked.sum",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=42.1053 < 60",
+        "message": "selected_function_line_coverage_percent=42.1053 < 60",
+        "signature": "63ebb9d08cbe00a0",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.masked.var": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.masked.var",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[1694, 1695]",
+        "signature": "46caf101a5507907",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.mtia.memory.memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.mtia.memory.memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "ca3c8edb79b8adb0",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.mtia.memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.mtia.memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "9bab5b09da3a436f",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.windows.general_hamming": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.windows.general_hamming",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[766, 801]",
+        "signature": "0f1db5030ea35c6b",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.windows.hamming": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.windows.hamming",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "ee6a3222525304a5",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.windows.hann": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.windows.hann",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "322182f0c9a609ff",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.windows.nuttall": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.windows.nuttall",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[822, 866]",
+        "signature": "9087f1c04c70570b",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.windows.windows.general_hamming": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.windows.windows.general_hamming",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "b8390fefb38d2ae9",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.windows.windows.hamming": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.windows.windows.hamming",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[428, 464]",
+        "signature": "74af6cd2ebb33f9b",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.windows.windows.hann": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.windows.windows.hann",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=33.3333 below threshold 60; missing_lines=[483, 518]",
+        "signature": "23ddcc3346f7db14",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.windows.windows.nuttall": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.windows.windows.nuttall",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=33.3333 < 60",
+        "message": "selected_function_line_coverage_percent=33.3333 < 60",
+        "signature": "2cfd731a90d0c554",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.max_memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.max_memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[149]",
+        "signature": "1256ab15cab2c4fd",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.max_memory_reserved": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.max_memory_reserved",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "03b97939c57930d1",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.memory.max_memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.memory.max_memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[149]",
+        "signature": "88ea192c07e54167",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.memory.max_memory_reserved": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.memory.max_memory_reserved",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "19397a7348188042",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.memory.memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.memory.memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[133]",
+        "signature": "314da586aef27220",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.memory.memory_reserved": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.memory.memory_reserved",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "3f136ca402dfd4e7",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.memory.memory_snapshot": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.memory.memory_snapshot",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "013f16d81d6f688f",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.memory_allocated": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.memory_allocated",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_line_coverage_percent=50 < 60",
+        "message": "selected_function_line_coverage_percent=50 < 60",
+        "signature": "a2d1625da5a83a7c",
+        "payload_ref": "",
+        "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.memory_reserved": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.memory_reserved",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[166]",
+        "signature": "99bd92472a591e14",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    },
+    "torch.xpu.memory_snapshot": {
+      "root_stage": "stage4_coverage",
+      "error_count": 2,
+      "stages": [
+        "stage4_coverage"
+      ],
+      "first_error": {
+        "library": "torch",
+        "api_full_name": "torch.xpu.memory_snapshot",
+        "stage": "stage4_coverage",
+        "error_type": "selected_function_low_coverage",
+        "message": "selected_function_line_coverage_percent=50 below threshold 60; missing_lines=[258, 275]",
+        "signature": "729060ed1a4316a5",
+        "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+        "oracle_decision": ""
+      }
+    }
+  },
+  "by_root_stage": {
+    "stage1_info2json": 0,
+    "stage2_json_validation": 0,
+    "stage3_init_generation": 0,
+    "stage4_coverage": 34,
+    "stage4_runtime": 8
+  },
+  "errors_csv": "/Users/aryansg/Desktop/DeepFuzz/pipeline_runs/torch/torch-thesis-all/repair/oracle_round_2_errors.csv",
+  "api_list": "/Users/aryansg/Desktop/DeepFuzz/pipeline_runs/torch/torch-thesis-all/repair/oracle_round_2_api_list.txt",
+  "model_config": {
+    "extraction_model": "mixtral:8x7b",
+    "fast_repair_model": "qwen3-coder:30b",
+    "strong_repair_model": "qwen3-coder:30b",
+    "host": "http://localhost:11434",
+    "backend": "ollama"
+  }
+}

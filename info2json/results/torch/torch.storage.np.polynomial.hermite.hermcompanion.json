@@ -1,0 +1,26 @@
+{
+  "api_name": "hermcompanion",
+  "module_path": "torch.storage.np.polynomial.hermite",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array of Hermite series coefficients ordered from low to high degree.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c must be 1-D",
+        "c must be array_like"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "------- ndarray Scaled companion matrix of dimensions (deg, deg)."
+  },
+  "constraints": []
+}

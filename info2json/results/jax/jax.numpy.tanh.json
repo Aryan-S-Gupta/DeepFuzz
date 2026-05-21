@@ -10,6 +10,7 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "-1j * jnp.tan(1j * x) is equivalent to jnp.tanh(x)"
       ]
@@ -17,11 +18,10 @@
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real or complex",
+    "numbers": "1",
     "description": "An array containing the hyperbolic tangent of each element of ``x``, promoting to inexact dtype."
   },
   "constraints": [
-    "jax.numpy.tanh supports broadcasting",
-    "output dtype follows from input dtype and values"
+    "jax.numpy.tanh supports complex64 and float32 dtypes"
   ]
 }

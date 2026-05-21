@@ -10,9 +10,7 @@
       "description": "tensor of true targets.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "Y_true and y_pred must have broadcast-compatible shapes"
-      ]
+      "constraints": []
     },
     "y_pred": {
       "type": "tensor",
@@ -22,29 +20,25 @@
       "description": "tensor of predicted targets.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "Y_true and y_pred must have broadcast-compatible shapes"
-      ]
+      "constraints": []
     },
     "delta": {
       "type": "float|callable",
       "size": "",
-      "default": "1",
+      "default": "1.0",
       "flag": "Optional",
       "description": "A float, the point where the Huber loss function changes from a quadratic to linear. Defaults to `1.0`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "Delta must be non-negative"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "number|tensor",
-    "numbers": "one scalar loss entry per sample",
+    "numbers": "one scalar loss entry per sample.",
     "description": "Tensor with one scalar loss entry per sample."
   },
   "constraints": [
-    "Y_true and y_pred must have broadcast-compatible shapes"
+    "loss calculation involves appending two values to the loss list"
   ]
 }

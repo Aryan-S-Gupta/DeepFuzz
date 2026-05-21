@@ -10,12 +10,14 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x must be a valid TensorFlow tensor."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same shape as x",
+    "numbers": "1",
     "description": "Output tensor, element-wise reciprocal of `x`."
   },
   "constraints": []

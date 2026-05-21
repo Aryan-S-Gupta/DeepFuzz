@@ -10,7 +10,9 @@
       "description": "A `Tensor` of type `string`. Strings to be encoded.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "A `Tensor` of type `string`."
+      ]
     },
     "pad": {
       "type": "bool",
@@ -22,17 +24,9 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Optional"
+      ]
     }
   },
   "output": {
@@ -40,5 +34,7 @@
     "numbers": "1",
     "description": "A `Tensor` of type `string`."
   },
-  "constraints": []
+  "constraints": [
+    "The output is a `Tensor` of type `string`."
+  ]
 }

@@ -20,18 +20,11 @@
         "float64"
       ],
       "constraints": [
-        "x must be one of bfloat16, half, float32, float64"
+        "x must be a Tensor",
+        "x type must be bfloat16, half, float32, or float64",
+        "x must be one of bfloat16, half, float32, float64",
+        "The output has the same type as x"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

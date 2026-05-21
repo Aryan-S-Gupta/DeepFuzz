@@ -10,17 +10,20 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and keepdims must be compatible."
+      ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "to compute the standard deviation of the",
+      "default": "",
       "flag": "Optional",
       "description": "Axis along which to compute standard deviation. Default is to compute the standard deviation of the flattened tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "If not provided, the standard deviation of the flattened tensor is computed.",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
@@ -34,13 +37,17 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and keepdims must be compatible."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32 or float64",
+    "numbers": "1",
     "description": "Output tensor containing the standard deviation values."
   },
-  "constraints": []
+  "constraints": [
+    "x and keepdims must be compatible."
+  ]
 }

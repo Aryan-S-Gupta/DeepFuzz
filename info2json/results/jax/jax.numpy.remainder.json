@@ -10,9 +10,8 @@
       "description": "scalar or array. Specifies the dividend.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "x2": {
       "type": "number|tensor",
@@ -22,17 +21,14 @@
       "description": "scalar or array. Specifies the divisor. ``x1`` and ``x2`` should either have same shape or be broadcast compatible.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating point or integer",
+    "numbers": "1",
     "description": "An array containing the remainder of element-wise division of ``x1`` by ``x2`` with same sign as the elements of ``x2``."
   },
-  "constraints": [
-    "x1 and x2 must have broadcast-compatible shapes"
-  ]
+  "constraints": []
 }

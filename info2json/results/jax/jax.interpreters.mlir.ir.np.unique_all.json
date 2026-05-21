@@ -11,6 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "flattened if not already 1-D",
         "x must be 1-D"
       ]
     }
@@ -21,6 +22,6 @@
     "description": "------- namedtuple The result containing: * values - The unique elements of an input array. * indices - The first occurring indices for each unique element. * inverse_indices - The indices from the set of unique elements that reconstruct `x`. * counts - The corresponding counts for each unique element."
   },
   "constraints": [
-    "out.type = namedtuple"
+    "returns a sorted result"
   ]
 }

@@ -10,8 +10,11 @@
       "description": "scalar or array. Specifies the angle in radians.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x type is either scalar or array"
+        "must be scalar or array",
+        "x and output must have broadcast-compatible shapes",
+        "jax.numpy.rad2deg(x) = x * (180/pi)"
       ]
     }
   },

@@ -3,35 +3,38 @@
   "module_path": "jax.numpy",
   "params": {
     "keys": {
-      "type": "sequence",
+      "type": "int|float|bool|sequence|number|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "a sequence of arrays to sort; all arrays must have the same shape. The last key in the sequence is used as the primary key.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": [
-        "all keys arrays must have the same shape",
-        "keys arrays must not be empty"
+        "axis must satisfy -rank(keys) <= axis < rank(keys)"
       ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "-1)",
+      "default": "-1",
       "flag": "Optional",
       "description": "the axis along which to sort (default: -1).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(keys[0]) <= axis < rank(keys[0])"
+        "axis must satisfy -rank(keys) <= axis < rank(keys)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "An array of integers of shape ``keys[0].shape`` giving the indices of the entries in lexicographically-sorted order."
   },
-  "constraints": []
+  "constraints": [
+    "axis must satisfy -rank(keys) <= axis < rank(keys)"
+  ]
 }

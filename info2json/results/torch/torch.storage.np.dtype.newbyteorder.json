@@ -1,0 +1,32 @@
+{
+  "api_name": "newbyteorder",
+  "module_path": "torch.storage.np.dtype",
+  "params": {
+    "new_order": {
+      "type": "string|any",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "string, optional Byte order to force; a value from the byte order specifications below. The default value ('S') results in swapping the current byte order. `new_order` codes can be any of:",
+      "dtype_candidates": [],
+      "enum_values": [
+        "S",
+        "I"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be one of: 'S', '<', '>', '=', '|', 'I'",
+        "new_order must be one of S",
+        "new_order codes can be any of: 'S', '<', '>', '=', '|', 'I'"
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype New dtype object with the given change to the byte order."
+  },
+  "constraints": [
+    "Input and output dtypes must have the same size and type, excluding byte order."
+  ]
+}

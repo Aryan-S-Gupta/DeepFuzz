@@ -10,7 +10,11 @@
       "description": "A complex number or an array of complex numbers.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "must be compatible with shape inference",
+        "z cannot be null"
+      ]
     },
     "deg": {
       "type": "bool",
@@ -18,8 +22,11 @@
       "default": "False",
       "flag": "Optional",
       "description": "Boolean. If ``True``, returns the result in degrees else returns in radians. Default is ``False``.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

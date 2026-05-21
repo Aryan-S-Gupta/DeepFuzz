@@ -11,27 +11,30 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape must be at least 1-D"
+        "The shapes of x and bins must be compatible for broadcasting."
       ]
     },
     "bins": {
       "type": "tensor",
-      "size": "1-D",
+      "size": "",
       "default": "",
       "flag": "Required",
       "description": "Array of bins. It has to be one-dimensional and monotonically increasing.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "bins must be 1-D",
-        "bins must be monotonically increasing"
+        "one-dimensional",
+        "monotonically increasing",
+        "The shapes of x and bins must be compatible for broadcasting."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32 or int64",
+    "numbers": "1",
     "description": "Output array of indices, of same shape as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "The shapes of x and bins must be compatible for broadcasting."
+  ]
 }

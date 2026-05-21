@@ -3,14 +3,16 @@
   "module_path": "tensorflow.keras.ops.numpy",
   "params": {
     "x": {
-      "type": "sequence|tensor",
+      "type": "list|sequence|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "A sequence of tensors.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and y must have broadcast-compatible shapes (implicit)"
+      ]
     },
     "axis": {
       "type": "int",
@@ -21,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Defaults to `0`",
+        "-rank(input) <= axis < rank(input)",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     }

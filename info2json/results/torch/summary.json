@@ -1,18 +1,16 @@
 {
-  "processed": 903,
-  "succeeded": 902,
-  "failed": 1,
-  "failures": [
-    {
-      "api_full_name": "torch.accelerator.max_memory_allocated",
-      "error": "ConnectionError: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 61] Connection refused\"))"
-    }
-  ],
+  "processed": 593,
+  "succeeded": 593,
+  "failed": 0,
+  "failures": [],
+  "model_backend": "ollama",
+  "model_backend_available": true,
+  "model_backend_message": "Ollama is reachable at http://localhost:11434",
   "input": "doc2info/results/torch/accepted.csv",
   "outdir": "info2json/results/torch",
   "model": "mixtral:8x7b",
   "host": "http://localhost:11434",
-  "total_requested": 629,
+  "total_requested": 593,
   "num_predict": 320,
   "num_ctx": 2048,
   "temperature": 0.0

@@ -3,27 +3,28 @@
   "module_path": "tensorflow",
   "params": {
     "shape": {
-      "type": "float|tuple|list|tensor|dtype",
+      "type": "tuple|list|tensor",
       "size": "1-D",
       "default": "",
-      "flag": "Optional",
-      "description": "A `list` of integers, a `tuple` of integers, or a 1-D `Tensor` of type `int32`. dtype: Optional DType of an element in the resulting `Tensor`. Default is `tf.float32`.",
+      "flag": "Required",
+      "description": "A `list` of integers, a `tuple` of integers, or a 1-D `Tensor` of type `int32`.",
       "dtype_candidates": [
-        "int32",
-        "float32"
+        "int32"
       ],
       "enum_values": [],
       "constraints": [
         "shape must be 1-D"
       ]
     },
-    "name": {
-      "type": "string",
+    "dtype": {
+      "type": "float|tensor|dtype",
       "size": "",
-      "default": "",
+      "default": "tf.float32",
       "flag": "Optional",
-      "description": "Optional string. A name for the operation.",
-      "dtype_candidates": [],
+      "description": "Optional DType of an element in the resulting `Tensor`. Default is `tf.float32`.",
+      "dtype_candidates": [
+        "float32"
+      ],
       "enum_values": [],
       "constraints": []
     },

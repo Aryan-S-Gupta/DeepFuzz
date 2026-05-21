@@ -10,9 +10,24 @@
       "description": "input array or scalar. ``complex`` dtype are not supported.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x cannot be of complex dtype",
-        "x and output have the same shape"
+        "x cannot be complex dtype",
+        "out must be None or an array of same shape as x"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "output array of same shape as x containing True where x is -inf, and False otherwise",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "out must have the same shape as x",
+        "out must be None or an array of same shape as x"
       ]
     }
   },
@@ -21,5 +36,7 @@
     "numbers": "1",
     "description": "A boolean array of same shape as ``x`` containing ``True`` where ``x`` is ``-inf``, and ``False`` otherwise."
   },
-  "constraints": []
+  "constraints": [
+    "out must be None or an array of same shape as x"
+  ]
 }

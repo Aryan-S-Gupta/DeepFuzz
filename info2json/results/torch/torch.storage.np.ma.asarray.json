@@ -1,0 +1,48 @@
+{
+  "api_name": "asarray",
+  "module_path": "torch.storage.np.ma",
+  "params": {
+    "a": {
+      "type": "tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input data, in any form that can be converted to a masked array. This includes lists, lists of tuples, tuples, tuples of tuples, tuples of lists, ndarrays and masked arrays.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Includes lists, lists of tuples, tuples, tuples of tuples, tuples of lists, ndarrays and masked arrays.",
+        "Input data must be convertible to a masked array."
+      ]
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "dtype, optional By default, the data-type is inferred from the input data.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "order": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'C', 'F'}, optional Whether to use row-major ('C') or column-major ('FORTRAN') memory representation. Default is 'C'.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- MaskedArray Masked array interpretation of `a`."
+  },
+  "constraints": []
+}

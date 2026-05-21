@@ -1,0 +1,45 @@
+{
+  "api_name": "to_sparse_semi_structured",
+  "module_path": "torch.sparse.semi_structured",
+  "params": {
+    "original_tensor": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the dense tensor to convert",
+      "dtype_candidates": [
+        "int8",
+        "float16",
+        "float32",
+        "bfloat16"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "original_tensor dtype must be float32, float16, bfloat16, or int8",
+        "original_tensor size and dims are checked against the sparse block shape constraints",
+        "original_tensor device is either CPU or CUDA"
+      ]
+    },
+    "transposed": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "deprecated arg to be removed in another release. Do not use.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A sparse semi-structured tensor created from the given original_tensor"
+  },
+  "constraints": []
+}

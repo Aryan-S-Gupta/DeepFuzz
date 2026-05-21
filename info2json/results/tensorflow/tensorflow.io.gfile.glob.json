@@ -10,12 +10,15 @@
       "description": "string or iterable of strings. The glob pattern(s).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "must be a string or iterable of strings",
+        "The returned list will contain filenames if there are any matches for the provided pattern"
+      ]
     }
   },
   "output": {
     "type": "list",
-    "numbers": "1",
+    "numbers": "of strings",
     "description": "A list of strings containing filenames that match the given pattern(s)."
   },
   "constraints": []

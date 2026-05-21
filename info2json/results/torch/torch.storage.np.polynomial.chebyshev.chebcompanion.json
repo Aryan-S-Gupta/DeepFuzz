@@ -1,0 +1,26 @@
+{
+  "api_name": "chebcompanion",
+  "module_path": "torch.storage.np.polynomial.chebyshev",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array of Chebyshev series coefficients ordered from low to high degree.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c must be 1-D",
+        "c must be array_like"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2D",
+    "description": "------- ndarray Scaled companion matrix of dimensions (deg, deg)."
+  },
+  "constraints": []
+}

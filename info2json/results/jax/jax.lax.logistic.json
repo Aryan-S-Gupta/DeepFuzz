@@ -10,6 +10,7 @@
       "description": "input array. Must have floating point or complex dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "accuracy": {
@@ -20,15 +21,14 @@
       "description": "Optional `lax.Tolerance` or `lax.AccuracyMode` object that selects the implementation of the op based on the requested accuracy. If the implementation cannot satisfy the requested tolerance, the compiler will return an error. If mode is specified and there are no multiple implementations available, the default implementation will be used.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "callable|tensor|dtype",
-    "numbers": "float or complex",
+    "numbers": "1",
     "description": "Array of the same shape and dtype as ``x`` containing the element-wise logistic/sigmoid function."
   },
-  "constraints": [
-    "x must have floating point or complex dtype."
-  ]
+  "constraints": []
 }

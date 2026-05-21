@@ -10,15 +10,17 @@
       "description": "Input tensor of shape `(..., M, M)`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape must be broadcastable to (..., M, M)"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "(...)",
+    "numbers": "1",
     "description": "A tensor of shape `(...,)` representing the determinant of `x`."
   },
   "constraints": [
-    "M must be known at graph execution time"
+    "The output tensor's shape is derived from the input tensor's shape."
   ]
 }

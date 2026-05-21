@@ -1,0 +1,39 @@
+{
+  "api_name": "adaptive_avg_pool2d",
+  "module_path": "torch.ao.nn.quantized.functional",
+  "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Observed signature: (input: torch.Tensor, output_size: None)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be 4-D",
+        "input and output must have same number of elements"
+      ]
+    },
+    "output_size": {
+      "type": "int|float|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the target output size (single integer or double-integer tuple)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be positive integer or pair of positive integers"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": "Observed signature: (input: torch.Tensor, output_size: None) -> torch.Tensor"
+  },
+  "constraints": []
+}

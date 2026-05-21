@@ -22,20 +22,37 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          1,
+          3
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -56,20 +73,37 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          1,
+          3
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            0.9,
+            0.05,
+            0.05
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -85,14 +119,20 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "number",
+      "chosen_type": "int",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1.0
+        "value": 1
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -102,7 +142,7 @@
       "spec": {
         "type": "",
         "size": "",
-        "default": "",
+        "default": "False",
         "flag": "Optional",
         "description": "(Optional) Whether `y_pred` is sorted category IDs or scores for all categories (the default).",
         "dtype_candidates": [],
@@ -113,6 +153,8 @@
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
       "unresolved_reason": "unhandled chosen type: (optional) whether `y_pred` is sorted category ids or scores for all categories (the default)."
     }
   },
@@ -125,21 +167,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: {{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} predictions must be 2-dimensional [Op:InTopKV2] name: "
+    "smoke test failed: {{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} First dimension of predictions 1 must match length of targets 3 [Op:InTopKV2] name: "
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "api_runtime_error",
     "error_type": "InvalidArgumentError",
-    "error": "{{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} predictions must be 2-dimensional [Op:InTopKV2] name: ",
+    "error": "{{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} First dimension of predictions 1 must match length of targets 3 [Op:InTopKV2] name: ",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/metrics/accuracy_metrics.py\", line 428, in sparse_top_k_categorical_accuracy\n    matches = ops.in_top_k(y_true, y_pred, k=k)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 222, in in_top_k\n    return backend.math.in_top_k(targets, predictions, k)\n           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 47, in in_top_k\n    return tf.math.in_top_k(targets, predictions, k)\n           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} predictions must be 2-dimensional [Op:InTopKV2] name: \n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/metrics/accuracy_metrics.py\", line 428, in sparse_top_k_categorical_accuracy\n    matches = ops.in_top_k(y_true, y_pred, k=k)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/math.py\", line 222, in in_top_k\n    return backend.math.in_top_k(targets, predictions, k)\n           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/math.py\", line 47, in in_top_k\n    return tf.math.in_top_k(targets, predictions, k)\n           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__InTopKV2_device_/job:localhost/replica:0/task:0/device:CPU:0}} First dimension of predictions 1 must match length of targets 3 [Op:InTopKV2] name: \n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.metrics.sparse_top_k_categorical_accuracy.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

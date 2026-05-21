@@ -27,7 +27,7 @@
     "unique": {
       "type": "bool|number",
       "size": "",
-      "default": "",
+      "default": "True",
       "flag": "Optional",
       "description": "boolean, optional If `True`, use a digit-generation strategy which gives the shortest representation which uniquely identifies the floating-point number from other values of the same type, by judicious rounding. If `precision` is given fewer digits than necessary can be printed. If `min_digits` is given more can be printed, in which cases the last digit is rounded with unbiased rounding. If `False`, digits are generated as if printing an infinite-precision value and stopping after `precision` digits, rounding the remaining value with unbiased rounding",
       "dtype_candidates": [
@@ -58,7 +58,7 @@
     "sign": {
       "type": "bool",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "boolean, optional Whether to show the sign for positive values.",
       "dtype_candidates": [

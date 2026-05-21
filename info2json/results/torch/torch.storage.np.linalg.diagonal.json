@@ -1,0 +1,34 @@
+{
+  "api_name": "diagonal",
+  "module_path": "torch.storage.np.linalg",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "shape (..., M, N)",
+      "default": "",
+      "flag": "Required",
+      "description": "(...,M,N) array_like Input array having shape (..., M, N) and whose innermost two dimensions form MxN matrices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "offset": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Offset specifying the off-diagonal relative to the main diagonal, where::",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- (...,min(N,M)) ndarray An array containing the diagonals and whose shape is determined by removing the last two dimensions and appending a dimension equal to the size of the resulting diagonals. The returned array must have the same data type as ``x``."
+  },
+  "constraints": []
+}

@@ -16,38 +16,40 @@
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "If non-None, must be the same shape as arr. For each value in `arr`, the bin will be incremented by the corresponding weight instead of 1. If non-None, `binary_output` must be False.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "weights must have the same shape as arr"
+      ]
     },
     "minlength": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "If given, ensures the output has length at least `minlength`, padding with zeros at the end if necessary.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
     "maxlength": {
-      "type": "dtype",
+      "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "If given, skips values in `arr` that are equal or greater than `maxlength`, ensuring that the output has length at most `maxlength`. dtype: If `weights` is None, determines the type of the output bins.",
+      "flag": "Optional",
+      "description": "If given, skips values in `arr` that are equal or greater than `maxlength`, ensuring that the output has length at most `maxlength`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
+    "dtype": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name scope for the associated operations (optional).",
+      "default": "tf.int32",
+      "flag": "Optional",
+      "description": "If `weights` is None, determines the type of the output bins.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

@@ -5,20 +5,21 @@
     "device": {
       "type": "int|device",
       "size": "",
-      "default": "'xpu'`` (i",
+      "default": "",
       "flag": "Optional",
       "description": "The device to return the RNG state of. Default: ``'xpu'`` (i.e., ``torch.device('xpu')``, the current XPU device).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "'device' must be 'xpu' or an int, and defaults to 'xpu'"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
-    "description": "Return the random number generator state of the specified GPU as a ByteTensor."
+    "numbers": "",
+    "description": ""
   },
-  "constraints": []
+  "constraints": [
+    "This function eagerly initializes XPU."
+  ]
 }

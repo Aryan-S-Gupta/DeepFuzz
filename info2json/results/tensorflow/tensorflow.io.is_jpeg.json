@@ -10,25 +10,15 @@
       "description": "0-D `string`. The encoded image bytes.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional)",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "0-D"
+      ]
     }
   },
   "output": {
     "type": "bool|number|tensor",
-    "numbers": "scalar",
+    "numbers": "1",
     "description": "A scalar boolean tensor indicating if 'contents' may be a JPEG image. is_jpeg is susceptible to false positives."
   },
-  "constraints": [
-    "is_jpeg output will be true for potential JPEG images, but may have false positives."
-  ]
+  "constraints": []
 }

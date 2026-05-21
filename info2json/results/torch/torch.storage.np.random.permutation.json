@@ -1,0 +1,26 @@
+{
+  "api_name": "permutation",
+  "module_path": "torch.storage.np.random",
+  "params": {
+    "x": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or array_like If `x` is an integer, randomly permute ``np.arange(x)``. If `x` is an array, make a copy and shuffle the elements randomly.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x is an integer, it is only shuffled along its first dimension",
+        "if x is an array, make a copy and shuffle the elements randomly"
+      ]
+    }
+  },
+  "output": {
+    "type": "sequence|tensor",
+    "numbers": "1",
+    "description": "------- ndarray Permuted sequence or array range."
+  },
+  "constraints": []
+}

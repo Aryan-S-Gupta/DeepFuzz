@@ -10,15 +10,17 @@
       "description": "selected device. Returns statistics for the current device, given by :func:`~torch.xpu.current_device`, if :attr:`device` is ``None`` (default).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
-    "type": "dict|device",
-    "numbers": "1",
-    "description": "Return a dictionary of XPU memory allocator statistics for a given device."
+    "type": "string|dict|any",
+    "numbers": "",
+    "description": "statistics for large and small allocation pools"
   },
   "constraints": [
-    "memory_stats output contains two keys: large_pool and small_pool"
+    "large_pool stats: size >= 1MB allocations",
+    "small_pool stats: size < 1MB allocations"
   ]
 }

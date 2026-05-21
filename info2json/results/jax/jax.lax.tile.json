@@ -13,7 +13,7 @@
       "constraints": []
     },
     "reps": {
-      "type": "list|sequence|number",
+      "type": "int|sequence|number",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -21,14 +21,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must have the same length as operand.ndim",
-        "reps must contain only positive integers"
+        "must match operand's number of dimensions",
+        "reps must contain positive integers"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "A tiled array with shape ``(operand.shape[0] * reps[0], ..., operand.shape[-1] * reps[-1])``."
   },
   "constraints": []

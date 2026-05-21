@@ -13,19 +13,21 @@
       "constraints": []
     },
     "method": {
-      "type": "",
+      "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "the method to use for determinant computation. Options are",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "method in ['lu', 'qr']"
+      ]
     }
   },
   "output": {
     "type": "tuple",
-    "numbers": "1",
+    "numbers": "2",
     "description": "A tuple of arrays ``(sign, logabsdet)``, each of shape ``a.shape[:-2]`` - ``sign`` is the sign of the determinant. - ``logabsdet`` is the natural log of the determinant's absolute value."
   },
   "constraints": []

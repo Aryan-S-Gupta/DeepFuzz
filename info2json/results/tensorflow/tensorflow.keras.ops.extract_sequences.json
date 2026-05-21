@@ -10,7 +10,9 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "num_sequences = 1 + (N - sequence_length) // sequence_stride, where N is the dimension along the last axis of x"
+      ]
     },
     "sequence_length": {
       "type": "int",
@@ -20,7 +22,9 @@
       "description": "An integer representing the sequences length.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "num_sequences = 1 + (N - sequence_length) // sequence_stride, where N is the dimension along the last axis of x"
+      ]
     },
     "sequence_stride": {
       "type": "int",
@@ -31,14 +35,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "sequence_stride > 0"
+        "num_sequences = 1 + (N - sequence_length) // sequence_stride, where N is the dimension along the last axis of x"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "..., num_sequences, sequence_length",
+    "numbers": "[..., num_sequences, sequence_length]",
     "description": "A tensor of sequences with shape [..., num_sequences, sequence_length]."
   },
-  "constraints": []
+  "constraints": [
+    "num_sequences = 1 + (N - sequence_length) // sequence_stride, where N is the dimension along the last axis of x"
+  ]
 }

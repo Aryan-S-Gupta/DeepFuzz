@@ -17,16 +17,33 @@
           "bool"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "must be a Tensor"
+        ]
       },
       "chosen_type": "bool",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": true
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          1.0,
+          2.0
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -34,25 +51,34 @@
     "axis": {
       "name": "axis",
       "spec": {
-        "type": "int32, int64",
+        "type": "int",
         "size": "",
         "default": "",
         "flag": "Optional",
         "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
-        "dtype_candidates": [
-          "int32",
-          "int64"
-        ],
+        "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "axis must satisfy -rank(input_tensor) <= axis < rank(input_tensor)"
+          "must be in the range [-rank(input_tensor), rank(input_tensor))"
         ]
       },
-      "chosen_type": "int32",
+      "chosen_type": "int",
       "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: int32"
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
     },
     "keepdims": {
       "name": "keepdims",
@@ -60,7 +86,7 @@
         "type": "bool",
         "size": "",
         "default": "False",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "If true, retains reduced dimensions with length 1.",
         "dtype_candidates": [
           "bool"
@@ -69,71 +95,51 @@
         "constraints": []
       },
       "chosen_type": "bool",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     }
   },
   "output": {
     "type": "tensor|any",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "The reduced tensor. @compatibility(numpy) Equivalent to np.any @end_compatibility"
   },
   "constraints": [
-    "@compatibility(numpy) Equivalent to np.any @end_compatibility"
+    "Equivalent to np.any"
   ],
   "spec_ready": true,
-  "ready_for_stage4": true,
-  "readiness_reasons": [],
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: cannot compute Any as input #0(zero-based) was expected to be a bool tensor but is a float tensor [Op:Any] name: "
+  ],
   "smoke_test": {
     "attempted": true,
-    "success": true,
-    "classification": "success",
-    "error_type": "",
-    "error": "",
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "cannot compute Any as input #0(zero-based) was expected to be a bool tensor but is a float tensor [Op:Any] name: ",
     "materialization_reasons": [],
-    "result_summary": {
-      "python_type": "EagerTensor",
-      "shape": [],
-      "dtype": "bool",
-      "numel": 1,
-      "has_nan": false
-    },
-    "runtime_supported_here": true
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: cannot compute Any as input #0(zero-based) was expected to be a bool tensor but is a float tensor [Op:Any] name: \n"
   },
-  "runtime_supported_here": true,
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.reduce_any.json",
-  "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

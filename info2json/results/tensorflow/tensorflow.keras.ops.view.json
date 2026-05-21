@@ -3,24 +3,36 @@
   "module_path": "tensorflow.keras.ops",
   "params": {
     "x": {
-      "type": "float|tensor|dtype",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "Input tensor. dtype: Data-type descriptor of the returned view, e.g., float32 or int16.",
+      "description": "Input tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be a tensor."
+      ]
+    },
+    "dtype": {
+      "type": "string|float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Data-type descriptor of the returned view, e.g., float32 or int16.",
       "dtype_candidates": [
         "int16",
         "float32"
       ],
       "enum_values": [],
       "constraints": [
-        "x and output must have the same shape."
+        "Data-type descriptor of the returned view, e.g., float32 or int16."
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "Same rank and shape as x with specified dtype",
+    "numbers": "1",
     "description": "View of a tensor with data type dtype."
   },
   "constraints": []

@@ -1,22 +1,13 @@
 {
   "api_name": "eigvals",
   "module_path": "tensorflow",
-  "params": {
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "optional name of the operation.",
-      "flag": "Optional",
-      "description": "string, optional name of the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    }
-  },
+  "params": {},
   "output": {
-    "type": "tensor",
+    "type": "Tensor",
     "numbers": "[..., N]",
     "description": "Eigenvalues. Shape is `[..., N]`. The vector `e[..., :]` contains the `N` eigenvalues of `tensor[..., :, :]`."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor shape must be compatible with the input tensor shape."
+  ]
 }

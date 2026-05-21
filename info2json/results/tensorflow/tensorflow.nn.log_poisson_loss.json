@@ -11,7 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "targets and log_input must have the same shape"
+        "same type and shape as log_input",
+        "If log_input and targets do not have the same shape, ValueError is raised"
       ]
     },
     "log_input": {
@@ -26,7 +27,7 @@
       ],
       "enum_values": [],
       "constraints": [
-        "targets and log_input must have the same shape"
+        "If log_input and targets do not have the same shape, ValueError is raised"
       ]
     },
     "compute_full_loss": {
@@ -40,24 +41,14 @@
       ],
       "enum_values": [],
       "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same shape as log_input",
+    "numbers": "1",
     "description": "A `Tensor` of the same shape as `log_input` with the componentwise logistic losses."
   },
   "constraints": [
-    "targets and log_input must have the same shape"
+    "If log_input and targets do not have the same shape, ValueError is raised"
   ]
 }

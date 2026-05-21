@@ -3,7 +3,7 @@
   "module_path": "tensorflow.math",
   "params": {
     "a": {
-      "type": "float|number|tensor",
+      "type": "float|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -20,14 +20,12 @@
         "float64"
       ],
       "constraints": [
-        "a must be one of bfloat16, half, float32, float64",
-        "The 'a' parameter must be one of the following types: bfloat16, half, float32, float64.",
-        "The 'x' parameter must have the same type as 'a'.",
-        "If 'a' or 'x' is a tensor, it must not be empty."
+        "must be one of the following types: bfloat16, half, float32, float64.",
+        "a must be one of bfloat16, half, float32, float64"
       ]
     },
     "x": {
-      "type": "number|tensor",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -35,21 +33,10 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have the same shape as 'a'.",
+        "must have the same type as a.",
         "x must have the same dtype as a",
-        "The 'x' parameter must have the same type as 'a'.",
-        "If 'a' or 'x' is a tensor, it must not be empty."
+        "x and y must have broadcast-compatible shapes"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -58,7 +45,6 @@
     "description": "A `Tensor`. Has the same type as `a`."
   },
   "constraints": [
-    "The 'x' parameter must have the same type as 'a'.",
-    "If 'a' or 'x' is a tensor, it must not be empty."
+    "minval must be less than maxval"
   ]
 }

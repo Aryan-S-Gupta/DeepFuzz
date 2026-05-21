@@ -10,17 +10,21 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output must have broadcast-compatible shapes"
+      ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "-1",
+      "flag": "Optional",
       "description": "The axis along which to split the input tensor. Defaults to `-1`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "-rank(input) <= axis < rank(input)"
+      ]
     }
   },
   "output": {
@@ -28,7 +32,5 @@
     "numbers": "1",
     "description": "A tensor with the same shape as half of the input."
   },
-  "constraints": [
-    "x must be a tensor"
-  ]
+  "constraints": []
 }

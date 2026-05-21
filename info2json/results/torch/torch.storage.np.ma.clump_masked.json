@@ -1,0 +1,25 @@
+{
+  "api_name": "clump_masked",
+  "module_path": "torch.storage.np.ma",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray A one-dimensional masked array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape[0] >= 0"
+      ]
+    }
+  },
+  "output": {
+    "type": "list",
+    "numbers": "int",
+    "description": "------- list of slice The list of slices, one for each continuous region of masked elements in `a`."
+  },
+  "constraints": []
+}

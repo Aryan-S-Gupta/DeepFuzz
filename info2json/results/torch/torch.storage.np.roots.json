@@ -1,0 +1,27 @@
+{
+  "api_name": "roots",
+  "module_path": "torch.storage.np",
+  "params": {
+    "p": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Rank-1 array of polynomial coefficients.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must be provided",
+        "p must be a rank-1 array of polynomial coefficients.",
+        "When p cannot be converted to a rank-1 array, an error is raised instead of returning an output."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floats",
+    "description": "------- ndarray An array containing the roots of the polynomial."
+  },
+  "constraints": []
+}

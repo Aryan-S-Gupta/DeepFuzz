@@ -11,30 +11,28 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "input array a must have rank >= ind+1"
+        "a must have a shape that can be split into two parts of equal product",
+        "input array 'a' and output array must have compatible shapes"
       ]
     },
     "ind": {
       "type": "int|number|tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "2",
+      "flag": "Optional",
       "description": "positive integer specifying the number of indices in the tensor product.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be provided",
-        "ind must be positive",
-        "input array a must have rank >= ind+1"
+        "ind must be a positive integer",
+        "ind must be positive"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "*a.shape[ind:], *a.shape[:ind]",
+    "numbers": "1",
     "description": "array of shape ``(*a.shape[ind:], *a.shape[:ind])`` containing the tensor inverse of ``a``."
   },
-  "constraints": [
-    "input array a must have rank >= ind+1"
-  ]
+  "constraints": []
 }

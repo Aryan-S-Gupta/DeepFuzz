@@ -1,0 +1,26 @@
+{
+  "api_name": "memory_stats",
+  "module_path": "torch.cuda.memory",
+  "params": {
+    "device": {
+      "type": "int|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistics for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "device type must be torch.device or int",
+        "if device is not provided, returns statistics for the current device"
+      ]
+    }
+  },
+  "output": {
+    "type": "string|dict|any",
+    "numbers": "",
+    "description": "number of reserved segments from `cudaMalloc()` (as of June 2025, for size >= 1MB allocations). number of reserved segments from `cudaMalloc()` (as of June 2025, for size < 1MB allocations). defined size (see Memory Management section of the Cuda Semantics documentation). number of over-size reserved segments from `cudaMalloc()`."
+  },
+  "constraints": []
+}

@@ -25,9 +25,9 @@
           "float64"
         ],
         "constraints": [
-          "Must be one of: bfloat16, half, float32, float64",
+          "must be one of the following types: bfloat16, half, float32, float64.",
           "a must be one of bfloat16, half, float32, float64",
-          "a and x must have the same shape"
+          "Compute the lower regularized incomplete Gamma function P(a, x). \\(P(a, x) = gamma(a, x) / Gamma(a) = 1 - Q(a, x)\\) \\(gamma(a, x) = \\int_{0}^{x} t^{a-1} exp(-t) dt\\) Note, above Q(a, x) (Igammac) is the upper regularized complete"
         ]
       },
       "chosen_type": "float",
@@ -38,10 +38,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "x": {
       "name": "x",
@@ -54,9 +60,9 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Must have the same type as a",
+          "Must have the same type as a.",
           "x must have the same dtype as a",
-          "a and x must have the same shape"
+          "Compute the lower regularized incomplete Gamma function P(a, x). \\(P(a, x) = gamma(a, x) / Gamma(a) = 1 - Q(a, x)\\) \\(gamma(a, x) = \\int_{0}^{x} t^{a-1} exp(-t) dt\\) Note, above Q(a, x) (Igammac) is the upper regularized complete"
         ]
       },
       "chosen_type": "tensor",
@@ -64,7 +70,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -73,32 +79,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -107,16 +97,64 @@
     "description": "A `Tensor`. Has the same type as `a`."
   },
   "constraints": [
-    "a and x must have the same shape"
+    "Compute the lower regularized incomplete Gamma function P(a, x). \\(P(a, x) = gamma(a, x) / Gamma(a) = 1 - Q(a, x)\\) \\(gamma(a, x) = \\int_{0}^{x} t^{a-1} exp(-t) dt\\) Note, above Q(a, x) (Igammac) is the upper regularized complete"
   ],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2
+      ],
+      "dtype": "float32",
+      "numel": 2,
+      "preview": [
+        0.6321204900741577,
+        0.6321204900741577
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "a",
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(a_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(x_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.igamma.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

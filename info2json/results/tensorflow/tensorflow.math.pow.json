@@ -19,7 +19,7 @@
       ],
       "enum_values": [],
       "constraints": [
-        "x and y must have the same type",
+        "dtype must be one of: float16, float32, float64, int32, int64, complex64, complex128",
         "x and y must have broadcast-compatible shapes"
       ]
     },
@@ -40,19 +40,9 @@
       ],
       "enum_values": [],
       "constraints": [
-        "x and y must have the same type",
+        "dtype must be one of: float16, float32, float64, int32, int64, complex64, complex128",
         "x and y must have broadcast-compatible shapes"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -61,7 +51,6 @@
     "description": "A `Tensor`."
   },
   "constraints": [
-    "x and y must have the same type",
     "x and y must have broadcast-compatible shapes"
   ]
 }

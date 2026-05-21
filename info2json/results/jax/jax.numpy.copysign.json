@@ -10,7 +10,11 @@
       "description": "Input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "x2 must be broadcast-compatible with x1",
+        "output shape is jnp.broadcast_shapes(x1.shape, x2.shape)"
+      ]
     },
     "x2": {
       "type": "tensor",
@@ -20,15 +24,21 @@
       "description": "The array whose elements will be used to determine the sign, must be broadcast-compatible with ``x1``",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x2 is required when calling the function directly with two arguments"
+        "x2 must be broadcast-compatible with x1",
+        "output shape is jnp.broadcast_shapes(x1.shape, x2.shape)"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real",
+    "numbers": "float32",
     "description": "An array object containing the potentially changed elements of ``x1``, always promotes to inexact dtype, and has a shape of ``jnp.broadcast_shapes(x1.shape, x2.shape)``"
   },
-  "constraints": []
+  "constraints": [
+    "x2 must be broadcast-compatible with x1",
+    "output shape is jnp.broadcast_shapes(x1.shape, x2.shape)",
+    "output dtype is inexact"
+  ]
 }

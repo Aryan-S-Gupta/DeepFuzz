@@ -3,23 +3,24 @@
   "module_path": "jax.scipy.special",
   "params": {
     "x": {
-      "type": "float|number|tensor",
+      "type": "float|tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "array, real-valued",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "x must be real-valued",
-        "x's shape is broadcast-compatible with i0's shape",
-        "output.shape == x.shape"
+        "i0e(x) = e^{-|x|} I_0(x)",
+        "I_0(x) is the modified Bessel function jax.scipy.special.i0"
       ]
     }
   },
   "output": {
     "type": "callable|tensor",
-    "numbers": "real-valued",
+    "numbers": "1",
     "description": "array of bessel function values."
   },
   "constraints": []

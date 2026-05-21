@@ -10,54 +10,61 @@
       "description": "input array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
-      "type": "int|sequence|tensor",
+      "type": "int|tuple|sequence|tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "optional, int or sequence of ints, default=None. Axis along which the median to be computed. If None, median is computed for the flattened array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "keepdims": {
-      "type": "bool",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
-      "dtype_candidates": [
-        "bool"
-      ],
-      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Unused by JAX.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "overwrite_input": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "Unused by JAX.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "An array of the median along the given axis."
   },
   "constraints": []

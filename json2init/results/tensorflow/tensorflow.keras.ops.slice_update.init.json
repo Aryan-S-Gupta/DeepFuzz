@@ -22,7 +22,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,12 +30,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -49,22 +59,25 @@
         "description": "A list/tuple of shape `(inputs.ndim,)`, specifying the starting indices for updating.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "Must contain integers"
-        ]
+        "constraints": []
       },
       "chosen_type": "list",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": [
-          1
-        ]
+        "value": 0
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -79,9 +92,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Size of each dim must not exceed Di - start_indices[i]",
-          "updates must be one of indices",
-          "inputs, updates, and output have the same dtype"
+          "updates must be one of indices"
         ]
       },
       "chosen_type": "tensor",
@@ -89,7 +100,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -98,12 +109,23 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     }
@@ -115,28 +137,24 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": true,
-  "readiness_reasons": [],
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__XlaDynamicUpdateSlice_device_/job:localhost/replica:0/task:0/device:CPU:0}} index must be a vector with length equal to the number of input dimensions\n\nStack trace for op definition: \ndummy_file_name:10:dummy_function_name\n\n\t [[{{node XlaDynamicUpdateSlice}}]] [Op:XlaDynamicUpdateSlice] name: "
+  ],
   "smoke_test": {
     "attempted": true,
-    "success": true,
-    "classification": "success",
-    "error_type": "",
-    "error": "",
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__XlaDynamicUpdateSlice_device_/job:localhost/replica:0/task:0/device:CPU:0}} index must be a vector with length equal to the number of input dimensions\n\nStack trace for op definition: \ndummy_file_name:10:dummy_function_name\n\n\t [[{{node XlaDynamicUpdateSlice}}]] [Op:XlaDynamicUpdateSlice] name: ",
     "materialization_reasons": [],
-    "result_summary": {
-      "python_type": "EagerTensor",
-      "shape": [
-        1
-      ],
-      "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
-    },
-    "runtime_supported_here": true
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/core.py\", line 492, in slice_update\n    return backend.core.slice_update(inputs, start_indices, updates)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/core.py\", line 593, in slice_update\n    return dynamic_update_slice(inputs, updates, start_indices)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/compiler/tf2xla/ops/gen_xla_ops.py\", line 1604, in xla_dynamic_update_slice\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__XlaDynamicUpdateSlice_device_/job:localhost/replica:0/task:0/device:CPU:0}} index must be a vector with length equal to the number of input dimensions\n\nStack trace for op definition: \ndummy_file_name:10:dummy_function_name\n\n\t [[{{node XlaDynamicUpdateSlice}}]] [Op:XlaDynamicUpdateSlice] name: \n"
   },
-  "runtime_supported_here": true,
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.slice_update.json",
-  "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

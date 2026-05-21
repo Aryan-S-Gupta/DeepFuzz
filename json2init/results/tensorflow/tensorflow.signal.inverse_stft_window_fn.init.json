@@ -1,0 +1,76 @@
+{
+  "api_full_name": "tensorflow.signal.inverse_stft_window_fn",
+  "api_name": "inverse_stft_window_fn",
+  "module_path": "tensorflow.signal",
+  "import_path": "tensorflow.signal.inverse_stft_window_fn",
+  "backend": "tensorflow",
+  "params": {
+    "frame_step": {
+      "name": "frame_step",
+      "spec": {
+        "type": "int|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "An integer scalar `Tensor`. The number of samples to step.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "forward_window_fn": {
+      "name": "forward_window_fn",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "window_fn used in the forward transform, `stft`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "window_fn used in the forward transform",
+      "include_in_base_call": true,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: window_fn used in the forward transform"
+    }
+  },
+  "output": {
+    "type": "callable|tensor|dtype",
+    "numbers": "1",
+    "description": "A callable that takes a window length and a `dtype` keyword argument and returns a `[window_length]` `Tensor` of samples in the provided datatype. The returned window is suitable for reconstructing original waveform in inverse_stft."
+  },
+  "constraints": [],
+  "spec_ready": false,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "required param 'forward_window_fn' unresolved: unhandled chosen type: window_fn used in the forward transform"
+  ],
+  "smoke_test": {},
+  "runtime_supported_here": null,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.signal.inverse_stft_window_fn.json",
+  "stage3_status": "retry",
+  "smoke_attempted": false,
+  "repair_candidate": true
+}

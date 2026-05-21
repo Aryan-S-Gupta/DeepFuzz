@@ -15,7 +15,10 @@
         "description": "selected device. Returns statistic for the current device, given by :func:`~torch.mtia.current_device`, if :attr:`device` is ``None`` (default).",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "case_insensitive": false,
+        "constraints": [
+          "device must be a valid torch.device, str, int or None"
+        ]
       },
       "chosen_type": "int",
       "include_in_base_call": false,
@@ -25,35 +28,62 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
-    "type": "string|tensor|device",
-    "numbers": "single",
-    "description": "Return the current MTIA memory occupied by tensors in bytes for a given device."
+    "type": "int",
+    "numbers": "scalar",
+    "description": "statistic for the selected device"
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: module 'torch.mtia' has no attribute 'memory_allocated'"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
-    "attempted": false,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "AttributeError",
-    "error": "module 'torch.mtia' has no attribute 'memory_allocated'",
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false
+    "result_summary": {
+      "python_type": "int",
+      "value": 0
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "device"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(device_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.mtia.memory_allocated.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

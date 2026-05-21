@@ -22,8 +22,7 @@
           "uint16"
         ],
         "constraints": [
-          "image must be one of uint8, uint16",
-          "image type must be uint8 or uint16"
+          "image must be one of uint8, uint16"
         ]
       },
       "chosen_type": "tensor",
@@ -31,25 +30,27 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          1,
-          1,
+          2,
+          2,
           3
         ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "backend": "tensorflow"
+        "dtype": "uint8",
+        "fill": 1,
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "compression": {
       "name": "compression",
@@ -61,9 +62,7 @@
         "description": "An optional `int`. Defaults to `-1`. Compression level.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "compression must be in range [0, 9]"
-        ]
+        "constraints": []
       },
       "chosen_type": "int",
       "include_in_base_call": false,
@@ -73,34 +72,16 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "enum_switch"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -110,23 +91,50 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Value for attr 'T' of float is not in the list of allowed values: uint8, uint16\n\t; NodeDef: {{node EncodePng}}; Op<name=EncodePng; signature=image:T -> contents:string; attr=compression:int,default=-1; attr=T:type,default=DT_UINT8,allowed=[DT_UINT8, DT_UINT16]> [Op:EncodePng] name: "
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
+    "success": true,
     "classification": "api_runtime_error",
-    "error_type": "InvalidArgumentError",
-    "error": "Value for attr 'T' of float is not in the list of allowed values: uint8, uint16\n\t; NodeDef: {{node EncodePng}}; Op<name=EncodePng; signature=image:T -> contents:string; attr=compression:int,default=-1; attr=T:type,default=DT_UINT8,allowed=[DT_UINT8, DT_UINT16]> [Op:EncodePng] name: ",
+    "error_type": "AttributeError",
+    "error": "'bytes' object has no attribute 'dtype'",
     "materialization_reasons": [],
     "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'T' of float is not in the list of allowed values: uint8, uint16\n\t; NodeDef: {{node EncodePng}}; Op<name=EncodePng; signature=image:T -> contents:string; attr=compression:int,default=-1; attr=T:type,default=DT_UINT8,allowed=[DT_UINT8, DT_UINT16]> [Op:EncodePng] name: \n"
+    "runtime_supported_here": true,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 984, in run_smoke_test\n    result[\"result_summary\"] = summarize_python_value(out)\n                               ~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 1026, in summarize_python_value\n    is_float = np is not None and getattr(arr.dtype, \"kind\", \"\") in {\"f\", \"c\"}\n                                          ^^^^^^^^^\nAttributeError: 'bytes' object has no attribute 'dtype'\n"
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "image"
+    ],
+    "skipped_optional": [
+      "compression"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(image_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(compression_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.encode_png.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

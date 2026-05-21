@@ -1,0 +1,31 @@
+{
+  "api_name": "where",
+  "module_path": "torch.storage.np.ma.core",
+  "params": {
+    "condition": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, bool Where True, yield `x`, otherwise yield `y`. Values from which to choose. `x`, `y` and `condition` need to be broadcastable to some shape.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be a boolean array",
+        "`condition`, `x`, and `y` need to be broadcastable to some shape"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- MaskedArray An masked array with `masked` elements where the condition is masked, elements from `x` where `condition` is True, and elements from `y` elsewhere."
+  },
+  "constraints": [
+    "`condition`, `x`, and `y` need to be broadcastable to some shape",
+    "`x` and `y` must have the same type"
+  ]
+}

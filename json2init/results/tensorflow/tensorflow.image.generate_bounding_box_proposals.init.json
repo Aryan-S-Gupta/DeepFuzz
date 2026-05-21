@@ -29,6 +29,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "bbox_deltas": {
@@ -53,6 +59,12 @@
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -81,6 +93,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "anchors": {
@@ -107,6 +125,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "nms_threshold": {
@@ -114,7 +138,7 @@
       "spec": {
         "type": "float|number|tensor",
         "size": "scalar",
-        "default": "0",
+        "default": "0.7",
         "flag": "Optional",
         "description": "A scalar float `Tensor` for non-maximal-suppression threshold. Defaults to 0.7.",
         "dtype_candidates": [],
@@ -129,6 +153,12 @@
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -155,6 +185,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "min_size": {
@@ -169,15 +205,27 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "float",
+      "chosen_type": "list",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1.0
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -186,15 +234,15 @@
       "spec": {
         "type": "int|number",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "300",
+        "flag": "Optional",
         "description": "An integer. Maximum number of rois in the output.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "int",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1
@@ -203,25 +251,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for this operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for this operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for this operation (optional)."
     }
   },
   "output": {
@@ -233,21 +269,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: Could not find device for node: {{node GenerateBoundingBoxProposals}} = GenerateBoundingBoxProposals[post_nms_topn=1]\nAll kernels registered for op GenerateBoundingBoxProposals:\n  <no registered kernels>\n [Op:GenerateBoundingBoxProposals]"
+    "smoke test failed: Could not find device for node: {{node GenerateBoundingBoxProposals}} = GenerateBoundingBoxProposals[post_nms_topn=300]\nAll kernels registered for op GenerateBoundingBoxProposals:\n  <no registered kernels>\n [Op:GenerateBoundingBoxProposals]"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "api_runtime_error",
     "error_type": "NotFoundError",
-    "error": "Could not find device for node: {{node GenerateBoundingBoxProposals}} = GenerateBoundingBoxProposals[post_nms_topn=1]\nAll kernels registered for op GenerateBoundingBoxProposals:\n  <no registered kernels>\n [Op:GenerateBoundingBoxProposals]",
+    "error": "Could not find device for node: {{node GenerateBoundingBoxProposals}} = GenerateBoundingBoxProposals[post_nms_topn=300]\nAll kernels registered for op GenerateBoundingBoxProposals:\n  <no registered kernels>\n [Op:GenerateBoundingBoxProposals]",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.NotFoundError: Could not find device for node: {{node GenerateBoundingBoxProposals}} = GenerateBoundingBoxProposals[post_nms_topn=1]\nAll kernels registered for op GenerateBoundingBoxProposals:\n  <no registered kernels>\n [Op:GenerateBoundingBoxProposals]\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.NotFoundError: Could not find device for node: {{node GenerateBoundingBoxProposals}} = GenerateBoundingBoxProposals[post_nms_topn=300]\nAll kernels registered for op GenerateBoundingBoxProposals:\n  <no registered kernels>\n [Op:GenerateBoundingBoxProposals]\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.image.generate_bounding_box_proposals.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

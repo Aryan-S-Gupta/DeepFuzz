@@ -23,11 +23,21 @@
       "constraints": []
     },
     "arrays": {
-      "type": "tuple|list|tensor|device|dtype",
+      "type": "tuple|list|tensor|device",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "`list` or `tuple` of ``jax.Array``\\s that are each single device addressable. ``len(arrays)`` must equal ``len(sharding.addressable_devices)`` and the shape of each array must be the same. For multiprocess code, each process will call with a different ``arrays`` argument that corresponds to that processes' data. These arrays are commonly created via ``jax.device_put``. dtype: The dtype of the output ``jax.Array``. If not provided, the dtype of the first array in ``arrays`` is used. If ``arrays`` is empty, the ``dtype`` argument must be provided.",
+      "description": "`list` or `tuple` of ``jax.Array``\\s that are each single device addressable. ``len(arrays)`` must equal ``len(sharding.addressable_devices)`` and the shape of each array must be the same. For multiprocess code, each process will call with a different ``arrays`` argument that corresponds to that processes' data. These arrays are commonly created via ``jax.device_put``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The dtype of the output ``jax.Array``. If not provided, the dtype of the first array in ``arrays`` is used. If ``arrays`` is empty, the ``dtype`` argument must be provided.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

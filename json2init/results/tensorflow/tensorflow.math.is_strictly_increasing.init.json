@@ -16,8 +16,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Must be 1-D",
-          "x's values must be unique"
+          "The output is equal to `True` if `x` is strictly increasing, otherwise it's `False`"
         ]
       },
       "chosen_type": "number",
@@ -30,31 +29,14 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "\"is_strictly_increasing\"",
-        "flag": "Optional",
-        "description": "A name for this operation (optional). Defaults to \"is_strictly_increasing\"",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "scalar_delta"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -78,12 +60,28 @@
       "shape": [],
       "dtype": "bool",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        true
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.is_strictly_increasing.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -15,32 +15,8 @@
         "description": "Input integer tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "int",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
-      },
-      "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
-      ],
-      "unresolved_reason": ""
-    },
-    "y": {
-      "name": "y",
-      "spec": {
-        "type": "int|tensor",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "Input integer tensor.",
-        "dtype_candidates": [],
-        "enum_values": [],
         "constraints": [
-          "Must have broadcast-compatible shapes with x."
+          "x and y must have broadcast-compatible shapes"
         ]
       },
       "chosen_type": "int",
@@ -53,7 +29,47 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "y": {
+      "name": "y",
+      "spec": {
+        "type": "int|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "Input integer tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "x and y must have broadcast-compatible shapes"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -61,7 +77,9 @@
     "numbers": "1",
     "description": "Result tensor."
   },
-  "constraints": [],
+  "constraints": [
+    "x and y must have broadcast-compatible shapes"
+  ],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -77,12 +95,29 @@
       "shape": [],
       "dtype": "int32",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "y"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.right_shift.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

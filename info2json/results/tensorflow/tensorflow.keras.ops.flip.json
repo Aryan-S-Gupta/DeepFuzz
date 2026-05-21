@@ -11,19 +11,19 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and output have the same shape"
+        "x and output must have broadcast-compatible shapes"
       ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "Axis or axes along which to flip the tensor. The default, `axis=None`, will flip over all of the axes of the input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must be None or a single integer or a list/tuple of integers"
+        "axis must be None or within the range of input tensor's rank"
       ]
     }
   },

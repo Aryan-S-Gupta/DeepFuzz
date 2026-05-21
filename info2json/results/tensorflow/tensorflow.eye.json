@@ -13,14 +13,13 @@
       ],
       "enum_values": [],
       "constraints": [
-        "num_rows must be non-negative",
-        "num_rows >= 0"
+        "num_rows must be non-negative"
       ]
     },
     "num_columns": {
       "type": "number|tensor",
       "size": "scalar",
-      "default": "num_rows",
+      "default": "",
       "flag": "Optional",
       "description": "Optional non-negative `int32` scalar `Tensor` giving the number of columns in each batch matrix. Defaults to `num_rows`.",
       "dtype_candidates": [
@@ -28,16 +27,15 @@
       ],
       "enum_values": [],
       "constraints": [
-        "num_columns must be non-negative",
-        "num_columns >= 0"
+        "num_columns must be non-negative"
       ]
     },
     "batch_shape": {
-      "type": "tuple|list|tensor|dtype",
+      "type": "tuple|list|tensor",
       "size": "1-D",
       "default": "",
       "flag": "Optional",
-      "description": "A list or tuple of Python integers or a 1-D `int32` `Tensor`. If provided, the returned `Tensor` will have leading batch dimensions of this shape. dtype: The type of an element in the resulting `Tensor`",
+      "description": "A list or tuple of Python integers or a 1-D `int32` `Tensor`. If provided, the returned `Tensor` will have leading batch dimensions of this shape.",
       "dtype_candidates": [
         "int32"
       ],
@@ -46,12 +44,12 @@
         "batch_shape must be 1-D"
       ]
     },
-    "name": {
-      "type": "",
+    "dtype": {
+      "type": "tensor",
       "size": "",
-      "default": "\"eye\"",
+      "default": "tf.float32",
       "flag": "Optional",
-      "description": "A name for this `Op`. Defaults to \"eye\".",
+      "description": "The type of an element in the resulting `Tensor`",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -59,7 +57,7 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "batch_shape + [num_rows, num_columns]",
+    "numbers": "1",
     "description": "A `Tensor` of shape `batch_shape + [num_rows, num_columns]`"
   },
   "constraints": []

@@ -17,18 +17,8 @@
       ],
       "enum_values": [],
       "constraints": [
-        "x must have a valid numeric data type"
+        "x must be a 1-D, 2-D, 3-D, or 4-D tensor."
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -36,5 +26,7 @@
     "numbers": "1",
     "description": "A `Tensor` of same shape and type as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor will have the same data type as the input tensor."
+  ]
 }

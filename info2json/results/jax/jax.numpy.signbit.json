@@ -10,20 +10,22 @@
       "description": "input array. Complex values are not supported.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "Complex values are not supported.",
-        "x cannot be a complex value.",
-        "Returned array has the same shape as input x."
+        "x cannot be complex.",
+        "Returned array has the same shape as x."
       ]
     }
   },
   "output": {
     "type": "bool|tensor",
-    "numbers": "same shape as x",
+    "numbers": "bool",
     "description": "A boolean array of the same shape as ``x``, containing ``True`` where the sign of ``x`` is negative, and ``False`` otherwise."
   },
   "constraints": [
     "For floating point values, returns the value of the actual sign bit.",
-    "Special values like signed NaN return the sign bit for those values."
+    "Special values such as signed NaN return the sign bit accordingly.",
+    "`signbit` on boolean values treats `True` as negative and `False` as positive."
   ]
 }

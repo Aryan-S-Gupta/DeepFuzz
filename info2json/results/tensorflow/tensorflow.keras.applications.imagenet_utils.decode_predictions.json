@@ -10,13 +10,15 @@
       "description": "NumPy array encoding a batch of predictions.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "must be 2D"
+      ]
     },
     "top": {
       "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "5",
+      "flag": "Optional",
       "description": "Integer, how many top-guesses to return. Defaults to `5`.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -29,6 +31,6 @@
     "description": "A list of lists of top class prediction tuples `(class_name, class_description, score)`. One list of tuples per sample in batch input."
   },
   "constraints": [
-    "ValueError: In case of invalid shape of the `pred` array (must be 2D)."
+    "In case of invalid shape of the `pred` array (must be 2D), ValueError is raised."
   ]
 }

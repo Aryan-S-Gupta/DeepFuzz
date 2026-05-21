@@ -11,14 +11,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "values must be 1-D",
-        "values.dtype must be a float or int type"
+        "values must be 1-D"
       ]
     },
     "axis": {
-      "type": "int",
+      "type": "",
       "size": "",
-      "default": "-1, which sorts the last",
+      "default": "-1",
       "flag": "Optional",
       "description": "The axis along which to sort. The default is -1, which sorts the last axis.",
       "dtype_candidates": [],
@@ -26,28 +25,16 @@
       "constraints": []
     },
     "direction": {
-      "type": "string",
+      "type": "",
       "size": "",
-      "default": "'ASCENDING'",
+      "default": "",
       "flag": "Optional",
       "description": "The direction in which to sort the values (`'ASCENDING'` or `'DESCENDING'`).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "'ASCENDING'",
-        "'DESCENDING'",
         "direction must be one of ASCENDING, DESCENDING"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "Optional name for the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

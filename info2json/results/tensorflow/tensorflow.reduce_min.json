@@ -10,37 +10,38 @@
       "description": "The tensor to reduce. Should have real numeric type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "should have real numeric type"
+      ]
     },
     "axis": {
-      "type": "",
+      "type": "int",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "must satisfy -rank(input_tensor) <= axis < rank(input_tensor)",
+        "If axis is None, reduces all dimensions.",
+        "Unless keepdims is true, the rank of the tensor is reduced by 1 for each entry in axis, which must be unique."
+      ]
     },
     "keepdims": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "If true, retains reduced dimensions with length 1.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Unless keepdims is true, the rank of the tensor is reduced by 1 for each entry in axis, which must be unique.",
+        "If keepdims is true, the reduced dimensions are retained with length 1."
+      ]
     }
   },
   "output": {
@@ -49,6 +50,6 @@
     "description": "The reduced tensor. @compatibility(numpy) Equivalent to np.min @end_compatibility"
   },
   "constraints": [
-    "input_tensor must have real numeric type"
+    "Unless keepdims is true, the rank of the tensor is reduced by 1 for each entry in axis, which must be unique."
   ]
 }

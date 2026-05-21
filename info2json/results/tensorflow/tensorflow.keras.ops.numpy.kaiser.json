@@ -11,9 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be a positive integer",
-        "x must be 1-D",
-        "x and output must have same shape"
+        "must be a valid TensorFlow tensor",
+        "x must be 1-D"
       ]
     },
     "beta": {
@@ -29,8 +28,10 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "A 1D tensor containing the Kaiser window values."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor dtype should be compatible with the input tensor's dtype"
+  ]
 }

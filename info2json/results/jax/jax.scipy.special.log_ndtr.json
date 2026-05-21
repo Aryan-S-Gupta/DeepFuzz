@@ -13,19 +13,21 @@
         "float64"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x.dtype is either float32 or float64",
-        "TypeError: if x.dtype is not float32 or float64"
+        "x.dtype is float32 or x.dtype is float64",
+        "TypeError: if x.dtype is not float32 or x.dtype is not float64"
       ]
     },
     "series_order": {
       "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "3",
+      "flag": "Optional",
       "description": "Positive Python integer. Maximum depth to evaluate the asymptotic expansion. This is the `N` above.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "series_order > 0",
         "series_order must be positive"

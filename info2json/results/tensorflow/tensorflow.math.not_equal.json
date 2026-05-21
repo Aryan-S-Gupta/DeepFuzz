@@ -11,8 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and y must have the same shape and dtype",
-        "x and y must not be None"
+        "A tf.Tensor",
+        "x and y must have broadcast-compatible shapes"
       ]
     },
     "y": {
@@ -24,28 +24,17 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and y must have the same shape and dtype",
-        "x and y must not be None"
+        "A tf.Tensor",
+        "x and y must have broadcast-compatible shapes"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "bool|tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "A `tf.Tensor` of type bool with the same size as that of x or y."
   },
   "constraints": [
-    "x and y must have the same shape and dtype",
-    "x and y must not be None"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

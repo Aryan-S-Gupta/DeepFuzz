@@ -15,6 +15,7 @@
         "description": "list of SymPy expressions, or a single SymPy expression The expressions to reduce.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "list",
@@ -27,30 +28,47 @@
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "symbols": {
       "name": "symbols",
       "spec": {
         "type": "",
         "size": "",
-        "default": "a",
+        "default": "",
         "flag": "Optional",
         "description": "infinite iterator yielding unique Symbols The symbols used to label the common subexpressions which are pulled out. The ``numbered_symbols`` generator is useful. The default is a stream of symbols of the form \"x0\", \"x1\", etc. This must be an infinite iterator.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "infinite iterator yielding unique symbols the symbols used to label the common subexpressions which are pulled out. the ``numbered_symbols`` generator is useful. the default is a stream of symbols of the form \"x0\"",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
         "enum_switch"
       ],
-      "unresolved_reason": "unhandled chosen type: infinite iterator yielding unique symbols the symbols used to label the common subexpressions which are pulled out. the ``numbered_symbols`` generator is useful. the default is a stream of symbols of the form \"x0\""
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: infinite iterator yielding unique symbols the symbols used to label the common subexpressions which are pulled out. the ``numbered_symbols`` generator is useful. the default is a stream of symbols of the form \"x0\"",
+      "call_kind": "positional_or_keyword"
     },
     "optimizations": {
       "name": "optimizations",
@@ -62,15 +80,24 @@
         "description": "list of (callable, callable) pairs The (preprocessor, postprocessor) pairs of external optimization functions. Optionally 'basic' can be passed for a set of predefined basic optimizations. Such 'basic' optimizations were used by default in old implementation, however they can be really slow on larger expressions. Now, no pre or post optimizations are made by default.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "callable",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
         "enum_switch"
       ],
-      "unresolved_reason": "unsupported base seed type: callable"
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unsupported base seed type: callable",
+      "call_kind": "positional_or_keyword"
     },
     "postprocess": {
       "name": "postprocess",
@@ -78,17 +105,21 @@
         "type": "callable",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "a function which accepts the two return values of cse and returns the desired form of output from cse, e.g. if you want the replacements reversed the function might be the following lambda: lambda r, e: return reversed(r), e",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "callable",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
-      "unresolved_reason": "unsupported base seed type: callable"
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unsupported base seed type: callable",
+      "call_kind": "positional_or_keyword"
     },
     "order": {
       "name": "order",
@@ -96,24 +127,31 @@
         "type": "string",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "string, 'none' or 'canonical' The order by which Mul and Add arguments are processed. If set to 'canonical', arguments will be canonically ordered. If set to 'none', ordering will be faster but dependent on expressions hashes, thus machine dependent and variable. For large expressions where speed is a concern, use the setting order='none'.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "string",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": "none"
       },
       "mutation_rules": [
         "enum_switch",
-        "string_replace",
-        "string_empty"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "ignore": {
       "name": "ignore",
@@ -121,14 +159,15 @@
         "type": "sequence|any",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "iterable of Symbols Substitutions containing any Symbol from ``ignore`` will be ignored.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "sequence",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": [
@@ -137,10 +176,18 @@
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -149,14 +196,64 @@
     "description": "======= list of (Symbol, expression) pairs All of the common subexpressions that were replaced. Subexpressions earlier in this list might show up in subexpressions later in this list. reduced_exprs : list of SymPy expressions The reduced expressions with all of the replacements above."
   },
   "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'postprocess' unresolved: unsupported base seed type: callable"
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "tuple",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "exprs"
+    ],
+    "skipped_optional": [
+      "symbols",
+      "optimizations",
+      "postprocess",
+      "order",
+      "ignore"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(symbols_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(optimizations_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(order_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.cse.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

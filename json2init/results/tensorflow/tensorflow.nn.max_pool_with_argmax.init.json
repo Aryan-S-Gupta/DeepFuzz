@@ -40,17 +40,39 @@
           "uint32",
           "uint64"
         ],
-        "constraints": []
+        "constraints": [
+          "input must be 4-D",
+          "input must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
+        "kind": "tensor",
+        "shape": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          1.0,
+          2.0
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -78,6 +100,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "strides": {
@@ -96,11 +125,24 @@
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -121,11 +163,18 @@
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "string"
+        "value": "VALID"
       },
       "mutation_rules": [
         "enum_switch",
         "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
         "string_empty"
       ],
       "unresolved_reason": ""
@@ -146,11 +195,18 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "string"
+        "value": "NHWC"
       },
       "mutation_rules": [
         "enum_switch",
         "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
         "string_empty"
       ],
       "unresolved_reason": ""
@@ -160,7 +216,7 @@
       "spec": {
         "type": "tensor|dtype",
         "size": "",
-        "default": "tf",
+        "default": "tf.int64",
         "flag": "Optional",
         "description": "An optional `tf.DType` from: `tf.int32, tf.int64`. Defaults to `tf.int64`. The dtype of the returned argmax tensor.",
         "dtype_candidates": [
@@ -178,6 +234,14 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
         "type_switch"
       ],
       "unresolved_reason": ""
@@ -200,32 +264,21 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": 0
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -237,21 +290,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: Value for attr 'padding' of \"string\" is not in the list of allowed values: \"SAME\", \"VALID\"\n\t; NodeDef: {{node MaxPoolWithArgmax}}; Op<name=MaxPoolWithArgmax; signature=input:T -> output:T, argmax:Targmax; attr=ksize:list(int),min=4; attr=strides:list(int),min=4; attr=Targmax:type,default=DT_INT64,allowed=[DT_INT32, DT_INT64]; attr=padding:string,allowed=[\"SAME\", \"VALID\"]; attr=include_batch_in_index:bool,default=false; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]> [Op:MaxPoolWithArgmax]"
+    "smoke test failed: {{function_node __wrapped__MaxPoolWithArgmax_device_/job:localhost/replica:0/task:0/device:CPU:0}} tensor_in must be 4-dimensional (2) [Op:MaxPoolWithArgmax] name: "
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "api_runtime_error",
     "error_type": "InvalidArgumentError",
-    "error": "Value for attr 'padding' of \"string\" is not in the list of allowed values: \"SAME\", \"VALID\"\n\t; NodeDef: {{node MaxPoolWithArgmax}}; Op<name=MaxPoolWithArgmax; signature=input:T -> output:T, argmax:Targmax; attr=ksize:list(int),min=4; attr=strides:list(int),min=4; attr=Targmax:type,default=DT_INT64,allowed=[DT_INT32, DT_INT64]; attr=padding:string,allowed=[\"SAME\", \"VALID\"]; attr=include_batch_in_index:bool,default=false; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]> [Op:MaxPoolWithArgmax]",
+    "error": "{{function_node __wrapped__MaxPoolWithArgmax_device_/job:localhost/replica:0/task:0/device:CPU:0}} tensor_in must be 4-dimensional (2) [Op:MaxPoolWithArgmax] name: ",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 59, in quick_execute\n    except TypeError as e:\n    ...<5 lines>...\n      raise e\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'padding' of \"string\" is not in the list of allowed values: \"SAME\", \"VALID\"\n\t; NodeDef: {{node MaxPoolWithArgmax}}; Op<name=MaxPoolWithArgmax; signature=input:T -> output:T, argmax:Targmax; attr=ksize:list(int),min=4; attr=strides:list(int),min=4; attr=Targmax:type,default=DT_INT64,allowed=[DT_INT32, DT_INT64]; attr=padding:string,allowed=[\"SAME\", \"VALID\"]; attr=include_batch_in_index:bool,default=false; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]> [Op:MaxPoolWithArgmax]\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__MaxPoolWithArgmax_device_/job:localhost/replica:0/task:0/device:CPU:0}} tensor_in must be 4-dimensional (2) [Op:MaxPoolWithArgmax] name: \n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.max_pool_with_argmax.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

@@ -10,6 +10,7 @@
       "description": "Quantized input of type `torch.quint8`",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "weight": {
@@ -20,16 +21,18 @@
       "description": "Quantized weight of type `torch.qint8`",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "bias": {
       "type": "float|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "None or fp32 bias of type `torch.float`",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "scale": {
@@ -40,6 +43,7 @@
       "description": "output scale. If None, derived from the input scale",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "zero_point": {
@@ -50,21 +54,12 @@
       "description": "output zero point. If None, derived from the input zero_point",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "Shape": {
-      "type": "number|any",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "- Input: :math:`(N, *, in\\_features)` where `*` means any number of additional dimensions - Weight: :math:`(out\\_features, in\\_features)` - Bias: :math:`(out\\_features)` - Output: :math:`(N, *, out\\_features)`",
-      "dtype_candidates": [],
-      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },

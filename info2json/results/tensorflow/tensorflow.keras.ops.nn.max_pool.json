@@ -26,7 +26,7 @@
       "type": "int|tuple|list|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "int or tuple/list of integers of size `len(inputs_spatial_shape)`. The stride of the sliding window for each spatial dimension of the input tensor. If `strides` is int, then every spatial dimension shares the same `strides`.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -36,7 +36,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "string, either `\"valid\"` or `\"same\"`. `\"valid\"` means no padding is applied, and `\"same\"` results in padding evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input when `strides=1`.",
       "dtype_candidates": [],
       "enum_values": [
@@ -51,7 +51,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A string, either `\"channels_last\"` or `\"channels_first\"`. `data_format` determines the ordering of the dimensions in the inputs. If `data_format=\"channels_last\"`, `inputs` is of shape `(batch_size, ..., channels)` while if `data_format=\"channels_first\"`, `inputs` is of shape `(batch_size, channels, ...)`.",
       "dtype_candidates": [],
       "enum_values": [

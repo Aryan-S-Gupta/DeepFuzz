@@ -2,16 +2,6 @@
   "api_name": "lstsq",
   "module_path": "tensorflow.linalg",
   "params": {
-    "matrix": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "`Tensor` of shape `[..., M, N]`.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
     "rhs": {
       "type": "tensor",
       "size": "",
@@ -25,8 +15,8 @@
     "l2_regularizer": {
       "type": "float|tensor",
       "size": "0-D",
-      "default": "",
-      "flag": "Required",
+      "default": "0.0",
+      "flag": "Optional",
       "description": "0-D `double` `Tensor`. Ignored if `fast=False`.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -41,16 +31,6 @@
       "dtype_candidates": [
         "bool"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "string, optional name of the operation.",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

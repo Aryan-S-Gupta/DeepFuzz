@@ -15,7 +15,10 @@
         "complex128"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape [..., M, M] if compact format, or shape [..., M] for each tensor in sequence format",
+        "diagonals must be float32, float64, complex64, or complex128"
+      ]
     },
     "rhs": {
       "type": "tensor|dtype",
@@ -26,13 +29,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "shape [..., M, N]",
         "rhs must have the same dtype as diagonals"
       ]
     },
     "diagonals_format": {
-      "type": "sequence",
+      "type": "string|sequence",
       "size": "",
-      "default": "compact",
+      "default": "",
       "flag": "Optional",
       "description": "one of `sequence`, or `compact`. Default is `compact`.",
       "dtype_candidates": [],
@@ -41,23 +45,14 @@
         "compact"
       ],
       "constraints": [
+        "'sequence' or 'compact'",
         "diagonals_format must be one of sequence, compact"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name to give this `Op` (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "[..., M, N]",
     "description": "A `Tensor` of shape [..., M, N] containing the result of multiplication."
   },
   "constraints": []

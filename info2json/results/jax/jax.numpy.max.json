@@ -10,6 +10,7 @@
       "description": "Input array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
@@ -20,48 +21,55 @@
       "description": "int or array, default=None. Axis along which the maximum to be computed. If None, the maximum is computed along all the axes.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "keepdims": {
-      "type": "bool",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
-      "dtype_candidates": [
-        "bool"
-      ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "initial": {
-      "type": "int|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "int or array, default=None. Initial value for the maximum.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "where": {
-      "type": "int|bool|tensor|dtype",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "int or array of boolean dtype, default=None. The elements to be used in the maximum. Array should be broadcast compatible to the input. ``initial`` must be specified when ``where`` is used.",
-      "dtype_candidates": [],
-      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Unused by JAX.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "keepdims": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "initial": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or array, default=None. Initial value for the maximum.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "where": {
+      "type": "int|bool|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or array of boolean dtype, default=None. The elements to be used in the maximum. Array should be broadcast compatible to the input. ``initial`` must be specified when ``where`` is used.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

@@ -10,31 +10,56 @@
       "description": "input array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
-      "type": "int|float|sequence|tensor|dtype",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "optional, int or sequence of ints, default=None. Axis along which the mean to be computed. If None, mean is computed along all the axes. dtype: The type of the output array. If None (default) then the output dtype will be match the input dtype for floating point inputs, or be set to float32 or float64 for non-floating-point inputs.",
+      "description": "optional, int or sequence of ints, default=None. Axis along which the mean to be computed. If None, mean is computed along all the axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "float|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The type of the output array. If None (default) then the output dtype will be match the input dtype for floating point inputs, or be set to float32 or float64 for non-floating-point inputs.",
       "dtype_candidates": [
         "float32",
         "float64"
       ],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "out": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Unused by JAX.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "keepdims": {
       "type": "bool",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "bool, default=False. If true, reduced axes are left in the result with size 1.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "where": {
@@ -47,16 +72,7 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
-    },
-    "out": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Unused by JAX.",
-      "dtype_candidates": [],
-      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

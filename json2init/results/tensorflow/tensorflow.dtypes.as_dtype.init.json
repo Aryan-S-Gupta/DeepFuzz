@@ -8,32 +8,37 @@
     "type_value": {
       "name": "type_value",
       "spec": {
-        "type": "string|dtype",
+        "type": "string|int|dtype",
         "size": "",
         "default": "",
         "flag": "Required",
         "description": "A value that can be converted to a `tf.DType` object.",
         "dtype_candidates": [],
-        "enum_values": [
-          "DataType"
-        ],
+        "enum_values": [],
         "constraints": [
-          "Must be one of: existing tf.DType objects, a `DataType` enum, or a numpy.dtype",
-          "type_value must be one of tf.DType"
+          "Must be convertible to tf.DType",
+          "type_value must be one of tf.DType",
+          "If type_value cannot be converted to a DType, a TypeError is raised"
         ]
       },
-      "chosen_type": "string",
+      "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "DataType"
+        "value": 1
       },
       "mutation_rules": [
-        "enum_switch",
-        "string_replace",
-        "string_empty"
+        "scalar_delta",
+        "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -41,27 +46,37 @@
     "numbers": "1",
     "description": "A `DType` corresponding to `type_value`."
   },
-  "constraints": [
-    "Input and output DTypes are interned (i.e. a single instance of each dtype is stored in a map)"
-  ],
+  "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Cannot convert the argument `type_value`: 'DataType' to a TensorFlow DType."
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "Cannot convert the argument `type_value`: 'DataType' to a TensorFlow DType.",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/dtypes.py\", line 944, in as_dtype\n    raise TypeError(f\"Cannot convert the argument `type_value`: {type_value!r} \"\n                    \"to a TensorFlow DType.\")\nTypeError: Cannot convert the argument `type_value`: 'DataType' to a TensorFlow DType.\n"
+    "result_summary": {
+      "python_type": "DType",
+      "dtype": "float32"
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "type_value"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.dtypes.as_dtype.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

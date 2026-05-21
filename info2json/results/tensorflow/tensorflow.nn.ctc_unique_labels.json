@@ -10,22 +10,15 @@
       "description": "tensor of shape [batch_size, max_label_length] padded with 0.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "\"ctc_unique_labels\"",
-      "flag": "Optional",
-      "description": "A name for this `Op`. Defaults to \"ctc_unique_labels\".",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "output[0].shape == params.labels.shape",
+        "output[1].shape == params.labels.shape"
+      ]
     }
   },
   "output": {
     "type": "tuple|tensor",
-    "numbers": "1",
+    "numbers": "[2]",
     "description": "tuple of - unique labels, tensor of shape `[batch_size, max_label_length]` - indices into unique labels, shape `[batch_size, max_label_length]`"
   },
   "constraints": []

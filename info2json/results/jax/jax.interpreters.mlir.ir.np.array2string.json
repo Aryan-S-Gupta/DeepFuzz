@@ -15,7 +15,7 @@
     "max_line_width": {
       "type": "int",
       "size": "",
-      "default": "numpy",
+      "default": "",
       "flag": "Optional",
       "description": "int, optional Inserts newlines if text is longer than `max_line_width`. Defaults to ``numpy.get_printoptions()['linewidth']``.",
       "dtype_candidates": [],
@@ -27,7 +27,7 @@
     "precision": {
       "type": "int",
       "size": "",
-      "default": "numpy",
+      "default": "",
       "flag": "Optional",
       "description": "int or None, optional Floating point precision. Defaults to ``numpy.get_printoptions()['precision']``.",
       "dtype_candidates": [],
@@ -37,7 +37,7 @@
     "suppress_small": {
       "type": "bool",
       "size": "",
-      "default": "False",
+      "default": "",
       "flag": "Optional",
       "description": "bool, optional Represent numbers \"very close\" to zero as zero; default is False. Very close is defined by precision: if the precision is 8, e.g., numbers smaller (in absolute value) than 5e-9 are represented as zero. Defaults to ``numpy.get_printoptions()['suppress']``.",
       "dtype_candidates": [
@@ -70,16 +70,6 @@
       "enum_values": [],
       "constraints": []
     },
-    "suffix": {
-      "type": "string|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "str, optional The length of the prefix and suffix strings are used to respectively align and wrap the output. An array is typically printed as::",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
     "formatter": {
       "type": "string|dict|callable",
       "size": "",
@@ -93,7 +83,7 @@
     "threshold": {
       "type": "int|number|tensor",
       "size": "",
-      "default": "numpy",
+      "default": "",
       "flag": "Optional",
       "description": "int, optional Total number of array elements which trigger summarization rather than full repr. Defaults to ``numpy.get_printoptions()['threshold']``.",
       "dtype_candidates": [],
@@ -103,7 +93,7 @@
     "edgeitems": {
       "type": "int|number|tensor",
       "size": "",
-      "default": "numpy",
+      "default": "",
       "flag": "Optional",
       "description": "int, optional Number of array items in summary at beginning and end of each dimension. Defaults to ``numpy.get_printoptions()['edgeitems']``.",
       "dtype_candidates": [],
@@ -113,7 +103,7 @@
     "sign": {
       "type": "string",
       "size": "",
-      "default": "numpy",
+      "default": "",
       "flag": "Optional",
       "description": "string, either '-', '+', or ' ', optional Controls printing of the sign of floating-point types. If '+', always print the sign of positive values. If ' ', always prints a space (whitespace character) in the sign position of positive values. If '-', omit the sign character of positive values. Defaults to ``numpy.get_printoptions()['sign']``.",
       "dtype_candidates": [],
@@ -128,9 +118,19 @@
     "floatmode": {
       "type": "string",
       "size": "",
-      "default": "numpy",
+      "default": "",
       "flag": "Optional",
       "description": "str, optional Controls the interpretation of the `precision` option for floating-point types. Defaults to ``numpy.get_printoptions()['floatmode']``. Can take the following values:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "suffix": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional The length of the prefix and suffix strings are used to respectively align and wrap the output. An array is typically printed as::",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

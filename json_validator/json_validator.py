@@ -8,11 +8,15 @@ import json
 import os
 import re
 import sys
+import inspect
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
-import requests
+try:
+    import requests
+except Exception:  # pragma: no cover
+    requests = None
 
 try:
     import pandas as pd
@@ -25,13 +29,23 @@ for candidate in [Path.cwd(), ROOT]:
     if s not in sys.path:
         sys.path.insert(0, s)
 
+from common.pipeline_contract import (
+    API_DOC_TEXT,
+    API_FULL_NAME,
+    SIGNATURE,
+    read_api_records,
+)
+from common.model_config import check_model_backend, load_model_config
+from common.result_io import atomic_write_csv, atomic_write_json, merge_rows_by_api
+
 try:
-    from json2init.deepfuzz_common import build_runtime_object_from_spec
+    from json2init.deepfuzz_common import build_runtime_object_from_spec, import_api
 except Exception:
     try:
-        from deepfuzz_common import build_runtime_object_from_spec
+        from deepfuzz_common import build_runtime_object_from_spec, import_api
     except Exception:
         build_runtime_object_from_spec = None
+        import_api = None
 
 SECTION_ARGS = {"args", "arguments", "parameters", "parameter", "inputs", "input"}
 SECTION_RETURNS = {"returns", "return", "output", "outputs", "result", "results"}
@@ -41,11 +55,13 @@ BAD_PARAM_NAMES = {
     "optional", "required", "parameter", "parameters", "argument", "arguments", "arg", "args",
     "default", "defaults", "note", "notes", "example", "examples", "return", "returns",
     "result", "results", "dtype", "tensor", "tensors", "list", "tuple", "type", "if", "then", "else",
+    "caution", "warning", "grads", "types", "matrix", "scatter", "updated",
 }
 
 COMMON_REAL_PARAM_NAMES = {
-    "input", "target", "output", "weight", "bias", "value", "device",
-    "device_index", "element", "x", "y", "axis", "dim"
+    "input", "inputs", "target", "output", "weight", "bias", "value", "device",
+    "device_index", "element", "x", "y", "axis", "axes", "dim", "dims",
+    "index", "indices", "shape", "size", "dtype",
 }
 
 TYPE_CANON = [
@@ -74,7 +90,8 @@ DTYPE_NAMES = (
 
 STRUCTURAL_REQUIRED_PARAM_KEYS = ["type", "size", "default", "flag", "description"]
 VALID_FLAGS = {"Required", "Optional", ""}
-PASS_STATUSES = {"pass", "repaired", "pass_with_warnings"}
+PASS_STATUSES = {"pass", "repaired", "pass_with_warnings", "zero_arg_valid_api"}
+REPAIRABLE_STATUSES = {"retry", "all_params_removed_due_to_prose", "parser_failure", "needs_llm_or_doc_signature"}
 
 REPAIR_PROMPT = """You repair exactly one API JSON spec for a documentation-grounded validator.
 
@@ -93,6 +110,9 @@ Deterministically Supported Parameter Names:
 
 Current Validation Issues:
 {failure_summary}
+
+Cross-Stage Error Context:
+{external_failure_context}
 
 Documentation-Derived Hints:
 {doc_hints}
@@ -142,13 +162,17 @@ Hard rules:
 10. Do not invent executable defaults.
 11. Keep descriptions short and literal.
 12. Prefer simpler, Stage-3-friendly types such as int, float, bool, string, list, tuple, tensor, dict, sequence, dtype, device when docs allow that wording.
-13. Output exactly one JSON object.
+13. Infer whether the evidence points to Stage 1 spec extraction, Stage 2 schema validation, Stage 3 seed generation, Stage 4 mutation/coverage, or a true runtime/library issue.
+14. Only repair this JSON spec when the supplied docs/signature/current JSON/error context ground the change.
+15. If the cross-stage context is an environment/runtime-only issue and the docs do not justify a spec change, return the current JSON normalized to this schema without inventing API semantics.
+16. Output exactly one JSON object.
 """
 
 
 @dataclass
 class ValidationResult:
     status: str
+    classification: str
     errors: List[str]
     warnings: List[str]
     stage3_preview_ready: bool
@@ -157,6 +181,30 @@ class ValidationResult:
     required_param_count: int
     supported_param_count: int
     signature_found: bool
+
+
+PROSE_FIELD_PATTERNS = [
+    r"\ba name for\b",
+    r"\bif true\b",
+    r"\bif false\b",
+    r"\bwhether\b",
+    r"\bdefaults?\s+to\b",
+    r"\bthe direction\b",
+    r"\bthe dimension\b",
+    r"\bon cpu\b",
+    r"\bused to\b",
+]
+
+
+def looks_like_prose(value: Any) -> bool:
+    s = clean_text(value)
+    if not s:
+        return False
+    low = s.lower()
+    if any(re.search(pat, low) for pat in PROSE_FIELD_PATTERNS):
+        return True
+    words = re.findall(r"[A-Za-z]+", s)
+    return len(words) > 8 and not any(ch in s for ch in "[]()|,")
 
 
 def normalize_ws(s: str) -> str:
@@ -195,28 +243,13 @@ def is_suspicious_param_name(name: str, allowed_names: Optional[Sequence[str]] =
     return False
 
 
-def read_api_docs(input_path: str) -> Dict[str, str]:
-    suffix = Path(input_path).suffix.lower()
-    out: Dict[str, str] = {}
-    if suffix == ".csv":
-        with open(input_path, "r", encoding="utf-8", newline="") as f:
-            for row in csv.DictReader(f):
-                api = str(row.get("api_full_name", "") or "").strip()
-                doc = str(row.get("api_doc_text", "") or "")
-                if api:
-                    out[api] = doc
-        return out
-    if suffix in {".xlsx", ".xls"}:
-        if pd is None:
-            raise RuntimeError("pandas/openpyxl is required for Excel input")
-        df = pd.read_excel(input_path).fillna("")
-        for _, row in df.iterrows():
-            api = str(row.get("api_full_name", "") or "").strip()
-            doc = str(row.get("api_doc_text", "") or "")
-            if api:
-                out[api] = doc
-        return out
-    raise ValueError(f"Unsupported docs file: {input_path}")
+def read_api_docs(input_path: str) -> Dict[str, Dict[str, str]]:
+    out: Dict[str, Dict[str, str]] = {}
+    for row in read_api_records(input_path):
+        api = str(row.get(API_FULL_NAME, "") or "").strip()
+        if api:
+            out[api] = row
+    return out
 
 
 def load_json(path: str) -> Dict[str, Any]:
@@ -231,27 +264,17 @@ def load_json(path: str) -> Dict[str, Any]:
 
 
 def write_json(path: str, data: Any) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    atomic_write_json(path, data)
 
 
 def write_table(base_path_without_ext: str, rows: List[Dict[str, Any]]) -> None:
     csv_path = base_path_without_ext + ".csv"
-    fields: List[str] = []
+    fields = []
     for row in rows:
-        for k in row.keys():
-            if k not in fields:
-                fields.append(k)
-    with open(csv_path, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        w.writeheader()
-        w.writerows(rows)
-    if pd is not None:
-        try:
-            pd.DataFrame(rows, columns=fields).to_excel(base_path_without_ext + ".xlsx", index=False)
-        except Exception:
-            pass
+        for key in row.keys():
+            if key not in fields:
+                fields.append(str(key))
+    atomic_write_csv(csv_path, rows, fields)
 
 
 def load_table(csv_path: str) -> List[Dict[str, Any]]:
@@ -261,7 +284,14 @@ def load_table(csv_path: str) -> List[Dict[str, Any]]:
         return list(csv.DictReader(f))
 
 
-def merge_rows_by_api(
+def safe_int(value: Any, default: int = 0) -> int:
+    try:
+        return int(str(value or "").strip())
+    except Exception:
+        return default
+
+
+def merge_rows_by_api_legacy(
     old_rows: List[Dict[str, Any]],
     new_rows: List[Dict[str, Any]],
     replace_api_names: Optional[set[str]] = None,
@@ -399,6 +429,8 @@ def normalize_type(type_str: str, desc_text: str = "") -> str:
     text = " ".join(x for x in [clean_text(type_str), clean_text(desc_text)] if x)
     if not text:
         return ""
+    if looks_like_prose(type_str):
+        text = clean_text(desc_text)
     out: List[str] = []
     seen = set()
     low = text.lower()
@@ -410,6 +442,68 @@ def normalize_type(type_str: str, desc_text: str = "") -> str:
                 seen.add(label)
                 out.append(label)
     return "|".join(out) if out else clean_text(type_str)
+
+
+def cleanup_machine_field(value: Any, field: str) -> str:
+    s = clean_text(value)
+    if not s:
+        return ""
+    if looks_like_prose(s):
+        return ""
+    if field == "size" and len(s.split()) > 4 and not re.search(r"[\[\]()]|\b\d+\s*[- ]?d\b", s, re.I):
+        return ""
+    if field == "default":
+        s = s.strip("` ")
+        if re.match(r"^(?:None|null|True|False|true|false|[-+]?\d+(?:\.\d+)?(?:e[-+]?\d+)?|\[\]|\{\}|\(\)|['\"][^'\"]{0,80}['\"]|(?:tf|tensorflow|torch|np|numpy)\.[A-Za-z_][\w.]*)$", s, re.I):
+            return s
+        literal = re.match(r"^(?:[-+]?\d+(?:\.\d+)?|True|False|None|null|true|false)\b", s)
+        return literal.group(0) if literal else ""
+    return s
+
+
+def runtime_signature_info(api_full_name: str) -> Tuple[List[str], bool, bool]:
+    if import_api is None:
+        return [], False, False
+    try:
+        obj = import_api(api_full_name)
+        sig = inspect.signature(obj)
+    except Exception:
+        return [], False, False
+    params: List[str] = []
+    accepts_kwargs = False
+    for name, param in sig.parameters.items():
+        if name in {"self", "cls"}:
+            continue
+        if param.kind == inspect.Parameter.VAR_KEYWORD:
+            accepts_kwargs = True
+            continue
+        if param.kind == inspect.Parameter.VAR_POSITIONAL:
+            continue
+        if not is_suspicious_param_name(name):
+            params.append(name)
+    return params, accepts_kwargs, True
+
+
+def classify_empty_params(
+    api_full_name: str,
+    supported_names: Sequence[str],
+    sig_line: str,
+    original_spec: Optional[Dict[str, Any]] = None,
+) -> str:
+    original_params = original_spec.get("params", {}) if isinstance(original_spec, dict) and isinstance(original_spec.get("params"), dict) else {}
+    if original_params and all(is_suspicious_param_name(str(name), supported_names if supported_names else None) or looks_like_prose(str(name)) for name in original_params):
+        return "all_params_removed_due_to_prose"
+    sig_params, _sig_defaults, _sig_ret = parse_signature_params(sig_line)
+    runtime_params, _accepts_kwargs, runtime_signature_found = runtime_signature_info(api_full_name)
+    if sig_line and not sig_params:
+        return "zero_arg_valid_api"
+    if runtime_signature_found and not runtime_params:
+        return "zero_arg_valid_api"
+    if not sig_line and not runtime_signature_found:
+        return "needs_llm_or_doc_signature"
+    if not supported_names and (sig_params or runtime_params):
+        return "parser_failure"
+    return "no_signature_available"
 
 
 def parse_doc_params(
@@ -645,8 +739,8 @@ def normalize_constraint_list(raw: Any) -> List[str]:
     return normalize_string_list(raw)
 
 
-def get_supported_param_names(doc: str) -> Tuple[List[str], Dict[str, Any], str, Dict[str, str], Dict[str, str], Dict[str, str], Dict[str, bool], Dict[str, str]]:
-    sig_line = find_signature_line(doc)
+def get_supported_param_names(doc: str, signature: str = "") -> Tuple[List[str], Dict[str, Any], str, Dict[str, str], Dict[str, str], Dict[str, str], Dict[str, bool], Dict[str, str]]:
+    sig_line = clean_text(signature) or find_signature_line(doc)
     sig_params, sig_defaults, _ = parse_signature_params(sig_line)
     doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map = parse_doc_params(doc, allowed_names=sig_params if sig_params else None)
     supported_names: List[str] = []
@@ -660,9 +754,9 @@ def get_supported_param_names(doc: str) -> Tuple[List[str], Dict[str, Any], str,
     return supported_names, sig_defaults, sig_line, doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map
 
 
-def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict[str, Any]:
+def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str, signature: str = "") -> Dict[str, Any]:
     module_path, _, api_name = api_full_name.rpartition(".")
-    supported_names, sig_defaults, _sig_line, doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map = get_supported_param_names(doc)
+    supported_names, sig_defaults, _sig_line, doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map = get_supported_param_names(doc, signature)
     ret_type_doc, ret_numbers_doc, ret_desc_doc = parse_return_info(doc)
     llm_params = spec.get("params", {}) if isinstance(spec.get("params"), dict) else {}
 
@@ -684,6 +778,11 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
     }
 
     for name in supported_names:
+        lname = clean_text(name).lower()
+        if api_full_name.startswith("tensorflow.") and lname == "name":
+            continue
+        if is_suspicious_param_name(name):
+            continue
         p = llm_params.get(name, {}) if isinstance(llm_params.get(name), dict) else {}
         desc = clean_text(doc_desc_map.get(name, "")) or clean_text(p.get("description", ""))
         raw_type = clean_text(doc_type_map.get(name, "")) or clean_text(p.get("type", ""))
@@ -703,22 +802,28 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
 
         constraints = normalize_constraint_list(p.get("constraints"))
 
+        enum_values = normalize_string_list(p.get("enum_values")) or normalize_string_list(p.get("valid_values")) or extract_enum_values(raw_type, desc, *constraints, param_names=supported_names)
+        case_insensitive = bool(p.get("case_insensitive") or p.get("enum_case_insensitive"))
+        if api_full_name.startswith("jax.") and lname == "padding":
+            enum_values = ["VALID", "SAME", "SAME_LOWER"]
+            case_insensitive = True
         out["params"][name] = {
             "type": normalize_type(raw_type, desc),
-            "size": clean_text(doc_size_map.get(name, "")) or extract_size_text(clean_text(p.get("size", ""))),
-            "default": default,
+            "size": cleanup_machine_field(clean_text(doc_size_map.get(name, "")) or extract_size_text(clean_text(p.get("size", ""))), "size"),
+            "default": cleanup_machine_field(default, "default"),
             "flag": final_flag,
             "description": desc,
             "dtype_candidates": normalize_string_list(p.get("dtype_candidates")) or extract_dtype_candidates(raw_type, desc, *constraints),
-            "enum_values": normalize_string_list(p.get("enum_values")) or extract_enum_values(raw_type, desc, *constraints, param_names=supported_names),
+            "enum_values": enum_values,
+            "case_insensitive": case_insensitive,
             "constraints": constraints,
         }
 
     return out
 
 
-def doc_hints_block(api_full_name: str, doc: str) -> str:
-    supported_names, sig_defaults, sig_line, doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map = get_supported_param_names(doc)
+def doc_hints_block(api_full_name: str, doc: str, signature: str = "") -> str:
+    supported_names, sig_defaults, sig_line, doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map = get_supported_param_names(doc, signature)
     rows = [
         f"signature={sig_line or '(not found)'}",
         f"supported_params={', '.join(supported_names) if supported_names else '(none)'}",
@@ -739,6 +844,8 @@ def call_ollama_json(
     num_predict: int = 700,
     num_ctx: int = 4096,
 ) -> Dict[str, Any]:
+    if requests is None:
+        raise RuntimeError("requests is required for Ollama repair; install requirements.txt")
     url = host.rstrip("/") + "/api/generate"
     payload = {
         "model": model,
@@ -767,14 +874,15 @@ def call_ollama_json(
     return {}
 
 
-def build_prompt(api_full_name: str, doc: str, current_spec: Dict[str, Any], errors: List[str], warnings: List[str]) -> str:
-    supported_names, _sig_defaults, sig_line, _doc_type_map, _doc_desc_map, _doc_size_map, _doc_optional_map, _doc_default_map = get_supported_param_names(doc)
+def build_prompt(api_full_name: str, doc: str, current_spec: Dict[str, Any], errors: List[str], warnings: List[str], signature: str = "") -> str:
+    supported_names, _sig_defaults, sig_line, _doc_type_map, _doc_desc_map, _doc_size_map, _doc_optional_map, _doc_default_map = get_supported_param_names(doc, signature)
     return REPAIR_PROMPT.format(
         api_full_name=api_full_name,
         sig_line=sig_line or "",
         supported_params=", ".join(supported_names) if supported_names else "(none reliably parsed)",
         failure_summary=" | ".join(errors + [f"warning: {w}" for w in warnings]),
-        doc_hints=doc_hints_block(api_full_name, doc),
+        external_failure_context="\n".join(errors[:24]),
+        doc_hints=doc_hints_block(api_full_name, doc, signature),
         api_doc_text=doc,
         current_json=json.dumps(current_spec, ensure_ascii=False, indent=2),
     )
@@ -792,18 +900,24 @@ def preview_stage3_readiness(api_full_name: str, spec: Dict[str, Any]) -> Tuple[
         return False, [f"stage3 preview exception: {type(exc).__name__}: {exc}"]
 
 
-def validate_normalized_spec(api_full_name: str, spec: Dict[str, Any], doc: str) -> ValidationResult:
+def validate_normalized_spec(
+    api_full_name: str,
+    spec: Dict[str, Any],
+    doc: str,
+    signature: str = "",
+    original_spec: Optional[Dict[str, Any]] = None,
+) -> ValidationResult:
     errors: List[str] = []
     warnings: List[str] = []
     module_path, _, api_name = api_full_name.rpartition(".")
-    supported_names, _sig_defaults, sig_line, doc_type_map, doc_desc_map, _doc_size_map, _doc_optional_map, _doc_default_map = get_supported_param_names(doc)
+    supported_names, _sig_defaults, sig_line, doc_type_map, doc_desc_map, _doc_size_map, _doc_optional_map, _doc_default_map = get_supported_param_names(doc, signature)
 
     if not clean_text(doc):
         errors.append("missing source doc")
 
     if not isinstance(spec, dict):
         errors.append("spec is not a JSON object")
-        return ValidationResult("fail", errors, warnings, False, [], 0, 0, len(supported_names), bool(sig_line))
+        return ValidationResult("parser_failure", "parser_failure", errors, warnings, False, [], 0, 0, len(supported_names), bool(sig_line))
 
     if clean_text(spec.get("api_name", "")) != api_name:
         errors.append(f"api_name mismatch: expected '{api_name}'")
@@ -820,8 +934,13 @@ def validate_normalized_spec(api_full_name: str, spec: Dict[str, Any], doc: str)
         errors.append("output must be an object")
         output = {}
 
+    empty_param_status = ""
     if not params:
-        errors.append("no parameters remained after normalization")
+        empty_param_status = classify_empty_params(api_full_name, supported_names, sig_line, original_spec=original_spec)
+        if empty_param_status == "zero_arg_valid_api":
+            warnings.append("zero-argument callable accepted")
+        else:
+            errors.append(empty_param_status)
 
     required_count = 0
     seen_required_doc_signal = False
@@ -858,6 +977,10 @@ def validate_normalized_spec(api_full_name: str, spec: Dict[str, Any], doc: str)
                 warnings.append(f"required param '{name}' missing description")
         elif flag == "":
             warnings.append(f"param '{name}' has empty flag")
+        for field in ["type", "size", "default"]:
+            raw = clean_text(meta.get(field, ""))
+            if raw and looks_like_prose(raw):
+                errors.append(f"param '{name}' {field} field contains prose")
 
     if supported_names and seen_required_doc_signal and required_count == 0:
         warnings.append("no required params remained after normalization; check doc parsing")
@@ -876,15 +999,25 @@ def validate_normalized_spec(api_full_name: str, spec: Dict[str, Any], doc: str)
     if not stage3_ready:
         warnings.append("stage3 preview not ready: " + " | ".join(stage3_reasons[:3]))
 
-    if errors:
+    if empty_param_status == "zero_arg_valid_api" and not [e for e in errors if e != "zero_arg_valid_api"]:
+        status = "zero_arg_valid_api"
+        classification = "zero_arg_valid_api"
+    elif empty_param_status and errors == [empty_param_status]:
+        status = empty_param_status
+        classification = empty_param_status
+    elif errors:
         status = "retry"
+        classification = "parser_failure" if any("params" in e or "parameter" in e for e in errors) else "validation_error"
     elif warnings:
         status = "pass_with_warnings"
+        classification = "pass_with_warnings"
     else:
         status = "pass"
+        classification = "pass"
 
     return ValidationResult(
         status=status,
+        classification=classification,
         errors=errors,
         warnings=warnings,
         stage3_preview_ready=stage3_ready,
@@ -914,6 +1047,43 @@ def load_only_api_set(path: str) -> Optional[set[str]]:
     return names
 
 
+def load_external_errors(path: str) -> Dict[str, List[str]]:
+    out: Dict[str, List[str]] = {}
+    if not path:
+        return out
+    try:
+        if str(path).lower().endswith(".csv"):
+            for row in load_table(path):
+                api = str(row.get("api") or row.get("api_full_name") or "").strip()
+                if not api:
+                    continue
+                stage = str(row.get("stage", "") or "")
+                etype = str(row.get("error_type") or row.get("status") or row.get("stage3_status") or "")
+                msg = str(row.get("message") or row.get("error") or row.get("reason") or row.get("errors") or "").strip()
+                if msg:
+                    out.setdefault(api, []).append(f"{stage}: {etype}: {msg}")
+            return out
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                row = json.loads(line)
+                if not isinstance(row, dict):
+                    continue
+                api = str(row.get("api") or row.get("api_full_name") or "").strip()
+                if not api:
+                    continue
+                stage = str(row.get("stage", "") or "")
+                etype = str(row.get("error_type", "") or "")
+                msg = str(row.get("message") or row.get("error") or row.get("reason") or "").strip()
+                if msg:
+                    out.setdefault(api, []).append(f"{stage}: {etype}: {msg}")
+    except Exception:
+        return out
+    return out
+
+
 def process(
     spec_dir: str,
     api_csv: str,
@@ -928,6 +1098,9 @@ def process(
     repair_num_ctx: int = 4096,
     repair_temperature: float = 0.0,
     only_apis: str = "",
+    force: bool = False,
+    external_errors_csv: str = "",
+    external_errors_jsonl: str = "",
 ) -> None:
     docs = read_api_docs(api_csv)
     spec_root = Path(spec_dir)
@@ -935,15 +1108,17 @@ def process(
     state_root.mkdir(parents=True, exist_ok=True)
 
     allow_only = load_only_api_set(only_apis)
-    prev_report_rows = load_table(str(state_root / "validation_report.csv")) if allow_only else []
+    external_errors = load_external_errors(external_errors_csv or external_errors_jsonl)
+    prev_ok_rows = load_table(str(state_root / "ok.csv"))
+    prev_error_rows = load_table(str(state_root / "errors.csv"))
+    prev_ok_by_api = {str(row.get("api_full_name", "") or ""): row for row in prev_ok_rows}
     replace_names = set(allow_only or set())
 
     current_rows: List[Dict[str, Any]] = []
-    current_issues_jsonl: List[Dict[str, Any]] = []
-    current_repair_manifest: List[Dict[str, Any]] = []
 
     total_seen = 0
     selected_this_run = 0
+    skipped_existing_valid = 0
 
     for spec_path in sorted(spec_root.glob("*.json")):
         if spec_path.name == "summary.json":
@@ -955,14 +1130,24 @@ def process(
         if allow_only is not None and api_full_name not in allow_only:
             continue
 
+        prev_row = prev_ok_by_api.get(api_full_name)
+        if not force and prev_row and str(prev_row.get("status", "")) in PASS_STATUSES:
+            selected_this_run += 1
+            skipped_existing_valid += 1
+            current_rows.append(prev_row)
+            continue
+
         selected_this_run += 1
         current_spec = load_json(str(spec_path))
-        doc = docs.get(api_full_name, "")
+        doc_row = docs.get(api_full_name, {})
+        doc = str(doc_row.get(API_DOC_TEXT, "") or "")
+        signature = str(doc_row.get(SIGNATURE, "") or "")
 
         if not doc:
             row = {
                 "api_full_name": api_full_name,
                 "status": "fail",
+                "classification": "missing_source_doc",
                 "rounds": 0,
                 "repair_model_used": "",
                 "signature_found": False,
@@ -976,22 +1161,33 @@ def process(
                 "json_path": str(spec_path),
             }
             current_rows.append(row)
-            current_issues_jsonl.append(row)
             continue
 
-        normalized = normalize_schema(current_spec, api_full_name, doc)
-        result = validate_normalized_spec(api_full_name, normalized, doc)
+        normalized = normalize_schema(current_spec, api_full_name, doc, signature)
+        result = validate_normalized_spec(api_full_name, normalized, doc, signature, original_spec=current_spec)
 
         final_status = result.status
         model_used = "deterministic"
         rounds_used = 1
         repaired = False
+        model_health_checked = False
+        model_health_ok = True
+        model_health_message = ""
 
-        if result.status == "retry" and primary_repair_model:
+        if result.status in REPAIRABLE_STATUSES and primary_repair_model:
             for round_idx in range(2, max_rounds + 1):
+                if not model_health_checked:
+                    cfg = load_model_config()
+                    model_health_ok, model_health_message = check_model_backend(primary_repair_model, repair_host, backend=cfg.backend)
+                    model_health_checked = True
+                if not model_health_ok:
+                    final_status = "environment_model_unavailable"
+                    result.errors = [model_health_message]
+                    model_used = "unavailable"
+                    break
                 rounds_used = round_idx
                 model_used = choose_model_for_round(round_idx, primary_repair_model, fallback_repair_model, fallback_after_round)
-                prompt = build_prompt(api_full_name, doc, normalized, result.errors, result.warnings)
+                prompt = build_prompt(api_full_name, doc, normalized, result.errors + external_errors.get(api_full_name, []), result.warnings, signature)
                 candidate = call_ollama_json(
                     prompt=prompt,
                     model=model_used,
@@ -1002,8 +1198,8 @@ def process(
                     num_ctx=repair_num_ctx,
                 )
                 if candidate:
-                    normalized = normalize_schema(candidate, api_full_name, doc)
-                result = validate_normalized_spec(api_full_name, normalized, doc)
+                    normalized = normalize_schema(candidate, api_full_name, doc, signature)
+                result = validate_normalized_spec(api_full_name, normalized, doc, signature, original_spec=current_spec)
                 if result.status in PASS_STATUSES:
                     repaired = True
                     final_status = "repaired" if result.warnings or round_idx > 1 else result.status
@@ -1016,21 +1212,10 @@ def process(
         if final_status in PASS_STATUSES or repaired:
             write_json(str(spec_path), normalized)
 
-        if final_status == "retry":
-            current_repair_manifest.append(
-                {
-                    "api_full_name": api_full_name,
-                    "json_path": str(spec_path),
-                    "errors": result.errors,
-                    "warnings": result.warnings,
-                    "stage3_preview_reasons": result.stage3_preview_reasons,
-                    "rounds": rounds_used,
-                }
-            )
-
         row = {
             "api_full_name": api_full_name,
             "status": "repaired" if repaired else final_status,
+            "classification": result.classification,
             "rounds": rounds_used,
             "repair_model_used": model_used,
             "signature_found": result.signature_found,
@@ -1044,96 +1229,67 @@ def process(
             "json_path": str(spec_path),
         }
         current_rows.append(row)
-        current_issues_jsonl.append({**row, "normalized_spec_preview": normalized})
 
     if allow_only:
-        report_rows = merge_rows_by_api(prev_report_rows, current_rows, replace_names)
+        report_rows = merge_rows_by_api(prev_ok_rows + prev_error_rows, current_rows, replace_names)
     else:
         report_rows = sorted(current_rows, key=lambda r: str(r.get("api_full_name", "")))
 
-    ok_rows = [r for r in report_rows if str(r.get("status")) in {"pass", "pass_with_warnings", "repaired"}]
-    retry_rows = [r for r in report_rows if str(r.get("status")) == "retry"]
-    fail_rows = [r for r in report_rows if str(r.get("status")) == "fail"]
+    ok_rows = [r for r in report_rows if str(r.get("status")) in PASS_STATUSES]
+    unresolved_rows = [r for r in report_rows if str(r.get("status")) not in PASS_STATUSES]
 
     summary = {
+        "schema_version": "2.0",
         "total_seen": total_seen,
         "selected": selected_this_run,
         "merged_total_rows": len(report_rows),
         "pass": sum(1 for r in report_rows if str(r.get("status")) == "pass"),
         "pass_with_warnings": sum(1 for r in report_rows if str(r.get("status")) == "pass_with_warnings"),
+        "zero_arg_valid_api": sum(1 for r in report_rows if str(r.get("status")) == "zero_arg_valid_api"),
+        "needs_llm_or_doc_signature": sum(1 for r in report_rows if str(r.get("status")) == "needs_llm_or_doc_signature"),
+        "no_signature_available": sum(1 for r in report_rows if str(r.get("status")) == "no_signature_available"),
+        "unsupported_api_kind": sum(1 for r in report_rows if str(r.get("status")) == "unsupported_api_kind"),
+        "all_params_removed_due_to_prose": sum(1 for r in report_rows if str(r.get("status")) == "all_params_removed_due_to_prose"),
+        "parser_failure": sum(1 for r in report_rows if str(r.get("status")) == "parser_failure"),
+        "environment_model_unavailable": sum(1 for r in report_rows if str(r.get("status")) == "environment_model_unavailable"),
         "repaired": sum(1 for r in report_rows if str(r.get("status")) == "repaired"),
-        "retry": len(retry_rows),
-        "fail": len(fail_rows),
-        "missing_doc": sum(1 for r in fail_rows if "missing source doc" in str(r.get("errors", "")).lower()),
+        "retry": sum(1 for r in unresolved_rows if str(r.get("status")) in REPAIRABLE_STATUSES),
+        "fail": sum(1 for r in unresolved_rows if str(r.get("status")) not in REPAIRABLE_STATUSES),
+        "missing_doc": sum(1 for r in unresolved_rows if "missing source doc" in str(r.get("errors", "")).lower()),
+        "total_valid": len(ok_rows),
+        "total_failed": len(unresolved_rows),
+        "total_retried": sum(1 for r in report_rows if safe_int(r.get("rounds", 0)) > 1),
+        "total_repaired": sum(1 for r in report_rows if str(r.get("status")) == "repaired"),
+        "total_unresolved": len(unresolved_rows),
+        "total_skipped_existing_valid": skipped_existing_valid,
+        "models": {
+            "deterministic": "deterministic",
+            "primary_repair_model": primary_repair_model,
+            "fallback_repair_model": fallback_repair_model,
+        },
     }
 
-    write_table(str(state_root / "validation_report"), report_rows)
-    write_table(str(state_root / "retry_only"), retry_rows)
-    write_table(str(state_root / "ok_only"), ok_rows)
-    write_table(str(state_root / "ok"), ok_rows)
-    write_table(str(state_root / "errors"), fail_rows + retry_rows)
-
-    with (state_root / "issues.jsonl").open("w", encoding="utf-8") as f:
-        for row in current_issues_jsonl:
-            f.write(json.dumps(row, ensure_ascii=False) + "\n")
-
-    with (state_root / "repair_manifest.jsonl").open("w", encoding="utf-8") as f:
-        for row in current_repair_manifest:
-            f.write(json.dumps(row, ensure_ascii=False) + "\n")
-
-    retry_api_names = sorted(
-        {
-            str(r.get("api_full_name", ""))
-            for r in retry_rows
-            if str(r.get("api_full_name", ""))
-        }
-    )
-
-    with (state_root / "retry_api_list.txt").open("w", encoding="utf-8") as f:
-        for name in retry_api_names:
-            f.write(name + "\n")
-
-    write_json(str(state_root / "summary.json"), summary)
-
-    cmd = [
-        "python3", "json_validator/json_validator.py",
-        "--spec-dir", spec_dir,
-        "--api-csv", api_csv,
-        "--state-dir", state_dir,
-        "--primary-repair-model", primary_repair_model,
-        "--fallback-repair-model", fallback_repair_model,
-        "--fallback-after-round", str(fallback_after_round),
-        "--repair-host", repair_host,
-        "--max-rounds", str(max_rounds),
-        "--repair-timeout", str(repair_timeout),
-        "--repair-num-predict", str(repair_num_predict),
-        "--repair-num-ctx", str(repair_num_ctx),
-        "--repair-temperature", str(repair_temperature),
-        "--only-apis", str(state_root / "retry_api_list.txt"),
+    ok_fields = [
+        "api_full_name", "status", "classification", "rounds", "repair_model_used",
+        "signature_found", "param_count", "required_param_count", "supported_param_count",
+        "stage3_preview_ready", "errors", "warnings", "stage3_preview_reasons", "json_path",
     ]
-
-    with (state_root / "repair_retry.sh").open("w", encoding="utf-8") as f:
-        f.write("#!/usr/bin/env bash\nset -euo pipefail\n\n")
-        if retry_api_names:
-            f.write(" ".join(cmd) + "\n")
-        else:
-            f.write("echo 'No Stage 2 retry APIs remaining.'\n")
-    os.chmod(state_root / "repair_retry.sh", 0o755)
+    error_fields = list(ok_fields)
+    atomic_write_csv(state_root / "ok.csv", [{k: row.get(k, "") for k in ok_fields} for row in ok_rows], ok_fields)
+    atomic_write_csv(
+        state_root / "errors.csv",
+        [{k: row.get(k, "") for k in error_fields} for row in unresolved_rows],
+        error_fields,
+    )
 
     print(
         f"[validator] selected_this_run={summary['selected']} merged_total={summary['merged_total_rows']} "
         f"pass={summary['pass']} pass_with_warnings={summary['pass_with_warnings']} "
-        f"repaired={summary['repaired']} retry={summary['retry']} fail={summary['fail']}"
+        f"zero_arg={summary['zero_arg_valid_api']} repaired={summary['repaired']} "
+        f"retry={summary['retry']} fail={summary['fail']}"
     )
-    print(f"[validator] report: {state_root / 'validation_report.csv'}")
     print(f"[validator] ok: {state_root / 'ok.csv'}")
     print(f"[validator] errors: {state_root / 'errors.csv'}")
-    print(f"[validator] retry_only: {state_root / 'retry_only.csv'}")
-    if pd is not None:
-        print(f"[validator] report_xlsx: {state_root / 'validation_report.xlsx'}")
-    print(f"[validator] retry_list: {state_root / 'retry_api_list.txt'}")
-    print(f"[validator] retry_script: {state_root / 'repair_retry.sh'}")
-    print(f"[validator] summary: {state_root / 'summary.json'}")
 
 
 def main() -> int:
@@ -1142,6 +1298,7 @@ def main() -> int:
     ap.add_argument("--api-csv", required=True)
     ap.add_argument("--state-dir", required=True)
     ap.add_argument("--primary-repair-model", default="mistral:7b")
+    ap.add_argument("--repair-model", dest="primary_repair_model", default=argparse.SUPPRESS, help="Backward-compatible alias for --primary-repair-model")
     ap.add_argument("--fallback-repair-model", default="mixtral:8x7b")
     ap.add_argument("--fallback-after-round", type=int, default=3, help="Use fallback model from this repair round onward.")
     ap.add_argument("--repair-host", default="http://localhost:11434")
@@ -1151,6 +1308,9 @@ def main() -> int:
     ap.add_argument("--repair-num-ctx", type=int, default=4096)
     ap.add_argument("--repair-temperature", type=float, default=0.0)
     ap.add_argument("--only-apis", default="", help="Optional text file with one api_full_name per line for targeted retry.")
+    ap.add_argument("--force", action="store_true", help="Revalidate APIs that were already valid in the previous run.")
+    ap.add_argument("--external-errors-csv", default="", help="Optional consolidated cross-stage error context for repair prompts.")
+    ap.add_argument("--external-errors-jsonl", default="", help="Backward-compatible alias; CSV is the canonical repair context.")
     args = ap.parse_args()
 
     process(
@@ -1167,6 +1327,9 @@ def main() -> int:
         repair_num_ctx=args.repair_num_ctx,
         repair_temperature=args.repair_temperature,
         only_apis=args.only_apis,
+        force=args.force,
+        external_errors_csv=args.external_errors_csv,
+        external_errors_jsonl=args.external_errors_jsonl,
     )
     return 0
 

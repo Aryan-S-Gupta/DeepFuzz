@@ -19,19 +19,9 @@
         "float64"
       ],
       "constraints": [
-        "Must be one of the following types: half, float32, float64",
+        "Must be one of the following types: `half`, `float32`, `float64`.",
         "x must be one of SparseTensor, half, float32, float64"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -40,6 +30,6 @@
     "description": "A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`. @compatibility(scipy) Equivalent to scipy.special.k1e @end_compatibility"
   },
   "constraints": [
-    "@compatibility(scipy) Equivalent to scipy.special.k1e @end_compatibility"
+    "Equivalent to scipy.special.k1e"
   ]
 }

@@ -5,55 +5,65 @@
   "import_path": "torch.cuda.temperature",
   "backend": "torch",
   "params": {
-    "Centigrades": {
-      "name": "Centigrades",
+    "device": {
+      "name": "device",
       "spec": {
-        "type": "",
+        "type": "int|device",
         "size": "",
         "default": "",
-        "flag": "Required",
-        "description": "",
-        "constraints": []
+        "flag": "Optional",
+        "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "device type must be one of: torch.device, str, int, or None"
+        ]
       },
-      "chosen_type": "any",
-      "include_in_base_call": true,
+      "chosen_type": "int",
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1
       },
       "mutation_rules": [
-        "type_switch"
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": ""
     }
   },
   "output": {
-    "type": "float",
-    "numbers": "1",
+    "type": "int",
+    "numbers": "integer",
     "description": "Return the average temperature of the GPU sensor in Degrees C (Centigrades)."
   },
   "constraints": [
-    "device parameter is optional with default value None.",
-    "Output is a single float number."
+    "Each sample period may be between 1 second and 1/6 second, depending on the product being queried."
   ],
   "spec_ready": true,
   "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: temperature() got an unexpected keyword argument 'Centigrades'"
-  ],
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "temperature() got an unexpected keyword argument 'Centigrades'",
+    "classification": "missing_dependency",
+    "error_type": "ModuleNotFoundError",
+    "error": "nvidia-ml-py does not seem to be installed or it can't be imported.",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: temperature() got an unexpected keyword argument 'Centigrades'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/__init__.py\", line 1462, in temperature\n    handle = _get_pynvml_handler(device)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/__init__.py\", line 1281, in _get_pynvml_handler\n    raise ModuleNotFoundError(\n    ...<2 lines>...\n    ) from _PYNVML_ERR\nModuleNotFoundError: nvidia-ml-py does not seem to be installed or it can't be imported.\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.cuda.temperature.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "missing_dependency",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

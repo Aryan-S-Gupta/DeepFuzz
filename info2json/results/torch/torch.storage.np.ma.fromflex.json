@@ -1,0 +1,27 @@
+{
+  "api_name": "fromflex",
+  "module_path": "torch.storage.np.ma",
+  "params": {
+    "fxarray": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray The structured input array, containing ``_data`` and ``_mask`` fields. If present, other fields are discarded.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must have at least `_data` and `_mask` fields.",
+        "fxarray parameter must be provided.",
+        "Output MaskedArray's `_data` field type is inferred from input `fxarray`'s `_data` field type."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- MaskedArray The constructed masked array."
+  },
+  "constraints": []
+}

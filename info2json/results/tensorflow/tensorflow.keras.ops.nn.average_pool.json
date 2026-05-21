@@ -20,29 +20,23 @@
       "description": "int or tuple/list of integers of size `len(inputs_spatial_shape)`, specifying the size of the pooling window for each spatial dimension of the input tensor. If `pool_size` is int, then every spatial dimension shares the same `pool_size`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must be positive",
-        "inputs_spatial_shape must match pool_size or strides size"
-      ]
+      "constraints": []
     },
     "strides": {
       "type": "int|tuple|list|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "int or tuple/list of integers of size `len(inputs_spatial_shape)`. The stride of the sliding window for each spatial dimension of the input tensor. If `strides` is int, then every spatial dimension shares the same `strides`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must be positive",
-        "inputs_spatial_shape must match pool_size or strides size"
-      ]
+      "constraints": []
     },
     "padding": {
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "string, either `\"valid\"` or `\"same\"`. `\"valid\"` means no padding is applied, and `\"same\"` results in padding evenly to the left/right or up/down of the input such that output has the same height/width dimension as the input when `strides=1`.",
       "dtype_candidates": [],
       "enum_values": [
@@ -50,7 +44,6 @@
         "same"
       ],
       "constraints": [
-        "must be \"valid\" or \"same\"",
         "padding must be one of valid, same"
       ]
     },
@@ -58,7 +51,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A string, either `\"channels_last\"` or `\"channels_first\"`. `data_format` determines the ordering of the dimensions in the inputs. If `data_format=\"channels_last\"`, `inputs` is of shape `(batch_size, ..., channels)` while if `data_format=\"channels_first\"`, `inputs` is of shape `(batch_size, channels, ...)`.",
       "dtype_candidates": [],
       "enum_values": [
@@ -66,17 +59,14 @@
         "channels_first"
       ],
       "constraints": [
-        "must be \"channels_last\" or \"channels_first\"",
         "data_format must be one of channels_last, channels_first"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "rank N+2",
+    "numbers": "1",
     "description": "A tensor of rank N+2, the result of the average pooling operation."
   },
-  "constraints": [
-    "inputs_spatial_shape must match pool_size or strides size"
-  ]
+  "constraints": []
 }

@@ -20,22 +20,11 @@
         "float64"
       ],
       "constraints": [
-        "Must be one of the following types: half, bfloat16, float32, float64.",
+        "Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`.",
         "1-D or higher rank.",
         "images must be 1-D",
-        "images must be one of half, bfloat16, float32, float64, RGB"
-      ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "''",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "name must be a string."
+        "images must be one of half, bfloat16, float32, float64, RGB",
+        "The output tensor has the same shape as the `images` tensor."
       ]
     }
   },

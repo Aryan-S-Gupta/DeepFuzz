@@ -15,14 +15,16 @@
         "description": "A list of `Tensor` objects, each with same shape and type.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "This function does not handle tf.reduce_sum(inputs, axis=0)"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,34 +32,64 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
     "shape": {
       "name": "shape",
       "spec": {
-        "type": "",
+        "type": "tuple",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "Expected shape of elements of `inputs` (optional). Also controls the output shape of this op, which may affect type inference in other ops. A value of `None` means \"infer the input shape from the shapes in `inputs`\".",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "Shape of elements in inputs or 'None' for inferring from inputs"
+        ]
       },
-      "chosen_type": "expected shape of elements of `inputs` (optional). also controls the output shape of this op",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
+      "chosen_type": "list",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
+      },
       "mutation_rules": [
-        "enum_switch"
+        "enum_switch",
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
       ],
-      "unresolved_reason": "unhandled chosen type: expected shape of elements of `inputs` (optional). also controls the output shape of this op"
+      "valid_mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": ""
     },
     "tensor_dtype": {
       "name": "tensor_dtype",
@@ -65,41 +97,33 @@
         "type": "dtype",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "Expected data type of `inputs` (optional). A value of `None` means \"infer the input dtype from `inputs[0]`\".",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "Data type of inputs or 'None' for inferring from inputs[0]"
+        ]
       },
       "chosen_type": "dtype",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "dtype",
         "value": "float32"
       },
       "mutation_rules": [
         "enum_switch",
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
         "type_switch"
       ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -107,16 +131,28 @@
     "numbers": "1",
     "description": "A `Tensor` of same shape and type as the elements of `inputs`."
   },
-  "constraints": [],
-  "spec_ready": false,
+  "constraints": [
+    "The input must be a list or tuple."
+  ],
+  "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "required param 'shape' unresolved: unhandled chosen type: expected shape of elements of `inputs` (optional). also controls the output shape of this op",
-    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
+    "smoke test failed: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 323, in __bool__\n    return bool(x.size > 0 and x)\nValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()\n"
+  },
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.accumulate_n.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

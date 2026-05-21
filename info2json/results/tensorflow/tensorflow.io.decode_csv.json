@@ -1,0 +1,87 @@
+{
+  "api_name": "decode_csv",
+  "module_path": "tensorflow.io",
+  "params": {
+    "records": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor` of type `string`. Each string is a record/row in the csv and all records should have the same format.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "record_defaults": {
+      "type": "string|float|list|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "A list of `Tensor` objects with specific types. Acceptable types are `float32`, `float64`, `int32`, `int64`, `string`. One tensor per column of the input record, with either a scalar default value for that column or an empty vector if the column is required.",
+      "dtype_candidates": [
+        "int32",
+        "int64",
+        "float32",
+        "float64"
+      ],
+      "enum_values": [
+        "float32",
+        "float64",
+        "int32",
+        "int64",
+        "string"
+      ],
+      "constraints": [
+        "record_defaults must be one of float32, float64, int32, int64, string"
+      ]
+    },
+    "field_delim": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional `string`. Defaults to `\",\"`. char delimiter to separate fields in a record.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "use_quote_delim": {
+      "type": "string|float|bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "An optional `bool`. Defaults to `True`. If false, treats double quotation marks as regular characters inside of the string fields (ignoring RFC 4180, Section 2, Bullet 5).",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "na_value": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Additional string to recognize as NA/NaN.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "select_cols": {
+      "type": "list",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Optional sorted list of column indices to select. If specified, only this subset of columns will be parsed and returned. It only works on `records` except for `record_defaults`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "1",
+    "description": "A list of `Tensor` objects. Has the same type as `record_defaults`. Each tensor will have the same shape as records."
+  },
+  "constraints": []
+}

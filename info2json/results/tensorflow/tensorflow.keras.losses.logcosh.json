@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape",
-        "dN in both y_true and y_pred can be 0 if the batch has no elements"
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "y_pred": {
@@ -24,18 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape",
-        "dN in both y_true and y_pred can be 0 if the batch has no elements"
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "-1, d0, ..., dN-1",
+    "numbers": "1",
     "description": "Logcosh error values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred must have the same shape",
-    "dN in both y_true and y_pred can be 0 if the batch has no elements"
+    "The shapes of y_true and y_pred must be broadcast-compatible."
   ]
 }

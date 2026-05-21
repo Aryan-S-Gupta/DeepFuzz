@@ -10,19 +10,21 @@
       "description": "a sequence of arrays to concatenate; each must have the same shape except along the specified axis. If a single array is given it will be treated equivalently to `arrays = unstack(arrays)`, but the implementation will avoid explicit unstacking.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "arrays must not be empty",
-        "all arrays in arrays must have the same shape except along axis"
+        "each element's shape must match others' except along axis",
+        "arrays' dtypes must be broadcast-compatible"
       ]
     },
     "axis": {
-      "type": "",
+      "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "specify the axis along which to concatenate.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

@@ -8,12 +8,16 @@
       "default": "",
       "flag": "Required",
       "description": "Tensor of true targets.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "float32"
+      ],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape.",
-        "All elements in y_true and y_pred must be in range [0, 1].",
-        "y_true should not contain zero values to avoid undefined log(0)."
+        "Required",
+        "loss = y_true * log(y_true / y_pred)",
+        "assert loss.shape == (2,) when y_true and y_pred have shape (2, 3)",
+        "y_true and y_pred must be broadcast-compatible",
+        "y_true and y_pred must have float32 dtype"
       ]
     },
     "y_pred": {
@@ -22,22 +26,28 @@
       "default": "",
       "flag": "Required",
       "description": "Tensor of predicted targets.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "float32"
+      ],
       "enum_values": [],
       "constraints": [
-        "Must have same shape as y_true.",
-        "y_true and y_pred must have the same shape.",
-        "All elements in y_true and y_pred must be in range [0, 1]."
+        "Required",
+        "loss = y_true * log(y_true / y_pred)",
+        "assert loss.shape == (2,) when y_true and y_pred have shape (2, 3)",
+        "y_true and y_pred must be broadcast-compatible",
+        "y_true and y_pred must have float32 dtype"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating",
+    "numbers": "[batch_size, d0, .. dN-1]",
     "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred must have the same shape.",
-    "All elements in y_true and y_pred must be in range [0, 1]."
+    "loss = y_true * log(y_true / y_pred)",
+    "assert loss.shape == (2,) when y_true and y_pred have shape (2, 3)",
+    "y_true and y_pred must be broadcast-compatible",
+    "y_true and y_pred must have float32 dtype"
   ]
 }

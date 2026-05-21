@@ -10,14 +10,16 @@
       "description": "input array. Must have floating-point or complex type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x type must be floating-point or complex"
+        "Must have a shape",
+        "x and output must have the same shape"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "floating-point or complex",
+    "numbers": "real or complex",
     "description": "Array of the same shape and dtype as ``x`` containing the element-wise hyperbolic sine."
   },
   "constraints": []

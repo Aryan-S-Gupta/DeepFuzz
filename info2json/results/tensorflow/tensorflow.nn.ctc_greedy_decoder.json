@@ -10,7 +10,9 @@
       "description": "3-D `float` `Tensor` sized `[max_time, batch_size, num_classes]`. The logits.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "inputs must be 3-D"
+      ]
     },
     "sequence_length": {
       "type": "sequence",
@@ -41,7 +43,7 @@
     "blank_index": {
       "type": "",
       "size": "",
-      "default": "num_classes - 1",
+      "default": "",
       "flag": "Optional",
       "description": "(Optional). Default: `num_classes - 1`. Define the class index to use for the blank label. Negative values will start from num_classes, ie, -1 will reproduce the ctc_greedy_decoder behavior of using num_classes - 1 for the blank symbol, which corresponds to the default.",
       "dtype_candidates": [],

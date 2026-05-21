@@ -1,0 +1,28 @@
+{
+  "api_name": "result_type",
+  "module_path": "torch.storage.np.core.multiarray",
+  "params": {
+    "arrays_and_dtypes": {
+      "type": "list",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "list of arrays and dtypes The operands of some operation whose result type is needed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "arrays_and_dtypes must contain at least one item.",
+        "Each item in arrays_and_dtypes can be either an array or a dtype."
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype The result type."
+  },
+  "constraints": [
+    "If the item is an array, it should be a NumPy array."
+  ]
+}

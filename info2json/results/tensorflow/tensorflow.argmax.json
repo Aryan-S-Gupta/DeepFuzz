@@ -15,7 +15,7 @@
     "axis": {
       "type": "int",
       "size": "",
-      "default": "0",
+      "default": "",
       "flag": "Optional",
       "description": "An integer, the axis to reduce across. Default to 0.",
       "dtype_candidates": [],
@@ -23,7 +23,7 @@
       "constraints": []
     },
     "output_type": {
-      "type": "string|dtype",
+      "type": "dtype",
       "size": "",
       "default": "tf.int64",
       "flag": "Optional",
@@ -34,24 +34,12 @@
       ],
       "enum_values": [],
       "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "An optional name for the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32 or int64",
+    "numbers": "1",
     "description": "A `Tensor` of type `output_type`."
   },
-  "constraints": [
-    "input and output types must match"
-  ]
+  "constraints": []
 }

@@ -11,14 +11,15 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape can be any",
-        "input tensor x's values are modified in-place according to the function f(x)"
+        "If x <= -1, output = 0.",
+        "For -1 < x < 1, output = (1/4) * (x + 1)^2.",
+        "For x >= 1, output = x."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": []

@@ -10,9 +10,9 @@
       "description": "scalar or array. Specifies the bases.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes",
-        "x1 type must be same as input type"
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     },
     "x2": {
@@ -23,15 +23,15 @@
       "description": "scalar or array. Specifies the exponent. ``x1`` and ``x2`` should either have same shape or be broadcast compatible.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes",
-        "x2 type must be same as input type"
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "An array containing the base ``x1`` exponentials of ``x2`` with same dtype as input."
   },
   "constraints": [

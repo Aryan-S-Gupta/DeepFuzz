@@ -1,0 +1,26 @@
+{
+  "api_name": "isfortran",
+  "module_path": "torch.storage.np.core.numeric",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape can be any dimension",
+        "a must be provided"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "single",
+    "description": "------- bool Returns True if the array is Fortran contiguous but *not* C contiguous."
+  },
+  "constraints": []
+}

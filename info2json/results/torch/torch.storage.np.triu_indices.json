@@ -1,0 +1,45 @@
+{
+  "api_name": "triu_indices",
+  "module_path": "torch.storage.np",
+  "params": {
+    "n": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int The size of the arrays for which the returned indices will be valid.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "k": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Diagonal offset (see `triu` for details).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "m": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional The column dimension of the arrays for which the returned arrays will be valid. By default `m` is taken equal to `n`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "1",
+    "description": "------- tuple, shape(2) of ndarrays, shape(`n`) The row and column indices, respectively. The row indices are sorted in non-decreasing order, and the corresponding column indices are strictly increasing for each row."
+  },
+  "constraints": []
+}

@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape_x and shape_y must be compatible for broadcasting"
+        "must be a 1-D tensor"
       ]
     },
     "shape_y": {
@@ -23,16 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape_x and shape_y must be compatible for broadcasting"
+        "must be a 1-D tensor"
       ]
     }
   },
   "output": {
     "type": "int|tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "A rank 1 integer `Tensor` representing the broadcasted shape."
   },
   "constraints": [
-    "shape_x and shape_y must be compatible for broadcasting"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

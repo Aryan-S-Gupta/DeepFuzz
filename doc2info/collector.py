@@ -26,8 +26,15 @@ import argparse
 import importlib
 import inspect
 import json
+import sys
 from dataclasses import dataclass, asdict
 from typing import Any, Iterable, List, Optional, Set, Tuple
+
+try:
+    from common.api_policy import default_internal_prefixes, is_internal_api
+except Exception:  # pragma: no cover - direct script fallback
+    default_internal_prefixes = lambda _library: ()  # type: ignore
+    is_internal_api = lambda _api, library=None, extra_prefixes=(): False  # type: ignore
 
 
 @dataclass
@@ -92,11 +99,13 @@ def safe_signature(obj: Any) -> Optional[str]:
     try:
         return str(inspect.signature(obj))
     except Exception:
-        ts = getattr(obj, "__text_signature__", None)
+        try:
+            ts = inspect.getattr_static(obj, "__text_signature__", None)
+        except Exception:
+            ts = None
         if isinstance(ts, str) and ts.strip():
             return ts.strip()
         return None
-
 
 def safe_doc(obj: Any, max_chars: int = 200_000) -> Tuple[str, int, bool]:
     """Return a cleaned docstring, its stored length, and whether it was truncated."""
@@ -193,7 +202,7 @@ def collect_apis(
     ApiEntry records instead of raising.
     """
     entries: List[ApiEntry] = []
-    exclude_prefixes = exclude_prefixes or []
+    exclude_prefixes = list(default_internal_prefixes(root_name)) + list(exclude_prefixes or [])
 
     try:
         root = importlib.import_module(root_name)
@@ -205,7 +214,7 @@ def collect_apis(
 
     def excluded(qname: str) -> bool:
         """Return True when a qualified name matches any excluded prefix."""
-        return any(qname.startswith(pfx) for pfx in exclude_prefixes)
+        return any(qname == pfx.rstrip(".") or qname.startswith(pfx.rstrip(".") + ".") for pfx in exclude_prefixes)
 
     queue: List[Tuple[Any, str, int]] = [(root, root_name, 0)]
     seen_names: Set[str] = set()
@@ -214,7 +223,7 @@ def collect_apis(
     while queue:
         obj, qname, depth = queue.pop(0)
 
-        if excluded(qname):
+        if excluded(qname) or is_internal_api(qname, root_name):
             continue
         if qname in seen_names:
             continue
@@ -274,7 +283,7 @@ def collect_apis(
 
         for child_name in iter_public_names(obj):
             child_qname = f"{qname}.{child_name}"
-            if excluded(child_qname) or not is_public_qualname(child_qname):
+            if excluded(child_qname) or is_internal_api(child_qname, root_name) or not is_public_qualname(child_qname):
                 continue
 
             ok, child, err = safe_getattr(obj, child_name)
@@ -351,18 +360,23 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = ap.parse_args(argv)
 
     all_entries: List[ApiEntry] = []
-    for r in args.root:
-        all_entries.extend(
-            collect_apis(
-                root_name=r,
-                max_depth=args.max_depth,
-                exclude_prefixes=args.exclude_prefix,
-                include_descriptors=not args.no_descriptors,
-                include_callables=not args.no_callables,
-                include_classes=not args.no_classes,
-                traverse_classes=not args.no_class_members,
+    original_argv = sys.argv[:]
+    try:
+        sys.argv = [sys.argv[0]]
+        for r in args.root:
+            all_entries.extend(
+                collect_apis(
+                    root_name=r,
+                    max_depth=args.max_depth,
+                    exclude_prefixes=args.exclude_prefix,
+                    include_descriptors=not args.no_descriptors,
+                    include_callables=not args.no_callables,
+                    include_classes=not args.no_classes,
+                    traverse_classes=not args.no_class_members,
+                )
             )
-        )
+    finally:
+        sys.argv = original_argv
 
     write_jsonl(all_entries, args.out)
     print(

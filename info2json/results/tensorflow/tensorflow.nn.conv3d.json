@@ -19,7 +19,9 @@
         "float32",
         "float64"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of half, bfloat16, float32, float64"
+      ]
     },
     "filters": {
       "type": "tensor",
@@ -29,7 +31,9 @@
       "description": "A `Tensor`. Must have the same type as `input`. Shape `[filter_depth, filter_height, filter_width, in_channels, out_channels]`. `in_channels` must match between `input` and `filters`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "filters must have the same dtype as input"
+      ]
     },
     "strides": {
       "type": "list|tensor",
@@ -56,7 +60,7 @@
     "data_format": {
       "type": "string",
       "size": "",
-      "default": "\"NDHWC\"",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `string` from: `\"NDHWC\", \"NCDHW\"`. Defaults to `\"NDHWC\"`. The data format of the input and output data. With the default format \"NDHWC\", the data is stored in the order of: [batch, in_depth, in_height, in_width, in_channels]. Alternatively, the format could be \"NCDHW\", the data storage order is: [batch, in_channels, in_depth, in_height, in_width].",
       "dtype_candidates": [],
@@ -66,7 +70,7 @@
     "dilations": {
       "type": "list|tensor",
       "size": "1-D",
-      "default": "[1, 1, 1, 1, 1]",
+      "default": "",
       "flag": "Optional",
       "description": "An optional list of `ints`. Defaults to `[1, 1, 1, 1, 1]`. 1-D tensor of length 5. The dilation factor for each dimension of `input`. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. The dimension order is determined by the value of `data_format`, see above for details. Dilations in the batch and depth dimensions must be 1.",
       "dtype_candidates": [],
@@ -75,16 +79,6 @@
         "dilations must be 1-D",
         "dilations must be one of ints"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

@@ -15,17 +15,19 @@
         "description": "A batch of images as a 4D tensor or NumPy array. Shape should be `(batch_size, height, width, channels)`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "images must be 4-D"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          1,
-          1,
-          1
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -33,12 +35,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -55,27 +67,40 @@
         "constraints": []
       },
       "chosen_type": "tensor",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          1,
-          4
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 0.5,
         "backend": "tensorflow",
-        "preset": "boxes3"
+        "preset": "boxes3",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -101,6 +126,12 @@
         "string_replace",
         "string_empty"
       ],
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
       "unresolved_reason": ""
     },
     "class_mapping": {
@@ -108,7 +139,7 @@
       "spec": {
         "type": "dict",
         "size": "",
-        "default": "None (no labels displayed)",
+        "default": "",
         "flag": "Optional",
         "description": "A dictionary mapping class IDs (integers) to class labels (strings). Used to display class labels next to the bounding boxes. Defaults to None (no labels displayed).",
         "dtype_candidates": [],
@@ -122,6 +153,13 @@
         "value": {}
       },
       "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
         "type_switch"
       ],
       "unresolved_reason": ""
@@ -131,7 +169,7 @@
       "spec": {
         "type": "tuple|list",
         "size": "",
-        "default": "(128, 128, 128)",
+        "default": "",
         "flag": "Optional",
         "description": "A tuple or list representing the RGB color of the bounding boxes. For example, `(255, 0, 0)` for red. Defaults to `(128, 128, 128)`.",
         "dtype_candidates": [],
@@ -148,8 +186,15 @@
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -173,6 +218,12 @@
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -199,6 +250,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "font_scale": {
@@ -206,7 +263,7 @@
       "spec": {
         "type": "float",
         "size": "",
-        "default": "1",
+        "default": "1.0",
         "flag": "Optional",
         "description": "A float specifying the scale of the font used for text labels. Defaults to `1.0`.",
         "dtype_candidates": [],
@@ -223,6 +280,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "data_format": {
@@ -231,7 +294,7 @@
         "type": "string",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "A string, either `\"channels_last\"` or `\"channels_first\"`, specifying the order of dimensions in the input images. Defaults to the `image_data_format` value found in your Keras config file at `~/.keras/keras.json`. If you never set it, then it will be \"channels_last\".",
         "dtype_candidates": [],
         "enum_values": [
@@ -239,17 +302,26 @@
           "channels_first",
           "image_data_format"
         ],
-        "constraints": []
+        "constraints": [
+          "data_format must be one of channels_last, channels_first, image_data_format"
+        ]
       },
       "chosen_type": "string",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "channels_last"
+        "value": "NHWC"
       },
       "mutation_rules": [
         "enum_switch",
         "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
         "string_empty"
       ],
       "unresolved_reason": ""
@@ -264,21 +336,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: draw_bounding_boxes() missing 1 required positional argument: 'bounding_boxes'"
+    "smoke test failed: The `draw_bounding_boxes` function requires the `cv2` package  (OpenCV). Please install it with `pip install opencv-python`."
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "draw_bounding_boxes() missing 1 required positional argument: 'bounding_boxes'",
+    "classification": "import_error",
+    "error_type": "ImportError",
+    "error": "The `draw_bounding_boxes` function requires the `cv2` package  (OpenCV). Please install it with `pip install opencv-python`.",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: draw_bounding_boxes() missing 1 required positional argument: 'bounding_boxes'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/visualization/draw_bounding_boxes.py\", line 78, in draw_bounding_boxes\n    raise ImportError(\n    ...<2 lines>...\n    )\nImportError: The `draw_bounding_boxes` function requires the `cv2` package  (OpenCV). Please install it with `pip install opencv-python`.\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.visualization.draw_bounding_boxes.json",
   "stage3_status": "retry",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

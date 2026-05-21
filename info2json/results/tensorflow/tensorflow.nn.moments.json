@@ -20,40 +20,24 @@
       "description": "Array of ints. Axes along which to compute mean and variance.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "axes must be chosen from [0, 1, 2, 3]"
-      ]
+      "constraints": []
     },
     "shift": {
-      "type": "Not used in the current implementation",
+      "type": "",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "Not used in the current implementation.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "shift is not used in the current implementation"
-      ]
-    },
-    "keepdims": {
-      "type": "bool",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "produce moments with the same dimensionality as the input.",
-      "dtype_candidates": [
-        "bool"
-      ],
-      "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "string",
+    "keepdims": {
+      "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Name used to scope the operations that compute the moments.",
+      "default": "False",
+      "flag": "Optional",
+      "description": "produce moments with the same dimensionality as the input.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -61,7 +45,7 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "2",
+    "numbers": "1",
     "description": "Two `Tensor` objects: `mean` and `variance`."
   },
   "constraints": []

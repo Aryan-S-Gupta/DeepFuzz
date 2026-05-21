@@ -10,6 +10,7 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "x values must be in range [-1, 1]"
       ]
@@ -17,11 +18,11 @@
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real or complex",
+    "numbers": "real32, real64, complex64",
     "description": "An array of same shape as ``x`` containing the inverse of hyperbolic tangent of each element of ``x``, promoting to inexact dtype."
   },
   "constraints": [
     "real-values outside the range [-1, 1] return nan",
-    "output dtype is float32 or complex64"
+    "complex64 and real32 output when input is complex or out-of-range real"
   ]
 }

@@ -10,10 +10,7 @@
       "description": "array_like Input array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "a must be an array",
-        "axis must be None or an int or a tuple of ints"
-      ]
+      "constraints": []
     },
     "axis": {
       "type": "int|tuple",
@@ -24,9 +21,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "if int, 0 <= axis < a.ndim + 1",
-        "if tuple, all values must satisfy -rank(input) <= axis[i] < rank(input)",
-        "axis must be None or an int or a tuple of ints"
+        "-rank(input) <= axis < rank(input)",
+        "axis != int or tuple of ints where any value is less than -rank(input) or greater than rank(input)-1"
       ]
     }
   },
@@ -35,7 +31,5 @@
     "numbers": "1",
     "description": "------- ndarray View of `a` with the number of dimensions increased."
   },
-  "constraints": [
-    "axis must be None or an int or a tuple of ints"
-  ]
+  "constraints": []
 }

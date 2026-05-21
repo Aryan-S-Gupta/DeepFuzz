@@ -10,9 +10,7 @@
       "description": "A `Tensor` representing preactivation values.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "features and beta must have the same shape"
-      ]
+      "constraints": []
     },
     "beta": {
       "type": "tensor",
@@ -23,16 +21,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "features and beta must have the same shape"
+        "beta defaults to 1.0"
       ]
     }
   },
   "output": {
-    "type": "tensor",
+    "type": "The activation value.",
     "numbers": "1",
     "description": "The activation value."
   },
-  "constraints": [
-    "features and beta must have the same shape"
-  ]
+  "constraints": []
 }

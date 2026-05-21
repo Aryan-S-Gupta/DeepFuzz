@@ -5,8 +5,8 @@
     "num_mel_bins": {
       "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "20",
+      "flag": "Optional",
       "description": "Python int. How many bands in the resulting mel spectrum.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -15,8 +15,8 @@
     "num_spectrogram_bins": {
       "type": "int|tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "129",
+      "flag": "Optional",
       "description": "An integer `Tensor`. How many bins there are in the source spectrogram data, which is understood to be `fft_size // 2 + 1`, i.e. the spectrogram only contains the nonredundant FFT bins.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -25,8 +25,8 @@
     "sample_rate": {
       "type": "int|float|tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "8000",
+      "flag": "Optional",
       "description": "An integer or float `Tensor`. Samples per second of the input signal used to create the spectrogram. Used to figure out the frequencies corresponding to each spectrogram bin, which dictates how they are mapped into the mel scale.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -35,29 +35,29 @@
     "lower_edge_hertz": {
       "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "125.0",
+      "flag": "Optional",
       "description": "Python float. Lower bound on the frequencies to be included in the mel spectrum. This corresponds to the lower edge of the lowest triangular band.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
     "upper_edge_hertz": {
-      "type": "float|dtype",
+      "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Python float. The desired top edge of the highest frequency band. dtype: The `DType` of the result matrix. Must be a floating point type.",
+      "default": "3800.0",
+      "flag": "Optional",
+      "description": "Python float. The desired top edge of the highest frequency band.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "",
+    "dtype": {
+      "type": "dtype",
       "size": "",
-      "default": "",
+      "default": "tf.float32",
       "flag": "Optional",
-      "description": "An optional name for the operation.",
+      "description": "The `DType` of the result matrix. Must be a floating point type.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

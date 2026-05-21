@@ -13,12 +13,16 @@
         "float64"
       ],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "shape is arbitrary",
+        "p must be 1-D"
+      ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "p.dtype",
+    "numbers": "real",
     "description": "an array with `dtype=p.dtype`."
   },
   "constraints": []

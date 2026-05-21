@@ -8,14 +8,12 @@
       "default": "",
       "flag": "Required",
       "description": "Tensor of true targets.",
-      "dtype_candidates": [
-        "float32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must be broadcast-compatible.",
-        "y_true and y_pred dtypes must be float32.",
-        "y_true values must satisfy: 0 <= y_true <= 1"
+        "required",
+        "must be broadcast-compatible with y_pred",
+        "y_true and y_pred must have the same shape before broadcasting"
       ]
     },
     "y_pred": {
@@ -24,24 +22,21 @@
       "default": "",
       "flag": "Required",
       "description": "Tensor of predicted targets.",
-      "dtype_candidates": [
-        "float32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must be broadcast-compatible.",
-        "y_true and y_pred dtypes must be float32.",
-        "y_pred values must satisfy: 0 <= y_pred <= 1"
+        "required",
+        "must be broadcast-compatible with y_true",
+        "y_true and y_pred must have the same shape before broadcasting"
       ]
     }
   },
   "output": {
-    "type": "loss",
-    "numbers": "1",
+    "type": "tensor",
+    "numbers": "[batch_size, d0, .. dN-1]",
     "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred shapes must be broadcast-compatible.",
-    "y_true and y_pred dtypes must be float32."
+    "y_true and y_pred must have the same shape before broadcasting"
   ]
 }

@@ -13,30 +13,36 @@
       "constraints": []
     },
     "overwrite_a": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "unused by JAX",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     },
     "check_finite": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "True",
+      "flag": "Optional",
       "description": "unused by JAX",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }
   },
   "output": {
     "type": "tuple|tensor",
-    "numbers": "1",
+    "numbers": "2",
     "description": "A tuple ``(lu, piv)`` - ``lu`` is an array of shape ``(..., M, N)``, containing ``L`` in its lower triangle and ``U`` in its upper. - ``piv`` is an array of shape ``(..., K)`` with ``K = min(M, N)``, which encodes the pivots."
   },
-  "constraints": []
+  "constraints": [
+    "jax.scipy.linalg.lu_solve requires this function's output as input"
+  ]
 }

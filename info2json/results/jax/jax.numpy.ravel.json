@@ -10,20 +10,34 @@
       "description": "array to be flattened.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "input array must have a defined shape"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "order": {
       "type": "string",
       "size": "",
-      "default": "\"C\"",
+      "default": "",
       "flag": "Optional",
       "description": "``'F'`` or ``'C'``, specifies whether the reshape should apply column-major (fortran-style, ``\"F\"``) or row-major (C-style, ``\"C\"``) order; default is ``\"C\"``. JAX does not support `order=\"A\"` or `order=\"K\"`.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must be 'F' or 'C'"
+        "'F'",
+        "'C'"
+      ]
+    },
+    "out_sharding": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "unused parameter in this API",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "out_sharding must not be used"
       ]
     }
   },

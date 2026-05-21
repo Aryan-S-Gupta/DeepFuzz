@@ -10,14 +10,16 @@
       "description": "input array or scalar. ``complex`` dtypes are not supported.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x and output must have same shape"
+        "complex dtypes are not allowed",
+        "x cannot be complex dtype"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "same as x's",
     "description": "An array containing the cube root of the elements of ``x``."
   },
   "constraints": []

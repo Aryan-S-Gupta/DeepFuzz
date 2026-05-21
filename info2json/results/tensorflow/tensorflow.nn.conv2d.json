@@ -19,7 +19,9 @@
         "float32",
         "float64"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of half, bfloat16, float32, float64"
+      ]
     },
     "filters": {
       "type": "tensor",
@@ -30,7 +32,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "filters must be 4-D"
+        "filters must be 4-D",
+        "filters must have the same dtype as input"
       ]
     },
     "strides": {
@@ -66,7 +69,7 @@
     "data_format": {
       "type": "string",
       "size": "",
-      "default": "\"NHWC\"",
+      "default": "",
       "flag": "Optional",
       "description": "An optional `string` from: `\"NHWC\", \"NCHW\"`. Defaults to `\"NHWC\"`. Specify the data format of the input and output data. With the default format \"NHWC\", the data is stored in the order of: `batch_shape + [height, width, channels]`. Alternatively, the format could be \"NCHW\", the data storage order of: `batch_shape + [channels, height, width]`.",
       "dtype_candidates": [],
@@ -76,7 +79,7 @@
     "dilations": {
       "type": "int|list|tensor",
       "size": "4-D",
-      "default": "1",
+      "default": "",
       "flag": "Optional",
       "description": "An int or list of `ints` that has length `1`, `2` or `4`, defaults to 1. The dilation factor for each dimension of`input`. If a single value is given it is replicated in the `H` and `W` dimension. By default the `N` and `C` dimensions are set to 1. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. The dimension order is determined by the value of `data_format`, see above for details. Dilations in the batch and depth dimensions if a 4-d tensor must be 1.",
       "dtype_candidates": [],
@@ -85,16 +88,6 @@
         "dilations must be 4-D",
         "dilations must be one of ints, 1, 2, 4, H, W, N, C"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

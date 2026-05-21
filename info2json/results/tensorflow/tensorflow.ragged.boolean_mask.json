@@ -10,7 +10,10 @@
       "description": "A potentially ragged tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "rank(output) = rank(data)",
+        "ValueError: if `rank(mask)` is not known statically; or if `mask.shape` is not a prefix of `data.shape`."
+      ]
     },
     "mask": {
       "type": "bool|tensor",
@@ -23,20 +26,10 @@
       ],
       "enum_values": [],
       "constraints": [
-        "rank(mask) must be known statically",
-        "mask's shape must be a prefix of data's shape",
-        "output.ragged_rank = max(data.ragged_rank, rank(mask) - 1)"
+        "`mask`'s shape must be a prefix of `data`'s shape.",
+        "`rank(mask)` must be known statically.",
+        "ValueError: if `rank(mask)` is not known statically; or if `mask.shape` is not a prefix of `data.shape`."
       ]
-    },
-    "name": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name prefix for the returned tensor (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -45,6 +38,6 @@
     "description": "A potentially ragged tensor that is formed by retaining the elements in `data` where the corresponding value in `mask` is `True`. * `rank(output) = rank(data)`. * `output.ragged_rank = max(data.ragged_rank, rank(mask) - 1)`."
   },
   "constraints": [
-    "rank(output) = rank(data)"
+    "ValueError: if `rank(mask)` is not known statically; or if `mask.shape` is not a prefix of `data.shape`."
   ]
 }

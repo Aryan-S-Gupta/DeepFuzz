@@ -12,30 +12,25 @@
         "uint32"
       ],
       "enum_values": [],
-      "constraints": [
-        "key_bits_array trailing shape must match impl's key shape"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "impl": {
-      "type": "string",
+      "type": "",
       "size": "",
-      "default": "jax.random.key",
+      "default": "",
       "flag": "Optional",
       "description": "optional, specifies a PRNG implementation, as in ``random.key``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must be a valid PRNG implementation",
-        "key_bits_array trailing shape must match impl's key shape"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "dtype is a subdtype of `jax.dtypes.prng_key` corresponding to `impl`",
+    "numbers": "1",
     "description": "A PRNG key array, whose dtype is a subdtype of ``jax.dtypes.prng_key`` corresponding to ``impl``, and whose shape equals the leading shape of ``key_bits_array.shape`` up to the key bit dimensions."
   },
-  "constraints": [
-    "key_bits_array trailing shape must match impl's key shape"
-  ]
+  "constraints": []
 }

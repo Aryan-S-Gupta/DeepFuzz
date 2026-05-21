@@ -1,0 +1,25 @@
+{
+  "api_name": "dstack",
+  "module_path": "torch.storage.np",
+  "params": {
+    "tup": {
+      "type": "sequence",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of arrays The arrays must have the same shape along all but the third axis. 1-D or 2-D arrays must have the same shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "tup must be 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The array formed by stacking the given arrays, will be at least 3-D."
+  },
+  "constraints": []
+}

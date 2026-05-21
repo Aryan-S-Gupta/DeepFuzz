@@ -23,20 +23,20 @@
       "constraints": []
     },
     "alpha": {
-      "type": "",
+      "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0.5",
+      "flag": "Optional",
       "description": "coefficient controlling incidence of false positives.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
     "beta": {
-      "type": "",
+      "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0.5",
+      "flag": "Optional",
       "description": "coefficient controlling incidence of false negatives.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -46,15 +46,18 @@
       "type": "tuple",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "tuple for which dimensions the loss is calculated.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "tuple for which dimensions the loss is calculated.",
+        "axis must satisfy -rank(input) <= axis < rank(input)"
+      ]
     }
   },
   "output": {
-    "type": "",
+    "type": "float",
     "numbers": "1",
     "description": "Tversky loss value. Reference: - [Salehi et al., 2017](https://arxiv.org/abs/1706.05721)"
   },

@@ -1,0 +1,153 @@
+{
+  "api_full_name": "jax.lax.select_n",
+  "api_name": "select_n",
+  "module_path": "jax.lax",
+  "import_path": "jax.lax.select_n",
+  "backend": "jax",
+  "params": {
+    "which": {
+      "name": "which",
+      "spec": {
+        "type": "int|bool|list|number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "determines which case should be returned. Must be an array containing either a boolean or integer values. May either be a scalar or have shape matching ``cases``. For each array element, the value of ``which`` determines which of ``cases`` is taken. ``which`` must be in the range ``[0 .. len(cases))``; for values outside that range the behavior is implementation-defined. *cases: a non-empty list of array cases. All must have equal dtypes and equal shapes.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [
+          "cases"
+        ],
+        "constraints": [
+          "which must be in the range [0 .. len(cases))",
+          "which must be one of cases",
+          "All elements in which must have a corresponding case in cases"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_only"
+    },
+    "cases": {
+      "name": "cases",
+      "spec": {
+        "type": "any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "signature parameter cases",
+        "constraints": []
+      },
+      "chosen_type": "any",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor_list",
+        "items": [
+          {
+            "kind": "tensor",
+            "shape": [
+              2
+            ],
+            "dtype": "float32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              1.0,
+              2.0
+            ]
+          },
+          {
+            "kind": "tensor",
+            "shape": [
+              2
+            ],
+            "dtype": "float32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              3.0,
+              4.0
+            ]
+          }
+        ]
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "var_positional"
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "An array with shape and dtype equal to the cases, whose values are chosen according to ``which``."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [
+      "cases"
+    ],
+    "bound_keyword": [
+      "which"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(which_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.lax.select_n.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

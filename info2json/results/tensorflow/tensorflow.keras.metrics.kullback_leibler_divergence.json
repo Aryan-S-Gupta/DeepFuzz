@@ -8,13 +8,10 @@
       "default": "",
       "flag": "Required",
       "description": "Tensor of true targets.",
-      "dtype_candidates": [
-        "float32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true shape must match y_pred shape",
-        "y_true and y_pred dtype must be float32"
+        "Required"
       ]
     },
     "y_pred": {
@@ -23,24 +20,19 @@
       "default": "",
       "flag": "Required",
       "description": "Tensor of predicted targets.",
-      "dtype_candidates": [
-        "float32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true shape must match y_pred shape",
-        "y_true and y_pred dtype must be float32"
+        "Required"
       ]
     }
   },
   "output": {
-    "type": "loss",
+    "type": "tensor",
     "numbers": "[batch_size, d0, .. dN-1]",
     "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true shape must match y_pred shape",
-    "y_true and y_pred dtype must be float32",
-    "batch_size, d0, .. dN-1 are positive integers"
+    "loss shape must be (2,)"
   ]
 }

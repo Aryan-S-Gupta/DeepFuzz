@@ -1,0 +1,34 @@
+{
+  "api_name": "rpartition",
+  "module_path": "torch.storage.np.char",
+  "params": {
+    "a": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array-like, with ``StringDType``, ``bytes_``, or ``str_`` dtype Input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "sep": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "str or unicode Right-most separator to split each element in array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "------- ndarray Output array of ``StringDType``, ``bytes_`` or ``str_`` dtype, depending on input types. The output array will have an extra dimension with 3 elements per input element."
+  },
+  "constraints": []
+}

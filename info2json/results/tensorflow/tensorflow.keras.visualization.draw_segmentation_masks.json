@@ -10,23 +10,27 @@
       "description": "A batch of images as a 4D tensor or NumPy array. Shape should be (batch_size, height, width, channels).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "images must be 4-D"
+      ]
     },
     "segmentation_masks": {
       "type": "tensor",
-      "size": "",
+      "size": "3D",
       "default": "",
       "flag": "Required",
       "description": "A batch of segmentation masks as a 3D or 4D tensor or NumPy array. Shape should be (batch_size, height, width) or (batch_size, height, width, 1). The values represent class indices starting from 1 up to `num_classes`. Class 0 is reserved for the background and will be ignored if `ignore_index` is not 0.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "segmentation_masks must be 3-D"
+      ]
     },
     "num_classes": {
       "type": "number",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "The number of segmentation classes. If `None`, it is inferred from the maximum value in `segmentation_masks`.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -45,8 +49,8 @@
     "alpha": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0.8",
+      "flag": "Optional",
       "description": "The opacity of the segmentation masks. Must be in the range `[0, 1]`.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -60,7 +64,9 @@
       "description": "Whether to blend the masks with the input image using the `alpha` value. If `False`, the masks are drawn directly on the images without blending. Defaults to `True`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "blend must be one of False, True"
+      ]
     },
     "ignore_index": {
       "type": "",
@@ -75,7 +81,7 @@
     "data_format": {
       "type": "",
       "size": "",
-      "default": "the `image_data_format` value found",
+      "default": "",
       "flag": "Optional",
       "description": "Image data format, either `\"channels_last\"` or `\"channels_first\"`. Defaults to the `image_data_format` value found in your Keras config file at `~/.keras/keras.json`. If you never set it, then it will be `\"channels_last\"`.",
       "dtype_candidates": [],
@@ -84,7 +90,9 @@
         "channels_first",
         "image_data_format"
       ],
-      "constraints": []
+      "constraints": [
+        "data_format must be one of channels_last, channels_first, image_data_format"
+      ]
     }
   },
   "output": {

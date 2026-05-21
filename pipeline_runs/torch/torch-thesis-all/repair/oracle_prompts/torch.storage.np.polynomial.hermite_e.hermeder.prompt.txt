@@ -1,0 +1,794 @@
+You are the DeepFuzz repair oracle. Classify the likely failing stage and propose a grounded repair only if the evidence is sufficient.
+Allowed stages: Stage 1 spec extraction, Stage 2 schema validation, Stage 3 init/seed generation, Stage 4 fuzzing/mutation/coverage, true library/runtime bug.
+Use only the API name, generated spec JSON, init JSON, validator errors, runtime/fuzzing errors, coverage report, and repository source snippets already provided by the caller.
+Do not invent API semantics. If evidence is insufficient, return no_patch with a concise reason.
+Return JSON with keys: decision, likely_stage, grounded_reason, patch_kind, patch.
+
+library=torch
+api=torch.storage.np.polynomial.hermite_e.hermeder
+errors=[
+  {
+    "library": "torch",
+    "api_full_name": "torch.storage.np.polynomial.hermite_e.hermeder",
+    "stage": "stage4_coverage",
+    "error_type": "selected_function_low_coverage",
+    "message": "selected_function_line_coverage_percent=0 below threshold 60; missing_lines=[594, 595, 596, 597, 598, 599, 600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672]",
+    "signature": "d868a3e236167a12",
+    "payload_ref": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+    "source_file": "stage4/results/torch-thesis-all-coverage/coverage_report.json",
+    "oracle_decision": ""
+  },
+  {
+    "library": "torch",
+    "api_full_name": "torch.storage.np.polynomial.hermite_e.hermeder",
+    "stage": "stage4_coverage",
+    "error_type": "selected_function_line_coverage_percent=0 < 60",
+    "message": "selected_function_line_coverage_percent=0 < 60",
+    "signature": "f63a041e96e172e7",
+    "payload_ref": "",
+    "source_file": "stage4/results/torch-thesis-all-coverage/low_coverage.csv",
+    "oracle_decision": ""
+  }
+]
+spec_json={
+  "api_name": "hermeder",
+  "module_path": "torch.storage.np.polynomial.hermite_e",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array of Hermite_e series coefficients. If `c` is multidimensional the different axis correspond to different variables with the degree in each axis given by the corresponding index.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "If c is multidimensional, the different axis correspond to different variables with the degree in each axis given by the corresponding index."
+      ]
+    },
+    "m": {
+      "type": "int|number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "int, optional Number of derivatives taken, must be non-negative. (Default: 1)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "m must be non-negative",
+        "m must be non-negative."
+      ]
+    },
+    "scl": {
+      "type": "number",
+      "size": "scalar",
+      "default": "1",
+      "flag": "Optional",
+      "description": "scalar, optional Each differentiation is multiplied by `scl`. The end result is multiplication by ``scl**m``. This is for use in a linear change of variable. (Default: 1)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Axis over which the derivative is taken. (Default: 0).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Hermite series of the derivative."
+  },
+  "constraints": []
+}
+init_json={
+  "api_full_name": "torch.storage.np.polynomial.hermite_e.hermeder",
+  "api_name": "hermeder",
+  "module_path": "torch.storage.np.polynomial.hermite_e",
+  "import_path": "torch.storage.np.polynomial.hermite_e.hermeder",
+  "backend": "torch",
+  "params": {
+    "c": {
+      "name": "c",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "array_like Array of Hermite_e series coefficients. If `c` is multidimensional the different axis correspond to different variables with the degree in each axis given by the corresponding index.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "If c is multidimensional, the different axis correspond to different variables with the degree in each axis given by the corresponding index."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "m": {
+      "name": "m",
+      "spec": {
+        "type": "int|number",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "int, optional Number of derivatives taken, must be non-negative. (Default: 1)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "m must be non-negative",
+          "m must be non-negative."
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "scl": {
+      "name": "scl",
+      "spec": {
+        "type": "number",
+        "size": "scalar",
+        "default": "1",
+        "flag": "Optional",
+        "description": "scalar, optional Each differentiation is multiplied by `scl`. The end result is multiplication by ``scl**m``. This is for use in a linear change of variable. (Default: 1)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "number",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "0",
+        "flag": "Optional",
+        "description": "int, optional Axis over which the derivative is taken. (Default: 0).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Hermite series of the derivative."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "size": 1,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "c"
+    ],
+    "skipped_optional": [
+      "m",
+      "scl",
+      "axis"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.polynomial.hermite_e.hermeder.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}
+coverage_report={
+  "schema_version": "2.0",
+  "target_library": "torch",
+  "target_version": "2.11.0",
+  "main_coverage_number": 0.5052,
+  "main_coverage_label": "Selected function line coverage %",
+  "coverage_method": "python_coverage",
+  "coverage_scope": "python",
+  "coverage_metric": "Selected function line coverage %",
+  "api_execution_coverage_percent": 91.6409,
+  "api_coverage_percent": 91.6409,
+  "covered_api_count": 296,
+  "total_api_count": 323,
+  "function_line_coverage_percent": 0.5052,
+  "selected_function_coverage": {
+    "available": true,
+    "reason": "",
+    "covered_lines": 93,
+    "coverable_lines": 18410,
+    "percent": 0.5052,
+    "excluded_unavailable_apis": [
+      {
+        "api": "torch.storage.np.array",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.asfortranarray",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.compress",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.core.arrayprint.array",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.defchararray.narray",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.multiarray.array",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.multiarray.asfortranarray",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.multiarray.empty",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.multiarray.empty_like",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.multiarray.zeros",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.numeric.array",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.numeric.asfortranarray",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.numeric.empty",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.numeric.empty_like",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.numeric.zeros",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.shape_base.array",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.umath.array",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.umath.asfortranarray",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.umath.empty",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.umath.empty_like",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.core.umath.zeros",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.empty",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.empty_like",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.histogram2d",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.isin",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.ma.core.narray",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.ma.extras.nxarray",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.ma.zeros_like",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.nancumprod",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.nanprod",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.ndim",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.nonzero",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.pad",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.partition",
+        "reason": ""
+      },
+      {
+        "api": "torch.storage.np.random.choice",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.random.mtrand.choice",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.random.mtrand.permutation",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.random.mtrand.standard_cauchy",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.random.mtrand.standard_exponential",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.random.permutation",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.random.standard_cauchy",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.random.standard_exponential",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.storage.np.zeros",
+        "reason": "no_python_source"
+      },
+      {
+        "api": "torch.windows.windows.gaussian",
+        "reason": ""
+      },
+      {
+        "api": "torch.windows.windows.general_hamming",
+        "reason": ""
+      },
+      {
+        "api": "torch.windows.windows.hamming",
+        "reason": ""
+      },
+      {
+        "api": "torch.windows.windows.hann",
+        "reason": ""
+      },
+      {
+        "api": "torch.windows.windows.kaiser",
+        "reason": ""
+      },
+      {
+        "api": "torch.windows.windows.nuttall",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.max_memory_reserved",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory.max_memory_allocated",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory.max_memory_reserved",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory.memory_allocated",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory.memory_reserved",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory.memory_snapshot",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory.memory_stats",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory_allocated",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory_reserved",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory_snapshot",
+        "reason": ""
+      },
+      {
+        "api": "torch.xpu.memory_stats",
+        "reason": ""
+      }
+    ],
+    "per_api": {
+      "torch.cuda.max_memory_allocated": {
+        "api": "torch.cuda.max_memory_allocated",
+        "available": true,
+        "reason": "",
+        "function_line_coverage_percent": 0.0,
+        "function_covered_lines": 0,
+        "function_coverable_lines": 19,
+        "function_missing_lines": [
+          530,
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548
+        ],
+        "function_source_file": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/memory.py",
+        "function_start_line": 530,
+        "function_end_line": 548
+      },
+      "torch.cuda.max_memory_reserved": {
+        "api": "torch.cuda.max_memory_reserved",
+        "available": true,
+        "reason": "",
+        "function_line_coverage_percent": 0.0,
+        "function_covered_lines": 0,
+        "function_coverable_lines": 19,
+        "function_missing_lines": [
+          566,
+          567,
+          568,
+          569,
+          570,
+          571,
+          572,
+          573,
+          574,
+          575,
+          576,
+          577,
+          578,
+          579,
+          580,
+          581,
+          582,
+          583,
+          584
+        ],
+        "function_source_file": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/memory.py",
+        "function_start_line": 566,
+        "function_end_line": 584
+      },
+      "torch.cuda.memory.max_memory_allocated": {
+        "api": "torch.cuda.memory.max_memory_allocated",
+        "available": true,
+        "reason": "",
+        "function_line_coverage_percent": 0.0,
+        "function_covered_lines": 0,
+        "function_coverable_lines": 19,
+        "function_missing_lines": [
+          530,
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548
+        ],
+        "function_source_file": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/memory.py",
+        "function_start_line": 530,
+        "function_end_line": 548
+      },
+      "torch.cuda.memory.max_memory_reserved": {
+        "api": "torch.cuda.memory.max_memory_reserved",
+        "available": true,
+        "reason": "",
+        "function_line_coverage_percent": 0.0,
+        "function_covered_lines": 0,
+        "function_coverable_lines": 19,
+        "function_missing_lines": [
+          566,
+          567,
+          568,
+          569,
+          570,
+          571,
+          572,
+          573,
+          574,
+          575,
+          576,
+          577,
+          578,
+          579,
+          580,
+          581,
+          582,
+          583,
+          584
+        ],
+        "function_source_file": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/memory.py",
+        "function_start_line": 566,
+        "function_end_line": 584
+      },
+      "torch.cuda.memory.memory_allocated": {
+        "api": "torch.cuda.memory.memory_allocated",
+        "available": true,
+        "reason": "",
+        "function_line_coverage_percent": 0.0,
+        "function_covered_lines": 0,
+        "function_coverable_lines": 15,
+        "function_missing_lines": [
+          513,
+          514,
+          515,
+          516,
+          517,
+          518,
+          519,
+          520,
+          521,
+          522,
+          523,
+          524,
+          525,
+          526,
+          527
+        ],
+        "function_source_file": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/memory.py",
+        "function_start_line": 513,
+        "function_end_line": 527
+      },
+      "torch.cuda.memory.memory_reserved": {
+        "api": "torch.cuda.memory.memory_reserved",
+        "available": true,
+        "reason": "",
+        "function_line_coverage_percent": 0.0,
+        "function_covered_lines": 0,
+        "function_coverable_lines": 13,
+        "function_missing_lines": [
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560,
+          561,
+          562,
+          563
+        ],
+        "function_source_file": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/memory.py",
+        "function_start_line": 551,
+        "function_end_line": 563
+      },
+      "torch.cuda.memory.memory_stats": {
+        "api": "torch.cuda.memory.memory_stats",
+        "available": true,
+        "reason": "",
+        "function_line_coverage_percent": 0.0,
+        "function_covered_lines": 0,
+        "function_coverable_lines": 103,
+        "function_missing_lines": [
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239,
+          240,
+          241,
+          242,
+          243,
+          244,
+          245,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          252,
+          253,
+          254,
+     
+source_snippets={
+  "info2json/info2json.py": "def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str, signature: str = \"\") -> Dict[str, Any]:\n    if not isinstance(spec, dict):\n        spec = blank_spec()\n\n    module_path, _, api_name = api_full_name.rpartition(\".\")\n    sig_line = clean_text(signature) or find_signature_line(doc)\n    sig_params, sig_defaults, sig_ret = parse_signature_params(sig_line)\n\n    doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map = parse_doc_params(\n        doc,\n        allowed_names=sig_params if sig_params else None,\n    )\n    ret_type_doc, ret_numbers_doc, ret_desc_doc = parse_return_info(doc)\n\n    out = blank_spec()\n    out[\"api_name\"] = api_name or api_full_name\n    out[\"module_path\"] = module_path\n\n    llm_params = normalize_llm_params(spec.get(\"params\"))\n\n    if sig_params:\n        supported_names = list(sig_params)\n    else:\n        supported_names = []\n        seen = set()\n        for p in list(doc_type_map.keys()) + list(doc_desc_map.keys()) + list(llm_params.keys()):\n            if is_suspicious_param_name(p):\n                continue\n            if p and p not in seen:\n                supported_names.append(p)\n                seen.add(p)\n\n    final_params: Dict[str, Dict[str, Any]] = {}\n    for name in supported_names:\n        lname = clean_text(name).lower()\n        if api_full_name.startswith(\"tensorflow.\") and lname == \"name\":\n            continue\n        if is_suspicious_param_name(name):\n            continue\n        llm_p = llm_params.get(name, {}) if isinstance(llm_params.get(name, {}), dict) else {}\n\n        raw_type_text = clean_text(doc_type_map.get(name, \"\")) or clean_text(llm_p.get(\"type\", \"\"))\n        desc = clean_text(doc_desc_map.get(name, \"\")) or clean_text(llm_p.get(\"description\", \"\"))\n        size = clean_text(doc_size_map.get(name, \"\")) or extract_size_text(clean_text(llm_p.get(\"size\", \"\")))\n        inferred_type = extract_supported_types(raw_type_text, desc)\n\n        default = \"\"\n        if name in sig_defaults:\n            default = stringify_default(sig_defaults[name])\n        elif name in doc_default_map:\n            default = doc_default_map[name]\n        else:\n            default = clean_text(llm_p.get(\"default\", \"\"))\n\n        if name in sig_defaults:\n            flag = \"Optional\"\n        elif doc_optional_map.get(name, False):\n            flag = \"Optional\"\n        elif clean_text(llm_p.get(\"flag\", \"\n\ndef validate_spec(spec: Dict[str, Any], api_full_name: str) -> None:\n    if not isinstance(spec, dict):\n        raise ValueError(\"Spec is not a dict\")\n\n    if clean_text(spec.get(\"api_name\", \"\")) == \"\":\n        raise ValueError(f\"{api_full_name}: api_name is empty\")\n\n    if \"params\" not in spec or not isinstance(spec[\"params\"], dict):\n        raise ValueError(f\"{api_full_name}: params is missing or not a dict\")\n\n    if \"output\" not in spec or not isinstance(spec[\"output\"], dict):\n        raise ValueError(f\"{api_full_name}: output is missing or not a dict\")\n\n    for name, meta in spec[\"params\"].items():\n        if is_suspicious_param_name(name):\n            raise ValueError(f\"{api_full_name}: suspicious param name {name}\")\n        if not isinstance(meta, dict):\n            raise ValueError(f\"{api_full_name}: param {name} is not a dict\")\n\n        if clean_text(meta.get(\"flag\", \"\")) not in {\"\", \"Required\", \"Optional\"}:\n            raise ValueError(f\"{api_full_name}: invalid flag for {name}\")\n\n        t = clean_text(meta.get(\"type\", \"\"))\n        if any(x in t for x in HELPER_FUNCTION_TYPES):\n            raise ValueError(f\"{api_full_name}: helper function leaked into type for {name}\")\n        if t and looks_like_prose(t):\n            raise ValueError(f\"{api_full_name}: type field looks like prose for {name}\")\n\n        dflt = clean_text(meta.get(\"default\", \"\"))\n        if dflt and (\"default\" in dflt.lower() or looks_like_prose(dflt)) and dflt != \"None\":\n            raise ValueError(f\"{api_full_name}: prose default leaked into default field for {name}\")\n\n        sz = clean_text(meta.get(\"size\", \"\"))\n        if sz and (len(sz.split()) > 6 or looks_like_prose(sz)):\n            raise ValueError(f\"{api_full_name}: size field looks like prose for {name}\")\n\n    out_t = clean_text(spec[\"output\"].get(\"type\", \"\"))\n    out_d = clean_text(spec[\"output\"].get(\"description\", \"\")).lower()\n    if out_t == \"string\" and \"bytes\" in out_d:\n        raise ValueError(f\"{api_full_name}: output type likely wrong\")\n\ndef process_one(\n    api_full_name: str,\n    api_doc_text: str,\n    signature: str,\n    outdir: str,\n    model: str,\n    host: str,\n    timeout: int,\n    retries: int,\n    sleep: float,\n    num_predict: int,\n    num_ctx: int,\n    temperature: float,\n) -> Tuple[bool, str]:\n    prompt = build_prompt(api_full_name=api_full_name, doc=api_doc_text, signature=signature)\n    last_err =",
+  "json_validator/json_validator.py": "def validate_normalized_spec(\n    api_full_name: str,\n    spec: Dict[str, Any],\n    doc: str,\n    signature: str = \"\",\n    original_spec: Optional[Dict[str, Any]] = None,\n) -> ValidationResult:\n    errors: List[str] = []\n    warnings: List[str] = []\n    module_path, _, api_name = api_full_name.rpartition(\".\")\n    supported_names, _sig_defaults, sig_line, doc_type_map, doc_desc_map, _doc_size_map, _doc_optional_map, _doc_default_map = get_supported_param_names(doc, signature)\n\n    if not clean_text(doc):\n        errors.append(\"missing source doc\")\n\n    if not isinstance(spec, dict):\n        errors.append(\"spec is not a JSON object\")\n        return ValidationResult(\"parser_failure\", \"parser_failure\", errors, warnings, False, [], 0, 0, len(supported_names), bool(sig_line))\n\n    if clean_text(spec.get(\"api_name\", \"\")) != api_name:\n        errors.append(f\"api_name mismatch: expected '{api_name}'\")\n    if clean_text(spec.get(\"module_path\", \"\")) != module_path:\n        errors.append(f\"module_path mismatch: expected '{module_path}'\")\n\n    params = spec.get(\"params\")\n    if not isinstance(params, dict):\n        errors.append(\"params must be an object\")\n        params = {}\n\n    output = spec.get(\"output\")\n    if not isinstance(output, dict):\n        errors.append(\"output must be an object\")\n        output = {}\n\n    empty_param_status = \"\"\n    if not params:\n        empty_param_status = classify_empty_params(api_full_name, supported_names, sig_line, original_spec=original_spec)\n        if empty_param_status == \"zero_arg_valid_api\":\n            warnings.append(\"zero-argument callable accepted\")\n        else:\n            errors.append(empty_param_status)\n\n    required_count = 0\n    seen_required_doc_signal = False\n    supported_lower = {x.lower() for x in supported_names}\n\n    if supported_names:\n        for name in supported_names:\n            desc = clean_text(doc_desc_map.get(name, \"\"))\n            typ = clean_text(doc_type_map.get(name, \"\"))\n            if desc or typ:\n                seen_required_doc_signal = True\n                break\n\n    for name, meta in params.items():\n        if is_suspicious_param_name(name, supported_names if supported_names else None):\n            errors.append(f\"suspicious or hallucinated parameter name: {name}\")\n            continue\n        if supported_names and name.lower() not in supported_lower:\n            errors.append(f\"parameter \n\nREPAIR_PROMPT = \"\"\"You repair exactly one API JSON spec for a documentation-grounded validator.\n\nReturn ONLY valid JSON.\nNo markdown.\nNo prose.\nNo comments.\n\nAPI Full Name: {api_full_name}\n\nObserved Signature Line:\n{sig_line}\n\nDeterministically Supported Parameter Names:\n{supported_params}\n\nCurrent Validation Issues:\n{failure_summary}\n\nCross-Stage Error Context:\n{external_failure_context}\n\nDocumentation-Derived Hints:\n{doc_hints}\n\nAPI Documentation Text:\n\\\"\\\"\\\"\n{api_doc_text}\n\\\"\\\"\\\"\n\nCurrent Broken JSON Spec:\n{current_json}\n\nReturn exactly one JSON object with this schema:\n{{\n  \"api_name\": \"\",\n  \"module_path\": \"\",\n  \"params\": {{\n    \"<param_name>\": {{\n      \"type\": \"\",\n      \"size\": \"\",\n      \"default\": \"\",\n      \"flag\": \"\",\n      \"description\": \"\",\n      \"dtype_candidates\": [],\n      \"enum_values\": [],\n      \"constraints\": []\n    }}\n  }},\n  \"output\": {{\n    \"type\": \"\",\n    \"numbers\": \"\",\n    \"description\": \"\"\n  }},\n  \"constraints\": []\n}}\n\nHard rules:\n1. Use only information explicitly stated in the docs or signature.\n2. Only include parameters from the supported list above. If the list is empty, use only clearly documented parameters.\n3. Remove fake parameters extracted from prose.\n4. If a real parameter is clearly present in docs/signature, include it.\n5. If uncertain, leave fields empty instead of guessing.\n6. flag must be exactly one of: Required, Optional, \"\".\n7. Keep every required schema key present.\n8. Put single-parameter rules under that parameter.\n9. Put only cross-parameter rules at top-level.\n10. Do not invent executable defaults.\n11. Keep descriptions short and literal.\n12. Prefer simpler, Stage-3-friendly types such as int, float, bool, string, list, tuple, tensor, dict, sequence, dtype, device when docs allow that wording.\n13. Infer whether the evidence points to Stage 1 spec extraction, Stage 2 schema validation, Stage 3 seed generation, Stage 4 mutation/coverage, or a true runtime/library issue.\n14. Only repair this JSON spec when the supplied docs/signature/current JSON/error context ground the change.\n15. If the cross-stage context is an environment/runtime-only issue and the docs do not justify a spec change, return the current JSON normalized to this schema without inventing API semantics.\n16. Output exactly one JSON object.\n\"\"\"\n\n\n@dataclass\nclass ValidationResult:\n    status: str\n    classification: str\n    errors: List[str]\n    warnin",
+  "json2init/deepfuzz_common.py": "def build_base_seed_spec(api_full_name: str, param_name: str, spec: Dict[str, Any], backend: str) -> Tuple[Dict[str, Any], str, str]:\n    chosen = choose_seed_type(spec.get(\"type\", \"\"), spec.get(\"description\", \"\"), param_name)\n    pname = clean_text(param_name).lower()\n    desc = clean_text(spec.get(\"description\", \"\")).lower()\n    constraint_text = \" \".join(clean_text(x) for x in spec.get(\"constraints\", [])).lower()\n\n    recipe = get_adapter(backend).recipe(api_full_name, param_name, spec, chosen, backend)\n    if recipe is not None:\n        return recipe, chosen, \"\"\n\n    if chosen in UNSUPPORTED_TOKENS:\n        return {}, chosen, f\"unsupported base seed type: {chosen}\"\n    if chosen == \"bool\":\n        return {\"kind\": \"literal\", \"value\": False}, chosen, \"\"\n    if chosen == \"int\":\n        base = int(infer_numeric_base(spec, as_float=False))\n        if pname in {\"k\", \"depth\", \"num\", \"count\", \"window_length\", \"sequence_length\", \"sequence_stride\", \"fft_length\", \"num_bits\", \"num_buckets\", \"block_size\"}:\n            base = 2 if pname not in {\"k\", \"sequence_stride\", \"num_bits\"} else (8 if pname == \"num_bits\" else 1)\n        return {\"kind\": \"literal\", \"value\": max(1, base)}, chosen, \"\"\n    if chosen in {\"float\", \"number\"}:\n        if pname == \"epsilon\":\n            return {\"kind\": \"literal\", \"value\": 1e-7}, chosen, \"\"\n        if pname in {\"alpha\", \"beta\", \"gamma\", \"threshold\"}:\n            return {\"kind\": \"literal\", \"value\": 0.5}, chosen, \"\"\n        return {\"kind\": \"literal\", \"value\": infer_numeric_base(spec, as_float=True)}, chosen, \"\"\n    if chosen == \"string\":\n        enums = jax_padding_enum_values(api_full_name, param_nam

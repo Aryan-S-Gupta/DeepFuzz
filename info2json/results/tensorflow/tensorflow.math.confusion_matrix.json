@@ -30,28 +30,28 @@
       "type": "number|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "The possible number of labels the classification task can have. If this value is not provided, it will be calculated using both predictions and labels array.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
     "weights": {
-      "type": "tensor|dtype",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "An optional `Tensor` whose shape matches `predictions`. dtype: Data type of the confusion matrix.",
+      "description": "An optional `Tensor` whose shape matches `predictions`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
+    "dtype": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Scope name.",
+      "default": "tf.int32",
+      "flag": "Optional",
+      "description": "Data type of the confusion matrix.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

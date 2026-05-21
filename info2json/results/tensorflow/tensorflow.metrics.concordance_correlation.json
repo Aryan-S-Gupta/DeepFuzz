@@ -10,10 +10,7 @@
       "description": "Tensor of true targets.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true.shape == y_pred.shape",
-        "rank(y_true) >= 1"
-      ]
+      "constraints": []
     },
     "y_pred": {
       "type": "tensor",
@@ -23,22 +20,18 @@
       "description": "Tensor of predicted targets.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true.shape == y_pred.shape"
-      ]
+      "constraints": []
     },
     "axis": {
-      "type": "int32",
+      "type": "int",
       "size": "",
       "default": "-1",
       "flag": "Optional",
       "description": "Axis along which to determine similarity. Defaults to `-1`.",
-      "dtype_candidates": [
-        "int32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "-rank(y_true) <= axis < rank(y_true)"
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },
@@ -47,7 +40,5 @@
     "numbers": "1",
     "description": "Concordance Correlation Coefficient tensor."
   },
-  "constraints": [
-    "y_true.shape == y_pred.shape"
-  ]
+  "constraints": []
 }

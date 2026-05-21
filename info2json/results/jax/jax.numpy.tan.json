@@ -10,9 +10,10 @@
       "description": "scalar or array. Angle in radians.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x must be a jnp.array or a scalar",
-        "x and output must have broadcast-compatible shapes"
+        "x must be an ArrayLike type",
+        "x cannot be null or an empty ArrayLike"
       ]
     }
   },

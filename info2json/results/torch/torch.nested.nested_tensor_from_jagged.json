@@ -10,6 +10,7 @@
       "description": "The underlying buffer in the shape of (sum_B(*), D_1, ..., D_N). The jagged dimension is packed into a single dimension, with the offsets / lengths metadata used to distinguish batch elements.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "offsets": {
@@ -20,6 +21,7 @@
       "description": "Offsets into the jagged dimension of shape B + 1.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "lengths": {
@@ -30,6 +32,7 @@
       "description": "Lengths of the batch elements of shape B.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "jagged_dim": {
@@ -40,6 +43,7 @@
       "description": "Indicates which dimension in values is the packed jagged dimension. Must be >= 1 as the batch dimension (dim=0) cannot be ragged. If None, this is set to dim=1 (i.e. the dimension immediately following the batch dimension). Default: None",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "min_seqlen": {
@@ -50,6 +54,7 @@
       "description": "If set, uses the specified value as the cached minimum sequence length for the returned nested tensor. This can be a useful alternative to computing this value on-demand, possibly avoiding a GPU -> CPU sync. Default: None",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "min_seqlen must be one of GPU, CPU"
       ]
@@ -62,13 +67,14 @@
       "description": "If set, uses the specified value as the cached maximum sequence length for the returned nested tensor. This can be a useful alternative to computing this value on-demand, possibly avoiding a GPU -> CPU sync. Default: None",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "max_seqlen must be one of GPU, CPU"
       ]
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },

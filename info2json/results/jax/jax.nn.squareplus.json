@@ -10,25 +10,31 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x, b and output array types must match"
+        "x and b must support the same arithmetic operations"
       ]
     },
     "b": {
-      "type": "",
+      "type": "ArrayLike",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "4",
+      "flag": "Optional",
       "description": "smoothness parameter",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "x and b must support the same arithmetic operations"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
-    "description": "x + sqrt(x^2 + b) / 2"
+    "numbers": "",
+    "description": ""
   },
-  "constraints": []
+  "constraints": [
+    "x and b must support the same arithmetic operations"
+  ]
 }

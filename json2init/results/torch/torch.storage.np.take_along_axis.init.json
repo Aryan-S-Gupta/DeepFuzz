@@ -1,0 +1,159 @@
+{
+  "api_full_name": "torch.storage.np.take_along_axis",
+  "api_name": "take_along_axis",
+  "module_path": "torch.storage.np",
+  "import_path": "torch.storage.np.take_along_axis",
+  "backend": "torch",
+  "params": {
+    "arr": {
+      "name": "arr",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "ndarray (Ni..., M, Nk...) Source array",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "arr and indices must have the same number of dimensions"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    },
+    "indices": {
+      "name": "indices",
+      "spec": {
+        "type": "tensor",
+        "size": "1d",
+        "default": "",
+        "flag": "Required",
+        "description": "ndarray (Ni..., J, Nk...) Indices to take along each 1d slice of ``arr``. This must match the dimension of ``arr``, but dimensions Ni and Nj only need to broadcast against ``arr``.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "indices must be 1-D",
+          "arr and indices must have the same number of dimensions"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "int64",
+        "fill": 0,
+        "device": "cpu",
+        "backend": "torch"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|tensor",
+        "size": "1d",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "int or None, optional The axis to take 1d slices along. If axis is None, the input array is treated as if it had first been flattened to 1d, for consistency with `sort` and `argsort`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "axis must be an integer value within [-rank(arr), rank(arr))",
+          "axis must be 1-D"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(Ni..., J, Nk...)",
+    "description": "------- ndarray (Ni..., J, Nk...) The indexed result."
+  },
+  "constraints": [
+    "arr and indices must have the same number of dimensions"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Cannot interpret 'torch.int64' as a data type"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Cannot interpret 'torch.int64' as a data type",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/lib/_shape_base_impl.py\", line 181, in take_along_axis\n    return arr[_make_along_axis_idx(arr.shape, indices, axis)]\n               ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/lib/_shape_base_impl.py\", line 37, in _make_along_axis_idx\n    if not _nx.issubdtype(indices.dtype, _nx.integer):\n           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/_core/numerictypes.py\", line 534, in issubdtype\n    arg1 = dtype(arg1).type\n           ~~~~~^^^^^^\nTypeError: Cannot interpret 'torch.int64' as a data type\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.take_along_axis.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

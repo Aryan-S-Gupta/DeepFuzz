@@ -10,17 +10,18 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "-1j * jnp.sin(1j * x) is equivalent to jnp.sinh(x)",
-        "jax.numpy.sinh and -1j * jnp.sin(1j * x) should have the same dtype",
-        "x can be a scalar or an array of any shape"
+        "-1j * jnp.sin(1j * x) is equivalent to jnp.sinh(x)"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real or complex",
+    "numbers": "complex64",
     "description": "An array containing the hyperbolic sine of each element of ``x``, promoting to inexact dtype."
   },
-  "constraints": []
+  "constraints": [
+    "jax.numpy.sinh(3-2j) equals to -4.169-9.154j, dtype=complex64, weak_type=True"
+  ]
 }

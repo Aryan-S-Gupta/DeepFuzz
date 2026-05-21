@@ -10,9 +10,7 @@
       "description": "tensor of true targets.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true.shape == y_pred.shape"
-      ]
+      "constraints": []
     },
     "y_pred": {
       "type": "tensor",
@@ -22,29 +20,25 @@
       "description": "tensor of predicted targets.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true.shape == y_pred.shape"
-      ]
+      "constraints": []
     },
     "delta": {
       "type": "float|callable",
       "size": "",
-      "default": "1",
+      "default": "1.0",
       "flag": "Optional",
       "description": "A float, the point where the Huber loss function changes from a quadratic to linear. Defaults to `1.0`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "delta >= 0"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "number|tensor",
-    "numbers": "one scalar loss entry per sample",
+    "numbers": "one scalar loss entry per sample.",
     "description": "Tensor with one scalar loss entry per sample."
   },
   "constraints": [
-    "y_true.shape == y_pred.shape"
+    "loss calculation involves x^2 and abs(x), so input types should support these operations."
   ]
 }

@@ -16,7 +16,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "x, num and axis must be provided"
+          "The input tensor x must be rank-R."
         ]
       },
       "chosen_type": "tensor",
@@ -24,7 +24,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -32,78 +32,144 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "num": {
       "name": "num",
       "spec": {
-        "type": "int32",
+        "type": "int",
         "size": "",
         "default": "",
         "flag": "Optional",
         "description": "The length of the dimension axis. Automatically inferred if `None`.",
-        "dtype_candidates": [
-          "int32"
-        ],
+        "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Defaults to None",
-          "x, num and axis must be provided"
+          "If provided, must be a positive integer."
         ]
       },
-      "chosen_type": "int32",
+      "chosen_type": "int",
       "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: int32"
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 2
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis": {
       "name": "axis",
       "spec": {
-        "type": "int32",
+        "type": "int",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "0",
+        "flag": "Optional",
         "description": "The axis along which to unpack.",
-        "dtype_candidates": [
-          "int32"
-        ],
+        "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "axis must satisfy -rank(x) <= axis < rank(x)",
-          "x, num and axis must be provided"
+          "Must satisfy -rank(x) <= axis < rank(x)",
+          "axis must satisfy -rank(x) <= axis < rank(x)"
         ]
       },
-      "chosen_type": "int32",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: int32"
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "list|tensor",
-    "numbers": "multiple",
+    "numbers": "1",
     "description": "A list of tensors unpacked along the given axis."
   },
-  "constraints": [
-    "x, num and axis must be provided"
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "list",
+      "length": 2
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "num",
+      "axis"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
   ],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'axis' unresolved: unhandled chosen type: int32"
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.unstack.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

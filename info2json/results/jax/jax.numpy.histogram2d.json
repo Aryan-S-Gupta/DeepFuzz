@@ -10,6 +10,7 @@
       "description": "one-dimensional array of x-values for points to be binned.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "y": {
@@ -20,26 +21,29 @@
       "description": "one-dimensional array of y-values for points to be binned.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "bins": {
       "type": "number|tensor",
       "size": "",
-      "default": "10)",
+      "default": "10",
       "flag": "Optional",
       "description": "Specify the number of bins in the histogram (default: 10). ``bins`` may also be an array specifying the locations of the bin edges, or a pair of integers or pair of arrays specifying the number of bins in each dimension.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "range": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Pair of arrays or lists of the form ``[[xmin, xmax], [ymin, ymax]]`` specifying the range of the data in each dimension. If not specified, the range is inferred from the data.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "weights": {
@@ -50,6 +54,7 @@
       "description": "An optional array specifying the weights of the data points. Should be the same shape as ``x`` and ``y``. If not specified, each data point is weighted equally.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "density": {
@@ -60,6 +65,7 @@
       "description": "If True, return the normalized histogram in units of counts per unit area. If False (default) return the (weighted) counts per bin.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

@@ -22,7 +22,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,12 +30,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -63,6 +73,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "seed": {
@@ -87,6 +103,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "rng_alg": {
@@ -109,6 +131,10 @@
       "mutation_rules": [
         "enum_switch"
       ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [],
       "unresolved_reason": "unhandled chosen type: tf.random.stateless_uniform"
     },
     "noise_shape": {
@@ -117,7 +143,7 @@
         "type": "int|tensor",
         "size": "1-D",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "A 1-D integer `Tensor`, representing the shape for randomly generated keep/drop flags.",
         "dtype_candidates": [],
         "enum_values": [],
@@ -125,35 +151,29 @@
           "noise_shape must be 1-D"
         ]
       },
-      "chosen_type": "int",
-      "include_in_base_call": true,
+      "chosen_type": "list",
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A name for this operation.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for this operation.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for this operation."
     }
   },
   "output": {
@@ -162,14 +182,25 @@
     "description": "A Tensor of the same shape and dtype of `x`."
   },
   "constraints": [],
-  "spec_ready": false,
+  "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for this operation."
+    "smoke test failed: `rate` must be a scalar tensor or a float in the range [0, 1). Received: rate=1.0"
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "`rate` must be a scalar tensor or a float in the range [0, 1). Received: rate=1.0",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/nn_ops.py\", line 5765, in _dropout\n    raise ValueError(\"`rate` must be a scalar tensor or a float in the \"\n                     f\"range [0, 1). Received: rate={rate}\")\nValueError: `rate` must be a scalar tensor or a float in the range [0, 1). Received: rate=1.0\n"
+  },
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.experimental.stateless_dropout.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

@@ -10,7 +10,9 @@
       "description": "A batch of images as a 4D tensor or NumPy array. Shape should be `(batch_size, height, width, channels)`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "images must be 4-D"
+      ]
     },
     "bounding_boxes": {
       "type": "dict|tensor",
@@ -35,7 +37,7 @@
     "class_mapping": {
       "type": "dict",
       "size": "",
-      "default": "None (no labels displayed)",
+      "default": "",
       "flag": "Optional",
       "description": "A dictionary mapping class IDs (integers) to class labels (strings). Used to display class labels next to the bounding boxes. Defaults to None (no labels displayed).",
       "dtype_candidates": [],
@@ -45,7 +47,7 @@
     "color": {
       "type": "tuple|list",
       "size": "",
-      "default": "(128, 128, 128)",
+      "default": "",
       "flag": "Optional",
       "description": "A tuple or list representing the RGB color of the bounding boxes. For example, `(255, 0, 0)` for red. Defaults to `(128, 128, 128)`.",
       "dtype_candidates": [],
@@ -75,7 +77,7 @@
     "font_scale": {
       "type": "float",
       "size": "",
-      "default": "1",
+      "default": "1.0",
       "flag": "Optional",
       "description": "A float specifying the scale of the font used for text labels. Defaults to `1.0`.",
       "dtype_candidates": [],
@@ -86,7 +88,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A string, either `\"channels_last\"` or `\"channels_first\"`, specifying the order of dimensions in the input images. Defaults to the `image_data_format` value found in your Keras config file at `~/.keras/keras.json`. If you never set it, then it will be \"channels_last\".",
       "dtype_candidates": [],
       "enum_values": [
@@ -94,7 +96,9 @@
         "channels_first",
         "image_data_format"
       ],
-      "constraints": []
+      "constraints": [
+        "data_format must be one of channels_last, channels_first, image_data_format"
+      ]
     }
   },
   "output": {

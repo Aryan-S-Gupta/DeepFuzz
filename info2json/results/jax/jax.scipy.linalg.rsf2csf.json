@@ -10,25 +10,34 @@
       "description": "array of shape ``(..., N, N)`` containing the real Schur form of the input.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "N-dimensional",
+        "T and Z must have the same N"
+      ]
     },
     "Z": {
       "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "array of shape ``(..., N, N)`` containing the corresponding Schur transformation matrix.",
+      "description": "array of shape ``(..., N, N)`` containing the corresponding Schur transformation matrix. Batch dimensions are broadcast with those of ``T``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "N-dimensional",
+        "broadcast with T's batch dimensions",
+        "T and Z must have the same N"
+      ]
     },
     "check_finite": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "True",
+      "flag": "Optional",
       "description": "unused by JAX",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }
@@ -38,5 +47,7 @@
     "numbers": "1",
     "description": "A tuple of arrays ``(T, Z)`` of the same shape as the inputs, containing the Complex Schur form and the associated Schur transformation matrix."
   },
-  "constraints": []
+  "constraints": [
+    "T and Z must have the same N"
+  ]
 }

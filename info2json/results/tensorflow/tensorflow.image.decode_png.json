@@ -13,25 +13,25 @@
       "constraints": []
     },
     "channels": {
-      "type": "int|number|dtype",
+      "type": "int|number",
       "size": "",
-      "default": "tf",
+      "default": "0",
       "flag": "Optional",
-      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image. dtype: An optional `tf.DType` from: `tf.uint8, tf.uint16`. Defaults to `tf.uint8`.",
+      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "An optional `tf.DType` from: `tf.uint8, tf.uint16`. Defaults to `tf.uint8`.",
       "dtype_candidates": [
         "uint8",
         "uint16"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

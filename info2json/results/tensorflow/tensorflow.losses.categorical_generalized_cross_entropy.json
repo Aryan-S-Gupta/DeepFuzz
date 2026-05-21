@@ -3,7 +3,7 @@
   "module_path": "tensorflow.losses",
   "params": {
     "y_true": {
-      "type": "int",
+      "type": "int|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -13,7 +13,7 @@
       "constraints": []
     },
     "y_pred": {
-      "type": "",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -30,11 +30,13 @@
       "description": "Float in range `(0, 1)`. It is the noise parameter. Controls the behavior of the loss: - As `q` approaches 0: Behaves more like cross entropy - As `q` approaches 1: Behaves more like mean absolute error",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "q must be a float in range (0, 1)"
+      ]
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "1",
     "description": "GCE loss values with shape `[batch_size]`. ```"
   },

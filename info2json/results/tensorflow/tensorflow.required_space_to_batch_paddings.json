@@ -29,7 +29,7 @@
     "base_paddings": {
       "type": "tensor",
       "size": "",
-      "default": "0",
+      "default": "",
       "flag": "Optional",
       "description": "Optional int32 Tensor of shape [N, 2]. Specifies the minimum amount of padding to use. All elements must be >= 0. If not specified, defaults to 0.",
       "dtype_candidates": [
@@ -39,16 +39,6 @@
       "constraints": [
         "base_paddings must be non-negative"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "string. Optional name prefix.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

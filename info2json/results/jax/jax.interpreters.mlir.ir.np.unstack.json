@@ -11,6 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "required",
         "stack(unstack(x, axis=axis), axis=axis) == x"
       ]
     },
@@ -23,6 +24,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "optional",
+        ">= -rank(x)",
+        "< rank(x)",
         "stack(unstack(x, axis=axis), axis=axis) == x"
       ]
     }

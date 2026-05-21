@@ -1,0 +1,34 @@
+{
+  "api_name": "partition",
+  "module_path": "torch.storage.np.strings",
+  "params": {
+    "a": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array-like, with ``StringDType``, ``bytes_``, or ``str_`` dtype Input array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "sep": {
+      "type": "string|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array-like, with ``StringDType``, ``bytes_``, or ``str_`` dtype Separator to split each string element in ``a``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tuple|tensor|dtype",
+    "numbers": "3",
+    "description": "------- 3-tuple: - array with ``StringDType``, ``bytes_`` or ``str_`` dtype with the part before the separator - array with ``StringDType``, ``bytes_`` or ``str_`` dtype with the separator - array with ``StringDType``, ``bytes_`` or ``str_`` dtype with the part after the separator"
+  },
+  "constraints": []
+}

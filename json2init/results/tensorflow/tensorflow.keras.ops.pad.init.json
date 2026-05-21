@@ -22,7 +22,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,14 +30,25 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "pad_width": {
       "name": "pad_width",
@@ -63,14 +74,21 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "mode": {
       "name": "mode",
       "spec": {
         "type": "",
         "size": "",
-        "default": "\"constant\"",
+        "default": "",
         "flag": "Optional",
         "description": "One of `\"constant\"`, `\"edge\"`, `\"linear_ramp\"`, `\"maximum\"`, `\"mean\"`, `\"median\"`, `\"minimum\"`, `\"reflect\"`, `\"symmetric\"`, `\"wrap\"`, `\"empty\"`, `\"circular\"`. Defaults to `\"constant\"`.",
         "dtype_candidates": [],
@@ -96,16 +114,24 @@
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
         "enum_switch"
       ],
-      "unresolved_reason": "unhandled chosen type: one of `\"constant\"`"
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: one of `\"constant\"`",
+      "call_kind": "positional_or_keyword"
     },
     "constant_values": {
       "name": "constant_values",
       "spec": {
         "type": "",
         "size": "",
-        "default": "0",
+        "default": "",
         "flag": "Optional",
         "description": "value to pad with if `mode == \"constant\"`. Defaults to `0`. A `ValueError` is raised if not None and `mode != \"constant\"`.",
         "dtype_candidates": [],
@@ -118,9 +144,17 @@
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
         "enum_switch"
       ],
-      "unresolved_reason": "unhandled chosen type: value to pad with if `mode == \"constant\"`. defaults to `0`. a `valueerror` is raised if not none and `mode != \"constant\"`."
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: value to pad with if `mode == \"constant\"`. defaults to `0`. a `valueerror` is raised if not none and `mode != \"constant\"`.",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -142,16 +176,54 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [
-        3
+        4
       ],
       "dtype": "float32",
-      "numel": 3,
-      "has_nan": false
+      "numel": 4,
+      "preview": [
+        0.0,
+        1.0,
+        1.0,
+        0.0
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "pad_width"
+    ],
+    "skipped_optional": [
+      "mode",
+      "constant_values"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(mode_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(constant_values_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.pad.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

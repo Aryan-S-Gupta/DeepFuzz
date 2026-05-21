@@ -10,15 +10,16 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x cannot be NaN"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "bool|tensor",
-    "numbers": "same shape as x",
+    "numbers": "bool",
     "description": "A boolean array of same shape as ``x`` containing ``True`` where ``x`` is not ``inf``, ``-inf``, or ``NaN``, and ``False`` otherwise."
   },
-  "constraints": []
+  "constraints": [
+    "jax.numpy.isinf, jax.numpy.isposinf, jax.numpy.isneginf, jax.numpy.isnan can be used to check for infinity or NaN values in the input."
+  ]
 }

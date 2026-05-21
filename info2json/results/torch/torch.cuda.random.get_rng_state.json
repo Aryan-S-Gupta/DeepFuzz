@@ -3,23 +3,23 @@
   "module_path": "torch.cuda.random",
   "params": {
     "device": {
-      "type": "torch.device|int",
+      "type": "int|device",
       "size": "",
-      "default": "'cuda'",
+      "default": "",
       "flag": "Optional",
-      "description": "The device to return the RNG state of.",
-      "constraints": [
-        "'device' parameter is optional.",
-        "If 'device' is not provided or its value is omitted, it defaults to 'cuda'."
-      ]
+      "description": "The device to return the RNG state of. Default: ``'cuda'`` (i.e., ``torch.device('cuda')``, the current CUDA device).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
-    "type": "state object",
+    "type": "tensor",
     "numbers": "",
-    "description": "The RNG state of the specified device."
+    "description": ""
   },
   "constraints": [
-    "The output type depends on the CUDA implementation and cannot be further constrained by this documentation."
+    "This function eagerly initializes CUDA."
   ]
 }

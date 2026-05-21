@@ -17,16 +17,24 @@
           "bool"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "Each element must be a boolean tensor."
+        ]
       },
       "chosen_type": "bool",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -41,10 +49,12 @@
         "description": "List of tensors. The list of tensors from which the output elements are taken. This list has to be of the same length as `condlist`. defaults: Optional scalar value. The element inserted in the output when all conditions evaluate to `False`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "This list has to be of the same length as `condlist`. Each element can be any tensor."
+        ]
       },
       "chosen_type": "number",
-      "include_in_base_call": false,
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
@@ -52,6 +62,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -62,25 +79,28 @@
     "numbers": "1",
     "description": "Tensor where the output at position `m` is the `m`-th element of the tensor in `choicelist` where the `m`-th element of the corresponding tensor in `condlist` is `True`."
   },
-  "constraints": [],
+  "constraints": [
+    "The optional 'defaults' parameter can be a scalar value."
+  ],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: select() missing 1 required positional argument: 'choicelist'"
+    "smoke test failed: condlist and choicelist must be lists. Received: type(condlist) = <class 'bool'>, type(choicelist) = <class 'float'>"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "select() missing 1 required positional argument: 'choicelist'",
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "condlist and choicelist must be lists. Received: type(condlist) = <class 'bool'>, type(choicelist) = <class 'float'>",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: select() missing 1 required positional argument: 'choicelist'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 7741, in select\n    raise ValueError(\n    ...<3 lines>...\n    )\nValueError: condlist and choicelist must be lists. Received: type(condlist) = <class 'bool'>, type(choicelist) = <class 'float'>\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.select.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

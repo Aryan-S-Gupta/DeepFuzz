@@ -10,24 +10,30 @@
       "description": "Input array. Must have floating or complex dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x dtype must be floating or complex"
+        "must have floating or complex dtype",
+        "x must have floating or complex dtype"
       ]
     },
     "accuracy": {
-      "type": "Tolerance or AccuracyMode object",
+      "type": "Tolerance|AccuracyMode|None",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "Optional `lax.Tolerance` or `lax.AccuracyMode` object that selects the implementation of the op based on the requested accuracy. If the implementation cannot satisfy the requested tolerance, the compiler will return an error. If mode is specified and there are no multiple implementations available, the default implementation will be used.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "must be Tolerance, AccuracyMode or None",
+        "accuracy must be Tolerance, AccuracyMode or None"
+      ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "single",
+    "numbers": "1",
     "description": "An array of the same shape and dtype as ``x`` containing the cube root."
   },
   "constraints": []

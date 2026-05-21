@@ -10,26 +10,32 @@
       "description": "An array of polynomial coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "m": {
-      "type": "",
+      "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1",
+      "flag": "Optional",
       "description": "Order of integration. Default is 1. It must be specified statically.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "must be a positive integer",
+        "m must be a positive integer if specified"
+      ]
     },
     "k": {
-      "type": "number|tensor",
+      "type": "int|number|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Scalar or array of ``m`` integration constant (s).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
@@ -38,8 +44,5 @@
     "numbers": "real",
     "description": "An array of coefficients of integrated polynomial."
   },
-  "constraints": [
-    "p, m, and k must be broadcast-compatible shapes.",
-    "m must be non-negative integer."
-  ]
+  "constraints": []
 }

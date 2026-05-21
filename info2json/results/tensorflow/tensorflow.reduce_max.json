@@ -11,49 +11,38 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "input_tensor must have real numeric type"
+        "should have real numeric type"
       ]
     },
     "axis": {
-      "type": "int32 or None",
+      "type": "int",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "The dimensions to reduce. If `None` (the default), reduces all dimensions. Must be in the range `[-rank(input_tensor), rank(input_tensor))`.",
-      "dtype_candidates": [
-        "int32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be in the range `[-rank(input_tensor), rank(input_tensor))`"
+        "must satisfy -rank(input_tensor) <= axis < rank(input_tensor)",
+        "If axis is None, reduces all dimensions."
       ]
     },
     "keepdims": {
       "type": "bool",
       "size": "",
       "default": "False",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "If true, retains reduced dimensions with length 1.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
       "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "The reduced tensor."
   },
   "constraints": []

@@ -17,7 +17,7 @@
     },
     "frame_length": {
       "type": "int|number|tensor",
-      "size": "",
+      "size": "scalar",
       "default": "",
       "flag": "Required",
       "description": "An integer scalar `Tensor`. The window length in samples.",
@@ -27,7 +27,7 @@
     },
     "frame_step": {
       "type": "int|number|tensor",
-      "size": "",
+      "size": "scalar",
       "default": "",
       "flag": "Required",
       "description": "An integer scalar `Tensor`. The number of samples to step.",
@@ -37,7 +37,7 @@
     },
     "fft_length": {
       "type": "int|number|tensor",
-      "size": "",
+      "size": "scalar",
       "default": "",
       "flag": "Required",
       "description": "An integer scalar `Tensor`. The size of the FFT that produced `stfts`. If not provided, uses the smallest power of 2 enclosing `frame_length`.",
@@ -51,16 +51,6 @@
       "default": "",
       "flag": "Required",
       "description": "A callable that takes a window length and a `dtype` keyword argument and returns a `[window_length]` `Tensor` of samples in the provided datatype. If set to `None`, no windowing is used.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "An optional name for the operation.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

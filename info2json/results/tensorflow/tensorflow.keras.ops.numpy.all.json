@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x must be a tensor"
+        "x must be a tensor."
       ]
     },
     "axis": {
@@ -23,6 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "axis must be None, a single integer, or a tuple of integers. If axis is a tuple, it represents multiple axes along which a logical AND reduction is performed.",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
@@ -43,7 +44,7 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "The tensor containing the logical AND reduction over the `axis`."
   },
   "constraints": []

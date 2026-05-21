@@ -1,0 +1,42 @@
+{
+  "api_name": "eigvalsh",
+  "module_path": "torch.storage.np.linalg",
+  "params": {
+    "a": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(..., M, M) array_like A complex- or real-valued matrix whose eigenvalues are to be computed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "a's last two dimensions must match and be positive integers."
+      ]
+    },
+    "UPLO": {
+      "type": "string|float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'L', 'U'}, optional Specifies whether the calculation is done with the lower triangular part of `a` ('L', default) or the upper triangular part ('U'). Irrespective of this value only the real parts of the diagonal will be considered in the computation to preserve the notion of a Hermitian matrix. It therefore follows that the imaginary part of the diagonal will always be treated as zero.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "L",
+        "U"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "UPLO must be one of L, U",
+        "UPLO value must be either 'L' or 'U' if provided."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(..., M,)",
+    "description": "------- (..., M,) ndarray The eigenvalues in ascending order, each repeated according to its multiplicity."
+  },
+  "constraints": []
+}

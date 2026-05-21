@@ -34,28 +34,16 @@
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Deprecated, does nothing. Indices are always validated on CPU, never validated on GPU.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "Caution": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "On CPU, if an out of bound index is found, an error is raised. On GPU, if an out of bound index is found, a 0 is stored in the corresponding output value.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "Caution must be one of CPU, GPU"
-      ]
-    },
     "axis": {
       "type": "tensor",
       "size": "",
-      "default": "the first non-batch dimension",
+      "default": "",
       "flag": "Optional",
       "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. The `axis` in `params` to gather `indices` from. Must be greater than or equal to `batch_dims`. Defaults to the first non-batch dimension. Supports negative indexes.",
       "dtype_candidates": [
@@ -74,19 +62,9 @@
     "batch_dims": {
       "type": "int|number",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "An `integer`. The number of batch dimensions. Must be less than or equal to `rank(indices)`.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
+      "default": "0",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "description": "An `integer`. The number of batch dimensions. Must be less than or equal to `rank(indices)`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

@@ -15,8 +15,9 @@
         "description": "selected device. Returns statistics for the current device, given by :func:`~torch.xpu.current_device`, if :attr:`device` is ``None`` (default).",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": [
-          "Must be a valid torch.device, int or str"
+          "device must be a valid torch.device, str or int, or None"
         ]
       },
       "chosen_type": "int",
@@ -27,22 +28,24 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
-    "type": "dict|device",
+    "type": "string|dict|any",
     "numbers": "2",
-    "description": "Return a dictionary of XPU memory allocator statistics for a given device."
+    "description": "large_pool and small_pool statistics for the selected device's memory allocation pools"
   },
-  "constraints": [
-    "The output is an object with two properties: large_pool and small_pool",
-    "large_pool: statistics for the large allocation pool (for size >= 1MB allocations)",
-    "small_pool: statistics for the small allocation pool (for size < 1MB allocations)"
-  ],
+  "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": true,
   "readiness_reasons": [],
@@ -59,8 +62,28 @@
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "device"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(device_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.xpu.memory_stats.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -8,10 +8,14 @@
       "default": "",
       "flag": "Required",
       "description": "input array or scalar.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "complex64"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "-`inf` < x < `inf`"
+        "can be complex64",
+        "-jnp.arcsinh(x) returns nan for values outside the range (-inf, inf)"
       ]
     }
   },
@@ -20,8 +24,5 @@
     "numbers": "real or complex",
     "description": "An array of same shape as ``x`` containing the inverse of hyperbolic sine of each element of ``x``, promoting to inexact dtype."
   },
-  "constraints": [
-    "nan for values outside the range (-`inf`, `inf`)",
-    "dtype: float32 or complex64"
-  ]
+  "constraints": []
 }

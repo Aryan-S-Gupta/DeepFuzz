@@ -8,63 +8,114 @@
     "pylist": {
       "name": "pylist",
       "spec": {
-        "type": "float|tuple|list|number|tensor|dtype|any",
+        "type": "tuple|list|number|tensor|dtype|any",
         "size": "scalar",
-        "default": "chosen based on the scalar values in",
-        "flag": "Optional",
-        "description": "A nested `list`, `tuple` or `np.ndarray`. Any nested element that is not a `list`, `tuple` or `np.ndarray` must be a scalar value compatible with `dtype`. dtype: The type of elements for the returned `RaggedTensor`. If not specified, then a default is chosen based on the scalar values in `pylist`. If there are no scalar values in `pylist`, then the default is `tf.float32`.",
-        "dtype_candidates": [
-          "float32"
-        ],
+        "default": "",
+        "flag": "Required",
+        "description": "A nested `list`, `tuple` or `np.ndarray`. Any nested element that is not a `list`, `tuple` or `np.ndarray` must be a scalar value compatible with `dtype`.",
+        "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
           "pylist must be one of np.ndarray"
         ]
       },
-      "chosen_type": "float",
-      "include_in_base_call": false,
+      "chosen_type": "number",
+      "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
         "value": 1.0
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dtype": {
+      "name": "dtype",
+      "spec": {
+        "type": "float|number",
+        "size": "scalar",
+        "default": "",
+        "flag": "Optional",
+        "description": "The type of elements for the returned `RaggedTensor`. If not specified, then a default is chosen based on the scalar values in `pylist`. If there are no scalar values in `pylist`, then the default is `tf.float32`.",
+        "dtype_candidates": [
+          "float32"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "dtype must be one of RaggedTensor, tf.float32"
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "ragged_rank": {
       "name": "ragged_rank",
       "spec": {
         "type": "int",
         "size": "",
-        "default": "max(0, K",
+        "default": "",
         "flag": "Optional",
         "description": "An integer specifying the ragged rank of the returned `RaggedTensor`. Must be nonnegative and less than `K`. Defaults to `max(0, K - 1)` if `inner_shape` is not specified. Defaults to `max(0, K - 1 - len(inner_shape))` if `inner_shape` is specified.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
+      "chosen_type": "tensor",
       "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "inner_shape": {
       "name": "inner_shape",
       "spec": {
         "type": "tuple",
         "size": "",
-        "default": "()` if `ragged_rank",
+        "default": "",
         "flag": "Optional",
         "description": "A tuple of integers specifying the shape for individual inner values in the returned `RaggedTensor`. Defaults to `()` if `ragged_rank` is not specified. If `ragged_rank` is specified, then a default is chosen based on the contents of `pylist`.",
         "dtype_candidates": [],
@@ -78,59 +129,31 @@
       "base_seed_spec": {
         "kind": "literal",
         "value": [
-          1
+          2,
+          2
         ],
-        "as_tuple": true
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
-        "structure_grow",
-        "structure_shrink",
-        "element_delta"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "tensor",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name prefix for the returned tensor (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "tensor",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "tensor",
-        "shape": [
-          1
-        ],
-        "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
-      },
-      "mutation_rules": [
-        "shape_expand",
-        "shape_shrink",
-        "dtype_mutate",
-        "value_noise",
-        "value_mask",
-        "value_division"
+      "valid_mutation_rules": [
+        "enum_switch"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "row_splits_dtype": {
       "name": "row_splits_dtype",
       "spec": {
         "type": "tf.int32|tf.int64",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "tf.int64",
+        "flag": "Optional",
         "description": "data type for the constructed `RaggedTensor`'s row_splits. One of `tf.int32` or `tf.int64`.",
         "dtype_candidates": [
           "int32",
@@ -146,16 +169,23 @@
         ]
       },
       "chosen_type": "dtype",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "dtype",
-        "value": "int32"
+        "value": "float32"
       },
       "mutation_rules": [
         "enum_switch",
-        "type_switch"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -165,23 +195,88 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: Missing required positional argument"
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "Missing required positional argument",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/dispatch.py\", line 1258, in op_dispatch_handler\n    result = api_dispatcher.Dispatch(args, kwargs)\nTypeError: Missing required positional argument\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "pylist"
+    ],
+    "skipped_optional": [
+      "dtype",
+      "ragged_rank",
+      "inner_shape",
+      "row_splits_dtype"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dtype is a supported dtype object",
+    "inner_shape.rank == 1",
+    "inner_shape.dtype in {int32,int64}",
+    "row_splits_dtype is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(pylist_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(dtype_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(ragged_rank_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(inner_shape_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(row_splits_dtype_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ragged.constant.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

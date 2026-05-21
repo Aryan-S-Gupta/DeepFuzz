@@ -25,8 +25,8 @@
     "left_side": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "describes which of the two matrix equations to solve; see above.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -35,8 +35,8 @@
     "lower": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "describes which triangle of ``a`` should be used. The other triangle is ignored.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -45,18 +45,20 @@
     "transpose_a": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "if ``True``, the value of ``a`` is transposed.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "transpose_a must be one of True"
+      ]
     },
     "conjugate_a": {
       "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "if ``True``, the complex conjugate of ``a`` is used in the solve. Has no effect if ``a`` is real.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -65,8 +67,8 @@
     "unit_diagonal": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "if ``True``, the diagonal of ``a`` is assumed to be unit (all 1s) and not accessed.",
       "dtype_candidates": [],
       "enum_values": [],

@@ -10,13 +10,17 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "softplus(x) = log(1 + e^x)",
+        "x shape must be broadcast-compatible"
+      ]
     }
   },
   "output": {
-    "type": "number",
+    "type": "tensor",
     "numbers": "",
-    "description": "softplus result"
+    "description": ""
   },
   "constraints": []
 }

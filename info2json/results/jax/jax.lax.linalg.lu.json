@@ -3,20 +3,31 @@
   "module_path": "jax.lax.linalg",
   "params": {
     "x": {
-      "type": "",
+      "type": "ArrayLike",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "A batch of matrices with shape ``[..., m, n]``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "m >= 0",
+        "n >= 0",
+        "len(lu.shape) == len(x.shape)",
+        "lu.dtype == x.dtype",
+        "lu[..., :, :].shape == x[..., :, :].shape",
+        "pivots.shape[0] == min(x.shape[-2], x.shape[-1])",
+        "permutation.shape[0] == x.shape[-2]"
+      ]
     }
   },
   "output": {
     "type": "tuple|sequence|tensor|dtype",
-    "numbers": "1",
+    "numbers": "3",
     "description": "A tuple ``(lu, pivots, permutation)``. ``lu`` is a batch of matrices with the same shape and dtype as ``x`` math:`L` matrix in its lower triangle and the :math:`U` matrix in its upper triangle. The (unit) diagonal elements of :math:`L` are not represented explicitly. ``pivots`` is an int32 array with shape ``[..., min(m, n)]`` representing a sequence of row swaps that should be performed on :math:`A`. ``permutation`` is an alternative representation of the sequence of row swaps as a permutation, represented as an int32 array with shape ``[..., m]``."
   },
-  "constraints": []
+  "constraints": [
+    "pivots.dtype == 'int32'",
+    "permutation.dtype == 'int32'"
+  ]
 }

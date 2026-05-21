@@ -10,38 +10,33 @@
       "description": "array of shape ``(..., N)`` specifying the first column.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "c and r leading dimensions must be broadcast-compatible",
-        "if r not specified, defaults to conj(c)",
-        "if complex-valued c, r defaults to c.conj()",
-        "for N-dimensional c and/or r, the result is a batch of Toeplitz matrices"
+        "shape must be ...N",
+        "if complex-valued c, r defaults to c.conj()"
       ]
     },
     "r": {
       "type": "tensor",
       "size": "",
-      "default": "conj(c)",
+      "default": "",
       "flag": "Optional",
       "description": "(optional) array of shape ``(..., M)`` specifying the first row. Leading dimensions must be broadcast-compatible with those of ``c``. If not specified, ``r`` defaults to ``conj(c)``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "c and r leading dimensions must be broadcast-compatible",
-        "if r not specified, defaults to conj(c)",
-        "if complex-valued c, r defaults to c.conj()",
-        "for N-dimensional c and/or r, the result is a batch of Toeplitz matrices"
+        "leading dimensions must be broadcast-compatible with those of c",
+        "if complex-valued c, r defaults to c.conj()"
       ]
     }
   },
   "output": {
-    "type": "Toeplitz matrix",
+    "type": "tensor",
     "numbers": "1",
     "description": "A Toeplitz matrix of shape ``(... N, M)``."
   },
   "constraints": [
-    "c and r leading dimensions must be broadcast-compatible",
-    "if r not specified, defaults to conj(c)",
-    "if complex-valued c, r defaults to c.conj()",
-    "for N-dimensional c and/or r, the result is a batch of Toeplitz matrices"
+    "if complex-valued c, r defaults to c.conj()"
   ]
 }

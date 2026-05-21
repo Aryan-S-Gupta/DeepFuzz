@@ -10,50 +10,53 @@
       "description": "array of values to be replaced. If it does not have an inexact dtype it will be returned unmodified.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x dtype must be inexact if specified"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "copy": {
-      "type": "unused",
+      "type": "",
       "size": "",
-      "default": "",
+      "default": "True",
       "flag": "Optional",
       "description": "unused by JAX",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "nan": {
-      "type": "number",
+      "type": "",
       "size": "",
-      "default": "0",
+      "default": "0.0",
       "flag": "Optional",
       "description": "value to substitute for NaN entries. Defaults to 0.0.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "posinf": {
-      "type": "number",
+      "type": "",
       "size": "",
-      "default": "the maximum representable value",
+      "default": "",
       "flag": "Optional",
       "description": "value to substitute for positive infinite entries. Defaults to the maximum representable value.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "posinf must be positive"
       ]
     },
     "neginf": {
-      "type": "number",
+      "type": "",
       "size": "",
-      "default": "the minimum representable value",
+      "default": "",
       "flag": "Optional",
       "description": "value to substitute for positive infinite entries. Defaults to the minimum representable value.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "neginf must be positive"
       ]

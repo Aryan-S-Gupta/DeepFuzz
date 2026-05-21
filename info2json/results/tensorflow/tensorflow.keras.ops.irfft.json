@@ -10,7 +10,9 @@
       "description": "Tuple of the real and imaginary parts of the input tensor. Both tensors in the tuple should be of floating type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Both tensors in the tuple should be of floating type."
+      ]
     },
     "fft_length": {
       "type": "int|number",
@@ -21,17 +23,15 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be even",
-        "x's shape can have any number of dimensions, but its last axis length must be even when fft_length is not specified"
+        "If not specified, it is inferred from the length of the last axis of `x`.",
+        "Defaults to `None`."
       ]
     }
   },
   "output": {
     "type": "float|tensor",
-    "numbers": "3 or more, depending on the input's last axis length",
+    "numbers": "1",
     "description": "A tensor containing the inverse real-valued Fast Fourier Transform along the last axis of `x`."
   },
-  "constraints": [
-    "x's elements must be numeric"
-  ]
+  "constraints": []
 }

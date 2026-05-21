@@ -15,18 +15,19 @@
         "description": "A 5-D `Tensor` of the format specified by `data_format`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "input must be 5-D"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1,
-          1,
-          1,
-          1,
-          1
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -35,12 +36,23 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -67,6 +79,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "strides": {
@@ -85,11 +104,24 @@
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -122,6 +154,13 @@
         "string_replace",
         "string_empty"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
       "unresolved_reason": ""
     },
     "data_format": {
@@ -129,7 +168,7 @@
       "spec": {
         "type": "string",
         "size": "",
-        "default": "\"NDHWC\"",
+        "default": "",
         "flag": "Optional",
         "description": "An optional string from: \"NDHWC\", \"NCDHW\". Defaults to \"NDHWC\". The data format of the input and output data. With the default format \"NDHWC\", the data is stored in the order of: [batch, in_depth, in_height, in_width, in_channels]. Alternatively, the format could be \"NCDHW\", the data storage order is: [batch, in_channels, in_depth, in_height, in_width].",
         "dtype_candidates": [],
@@ -140,32 +179,21 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "NDHWC"
+        "value": "NHWC"
       },
       "mutation_rules": [
         "enum_switch",
         "string_replace",
         "string_empty"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -175,32 +203,24 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": true,
-  "readiness_reasons": [],
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: strides should be of length 1, 3 or 5. Received: strides=[1, 1, 1, 1] of length 4"
+  ],
   "smoke_test": {
     "attempted": true,
-    "success": true,
-    "classification": "success",
-    "error_type": "",
-    "error": "",
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "strides should be of length 1, 3 or 5. Received: strides=[1, 1, 1, 1] of length 4",
     "materialization_reasons": [],
-    "result_summary": {
-      "python_type": "EagerTensor",
-      "shape": [
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
-    },
-    "runtime_supported_here": true
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/nn_ops.py\", line 250, in _get_sequence\n    raise ValueError(f\"{name} should be of length 1, {n} or {n + 2}. \"\n                     f\"Received: {name}={value} of length {len_value}\")\nValueError: strides should be of length 1, 3 or 5. Received: strides=[1, 1, 1, 1] of length 4\n"
   },
-  "runtime_supported_here": true,
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.max_pool3d.json",
-  "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

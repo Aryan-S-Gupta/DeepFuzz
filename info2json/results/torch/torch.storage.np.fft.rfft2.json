@@ -1,0 +1,67 @@
+{
+  "api_name": "rfft2",
+  "module_path": "torch.storage.np.fft",
+  "params": {
+    "a": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array Input array, taken to be real.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "s": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "sequence of ints, optional Shape of the FFT.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axes": {
+      "type": "sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "sequence of ints, optional Axes over which to compute the FFT. Default: ``(-2, -1)``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "norm": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{\"backward\", \"ortho\", \"forward\"}, optional Normalization mode (see `numpy.fft`). Default is \"backward\". Indicates which direction of the forward/backward pair of transforms is scaled and with what normalization factor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "complex ndarray, optional If provided, the result will be placed in this array. It should be of the appropriate shape and dtype for the last inverse transform. incompatible with passing in all but the trivial ``s``).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "1",
+    "description": "------- ndarray The result of the real 2-D FFT."
+  },
+  "constraints": []
+}

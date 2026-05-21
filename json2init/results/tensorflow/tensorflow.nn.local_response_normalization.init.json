@@ -1,0 +1,210 @@
+{
+  "api_full_name": "tensorflow.nn.local_response_normalization",
+  "api_name": "local_response_normalization",
+  "module_path": "tensorflow.nn",
+  "import_path": "tensorflow.nn.local_response_normalization",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "float|tensor",
+        "size": "4-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor`. Must be one of the following types: `half`, `bfloat16`, `float32`. 4-D.",
+        "dtype_candidates": [
+          "float32",
+          "bfloat16"
+        ],
+        "enum_values": [
+          "half",
+          "bfloat16",
+          "float32"
+        ],
+        "constraints": [
+          "input must be 4-D",
+          "input must be one of half, bfloat16, float32"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "depth_radius": {
+      "name": "depth_radius",
+      "spec": {
+        "type": "int|float",
+        "size": "0-D",
+        "default": "5",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `5`. 0-D. Half-width of the 1-D normalization window.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "bias": {
+      "name": "bias",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "An optional `float`. Defaults to `1`. An offset (usually positive to avoid dividing by 0).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "bias must be positive"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "alpha": {
+      "name": "alpha",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "1",
+        "flag": "Optional",
+        "description": "An optional `float`. Defaults to `1`. A scale factor, usually positive.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "alpha must be positive"
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.5
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "beta": {
+      "name": "beta",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "0.5",
+        "flag": "Optional",
+        "description": "An optional `float`. Defaults to `0.5`. An exponent.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0.5
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `input`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: {{function_node __wrapped__LRN_device_/job:localhost/replica:0/task:0/device:CPU:0}} in must be 4-dimensional [Op:LRN]"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__LRN_device_/job:localhost/replica:0/task:0/device:CPU:0}} in must be 4-dimensional [Op:LRN]",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_nn_ops.py\", line 5862, in lrn\n    return lrn_eager_fallback(\n        input, depth_radius=depth_radius, bias=bias, alpha=alpha, beta=beta,\n        name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_nn_ops.py\", line 5937, in lrn_eager_fallback\n    _result = _execute.execute(b\"LRN\", 1, inputs=_inputs_flat, attrs=_attrs,\n                               ctx=ctx, name=name)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 53, in quick_execute\n    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,\n                                        inputs, attrs, num_outputs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__LRN_device_/job:localhost/replica:0/task:0/device:CPU:0}} in must be 4-dimensional [Op:LRN]\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.nn.local_response_normalization.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

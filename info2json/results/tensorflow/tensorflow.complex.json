@@ -17,9 +17,8 @@
         "float64"
       ],
       "constraints": [
-        "Must have the same shape as 'imag' parameter.",
         "real must be one of float32, float64",
-        "'real' and 'imag' must be correct types"
+        "TypeError: Real and imag must be correct types"
       ]
     },
     "imag": {
@@ -31,20 +30,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have the same shape as 'real' parameter.",
         "imag must have the same dtype as real",
-        "'real' and 'imag' must be correct types"
+        "TypeError: Real and imag must be correct types"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "''",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -53,6 +41,6 @@
     "description": "A `Tensor` of type `complex64` or `complex128`."
   },
   "constraints": [
-    "'real' and 'imag' must be correct types"
+    "TypeError: Real and imag must be correct types"
   ]
 }

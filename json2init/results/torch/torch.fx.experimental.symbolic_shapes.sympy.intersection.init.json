@@ -5,50 +5,58 @@
   "import_path": "torch.fx.experimental.symbolic_shapes.sympy.intersection",
   "backend": "torch",
   "params": {
+    "entities": {
+      "name": "entities",
+      "spec": {
+        "type": "any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "signature parameter entities",
+        "constraints": []
+      },
+      "chosen_type": "any",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "var_positional"
+    },
     "pairwise": {
       "name": "pairwise",
       "spec": {
         "type": "keyword argument",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "Can be either True or False",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "keyword argument",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: keyword argument"
-    },
-    "entities": {
-      "name": "entities",
-      "spec": {
-        "type": "sequence",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "sequence of GeometryEntity",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "sequence",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": [
-          1
+        "case_insensitive": false,
+        "constraints": [
+          "pairwise must be 'True' or 'False'"
         ]
       },
-      "mutation_rules": [
-        "structure_grow",
-        "structure_shrink",
-        "element_delta"
-      ],
-      "unresolved_reason": ""
+      "chosen_type": "keyword argument",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: keyword argument",
+      "call_kind": "keyword_only"
     }
   },
   "output": {
@@ -57,14 +65,38 @@
     "description": "======= list of GeometryEntity"
   },
   "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'pairwise' unresolved: unhandled chosen type: keyword argument"
-  ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "list",
+      "length": 0
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [
+      "entities"
+    ],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "pairwise"
+    ],
+    "accepts_var_keyword": true
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.intersection.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

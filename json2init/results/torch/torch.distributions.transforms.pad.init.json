@@ -15,6 +15,7 @@
         "description": "N-dimensional tensor",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "tensor",
@@ -22,7 +23,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,14 +31,25 @@
         "backend": "torch"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "pad": {
       "name": "pad",
@@ -49,10 +61,8 @@
         "description": "m-elements tuple, where :math:`\\frac{m}{2} \\leq` input dimensions and :math:`m` is even.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "m must be even",
-          "input and pad must have compatible shapes"
-        ]
+        "case_insensitive": false,
+        "constraints": []
       },
       "chosen_type": "tuple",
       "include_in_base_call": true,
@@ -66,63 +76,84 @@
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "mode": {
       "name": "mode",
       "spec": {
-        "type": "'constant', 'reflect', 'replicate' or 'circular'",
+        "type": "",
         "size": "",
-        "default": "constant",
+        "default": "",
         "flag": "Optional",
         "description": "``'constant'``, ``'reflect'``, ``'replicate'`` or ``'circular'``. Default: ``'constant'``",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
-      "chosen_type": "'constant'",
+      "chosen_type": "``'constant'``",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
         "enum_switch"
       ],
-      "unresolved_reason": "unhandled chosen type: 'constant'"
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: ``'constant'``",
+      "call_kind": "positional_or_keyword"
     },
     "value": {
       "name": "value",
       "spec": {
-        "type": "number",
+        "type": "",
         "size": "",
         "default": "",
         "flag": "Optional",
         "description": "fill value for ``'constant'`` padding. Default: ``0``",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": [
           "value must be one of constant, 0"
         ]
       },
-      "chosen_type": "number",
+      "chosen_type": "fill value for ``'constant'`` padding. default: ``0``",
       "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": 1.0
-      },
+      "base_seed_spec": {},
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: fill value for ``'constant'`` padding. default: ``0``",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "tensor",
     "numbers": "",
-    "description": "padded input tensor with added dimensions based on pad tuple"
+    "description": ""
   },
   "constraints": [],
   "spec_ready": true,
@@ -138,17 +169,49 @@
     "result_summary": {
       "python_type": "Tensor",
       "shape": [
-        1
+        2
       ],
       "dtype": "float32",
       "device": "cpu",
-      "numel": 1,
-      "has_nan": false
+      "numel": 2,
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input",
+      "pad"
+    ],
+    "skipped_optional": [
+      "mode",
+      "value"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(mode_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(value_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.distributions.transforms.pad.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

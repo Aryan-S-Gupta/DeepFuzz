@@ -10,9 +10,7 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must have a shape"
-      ]
+      "constraints": []
     },
     "axis": {
       "type": "int",
@@ -23,17 +21,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be a valid axis index for input tensor x"
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": [
-    "elements of output tensor lie within the range (0, 1)",
-    "total sum of elements in each output tensor row is exactly 1 (excluding floating point rounding error)"
+    "The elements of the output vector lie within the range `(0, 1)`, and their total sum is exactly 1 (excluding the floating point rounding error)."
   ]
 }

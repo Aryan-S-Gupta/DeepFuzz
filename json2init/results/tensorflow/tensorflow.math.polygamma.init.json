@@ -8,7 +8,7 @@
     "a": {
       "name": "a",
       "spec": {
-        "type": "float|number|tensor",
+        "type": "string|float|tensor",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -22,8 +22,7 @@
           "float64"
         ],
         "constraints": [
-          "a must be one of float32, float64",
-          "a and x must have the same data type"
+          "a must be one of float32, float64"
         ]
       },
       "chosen_type": "float",
@@ -37,12 +36,19 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "x": {
       "name": "x",
       "spec": {
-        "type": "number|tensor",
+        "type": "string|tensor",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -50,42 +56,30 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
+          "Has the same type as params.a",
           "x must have the same dtype as a",
-          "a and x must have the same data type"
+          "x and output have broadcast-compatible shapes"
         ]
       },
-      "chosen_type": "number",
+      "chosen_type": "string",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1.0
+        "value": "Tensor"
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
       ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "text",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": [
-          "name is optional"
-        ]
-      },
-      "chosen_type": "text",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: text"
     }
   },
   "output": {
@@ -93,30 +87,26 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `a`."
   },
-  "constraints": [
-    "a and x must have the same data type"
-  ],
+  "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": true,
-  "readiness_reasons": [],
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Cannot convert 'Tensor' to EagerTensor of dtype float"
+  ],
   "smoke_test": {
     "attempted": true,
-    "success": true,
-    "classification": "success",
-    "error_type": "",
-    "error": "",
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Cannot convert 'Tensor' to EagerTensor of dtype float",
     "materialization_reasons": [],
-    "result_summary": {
-      "python_type": "EagerTensor",
-      "shape": [],
-      "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
-    },
-    "runtime_supported_here": true
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 7283, in polygamma\n    return polygamma_eager_fallback(\n        a, x, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_math_ops.py\", line 7324, in polygamma_eager_fallback\n    _attr_T, _inputs_T = _execute.args_to_matching_eager([a, x], ctx, [_dtypes.float32, _dtypes.float64, ])\n                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 259, in args_to_matching_eager\n    tensor = tensor_conversion_registry.convert(\n        t, dtype, preferred_dtype=default_dtype\n    )\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/tensor_conversion_registry.py\", line 234, in convert\n    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)\nTypeError: Cannot convert 'Tensor' to EagerTensor of dtype float\n"
   },
-  "runtime_supported_here": true,
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.polygamma.json",
-  "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

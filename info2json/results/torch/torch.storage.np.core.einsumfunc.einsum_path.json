@@ -1,0 +1,36 @@
+{
+  "api_name": "einsum_path",
+  "module_path": "torch.storage.np.core.einsumfunc",
+  "params": {
+    "optimize": {
+      "type": "bool|tuple|list|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{bool, list, tuple, 'greedy', 'optimal'} Choose the type of path. If a tuple is provided, the second argument is assumed to be the maximum intermediate size created. If only a single argument is provided the largest input or output array size is used as a maximum intermediate size.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "einsum_call": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "string|list",
+    "numbers": "1",
+    "description": "------- list of tuples A list representation of the einsum path. string_repr : str A printable representation of the einsum path."
+  },
+  "constraints": []
+}

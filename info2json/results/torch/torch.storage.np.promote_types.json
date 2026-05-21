@@ -1,0 +1,41 @@
+{
+  "api_name": "promote_types",
+  "module_path": "torch.storage.np",
+  "params": {
+    "type1": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or dtype specifier First data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "type1 and type2 must be either dtypes or dtype specifiers."
+      ]
+    },
+    "type2": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or dtype specifier Second data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "type1 and type2 must be either dtypes or dtype specifiers."
+      ]
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- dtype The promoted data type."
+  },
+  "constraints": [
+    "type1 and type2 must be either dtypes or dtype specifiers.",
+    "Returned dtype will always be in native byte order with smallest size and scalar value that can represent both inputs."
+  ]
+}

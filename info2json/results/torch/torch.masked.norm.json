@@ -10,38 +10,55 @@
       "description": "the input tensor",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "ord": {
       "type": "int|float|list",
       "size": "",
-      "default": "2",
+      "default": "2.0",
       "flag": "Optional",
       "description": "the order of vector norm. Default: 2. See :func:`torch.linalg.vector_norm` for a list of supported norms.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "dim": {
       "type": "int|tuple",
       "size": "",
-      "default": "None that is equivalent to ``tuple(range(input",
+      "default": "",
       "flag": "Optional",
       "description": "the dimension or dimensions to reduce. Default: None that is equivalent to ``tuple(range(input.ndim))``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "dim must satisfy -rank(input) <= dim < rank(input)"
+      ]
     },
     "keepdim": {
-      "type": "bool|tensor|dtype",
+      "type": "bool|tensor",
       "size": "",
       "default": "False",
       "flag": "Optional",
-      "description": "whether the output tensor has :attr:`dim` retained or not. Default: False. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. If specified, the input tensor is casted to :attr:`dtype` before the operation is performed. Default: None.",
+      "description": "whether the output tensor has :attr:`dim` retained or not. Default: False.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired data type of returned tensor. If specified, the input tensor is casted to :attr:`dtype` before the operation is performed. Default: None.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "mask": {
@@ -54,6 +71,7 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

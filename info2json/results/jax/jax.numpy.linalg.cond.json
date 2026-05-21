@@ -16,25 +16,16 @@
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "the order of the norm to use. One of ``{None, 1, -1, 2, -2, inf, -inf, 'fro'}``;",
+      "flag": "Optional",
+      "description": "the order of the norm to use. One of ``{None, 1, -1, 2, -2, inf, -inf, 'fro'}``; see :func:`jax.numpy.linalg.norm` for the meaning of these. The default is ``p = None``, which is equivalent to ``p = 2``. If not in ``{None, 2, -2}`` then ``x`` must be square, i.e. ``M = N``.",
       "dtype_candidates": [],
       "enum_values": [
-        "fro"
+        "fro",
+        "jax.numpy.linalg.norm"
       ],
       "constraints": [
         "p must be one of fro"
       ]
-    },
-    "see": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "func:`jax.numpy.linalg.norm` for the meaning of these. The default is ``p = None``, which is equivalent to ``p = 2``. If not in ``{None, 2, -2}`` then ``x`` must be square, i.e. ``M = N``.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

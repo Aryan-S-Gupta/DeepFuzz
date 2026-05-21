@@ -10,22 +10,24 @@
       "description": "array over which to compute minimum.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "shape can be any"
+        "must be 1D or more",
+        "operand and output must have the same dtype"
       ]
     },
     "axes": {
-      "type": "sequence",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "sequence of zero or more unique integers specifying the axes over which to reduce. Each entry must satisfy ``0 <= axis < operand.ndim``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "elements must be unique integers",
-        "elements must be in range [0, operand.ndim)",
-        "axes must be a sequence of zero or more unique integers"
+        "must be a sequence",
+        "all elements must satisfy: 0 <= axis < operand.ndim"
       ]
     }
   },

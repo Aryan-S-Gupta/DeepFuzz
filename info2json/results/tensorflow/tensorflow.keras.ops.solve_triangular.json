@@ -11,26 +11,38 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "a tensor shape compatible with '(..., M, M)', where M is a positive integer"
+        "rank(input) >= 3"
       ]
     },
     "b": {
       "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "A tensor of shape `(..., M)` or `(..., M, N)` representing the right-hand side or \"dependent variable\" matrix.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "b tensor shape compatible with either '(..., M)' or '(..., M, N)', where M and N are positive integers",
-        "if b is not provided, the output will be of shape '(...)'"
+        "rank(input) >= 2",
+        "x and y have broadcast-compatible shapes if 'b' has rank 2"
       ]
+    },
+    "lower": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "A flag indicating the direction in which the triangular solve should be performed.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "'(..., M)' or '(..., M, N)'",
+    "numbers": "(..., M) or (..., M, N)",
     "description": "A tensor of shape `(..., M)` or `(..., M, N)` representing the solution of the linear system. Returned shape is identical to `b`."
   },
   "constraints": []

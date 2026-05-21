@@ -11,14 +11,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape is arbitrary",
-        "-1 <= x <= 1 for all elements in x"
+        "x must be broadcast-compatible with the output"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same shape as x",
+    "numbers": "1",
     "description": "Output tensor of same shape as `x` where values are clamped between -1 and 1."
   },
   "constraints": []

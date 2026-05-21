@@ -23,36 +23,26 @@
         "int64"
       ],
       "constraints": [
-        "features must be one of float16, float32, float64, int32, int64",
-        "features is not None"
+        "must be one of: 'float16', 'float32', 'float64', 'int32', 'int64'",
+        "features must be one of float16, float32, float64, int32, int64"
       ]
     },
     "alpha": {
       "type": "float|callable",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0.2",
+      "flag": "Optional",
       "description": "Slope of the activation function at x < 0.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "alpha >= 0"
+        "Slope of the activation function at x < 0"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float16, float32, float64",
+    "numbers": "1",
     "description": "The activation value."
   },
   "constraints": []

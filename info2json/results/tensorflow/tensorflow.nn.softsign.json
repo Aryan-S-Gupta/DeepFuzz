@@ -20,18 +20,10 @@
         "float64"
       ],
       "constraints": [
-        "features must be one of half, bfloat16, float32, float64"
+        "The type of features must be one of: half, bfloat16, float32, float64.",
+        "features must be one of half, bfloat16, float32, float64",
+        "The output has the same type as `features`."
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

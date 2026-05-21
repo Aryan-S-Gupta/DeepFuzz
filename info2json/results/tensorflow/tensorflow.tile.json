@@ -10,7 +10,9 @@
       "description": "A `Tensor`. Can be of any rank.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The output tensor's i'th dimension has `params.input.dims(i) * params.multiples[i]` elements, dimension. For example, tiling a tensor by a 1-D tensor produces a tensor with the specified shape and dtype."
+      ]
     },
     "multiples": {
       "type": "number|tensor",
@@ -26,25 +28,22 @@
         "int32",
         "int64"
       ],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "1-D.",
+        "Must be one of the following types: `int32`, `int64`.",
+        "Length must be the same as the number of dimensions in input",
+        "multiples must be 1-D",
+        "multiples must be one of int32, int64",
+        "The output tensor's i'th dimension has `params.input.dims(i) * params.multiples[i]` elements, dimension. For example, tiling a tensor by a 1-D tensor produces a tensor with the specified shape and dtype."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "Same type as input.",
+    "numbers": "1",
     "description": "A `Tensor`. Has the same type as `input`."
   },
   "constraints": [
-    "input and multiples must have the same number of dimensions."
+    "The output tensor's i'th dimension has `params.input.dims(i) * params.multiples[i]` elements, dimension. For example, tiling a tensor by a 1-D tensor produces a tensor with the specified shape and dtype."
   ]
 }

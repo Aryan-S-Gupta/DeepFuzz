@@ -1,0 +1,63 @@
+{
+  "api_name": "bincount",
+  "module_path": "jax.numpy",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "1-dimensional array of non-negative integers",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x must be non-negative",
+        "x, weights, minlength, length are all mutually independent parameters."
+      ]
+    },
+    "weights": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional array of weights associated with ``x``. If not specified, the weight for each entry will be ``1``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x, weights, minlength, length are all mutually independent parameters."
+      ]
+    },
+    "minlength": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "the minimum length of the output counts array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x, weights, minlength, length are all mutually independent parameters."
+      ]
+    },
+    "length": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the length of the output counts array. Must be specified statically for ``bincount`` to be used with :func:`jax.jit` and other JAX transformations.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x, weights, minlength, length are all mutually independent parameters."
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "An array of counts or summed weights reflecting the number of occurrences of values in ``x``."
+  },
+  "constraints": [
+    "x, weights, minlength, length are all mutually independent parameters."
+  ]
+}

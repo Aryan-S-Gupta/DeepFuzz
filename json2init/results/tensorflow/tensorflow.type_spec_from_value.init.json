@@ -1,0 +1,95 @@
+{
+  "api_full_name": "tensorflow.type_spec_from_value",
+  "api_name": "type_spec_from_value",
+  "module_path": "tensorflow",
+  "import_path": "tensorflow.type_spec_from_value",
+  "backend": "tensorflow",
+  "params": {
+    "value": {
+      "name": "value",
+      "spec": {
+        "type": "tensor|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A value that can be accepted or returned by TensorFlow APIs. Accepted types for `value` include `tf.Tensor`, any value that can be converted to `tf.Tensor` using `tf.convert_to_tensor`, and any subclass of `CompositeTensor` (such as `tf.RaggedTensor`).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "Accepted types for `value` include `tf.Tensor`, any value that can be converted to `tf.Tensor` using `tf.convert_to_tensor`, and any subclass of `CompositeTensor` (such as `tf.RaggedTensor`).",
+          "value must be one of tf.Tensor, tf.convert_to_tensor, CompositeTensor, tf.RaggedTensor",
+          "Returns a `tf.TypeSpec` that represents the given `value`."
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tf.TypeSpec",
+    "numbers": "1",
+    "description": "A `TypeSpec` that is compatible with `value`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "TensorSpec"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "value"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(value_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.type_spec_from_value.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

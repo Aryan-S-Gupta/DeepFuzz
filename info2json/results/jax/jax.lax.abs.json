@@ -10,12 +10,16 @@
       "description": "Input array. Must have signed integer, floating, or complex dtype.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "Must have signed integer, floating, or complex dtype.",
+        "For complex valued input, `abs(x)` returns `sqrt(a^2+b^2)`."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "real",
     "description": "An array of the same shape as ``x`` containing the elementwise absolute value. math:`a + ib`, ``abs(x)`` returns :math:`\\sqrt{a^2+b^2}`."
   },
   "constraints": []

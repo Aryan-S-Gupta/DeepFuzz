@@ -10,19 +10,6 @@
       "description": "Numeric `Tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "Must be 1D",
-        "x must be non-decreasing for output to be True"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "\"is_non_decreasing\"",
-      "flag": "Optional",
-      "description": "A name for this operation (optional). Defaults to \"is_non_decreasing\"",
-      "dtype_candidates": [],
-      "enum_values": [],
       "constraints": []
     }
   },
@@ -31,5 +18,7 @@
     "numbers": "1",
     "description": "Boolean `Tensor`, equal to `True` iff `x` is non-decreasing."
   },
-  "constraints": []
+  "constraints": [
+    "The output is a Boolean Tensor."
+  ]
 }

@@ -10,15 +10,18 @@
       "description": "input array or scalar",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x must be defined for jax.numpy.negative and jax.numpy.sign"
+        "x can be any numeric type (int, float, complex)"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape and dtype as x containing +x",
+    "numbers": "1",
     "description": "An array of same shape and dtype as ``x`` containing ``+x``."
   },
-  "constraints": []
+  "constraints": [
+    "input shape is preserved in output"
+  ]
 }

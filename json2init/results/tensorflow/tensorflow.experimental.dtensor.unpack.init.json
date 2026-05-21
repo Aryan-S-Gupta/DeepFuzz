@@ -4,10 +4,53 @@
   "module_path": "tensorflow.experimental.dtensor",
   "import_path": "tensorflow.experimental.dtensor.unpack",
   "backend": "tensorflow",
-  "params": {},
+  "params": {
+    "tensor": {
+      "name": "tensor",
+      "spec": {
+        "type": "tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "signature parameter tensor",
+        "constraints": []
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "tensorflow"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
+    }
+  },
   "output": {
-    "type": "list",
-    "numbers": "variable",
+    "type": "tensor",
+    "numbers": "1",
     "description": "The individual component tensors of the DTensor. This will include only the client-local components, i.e. the components placed on the local devices."
   },
   "constraints": [
@@ -17,21 +60,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: unpack() missing 1 required positional argument: 'tensor'"
+    "smoke test failed: DTensorUnpack expects a tensor placed on the DTensor device: /job:localhost/replica:0/task:0/device:CUSTOM:0, but input was placed on device: /job:localhost/replica:0/task:0/device:CPU:0"
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "spec_or_seed_error",
-    "error_type": "TypeError",
-    "error": "unpack() missing 1 required positional argument: 'tensor'",
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "DTensorUnpack expects a tensor placed on the DTensor device: /job:localhost/replica:0/task:0/device:CUSTOM:0, but input was placed on device: /job:localhost/replica:0/task:0/device:CPU:0",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\nTypeError: unpack() missing 1 required positional argument: 'tensor'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/dtensor/python/api.py\", line 372, in unpack\n    return _dtensor_device().unpack(tensor)\n           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/dtensor/python/dtensor_device.py\", line 197, in unpack\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: DTensorUnpack expects a tensor placed on the DTensor device: /job:localhost/replica:0/task:0/device:CUSTOM:0, but input was placed on device: /job:localhost/replica:0/task:0/device:CPU:0\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.experimental.dtensor.unpack.json",
-  "stage3_status": "retry",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

@@ -10,13 +10,26 @@
       "description": "array-like object, or any object with a ``shape`` attribute.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "Required"
+      ]
     }
   },
   "output": {
     "type": "tuple",
-    "numbers": "1",
+    "numbers": "int",
     "description": "An tuple of integers representing the shape of ``a``."
   },
-  "constraints": []
+  "constraints": [
+    "For arrays, this can also be accessed via the :attr:`jax.Array.shape` property:",
+    ">>> x = jnp.arange(10)",
+    ">>> jnp.shape(x)",
+    "(10,)",
+    ">>> y = jnp.ones((2, 3))",
+    ">>> jnp.shape(y)",
+    "(2, 3)",
+    ">>> jnp.shape(3.14)",
+    "()"
+  ]
 }

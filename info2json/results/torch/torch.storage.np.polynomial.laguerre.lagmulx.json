@@ -1,0 +1,28 @@
+{
+  "api_name": "lagmulx",
+  "module_path": "torch.storage.np.polynomial.laguerre",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array of Laguerre series coefficients ordered from low to high.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c must be 1-D",
+        "c must be 1-D array_like"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "N/A",
+    "description": "------- ndarray Array representing the result of the multiplication."
+  },
+  "constraints": [
+    "xP_i(x) = (-(i + 1)*P_{i + 1}(x) + (2i + 1)P_{i}(x) - iP_{i - 1}(x))"
+  ]
+}

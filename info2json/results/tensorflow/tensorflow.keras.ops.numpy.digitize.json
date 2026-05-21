@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and bins must have the same shape"
+        "The shapes of x and bins must be compatible for broadcasting"
       ]
     },
     "bins": {
@@ -23,17 +23,17 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be one-dimensional and monotonically increasing",
-        "x and bins must have the same shape"
+        "size must be greater than 0",
+        "The shapes of x and bins must be compatible for broadcasting"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "integer",
+    "numbers": "1",
     "description": "Output array of indices, of same shape as `x`."
   },
   "constraints": [
-    "x and bins must have the same shape"
+    "The shapes of x and bins must be compatible for broadcasting"
   ]
 }

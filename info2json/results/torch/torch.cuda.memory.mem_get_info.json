@@ -1,0 +1,23 @@
+{
+  "api_name": "mem_get_info",
+  "module_path": "torch.cuda.memory",
+  "params": {
+    "device": {
+      "type": "string|int|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default) or if the device index is not specified.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "int|tuple",
+    "numbers": "2",
+    "description": "currently allocated and total GPU memory in bytes"
+  },
+  "constraints": []
+}

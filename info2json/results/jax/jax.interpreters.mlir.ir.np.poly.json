@@ -6,13 +6,12 @@
       "type": "sequence|tensor",
       "size": "shape (N,)",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "array_like, shape (N,) or (N, N) A sequence of polynomial roots, or a square array or matrix object.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape must be (N,) or (N, N)",
-        "seq_of_zeros must be provided"
+        "shape must be 1-D or square"
       ]
     }
   },
@@ -21,5 +20,7 @@
     "numbers": "1D",
     "description": "------- ndarray 1D array of polynomial coefficients from highest to lowest degree: ``c[0] * x**(N) + c[1] * x**(N-1) + ... + c[N-1] * x + c[N]`` where c[0] always equals 1."
   },
-  "constraints": []
+  "constraints": [
+    "input and output shapes are not related"
+  ]
 }

@@ -35,7 +35,10 @@
         "uint32",
         "uint64"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be 4-D",
+        "input must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64"
+      ]
     },
     "ksize": {
       "type": "int|list|tensor",
@@ -80,7 +83,7 @@
     "output_dtype": {
       "type": "tensor|dtype",
       "size": "",
-      "default": "tf",
+      "default": "tf.int64",
       "flag": "Optional",
       "description": "An optional `tf.DType` from: `tf.int32, tf.int64`. Defaults to `tf.int64`. The dtype of the returned argmax tensor.",
       "dtype_candidates": [
@@ -99,16 +102,6 @@
       "dtype_candidates": [
         "bool"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

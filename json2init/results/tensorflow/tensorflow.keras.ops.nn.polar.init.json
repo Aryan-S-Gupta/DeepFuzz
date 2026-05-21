@@ -8,7 +8,7 @@
     "abs_": {
       "name": "abs_",
       "spec": {
-        "type": "number|tensor",
+        "type": "number",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -16,7 +16,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "params.abs_.shape == params.angle.shape"
+          "Must be broadcast-compatible with angle."
         ]
       },
       "chosen_type": "number",
@@ -29,12 +29,19 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "angle": {
       "name": "angle",
       "spec": {
-        "type": "number|tensor",
+        "type": "number",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -42,7 +49,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "params.abs_.shape == params.angle.shape"
+          "Must be broadcast-compatible with abs_."
         ]
       },
       "chosen_type": "number",
@@ -55,16 +62,23 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "number|tensor",
-    "numbers": "2",
+    "numbers": "complex64",
     "description": "A complex number (or array of complex numbers) with the same shape as `abs_` and `angle`."
   },
   "constraints": [
-    "params.abs_.shape == params.angle.shape"
+    "The operation is numerically equivalent to `torch.polar()`. It is not equivalent to `scipy.lingalg.polar()` which performs different operations."
   ],
   "spec_ready": true,
   "ready_for_stage4": true,
@@ -81,12 +95,29 @@
       "shape": [],
       "dtype": "complex64",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        "(0.5403022766113281+0.8414709568023682j)"
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "abs_",
+      "angle"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.nn.polar.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

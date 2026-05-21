@@ -10,37 +10,33 @@
       "description": "A list of `Tensor` objects, each with same shape and type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "This function does not handle tf.reduce_sum(inputs, axis=0)"
+      ]
     },
     "shape": {
-      "type": "",
+      "type": "tuple",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Expected shape of elements of `inputs` (optional). Also controls the output shape of this op, which may affect type inference in other ops. A value of `None` means \"infer the input shape from the shapes in `inputs`\".",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Shape of elements in inputs or 'None' for inferring from inputs"
+      ]
     },
     "tensor_dtype": {
       "type": "dtype",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Expected data type of `inputs` (optional). A value of `None` means \"infer the input dtype from `inputs[0]`\".",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Data type of inputs or 'None' for inferring from inputs[0]"
+      ]
     }
   },
   "output": {
@@ -48,5 +44,7 @@
     "numbers": "1",
     "description": "A `Tensor` of same shape and type as the elements of `inputs`."
   },
-  "constraints": []
+  "constraints": [
+    "The input must be a list or tuple."
+  ]
 }

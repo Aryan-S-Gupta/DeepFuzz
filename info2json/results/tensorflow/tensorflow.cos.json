@@ -24,20 +24,9 @@
         "complex128"
       ],
       "constraints": [
-        "Must be one of the following types: bfloat16, half, float32, float64, complex64, complex128",
-        "x must be one of bfloat16, half, float32, float64, complex64, complex128",
-        "x input range is (-inf, inf)"
+        "must be one of the following types: `bfloat16`, `half`, `float32`, `float64`, `complex64`, `complex128`",
+        "x must be one of bfloat16, half, float32, float64, complex64, complex128"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -45,5 +34,7 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "Input range is `(-inf, inf)`"
+  ]
 }

@@ -11,18 +11,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x rank must be greater than or equal to 2"
+        "x must be a tensor",
+        "If x is of rank `k` with shape `[I, J, K, ..., L, M, N]`, then output is a tensor of rank `k-2` with dimensions `[I, J, K, ..., L]` where `output[i, j, k, ..., l] = trace(x[i, j, k, ..., l, :, :])`"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -30,7 +21,5 @@
     "numbers": "1",
     "description": "The trace of input tensor."
   },
-  "constraints": [
-    "name is not used in this version of the function"
-  ]
+  "constraints": []
 }

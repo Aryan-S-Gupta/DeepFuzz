@@ -26,8 +26,24 @@ import hashlib
 import json
 import os
 import re
+import sys
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from common.pipeline_contract import (
+    API_DOC_TEXT,
+    API_FULL_NAME,
+    api_collection_json,
+    collector_entry_to_api_row,
+    write_api_csv,
+    write_rejected_csv as write_contract_rejected_csv,
+)
+from common.api_policy import internal_api_reason, is_internal_api
 
 
 DOC_MIN_CHARS = 40
@@ -963,11 +979,13 @@ def filter_one(entry: Dict[str, Any], allow_receiver_apis: bool = False, allow_w
     api = entry.get("api") or entry.get("qualname") or ""
     doc = entry.get("doc") or ""
     sig = entry.get("signature")
-    base_row = {"api_full_name": api, "api_doc_text": doc}
+    base_row = collector_entry_to_api_row(entry)
 
     resolved = bool(entry.get("resolved", False))
     if not resolved:
         return Decision(False, 1, f"unresolved: {entry.get('error', 'unresolved')}"), base_row
+    if is_internal_api(api):
+        return Decision(False, 5, internal_api_reason(api) or "internal implementation namespace excluded"), base_row
     if _is_placeholder_doc(doc):
         return Decision(False, 1, "missing/placeholder/too short doc"), base_row
     if _is_reference_only_doc(doc):
@@ -1139,7 +1157,9 @@ def main(argv: Optional[List[str]] = None) -> int:
             accepted_raw.append(row)
             continue
         summary["rejected"] += 1
-        rejected_rows.append({"api_full_name": row.get("api_full_name", ""), "api_doc_text": row.get("api_doc_text", ""), "reason": decision.reason})
+        rejected_row = dict(row)
+        rejected_row["reason"] = decision.reason
+        rejected_rows.append(rejected_row)
         if 1 <= decision.step <= 5:
             sname = _step_name(decision.step)
             summary["rejected_by_step"][sname] += 1
@@ -1155,13 +1175,17 @@ def main(argv: Optional[List[str]] = None) -> int:
     summary["duplicate_aliases_removed"] = accepted_before_alias_dedup - len(accepted)
 
     os.makedirs(base, exist_ok=True)
-    write_two_col_csv(os.path.join(base, "accepted.csv"), accepted)
-    write_rejected_csv(os.path.join(base, "rejected.csv"), rejected_rows)
+    accepted_path = os.path.join(base, "accepted.csv")
+    write_api_csv(accepted_path, accepted)
+    with open(os.path.join(base, "accepted.json"), "w", encoding="utf-8") as f:
+        json.dump(api_collection_json(accepted), f, ensure_ascii=False, indent=2)
+    write_contract_rejected_csv(os.path.join(base, "rejected.csv"), rejected_rows)
     with open(os.path.join(base, "summary.json"), "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
 
     print(f"[filter] library={lib_name} total={summary['total']} accepted={summary['accepted']} dup_removed={summary['duplicate_aliases_removed']} rejected={summary['rejected']}")
-    print(f"[filter] wrote: {os.path.join(base, 'accepted.csv')}")
+    print(f"[filter] wrote: {accepted_path}")
+    print(f"[filter] wrote: {os.path.join(base, 'accepted.json')}")
     print(f"[filter] wrote: {os.path.join(base, 'rejected.csv')}")
     print(f"[filter] wrote: {os.path.join(base, 'summary.json')}")
     return 0

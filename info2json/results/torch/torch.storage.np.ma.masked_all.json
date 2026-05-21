@@ -1,0 +1,41 @@
+{
+  "api_name": "masked_all",
+  "module_path": "torch.storage.np.ma",
+  "params": {
+    "shape": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or tuple of ints Shape of the required MaskedArray, e.g., ``(2, 3)`` or ``2``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be broadcast-compatible with other array shapes if used in operations",
+        "shape and dtype must be explicitly provided when calling the function"
+      ]
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "dtype, optional Data type of the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape and dtype must be explicitly provided when calling the function"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- MaskedArray A masked array with all data masked."
+  },
+  "constraints": [
+    "shape and dtype must be explicitly provided when calling the function"
+  ]
+}

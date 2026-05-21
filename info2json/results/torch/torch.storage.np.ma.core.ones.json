@@ -1,0 +1,92 @@
+{
+  "api_name": "ones",
+  "module_path": "torch.storage.np.ma.core",
+  "params": {
+    "shape": {
+      "type": "int|sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or sequence of ints Shape of the new array, e.g., ``(2, 3)`` or ``2``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "float|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "data-type, optional The desired data-type for the array, e.g., `numpy.int8`. Default is `numpy.float64`.",
+      "dtype_candidates": [
+        "int8",
+        "float64"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "order": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'C', 'F'}, optional, default: C Whether to store multi-dimensional data in row-major (C-style) or column-major (Fortran-style) order in memory.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "device": {
+      "type": "string|tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional The device on which to place the created array. Default: None. For Array-API interoperability only, so must be ``\"cpu\"`` if passed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "like": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array_like, optional Reference object to allow the creation of arrays which are not NumPy arrays. If an array-like passed in as ``like`` supports the ``__array_function__`` protocol, the result will be defined by it. In this case, it ensures the creation of an array object compatible with that passed in via this argument.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "fill_value": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "hardmask": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "------- MaskedArray Array of ones with the given shape, dtype, and order."
+  },
+  "constraints": []
+}

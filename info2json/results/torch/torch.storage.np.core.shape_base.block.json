@@ -1,0 +1,23 @@
+{
+  "api_name": "block",
+  "module_path": "torch.storage.np.core.shape_base",
+  "params": {
+    "arrays": {
+      "type": "list|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "nested list of array_like or scalars (but not tuples) If passed a single ndarray or scalar (a nested list of depth 0), this is returned unmodified (and not copied).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "list|tensor",
+    "numbers": "1",
+    "description": "------- ndarray The array assembled from the given blocks. The dimensionality of the output is equal to the greatest of: * the dimensionality of all the inputs * the depth to which the input list is nested"
+  },
+  "constraints": []
+}

@@ -10,6 +10,7 @@
       "description": "N-dimensional tensor",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "pad": {
@@ -20,29 +21,29 @@
       "description": "m-elements tuple, where :math:`\\frac{m}{2} \\leq` input dimensions and :math:`m` is even.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "m must be even",
-        "input and pad must have compatible shapes"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "mode": {
-      "type": "'constant', 'reflect', 'replicate' or 'circular'",
+      "type": "",
       "size": "",
-      "default": "constant",
+      "default": "",
       "flag": "Optional",
       "description": "``'constant'``, ``'reflect'``, ``'replicate'`` or ``'circular'``. Default: ``'constant'``",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "value": {
-      "type": "number",
+      "type": "",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "fill value for ``'constant'`` padding. Default: ``0``",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "value must be one of constant, 0"
       ]
@@ -51,7 +52,7 @@
   "output": {
     "type": "tensor",
     "numbers": "",
-    "description": "padded input tensor with added dimensions based on pad tuple"
+    "description": ""
   },
   "constraints": []
 }

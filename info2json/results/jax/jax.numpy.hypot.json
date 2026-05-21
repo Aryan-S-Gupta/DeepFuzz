@@ -12,10 +12,11 @@
       "enum_values": [
         "complex"
       ],
+      "case_insensitive": false,
       "constraints": [
-        "x1 dtype must not be complex",
+        "must not be complex dtype",
         "x1 must be one of complex",
-        "x1 and x2 must be provided"
+        "x1 and x2 must either have same shape or be broadcast compatible"
       ]
     },
     "x2": {
@@ -28,20 +29,20 @@
       "enum_values": [
         "complex"
       ],
+      "case_insensitive": false,
       "constraints": [
-        "x2 dtype must not be complex",
-        "x1 and x2 must have same shape or be broadcast compatible",
+        "must not be complex dtype",
         "x2 must be one of complex",
-        "x1 and x2 must be provided"
+        "x1 and x2 must either have same shape or be broadcast compatible"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "1",
+    "numbers": "real",
     "description": "An array containing the hypotenuse for the given given legs ``x1`` and ``x2`` of a right angle triangle, promoting to inexact dtype."
   },
   "constraints": [
-    "x1 and x2 must be provided"
+    "x1 and x2 must either have same shape or be broadcast compatible"
   ]
 }

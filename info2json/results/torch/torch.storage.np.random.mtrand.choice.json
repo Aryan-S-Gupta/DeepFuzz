@@ -1,0 +1,62 @@
+{
+  "api_name": "choice",
+  "module_path": "torch.storage.np.random.mtrand",
+  "params": {
+    "a": {
+      "type": "int|tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "1-D array-like or int If an ndarray, a random sample is generated from its elements. If an int, the random sample is generated as if it were ``np.arange(a)``",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "a must be 1-D"
+      ]
+    },
+    "size": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints, optional Output shape. If the given shape is, e.g., ``(m, n, k)``, then ``m * n * k`` samples are drawn. Default is None, in which case a single value is returned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "replace": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "boolean, optional Whether the sample is with or without replacement. Default is True, meaning that a value of ``a`` can be selected multiple times.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "p": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "1-D array-like, optional The probabilities associated with each entry in a. If not given, the sample assumes a uniform distribution over all entries in ``a``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "p must be 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- single item or ndarray The generated random samples"
+  },
+  "constraints": []
+}

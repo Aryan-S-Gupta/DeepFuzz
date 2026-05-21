@@ -1,0 +1,26 @@
+{
+  "api_name": "standard_cauchy",
+  "module_path": "torch.storage.np.random.mtrand",
+  "params": {
+    "size": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of ints, optional Output shape. If the given shape is, e.g., ``(m, n, k)``, then ``m * n * k`` samples are drawn. Default is None, in which case a single value is returned.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "size affects the output shape and number of samples drawn",
+        "if size is not provided, a single value is returned"
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1",
+    "description": "------- ndarray or scalar The drawn samples."
+  },
+  "constraints": []
+}

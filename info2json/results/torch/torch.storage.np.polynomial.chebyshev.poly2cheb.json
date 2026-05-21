@@ -1,0 +1,27 @@
+{
+  "api_name": "poly2cheb",
+  "module_path": "torch.storage.np.polynomial.chebyshev",
+  "params": {
+    "pol": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array containing the polynomial coefficients",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be 1-D",
+        "pol must be 1-D",
+        "pol's elements must be numeric"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1-D",
+    "description": "------- ndarray 1-D array containing the coefficients of the equivalent Chebyshev series."
+  },
+  "constraints": []
+}

@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1 and x2 must have the same shape"
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     },
     "x2": {
@@ -23,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1 and x2 must have the same shape"
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     }
   },
@@ -33,6 +33,6 @@
     "description": "Output tensor, element-wise logical AND of the inputs."
   },
   "constraints": [
-    "x1 and x2 must have the same shape"
+    "x1 and x2 must have broadcast-compatible shapes"
   ]
 }

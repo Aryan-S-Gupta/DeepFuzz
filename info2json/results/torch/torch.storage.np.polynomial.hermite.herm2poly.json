@@ -1,0 +1,28 @@
+{
+  "api_name": "herm2poly",
+  "module_path": "torch.storage.np.polynomial.hermite",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array containing the Hermite series coefficients, ordered from lowest order term to highest.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "size must be 1-D",
+        "c must be 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float64",
+    "description": "------- ndarray 1-D array containing the coefficients of the equivalent polynomial (relative to the \"standard\" basis) ordered from lowest order term to highest."
+  },
+  "constraints": [
+    "input and output shapes may differ"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "api_full_name": "torch.storage.np.char.chararray.transpose",
+  "api_name": "transpose",
+  "module_path": "torch.storage.np.char.chararray",
+  "import_path": "torch.storage.np.char.chararray.transpose",
+  "backend": "torch",
+  "params": {
+    "axes": {
+      "name": "axes",
+      "spec": {
+        "type": "int|tuple|list",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "None, tuple of ints, or `n` ints",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "If None, reverses the order of the axes."
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          0
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "floats or integers",
+    "description": "------- ndarray View of the array with its axes suitably permuted."
+  },
+  "constraints": [
+    "Input array and output view share the same data."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: unbound method ndarray.transpose() needs an argument"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "unbound method ndarray.transpose() needs an argument",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\nTypeError: unbound method ndarray.transpose() needs an argument\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.char.chararray.transpose.json",
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

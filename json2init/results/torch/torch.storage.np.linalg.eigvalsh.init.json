@@ -1,0 +1,106 @@
+{
+  "api_full_name": "torch.storage.np.linalg.eigvalsh",
+  "api_name": "eigvalsh",
+  "module_path": "torch.storage.np.linalg",
+  "import_path": "torch.storage.np.linalg.eigvalsh",
+  "backend": "torch",
+  "params": {
+    "a": {
+      "name": "a",
+      "spec": {
+        "type": "float",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "(..., M, M) array_like A complex- or real-valued matrix whose eigenvalues are to be computed.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "a's last two dimensions must match and be positive integers."
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "UPLO": {
+      "name": "UPLO",
+      "spec": {
+        "type": "string|float",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "{'L', 'U'}, optional Specifies whether the calculation is done with the lower triangular part of `a` ('L', default) or the upper triangular part ('U'). Irrespective of this value only the real parts of the diagonal will be considered in the computation to preserve the notion of a Hermitian matrix. It therefore follows that the imaginary part of the diagonal will always be treated as zero.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "L",
+          "U"
+        ],
+        "case_insensitive": false,
+        "constraints": [
+          "UPLO must be one of L, U",
+          "UPLO value must be either 'L' or 'U' if provided."
+        ]
+      },
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "(..., M,)",
+    "description": "------- (..., M,) ndarray The eigenvalues in ascending order, each repeated according to its multiplicity."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: 0-dimensional array given. Array must be at least two-dimensional"
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "LinAlgError",
+    "error": "0-dimensional array given. Array must be at least two-dimensional",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 241, in _assert_stacked_square\n    m, n = a.shape[-2:]\n    ^^^^\nValueError: not enough values to unpack (expected 2, got 0)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 1349, in eigvalsh\n    _assert_stacked_square(a)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/numpy/linalg/_linalg.py\", line 243, in _assert_stacked_square\n    raise LinAlgError('%d-dimensional array given. Array must be '\n            'at least two-dimensional' % a.ndim)\nnumpy.linalg.LinAlgError: 0-dimensional array given. Array must be at least two-dimensional\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.storage.np.linalg.eigvalsh.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

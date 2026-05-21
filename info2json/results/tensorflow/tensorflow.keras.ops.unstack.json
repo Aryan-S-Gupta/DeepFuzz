@@ -11,46 +11,39 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x, num and axis must be provided"
+        "The input tensor x must be rank-R."
       ]
     },
     "num": {
-      "type": "int32",
+      "type": "int",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "The length of the dimension axis. Automatically inferred if `None`.",
-      "dtype_candidates": [
-        "int32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Defaults to None",
-        "x, num and axis must be provided"
+        "If provided, must be a positive integer."
       ]
     },
     "axis": {
-      "type": "int32",
+      "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "The axis along which to unpack.",
-      "dtype_candidates": [
-        "int32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(x) <= axis < rank(x)",
-        "x, num and axis must be provided"
+        "Must satisfy -rank(x) <= axis < rank(x)",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     }
   },
   "output": {
     "type": "list|tensor",
-    "numbers": "multiple",
+    "numbers": "1",
     "description": "A list of tensors unpacked along the given axis."
   },
-  "constraints": [
-    "x, num and axis must be provided"
-  ]
+  "constraints": []
 }

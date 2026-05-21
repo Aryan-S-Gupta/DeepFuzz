@@ -2,6 +2,20 @@
   "api_name": "adaptive_avg_pool3d",
   "module_path": "torch.nn.quantized.functional",
   "params": {
+    "input": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Observed signature: (input: torch.Tensor, output_size: None)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape must be 5-D",
+        "input tensor and output tensor must have the same type"
+      ]
+    },
     "output_size": {
       "type": "int|float|tuple",
       "size": "",
@@ -10,17 +24,16 @@
       "description": "the target output size (single integer or double-integer tuple)",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must be a positive value or a double-integer tuple"
+        "must be positive integer or tuple of 2 positive integers"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "4",
-    "description": "see AdaptiveAvgPool3d for details and output shape"
+    "numbers": "5-D",
+    "description": "Observed signature: (input: torch.Tensor, output_size: None)"
   },
-  "constraints": [
-    "api_name must be a valid Python identifier"
-  ]
+  "constraints": []
 }

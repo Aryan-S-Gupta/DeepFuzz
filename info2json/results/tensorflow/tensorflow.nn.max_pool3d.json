@@ -10,7 +10,9 @@
       "description": "A 5-D `Tensor` of the format specified by `data_format`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "input must be 5-D"
+      ]
     },
     "ksize": {
       "type": "int|list|tensor",
@@ -50,19 +52,9 @@
     "data_format": {
       "type": "string",
       "size": "",
-      "default": "\"NDHWC\"",
-      "flag": "Optional",
-      "description": "An optional string from: \"NDHWC\", \"NCDHW\". Defaults to \"NDHWC\". The data format of the input and output data. With the default format \"NDHWC\", the data is stored in the order of: [batch, in_depth, in_height, in_width, in_channels]. Alternatively, the format could be \"NCDHW\", the data storage order is: [batch, in_channels, in_depth, in_height, in_width].",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "description": "An optional string from: \"NDHWC\", \"NCDHW\". Defaults to \"NDHWC\". The data format of the input and output data. With the default format \"NDHWC\", the data is stored in the order of: [batch, in_depth, in_height, in_width, in_channels]. Alternatively, the format could be \"NCDHW\", the data storage order is: [batch, in_channels, in_depth, in_height, in_width].",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

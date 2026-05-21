@@ -10,7 +10,10 @@
       "description": "Input tensor of shape `(..., M, M)`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "shape must be broadcastable to (..., M, M)",
+        "The input tensor x must have rank greater than or equal to 3."
+      ]
     }
   },
   "output": {

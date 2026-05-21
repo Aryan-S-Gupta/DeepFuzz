@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "a must be a scalar or array_like.",
-        "out is the minimal data type for the given input 'a'."
+        "a must be scalar or array_like."
       ]
     }
   },
@@ -21,5 +20,7 @@
     "numbers": "1",
     "description": "------- dtype The minimal data type."
   },
-  "constraints": []
+  "constraints": [
+    "Output dtype is one of: 'uint8', 'int16', 'float16', 'float64'."
+  ]
 }

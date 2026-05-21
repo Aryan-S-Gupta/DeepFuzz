@@ -6,19 +6,18 @@
       "type": "int|float|bool|number",
       "size": "scalar",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "A symbolic or concrete scalar value (bool, int, or float)",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
-      "constraints": [
-        "a must be scalar (bool, int, or float)"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
-    "type": "number",
+    "type": "int|float|bool",
     "numbers": "1",
     "description": "The concrete value after guarding"
   },

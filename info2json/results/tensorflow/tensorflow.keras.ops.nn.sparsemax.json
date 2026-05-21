@@ -11,27 +11,28 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x must be compatible with the signature line.",
-        "Sparesmax output will have same shape and type as input tensor x."
+        "must be a valid TensorFlow tensor"
       ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "-1",
       "flag": "Optional",
       "description": "`int`, axis along which the sparsemax operation is applied.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be within bounds of x's rank."
+        "-rank(x) <= axis < rank(x)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "same as x",
+    "numbers": "1",
     "description": "A tensor, output of sparsemax transformation. Has the same type and shape as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor has the same type as the input tensor."
+  ]
 }

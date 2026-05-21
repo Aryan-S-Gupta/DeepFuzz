@@ -10,12 +10,15 @@
       "description": "input array. Must have complex dtype.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "x dtype must be complex"
+      ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "1",
+    "numbers": "complex",
     "description": "Array of the same shape and dtype as ``x`` containing its complex conjugate."
   },
   "constraints": []

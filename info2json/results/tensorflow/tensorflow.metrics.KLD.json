@@ -11,9 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be the same shape as y_pred",
-        "y_true and y_pred must be clipped between 1e-7 and 1 before calculation",
-        "loss.shape matches the shape of batch_size dimension in y_true and y_pred"
+        "required",
+        "y_true and y_pred shapes must be broadcast-compatible."
       ]
     },
     "y_pred": {
@@ -25,19 +24,17 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be the same shape as y_true",
-        "y_true and y_pred must be clipped between 1e-7 and 1 before calculation",
-        "loss.shape matches the shape of batch_size dimension in y_true and y_pred"
+        "required",
+        "y_true and y_pred shapes must be broadcast-compatible."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "[batch_size, d0, .. dN-1]",
     "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred must be clipped between 1e-7 and 1 before calculation",
-    "loss.shape matches the shape of batch_size dimension in y_true and y_pred"
+    "y_true and y_pred shapes must be broadcast-compatible."
   ]
 }

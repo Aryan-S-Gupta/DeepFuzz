@@ -1,0 +1,58 @@
+{
+  "api_name": "append",
+  "module_path": "jax.numpy",
+  "params": {
+    "arr": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "original array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "arr and values must have the same number of dimensions",
+        "if axis is None, both arr and values will be flattened before appending"
+      ]
+    },
+    "values": {
+      "type": "number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "values to be appended to the array. The ``values`` must have the same number of dimensions as ``arr``, and all dimensions must match except in the specified axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "arr and values must have the same number of dimensions",
+        "if axis is None, both arr and values will be flattened before appending"
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "axis along which to append values. If None (default), both ``arr`` and ``values`` will be flattened before appending.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "axis must be an integer or None",
+        "axis must satisfy -rank(values) <= axis < rank(values)",
+        "if axis is None, both arr and values will be flattened before appending"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A new array with values appended to ``arr``."
+  },
+  "constraints": [
+    "arr and values must have the same number of dimensions",
+    "if axis is None, both arr and values will be flattened before appending"
+  ]
+}

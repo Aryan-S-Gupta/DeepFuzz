@@ -27,8 +27,10 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "batch_size, d0, .. dN-1",
+    "numbers": "1",
     "description": "Hinge loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
-  "constraints": []
+  "constraints": [
+    "If binary (0 or 1) labels are provided they will be converted to -1 or 1."
+  ]
 }

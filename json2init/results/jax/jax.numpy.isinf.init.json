@@ -1,0 +1,83 @@
+{
+  "api_full_name": "jax.numpy.isinf",
+  "api_name": "isinf",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.isinf",
+  "backend": "jax",
+  "params": {
+    "x": {
+      "name": "x",
+      "spec": {
+        "type": "number|tensor",
+        "size": "scalar",
+        "default": "",
+        "flag": "Required",
+        "description": "input array or scalar.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": [
+          "jax.numpy.isposinf(x) returns a boolean array indicating whether each element of input is positive infinity.",
+          "jax.numpy.isneginf(x) returns a boolean array indicating whether each element of input is negative infinity.",
+          "jax.numpy.isfinite(x) returns a boolean array indicating whether each element of input is finite (not NaN and not infinity).",
+          "jax.numpy.isnan(x) returns a boolean array indicating whether each element of input is not a number (NaN)."
+        ]
+      },
+      "chosen_type": "number",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_only"
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "bool",
+    "description": "A boolean array of same shape as ``x`` containing ``True`` where ``x`` is ``inf`` or ``-inf``, and ``False`` otherwise."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [
+      "x"
+    ],
+    "bound_keyword": [],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.isinf.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

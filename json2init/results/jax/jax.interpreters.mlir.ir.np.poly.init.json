@@ -1,0 +1,91 @@
+{
+  "api_full_name": "jax.interpreters.mlir.ir.np.poly",
+  "api_name": "poly",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "import_path": "jax.interpreters.mlir.ir.np.poly",
+  "backend": "jax",
+  "params": {
+    "seq_of_zeros": {
+      "name": "seq_of_zeros",
+      "spec": {
+        "type": "sequence|tensor",
+        "size": "shape (N,)",
+        "default": "",
+        "flag": "Optional",
+        "description": "array_like, shape (N,) or (N, N) A sequence of polynomial roots, or a square array or matrix object.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "shape must be 1-D or square"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1D",
+    "description": "------- ndarray 1D array of polynomial coefficients from highest to lowest degree: ``c[0] * x**(N) + c[1] * x**(N-1) + ... + c[N-1] * x + c[N]`` where c[0] always equals 1."
+  },
+  "constraints": [
+    "input and output shapes are not related"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        3
+      ],
+      "dtype": "float32",
+      "size": 3,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.interpreters.mlir.ir.np.poly.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

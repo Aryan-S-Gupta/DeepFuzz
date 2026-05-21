@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1's and x2's dtypes must be compatible"
+        "The shapes of x1 and x2 can be broadcast-compatible."
       ]
     },
     "x2": {
@@ -23,17 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "can be broadcasted",
-        "x1's and x2's dtypes must be compatible"
+        "The shapes of x1 and x2 can be broadcast-compatible."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "The tensor containing the element-wise sum of `x1` and `x2`."
   },
   "constraints": [
-    "x1's and x2's dtypes must be compatible"
+    "The shapes of x1 and x2 can be broadcast-compatible."
   ]
 }

@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "type1 and type2 must be of type dtype or a valid dtype specifier"
+        "out is the smallest size and smallest scalar means of type1 and type2"
       ]
     },
     "type2": {
@@ -23,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "type1 and type2 must be of type dtype or a valid dtype specifier"
+        "out is the smallest size and smallest scalar means of type1 and type2"
       ]
     }
   },
@@ -33,7 +33,6 @@
     "description": "------- dtype The promoted data type."
   },
   "constraints": [
-    "type1 and type2 must be of type dtype or a valid dtype specifier",
-    "Returned dtype is the smallest size with smallest scalar means"
+    "out is the smallest size and smallest scalar means of type1 and type2"
   ]
 }

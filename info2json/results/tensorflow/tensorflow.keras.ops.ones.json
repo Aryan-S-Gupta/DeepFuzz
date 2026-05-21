@@ -3,22 +3,33 @@
   "module_path": "tensorflow.keras.ops",
   "params": {
     "shape": {
-      "type": "list|tensor|dtype",
+      "type": "list|tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
-      "description": "Shape of the new tensor. dtype: Desired data type of the tensor.",
+      "flag": "Required",
+      "description": "Shape of the new tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be a list or tuple",
-        "shape must be a list or tuple if provided"
+        "The provided shape must be a valid tensor shape."
+      ]
+    },
+    "dtype": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Desired data type of the tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "If no dtype is provided, an appropriate default will be used."
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "single",
+    "numbers": "1",
     "description": "Tensor of ones with the given shape and dtype."
   },
   "constraints": []

@@ -13,18 +13,19 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Set, Tuple
 
-import requests
-
 try:
-    import pandas as pd
-except Exception:
-    pd = None
+    import requests
+except Exception:  # pragma: no cover
+    requests = None
 
 ROOT = Path(__file__).resolve().parents[0]
 for candidate in [Path.cwd(), ROOT, ROOT.parent]:
     c = str(candidate)
     if c not in sys.path:
         sys.path.insert(0, c)
+
+from common.model_config import check_model_backend, load_model_config
+from common.pipeline_contract import API_DOC_TEXT, API_FULL_NAME, SIGNATURE, read_api_records
 
 try:
     from json2init.deepfuzz_common import build_runtime_object_from_spec, run_smoke_test
@@ -39,7 +40,11 @@ BAD_PARAM_NAMES = {
     "default", "defaults", "note", "notes", "example", "examples", "return", "returns",
     "result", "results", "dtype", "tensor", "tensors", "list", "tuple", "type", "if", "then", "else",
 }
-COMMON_REAL_PARAM_NAMES = {"input", "target", "output", "weight", "bias", "value", "device", "device_index", "element"}
+COMMON_REAL_PARAM_NAMES = {
+    "input", "inputs", "target", "output", "weight", "bias", "value", "device",
+    "device_index", "element", "x", "y", "axis", "axes", "dim", "dims",
+    "index", "indices", "shape", "size", "dtype",
+}
 TYPE_CANON = [
     (r"\b(?:str|string|bytes)\b", "string"),
     (r"\b(?:int|integer|long|short)\b", "int"),
@@ -62,11 +67,9 @@ DTYPE_NAMES = (
     "int8", "int16", "int32", "int64", "uint8", "uint16", "uint32", "uint64",
     "float16", "float32", "float64", "bfloat16", "bool", "complex64", "complex128",
 )
-FIXABLE_CLASSIFICATIONS = {"spec_or_seed_error", "materialization_error", "import_error"}
+FIXABLE_CLASSIFICATIONS = {"spec_or_seed_error", "materialization_error", "import_error", "seed_generation_error"}
 NON_FIXABLE_CLASSIFICATIONS = {"environment_unsupported", "missing_dependency"}
 REPAIRABLE_STAGE3_STATUSES = {"retry", "api_runtime_error"}
-_ILLEGAL_XLSX_CHARS_RE = re.compile(r"[\x00-\x08\x0B-\x0C\x0E-\x1F]")
-
 REPAIR_PROMPT = """You repair exactly one API JSON spec for Stage 3 base-seed materialization.
 
 Return ONLY valid JSON.
@@ -167,28 +170,13 @@ def is_suspicious_param_name(name: str, allowed_names: Optional[Sequence[str]] =
     return False
 
 
-def read_api_docs(input_path: str) -> Dict[str, str]:
-    suffix = Path(input_path).suffix.lower()
-    out: Dict[str, str] = {}
-    if suffix == ".csv":
-        with open(input_path, "r", encoding="utf-8", newline="") as f:
-            for row in csv.DictReader(f):
-                api = str(row.get("api_full_name", "") or "").strip()
-                doc = str(row.get("api_doc_text", "") or "")
-                if api:
-                    out[api] = doc
-        return out
-    if suffix in {".xlsx", ".xls"}:
-        if pd is None:
-            raise RuntimeError("pandas/openpyxl is required for Excel input")
-        df = pd.read_excel(input_path).fillna("")
-        for _, row in df.iterrows():
-            api = str(row.get("api_full_name", "") or "").strip()
-            doc = str(row.get("api_doc_text", "") or "")
-            if api:
-                out[api] = doc
-        return out
-    raise ValueError(f"Unsupported docs file: {input_path}")
+def read_api_docs(input_path: str) -> Dict[str, Dict[str, str]]:
+    out: Dict[str, Dict[str, str]] = {}
+    for row in read_api_records(input_path):
+        api = str(row.get(API_FULL_NAME, "") or "").strip()
+        if api:
+            out[api] = row
+    return out
 
 
 def load_json(path: str) -> Dict[str, Any]:
@@ -215,24 +203,6 @@ def write_csv(path: str, rows: List[Dict[str, Any]], fieldnames: List[str]) -> N
         w.writeheader()
         for row in rows:
             w.writerow({k: row.get(k, "") for k in fieldnames})
-
-
-def _clean_xlsx_value(v: Any) -> Any:
-    if isinstance(v, str):
-        return _ILLEGAL_XLSX_CHARS_RE.sub("", v)
-    return v
-
-
-def write_xlsx(path: str, rows: List[Dict[str, Any]]) -> None:
-    if pd is None:
-        return
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    try:
-        df = pd.DataFrame(rows)
-        df = df.apply(lambda col: col.map(_clean_xlsx_value))
-        df.to_excel(path, index=False)
-    except Exception:
-        pass
 
 
 def find_signature_line(doc: str) -> str:
@@ -559,9 +529,9 @@ def normalize_string_list(raw: Any) -> List[str]:
     return out
 
 
-def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict[str, Any]:
+def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str, signature: str = "") -> Dict[str, Any]:
     module_path, _, api_name = api_full_name.rpartition(".")
-    sig_line = find_signature_line(doc)
+    sig_line = clean_text(signature) or find_signature_line(doc)
     sig_params, sig_defaults, _ = parse_signature_params(sig_line)
     doc_type_map, doc_desc_map, doc_size_map, doc_optional_map, doc_default_map = parse_doc_params(doc, allowed_names=sig_params if sig_params else None)
     ret_type_doc, ret_numbers_doc, ret_desc_doc = parse_return_info(doc)
@@ -618,6 +588,8 @@ def normalize_schema(spec: Dict[str, Any], api_full_name: str, doc: str) -> Dict
 
 
 def call_ollama_json(prompt: str, model: str, host: str, timeout: int = 300, temperature: float = 0.0, num_predict: int = 600, num_ctx: int = 4096) -> Dict[str, Any]:
+    if requests is None:
+        raise RuntimeError("requests is required for Ollama repair; install requirements.txt")
     url = host.rstrip("/") + "/api/generate"
     payload = {
         "model": model,
@@ -701,8 +673,8 @@ def make_failure_summary(issue: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def build_prompt(api_full_name: str, doc: str, current_spec: Dict[str, Any], failure_summary: str) -> str:
-    sig_line = find_signature_line(doc)
+def build_prompt(api_full_name: str, doc: str, current_spec: Dict[str, Any], failure_summary: str, signature: str = "") -> str:
+    sig_line = clean_text(signature) or find_signature_line(doc)
     sig_params, _, _ = parse_signature_params(sig_line)
     doc_type_map, doc_desc_map, _, _, _ = parse_doc_params(doc, allowed_names=sig_params if sig_params else None)
     supported = []
@@ -771,8 +743,9 @@ def safe_run_smoke_test(api_full_name: str, spec: Dict[str, Any], timeout_sec: i
     if p.exitcode != 0:
         return {
             "success": False,
-            "classification": "api_runtime_error",
+            "classification": "seed_generation_error",
             "error": f"smoke test subprocess exited abnormally (exitcode={p.exitcode})",
+            "exit_code": p.exitcode,
         }
 
     try:
@@ -857,8 +830,12 @@ def process(
         "still_api_runtime_error": 0,
         "still_env_only": 0,
         "still_missing_dependency": 0,
+        "environment_model_unavailable": 0,
         "no_doc": 0,
     }
+    model_health_checked = False
+    model_health_ok = True
+    model_health_message = ""
 
     for issue in issues:
         summary["total_seen"] += 1
@@ -878,7 +855,9 @@ def process(
         summary["selected"] += 1
         spec_path = str(issue.get("source_spec_json_path", "") or os.path.join(spec_dir, f"{api_full_name}.json"))
         current_spec = load_json(spec_path)
-        doc = docs.get(api_full_name, "")
+        doc_row = docs.get(api_full_name, {})
+        doc = str(doc_row.get(API_DOC_TEXT, "") or "")
+        signature = str(doc_row.get(SIGNATURE, "") or "")
         smoke = issue.get("smoke_test", {}) or {}
         smoke_classification = str(smoke.get("classification", "") or issue.get("smoke_classification", "") or "")
 
@@ -918,13 +897,11 @@ def process(
             report_rows.append(record.copy())
             continue
 
-        current = normalize_schema(current_spec, api_full_name, doc)
+        current = normalize_schema(current_spec, api_full_name, doc, signature)
         status_eval, smoke_eval, reasons, classification_eval = evaluate_spec(api_full_name, current, smoke_timeout_sec=smoke_timeout_sec)
         record["rounds"] = 1
 
         if status_eval == "ready":
-            repaired_path = os.path.join(outdir, f"{api_full_name}.repaired.json")
-            write_json(repaired_path, current)
             if write_back:
                 write_json(spec_path, current)
             summary["repaired"] += 1
@@ -932,14 +909,14 @@ def process(
             record.update({
                 "status": "ready",
                 "reason": "deterministic normalization fixed issue",
-                "repaired_spec_json_path": repaired_path,
+                "repaired_spec_json_path": spec_path,
             })
             repaired_csv_rows.append({
                 "api_full_name": api_full_name,
                 "status": "ready",
                 "rounds": 1,
                 "repair_model_used": "",
-                "repaired_spec_json_path": repaired_path,
+                "repaired_spec_json_path": spec_path,
                 "source_spec_json_path": spec_path,
             })
             result_rows.append(record)
@@ -961,6 +938,29 @@ def process(
 
         can_try_llm = bool(primary_repair_model or fallback_repair_model)
         if can_try_llm:
+            if not model_health_checked:
+                model_name = primary_repair_model or fallback_repair_model
+                cfg = load_model_config()
+                model_health_ok, model_health_message = check_model_backend(model_name, repair_host, backend=cfg.backend)
+                model_health_checked = True
+            if not model_health_ok:
+                summary["environment_model_unavailable"] += 1
+                record.update({
+                    "status": "environment_model_unavailable",
+                    "reason": model_health_message,
+                    "repair_model_used": "unavailable",
+                })
+                errors_csv_rows.append({
+                    "api_full_name": api_full_name,
+                    "status": "environment_model_unavailable",
+                    "rounds": record["rounds"],
+                    "repair_model_used": "unavailable",
+                    "reason": model_health_message,
+                    "source_spec_json_path": spec_path,
+                })
+                result_rows.append(record)
+                report_rows.append({**record, "final_smoke_classification": final_classification})
+                continue
             for round_idx in range(2, max_rounds + 1):
                 model_name = choose_repair_model(round_idx, primary_repair_model, fallback_repair_model, fallback_after_round)
                 if not model_name:
@@ -968,7 +968,7 @@ def process(
                 record["rounds"] = round_idx
                 record["repair_model_used"] = model_name
                 failure_summary = " | ".join(current_reasons) if current_reasons else make_failure_summary(issue)
-                prompt = build_prompt(api_full_name, doc, current, failure_summary)
+                prompt = build_prompt(api_full_name, doc, current, failure_summary, signature)
                 candidate = call_ollama_json(
                     prompt,
                     model_name,
@@ -978,11 +978,9 @@ def process(
                     num_predict=repair_num_predict,
                     num_ctx=repair_num_ctx,
                 )
-                current = normalize_schema(candidate, api_full_name, doc)
+                current = normalize_schema(candidate, api_full_name, doc, signature)
                 final_status, final_smoke, current_reasons, final_classification = evaluate_spec(api_full_name, current, smoke_timeout_sec=smoke_timeout_sec)
                 if final_status == "ready":
-                    repaired_path = os.path.join(outdir, f"{api_full_name}.repaired.json")
-                    write_json(repaired_path, current)
                     if write_back:
                         write_json(spec_path, current)
                     summary["repaired"] += 1
@@ -990,14 +988,14 @@ def process(
                     record.update({
                         "status": "repaired",
                         "reason": "llm-assisted repair succeeded",
-                        "repaired_spec_json_path": repaired_path,
+                        "repaired_spec_json_path": spec_path,
                     })
                     repaired_csv_rows.append({
                         "api_full_name": api_full_name,
                         "status": "repaired",
                         "rounds": round_idx,
                         "repair_model_used": model_name,
-                        "repaired_spec_json_path": repaired_path,
+                        "repaired_spec_json_path": spec_path,
                         "source_spec_json_path": spec_path,
                     })
                     break
@@ -1091,8 +1089,6 @@ def process(
             "write_back",
         ],
     )
-    write_xlsx(os.path.join(outdir, "validation_report.xlsx"), report_rows)
-
     with open(os.path.join(outdir, "repair_results.jsonl"), "w", encoding="utf-8") as f:
         for row in result_rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -1102,44 +1098,6 @@ def process(
     with open(retry_list_path, "w", encoding="utf-8") as f:
         for api_name in retry_api_names:
             f.write(api_name + "\n")
-
-    cmd = [
-        "python3", "json2init/json2init_validator.py",
-        "--spec-dir", spec_dir,
-        "--api-csv", docs_path,
-        "--stage3-issues", stage3_issues,
-        "--outdir", outdir,
-    ]
-    if ok_csv:
-        cmd += ["--ok-csv", ok_csv]
-    if primary_repair_model:
-        cmd += ["--primary-repair-model", primary_repair_model]
-    if fallback_repair_model:
-        cmd += ["--fallback-repair-model", fallback_repair_model]
-    cmd += [
-        "--fallback-after-round", str(fallback_after_round),
-        "--repair-host", repair_host,
-        "--max-rounds", str(max_rounds),
-        "--repair-timeout", str(repair_timeout),
-        "--repair-num-predict", str(repair_num_predict),
-        "--repair-num-ctx", str(repair_num_ctx),
-        "--repair-temperature", str(repair_temperature),
-        "--smoke-timeout-sec", str(smoke_timeout_sec),
-        "--only-api-list", retry_list_path,
-    ]
-    if only_stage3_retry:
-        cmd += ["--only-stage3-retry"]
-    if not write_back:
-        cmd += ["--no-write-back"]
-
-    retry_script_path = os.path.join(outdir, "repair_retry.sh")
-    with open(retry_script_path, "w", encoding="utf-8") as f:
-        f.write("#!/usr/bin/env bash\nset -euo pipefail\n\n")
-        if retry_api_names:
-            f.write(" ".join(cmd) + "\n")
-        else:
-            f.write("echo 'No Stage 3 repairable APIs remaining.'\n")
-    os.chmod(retry_script_path, 0o755)
 
     write_json(os.path.join(outdir, "summary.json"), summary)
     print(
@@ -1151,20 +1109,19 @@ def process(
     print(f"[json2init-validator] retry_only: {os.path.join(outdir, 'retry_only.csv')}")
     print(f"[json2init-validator] errors: {os.path.join(outdir, 'errors.csv')}")
     print(f"[json2init-validator] report: {os.path.join(outdir, 'validation_report.csv')}")
-    if pd is not None:
-        print(f"[json2init-validator] report_xlsx: {os.path.join(outdir, 'validation_report.xlsx')}")
-    print(f"[json2init-validator] retry_script: {retry_script_path}")
     print(f"[json2init-validator] summary: {os.path.join(outdir, 'summary.json')}")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Stage 3 json2init validator/repairer for fixable spec/seed issues")
+    ap.add_argument("--allow-deprecated-output-contract", action="store_true", help=argparse.SUPPRESS)
     ap.add_argument("--spec-dir", required=True)
     ap.add_argument("--api-csv", required=True, help="CSV/XLSX with api_full_name, api_doc_text")
     ap.add_argument("--stage3-issues", required=True, help="Stage 3 issues.jsonl")
     ap.add_argument("--outdir", required=True)
     ap.add_argument("--ok-csv", default="", help="Optional Stage 2 ok.csv allowlist")
     ap.add_argument("--primary-repair-model", default="mistral:7b")
+    ap.add_argument("--repair-model", dest="primary_repair_model", default=argparse.SUPPRESS, help="Backward-compatible alias for --primary-repair-model")
     ap.add_argument("--fallback-repair-model", default="mixtral:8x7b")
     ap.add_argument("--fallback-after-round", type=int, default=3)
     ap.add_argument("--repair-host", default="http://localhost:11434")
@@ -1178,6 +1135,12 @@ def main() -> int:
     ap.add_argument("--only-stage3-retry", action="store_true", help="Repair only rows whose stage3_status is retry or api_runtime_error")
     ap.add_argument("--only-api-list", default="", help="Optional newline-delimited list of api_full_name values to process")
     args = ap.parse_args()
+    if not args.allow_deprecated_output_contract:
+        print(
+            "[json2init-validator] deprecated: use scripts/repair.py so Stage 3 failures stay in errors.csv only.",
+            file=sys.stderr,
+        )
+        return 2
     process(
         spec_dir=args.spec_dir,
         docs_path=args.api_csv,

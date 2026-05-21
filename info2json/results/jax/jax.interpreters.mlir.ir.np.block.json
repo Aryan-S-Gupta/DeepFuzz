@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "arrays must not contain tuples"
+        "Elements shapes must match along the appropriate axes (without broadcasting), but leading 1s will be prepended to the shape as necessary to make the dimensions match."
       ]
     }
   },
@@ -20,5 +20,7 @@
     "numbers": "1",
     "description": "------- ndarray The array assembled from the given blocks. The dimensionality of the output is equal to the greatest of: * the dimensionality of all the inputs * the depth to which the input list is nested"
   },
-  "constraints": []
+  "constraints": [
+    "For working with scalars, means that code like np.block([v, 1]) is equivalent to np.array([[v], [1]])"
+  ]
 }

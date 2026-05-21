@@ -1,0 +1,36 @@
+{
+  "api_name": "ifftshift",
+  "module_path": "torch.storage.np.fft",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x cannot be None or an empty array_like"
+      ]
+    },
+    "axes": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or shape tuple, optional Axes over which to calculate. Defaults to None, which shifts all axes.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The shifted array."
+  },
+  "constraints": []
+}

@@ -10,25 +10,28 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "must be broadcast-compatible with the output shape of splitting x along axis",
+        "x and output shape must have an even number of elements"
+      ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "-1",
+      "flag": "Optional",
       "description": "The axis along which to split the input tensor. Defaults to `-1`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
     }
   },
   "output": {
     "type": "float|tensor",
-    "numbers": "float32, float64",
+    "numbers": "1",
     "description": "A tensor with the same shape as half of the input."
   },
-  "constraints": [
-    "x.shape must be known"
-  ]
+  "constraints": []
 }

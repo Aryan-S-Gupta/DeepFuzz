@@ -14,11 +14,44 @@
       ],
       "enum_values": [],
       "constraints": []
+    },
+    "orig_len": {
+      "type": "number|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The original (unpadded) length of the axis that was packed. This is used to remove any padding that may have been added during packing to ensure an even number of rows.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "The axis along which the tensor was packed. Defaults to 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The data type of the input and unpacked tensor. Can be `\"int8\"` or `\"uint8\"`. Defaults to `\"int8\"`.",
+      "dtype_candidates": [
+        "int8",
+        "uint8"
+      ],
+      "enum_values": [],
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int8",
+    "numbers": "1",
     "description": "An int8 tensor with the same shape as the original (unpacked) tensor, with values in the range [-8, 7]."
   },
   "constraints": []

@@ -6,24 +6,26 @@
       "type": "number|tensor",
       "size": "scalar",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x and y must either have same shape or be broadcast compatible"
+        "x and y must have broadcast-compatible shapes"
       ]
     },
     "y": {
       "type": "number|tensor",
       "size": "scalar",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "input array or scalar. ``x`` and ``y`` must either have same shape or be broadcast compatible.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x and y must either have same shape or be broadcast compatible"
+        "x and y must have broadcast-compatible shapes"
       ]
     }
   },
@@ -33,6 +35,6 @@
     "description": "An array containing boolean values. ``True`` if the elements of ``x < y``, and ``False`` otherwise."
   },
   "constraints": [
-    "x and y must either have same shape or be broadcast compatible"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

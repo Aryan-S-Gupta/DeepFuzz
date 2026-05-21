@@ -1,0 +1,123 @@
+{
+  "api_name": "format_float_scientific",
+  "module_path": "torch.storage.np",
+  "params": {
+    "x": {
+      "type": "float|number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "python float or numpy floating scalar Value to format.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "precision": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "non-negative integer or None, optional Maximum number of digits to print. May be None if `unique` is `True`, but must be an integer if unique is `False`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "precision must be non-negative"
+      ]
+    },
+    "unique": {
+      "type": "bool|number",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "boolean, optional If `True`, use a digit-generation strategy which gives the shortest representation which uniquely identifies the floating-point number from other values of the same type, by judicious rounding. If `precision` is given fewer digits than necessary can be printed. If `min_digits` is given more can be printed, in which cases the last digit is rounded with unbiased rounding. If `False`, digits are generated as if printing an infinite-precision value and stopping after `precision` digits, rounding the remaining value with unbiased rounding",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "unique must be one of True, False"
+      ]
+    },
+    "trim": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "one of 'k', '.', '0', '-', optional Controls post-processing trimming of trailing digits, as follows:",
+      "dtype_candidates": [],
+      "enum_values": [
+        "k",
+        ".",
+        "0",
+        "-"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "trim must be one of k, 0, -"
+      ]
+    },
+    "sign": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "boolean, optional Whether to show the sign for positive values.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "sign must be positive"
+      ]
+    },
+    "pad_left": {
+      "type": "string|int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "non-negative integer, optional Pad the left side of the string with whitespace until at least that many characters are to the left of the decimal point.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "pad_left must be non-negative"
+      ]
+    },
+    "exp_digits": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "non-negative integer, optional Pad the exponent with zeros until it contains at least this many digits. If omitted, the exponent will be at least 2 digits.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "exp_digits must be non-negative"
+      ]
+    },
+    "min_digits": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "non-negative integer or None, optional Minimum number of digits to print. This only has an effect for `unique=True`. In that case more digits than necessary to uniquely identify the value may be printed and rounded unbiased.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "min_digits must be non-negative"
+      ]
+    }
+  },
+  "output": {
+    "type": "string",
+    "numbers": "1",
+    "description": "------- string The string representation of the floating point value"
+  },
+  "constraints": []
+}

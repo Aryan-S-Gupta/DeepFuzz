@@ -16,28 +16,28 @@
       "type": "number|tensor",
       "size": "scalar",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Vector or scalar `Tensor`. Specifies the exclusive upper limits for each range.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
     "deltas": {
-      "type": "number|tensor|dtype",
+      "type": "number|tensor",
       "size": "scalar",
       "default": "1",
       "flag": "Optional",
-      "description": "Vector or scalar `Tensor`. Specifies the increment for each range. Defaults to `1`. dtype: The type of the elements of the resulting tensor. If not specified, then a value is chosen based on the other args.",
+      "description": "Vector or scalar `Tensor`. Specifies the increment for each range. Defaults to `1`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "",
+    "dtype": {
+      "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "A name for the operation.",
+      "flag": "Optional",
+      "description": "The type of the elements of the resulting tensor. If not specified, then a value is chosen based on the other args.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -45,8 +45,8 @@
     "row_splits_dtype": {
       "type": "tensor|dtype",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "tf.int64",
+      "flag": "Optional",
       "description": "`dtype` for the returned `RaggedTensor`'s `row_splits` tensor. One of `tf.int32` or `tf.int64`.",
       "dtype_candidates": [
         "int32",
@@ -58,7 +58,9 @@
         "tf.int32",
         "tf.int64"
       ],
-      "constraints": []
+      "constraints": [
+        "row_splits_dtype must be one of RaggedTensor, row_splits, tf.int32, tf.int64"
+      ]
     }
   },
   "output": {

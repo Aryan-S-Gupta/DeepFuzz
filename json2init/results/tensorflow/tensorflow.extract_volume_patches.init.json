@@ -40,7 +40,10 @@
           "uint32",
           "uint64"
         ],
-        "constraints": []
+        "constraints": [
+          "input must be 5-D",
+          "input must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
@@ -51,6 +54,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -78,8 +88,16 @@
       "mutation_rules": [
         "enum_switch",
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "structure_grow",
         "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -97,19 +115,23 @@
           "strides must be 1-D"
         ]
       },
-      "chosen_type": "list",
+      "chosen_type": "int",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": [
-          1
-        ]
+        "value": 1
       },
       "mutation_rules": [
         "enum_switch",
-        "structure_grow",
-        "structure_shrink",
-        "element_delta"
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     },
@@ -129,32 +151,21 @@
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "string"
+        "value": "VALID"
       },
       "mutation_rules": [
         "enum_switch",
         "string_replace",
         "string_empty"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -166,21 +177,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: Length for attr 'ksizes' of 1 must be at least minimum 5\n\t; NodeDef: {{node ExtractVolumePatches}}; Op<name=ExtractVolumePatches; signature=input:T -> patches:T; attr=ksizes:list(int),min=5; attr=strides:list(int),min=5; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]; attr=padding:string,allowed=[\"SAME\", \"VALID\"]> [Op:ExtractVolumePatches]"
+    "smoke test failed: Expected list for 'strides' argument to 'extract_volume_patches' Op, not 1."
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "InvalidArgumentError",
-    "error": "Length for attr 'ksizes' of 1 must be at least minimum 5\n\t; NodeDef: {{node ExtractVolumePatches}}; Op<name=ExtractVolumePatches; signature=input:T -> patches:T; attr=ksizes:list(int),min=5; attr=strides:list(int),min=5; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]; attr=padding:string,allowed=[\"SAME\", \"VALID\"]> [Op:ExtractVolumePatches]",
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "Expected list for 'strides' argument to 'extract_volume_patches' Op, not 1.",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 2612, in extract_volume_patches\n    return extract_volume_patches_eager_fallback(\n        input, ksizes=ksizes, strides=strides, padding=padding, name=name,\n        ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 2687, in extract_volume_patches_eager_fallback\n    _result = _execute.execute(b\"ExtractVolumePatches\", 1, inputs=_inputs_flat,\n                               attrs=_attrs, ctx=ctx, name=name)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 53, in quick_execute\n    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,\n                                        inputs, attrs, num_outputs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Length for attr 'ksizes' of 1 must be at least minimum 5\n\t; NodeDef: {{node ExtractVolumePatches}}; Op<name=ExtractVolumePatches; signature=input:T -> patches:T; attr=ksizes:list(int),min=5; attr=strides:list(int),min=5; attr=T:type,allowed=[DT_FLOAT, DT_DOUBLE, DT_INT32, DT_UINT8, DT_INT16, DT_INT8, DT_INT64, DT_BFLOAT16, DT_UINT16, DT_HALF, DT_UINT32, DT_UINT64]; attr=padding:string,allowed=[\"SAME\", \"VALID\"]> [Op:ExtractVolumePatches]\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 2612, in extract_volume_patches\n    return extract_volume_patches_eager_fallback(\n        input, ksizes=ksizes, strides=strides, padding=padding, name=name,\n        ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 2678, in extract_volume_patches_eager_fallback\n    raise TypeError(\n        \"Expected list for 'strides' argument to \"\n        \"'extract_volume_patches' Op, not %r.\" % strides)\nTypeError: Expected list for 'strides' argument to 'extract_volume_patches' Op, not 1.\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.extract_volume_patches.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

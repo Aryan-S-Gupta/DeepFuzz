@@ -1,0 +1,71 @@
+{
+  "api_name": "repeat",
+  "module_path": "jax.numpy",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "N-dimensional array",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "repeats": {
+      "type": "int|number|tensor",
+      "size": "1D",
+      "default": "",
+      "flag": "Required",
+      "description": "1D integer array specifying the number of repeats. Must match the length of the repeated axis.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "repeats must be 1-D"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "integer specifying the axis of ``a`` along which to construct the repeated array. If None (default) then ``a`` is first flattened.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "total_repeat_length": {
+      "type": "jax.jit",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "this must be specified statically for ``jnp.repeat`` to be compatible with :func:`~jax.jit` and other JAX transformations. If ``sum(repeats)`` is larger than the specified ``total_repeat_length``, the remaining values will be discarded. If ``sum(repeats)`` is smaller than ``total_repeat_length``, the final value will be repeated.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "total_repeat_length must be one of jnp.repeat, JAX"
+      ]
+    },
+    "out_sharding": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "an array constructed from repeated values of ``a``."
+  },
+  "constraints": []
+}

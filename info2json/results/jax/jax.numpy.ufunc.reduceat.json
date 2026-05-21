@@ -18,25 +18,47 @@
       "default": "",
       "flag": "Required",
       "description": "a 1-dimensional array of increasing integer values which encodes segments of the array to be reduced.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "indices dtype must be int32 or int64"
+      ]
     },
     "axis": {
-      "type": "int|tensor|dtype",
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "integer specifying the axis along which to reduce: default=0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "axis must satisfy 0 <= axis < rank(a)"
+      ]
+    },
+    "dtype": {
+      "type": "tensor|dtype",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "integer specifying the axis along which to reduce: default=0. dtype: optionally specify the dtype of the output array.",
-      "dtype_candidates": [],
+      "description": "optionally specify the dtype of the output array.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "indices dtype must be int32 or int64"
+      ]
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "unused by JAX",
       "dtype_candidates": [],
       "enum_values": [],
@@ -48,5 +70,7 @@
     "numbers": "1",
     "description": "An array containing the reduced values."
   },
-  "constraints": []
+  "constraints": [
+    "indices dtype must be int32 or int64"
+  ]
 }

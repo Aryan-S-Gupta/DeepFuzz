@@ -37,22 +37,7 @@
         "qint8"
       ],
       "constraints": [
-        "Must be one of the following types: float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64, qint8.",
-        "features must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64, qint8",
-        "features and name must be provided.",
-        "The shape of features is not constrained by the documentation."
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "features and name must be provided."
+        "features must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64, qint8"
       ]
     }
   },
@@ -61,7 +46,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `features`."
   },
-  "constraints": [
-    "features and name must be provided."
-  ]
+  "constraints": []
 }

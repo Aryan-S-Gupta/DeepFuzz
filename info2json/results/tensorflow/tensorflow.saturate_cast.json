@@ -3,26 +3,24 @@
   "module_path": "tensorflow",
   "params": {
     "value": {
-      "type": "tensor|dtype",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "A `Tensor`. dtype: The desired output `DType`.",
+      "description": "A `Tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "string",
+    "dtype": {
+      "type": "dtype",
       "size": "",
       "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "flag": "Required",
+      "description": "The desired output `DType`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "name must satisfy: is string or name is None"
-      ]
+      "constraints": []
     }
   },
   "output": {
@@ -30,7 +28,5 @@
     "numbers": "1",
     "description": "`value` safely cast to `dtype`."
   },
-  "constraints": [
-    "dtype must be a valid TensorFlow data type."
-  ]
+  "constraints": []
 }

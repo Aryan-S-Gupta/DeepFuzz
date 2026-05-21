@@ -3,15 +3,17 @@
   "module_path": "jax.numpy",
   "params": {
     "a": {
-      "type": "tensor",
+      "type": "bool|number|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "array to be partitioned.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": [
-        "a must be a numpy array"
+        "entries before kth are values smaller than take(a, kth, axis), and entries after kth are indices of values larger than take(a, kth, axis)"
       ]
     },
     "kth": {
@@ -23,7 +25,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "kth must be an integer"
+        "entries before kth are values smaller than take(a, kth, axis), and entries after kth are indices of values larger than take(a, kth, axis)"
       ]
     },
     "axis": {
@@ -35,7 +37,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must be an integer or left unspecified (defaulted to -1)"
+        "entries before kth are values smaller than take(a, kth, axis), and entries after kth are indices of values larger than take(a, kth, axis)"
       ]
     }
   },
@@ -44,5 +46,7 @@
     "numbers": "1",
     "description": "A copy of ``a`` partitioned at the ``kth`` value along ``axis``. The entries before ``kth`` are values smaller than ``take(a, kth, axis)``, and entries after ``kth`` are indices of values larger than ``take(a, kth, axis)``"
   },
-  "constraints": []
+  "constraints": [
+    "entries before kth are values smaller than take(a, kth, axis), and entries after kth are indices of values larger than take(a, kth, axis)"
+  ]
 }

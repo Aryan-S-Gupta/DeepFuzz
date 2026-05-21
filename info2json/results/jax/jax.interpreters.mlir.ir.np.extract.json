@@ -12,7 +12,7 @@
       "enum_values": [],
       "constraints": [
         "condition must be nonzero",
-        "params.condition and params.arr must have the same size"
+        "params.condition and params.arr must have the same shape"
       ]
     },
     "arr": {
@@ -24,7 +24,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "params.condition and params.arr must have the same size"
+        "params.condition and params.arr must have the same shape"
       ]
     }
   },
@@ -34,6 +34,6 @@
     "description": "------- ndarray Rank 1 array of values from `arr` where `condition` is True."
   },
   "constraints": [
-    "params.condition and params.arr must have the same size"
+    "params.condition and params.arr must have the same shape"
   ]
 }

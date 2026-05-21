@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must match"
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "y_pred": {
@@ -23,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must match"
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     }
   },
@@ -33,6 +33,6 @@
     "description": "Mean absolute error values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred shapes must match"
+    "The shapes of y_true and y_pred must be broadcast-compatible."
   ]
 }

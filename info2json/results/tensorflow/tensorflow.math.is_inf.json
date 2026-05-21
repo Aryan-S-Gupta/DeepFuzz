@@ -19,25 +19,17 @@
         "float32",
         "float64"
       ],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Must be one of the following types: `bfloat16`, `half`, `float32`, `float64`",
+        "x must be one of bfloat16, half, float32, float64",
+        "Returns which elements of x are Inf"
+      ]
     }
   },
   "output": {
     "type": "bool|tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "A `Tensor` of type `bool`."
   },
-  "constraints": [
-    "x must be provided"
-  ]
+  "constraints": []
 }

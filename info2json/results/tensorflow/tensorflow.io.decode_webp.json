@@ -13,26 +13,24 @@
       "constraints": []
     },
     "channels": {
-      "type": "int|number|dtype",
+      "type": "int|number",
       "size": "",
-      "default": "tf",
+      "default": "0",
       "flag": "Optional",
-      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image. dtype: An optional `tf.DType` from: `tf.uint8`. Defaults to `tf.uint8`.",
-      "dtype_candidates": [
-        "uint8"
-      ],
+      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image.",
+      "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "channels must match that of the underlying file."
-      ]
+      "constraints": []
     },
-    "name": {
-      "type": "string",
+    "dtype": {
+      "type": "dtype",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
+      "description": "An optional `tf.DType` from: `tf.uint8`. Defaults to `tf.uint8`.",
+      "dtype_candidates": [
+        "uint8"
+      ],
       "enum_values": [],
       "constraints": []
     }
@@ -42,7 +40,5 @@
     "numbers": "1",
     "description": "A `Tensor` of type `dtype`."
   },
-  "constraints": [
-    "dtype is one of: tf.uint8"
-  ]
+  "constraints": []
 }

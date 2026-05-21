@@ -15,8 +15,8 @@
     "compression_type": {
       "type": "string|number",
       "size": "scalar",
-      "default": "",
-      "flag": "Required",
+      "default": "\"\"",
+      "flag": "Optional",
       "description": "An optional `string`. Defaults to `\"\"`. A scalar containing either (i) the empty string (no compression), (ii) \"ZLIB\", or (iii) \"GZIP\".",
       "dtype_candidates": [],
       "enum_values": [
@@ -24,17 +24,10 @@
         "ZLIB",
         "GZIP"
       ],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "scalar containing either (i) the empty string (no compression), (ii) \"ZLIB\", or (iii) \"GZIP\"",
+        "compression_type must be one of string, ZLIB, GZIP"
+      ]
     }
   },
   "output": {
@@ -42,7 +35,5 @@
     "numbers": "1",
     "description": "A `Tensor` of type `string`."
   },
-  "constraints": [
-    "bytes must not be empty string or null"
-  ]
+  "constraints": []
 }

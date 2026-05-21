@@ -26,7 +26,9 @@
           "complex64",
           "complex128"
         ],
-        "constraints": []
+        "constraints": [
+          "input must be one of float64, float32, half, complex64, complex128"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
@@ -39,6 +41,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "output_idx_type": {
@@ -46,7 +55,7 @@
       "spec": {
         "type": "dtype",
         "size": "",
-        "default": "tf",
+        "default": "tf.int32",
         "flag": "Optional",
         "description": "An optional `tf.DType` from: `tf.int32, tf.int64`. Defaults to `tf.int32`.",
         "dtype_candidates": [
@@ -64,27 +73,17 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
         "type_switch"
       ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -107,10 +106,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 1304, in lu\n    return lu_eager_fallback(\n        input, output_idx_type=output_idx_type, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 1357, in lu_eager_fallback\n    _result = _execute.execute(b\"Lu\", 2, inputs=_inputs_flat, attrs=_attrs,\n                               ctx=ctx, name=name)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 53, in quick_execute\n    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,\n                                        inputs, attrs, num_outputs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Lu_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor must have rank >= 2, got 0 [Op:Lu]\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 1304, in lu\n    return lu_eager_fallback(\n        input, output_idx_type=output_idx_type, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_linalg_ops.py\", line 1357, in lu_eager_fallback\n    _result = _execute.execute(b\"Lu\", 2, inputs=_inputs_flat, attrs=_attrs,\n                               ctx=ctx, name=name)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/eager/execute.py\", line 53, in quick_execute\n    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,\n                                        inputs, attrs, num_outputs)\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__Lu_device_/job:localhost/replica:0/task:0/device:CPU:0}} Input tensor must have rank >= 2, got 0 [Op:Lu]\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.lu.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

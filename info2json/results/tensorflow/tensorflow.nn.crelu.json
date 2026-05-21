@@ -16,19 +16,6 @@
         "uint8"
       ],
       "enum_values": [],
-      "constraints": [
-        "must be a tensor",
-        "features and output must have the same type."
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
       "constraints": []
     },
     "axis": {
@@ -40,8 +27,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be an integer",
-        "axis must be a valid axis index for the input tensor shape."
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },

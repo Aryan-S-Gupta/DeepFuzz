@@ -16,7 +16,8 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Packs the list of tensors in `values` into a tensor with rank one higher than each tensor in `values`, by packing them along the first dimension."
+          "Each tensor in values must have a known shape at graph construction time.",
+          "tf.parallel_stack([values]) = np.asarray([values])"
         ]
       },
       "chosen_type": "tensor",
@@ -24,7 +25,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -32,36 +33,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for this operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     }
@@ -72,7 +59,7 @@
     "description": "A stacked `Tensor` with the same type as `values`."
   },
   "constraints": [
-    "Requires that the shape of inputs be known at graph construction time."
+    "The input shapes must be known during graph construction."
   ],
   "spec_ready": true,
   "ready_for_stage4": false,
@@ -88,10 +75,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/array_ops.py\", line 1185, in parallel_stack\n    raise RuntimeError(\"tf.parallel_stack() is not compatible with \"\n                       \"eager execution.\")\nRuntimeError: tf.parallel_stack() is not compatible with eager execution.\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/array_ops.py\", line 1185, in parallel_stack\n    raise RuntimeError(\"tf.parallel_stack() is not compatible with \"\n                       \"eager execution.\")\nRuntimeError: tf.parallel_stack() is not compatible with eager execution.\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.parallel_stack.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

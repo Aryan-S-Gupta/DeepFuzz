@@ -3,44 +3,51 @@
   "module_path": "jax.numpy",
   "params": {
     "a": {
-      "type": "tensor",
+      "type": "number|tensor",
       "size": "1D",
       "default": "",
       "flag": "Required",
       "description": "first input array, if not 1D it will be flattened.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "a must be 1-D"
       ]
     },
     "b": {
-      "type": "tensor",
+      "type": "number|tensor",
       "size": "1D",
       "default": "",
       "flag": "Required",
       "description": "second input array, if not 1D it will be flattened.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "b must be 1-D"
       ]
     },
     "out": {
-      "type": "",
+      "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "unsupported by JAX.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "ignored"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "2",
     "description": "The outer product of the inputs ``a`` and ``b``. Returned array will be of shape ``(a.size, b.size)``."
   },
-  "constraints": []
+  "constraints": [
+    "input arrays must support broadcasting"
+  ]
 }

@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "broadcast_dimensions size must match operand shape size"
+        "broadcast_dimensions must have same length as operand shape"
       ]
     },
     "shape": {
@@ -23,11 +23,11 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "broadcast_dimensions size must match operand shape size"
+        "broadcast_dimensions must have same length as operand shape"
       ]
     },
     "broadcast_dimensions": {
-      "type": "list",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -35,16 +35,26 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "broadcast_dimensions size must match operand shape size"
+        "broadcast_dimensions must have same length as operand shape"
       ]
+    },
+    "out_sharding": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "An array containing the result."
   },
   "constraints": [
-    "broadcast_dimensions size must match operand shape size"
+    "broadcast_dimensions must have same length as operand shape"
   ]
 }

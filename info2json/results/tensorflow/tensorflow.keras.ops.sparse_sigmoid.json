@@ -11,16 +11,15 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape is arbitrary",
-        "f(x) = 0 for x <= -1",
-        "f(x) = 0.5 * (x + 1) for -1 < x < 1",
-        "f(x) = 1 for x >= 1"
+        "If x <= -1, output = 0.",
+        "If -1 < x < 1, output = 0.5 * (x + 1).",
+        "If x >= 1, output = 1."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": []

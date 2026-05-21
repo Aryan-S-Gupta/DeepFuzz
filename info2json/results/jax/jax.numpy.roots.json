@@ -10,7 +10,10 @@
       "description": "Array of polynomial coefficients having rank-1.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "rank-1"
+      ]
     },
     "strip_zeros": {
       "type": "bool|callable",
@@ -22,8 +25,9 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "Must be set to False for jax.jit and other JAX transformations",
+        "strip_zeros must be set to False for the function to be compatible with jax.jit and other JAX transformations.",
         "strip_zeros must be one of numpy.roots, False, jax.jit, JAX"
       ]
     }
@@ -34,6 +38,6 @@
     "description": "An array containing the roots of the polynomial."
   },
   "constraints": [
-    "jnp.roots output shape is not defined by documentation"
+    "jnp.roots returns the roots with default behavior matching numpy and stripping leading zeros."
   ]
 }

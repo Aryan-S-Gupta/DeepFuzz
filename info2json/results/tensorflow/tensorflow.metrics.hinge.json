@@ -11,8 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "values must be -1 or 1",
-        "y_true and y_pred shapes must match"
+        "y_true values are expected to be -1 or 1.",
+        "y_pred shape must match y_true shape."
       ]
     },
     "y_pred": {
@@ -24,7 +24,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must match"
+        "y_pred shape must match y_true shape."
       ]
     }
   },
@@ -34,6 +34,6 @@
     "description": "Hinge loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred shapes must match"
+    "y_pred shape must match y_true shape."
   ]
 }

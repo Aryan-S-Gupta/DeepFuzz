@@ -10,8 +10,9 @@
       "description": "N-dimensional array array of frequencies.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x and output have the same shape"
+        "x parameter is required"
       ]
     },
     "axes": {
@@ -22,8 +23,9 @@
       "description": "optional integer or sequence of integers specifying which axes to shift. If None (default), then shift all axes.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "axes values must be in range [0, rank(x))"
+        "axes parameter is optional with default value None"
       ]
     }
   },

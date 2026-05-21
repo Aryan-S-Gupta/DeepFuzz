@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1 shape must match x2 shape"
+        "Observed signature: (x1, x2)"
       ]
     },
     "x2": {
@@ -23,16 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1 shape must match x2 shape"
+        "Observed signature: (x1, x2)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "(a0*b0), (a1*b1), ..., (an*bn)",
+    "numbers": "1",
     "description": "A tensor representing the Kronecker product of `x1` and `x2`."
   },
   "constraints": [
-    "x1 shape must match x2 shape"
+    "Observed signature: (x1, x2)"
   ]
 }

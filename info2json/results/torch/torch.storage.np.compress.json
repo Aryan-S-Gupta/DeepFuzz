@@ -1,0 +1,65 @@
+{
+  "api_name": "compress",
+  "module_path": "torch.storage.np",
+  "params": {
+    "condition": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "1-D array of bools Array that selects which entries to return. If len(condition) is less than the size of `a` along the given axis, then output is truncated to the length of the condition array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "condition must be 1-D",
+        "len(condition) <= size of a along given axis"
+      ]
+    },
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array from which to extract a part.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "len(condition) <= size of a along given axis"
+      ]
+    },
+    "axis": {
+      "type": "int|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Axis along which to take slices. If None (default), work on the flattened array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "len(condition) <= size of a along given axis"
+      ]
+    },
+    "out": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "ndarray, optional Output array. Its type is preserved and it must be of the right shape to hold the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray A copy of `a` without the slices along axis for which `condition` is false."
+  },
+  "constraints": [
+    "len(condition) <= size of a along given axis"
+  ]
+}

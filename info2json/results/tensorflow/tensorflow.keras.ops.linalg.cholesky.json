@@ -2,6 +2,16 @@
   "api_name": "cholesky",
   "module_path": "tensorflow.keras.ops.linalg",
   "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "Input tensor of shape `(..., M, M)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
     "upper": {
       "type": "bool",
       "size": "",
@@ -11,16 +21,6 @@
       "dtype_candidates": [
         "bool"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "x": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Input tensor of shape `(..., M, M)`.",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

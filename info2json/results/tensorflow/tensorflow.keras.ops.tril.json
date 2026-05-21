@@ -11,11 +11,11 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and output must have the same shape"
+        "x and output have the same shape and data type"
       ]
     },
     "k": {
-      "type": "",
+      "type": "int",
       "size": "",
       "default": "0",
       "flag": "Optional",
@@ -23,7 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "k must be int or convertible to int",
+        "k < 0 is below the main diagonal, k > 0 is above it",
         "k must be positive"
       ]
     }

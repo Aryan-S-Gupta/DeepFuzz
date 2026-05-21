@@ -8,10 +8,17 @@
       "default": "",
       "flag": "Required",
       "description": "Input array, the dividend",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes"
+        "x1 and x2 must have broadcast-compatible shapes",
+        "x1, x2 types can be float32, float64, complex64 or complex128"
       ]
     },
     "x2": {
@@ -20,19 +27,27 @@
       "default": "",
       "flag": "Required",
       "description": "Input array, the divisor",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "float32",
+        "float64",
+        "complex64",
+        "complex128"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes"
+        "x1 and x2 must have broadcast-compatible shapes",
+        "x1, x2 types can be float32, float64, complex64 or complex128"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "floating point or complex64",
     "description": "An array containing the elementwise quotients, will always use floating point division."
   },
   "constraints": [
-    "x1 and x2 must have broadcast-compatible shapes"
+    "x1 and x2 must have broadcast-compatible shapes",
+    "x1, x2 types can be float32, float64, complex64 or complex128"
   ]
 }

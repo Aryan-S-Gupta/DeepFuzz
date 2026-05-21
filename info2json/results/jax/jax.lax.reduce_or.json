@@ -13,11 +13,12 @@
       ],
       "enum_values": [],
       "constraints": [
-        "must have boolean or integer dtype"
+        "must have boolean or integer dtype.",
+        "operand must have boolean or integer dtype."
       ]
     },
     "axes": {
-      "type": "sequence",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -25,7 +26,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axes must be a sequence of zero or more unique integers"
+        "must be a sequence of unique integers.",
+        "each integer must satisfy `0 <= axis < operand.ndim`."
       ]
     }
   },

@@ -1,0 +1,64 @@
+{
+  "api_name": "datetime_as_string",
+  "module_path": "torch.storage.np.core.arrayprint",
+  "params": {
+    "arr": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like of datetime64 The array of UTC timestamps to format.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "unit": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str One of None, 'auto', or a :ref:`datetime unit <arrays.dtypes.dateunits>`.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "auto"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "unit must be one of auto"
+      ]
+    },
+    "timezone": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'naive', 'UTC', 'local'} or tzinfo Timezone information to use when displaying the datetime. If 'UTC', end with a Z to indicate UTC time. If 'local', convert to the local timezone first, and suffix with a +-#### timezone offset. If a tzinfo object, then do as with 'local', but use the specified timezone.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "naive",
+        "UTC",
+        "local"
+      ],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "casting": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'} Casting to allow when changing between datetime units.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array of strings the same shape as `arr`."
+  },
+  "constraints": []
+}

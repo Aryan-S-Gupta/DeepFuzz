@@ -10,10 +10,13 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "4-D or more",
+        "x and y must have broadcast-compatible shapes if x has more than two dimensions"
+      ]
     },
     "offset": {
-      "type": "",
+      "type": "int",
       "size": "",
       "default": "0",
       "flag": "Optional",
@@ -21,11 +24,12 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "Can be positive or negative",
         "offset must be positive"
       ]
     },
     "axis1": {
-      "type": "",
+      "type": "int",
       "size": "2-D",
       "default": "0",
       "flag": "Optional",
@@ -33,18 +37,20 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "Must satisfy -rank(input) <= axis < rank(input)",
         "axis1 must be 2-D"
       ]
     },
     "axis2": {
-      "type": "",
+      "type": "int",
       "size": "2-D",
-      "default": "1` (second axis)",
+      "default": "1",
       "flag": "Optional",
       "description": "Axis to be used as the second axis of the 2-D sub-arrays. Defaults to `1` (second axis).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "Must satisfy -rank(input) <= axis < rank(input)",
         "axis2 must be 2-D"
       ]
     }

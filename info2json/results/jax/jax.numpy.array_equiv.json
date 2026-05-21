@@ -10,8 +10,9 @@
       "description": "first input array to compare.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "a1 and a2 must have the same shape"
+        "a1 and a2 must be broadcastable to the same shape"
       ]
     },
     "a2": {
@@ -22,8 +23,9 @@
       "description": "second input array to compare.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "a1 and a2 must have the same shape"
+        "a1 and a2 must be broadcastable to the same shape"
       ]
     }
   },
@@ -33,6 +35,6 @@
     "description": "Boolean scalar array indicating whether the input arrays are element-wise equal after broadcasting."
   },
   "constraints": [
-    "a1 and a2 must have the same shape"
+    "a1 and a2 must be broadcastable to the same shape"
   ]
 }

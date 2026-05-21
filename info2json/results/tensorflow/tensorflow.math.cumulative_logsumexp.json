@@ -19,13 +19,14 @@
         "float64"
       ],
       "constraints": [
-        "x must be one of float16, float32, float64"
+        "x must be one of float16, float32, float64",
+        "x must be one of the following types: float16, float32, float64"
       ]
     },
     "axis": {
       "type": "tensor",
       "size": "",
-      "default": "0)",
+      "default": "0",
       "flag": "Optional",
       "description": "A `Tensor` of type `int32` or `int64` (default: 0). Must be in the range `[-rank(x), rank(x))`.",
       "dtype_candidates": [
@@ -34,36 +35,31 @@
       ],
       "enum_values": [],
       "constraints": [
+        "-rank(x) <= axis < rank(x)",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
     "exclusive": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "If `True`, perform exclusive cumulative log-sum-exp.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     },
     "reverse": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "If `True`, performs the cumulative log-sum-exp in the reverse direction.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
+      "description": "If `True`, performs the cumulative log-sum-exp in the reverse direction.",
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }

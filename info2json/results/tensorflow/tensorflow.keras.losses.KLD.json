@@ -11,10 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must match",
-        "y_true and y_pred must have the same number of dimensions",
-        "dtypes of y_true and y_pred must be compatible",
-        "values of y_true and y_pred must be non-negative"
+        "Required",
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     },
     "y_pred": {
@@ -26,22 +24,17 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must match",
-        "y_true and y_pred must have the same number of dimensions",
-        "dtypes of y_true and y_pred must be compatible",
-        "values of y_true and y_pred must be non-negative"
+        "Required",
+        "The shapes of y_true and y_pred must be broadcast-compatible."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "-1, d0, .. dN-1",
+    "numbers": "[batch_size, d0, .. dN-1]",
     "description": "KL Divergence loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred shapes must match",
-    "y_true and y_pred must have the same number of dimensions",
-    "dtypes of y_true and y_pred must be compatible",
-    "values of y_true and y_pred must be non-negative"
+    "The shapes of y_true and y_pred must be broadcast-compatible."
   ]
 }

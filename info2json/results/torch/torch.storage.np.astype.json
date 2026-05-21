@@ -1,0 +1,65 @@
+{
+  "api_name": "astype",
+  "module_path": "torch.storage.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray Input NumPy array to cast. ``array_likes`` are explicitly not supported here.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "array_likes are not supported here",
+        "x and dtype are required parameters."
+      ]
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype Data type of the result.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x and dtype are required parameters."
+      ]
+    },
+    "copy": {
+      "type": "bool|tensor|dtype",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "bool, optional Specifies whether to copy an array when the specified dtype matches the data type of the input array ``x``. If ``True``, a newly allocated array must always be returned. If ``False`` and the specified dtype matches the data type of the input array, the input array must be returned; otherwise, a newly allocated array must be returned. Defaults to ``True``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "device": {
+      "type": "string|tensor|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str, optional The device on which to place the returned array. Default: None. For Array-API interoperability only, so must be ``\"cpu\"`` if passed.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array having the specified data type."
+  },
+  "constraints": [
+    "x and dtype are required parameters."
+  ]
+}

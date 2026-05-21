@@ -11,7 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+        "The last dimension of x1 must match the last dimension of x2.",
+        "x1 and x2 must have broadcast-compatible shapes."
       ]
     },
     "x2": {
@@ -23,8 +24,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "last dimension of x1 and x2 must match",
-        "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+        "The last dimension of x1 and x2 must match.",
+        "x1 and x2 must have broadcast-compatible shapes."
       ]
     }
   },
@@ -34,6 +35,6 @@
     "description": "Output tensor. The shape of the output is determined by broadcasting the shapes of `x1` and `x2` after removing their last axes."
   },
   "constraints": [
-    "last dimensions of x1 and x2 are matched, then broadcasted shapes are used for output"
+    "x1 and x2 must have broadcast-compatible shapes."
   ]
 }

@@ -6,7 +6,7 @@
       "type": "int|tensor",
       "size": "1-D",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "A 1-D integer Tensor or Python array. The shape of the output tensor.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -25,11 +25,21 @@
       "constraints": []
     },
     "maxval": {
-      "type": "int|float|number|tensor|dtype",
+      "type": "int|number|tensor|dtype",
       "size": "scalar",
-      "default": "1 if `dtype` is floating point",
+      "default": "",
       "flag": "Optional",
-      "description": "A Tensor or Python value of type `dtype`, broadcastable with `shape` (for integer types, broadcasting is not supported, so it needs to be a scalar). The upper bound on the range of random values to generate (exclusive). Defaults to 1 if `dtype` is floating point. dtype: The type of the output: `float16`, `bfloat16`, `float32`, `float64`, `int32`, or `int64`. Defaults to `float32`.",
+      "description": "A Tensor or Python value of type `dtype`, broadcastable with `shape` (for integer types, broadcasting is not supported, so it needs to be a scalar). The upper bound on the range of random values to generate (exclusive). Defaults to 1 if `dtype` is floating point.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "float",
+      "size": "",
+      "default": "tf.float32",
+      "flag": "Optional",
+      "description": "The type of the output: `float16`, `bfloat16`, `float32`, `float64`, `int32`, or `int64`. Defaults to `float32`.",
       "dtype_candidates": [
         "int32",
         "int64",
@@ -45,18 +55,8 @@
       "type": "int|sequence|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A Python integer. Used in combination with `tf.random.set_seed` to create a reproducible sequence of tensors across multiple calls.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

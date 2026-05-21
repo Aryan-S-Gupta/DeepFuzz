@@ -1,24 +1,11 @@
 {
   "api_name": "eig",
   "module_path": "tensorflow.linalg",
-  "params": {
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "Unspecified",
-      "flag": "Optional",
-      "description": "string, optional name of the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    }
-  },
+  "params": {},
   "output": {
-    "type": "tensor",
+    "type": "e",
     "numbers": "1",
     "description": "Eigenvalues. Shape is `[..., N]`. The eigenvalues are not necessarily ordered. v: Eigenvectors. Shape is `[..., N, N]`. The columns of the inner most matrices contain eigenvectors of the corresponding matrices in `tensor`"
   },
-  "constraints": [
-    "N must be the same for all inner matrices in tensor"
-  ]
+  "constraints": []
 }

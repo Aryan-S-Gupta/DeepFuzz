@@ -10,9 +10,8 @@
       "description": "array-like object, or any object with a ``size`` attribute when ``axis`` is not specified, or with a ``shape`` attribute when ``axis`` is specified.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "input parameter `a` must have a size or shape attribute if `axis` is specified"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "axis": {
       "type": "int|sequence|number",
@@ -22,18 +21,14 @@
       "description": "optional integer or sequence of integers indicating which axis or axes to count elements along. ``None`` (the default) returns the total number of elements.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "input parameter `a` must have a size or shape attribute if `axis` is specified",
-        "if `axis` is not None, it should be an integer or sequence of integers within input rank"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "int|number",
-    "numbers": "one",
+    "numbers": "1",
     "description": "An integer specifying the number of elements in ``a``."
   },
-  "constraints": [
-    "input parameter `a` must have a size or shape attribute if `axis` is specified"
-  ]
+  "constraints": []
 }

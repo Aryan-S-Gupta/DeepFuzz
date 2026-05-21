@@ -1,0 +1,56 @@
+{
+  "api_name": "ndpointer",
+  "module_path": "torch.storage.np.ctypeslib",
+  "params": {
+    "dtype": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "data-type, optional Array data-type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "ndim": {
+      "type": "int|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Number of array dimensions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "shape": {
+      "type": "tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "tuple of ints, optional Array shape.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "flags": {
+      "type": "string|tuple|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str or tuple of str Array flags; may be one or more of:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "------- ndpointer type object A type object, which is an ``_ndtpr`` instance containing dtype, ndim, shape and flags information."
+  },
+  "constraints": []
+}

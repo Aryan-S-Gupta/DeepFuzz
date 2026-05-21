@@ -8,10 +8,14 @@
       "default": "",
       "flag": "Required",
       "description": "integer array of flat indices",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "indices and shape must be compatible"
+        "indices type must be int32 or int64"
       ]
     },
     "shape": {
@@ -22,8 +26,9 @@
       "description": "shape of multidimensional array to index into",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "indices and shape must be compatible"
+        "shape elements must be positive integers"
       ]
     }
   },
@@ -32,7 +37,5 @@
     "numbers": "1",
     "description": "Tuple of unraveled indices"
   },
-  "constraints": [
-    "indices and shape must be compatible"
-  ]
+  "constraints": []
 }

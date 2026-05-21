@@ -10,20 +10,38 @@
       "description": "a sequence of arrays to concatenate; each must have the same shape except along the specified axis. If a single array is given it will be treated equivalently to `arrays = unstack(arrays)`, but the implementation will avoid explicit unstacking.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "arrays parameter must not be empty",
-        "all arrays in the sequence must have the same shape except along the specified axis"
+        "arrays must not be empty",
+        "all arrays in arrays must have the same shape except along the specified axis",
+        "if arrays contains only one array, it will still be treated as a sequence of arrays"
       ]
     },
     "axis": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "specify the axis along which to concatenate. If None, the arrays are flattened before concatenation.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "all arrays in arrays must have the same shape except along the specified axis"
+      ]
+    },
+    "dtype": {
       "type": "tensor|dtype",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "specify the axis along which to concatenate. If None, the arrays are flattened before concatenation. dtype: optional dtype of the resulting array. If not specified, the dtype will be determined via type promotion rules described in :ref:`type-promotion`.",
+      "description": "optional dtype of the resulting array. If not specified, the dtype will be determined via type promotion rules described in :ref:`type-promotion`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "must be a valid numpy dtype"
+      ]
     }
   },
   "output": {
@@ -31,5 +49,7 @@
     "numbers": "1",
     "description": "the concatenated result."
   },
-  "constraints": []
+  "constraints": [
+    "all arrays in arrays must have the same shape except along the specified axis"
+  ]
 }

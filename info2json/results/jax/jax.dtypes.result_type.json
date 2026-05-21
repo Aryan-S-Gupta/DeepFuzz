@@ -3,22 +3,22 @@
   "module_path": "jax.dtypes",
   "params": {
     "return_weak_type_flag": {
-      "type": "tuple|dtype",
+      "type": "bool|tuple|dtype",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "if True, then return a ``(dtype, weak_type)`` tuple. If False, just return `dtype`",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
       "constraints": []
     }
   },
   "output": {
     "type": "dtype",
-    "numbers": "(dtype, weak_type) or dtype",
+    "numbers": "1",
     "description": "dtype or (dtype, weak_type) depending on the value of the ``return_weak_type`` argument."
   },
-  "constraints": [
-    "return_weak_type_flag must be a Boolean"
-  ]
+  "constraints": []
 }

@@ -15,29 +15,21 @@
     "approximate": {
       "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "An optional `bool`. Defaults to `False`. Whether to enable approximation.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The approximate parameter is optional"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float",
+    "numbers": "1",
     "description": "A `Tensor` with the same type as `features`."
   },
   "constraints": []

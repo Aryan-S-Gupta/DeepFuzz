@@ -10,7 +10,9 @@
       "description": "A `Tensor` of a floating or integer dtype.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and y must have broadcast-compatible shapes"
+      ]
     },
     "y": {
       "type": "tensor|dtype",
@@ -20,23 +22,19 @@
       "description": "A `Tensor` with the same dtype as `x` and a compatible shape.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "same dtype as x",
+        "y must have the same dtype as x",
+        "x and y must have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "The element-wise quotient as in `tf.math.divide(x, y)`, except that division by zero produces `0.0`, not `nan`."
   },
-  "constraints": []
+  "constraints": [
+    "x and y must have broadcast-compatible shapes"
+  ]
 }

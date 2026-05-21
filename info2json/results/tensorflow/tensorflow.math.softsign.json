@@ -20,19 +20,10 @@
         "float64"
       ],
       "constraints": [
-        "Must be one of the following types: half, bfloat16, float32, float64",
-        "features must be one of half, bfloat16, float32, float64"
+        "features must be a Tensor.",
+        "features must be one of half, bfloat16, float32, float64",
+        "Computes softsign: `features / (abs(features) + 1)`."
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "\"\"",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -40,5 +31,7 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `features`."
   },
-  "constraints": []
+  "constraints": [
+    "The output has the same type as the input."
+  ]
 }

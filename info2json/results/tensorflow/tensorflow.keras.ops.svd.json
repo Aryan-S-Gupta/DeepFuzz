@@ -10,12 +10,38 @@
       "description": "Input tensor of shape `(..., M, N)`.",
       "dtype_candidates": [],
       "enum_values": [],
+      "constraints": [
+        "x must be 4-D"
+      ]
+    },
+    "full_matrices": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "compute_uv": {
+      "type": "bool",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
       "constraints": []
     }
   },
   "output": {
     "type": "tuple|tensor",
-    "numbers": "3",
+    "numbers": "(3,)",
     "description": "a tensor of shape `(..., M, M)` containing the left singular vectors, a tensor of shape `(..., M, N)` containing the singular values and a tensor of shape `(..., N, N)` containing the right singular vectors."
   },
   "constraints": []

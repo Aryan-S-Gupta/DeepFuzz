@@ -10,7 +10,9 @@
       "description": "First input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
     },
     "x2": {
       "type": "tensor",
@@ -20,13 +22,17 @@
       "description": "Second input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "Output tensor, the quotient `x1/x2`, element-wise."
   },
-  "constraints": []
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ]
 }

@@ -1,0 +1,53 @@
+{
+  "api_name": "can_cast",
+  "module_path": "torch.storage.np",
+  "params": {
+    "from_": {
+      "type": "number|tensor|dtype",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype, dtype specifier, NumPy scalar, or array Data type, NumPy scalar, or array to cast from.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "from_, to, and casting must be specified according to the observed signature"
+      ]
+    },
+    "to": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype or dtype specifier Data type to cast to.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "from_, to, and casting must be specified according to the observed signature"
+      ]
+    },
+    "casting": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional Controls what kind of data casting may occur.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "from_, to, and casting must be specified according to the observed signature"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool",
+    "numbers": "1",
+    "description": "------- bool True if cast can occur according to the casting rule."
+  },
+  "constraints": [
+    "from_, to, and casting must be specified according to the observed signature"
+  ]
+}

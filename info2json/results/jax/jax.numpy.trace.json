@@ -15,17 +15,19 @@
     "offset": {
       "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "optional, int, default=0. Diagonal offset from the main diagonal. Can be positive or negative.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "offset must be positive"
+      ]
     },
     "axis1": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "0",
       "flag": "Optional",
       "description": "optional, default=0. The first axis along which to take the sum of diagonal. Must be a static integer value.",
       "dtype_candidates": [],
@@ -33,11 +35,21 @@
       "constraints": []
     },
     "axis2": {
-      "type": "int|tensor|dtype",
+      "type": "int",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "optional, default=1. The second axis along which to take the sum of diagonal. Must be a static integer value.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor|dtype",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "optional, default=1. The second axis along which to take the sum of diagonal. Must be a static integer value. dtype: optional. The dtype of the output array. Should be provided as static argument in JIT compilation.",
+      "description": "optional. The dtype of the output array. Should be provided as static argument in JIT compilation.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -46,7 +58,7 @@
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Not used by JAX.",
       "dtype_candidates": [],
       "enum_values": [],

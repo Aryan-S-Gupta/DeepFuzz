@@ -20,21 +20,11 @@
         "float64"
       ],
       "constraints": [
-        "Must be one of: half, bfloat16, float32, float64.",
-        "Typically 2-D, but may have any dimensions.",
+        "t must be a Tensor with type in ['half', 'bfloat16', 'float32', 'float64'] and can have any number of dimensions.",
         "t must be 2-D",
-        "t must be one of half, bfloat16, float32, float64"
+        "t must be one of half, bfloat16, float32, float64",
+        "The output is calculated by summing squares of elements in t and dividing by 2."
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

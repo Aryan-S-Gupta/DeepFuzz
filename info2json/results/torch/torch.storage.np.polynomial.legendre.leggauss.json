@@ -1,0 +1,26 @@
+{
+  "api_name": "leggauss",
+  "module_path": "torch.storage.np.polynomial.legendre",
+  "params": {
+    "deg": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int Number of sample points and weights. It must be >= 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "deg must be >= 1",
+        "x and y must have the same shape[0] as deg"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "------- ndarray 1-D ndarray containing the sample points. y : ndarray 1-D ndarray containing the weights."
+  },
+  "constraints": []
+}

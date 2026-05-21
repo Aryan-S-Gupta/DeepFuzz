@@ -36,10 +36,9 @@
         "uint64"
       ],
       "constraints": [
-        "Must be one of the following types: float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64",
+        "Must be one of the following types: `float32`, `float64`, `int32`, `uint8`, `int16`, `int8`, `int64`, `bfloat16`, `uint16`, `half`, `uint32`, `uint64`",
         "x must be one of float32, float64, int32, uint8, int16, int8, int64, bfloat16, uint16, half, uint32, uint64",
-        "x and y must have the same shape (except for broadcasting)",
-        "x and y must have the same data type"
+        "x and y must have broadcast-compatible shapes"
       ]
     },
     "y": {
@@ -53,28 +52,16 @@
       "constraints": [
         "Must have the same type as x",
         "y must have the same dtype as x",
-        "x and y must have the same shape (except for broadcasting)",
-        "x and y must have the same data type"
+        "x and y must have broadcast-compatible shapes"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
     "type": "bool|tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "A `Tensor` of type `bool`."
   },
   "constraints": [
-    "x and y must have the same shape (except for broadcasting)",
-    "x and y must have the same data type"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

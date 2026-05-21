@@ -1,0 +1,26 @@
+{
+  "api_name": "loggamma",
+  "module_path": "jax.scipy.special",
+  "params": {
+    "x": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "arraylike, real or complex valued.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x.shape: any",
+        "x.element_type: real or complex"
+      ]
+    }
+  },
+  "output": {
+    "type": "callable|tensor",
+    "numbers": "real or complex",
+    "description": "array containing the values of the loggamma function. For complex inputs, the output is complex-valued."
+  },
+  "constraints": []
+}

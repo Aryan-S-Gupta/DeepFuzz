@@ -10,8 +10,9 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "jnp.log on the result of jnp.exp(x) yields the original input x as :math`log(a*b) = log(a)+log(b)`."
+        "jax.numpy.exp(output) == jax.numpy.promote_types(x, output.dtype)"
       ]
     }
   },
@@ -21,6 +22,6 @@
     "description": "An array containing the logarithm of each element in ``x``, promotes to inexact dtype."
   },
   "constraints": [
-    "x1 and x2 must have broadcast-compatible shapes in constraints for multiplication example."
+    "jnp.allclose(jnp.log(x1*x2), jnp.log(x1)+jnp.log(x2))"
   ]
 }

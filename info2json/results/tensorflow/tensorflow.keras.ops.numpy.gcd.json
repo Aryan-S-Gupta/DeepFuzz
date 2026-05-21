@@ -11,28 +11,28 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1 and x2 must be the same shape"
+        "Both x1 and x2 must be integers"
       ]
     },
     "x2": {
       "type": "int|tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "Second input tensor (integer type).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1 and x2 must be the same shape"
+        "Both x1 and x2 must be integers"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "single",
+    "numbers": "1",
     "description": "Output tensor, element-wise greatest common divisor of `x1` and `x2`."
   },
   "constraints": [
-    "x1 and x2 must be the same shape"
+    "Both x1 and x2 must be integers"
   ]
 }

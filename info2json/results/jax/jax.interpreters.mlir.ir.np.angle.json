@@ -5,13 +5,13 @@
     "z": {
       "type": "sequence|number",
       "size": "",
-      "default": "{}",
+      "default": "",
       "flag": "Required",
       "description": "array_like A complex number or sequence of complex numbers.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be a valid array_like"
+        "z must be array_like"
       ]
     },
     "deg": {
@@ -24,12 +24,14 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "deg must be bool"
+      ]
     }
   },
   "output": {
     "type": "float|number|tensor|dtype",
-    "numbers": "float64",
+    "numbers": "single",
     "description": "------- ndarray or scalar The counterclockwise angle from the positive real axis on the complex plane in the range ``(-pi, pi]``, with dtype as numpy.float64."
   },
   "constraints": []

@@ -10,18 +10,6 @@
       "description": "List of additional ops to finish before returning.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "control_inputs must contain only `Operation`s"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "(optional) A name to use as a `name_scope` for the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
       "constraints": []
     }
   },
@@ -31,6 +19,6 @@
     "description": "Same as `tensors`."
   },
   "constraints": [
-    "tensors must be a list of `Tensor`s or `IndexedSlices`, some entries can be `None`."
+    "dependencies: Only use `tf.tuple` when working with v1 `tf.Graph` code."
   ]
 }

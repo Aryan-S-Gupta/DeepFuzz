@@ -2,22 +2,26 @@
   "api_name": "temperature",
   "module_path": "torch.cuda",
   "params": {
-    "Centigrades": {
-      "type": "",
+    "device": {
+      "type": "int|device",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "",
-      "constraints": []
+      "flag": "Optional",
+      "description": "selected device. Returns statistic for the current device, given by :func:`~torch.cuda.current_device`, if :attr:`device` is ``None`` (default).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "device type must be one of: torch.device, str, int, or None"
+      ]
     }
   },
   "output": {
-    "type": "float",
-    "numbers": "1",
+    "type": "int",
+    "numbers": "integer",
     "description": "Return the average temperature of the GPU sensor in Degrees C (Centigrades)."
   },
   "constraints": [
-    "device parameter is optional with default value None.",
-    "Output is a single float number."
+    "Each sample period may be between 1 second and 1/6 second, depending on the product being queried."
   ]
 }

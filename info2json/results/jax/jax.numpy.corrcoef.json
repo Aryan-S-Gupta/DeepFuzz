@@ -10,6 +10,7 @@
       "description": "array of shape ``(M, N)`` (if ``rowvar`` is True), or ``(N, M)`` (if ``rowvar`` is False) representing ``N`` observations of ``M`` variables. ``x`` may also be one-dimensional, representing ``N`` observations of a single variable.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "y": {
@@ -20,21 +21,34 @@
       "description": "optional set of additional observations, with the same form as ``m``. If specified, then ``y`` is combined with ``m``, i.e. for the default ``rowvar = True`` case, ``m`` becomes ``jnp.vstack([m, y])``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "rowvar": {
+      "type": "",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "if True (default) then each row of ``m`` represents a variable. If False, then each column represents a variable.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
       "type": "float|dtype",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "if True (default) then each row of ``m`` represents a variable. If False, then each column represents a variable. dtype: optional data type of the result. Must be a float or complex type; if not specified, it will be determined based on the dtype of the input.",
+      "description": "optional data type of the result. Must be a float or complex type; if not specified, it will be determined based on the dtype of the input.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "1",
     "description": "A covariance matrix of shape ``(M, M)``."
   },

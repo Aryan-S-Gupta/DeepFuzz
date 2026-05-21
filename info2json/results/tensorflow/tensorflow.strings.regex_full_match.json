@@ -10,7 +10,9 @@
       "description": "A `Tensor` of type `string`. A string tensor of the text to be processed.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "of type `string`"
+      ]
     },
     "pattern": {
       "type": "string|number|tensor",
@@ -21,19 +23,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "follows re2 syntax (https://github.com/google/re2/wiki/Syntax)",
-        "input and pattern must be provided"
+        "of type `string`",
+        "The boolean values (True or False) of the output tensor indicate The pattern follows the re2 syntax (https://github.com/google/re2/wiki/Syntax)"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

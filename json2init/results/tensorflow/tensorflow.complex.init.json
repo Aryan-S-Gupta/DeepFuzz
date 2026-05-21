@@ -22,9 +22,8 @@
           "float64"
         ],
         "constraints": [
-          "Must have the same shape as 'imag' parameter.",
           "real must be one of float32, float64",
-          "'real' and 'imag' must be correct types"
+          "TypeError: Real and imag must be correct types"
         ]
       },
       "chosen_type": "float",
@@ -36,6 +35,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -51,9 +57,8 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Must have the same shape as 'real' parameter.",
           "imag must have the same dtype as real",
-          "'real' and 'imag' must be correct types"
+          "TypeError: Real and imag must be correct types"
         ]
       },
       "chosen_type": "float",
@@ -67,29 +72,12 @@
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "''",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     }
@@ -100,7 +88,7 @@
     "description": "A `Tensor` of type `complex64` or `complex128`."
   },
   "constraints": [
-    "'real' and 'imag' must be correct types"
+    "TypeError: Real and imag must be correct types"
   ],
   "spec_ready": true,
   "ready_for_stage4": true,
@@ -117,12 +105,17 @@
       "shape": [],
       "dtype": "complex64",
       "numel": 1,
-      "has_nan": false
+      "preview": [
+        "(1+1j)"
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.complex.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

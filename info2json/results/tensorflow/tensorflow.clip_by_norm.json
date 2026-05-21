@@ -2,15 +2,42 @@
   "api_name": "clip_by_norm",
   "module_path": "tensorflow",
   "params": {
-    "grads": {
-      "type": "",
+    "t": {
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "",
+      "description": "A `Tensor` or `IndexedSlices`. This must be a floating point type.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
+    },
+    "clip_norm": {
+      "type": "number|tensor",
+      "size": "0-D",
+      "default": "",
+      "flag": "Required",
+      "description": "A 0-D (scalar) `Tensor` > 0. A maximum clipping value, also floating point. Note: If a negative clip_norm is provided, it will be treated as zero.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "clip_norm must be positive",
+        "If a negative clip_norm is provided, it will be treated as zero."
+      ]
+    },
+    "axes": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Optional",
+      "description": "A 1-D (vector) `Tensor` of type int32 containing the dimensions to use for computing the L2-norm. If `None` (the default), uses all dimensions.",
+      "dtype_candidates": [
+        "int32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "axes must be 1-D"
+      ]
     }
   },
   "output": {
@@ -18,5 +45,7 @@
     "numbers": "1",
     "description": "A clipped `Tensor` or `IndexedSlices`."
   },
-  "constraints": []
+  "constraints": [
+    "TypeError: If dtype of the input is not a floating point"
+  ]
 }

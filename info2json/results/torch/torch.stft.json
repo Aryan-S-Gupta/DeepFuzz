@@ -10,6 +10,7 @@
       "description": "the input tensor of shape `(B?, L)` where `B?` is an optional batch dimension",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "n_fft": {
@@ -20,37 +21,43 @@
       "description": "size of Fourier transform",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "hop_length": {
       "type": "int",
       "size": "",
-      "default": "None`` (treated as equal to ``floor(n_fft / 4)``)",
+      "default": "",
       "flag": "Optional",
       "description": "the distance between neighboring sliding window frames. Default: ``None`` (treated as equal to ``floor(n_fft / 4)``)",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "win_length": {
       "type": "int",
       "size": "",
-      "default": "None`` (treated as equal to :attr:`n_fft`)",
+      "default": "",
       "flag": "Optional",
       "description": "the size of window frame and STFT filter. Default: ``None`` (treated as equal to :attr:`n_fft`)",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "window": {
       "type": "callable|tensor",
       "size": "1d",
-      "default": "None`` (treated as window of all :math:`1` s)",
+      "default": "",
       "flag": "Optional",
       "description": "the optional window function. Shape must be 1d and `<= n_fft` Default: ``None`` (treated as window of all :math:`1` s)",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "window must be 1-D"
+      ]
     },
     "center": {
       "type": "bool",
@@ -62,16 +69,18 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "pad_mode": {
       "type": "string",
       "size": "",
-      "default": "\"reflect\"",
+      "default": "",
       "flag": "Optional",
       "description": "controls the padding method used when :attr:`center` is ``True``. Default: ``\"reflect\"``",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "normalized": {
@@ -84,30 +93,44 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "onesided": {
       "type": "float|bool",
       "size": "",
-      "default": "True`` for real :attr:`input` and :attr:`window`, ``False`` otherwise",
+      "default": "",
       "flag": "Optional",
       "description": "controls whether to return half of results to avoid redundancy for real inputs. Default: ``True`` for real :attr:`input` and :attr:`window`, ``False`` otherwise.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "return_complex": {
       "type": "float|bool|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "whether to return a complex tensor, or a real tensor with an extra last dimension for the real and imaginary components.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "align_to_window": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

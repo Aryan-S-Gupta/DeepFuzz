@@ -3,13 +3,25 @@
   "module_path": "jax.numpy",
   "params": {
     "object": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "an object that is convertible to an array. This includes JAX arrays, NumPy arrays, Python scalars, Python collections like lists and tuples, objects with a ``__jax_array__`` method, and objects supporting the Python buffer protocol.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
       "type": "tensor|dtype",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "an object that is convertible to an array. This includes JAX arrays, NumPy arrays, Python scalars, Python collections like lists and tuples, objects with a ``__jax_array__`` method, and objects supporting the Python buffer protocol. dtype: optionally specify the dtype of the output array. If not specified it will be inferred from the input.",
+      "description": "optionally specify the dtype of the output array. If not specified it will be inferred from the input.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "copy": {
@@ -20,26 +32,29 @@
       "description": "specify whether to force a copy of the input. Default: True.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "order": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "not implemented in JAX",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "ndmin": {
       "type": "int|number|tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "integer specifying the minimum number of dimensions in the output array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "device": {
@@ -50,6 +65,7 @@
       "description": "optional :class:`~jax.Device` or :class:`~jax.sharding.Sharding` to which the created array will be committed.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out_sharding": {
@@ -60,6 +76,7 @@
       "description": "(optional) :class:`~jax.sharding.PartitionSpec` or :class:`~jax.NamedSharding` representing the sharding of the created array (see `explicit sharding`_ for more details). This argument exists for consistency with other array creation routines across JAX. Specifying both ``out_sharding`` and ``device`` will result in an error.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

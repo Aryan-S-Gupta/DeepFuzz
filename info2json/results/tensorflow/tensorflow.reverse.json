@@ -16,17 +16,10 @@
         "int32",
         "int64"
       ],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "axis must be 1-D",
+        "axis must be one of int32, int64"
+      ]
     }
   },
   "output": {
@@ -34,7 +27,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `tensor`."
   },
-  "constraints": [
-    "t and dims must have compatible shapes"
-  ]
+  "constraints": []
 }

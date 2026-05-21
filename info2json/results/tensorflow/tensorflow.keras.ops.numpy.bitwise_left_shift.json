@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and y must be tensors."
+        "x and y must have broadcast-compatible shapes"
       ]
     },
     "y": {
@@ -23,17 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must have a broadcast-compatible shape with x.",
-        "x and y must be tensors."
+        "x and y must have broadcast-compatible shapes"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "integer",
+    "numbers": "1",
     "description": "Result tensor."
   },
   "constraints": [
-    "x and y must be tensors."
+    "x and y must have broadcast-compatible shapes"
   ]
 }

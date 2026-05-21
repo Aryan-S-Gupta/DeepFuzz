@@ -16,8 +16,8 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "x and y must have the same shape and dtype",
-          "x and y must not be None"
+          "A tf.Tensor",
+          "x and y must have broadcast-compatible shapes"
         ]
       },
       "chosen_type": "tensor",
@@ -25,7 +25,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -33,14 +33,25 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "y": {
       "name": "y",
@@ -53,8 +64,8 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "x and y must have the same shape and dtype",
-          "x and y must not be None"
+          "A tf.Tensor",
+          "x and y must have broadcast-compatible shapes"
         ]
       },
       "chosen_type": "tensor",
@@ -62,7 +73,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -70,48 +81,34 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": false,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "test"
-      },
-      "mutation_rules": [
-        "string_replace",
-        "string_empty"
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
-      "unresolved_reason": ""
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "bool|tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "A `tf.Tensor` of type bool with the same size as that of x or y."
   },
   "constraints": [
-    "x and y must have the same shape and dtype",
-    "x and y must not be None"
+    "x and y must have broadcast-compatible shapes"
   ],
   "spec_ready": true,
   "ready_for_stage4": true,
@@ -126,16 +123,34 @@
     "result_summary": {
       "python_type": "EagerTensor",
       "shape": [
-        1
+        2
       ],
       "dtype": "bool",
-      "numel": 1,
-      "has_nan": false
+      "numel": 2,
+      "preview": [
+        false,
+        false
+      ],
+      "has_nan": false,
+      "has_inf": false
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x",
+      "y"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.98,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.math.not_equal.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

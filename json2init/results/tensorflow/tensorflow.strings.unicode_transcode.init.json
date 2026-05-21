@@ -1,0 +1,250 @@
+{
+  "api_full_name": "tensorflow.strings.unicode_transcode",
+  "api_name": "unicode_transcode",
+  "module_path": "tensorflow.strings",
+  "import_path": "tensorflow.strings.unicode_transcode",
+  "backend": "tensorflow",
+  "params": {
+    "input": {
+      "name": "input",
+      "spec": {
+        "type": "string|tensor|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `Tensor` of type `string`. The text to be processed. Can have any shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "string",
+        "values": [
+          "a",
+          "b"
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "input_encoding": {
+      "name": "input_encoding",
+      "spec": {
+        "type": "string|any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `string`. Text encoding of the input strings. This is any of the encodings supported by ICU ucnv algorithmic converters. Examples: `\"UTF-16\", \"US ASCII\", \"UTF-8\"`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "output_encoding": {
+      "name": "output_encoding",
+      "spec": {
+        "type": "string",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "A `string` from: `\"UTF-8\", \"UTF-16-BE\", \"UTF-32-BE\"`. The unicode encoding to use in the output. Must be one of `\"UTF-8\", \"UTF-16-BE\", \"UTF-32-BE\"`. Multi-byte encodings will be big-endian.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "string",
+          "UTF-8",
+          "UTF-16-BE",
+          "UTF-32-BE"
+        ],
+        "constraints": [
+          "output_encoding must be one of string, UTF-8, UTF-16-BE, UTF-32-BE, UTF"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "errors": {
+      "name": "errors",
+      "spec": {
+        "type": "string|any",
+        "size": "",
+        "default": "\"replace\"",
+        "flag": "Optional",
+        "description": "An optional `string` from: `\"strict\", \"replace\", \"ignore\"`. Defaults to `\"replace\"`. Error handling policy when there is invalid formatting found in the input. The value of 'strict' will cause the operation to produce a InvalidArgument error on any invalid input formatting. A value of 'replace' (the default) will cause the operation to replace any invalid formatting in the input with the `replacement_char` codepoint. A value of 'ignore' will cause the operation to skip any invalid formatting in the input and produce no corresponding output character.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "errors must be one of string, strict, replace, ignore"
+        ]
+      },
+      "chosen_type": "string",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": "string"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "string_replace",
+        "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "replacement_char": {
+      "name": "replacement_char",
+      "spec": {
+        "type": "int|any",
+        "size": "",
+        "default": "65533",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `65533`. The replacement character codepoint to be used in place of any invalid formatting in the input when `errors='replace'`. Any valid unicode codepoint may be used. The default value is the default unicode replacement character is 0xFFFD or U+65533.)",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "replacement_char must be one of int, 65533, replace"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    },
+    "replace_control_characters": {
+      "name": "replace_control_characters",
+      "spec": {
+        "type": "bool",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "An optional `bool`. Defaults to `False`. Whether to replace the C0 control characters (00-1F) with the `replacement_char`. Default is false.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "A `Tensor` of type `string`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: Value for attr 'output_encoding' of \"string\" is not in the list of allowed values: \"UTF-8\", \"UTF-16-BE\", \"UTF-32-BE\"\n\t; NodeDef: {{node UnicodeTranscode}}; Op<name=UnicodeTranscode; signature=input:string -> output:string; attr=input_encoding:string; attr=output_encoding:string,allowed=[\"UTF-8\", \"UTF-16-BE\", \"UTF-32-BE\"]; attr=errors:string,default=\"replace\",allowed=[\"strict\", \"replace\", \"ignore\"]; attr=replacement_char:int,default=65533; attr=replace_control_characters:bool,default=false> [Op:UnicodeTranscode] name: "
+  ],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "Value for attr 'output_encoding' of \"string\" is not in the list of allowed values: \"UTF-8\", \"UTF-16-BE\", \"UTF-32-BE\"\n\t; NodeDef: {{node UnicodeTranscode}}; Op<name=UnicodeTranscode; signature=input:string -> output:string; attr=input_encoding:string; attr=output_encoding:string,allowed=[\"UTF-8\", \"UTF-16-BE\", \"UTF-32-BE\"]; attr=errors:string,default=\"replace\",allowed=[\"strict\", \"replace\", \"ignore\"]; attr=replacement_char:int,default=65533; attr=replace_control_characters:bool,default=false> [Op:UnicodeTranscode] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_string_ops.py\", line 2665, in unicode_transcode\n    _ops.raise_from_not_ok_status(e, name)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'output_encoding' of \"string\" is not in the list of allowed values: \"UTF-8\", \"UTF-16-BE\", \"UTF-32-BE\"\n\t; NodeDef: {{node UnicodeTranscode}}; Op<name=UnicodeTranscode; signature=input:string -> output:string; attr=input_encoding:string; attr=output_encoding:string,allowed=[\"UTF-8\", \"UTF-16-BE\", \"UTF-32-BE\"]; attr=errors:string,default=\"replace\",allowed=[\"strict\", \"replace\", \"ignore\"]; attr=replacement_char:int,default=65533; attr=replace_control_characters:bool,default=false> [Op:UnicodeTranscode] name: \n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.strings.unicode_transcode.json",
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
+}

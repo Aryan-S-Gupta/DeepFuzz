@@ -8,15 +8,23 @@
       "default": "",
       "flag": "Required",
       "description": "Tensor with shape [batch_size, h, w, d].",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "float32"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "image = tf.reshape(tf.range(IMAGE_HEIGHT * IMAGE_WIDTH * CHANNELS, delta=1, dtype=tf.float32), shape=(BATCH_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS))"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "2",
+    "numbers": "(dy, dx)",
     "description": "Pair of tensors (dy, dx) holding the vertical and horizontal image gradients (1-step finite difference)."
   },
-  "constraints": []
+  "constraints": [
+    "Both output tensors have the same shape as the input: [batch_size, h, w, d]",
+    "The gradient values are organized so that [I(x+1, y) - I(x, y)] is in location (x, y)",
+    "dy will always have zeros in the last row"
+  ]
 }

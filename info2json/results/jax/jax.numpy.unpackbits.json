@@ -12,6 +12,7 @@
         "uint8"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
@@ -22,16 +23,18 @@
       "description": "optional axis along which to unpack. If not specified, ``a`` will be flattened",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "count": {
       "type": "number",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "specify the number of bits to unpack (if positive) or the number of bits to trim from the end (if negative).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "count must be positive"
       ]
@@ -44,6 +47,7 @@
       "description": "``\"big\"`` (default) or ``\"little\"``: specify whether the bit order is big-endian or little-endian.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

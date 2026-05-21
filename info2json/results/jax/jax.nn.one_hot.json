@@ -10,31 +10,54 @@
       "description": "A tensor of indices.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "x must be a tensor of indices."
+      ]
     },
     "num_classes": {
-      "type": "float|number|dtype",
-      "size": "",
-      "default": "obj:`jnp",
-      "flag": "Optional",
-      "description": "Number of classes in the one-hot dimension. dtype: optional, a float dtype for the returned values (default :obj:`jnp.float_`).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "axis": {
-      "type": "callable",
+      "type": "int|number",
       "size": "",
       "default": "",
       "flag": "Required",
+      "description": "Number of classes in the one-hot dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "num_classes must be an integer."
+      ]
+    },
+    "dtype": {
+      "type": "float|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional, a float dtype for the returned values (default :obj:`jnp.float_`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "dtype must be one of jnp.float_",
+        "dtype is optional and defaults to jnp.float_."
+      ]
+    },
+    "axis": {
+      "type": "int|callable",
+      "size": "",
+      "default": "-1",
+      "flag": "Optional",
       "description": "the axis or axes along which the function should be computed.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "axis can be either an int or AxisName."
+      ]
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },

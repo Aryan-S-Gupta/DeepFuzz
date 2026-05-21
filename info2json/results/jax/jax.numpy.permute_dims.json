@@ -10,18 +10,20 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axes": {
-      "type": "tuple",
+      "type": "int|tuple",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "tuple of integers in range ``[0, a.ndim)`` specifying the axes permutation.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "elements in range [0, a.ndim)"
+        "each value must be in range ``[0, a.ndim)``"
       ]
     }
   },

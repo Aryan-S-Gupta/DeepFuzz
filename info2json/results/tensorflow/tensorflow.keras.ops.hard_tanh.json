@@ -11,14 +11,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must have numeric data type",
-        "x values must be within the range (-∞, -1) U [-1, 1] U (1, ∞)"
+        "x < -1 maps to -1, x in [-1, 1] maps to x, and x > 1 maps to 1."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "Output tensor of same shape as `x` where values are clamped between -1 and 1."
   },
   "constraints": []

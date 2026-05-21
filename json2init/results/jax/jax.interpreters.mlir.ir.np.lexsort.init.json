@@ -1,0 +1,113 @@
+{
+  "api_full_name": "jax.interpreters.mlir.ir.np.lexsort",
+  "api_name": "lexsort",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "import_path": "jax.interpreters.mlir.ir.np.lexsort",
+  "backend": "jax",
+  "params": {
+    "keys": {
+      "name": "keys",
+      "spec": {
+        "type": "tensor",
+        "size": "2D",
+        "default": "",
+        "flag": "Required",
+        "description": "(k, m, n, ...) array-like The `k` keys to be sorted. The *last* key (e.g, the last row if `keys` is a 2D array) is the primary sort key. Each element of `keys` along the zeroth axis must be an array-like object of the same shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "keys must be 2-D"
+        ]
+      },
+      "chosen_type": "tensor",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "fill": 1.0,
+        "device": "cpu",
+        "backend": "jax"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int|sequence",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "int, optional Axis to be indirectly sorted. By default, sort over the last axis of each sequence. Separate slices along `axis` sorted over independently; see last example.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "ints",
+    "description": "------- (m, n, ...) ndarray of ints Array of indices that sort the keys along the specified axis."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        2
+      ],
+      "dtype": "int64",
+      "size": 2,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.interpreters.mlir.ir.np.lexsort.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

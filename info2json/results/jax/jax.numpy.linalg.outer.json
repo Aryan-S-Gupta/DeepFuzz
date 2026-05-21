@@ -10,10 +10,9 @@
       "description": "array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have the same shape",
-        "x1 and x2 cannot be empty",
-        "x1 and x2 can only be 1-dimensional arrays"
+        "x1.shape == x2.shape"
       ]
     },
     "x2": {
@@ -24,10 +23,9 @@
       "description": "array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have the same shape",
-        "x1 and x2 cannot be empty",
-        "x1 and x2 can only be 1-dimensional arrays"
+        "x1.shape == x2.shape"
       ]
     }
   },
@@ -37,8 +35,6 @@
     "description": "array containing the outer product of ``x1`` and ``x2``"
   },
   "constraints": [
-    "x1 and x2 must have the same shape",
-    "x1 and x2 cannot be empty",
-    "x1 and x2 can only be 1-dimensional arrays"
+    "x1.shape == x2.shape"
   ]
 }

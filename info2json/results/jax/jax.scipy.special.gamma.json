@@ -1,0 +1,28 @@
+{
+  "api_name": "gamma",
+  "module_path": "jax.scipy.special",
+  "params": {
+    "x": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "arraylike, real or complex valued. Complex inputs use a Lanczos approximation with reflection formula.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Can be either real or complex number(s)"
+      ]
+    }
+  },
+  "output": {
+    "type": "callable|tensor",
+    "numbers": "complex-valued if input is complex, real otherwise",
+    "description": "array containing the values of the gamma function. For complex inputs, the output is complex-valued."
+  },
+  "constraints": [
+    "For negative integers or non-positive numbers, 'nan+nanj' is returned",
+    "If either real or imaginary component of input is NaN, 'nan+nanj' is returned"
+  ]
+}

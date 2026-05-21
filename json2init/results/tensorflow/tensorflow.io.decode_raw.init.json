@@ -15,7 +15,9 @@
         "description": "Each element of the input Tensor is converted to an array of bytes. Currently, this must be a tensor of strings (bytes), although semantically the operation should support any input.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "If set, fixed_length must be specified if the elements of input_bytes are of variable length."
+        ]
       },
       "chosen_type": "string",
       "include_in_base_call": true,
@@ -27,7 +29,14 @@
         "string_replace",
         "string_empty"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "out_type": {
       "name": "out_type",
@@ -46,7 +55,9 @@
           "uint16"
         ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "half, float, double, int32, uint16, uint8, int16, int8, int64"
+        ]
       },
       "chosen_type": "dtype",
       "include_in_base_call": true,
@@ -56,70 +67,85 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "type_switch"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "little_endian": {
       "name": "little_endian",
       "spec": {
-        "type": "",
+        "type": "bool",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "True",
+        "flag": "Optional",
         "description": "Whether the `input_bytes` data is in little-endian format. Data will be converted into host byte order if necessary.",
-        "dtype_candidates": [],
+        "dtype_candidates": [
+          "bool"
+        ],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "If little_endian is not specified, data will be converted into host byte order if necessary."
+        ]
       },
-      "chosen_type": "whether the `input_bytes` data is in little-endian format. data will be converted into host byte order if necessary.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: whether the `input_bytes` data is in little-endian format. data will be converted into host byte order if necessary."
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "fixed_length": {
       "name": "fixed_length",
       "spec": {
-        "type": "string",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "If set, the first `fixed_length` bytes of each element will be converted. Data will be zero-padded or truncated to the specified length. `fixed_length` must be a multiple of the size of `out_type`. `fixed_length` must be specified if the elements of `input_bytes` are of variable length.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "string",
-      "include_in_base_call": true,
-      "base_seed_spec": {
-        "kind": "literal",
-        "value": "fixed_length"
-      },
-      "mutation_rules": [
-        "enum_switch",
-        "string_replace",
-        "string_empty"
-      ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
+        "type": "string|int",
         "size": "",
         "default": "",
         "flag": "Optional",
-        "description": "A name for the operation (optional).",
+        "description": "If set, the first `fixed_length` bytes of each element will be converted. Data will be zero-padded or truncated to the specified length. `fixed_length` must be a multiple of the size of `out_type`. `fixed_length` must be specified if the elements of `input_bytes` are of variable length.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "Must be a multiple of the size of out_type.",
+          "If set, fixed_length must be specified if the elements of input_bytes are of variable length."
+        ]
       },
-      "chosen_type": "a name for the operation (optional).",
+      "chosen_type": "int",
       "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -127,15 +153,69 @@
     "numbers": "1",
     "description": "A `Tensor` object storing the decoded bytes."
   },
-  "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'little_endian' unresolved: unhandled chosen type: whether the `input_bytes` data is in little-endian format. data will be converted into host byte order if necessary."
+  "constraints": [
+    "If set, fixed_length must be specified if the elements of input_bytes are of variable length."
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        1
+      ],
+      "dtype": "float32",
+      "numel": 1,
+      "preview": [
+        7.713536684941306e+31
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "input_bytes",
+      "out_type"
+    ],
+    "skipped_optional": [
+      "little_endian",
+      "fixed_length"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "out_type is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(out_type_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(fixed_length_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.decode_raw.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

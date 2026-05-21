@@ -18,7 +18,7 @@
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "One of \"CONSTANT\", \"REFLECT\", or \"SYMMETRIC\" (case-insensitive)",
       "dtype_candidates": [],
       "enum_values": [
@@ -26,27 +26,21 @@
         "REFLECT",
         "SYMMETRIC"
       ],
-      "constraints": []
+      "constraints": [
+        "mode must be one of CONSTANT, REFLECT, SYMMETRIC"
+      ]
     },
     "constant_values": {
       "type": "number|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
+      "size": "scalar",
+      "default": "0",
+      "flag": "Optional",
       "description": "In \"CONSTANT\" mode, the scalar pad value to use. Must be same type as `tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "constant_values must be one of CONSTANT"
+      ]
     }
   },
   "output": {

@@ -11,14 +11,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape can be anything",
-        "if -3 <= x <= 3, then output = x * (x + 3) / 6"
+        "If -3 <= x[i] <= 3, output[i] = (x[i] * (x[i] + 3)) / 6. Otherwise, output[i] = x[i]."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": []

@@ -1,0 +1,70 @@
+{
+  "api_name": "gather_nd",
+  "module_path": "tensorflow",
+  "params": {
+    "params": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. The tensor from which to gather values.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "The tensor from which to gather values."
+      ]
+    },
+    "indices": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. Index tensor.",
+      "dtype_candidates": [
+        "int32",
+        "int64"
+      ],
+      "enum_values": [
+        "int32",
+        "int64"
+      ],
+      "constraints": [
+        "Index tensor. Must be one of the following types: int32, int64.",
+        "indices must be one of int32, int64"
+      ]
+    },
+    "batch_dims": {
+      "type": "int|number|tensor",
+      "size": "scalar",
+      "default": "0",
+      "flag": "Optional",
+      "description": "An integer or a scalar 'Tensor'. The number of batch dimensions.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "The number of batch dimensions."
+      ]
+    },
+    "bad_indices_policy": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A string. If `\"\"` or `\"DEFAULT\"`, the default behavior is used (error on CPU and ignore on GPU). If `\"IGNORE\"`, the bad indices are ignored and 0 is stored in the corresponding output value. If `\"ERROR\"`, an error is raised. Accelerators generally don't support `\"ERROR\"`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "A string. If \"\" or \"DEFAULT\", the default behavior is used (error on CPU and ignore on GPU). If \"IGNORE\", the bad indices are ignored and 0 is stored in the corresponding output value. If \"ERROR\", an error is raised. Accelerators generally don't support \"ERROR\".",
+        "bad_indices_policy must be one of IGNORE, ERROR, CPU, GPU"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "A `Tensor`. Has the same type as `params`."
+  },
+  "constraints": [
+    "x and y must have broadcast-compatible shapes (implicit, rule 13)"
+  ]
+}

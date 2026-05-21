@@ -1,0 +1,26 @@
+{
+  "api_name": "eig",
+  "module_path": "torch.storage.np.linalg",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(..., M, M) array Matrices for which the eigenvalues and right eigenvectors will be computed",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape must match expected dimensions",
+        "input a must be a complex or real Hermitian (conjugate symmetric) array"
+      ]
+    }
+  },
+  "output": {
+    "type": "float|tensor",
+    "numbers": "2",
+    "description": "------- A namedtuple with the following attributes: (..., M) array The eigenvalues, each repeated according to its multiplicity. The eigenvalues are not necessarily ordered. The resulting array will be of complex type, unless the imaginary part is zero in which case it will be cast to a real type. When `a` is real the resulting eigenvalues will be real (0 imaginary part) or occur in conjugate pairs eigenvectors : (..., M, M) array The normalized (unit \"length\") eigenvectors, such that the column ``eigenvectors[:,i]`` is the eigenvector corresponding to the eigenvalue ``eigenvalues[i]``."
+  },
+  "constraints": []
+}

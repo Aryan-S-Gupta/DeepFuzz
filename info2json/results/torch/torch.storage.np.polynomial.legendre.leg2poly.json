@@ -1,0 +1,29 @@
+{
+  "api_name": "leg2poly",
+  "module_path": "torch.storage.np.polynomial.legendre",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array containing the Legendre series coefficients, ordered from lowest order term to highest.",
+      "dtype_candidates": [
+        "float32",
+        "float64"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c must be 1-D",
+        "c elements dtype must be float32 or float64"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "float64",
+    "description": "------- ndarray 1-D array containing the coefficients of the equivalent polynomial (relative to the \"standard\" basis) ordered from lowest order term to highest."
+  },
+  "constraints": []
+}

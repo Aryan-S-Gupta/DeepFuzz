@@ -10,8 +10,9 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes"
+        "x1 and x2 must have same shape or be broadcast compatible"
       ]
     },
     "x2": {
@@ -22,17 +23,18 @@
       "description": "input array or scalar. x1 and x2 must either have same shape or be broadcast compatible.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have broadcast-compatible shapes"
+        "x1 and x2 must have same shape or be broadcast compatible"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "An array containing the element-wise minimum of x1 and x2."
   },
   "constraints": [
-    "x1 and x2 must have broadcast-compatible shapes"
+    "x1 and x2 must have same shape or be broadcast compatible"
   ]
 }

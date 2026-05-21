@@ -5,42 +5,48 @@
     "a": {
       "type": "tensor",
       "size": "",
-      "default": "N/A",
+      "default": "",
       "flag": "Required",
       "description": "input array, of shape ``(..., N, N)``",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape must be at least 2-D"
+        "input array a must have at least 2 dimensions"
       ]
     },
     "overwrite_a": {
-      "type": "unused",
+      "type": "bool",
       "size": "",
-      "default": "N/A",
+      "default": "False",
       "flag": "Optional",
       "description": "unused by JAX",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "ignored if set to any value"
+      ]
     },
     "check_finite": {
-      "type": "unused",
+      "type": "bool",
       "size": "",
-      "default": "N/A",
+      "default": "True",
       "flag": "Optional",
       "description": "unused by JAX",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "ignored if set to any value"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "Determinant of shape ``a.shape[:-2]``"
   },
-  "constraints": [
-    "input and output shapes match in first two dimensions"
-  ]
+  "constraints": []
 }

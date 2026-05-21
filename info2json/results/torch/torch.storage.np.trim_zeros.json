@@ -1,0 +1,45 @@
+{
+  "api_name": "trim_zeros",
+  "module_path": "torch.storage.np",
+  "params": {
+    "filt": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "trim": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{\"fb\", \"f\", \"b\"}, optional A string with 'f' representing trim from front and 'b' to trim from back. By default, zeros are trimmed on both sides. Front and back refer to the edges of a dimension, with \"front\" referring to the side with the lowest index 0, and \"back\" referring to the highest index (or index -1).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|sequence",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or sequence, optional If None, `filt` is cropped such that the smallest bounding box is returned that still contains all values which are not zero. If an axis is specified, `filt` will be sliced in that dimension only on the sides specified by `trim`. The remaining area will be the smallest that still contains all values wich are not zero.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "sequence|number|tensor",
+    "numbers": "1",
+    "description": "------- ndarray or sequence The result of trimming the input. The number of dimensions and the input data type are preserved."
+  },
+  "constraints": []
+}

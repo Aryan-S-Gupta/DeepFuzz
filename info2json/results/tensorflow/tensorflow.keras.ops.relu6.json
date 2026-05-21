@@ -8,10 +8,12 @@
       "default": "",
       "flag": "Required",
       "description": "Input tensor.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "float32"
+      ],
       "enum_values": [],
       "constraints": [
-        "x.shape is compatible with () or (d1), (d1, d2), (d1, d2, d3), or (d1, d2, d3, d4)"
+        "must be convertible to float32"
       ]
     }
   },
@@ -20,5 +22,7 @@
     "numbers": "float32",
     "description": "A tensor with the same shape as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor has values clipped between 0 and 6"
+  ]
 }

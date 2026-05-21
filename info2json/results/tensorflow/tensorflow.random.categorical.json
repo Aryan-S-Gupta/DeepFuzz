@@ -11,17 +11,25 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape: [batch_size, num_classes]",
-        "logits must be 2-D",
-        "logits tensor must be 2-D"
+        "logits must be 2-D"
       ]
     },
     "num_samples": {
-      "type": "int|number|dtype",
+      "type": "number",
       "size": "0-D",
       "default": "",
       "flag": "Required",
-      "description": "0-D. Number of independent samples to draw for each row slice. dtype: The integer type of the output: `int32` or `int64`. Defaults to `int64`.",
+      "description": "0-D. Number of independent samples to draw for each row slice.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The integer type of the output: `int32` or `int64`. Defaults to `int64`.",
       "dtype_candidates": [
         "int32",
         "int64"
@@ -33,26 +41,16 @@
       "type": "int",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "A Python integer. Used to create a random seed for the distribution. See `tf.random.set_seed` for behavior.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
       "flag": "Optional",
-      "description": "Optional name for the operation.",
+      "description": "A Python integer. Used to create a random seed for the distribution. See `tf.random.set_seed` for behavior.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }
   },
   "output": {
-    "type": "tensor",
-    "numbers": "int32 or int64",
+    "type": "",
+    "numbers": "1",
     "description": "The drawn samples of shape `[batch_size, num_samples]`."
   },
   "constraints": []

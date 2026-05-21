@@ -8,41 +8,53 @@
       "default": "",
       "flag": "Required",
       "description": "A `Tensor`.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "dtype_candidates": [
+        "complex64",
+        "complex128"
+      ],
+      "enum_values": [
+        "True",
+        "a.dtype",
+        "complex64",
+        "complex128"
+      ],
+      "constraints": [
+        "TensorFlow does not support strides, so `transpose` returns a new tensor with different shape than the input.",
+        "If conjugate is `True` and `a.dtype` is either `complex64` or `complex128`, the output tensor's dtype will be complex."
+      ]
     },
     "perm": {
-      "type": "",
+      "type": "vector",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A permutation of the dimensions of `a`. This should be a vector.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "A permutation of the dimensions of `a`. This should be a vector."
+      ]
     },
     "conjugate": {
       "type": "bool",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "Optional bool. Setting it to `True` is mathematically equivalent to tf.math.conj(tf.transpose(input)).",
       "dtype_candidates": [
-        "bool"
+        "bool",
+        "complex64",
+        "complex128"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "enum_values": [
+        "True",
+        "a.dtype",
+        "complex64",
+        "complex128"
+      ],
+      "constraints": [
+        "If conjugate is `True` and `a.dtype` is either `complex64` or `complex128`, the output tensor's dtype will be complex."
+      ]
     }
   },
   "output": {
@@ -50,5 +62,7 @@
     "numbers": "1",
     "description": "A transposed `Tensor`."
   },
-  "constraints": []
+  "constraints": [
+    "If conjugate is `True` and `a.dtype` is either `complex64` or `complex128`, the output tensor's dtype will be complex."
+  ]
 }

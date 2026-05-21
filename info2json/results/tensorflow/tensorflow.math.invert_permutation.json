@@ -17,22 +17,12 @@
         "int64"
       ],
       "constraints": [
-        "Values must include 0",
-        "No duplicate or negative values",
+        "The values must include 0.",
+        "There can be no duplicate values or negative values.",
         "x must be 1-D",
         "x must be one of int32, int64",
-        "x and output must have same type"
+        "The output tensor values must be unique and in the range [0, len(x) - 1]"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

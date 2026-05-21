@@ -10,15 +10,18 @@
       "description": "input array. Must have floating-point type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x must have floating-point type"
+        "Must have floating-point type."
       ]
     }
   },
   "output": {
     "type": "bool|tensor|dtype",
-    "numbers": "same shape as x",
+    "numbers": "boolean",
     "description": "Array of boolean dtype with the same shape as ``x``, containing ``False`` where ``x`` is :math:`\\pm\\infty` or :math:`\\mathit{NaN}`, and ``True`` otherwise."
   },
-  "constraints": []
+  "constraints": [
+    "Input array must have the same shape as output array."
+  ]
 }

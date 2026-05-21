@@ -22,7 +22,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,12 +30,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -56,7 +66,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -64,12 +74,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -78,17 +98,19 @@
       "spec": {
         "type": "",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "False",
+        "flag": "Optional",
         "description": "See `gradients()` documentation for details.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "see `gradients()` documentation for details.",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
       "unresolved_reason": "unhandled chosen type: see `gradients()` documentation for details."
     },
     "aggregation_method": {
@@ -97,35 +119,19 @@
         "type": "",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "See `gradients()` documentation for details.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": []
       },
       "chosen_type": "see `gradients()` documentation for details.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: see `gradients()` documentation for details."
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "'hessians'",
-        "flag": "Optional",
-        "description": "Optional name to use for grouping all the gradient ops together. defaults to 'hessians'.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "optional name to use for grouping all the gradient ops together. defaults to 'hessians'.",
       "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: optional name to use for grouping all the gradient ops together. defaults to 'hessians'."
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
+      "unresolved_reason": "unhandled chosen type: see `gradients()` documentation for details."
     }
   },
   "output": {
@@ -134,15 +140,25 @@
     "description": "A list of Hessian matrices of `sum(ys)` for each `x` in `xs`."
   },
   "constraints": [],
-  "spec_ready": false,
+  "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "required param 'gate_gradients' unresolved: unhandled chosen type: see `gradients()` documentation for details.",
-    "required param 'aggregation_method' unresolved: unhandled chosen type: see `gradients()` documentation for details."
+    "smoke test failed: tf.gradients is not supported when eager execution is enabled. Use tf.GradientTape instead."
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "RuntimeError",
+    "error": "tf.gradients is not supported when eager execution is enabled. Use tf.GradientTape instead.",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gradients_impl.py\", line 485, in HessiansV2\n    return hessians(\n        ys,\n    ...<3 lines>...\n        gate_gradients=gate_gradients,\n        aggregation_method=aggregation_method)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gradients_impl.py\", line 428, in hessians\n    _gradients = gradients(ys, xs, **kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gradients_impl.py\", line 181, in gradients\n    return gradients_util._GradientsHelper(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        ys, xs, grad_ys, name, colocate_gradients_with_ops,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        gate_gradients, aggregation_method, stop_gradients,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        unconnected_gradients)\n        ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gradients_util.py\", line 521, in _GradientsHelper\n    raise RuntimeError(\"tf.gradients is not supported when eager execution \"\n                       \"is enabled. Use tf.GradientTape instead.\")\nRuntimeError: tf.gradients is not supported when eager execution is enabled. Use tf.GradientTape instead.\n"
+  },
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.hessians.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

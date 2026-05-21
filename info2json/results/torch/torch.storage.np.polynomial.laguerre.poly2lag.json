@@ -1,0 +1,27 @@
+{
+  "api_name": "poly2lag",
+  "module_path": "torch.storage.np.polynomial.laguerre",
+  "params": {
+    "pol": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array containing the polynomial coefficients",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be 1-D",
+        "pol must be 1-D",
+        "poly2lag(pol) must be called with a valid 1-D array"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "ndarray",
+    "description": "------- ndarray 1-D array containing the coefficients of the equivalent Laguerre series."
+  },
+  "constraints": []
+}

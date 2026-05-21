@@ -10,9 +10,7 @@
       "description": "input array to reshape",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "shape must match the size of the input array a"
-      ]
+      "constraints": []
     },
     "shape": {
       "type": "int|sequence|tensor|any",
@@ -23,28 +21,35 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "shape must be one of -1",
-        "shape must match the size of the input array a"
+        "shape must be one of -1"
       ]
     },
     "order": {
-      "type": "string",
+      "type": "",
       "size": "",
-      "default": "\"C\"",
+      "default": "",
       "flag": "Optional",
       "description": "``'F'`` or ``'C'``, specifies whether the reshape should apply column-major (fortran-style, ``\"F\"``) or row-major (C-style, ``\"C\"``) order; default is ``\"C\"``. JAX does not support ``order=\"A\"``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must be 'F' or 'C'"
-      ]
+      "constraints": []
     },
     "copy": {
-      "type": "unused",
+      "type": "",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "unused by JAX; JAX always returns a copy, though under JIT the compiler may optimize such copies away.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "out_sharding": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -55,7 +60,5 @@
     "numbers": "1",
     "description": "reshaped copy of input array with the specified shape."
   },
-  "constraints": [
-    "shape must match the size of the input array a"
-  ]
+  "constraints": []
 }

@@ -11,22 +11,31 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x cannot be None"
+        "x and dtype must be machine-readable types."
       ]
     },
     "axis": {
-      "type": "tensor|dtype",
+      "type": "int",
       "size": "",
-      "default": "x",
+      "default": "",
       "flag": "Optional",
-      "description": "Axis along which the cumulative sum is computed. By default the input is flattened. dtype: dtype of returned tensor. Defaults to x.dtype.",
-      "dtype_candidates": [
-        "int32",
-        "int64"
-      ],
+      "description": "Axis along which the cumulative sum is computed. By default the input is flattened.",
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(input) <= axis < rank(input)"
+        "If provided, -rank(input) <= axis < rank(input)"
+      ]
+    },
+    "dtype": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "dtype of returned tensor. Defaults to x.dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "x and dtype must be machine-readable types."
       ]
     }
   },
@@ -35,5 +44,7 @@
     "numbers": "1",
     "description": "Output tensor."
   },
-  "constraints": []
+  "constraints": [
+    "x and dtype must be machine-readable types."
+  ]
 }

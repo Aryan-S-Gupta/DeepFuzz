@@ -1,0 +1,26 @@
+{
+  "api_name": "matrix_transpose",
+  "module_path": "torch.storage.np.core.fromnumeric",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "shape (..., M, N)",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array having shape (..., M, N) and whose two innermost dimensions form ``MxN`` matrices.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "2 innermost dimensions must form MxN matrices",
+        "x must have at least 3 dimensions"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array containing the transpose for each matrix and having shape (..., N, M)."
+  },
+  "constraints": []
+}

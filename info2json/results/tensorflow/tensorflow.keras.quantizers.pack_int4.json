@@ -16,6 +16,29 @@
       "constraints": [
         "arr must be one of int8, uint8"
       ]
+    },
+    "axis": {
+      "type": "tensor",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "The axis along which to pack the tensor. Defaults to 0.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The data type of the input and packed tensor. Can be `\"int8\"` or `\"uint8\"`. Defaults to `\"int8\"`.",
+      "dtype_candidates": [
+        "int8",
+        "uint8"
+      ],
+      "enum_values": [],
+      "constraints": []
     }
   },
   "output": {

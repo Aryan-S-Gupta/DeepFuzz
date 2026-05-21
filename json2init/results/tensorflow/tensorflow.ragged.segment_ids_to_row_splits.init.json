@@ -1,0 +1,178 @@
+{
+  "api_full_name": "tensorflow.ragged.segment_ids_to_row_splits",
+  "api_name": "segment_ids_to_row_splits",
+  "module_path": "tensorflow.ragged",
+  "import_path": "tensorflow.ragged.segment_ids_to_row_splits",
+  "backend": "tensorflow",
+  "params": {
+    "segment_ids": {
+      "name": "segment_ids",
+      "spec": {
+        "type": "int|tensor",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "A 1-D integer Tensor.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "segment_ids must be 1-D"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2
+        ],
+        "dtype": "int32",
+        "values": [
+          0,
+          0
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "num_segments": {
+      "name": "num_segments",
+      "spec": {
+        "type": "int|number",
+        "size": "scalar",
+        "default": "",
+        "flag": "Optional",
+        "description": "A scalar integer indicating the number of segments. Defaults to `max(segment_ids) + 1` (or zero if `segment_ids` is empty).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "out_type": {
+      "name": "out_type",
+      "spec": {
+        "type": "dtype",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The dtype for the return value. Defaults to `segment_ids.dtype`, or `tf.int64` if `segment_ids` does not have a dtype.",
+        "dtype_candidates": [
+          "int64"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "out_type must be one of segment_ids.dtype, tf.int64"
+        ]
+      },
+      "chosen_type": "dtype",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "dtype",
+        "value": "float32"
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "int|tensor",
+    "numbers": "1",
+    "description": "A sorted 1-D integer Tensor, with `shape=[num_segments + 1]`."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2
+      ],
+      "dtype": "int32",
+      "numel": 2,
+      "preview": [
+        0,
+        2
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "segment_ids"
+    ],
+    "skipped_optional": [
+      "num_segments",
+      "out_type"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "out_type is a supported dtype object"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(out_type_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/tensorflow/tensorflow.ragged.segment_ids_to_row_splits.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

@@ -1,0 +1,56 @@
+{
+  "api_name": "choose",
+  "module_path": "torch.storage.np.core.fromnumeric",
+  "params": {
+    "a": {
+      "type": "int|number|tensor|any",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int array This array must contain integers in ``[0, n-1]``, where ``n`` is the number of choices, unless ``mode=wrap`` or ``mode=clip``, in which cases any integers are permissible.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "choices": {
+      "type": "sequence|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of arrays Choice arrays. `a` and all of the choices must be broadcastable to the same shape. If `choices` is itself an array (not recommended), then its outermost dimension (i.e., the one corresponding to ``choices.shape[0]``) is taken as defining the \"sequence\".",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "out": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "array, optional If provided, the result will be inserted into this array. It should be of the appropriate shape and dtype. Note that `out` is always buffered if ``mode='raise'``; use other modes for better performance.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "mode": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{'raise' (default), 'wrap', 'clip'}, optional Specifies how indices outside ``[0, n-1]`` will be treated:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- array The merged result."
+  },
+  "constraints": []
+}

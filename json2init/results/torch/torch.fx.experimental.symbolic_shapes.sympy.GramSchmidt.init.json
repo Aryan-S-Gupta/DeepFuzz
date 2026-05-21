@@ -15,8 +15,10 @@
         "description": "List of Matrix Vectors to be orthogonalized for.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": [
-          "vlist must be a list of matrices."
+          "Elements must be Matrix",
+          "vlist must contain at least one Matrix"
         ]
       },
       "chosen_type": "list",
@@ -29,8 +31,15 @@
       },
       "mutation_rules": [
         "structure_grow",
-        "structure_shrink",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
         "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     },
@@ -39,25 +48,30 @@
       "spec": {
         "type": "bool",
         "size": "",
-        "default": "optional",
+        "default": "False",
         "flag": "Optional",
         "description": "Bool, optional If true, return an orthonormal basis.",
         "dtype_candidates": [
           "bool"
         ],
         "enum_values": [],
-        "constraints": [
-          "orthonormal is optional and defaults to an empty value if not provided."
-        ]
+        "case_insensitive": false,
+        "constraints": []
       },
       "chosen_type": "bool",
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -83,10 +97,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/sympy/matrices/dense.py\", line 833, in GramSchmidt\n    return MutableDenseMatrix.orthogonalize(\n  File \"/usr/local/lib/python3.10/dist-packages/sympy/matrices/matrixbase.py\", line 3321, in orthogonalize\n    return _orthogonalize(cls, *vecs, **kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/sympy/matrices/subspaces.py\", line 158, in _orthogonalize\n    all_row_vecs = (vecs[0].rows == 1)\nAttributeError: 'int' object has no attribute 'rows'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/sympy/matrices/dense.py\", line 833, in GramSchmidt\n    return MutableDenseMatrix.orthogonalize(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        *vlist, normalize=orthonormal, rankcheck=True\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/sympy/matrices/matrixbase.py\", line 3321, in orthogonalize\n    return _orthogonalize(cls, *vecs, **kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/sympy/matrices/subspaces.py\", line 158, in _orthogonalize\n    all_row_vecs = (vecs[0].rows == 1)\n                    ^^^^^^^^^^^^\nAttributeError: 'int' object has no attribute 'rows'\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.GramSchmidt.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

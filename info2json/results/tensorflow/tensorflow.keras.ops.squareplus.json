@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x.shape is not None"
+        "The operation takes two parameters: x and b."
       ]
     },
     "b": {
@@ -23,14 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "b >= 0"
+        "The operation takes two parameters: x and b."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "The operation takes two parameters: x and b."
+  ]
 }

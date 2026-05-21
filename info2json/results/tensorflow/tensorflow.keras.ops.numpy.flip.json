@@ -13,15 +13,17 @@
       "constraints": []
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "Axis or axes along which to flip the tensor. The default, `axis=None`, will flip over all of the axes of the input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must be in range [-rank(input), rank(input))"
+        "(optional)",
+        "axis must be an integer.",
+        "If axis is not provided, all axes will be flipped."
       ]
     }
   },
@@ -30,5 +32,7 @@
     "numbers": "1",
     "description": "Output tensor with entries of `axis` reversed."
   },
-  "constraints": []
+  "constraints": [
+    "The shape of the input tensor is preserved after flipping."
+  ]
 }

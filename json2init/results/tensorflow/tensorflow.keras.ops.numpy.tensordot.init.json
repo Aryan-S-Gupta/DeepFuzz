@@ -15,16 +15,14 @@
         "description": "First tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "x1 and x2 must be broadcast-compatible shapes"
-        ]
+        "constraints": []
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -32,12 +30,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -51,16 +59,14 @@
         "description": "Second tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "x1 and x2 must be broadcast-compatible shapes"
-        ]
+        "constraints": []
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -68,12 +74,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -82,25 +98,38 @@
       "spec": {
         "type": "int|list|sequence",
         "size": "",
-        "default": "",
-        "flag": "Required",
+        "default": "2",
+        "flag": "Optional",
         "description": "- If an integer, N, sum over the last N axes of `x1` and the first N axes of `x2` in order. The sizes of the corresponding axes must match. - Or, a list of axes to be summed over, first sequence applying to `x1`, second to `x2`. Both sequences must be of the same length.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "axes must be an integer or a list of integers"
+          "If an integer, -rank(input) <= axis < rank(input)",
+          "If a list, both sequences must be of the same length"
         ]
       },
-      "chosen_type": "int",
-      "include_in_base_call": true,
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": 1
+        "value": [
+          0
+        ],
+        "as_tuple": false
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
       ],
       "unresolved_reason": ""
     }
@@ -111,29 +140,27 @@
     "description": "The tensor dot product of the inputs."
   },
   "constraints": [
-    "x1 and x2 must be broadcast-compatible shapes"
+    "x and y must have broadcast-compatible shapes"
   ],
   "spec_ready": true,
-  "ready_for_stage4": true,
-  "readiness_reasons": [],
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: `axes` must not be larger than the number of dimensions of tensor [1. 1.].  Received 2, vs tensor dimensions 1."
+  ],
   "smoke_test": {
     "attempted": true,
-    "success": true,
-    "classification": "success",
-    "error_type": "",
-    "error": "",
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "ValueError",
+    "error": "`axes` must not be larger than the number of dimensions of tensor [1. 1.].  Received 2, vs tensor dimensions 1.",
     "materialization_reasons": [],
-    "result_summary": {
-      "python_type": "EagerTensor",
-      "shape": [],
-      "dtype": "float32",
-      "numel": 1,
-      "has_nan": false
-    },
-    "runtime_supported_here": true
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 6438, in tensordot\n    return backend.numpy.tensordot(x1, x2, axes=axes)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2732, in tensordot\n    return tf.cast(tf.tensordot(x1, x2, axes=axes), dtype=result_dtype)\n                   ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/math_ops.py\", line 5409, in _tensordot_axes\n    raise ValueError(f\"`axes` must not be larger than the number of \"\n                     f\"dimensions of tensor {a}.  Received {axes}, vs \"\n                     f\"tensor dimensions {a_shape.ndims}.\")\nValueError: `axes` must not be larger than the number of dimensions of tensor [1. 1.].  Received 2, vs tensor dimensions 1.\n"
   },
-  "runtime_supported_here": true,
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.tensordot.json",
-  "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

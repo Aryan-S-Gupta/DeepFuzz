@@ -3,14 +3,28 @@
   "module_path": "tensorflow.keras.ops.numpy",
   "params": {
     "x": {
-      "type": "tensor|dtype",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "Input tensor. dtype: Overrides the data type of the result.",
+      "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output have broadcast-compatible shapes"
+      ]
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "Overrides the data type of the result.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "Optional"
+      ]
     }
   },
   "output": {

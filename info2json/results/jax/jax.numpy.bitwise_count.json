@@ -10,15 +10,15 @@
       "description": "Input array, only accepts integer subtypes",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must be 1D or 2D",
-        "x cannot be negative"
+        "x accepts integer subtypes"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape as x",
+    "numbers": "uint8",
     "description": "An array-like object containing the binary 1 bit counts of the absolute value of each element in ``x``, with the same shape as ``x`` of dtype uint8."
   },
   "constraints": []

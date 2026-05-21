@@ -29,11 +29,23 @@
     "rowvar": {
       "type": "bool",
       "size": "",
-      "default": "",
+      "default": "True",
       "flag": "Optional",
       "description": "bool, optional If `rowvar` is True (default), then each row represents a variable, with observations in the columns. Otherwise, the relationship is transposed: each column represents a variable, while the rows contain observations.",
       "dtype_candidates": [
         "bool"
+      ],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "float",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "data-type, optional Data-type of the result. By default, the return data-type will have at least `numpy.float64` precision.",
+      "dtype_candidates": [
+        "float64"
       ],
       "enum_values": [],
       "constraints": []

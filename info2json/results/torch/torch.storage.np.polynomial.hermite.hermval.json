@@ -1,0 +1,34 @@
+{
+  "api_name": "hermval",
+  "module_path": "torch.storage.np.polynomial.hermite",
+  "params": {
+    "x": {
+      "type": "tuple|list|number|tensor",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like, compatible object If `x` is a list or tuple, it is converted to an ndarray, otherwise it is left unchanged and treated as a scalar. In either case, `x` or its elements must support addition and multiplication with themselves and with the elements of `c`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "c": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array of coefficients ordered so that the coefficients for terms of degree n are contained in c[n]. If `c` is multidimensional the remaining indices enumerate multiple polynomials. In the two dimensional case the coefficients may be thought of as stored in the columns of `c`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray, algebra_like The shape of the return value is described above."
+  },
+  "constraints": []
+}

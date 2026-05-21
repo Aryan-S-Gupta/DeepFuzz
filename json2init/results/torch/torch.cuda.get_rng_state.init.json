@@ -1,0 +1,67 @@
+{
+  "api_full_name": "torch.cuda.get_rng_state",
+  "api_name": "get_rng_state",
+  "module_path": "torch.cuda",
+  "import_path": "torch.cuda.get_rng_state",
+  "backend": "torch",
+  "params": {
+    "device": {
+      "name": "device",
+      "spec": {
+        "type": "int|device",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "The device to return the RNG state of. Default: ``'cuda'`` (i.e., ``torch.device('cuda')``, the current CUDA device).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": ""
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [
+    "The function eagerly initializes CUDA."
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": false,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "environment_unsupported",
+    "error_type": "AssertionError",
+    "error": "Torch not compiled with CUDA enabled",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/random.py\", line 33, in get_rng_state\n    _lazy_init()\n    ~~~~~~~~~~^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/cuda/__init__.py\", line 471, in _lazy_init\n    raise AssertionError(\"Torch not compiled with CUDA enabled\")\nAssertionError: Torch not compiled with CUDA enabled\n"
+  },
+  "runtime_supported_here": false,
+  "source_spec_json_path": "info2json/results/torch/torch.cuda.get_rng_state.json",
+  "stage3_status": "env_only",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

@@ -1,0 +1,68 @@
+{
+  "api_name": "lagder",
+  "module_path": "torch.storage.np.polynomial.laguerre",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array of Laguerre series coefficients. If `c` is multidimensional the different axis correspond to different variables with the degree in each axis given by the corresponding index.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "If c is multidimensional, the different axis correspond to different variables with the degree in each axis given by the corresponding index.",
+        "c, m, scl, axis are all optional parameters."
+      ]
+    },
+    "m": {
+      "type": "int|number",
+      "size": "",
+      "default": "1",
+      "flag": "Optional",
+      "description": "int, optional Number of derivatives taken, must be non-negative. (Default: 1)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "m must be non-negative",
+        "c, m, scl, axis are all optional parameters."
+      ]
+    },
+    "scl": {
+      "type": "number",
+      "size": "scalar",
+      "default": "1",
+      "flag": "Optional",
+      "description": "scalar, optional Each differentiation is multiplied by `scl`. The end result is multiplication by ``scl**m``. This is for use in a linear change of variable. (Default: 1)",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c, m, scl, axis are all optional parameters."
+      ]
+    },
+    "axis": {
+      "type": "int",
+      "size": "",
+      "default": "0",
+      "flag": "Optional",
+      "description": "int, optional Axis over which the derivative is taken. (Default: 0).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c, m, scl, axis are all optional parameters."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Laguerre series of the derivative."
+  },
+  "constraints": [
+    "c, m, scl, axis are all optional parameters."
+  ]
+}

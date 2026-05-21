@@ -15,7 +15,7 @@
     "limit": {
       "type": "sequence|number|tensor",
       "size": "0-D",
-      "default": "the value of `start` while the first entry of the range",
+      "default": "",
       "flag": "Optional",
       "description": "A 0-D `Tensor` (scalar). Upper limit of sequence, exclusive. If None, defaults to the value of `start` while the first entry of the range defaults to 0.",
       "dtype_candidates": [],
@@ -23,21 +23,21 @@
       "constraints": []
     },
     "delta": {
-      "type": "number|tensor|dtype",
+      "type": "number|tensor",
       "size": "0-D",
-      "default": "",
-      "flag": "Required",
-      "description": "A 0-D `Tensor` (scalar). Number that increments `start`. Defaults to 1. dtype: The type of the elements of the resulting tensor.",
+      "default": "1",
+      "flag": "Optional",
+      "description": "A 0-D `Tensor` (scalar). Number that increments `start`. Defaults to 1.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "",
+    "dtype": {
+      "type": "tensor",
       "size": "",
-      "default": "\"range\"",
+      "default": "",
       "flag": "Optional",
-      "description": "A name for the operation. Defaults to \"range\".",
+      "description": "The type of the elements of the resulting tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

@@ -1,0 +1,180 @@
+{
+  "schema_version": "2.0",
+  "target_library": "tensorflow",
+  "target_version": "2.21.0",
+  "bugs": [
+    {
+      "bug_id": "bug-16cdcde9a1cd7bcd",
+      "api": "tensorflow.keras.ops.identity",
+      "stage": "mutation",
+      "category": "timeout_or_hang",
+      "target_library": "tensorflow",
+      "target_version": "2.21.0",
+      "testcase": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.identity.results.json",
+      "input": "json2init/results/tensorflow/tensorflow.keras.ops.identity.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/tensorflow/tensorflow.keras.ops.identity.init.json --results-json stage4/results/tensorflow-thesis-all-coverage/repro/repro_tensorflow.keras.ops.identity.init.json --mutation-budget 32 --seed 1527",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured\n  self.coverage._warn(\"No contexts were measured\")\n",
+      "traceback": "isolated execution timed out after 45s",
+      "signature": "16cdcde9a1cd7bcd",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T16:48:39Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    },
+    {
+      "bug_id": "bug-ab0c2500a68de51d",
+      "api": "tensorflow.keras.ops.numpy.identity",
+      "stage": "mutation",
+      "category": "timeout_or_hang",
+      "target_library": "tensorflow",
+      "target_version": "2.21.0",
+      "testcase": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.numpy.identity.results.json",
+      "input": "json2init/results/tensorflow/tensorflow.keras.ops.numpy.identity.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/tensorflow/tensorflow.keras.ops.numpy.identity.init.json --results-json stage4/results/tensorflow-thesis-all-coverage/repro/repro_tensorflow.keras.ops.numpy.identity.init.json --mutation-budget 32 --seed 1672",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured\n  self.coverage._warn(\"No contexts were measured\")\n",
+      "traceback": "isolated execution timed out after 45s",
+      "signature": "ab0c2500a68de51d",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T16:48:39Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    },
+    {
+      "bug_id": "bug-ec0ffd71f1f9d6d8",
+      "api": "tensorflow.random.poisson",
+      "stage": "mutation",
+      "category": "timeout_or_hang",
+      "target_library": "tensorflow",
+      "target_version": "2.21.0",
+      "testcase": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.random.poisson.results.json",
+      "input": "json2init/results/tensorflow/tensorflow.random.poisson.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/tensorflow/tensorflow.random.poisson.init.json --results-json stage4/results/tensorflow-thesis-all-coverage/repro/repro_tensorflow.random.poisson.init.json --mutation-budget 32 --seed 1984",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.\n...[truncated]",
+      "traceback": "isolated execution timed out after 45s",
+      "signature": "ec0ffd71f1f9d6d8",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T16:48:39Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    }
+  ],
+  "candidate_bugs": [
+    {
+      "bug_id": "bug-16cdcde9a1cd7bcd",
+      "api": "tensorflow.keras.ops.identity",
+      "stage": "mutation",
+      "category": "timeout_or_hang",
+      "target_library": "tensorflow",
+      "target_version": "2.21.0",
+      "testcase": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.identity.results.json",
+      "input": "json2init/results/tensorflow/tensorflow.keras.ops.identity.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/tensorflow/tensorflow.keras.ops.identity.init.json --results-json stage4/results/tensorflow-thesis-all-coverage/repro/repro_tensorflow.keras.ops.identity.init.json --mutation-budget 32 --seed 1527",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured\n  self.coverage._warn(\"No contexts were measured\")\n",
+      "traceback": "isolated execution timed out after 45s",
+      "signature": "16cdcde9a1cd7bcd",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T16:48:39Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    },
+    {
+      "bug_id": "bug-ab0c2500a68de51d",
+      "api": "tensorflow.keras.ops.numpy.identity",
+      "stage": "mutation",
+      "category": "timeout_or_hang",
+      "target_library": "tensorflow",
+      "target_version": "2.21.0",
+      "testcase": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.keras.ops.numpy.identity.results.json",
+      "input": "json2init/results/tensorflow/tensorflow.keras.ops.numpy.identity.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/tensorflow/tensorflow.keras.ops.numpy.identity.init.json --results-json stage4/results/tensorflow-thesis-all-coverage/repro/repro_tensorflow.keras.ops.numpy.identity.init.json --mutation-budget 32 --seed 1672",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/html.py:131: CoverageWarning: No contexts were measured\n  self.coverage._warn(\"No contexts were measured\")\n",
+      "traceback": "isolated execution timed out after 45s",
+      "signature": "ab0c2500a68de51d",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T16:48:39Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    },
+    {
+      "bug_id": "bug-ec0ffd71f1f9d6d8",
+      "api": "tensorflow.random.poisson",
+      "stage": "mutation",
+      "category": "timeout_or_hang",
+      "target_library": "tensorflow",
+      "target_version": "2.21.0",
+      "testcase": "stage4/results/tensorflow-thesis-all-coverage/execution_results/tensorflow.random.poisson.results.json",
+      "input": "json2init/results/tensorflow/tensorflow.random.poisson.init.json",
+      "command_to_reproduce": "python3 -m stage4.stage4_worker --init-path json2init/results/tensorflow/tensorflow.random.poisson.init.json --results-json stage4/results/tensorflow-thesis-all-coverage/repro/repro_tensorflow.random.poisson.init.json --mutation-budget 32 --seed 1984",
+      "stdout_stderr_excerpt": "/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/coverage/inorout.py:577: CoverageWarning: Module tensorflow was previously imported, but not measured (module-not-measured); see https://coverage.readthedocs.io/en/7.13.5/messages.html#warning-module-not-measured\n  self.warn(msg, slug=\"module-not-measured\")\n/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.\n...[truncated]",
+      "traceback": "isolated execution timed out after 45s",
+      "signature": "ec0ffd71f1f9d6d8",
+      "exit_code": -9,
+      "signal": "SIGKILL",
+      "first_seen_at": "2026-05-12T16:48:39Z",
+      "duplicate_of": null,
+      "status": "candidate",
+      "oracle_verdict": "candidate_implementation_bug",
+      "device_oracle": {}
+    }
+  ],
+  "excluded_pipeline_issues": {
+    "count": 0,
+    "summary": "Pipeline/config/coverage/seed failures are excluded from candidate library bugs.",
+    "issues": []
+  },
+  "summary": {
+    "total_candidates": 3,
+    "reproduced": 0,
+    "known_existing_caught": 0,
+    "false_positives": 0,
+    "unresolved": 0,
+    "excluded_pipeline_issues": 0,
+    "valid_candidate_bugs": 3
+  },
+  "environment_metadata": {
+    "target_library": "tensorflow",
+    "target_version": "2.21.0",
+    "python_version": "3.13.12 (main, Feb  3 2026, 17:53:27) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+    "seed": 1337,
+    "mutation_budget": 32,
+    "run_id": "tensorflow-thesis-all",
+    "coverage_method": "python_coverage",
+    "target_module_version": {
+      "available": true,
+      "value": "2.21.0"
+    },
+    "jax_version": {
+      "available": false,
+      "reason": "target library is not jax"
+    },
+    "jaxlib_version": {
+      "available": false,
+      "reason": "target library is not jax"
+    },
+    "jax_backend": {
+      "available": false,
+      "reason": "target library is not jax"
+    },
+    "jax_devices": {
+      "available": false,
+      "reason": "target library is not jax"
+    }
+  },
+  "coverage_method": "python_coverage"
+}

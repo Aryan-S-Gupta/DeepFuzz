@@ -10,9 +10,7 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "data.shape[:len(segment_ids.shape)] should match"
-      ]
+      "constraints": []
     },
     "segment_ids": {
       "type": "tensor",
@@ -22,9 +20,7 @@
       "description": "A N-D tensor containing segment indices for each element in `data`. data.shape[:len(segment_ids.shape)] should match.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "data.shape[:len(segment_ids.shape)] should match"
-      ]
+      "constraints": []
     },
     "num_segments": {
       "type": "int|number",
@@ -51,10 +47,8 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "A tensor containing the max of segments, where each element represents the max of the corresponding segment in `data`."
   },
-  "constraints": [
-    "data.shape[:len(segment_ids.shape)] should match"
-  ]
+  "constraints": []
 }

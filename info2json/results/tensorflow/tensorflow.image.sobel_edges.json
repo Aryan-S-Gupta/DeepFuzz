@@ -13,12 +13,14 @@
         "float64"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "The image(s) must be 2x2 or larger."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "[batch_size, h, w, d, 2]",
     "description": "Tensor holding edge maps for each channel. Returns a tensor with shape [batch_size, h, w, d, 2] where the last two dimensions hold [[dy[0], dx[0]], [dy[1], dx[1]], ..., [dy[d-1], dx[d-1]]] calculated using the Sobel filter."
   },
   "constraints": []

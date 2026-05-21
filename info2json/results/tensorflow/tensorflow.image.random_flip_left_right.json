@@ -11,8 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "image must be 4-D",
-        "If `image` is a 3-D Tensor, its third dimension (width) must be even."
+        "input must be 4-D or 3-D",
+        "image must be 4-D"
       ]
     },
     "seed": {
@@ -24,7 +24,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "`seed` does not affect other random operations in the program when specified."
+        "if provided, must be an integer"
       ]
     }
   },
@@ -33,5 +33,7 @@
     "numbers": "1",
     "description": "A tensor of the same type and shape as `image`."
   },
-  "constraints": []
+  "constraints": [
+    "The output tensor has the same type and shape as the input tensor."
+  ]
 }

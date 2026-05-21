@@ -10,16 +10,16 @@
       "description": "input (float)",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x must be a real number",
-        "-1 < x < 1 for 1/4*(x+1)^2 part"
+        "-1 < x < 1 for sparse_plus(x) to be defined"
       ]
     }
   },
   "output": {
-    "type": "float",
+    "type": "tensor",
     "numbers": "",
-    "description": "The result of sparse_plus(x)"
+    "description": "(x + 1)^2 / 4"
   },
   "constraints": []
 }

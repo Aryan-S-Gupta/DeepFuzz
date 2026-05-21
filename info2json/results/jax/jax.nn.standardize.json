@@ -10,16 +10,18 @@
       "description": "input array to be standardized.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
       "type": "int|tuple",
       "size": "",
-      "default": "the last axis (``-1``)",
+      "default": "-1",
       "flag": "Optional",
       "description": "integer, tuple of integers, or ``None`` (all axes), representing the axes along which to standardize. Defaults to the last axis (``-1``).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "mean": {
@@ -30,6 +32,7 @@
       "description": "optionally specify the mean used for standardization. If not specified, then ``x.mean(axis, where=where)`` will be used.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "variance": {
@@ -40,16 +43,18 @@
       "description": "optionally specify the variance used for standardization. If not specified, then ``x.var(axis, where=where)`` will be used.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "epsilon": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1e-05",
+      "flag": "Optional",
       "description": "correction factor added to variance to avoid division by zero; defaults to ``1E-5``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "where": {
@@ -62,6 +67,7 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

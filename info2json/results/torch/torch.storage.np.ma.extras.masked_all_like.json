@@ -1,0 +1,29 @@
+{
+  "api_name": "masked_all_like",
+  "module_path": "torch.storage.np.ma.extras",
+  "params": {
+    "arr": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray An array describing the shape and dtype of the required MaskedArray.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape and dtype are used to determine output shape and type",
+        "if arr doesn't have a shape attribute, it defaults to an empty ndarray",
+        "dtype of the masked array matches the dtype of `arr`"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- MaskedArray A masked array with all data masked."
+  },
+  "constraints": [
+    "fill_value is np.float64(1e+20)"
+  ]
+}

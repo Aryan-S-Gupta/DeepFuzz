@@ -10,26 +10,24 @@
       "description": "integer tensor, all its values <= maxlen.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "shape: variable"
-      ]
+      "constraints": []
     },
     "maxlen": {
-      "type": "int|number|tensor|dtype",
+      "type": "int|number|tensor",
       "size": "scalar",
-      "default": "the maximum value in `lengths",
+      "default": "",
       "flag": "Optional",
-      "description": "scalar integer tensor, size of last dimension of returned tensor. Default is the maximum value in `lengths`. dtype: output type of the resulting tensor.",
+      "description": "scalar integer tensor, size of last dimension of returned tensor. Default is the maximum value in `lengths`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "string",
+    "dtype": {
+      "type": "tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "name of the op.",
+      "default": "tf.bool",
+      "flag": "Optional",
+      "description": "output type of the resulting tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -37,7 +35,7 @@
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "lengths.shape + (maxlen,)",
+    "numbers": "1",
     "description": "A mask tensor of shape `lengths.shape + (maxlen,)`, cast to specified dtype."
   },
   "constraints": []

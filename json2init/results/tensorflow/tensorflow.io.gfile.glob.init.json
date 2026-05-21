@@ -15,24 +15,34 @@
         "description": "string or iterable of strings. The glob pattern(s).",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "must be a string or iterable of strings",
+          "The returned list will contain filenames if there are any matches for the provided pattern"
+        ]
       },
       "chosen_type": "string",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "literal",
-        "value": "test"
+        "value": "a.*"
       },
       "mutation_rules": [
         "string_replace",
         "string_empty"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
     "type": "list",
-    "numbers": "1",
+    "numbers": "of strings",
     "description": "A list of strings containing filenames that match the given pattern(s)."
   },
   "constraints": [],
@@ -52,8 +62,20 @@
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "pattern"
+    ],
+    "skipped_optional": [],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.gfile.glob.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

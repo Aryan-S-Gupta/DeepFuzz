@@ -8,7 +8,7 @@
     "a": {
       "name": "a",
       "spec": {
-        "type": "",
+        "type": "tensor",
         "size": "",
         "default": "",
         "flag": "Required",
@@ -17,69 +17,177 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "\"coefficient\" matrix of shape `(m",
+      "chosen_type": "tensor",
       "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: \"coefficient\" matrix of shape `(m"
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
+      "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
     },
     "b": {
       "name": "b",
       "spec": {
-        "type": "",
+        "type": "tensor",
         "size": "",
         "default": "",
         "flag": "Required",
         "description": "Ordinate or \"dependent variable\" values, of shape `(M,)` or `(M, K)`. If `b` is two-dimensional, the least-squares solution is calculated for each of the K columns of `b`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "If b is two-dimensional, the least-squares solution is calculated for each of the K columns of b."
+        ]
       },
-      "chosen_type": "ordinate or \"dependent variable\" values",
+      "chosen_type": "tensor",
       "include_in_base_call": true,
-      "base_seed_spec": {},
+      "base_seed_spec": {
+        "kind": "tensor",
+        "shape": [
+          2,
+          2
+        ],
+        "dtype": "float32",
+        "values": [
+          [
+            1.0
+          ],
+          [
+            1.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
+      },
       "mutation_rules": [
-        "enum_switch"
+        "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
-      "unresolved_reason": "unhandled chosen type: ordinate or \"dependent variable\" values"
+      "valid_mutation_rules": [
+        "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": ""
     },
     "rcond": {
       "name": "rcond",
       "spec": {
-        "type": "",
+        "type": "float",
         "size": "",
         "default": "",
-        "flag": "Required",
+        "flag": "Optional",
         "description": "Cut-off ratio for small singular values of `a`. For the purposes of rank determination, singular values are treated as zero if they are smaller than rcond times the largest singular value of `a`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "For the purposes of rank determination, singular values are treated as zero if they are smaller than rcond times the largest singular value of a."
+        ]
       },
-      "chosen_type": "cut-off ratio for small singular values of `a`. for the purposes of rank determination",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
+      "chosen_type": "float",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1.0
+      },
       "mutation_rules": [
-        "enum_switch"
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
       ],
-      "unresolved_reason": "unhandled chosen type: cut-off ratio for small singular values of `a`. for the purposes of rank determination"
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
     }
   },
   "output": {
     "type": "tuple|tensor",
-    "numbers": "multiple",
+    "numbers": "(N,)",
     "description": "Tensor with shape `(N,)` or `(N, K)` containing the least-squares solutions. **NOTE:** The output differs from `numpy.linalg.lstsq`. NumPy returns a tuple with four elements, the first of which being the least-squares solutions and the others being essentially never used. Keras only returns the first value. This is done both to ensure consistency across backends (which cannot be achieved for the other values) and to simplify the API."
   },
-  "constraints": [],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'a' unresolved: unhandled chosen type: \"coefficient\" matrix of shape `(m",
-    "required param 'b' unresolved: unhandled chosen type: ordinate or \"dependent variable\" values",
-    "required param 'rcond' unresolved: unhandled chosen type: cut-off ratio for small singular values of `a`. for the purposes of rank determination"
+  "constraints": [
+    "The output differs from numpy.linalg.lstsq."
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        1
+      ],
+      "dtype": "float32",
+      "numel": 2,
+      "preview": [
+        0.5,
+        0.5
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.linalg.lstsq.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

@@ -15,7 +15,9 @@
         "description": "(Batch of) `float`-like matrix-shaped `Tensor`(s) which are to be pseudo-inverted.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "Batch of"
+        ]
       },
       "chosen_type": "float",
       "include_in_base_call": true,
@@ -26,6 +28,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -41,7 +50,6 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "Default value: `eps * max(rows, cols) * max(singular_val)`",
           "tol must be one of zero"
         ]
       },
@@ -54,6 +62,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -78,47 +93,29 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
         "type_widen"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "string|callable",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "Python `str` prefixed to ops created by this function. Default value: 'matrix_rank'.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": [
-          "Default value: 'matrix_rank'",
-          "name must be one of str, matrix_rank"
-        ]
-      },
-      "chosen_type": "callable",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [
-        "enum_switch"
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
       ],
-      "unresolved_reason": "unsupported base seed type: callable"
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": ""
     }
   },
   "output": {
     "type": "number",
-    "numbers": "1",
+    "numbers": "(Batch of)",
     "description": "(Batch of) `int32` scalars representing the number of non-zero singular values."
   },
-  "constraints": [
-    "matrix_rank output must be 1"
-  ],
+  "constraints": [],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
@@ -133,10 +130,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/linalg/linalg_impl.py\", line 759, in _maybe_validate_matrix\n    raise ValueError('Input `a` must have at least 2 dimensions '\n                     '(saw: {}).'.format(a.shape.rank))\nValueError: Input `a` must have at least 2 dimensions (saw: 0).\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/linalg/linalg_impl.py\", line 759, in _maybe_validate_matrix\n    raise ValueError('Input `a` must have at least 2 dimensions '\n                     '(saw: {}).'.format(a.shape.rank))\nValueError: Input `a` must have at least 2 dimensions (saw: 0).\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.matrix_rank.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

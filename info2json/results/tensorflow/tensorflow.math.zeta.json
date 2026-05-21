@@ -17,11 +17,12 @@
         "float64"
       ],
       "constraints": [
-        "x must be one of float32, float64"
+        "x must be one of float32, float64",
+        "x and q must be Tensors"
       ]
     },
     "q": {
-      "type": "float|tensor",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -29,18 +30,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "q must have the same dtype as x"
+        "q must have the same dtype as x",
+        "x and q must be Tensors"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -48,5 +40,7 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "x and q must be Tensors"
+  ]
 }

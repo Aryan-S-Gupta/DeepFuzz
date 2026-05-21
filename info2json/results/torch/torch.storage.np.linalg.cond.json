@@ -1,0 +1,38 @@
+{
+  "api_name": "cond",
+  "module_path": "torch.storage.np.linalg",
+  "params": {
+    "x": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "(..., M, N) array_like The matrix whose condition number is sought.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "p": {
+      "type": "number",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "{None, 1, -1, 2, -2, inf, -inf, 'fro'}, optional Order of the norm used in the condition number computation:",
+      "dtype_candidates": [],
+      "enum_values": [
+        "fro"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "p must be one of: None, 1, -1, 2, -2, inf, -inf, 'fro'"
+      ]
+    }
+  },
+  "output": {
+    "type": "float|number",
+    "numbers": "1",
+    "description": "------- {float, inf} The condition number of the matrix. May be infinite."
+  },
+  "constraints": []
+}

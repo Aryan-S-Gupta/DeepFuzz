@@ -11,27 +11,25 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must have numeric data type",
-        "input tensor x and output tensor must have the same shape",
-        "softmax function formula: f(x) = exp(x) / sum(exp(x))"
+        "The elements of the output vector lie within the range `(0, 1)`, and their total sum is exactly 1 (excluding the floating point rounding error). `f(x) = exp(x) / sum(exp(x))`"
       ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "-1",
       "flag": "Optional",
       "description": "Integer, axis along which the softmax is applied.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be a valid axis index for input tensor x"
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating point",
+    "numbers": "1",
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": []

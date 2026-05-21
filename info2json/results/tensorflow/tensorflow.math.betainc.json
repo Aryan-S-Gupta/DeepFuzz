@@ -17,13 +17,11 @@
         "float64"
       ],
       "constraints": [
-        "a must be one of float32, float64",
-        "a, b, and x must be the same shape and type",
-        "if a <= 0 or b <= 0, I_x(a, b) = 0"
+        "a must be one of float32, float64"
       ]
     },
     "b": {
-      "type": "tensor",
+      "type": "float|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -31,13 +29,11 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "b must have the same dtype as a",
-        "a, b, and x must be the same shape and type",
-        "if a <= 0 or b <= 0, I_x(a, b) = 0"
+        "b must have the same dtype as a"
       ]
     },
     "x": {
-      "type": "tensor",
+      "type": "float|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -46,19 +42,8 @@
       "enum_values": [],
       "constraints": [
         "x must have the same dtype as a",
-        "a, b, and x must be the same shape and type",
-        "x must be in range [0, 1] inclusive"
+        "x must be in range [0, 1]"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -66,8 +51,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `a`."
   },
-  "constraints": [
-    "a, b, and x must be the same shape and type",
-    "if a <= 0 or b <= 0, I_x(a, b) = 0"
-  ]
+  "constraints": []
 }

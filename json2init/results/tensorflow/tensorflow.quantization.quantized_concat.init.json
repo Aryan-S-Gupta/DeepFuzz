@@ -26,7 +26,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "int32",
         "fill": 1,
@@ -35,12 +35,23 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -61,7 +72,7 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -70,12 +81,23 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -104,6 +126,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -135,25 +164,14 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -165,21 +183,22 @@
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "smoke test failed: Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>."
+    "smoke test failed: Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(2,), dtype=float32, numpy=array([1., 1.], dtype=float32)>."
   ],
   "smoke_test": {
     "attempted": true,
     "success": false,
     "classification": "spec_or_seed_error",
     "error_type": "TypeError",
-    "error": "Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>.",
+    "error": "Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(2,), dtype=float32, numpy=array([1., 1.], dtype=float32)>.",
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 8292, in quantized_concat\n    return quantized_concat_eager_fallback(\n        concat_dim, values, input_mins, input_maxes, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 8363, in quantized_concat_eager_fallback\n    raise TypeError(\n        \"Expected list for 'values' argument to \"\n        \"'quantized_concat' Op, not %r.\" % values)\nTypeError: Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.], dtype=float32)>.\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 8292, in quantized_concat\n    return quantized_concat_eager_fallback(\n        concat_dim, values, input_mins, input_maxes, name=name, ctx=_ctx)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/ops/gen_array_ops.py\", line 8363, in quantized_concat_eager_fallback\n    raise TypeError(\n        \"Expected list for 'values' argument to \"\n        \"'quantized_concat' Op, not %r.\" % values)\nTypeError: Expected list for 'values' argument to 'quantized_concat' Op, not <tf.Tensor: shape=(2,), dtype=float32, numpy=array([1., 1.], dtype=float32)>.\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.quantization.quantized_concat.json",
   "stage3_status": "retry",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

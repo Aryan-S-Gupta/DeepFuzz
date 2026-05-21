@@ -1,0 +1,42 @@
+{
+  "api_name": "chebvander",
+  "module_path": "torch.storage.np.polynomial.chebyshev",
+  "params": {
+    "x": {
+      "type": "float|number|tensor|dtype|any",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array of points. The dtype is converted to float64 or complex128 depending on whether any of the elements are complex. If `x` is scalar it is converted to a 1-D array.",
+      "dtype_candidates": [
+        "float64",
+        "complex128"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x must be 1-D",
+        "x cannot be null"
+      ]
+    },
+    "deg": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int Degree of the resulting matrix.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be non-negative"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "------- ndarray The pseudo Vandermonde matrix. The shape of the returned matrix is ``x.shape + (deg + 1,)``, where The last index is the degree of the corresponding Chebyshev polynomial. The dtype will be the same as the converted `x`."
+  },
+  "constraints": []
+}

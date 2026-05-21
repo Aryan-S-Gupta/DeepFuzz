@@ -10,15 +10,15 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x must be promoted to inexact dtype",
-        "x values must be within (-inf, inf)"
+        "x and y must have broadcast-compatible shapes if x and y are provided"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real or complex",
+    "numbers": "real32, complex64",
     "description": "An array containing the inverse trigonometric tangent of each element ``x`` in radians in the range ``[-pi/2, pi/2]``, promoting to inexact dtype."
   },
   "constraints": []

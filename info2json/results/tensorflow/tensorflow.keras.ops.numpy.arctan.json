@@ -10,15 +10,12 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "must be convertible to a tensor",
-        "x and output must have broadcast-compatible shapes"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "float32",
     "description": "Tensor of the inverse tangent of each element in `x`, in the interval `[-pi/2, pi/2]`."
   },
   "constraints": []

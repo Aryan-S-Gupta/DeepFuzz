@@ -45,18 +45,9 @@
         "int64"
       ],
       "constraints": [
-        "axis must be one of int32, int64"
+        "axis must be one of int32, int64",
+        "axis must satisfy -rank(input) <= axis < rank(input)"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

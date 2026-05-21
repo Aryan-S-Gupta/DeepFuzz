@@ -10,20 +10,25 @@
       "description": "A `Tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "A must be a Tensor."
+      ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "0",
+      "default": "",
       "flag": "Optional",
       "description": "An integer, the axis to reduce across. Default to 0.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "axis must satisfy -rank(input) <= axis < rank(input)",
+        "If axis is None, the operation reduces across all axes."
+      ]
     },
     "output_type": {
-      "type": "string|dtype",
+      "type": "dtype",
       "size": "",
       "default": "tf.int64",
       "flag": "Optional",
@@ -32,31 +37,20 @@
         "int32",
         "int64"
       ],
-      "enum_values": [
-        "tf.int32",
-        "tf.int64"
-      ],
-      "constraints": [
-        "must be one of: 'tf.int32', 'tf.int64'"
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "An optional name for the operation.",
-      "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "output_type must be either tf.int32 or tf.int64."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int64",
+    "numbers": "1",
     "description": "A `Tensor` of type `output_type`."
   },
   "constraints": [
-    "input must have numeric values"
+    "The returned tensor contains the indices with the largest value across axes of a tensor.",
+    "In case of identity, returns the smallest index.",
+    "If there are ties for the maximum value, the smallest index is returned."
   ]
 }

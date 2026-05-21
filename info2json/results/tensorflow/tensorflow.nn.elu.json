@@ -20,20 +20,8 @@
         "float64"
       ],
       "constraints": [
-        "features must be one of half, bfloat16, float32, float64",
-        "features' shape and rank must be compatible with ELU activation."
-      ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "''",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": [
-        "name defaults to '' if not provided."
+        "Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`",
+        "features must be one of half, bfloat16, float32, float64"
       ]
     }
   },

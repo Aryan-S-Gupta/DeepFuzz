@@ -21,28 +21,20 @@
         "complex64",
         "complex128"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of float64, float32, half, complex64, complex128"
+      ]
     },
     "output_idx_type": {
       "type": "dtype",
       "size": "",
-      "default": "tf",
+      "default": "tf.int32",
       "flag": "Optional",
       "description": "An optional `tf.DType` from: `tf.int32, tf.int64`. Defaults to `tf.int32`.",
       "dtype_candidates": [
         "int32",
         "int64"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

@@ -10,45 +10,55 @@
       "description": "array of values to be binned",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "range must be None or a tuple of two scalars if provided"
+      ]
     },
     "bins": {
-      "type": "int|number",
+      "type": "number",
       "size": "",
-      "default": "10)",
+      "default": "10",
       "flag": "Optional",
       "description": "Specify the number of bins in the histogram (default: 10).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "range": {
-      "type": "tuple",
+      "type": "tuple|sequence|tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "tuple of scalars. Specifies the range of the data. If not specified, the range is inferred from the data.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "range[0] must be less than or equal to range[1] if specified"
+        "range must be None or a tuple of two scalars if provided"
       ]
     },
     "weights": {
-      "type": "unused by JAX",
+      "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "unused by JAX.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "weights must be None or an ArrayLike"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "An array of bin edges for the histogram."
   },
-  "constraints": []
+  "constraints": [
+    "range must be None or a tuple of two scalars if provided"
+  ]
 }

@@ -14,7 +14,7 @@
     },
     "rhs": {
       "type": "tensor",
-      "size": "",
+      "size": "shape (B, N, K)",
       "default": "",
       "flag": "Required",
       "description": "Operand b, shape (B, N, K).",
@@ -24,7 +24,7 @@
     },
     "lhs_scales": {
       "type": "tensor",
-      "size": "",
+      "size": "Shape (B, M, K_a)",
       "default": "",
       "flag": "Required",
       "description": "Shape (B, M, K_a), where `K % K_a == 0`.",
@@ -34,7 +34,7 @@
     },
     "rhs_scales": {
       "type": "tensor",
-      "size": "",
+      "size": "Shape (B, N, K_b)",
       "default": "",
       "flag": "Required",
       "description": "Shape (B, N, K_b), where `K % K_b == 0`.",
@@ -46,7 +46,7 @@
       "type": "float",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Defaults to `jnp.float32`.",
       "dtype_candidates": [
         "float32"

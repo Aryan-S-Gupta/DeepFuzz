@@ -10,7 +10,9 @@
       "description": "A 3-D `Tensor` of type `float` and shape `[batch, in_width, in_channels]` for `NWC` data format or `[batch, in_channels, in_width]` for `NCW` data format.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "input must be 3-D"
+      ]
     },
     "filters": {
       "type": "tensor",
@@ -21,7 +23,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "filters must be 3-D"
+        "filters must be 3-D",
+        "filters must have the same dtype as input"
       ]
     },
     "output_shape": {
@@ -50,7 +53,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A string, either `'VALID'` or `'SAME'`. The padding algorithm. See [here](https://www.tensorflow.org/api_docs/python/tf/nn#notes_on_padding_2) for more information.",
       "dtype_candidates": [],
       "enum_values": [
@@ -65,7 +68,7 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A string. `'NWC'` and `'NCW'` are supported.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -74,19 +77,9 @@
     "dilations": {
       "type": "int|list",
       "size": "",
-      "default": "1",
-      "flag": "Optional",
-      "description": "An int or list of `ints` that has length `1` or `3` which defaults to 1. The dilation factor for each dimension of input. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. Dilations in the batch and depth dimensions must be 1.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "tensor",
-      "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "Optional name for the returned tensor.",
+      "description": "An int or list of `ints` that has length `1` or `3` which defaults to 1. The dilation factor for each dimension of input. If set to k > 1, there will be k-1 skipped cells between each filter element on that dimension. Dilations in the batch and depth dimensions must be 1.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

@@ -10,7 +10,9 @@
       "description": "A 3-D `Tensor` of the format specified by `data_format`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "input must be 3-D"
+      ]
     },
     "ksize": {
       "type": "int|list|tensor",
@@ -53,19 +55,9 @@
     "data_format": {
       "type": "string",
       "size": "",
-      "default": "\"NWC\"",
-      "flag": "Optional",
-      "description": "An optional string from: \"NWC\", \"NCW\". Defaults to \"NWC\".",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "description": "An optional string from: \"NWC\", \"NCW\". Defaults to \"NWC\".",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

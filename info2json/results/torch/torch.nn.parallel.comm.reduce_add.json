@@ -10,19 +10,22 @@
       "description": "an iterable of tensors to add.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "All inputs should have matching shapes, dtype, and layout.",
+        "inputs should not be empty"
+      ]
     },
     "destination": {
       "type": "int|device",
       "size": "",
-      "default": "current device)",
+      "default": "",
       "flag": "Optional",
       "description": "a device on which the output will be placed (default: current device).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "destination must be an valid integer representing a device"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
@@ -30,8 +33,5 @@
     "numbers": "1",
     "description": "A tensor containing an elementwise sum of all inputs, placed on the :attr:`destination` device."
   },
-  "constraints": [
-    "All inputs should have matching shapes, dtype, and layout.",
-    "The output tensor will be of the same shape, dtype, and layout."
-  ]
+  "constraints": []
 }

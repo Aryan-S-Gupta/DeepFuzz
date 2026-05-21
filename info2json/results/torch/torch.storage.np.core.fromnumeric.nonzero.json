@@ -1,0 +1,26 @@
+{
+  "api_name": "nonzero",
+  "module_path": "torch.storage.np.core.fromnumeric",
+  "params": {
+    "a": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "shape: 2D or higher",
+        "a must contain at least one non-zero value to return a result"
+      ]
+    }
+  },
+  "output": {
+    "type": "tuple",
+    "numbers": "multiple",
+    "description": "------- tuple Indices of elements that are non-zero."
+  },
+  "constraints": []
+}

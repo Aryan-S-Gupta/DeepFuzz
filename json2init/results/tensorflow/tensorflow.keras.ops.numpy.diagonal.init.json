@@ -15,14 +15,20 @@
         "description": "Input tensor.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "4-D or more",
+          "x and y must have broadcast-compatible shapes if x has more than two dimensions"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2,
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -30,19 +36,30 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "offset": {
       "name": "offset",
       "spec": {
-        "type": "",
+        "type": "int",
         "size": "",
         "default": "0",
         "flag": "Optional",
@@ -50,19 +67,33 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
+          "Can be positive or negative",
           "offset must be positive"
         ]
       },
-      "chosen_type": "offset of the diagonal from the main diagonal. can be positive or negative. defaults to `0`.(main diagonal).",
+      "chosen_type": "int",
       "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: offset of the diagonal from the main diagonal. can be positive or negative. defaults to `0`.(main diagonal)."
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis1": {
       "name": "axis1",
       "spec": {
-        "type": "",
+        "type": "int",
         "size": "2-D",
         "default": "0",
         "flag": "Optional",
@@ -70,34 +101,62 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
+          "Must satisfy -rank(input) <= axis < rank(input)",
           "axis1 must be 2-D"
         ]
       },
-      "chosen_type": "axis to be used as the first axis of the 2-d sub-arrays. defaults to `0`.(first axis).",
+      "chosen_type": "int",
       "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: axis to be used as the first axis of the 2-d sub-arrays. defaults to `0`.(first axis)."
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "axis2": {
       "name": "axis2",
       "spec": {
-        "type": "",
+        "type": "int",
         "size": "2-D",
-        "default": "1` (second axis)",
+        "default": "1",
         "flag": "Optional",
         "description": "Axis to be used as the second axis of the 2-D sub-arrays. Defaults to `1` (second axis).",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
+          "Must satisfy -rank(input) <= axis < rank(input)",
           "axis2 must be 2-D"
         ]
       },
-      "chosen_type": "axis to be used as the second axis of the 2-d sub-arrays. defaults to `1` (second axis).",
+      "chosen_type": "int",
       "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: axis to be used as the second axis of the 2-d sub-arrays. defaults to `1` (second axis)."
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -107,23 +166,57 @@
   },
   "constraints": [],
   "spec_ready": true,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "smoke test failed: axis 1 is out of bounds for an array with dimension 1."
-  ],
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
   "smoke_test": {
     "attempted": true,
-    "success": false,
-    "classification": "api_runtime_error",
-    "error_type": "ValueError",
-    "error": "axis 1 is out of bounds for an array with dimension 1.",
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
     "materialization_reasons": [],
-    "result_summary": {},
-    "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 2668, in diagonal\n    return backend.numpy.diagonal(\n           ~~~~~~~~~~~~~~~~~~~~~~^\n        x,\n        ^^\n    ...<2 lines>...\n        axis2=axis2,\n        ^^^^^^^^^^^^\n    )\n    ^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 1384, in diagonal\n    x = moveaxis(x, (axis1, axis2), (-2, -1))\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2112, in moveaxis\n    _source = tuple(canonicalize_axis(i, x.ndim) for i in _source)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 2112, in <genexpr>\n    _source = tuple(canonicalize_axis(i, x.ndim) for i in _source)\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^\nValueError: axis 1 is out of bounds for an array with dimension 1.\n"
+    "result_summary": {
+      "python_type": "EagerTensor",
+      "shape": [
+        2,
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "numel": 8,
+      "preview": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
   },
-  "runtime_supported_here": false,
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "x"
+    ],
+    "skipped_optional": [
+      "offset",
+      "axis1",
+      "axis2"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.numpy.diagonal.json",
-  "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

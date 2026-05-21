@@ -10,30 +10,24 @@
       "description": "A list of `Tensor` objects with the same shape and type.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "axis must be within the valid range [-((params.values[0].rank)+1), (params.values[0].rank)+1)"
+      ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "the first dimension",
+      "default": "0",
       "flag": "Optional",
       "description": "An `int`. The axis to stack along. Defaults to the first dimension. Negative values wrap around, so the valid range is `[-(R+1), R+1)`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "axis must satisfy -(params.values[0].rank) <= axis < params.values[0].rank",
         "axis must be one of int",
-        "axis must satisfy -rank(values) <= axis < rank(values)"
+        "axis must satisfy -rank(values) <= axis < rank(values)",
+        "axis must be within the valid range [-((params.values[0].rank)+1), (params.values[0].rank)+1)"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for this operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -41,5 +35,7 @@
     "numbers": "1",
     "description": "A stacked `Tensor` with the same type as `values`."
   },
-  "constraints": []
+  "constraints": [
+    "axis must be within the valid range [-((params.values[0].rank)+1), (params.values[0].rank)+1)"
+  ]
 }

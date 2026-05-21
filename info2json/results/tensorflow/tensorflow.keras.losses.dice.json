@@ -10,9 +10,7 @@
       "description": "tensor of true targets.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true and y_pred must have the same shape (except for axis)"
-      ]
+      "constraints": []
     },
     "y_pred": {
       "type": "tensor",
@@ -22,31 +20,27 @@
       "description": "tensor of predicted targets.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true and y_pred must have the same shape (except for axis)"
-      ]
+      "constraints": []
     },
     "axis": {
       "type": "tuple",
       "size": "",
-      "default": "()",
+      "default": "",
       "flag": "Optional",
       "description": "tuple for which dimensions the loss is calculated",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be valid axis indices",
-        "y_true and y_pred must have the same shape (except for axis)",
-        "axis values must be in range [0, rank(input))"
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },
   "output": {
-    "type": "tensor",
-    "numbers": "float32",
+    "type": "float",
+    "numbers": "1 or more",
     "description": "Dice loss value."
   },
   "constraints": [
-    "y_true and y_pred must have the same shape (except for axis)"
+    "x and y must have broadcast-compatible shapes"
   ]
 }

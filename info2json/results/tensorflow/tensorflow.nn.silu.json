@@ -10,29 +10,25 @@
       "description": "A `Tensor` representing preactivation values.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "features and beta must have the same shape"
-      ]
+      "constraints": []
     },
     "beta": {
       "type": "tensor",
       "size": "",
       "default": "1.0",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A 'Tensor' representing value of beta hyperparameter.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "features and beta must have the same shape"
+        "beta must be a number or tensor."
       ]
     }
   },
   "output": {
-    "type": "tensor",
+    "type": "The activation value.",
     "numbers": "1",
     "description": "The activation value."
   },
-  "constraints": [
-    "features and beta must have the same shape"
-  ]
+  "constraints": []
 }

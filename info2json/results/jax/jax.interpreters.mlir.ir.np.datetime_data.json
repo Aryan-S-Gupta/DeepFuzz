@@ -1,13 +1,22 @@
 {
   "api_name": "datetime_data",
   "module_path": "jax.interpreters.mlir.ir.np",
-  "params": {},
+  "params": {
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "dtype The dtype object, which must be a `datetime64` or `timedelta64` type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
   "output": {
-    "type": "tuple",
+    "type": "string|int|number|dtype",
     "numbers": "2",
     "description": "------- str The :ref:`datetime unit <arrays.dtypes.dateunits>` on which this dtype is based. count : int The number of base units in a step."
   },
-  "constraints": [
-    "function return type is a tuple"
-  ]
+  "constraints": []
 }

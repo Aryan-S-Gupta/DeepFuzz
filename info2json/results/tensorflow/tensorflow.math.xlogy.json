@@ -23,7 +23,12 @@
         "complex64",
         "complex128"
       ],
-      "constraints": []
+      "constraints": [
+        "Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`, `complex64`, `complex128`",
+        "x must be one of half, bfloat16, float32, float64, complex64, complex128",
+        "x and y must have broadcast-compatible shapes",
+        "Returns 0 if x == 0, and x * log(y) otherwise, elementwise."
+      ]
     },
     "y": {
       "type": "tensor",
@@ -31,28 +36,14 @@
       "default": "",
       "flag": "Required",
       "description": "A `Tensor`. Must have the same type as `x`.",
-      "dtype_candidates": [
-        "float32",
-        "float64",
-        "bfloat16",
-        "complex64",
-        "complex128"
-      ],
-      "enum_values": [],
-      "constraints": [
-        "Must be one of: half, bfloat16, float32, float64, complex64, complex128",
-        "x and y must have broadcast-compatible shapes"
-      ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Must have the same type as x",
+        "y must have the same dtype as x",
+        "x and y must have broadcast-compatible shapes",
+        "Returns 0 if x == 0, and x * log(y) otherwise, elementwise."
+      ]
     }
   },
   "output": {
@@ -60,5 +51,8 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `x`."
   },
-  "constraints": []
+  "constraints": [
+    "x and y must have broadcast-compatible shapes",
+    "Returns 0 if x == 0, and x * log(y) otherwise, elementwise."
+  ]
 }

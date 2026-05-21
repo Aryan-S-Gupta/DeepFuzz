@@ -11,8 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape.",
-        "axis must satisfy -rank(y_true) <= axis < rank(y_true)"
+        "required",
+        "The output is obtained by calculating the Pearson correlation coefficient using the formula: loss = mean(l2norm(y_true - mean(y_true) * l2norm(y_pred - mean(y_pred)))).numpy()"
       ]
     },
     "y_pred": {
@@ -24,32 +24,29 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred must have the same shape."
+        "required",
+        "The output is obtained by calculating the Pearson correlation coefficient using the formula: loss = mean(l2norm(y_true - mean(y_true) * l2norm(y_pred - mean(y_pred)))).numpy()"
       ]
     },
     "axis": {
-      "type": "int32",
+      "type": "int",
       "size": "",
       "default": "-1",
       "flag": "Optional",
       "description": "Axis along which to determine similarity. Defaults to `-1`.",
-      "dtype_candidates": [
-        "int32"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be a valid axis value.",
-        "axis must satisfy -rank(y_true) <= axis < rank(y_true)"
+        "Optional, must be in range(-rank(input), rank(input))"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "float32",
+    "numbers": "1",
     "description": "Pearson Correlation Coefficient tensor."
   },
   "constraints": [
-    "y_true and y_pred must have the same shape.",
-    "axis must satisfy -rank(y_true) <= axis < rank(y_true)"
+    "The output is obtained by calculating the Pearson correlation coefficient using the formula: loss = mean(l2norm(y_true - mean(y_true) * l2norm(y_pred - mean(y_pred)))).numpy()"
   ]
 }

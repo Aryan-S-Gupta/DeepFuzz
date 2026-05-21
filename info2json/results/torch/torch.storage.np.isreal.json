@@ -1,0 +1,27 @@
+{
+  "api_name": "isreal",
+  "module_path": "torch.storage.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x cannot be a string or object array in some cases"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|tensor",
+    "numbers": "bool",
+    "description": "------- ndarray, bool Boolean array of same shape as `x`."
+  },
+  "constraints": [
+    "isreal may behave unexpectedly for string or object arrays"
+  ]
+}

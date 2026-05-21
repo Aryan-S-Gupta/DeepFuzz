@@ -10,15 +10,19 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "val can be a number or a JAX array-like object"
+        "jax.numpy.conjugate and jax.numpy.conj accept val as input.",
+        "val can be a scalar, e.g., 4 or 5j."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating point",
+    "numbers": "real",
     "description": "An array containing the imaginary part of the elements of ``val``."
   },
-  "constraints": []
+  "constraints": [
+    "jax.numpy.real returns the element-wise real part of the complex."
+  ]
 }

@@ -19,25 +19,19 @@
         "float32",
         "float64"
       ],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x must be a Tensor.",
+        "x must be one of bfloat16, half, float32, float64"
+      ]
     }
   },
   "output": {
     "type": "bool|tensor",
-    "numbers": "bool",
+    "numbers": "1",
     "description": "A `Tensor` of type `bool`."
   },
   "constraints": [
-    "x cannot be None"
+    "The output is a Tensor of boolean type.",
+    "@compatibility(numpy)"
   ]
 }

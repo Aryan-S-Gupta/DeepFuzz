@@ -23,23 +23,23 @@
       "constraints": []
     },
     "nbins": {
-      "type": "number|tensor|dtype",
+      "type": "number|tensor",
       "size": "Scalar",
-      "default": "",
-      "flag": "Required",
-      "description": "Scalar `int32 Tensor`. Number of histogram bins. dtype: dtype for returned histogram.",
+      "default": "100",
+      "flag": "Optional",
+      "description": "Scalar `int32 Tensor`. Number of histogram bins.",
       "dtype_candidates": [
         "int32"
       ],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "",
+    "dtype": {
+      "type": "dtype",
       "size": "",
-      "default": "'histogram_fixed_width')",
-      "flag": "Required",
-      "description": "A name for this operation (defaults to 'histogram_fixed_width').",
+      "default": "tf.int32",
+      "flag": "Optional",
+      "description": "dtype for returned histogram.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

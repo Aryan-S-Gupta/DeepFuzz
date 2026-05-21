@@ -25,7 +25,7 @@
     "ref_labels": {
       "type": "int|tensor",
       "size": "",
-      "default": "y_true",
+      "default": "",
       "flag": "Optional",
       "description": "Optional integer tensor with labels for reference embeddings. If `None`, defaults to `y_true`.",
       "dtype_candidates": [],
@@ -35,7 +35,7 @@
     "ref_embeddings": {
       "type": "tensor",
       "size": "",
-      "default": "y_pred",
+      "default": "",
       "flag": "Optional",
       "description": "Optional tensor with L2 normalized reference embeddings. If `None`, defaults to `y_pred`.",
       "dtype_candidates": [],
@@ -69,7 +69,7 @@
     "margin": {
       "type": "float",
       "size": "",
-      "default": "0",
+      "default": "0.4",
       "flag": "Optional",
       "description": "Float, relaxation factor for the loss. Defaults to `0.4`.",
       "dtype_candidates": [],

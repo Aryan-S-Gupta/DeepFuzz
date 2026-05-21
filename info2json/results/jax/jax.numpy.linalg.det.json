@@ -10,17 +10,16 @@
       "description": "array of shape ``(..., M, M)`` for which to compute the determinant.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "shape must be at least 2-D"
+        "must be 2-D or higher"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "float32",
     "description": "An array of determinants of shape ``a.shape[:-2]``."
   },
-  "constraints": [
-    "Input and output shapes match along all but last two dimensions."
-  ]
+  "constraints": []
 }

@@ -1,0 +1,26 @@
+{
+  "api_name": "column_stack",
+  "module_path": "torch.storage.np.ma.extras",
+  "params": {
+    "tup": {
+      "type": "sequence",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "sequence of 1-D or 2-D arrays. Arrays to stack. All of them must have the same first dimension.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "All arrays in tup must have the same first dimension.",
+        "tup must be 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- 2-D array The array formed by stacking the given arrays."
+  },
+  "constraints": []
+}

@@ -3,13 +3,14 @@
   "module_path": "torch.nn.quantized.functional",
   "params": {
     "input": {
-      "type": "",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "quantized input",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "scale": {
@@ -20,10 +21,8 @@
       "description": "quantization scale of the output tensor",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "input, scale, zero_point, and alpha must be provided",
-        "scale and zero_point define the quantization parameters of the output tensor"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "zero_point": {
       "type": "int|tensor",
@@ -33,31 +32,25 @@
       "description": "quantization zero point of the output tensor",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "input, scale, zero_point, and alpha must be provided",
-        "scale and zero_point define the quantization parameters of the output tensor"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "alpha": {
       "type": "float",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1.0",
+      "flag": "Optional",
       "description": "the alpha constant",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "input, scale, zero_point, and alpha must be provided"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
-    "type": "QuantizedTensor",
+    "type": "tensor",
     "numbers": "",
-    "description": "unspecified"
+    "description": ""
   },
-  "constraints": [
-    "input, scale, zero_point, and alpha must be provided",
-    "scale and zero_point define the quantization parameters of the output tensor"
-  ]
+  "constraints": []
 }

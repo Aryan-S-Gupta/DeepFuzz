@@ -1,0 +1,84 @@
+{
+  "api_full_name": "jax.interpreters.mlir.ir.np.dstack",
+  "api_name": "dstack",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "import_path": "jax.interpreters.mlir.ir.np.dstack",
+  "backend": "jax",
+  "params": {
+    "tup": {
+      "name": "tup",
+      "spec": {
+        "type": "sequence",
+        "size": "1-D",
+        "default": "",
+        "flag": "Required",
+        "description": "sequence of arrays The arrays must have the same shape along all but the third axis. 1-D or 2-D arrays must have the same shape.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "tup's elements must be at least 1-D and up to 2-D arrays",
+          "tup must be 1-D"
+        ]
+      },
+      "chosen_type": "sequence",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ]
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray The array formed by stacking the given arrays, will be at least 3-D."
+  },
+  "constraints": [
+    "Input arrays' third axis lengths must match"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        1,
+        1,
+        1
+      ],
+      "dtype": "int64",
+      "size": 1,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.interpreters.mlir.ir.np.dstack.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

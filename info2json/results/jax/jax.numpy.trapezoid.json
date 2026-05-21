@@ -10,49 +10,47 @@
       "description": "array of data to integrate.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x and y must have broadcast-compatible shapes"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "x": {
       "type": "tensor",
       "size": "",
-      "default": "equally spaced with spacing given by ``dx",
+      "default": "",
       "flag": "Optional",
       "description": "optional array of sample points corresponding to the ``y`` values. If not provided, ``x`` defaults to equally spaced with spacing given by ``dx``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x and y must have broadcast-compatible shapes"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "dx": {
-      "type": "number",
+      "type": "ArrayLike",
       "size": "",
-      "default": "1",
+      "default": "1.0",
       "flag": "Optional",
       "description": "The spacing between sample points when `x` is None (default: 1.0).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "-1)",
+      "default": "-1",
       "flag": "Optional",
       "description": "The axis along which to integrate (default: -1)",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
-    "type": "number",
-    "numbers": "floating-point",
+    "type": "tensor",
+    "numbers": "1",
     "description": "The definite integral approximated by the trapezoidal rule."
   },
-  "constraints": [
-    "x and y must have broadcast-compatible shapes"
-  ]
+  "constraints": []
 }

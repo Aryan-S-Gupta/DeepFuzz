@@ -11,18 +11,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Packs the list of tensors in `values` into a tensor with rank one higher than each tensor in `values`, by packing them along the first dimension."
+        "Each tensor in values must have a known shape at graph construction time.",
+        "tf.parallel_stack([values]) = np.asarray([values])"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for this operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -31,6 +22,6 @@
     "description": "A stacked `Tensor` with the same type as `values`."
   },
   "constraints": [
-    "Requires that the shape of inputs be known at graph construction time."
+    "The input shapes must be known during graph construction."
   ]
 }

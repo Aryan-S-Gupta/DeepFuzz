@@ -10,7 +10,11 @@
       "description": "array of shape ``(..., M, N)`` from which the diagonal will be extracted.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "shape must be at least 2-D",
+        "x must be passed as first argument"
+      ]
     },
     "offset": {
       "type": "int",
@@ -20,19 +24,17 @@
       "description": "positive or negative offset from the main diagonal.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        ">= 0",
-        "offset must be positive",
-        "offset >= -M + 1 and offset <= N - 1"
+        "must be zero or greater",
+        "offset must be positive"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "'...', where '...' is the length of the specified diagonal.",
     "description": "Array of shape ``(..., K)`` where ``K`` is the length of the specified diagonal."
   },
-  "constraints": [
-    "M == N or M > 1 and N > 1"
-  ]
+  "constraints": []
 }

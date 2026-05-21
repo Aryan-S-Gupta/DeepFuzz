@@ -5,42 +5,34 @@
     "value": {
       "type": "tensor",
       "size": "",
-      "default": "image",
-      "flag": "Optional",
+      "default": "",
+      "flag": "Required",
       "description": "Input tensor to crop.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Requires `value.shape >= size`"
+      ]
     },
     "size": {
-      "type": "list|tensor",
+      "type": "tensor",
       "size": "1-D",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "1-D tensor with size the rank of `value`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Requires `value.shape >= size`",
-        "size must be 1-D"
+        "size must be 1-D",
+        "Requires `value.shape >= size`"
       ]
     },
     "seed": {
       "type": "int",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Python integer. Used to create a random seed. See `tf.random.set_seed` for behavior.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for this operation (optional).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -52,6 +44,6 @@
     "description": "A cropped tensor of the same rank as `value` and shape `size`."
   },
   "constraints": [
-    "name is an optional name for this operation."
+    "Requires `value.shape >= size`"
   ]
 }

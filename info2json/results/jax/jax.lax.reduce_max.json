@@ -10,26 +10,30 @@
       "description": "array over which to compute maximum.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "shape: rank > 0"
+        "must be 1D or more",
+        "operand and output must have the same dtype"
       ]
     },
     "axes": {
-      "type": "sequence",
+      "type": "int|sequence",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "sequence of zero or more unique integers specifying the axes over which to reduce. Each entry must satisfy ``0 <= axis < operand.ndim``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "unique items"
+        "must be a sequence",
+        "all elements must satisfy: 0 <= axis < rank(operand)"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same dtype as `operand`",
+    "numbers": "1",
     "description": "An array of the same dtype as ``operand``, with shape corresponding to the dimensions of ``operand.shape`` with ``axes`` removed."
   },
   "constraints": []

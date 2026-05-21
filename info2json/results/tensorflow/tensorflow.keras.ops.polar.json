@@ -3,7 +3,7 @@
   "module_path": "tensorflow.keras.ops",
   "params": {
     "abs_": {
-      "type": "number|tensor",
+      "type": "number",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -11,11 +11,11 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "abs_ and angle must have broadcast-compatible shapes."
+        "Must be broadcast-compatible with angle."
       ]
     },
     "angle": {
-      "type": "number|tensor",
+      "type": "number",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -23,17 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "abs_ and angle must have broadcast-compatible shapes."
+        "Must be broadcast-compatible with abs_."
       ]
     }
   },
   "output": {
     "type": "number|tensor",
-    "numbers": "two",
+    "numbers": "complex64",
     "description": "A complex number (or array of complex numbers) with the same shape as `abs_` and `angle`."
   },
   "constraints": [
-    "abs_ and angle must have broadcast-compatible shapes.",
-    "angles values must be in range [-inf, inf]"
+    "The operation is numerically equivalent to `torch.polar()`. It is not equivalent to `scipy.lingalg.polar()` which performs different operations."
   ]
 }

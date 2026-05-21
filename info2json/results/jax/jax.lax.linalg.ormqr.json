@@ -1,0 +1,62 @@
+{
+  "api_name": "ormqr",
+  "module_path": "jax.lax.linalg",
+  "params": {
+    "a": {
+      "type": "jax.numpy.linalg.qr",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The Householder reflectors with shape ``[..., m, n]``, as returned by the internal ``geqrf``/``geqp3`` primitives. Alternatively, one can use :func:`jax.numpy.linalg.qr` with ``mode=\"raw\"``, but in this case the returned ``a`` must be transposed with ``.mT`` (see example below).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "taus": {
+      "type": "tuple|number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Required",
+      "description": "The Householder scalar factors with shape ``[..., k]``, as returned by ``geqrf``/``geqp3`` or the second element of the tuple from :func:`jax.numpy.linalg.qr` with ``mode=\"raw\"``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "c": {
+      "type": "",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "The matrix to multiply by Q, with shape ``[..., c_rows, c_cols]``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "left": {
+      "type": "",
+      "size": "",
+      "default": "True",
+      "flag": "Optional",
+      "description": "If ``True``, compute ``Q @ C``. If ``False``, compute ``C @ Q``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "transpose": {
+      "type": "",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "If ``True``, use ``Q^T`` (or ``Q^H`` for complex types).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "The result of multiplying ``c`` by Q (or ``Q^T``/``Q^H``), with the same shape as ``c``."
+  },
+  "constraints": []
+}

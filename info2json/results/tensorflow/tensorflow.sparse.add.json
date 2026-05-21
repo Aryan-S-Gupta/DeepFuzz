@@ -10,9 +10,7 @@
       "description": "The first operand; `SparseTensor` or `Tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "If both `a` and `b` are `Tensor`s, raises TypeError."
-      ]
+      "constraints": []
     },
     "b": {
       "type": "tensor",
@@ -22,15 +20,13 @@
       "description": "The second operand; `SparseTensor` or `Tensor`. At least one operand must be sparse.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "If both `a` and `b` are `Tensor`s, raises TypeError."
-      ]
+      "constraints": []
     },
     "threshold": {
       "type": "float|tensor|dtype",
       "size": "0-D",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "A 0-D `Tensor`. The magnitude threshold that determines if an output value/index pair takes space. Its dtype should match that of the values if they are real; if the latter are complex64/complex128, then the dtype should be float32/float64, correspondingly.",
       "dtype_candidates": [
         "float32",
@@ -39,9 +35,7 @@
         "complex128"
       ],
       "enum_values": [],
-      "constraints": [
-        "Must be non-negative."
-      ]
+      "constraints": []
     }
   },
   "output": {
@@ -49,8 +43,5 @@
     "numbers": "1",
     "description": "A `SparseTensor` or a `Tensor`, representing the sum."
   },
-  "constraints": [
-    "If both `a` and `b` are `Tensor`s, raises TypeError.",
-    "The shapes of the two operands must match: broadcasting is not supported."
-  ]
+  "constraints": []
 }

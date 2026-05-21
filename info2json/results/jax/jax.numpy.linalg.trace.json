@@ -10,22 +10,34 @@
       "description": "array of shape ``(..., M, N)`` and whose innermost two dimensions form MxN matrices for which to take the trace.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "M and N must be positive integers",
-        "dtype will match the dtype of x, promoted to default precision in the case of integer types"
+        "innermost two dimensions form MxN matrices"
       ]
     },
     "offset": {
-      "type": "int|tensor|dtype",
+      "type": "int",
       "size": "",
-      "default": "0)",
+      "default": "0",
       "flag": "Optional",
-      "description": "positive or negative offset from the main diagonal (default: 0). dtype: data type of the returned array (default: ``None``). If ``None``, then output dtype will match the dtype of ``x``, promoted to default precision in the case of integer types.",
+      "description": "positive or negative offset from the main diagonal (default: 0).",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "offset must be positive"
       ]
+    },
+    "dtype": {
+      "type": "int|tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "data type of the returned array (default: ``None``). If ``None``, then output dtype will match the dtype of ``x``, promoted to default precision in the case of integer types.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {

@@ -10,7 +10,10 @@
       "description": "int Up to what derivative order weights should be calculated. 0 corresponds to interpolation.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "order >= 0"
+      ]
     },
     "x_list": {
       "type": "sequence",
@@ -20,17 +23,20 @@
       "description": "sequence Sequence of (unique) values for the independent variable. It is useful (but not necessary) to order ``x_list`` from nearest to furthest from ``x0``; see examples below.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "x0": {
       "type": "number",
       "size": "",
-      "default": "S",
+      "default": "1",
       "flag": "Optional",
       "description": "Number or Symbol Root or value of the independent variable for which the finite difference weights should be generated. Default is ``S.One``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
+        "x0 in x_list",
         "x0 must be one of S.One"
       ]
     }

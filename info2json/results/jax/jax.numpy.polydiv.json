@@ -10,6 +10,7 @@
       "description": "Array of dividend polynomial coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "v": {
@@ -20,6 +21,7 @@
       "description": "Array of divisor polynomial coefficients.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "trim_leading_zeros": {
@@ -32,10 +34,11 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "Prevent function from being used in compiled code.",
         "trim_leading_zeros must be one of False, True, JAX",
-        "trim_leading_zeros=True may lead to inconsistent results between NumPy and JAX, and even between different JAX backends.",
+        "trim_leading_zeros may lead to inconsistent results between NumPy and JAX, and even between different JAX backends.",
         "The result may lead to inconsistent output shapes when trim_leading_zeros=True."
       ]
     }
@@ -45,5 +48,7 @@
     "numbers": "2",
     "description": "A tuple of quotient and remainder arrays. The dtype of the output is always promoted to inexact."
   },
-  "constraints": []
+  "constraints": [
+    "Returns the quotient and remainder of polynomial division."
+  ]
 }

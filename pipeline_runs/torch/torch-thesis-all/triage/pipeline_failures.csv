@@ -1,0 +1,432 @@
+classification,api_full_name,stage3_status,smoke_classification,reason,init_json_path,stage,mutation_intent,param,rule,error_type,error,results_json_path
+seed_generation_failure,torch.amp.autocast_mode.is_autocast_available,retry,spec_or_seed_error,"smoke test failed: _is_autocast_available(): argument 'device_type' (position 1) must be str, not torch.dtype",json2init/results/torch/torch.amp.autocast_mode.is_autocast_available.init.json,,,,,,,
+seed_generation_failure,torch.amp.is_autocast_available,retry,spec_or_seed_error,"smoke test failed: _is_autocast_available(): argument 'device_type' (position 1) must be str, not torch.dtype",json2init/results/torch/torch.amp.is_autocast_available.init.json,,,,,,,
+seed_generation_failure,torch.ao.nn.quantized.functional.adaptive_avg_pool2d,api_runtime_error,api_runtime_error,smoke test failed: Input to 'quantized.functional.adaptive_avg_pool2d' must be quantized!,json2init/results/torch/torch.ao.nn.quantized.functional.adaptive_avg_pool2d.init.json,,,,,,,
+seed_generation_failure,torch.ao.nn.quantized.functional.adaptive_avg_pool3d,api_runtime_error,api_runtime_error,smoke test failed: Input to 'quantized.functional.adaptive_avg_pool3d' must be quantized!,json2init/results/torch/torch.ao.nn.quantized.functional.adaptive_avg_pool3d.init.json,,,,,,,
+seed_generation_failure,torch.ao.nn.quantized.functional.elu,api_runtime_error,api_runtime_error,smoke test failed: Input to 'quantized.elu' must be quantized!,json2init/results/torch/torch.ao.nn.quantized.functional.elu.init.json,,,,,,,
+seed_generation_failure,torch.ao.nn.quantized.functional.hardswish,api_runtime_error,api_runtime_error,smoke test failed: Input to 'quantized.hardswish' must be quantized!,json2init/results/torch/torch.ao.nn.quantized.functional.hardswish.init.json,,,,,,,
+seed_generation_failure,torch.ao.nn.quantized.functional.linear,api_runtime_error,api_runtime_error,"smoke test failed: Could not run 'aten::q_scale' with arguments from the 'CPU' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'aten::q_scale' is only available for these backends: [MPS, Meta, QuantizedCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradHIP, AutogradXLA, AutogradMPS, AutogradIPU, AutogradXPU, AutogradHPU, AutogradVE, AutogradLazy, AutogradMTIA, AutogradMAIA, AutogradPrivateUse1, AutogradPrivateUse2, AutogradPrivateUse3, AutogradMeta, AutogradNestedTensor, Tracer, AutocastCPU, AutocastMTIA, AutocastMAIA, AutocastXPU, AutocastMPS, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].
+
+MPS: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/mps/MPSFallback.mm:101 [backend fallback]
+Meta: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/MetaFallbackKernel.cpp:23 [backend fallback]
+QuantizedCPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/build/aten/src/ATen/RegisterQuantizedCPU_0.cpp:1211 [kernel]
+BackendSelect: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/BackendSelectFallbackKernel.cpp:3 [backend fallback]
+Python: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:198 [backend fallback]
+FuncTorchDynamicLayerBackMode: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:477 [backend fallback]
+Functionalize: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/FunctionalizeFallbackKernel.cpp:384 [backend fallback]
+Named: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/NamedRegistrations.cpp:5 [backend fallback]
+Conjugate: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/ConjugateFallback.cpp:17 [backend fallback]
+Negative: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/native/NegateFallback.cpp:18 [backend fallback]
+ZeroTensor: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/ZeroTensorFallback.cpp:115 [backend fallback]
+ADInplaceOrView: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/VariableFallbackKernel.cpp:103 [backend fallback]
+AutogradOther: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradCPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradCUDA: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradHIP: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradXLA: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradMPS: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradIPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradXPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradHPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradVE: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradLazy: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradMTIA: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradMAIA: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradPrivateUse1: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradPrivateUse2: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradPrivateUse3: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradMeta: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradNestedTensor: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+Tracer: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/TraceType_4.cpp:13600 [kernel]
+AutocastCPU: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:336 [backend fallback]
+AutocastMTIA: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:480 [backend fallback]
+AutocastMAIA: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:518 [backend fallback]
+AutocastXPU: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:556 [backend fallback]
+AutocastMPS: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:221 [backend fallback]
+AutocastCUDA: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:177 [backend fallback]
+FuncTorchBatched: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:727 [backend fallback]
+BatchedNestedTensor: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:754 [backend fallback]
+FuncTorchVmapMode: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/VmapModeRegistrations.cpp:22 [backend fallback]
+Batched: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/LegacyBatchingRegistrations.cpp:1072 [backend fallback]
+VmapMode: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/VmapModeRegistrations.cpp:32 [backend fallback]
+FuncTorchGradWrapper: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/TensorWrapper.cpp:210 [backend fallback]
+PythonTLSSnapshot: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:206 [backend fallback]
+FuncTorchDynamicLayerFrontMode: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:473 [backend fallback]
+PreDispatch: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:210 [backend fallback]
+PythonDispatcher: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:202 [backend fallback]
+",json2init/results/torch/torch.ao.nn.quantized.functional.linear.init.json,,,,,,,
+seed_generation_failure,torch.cuda.clock_rate,missing_dependency,missing_dependency,nvidia-ml-py does not seem to be installed or it can't be imported.,json2init/results/torch/torch.cuda.clock_rate.init.json,,,,,,,
+seed_generation_failure,torch.cuda.device_memory_used,missing_dependency,missing_dependency,nvidia-ml-py does not seem to be installed or it can't be imported.,json2init/results/torch/torch.cuda.device_memory_used.init.json,,,,,,,
+seed_generation_failure,torch.cuda.nvtx.range_start,api_runtime_error,api_runtime_error,smoke test failed: '_NVTXStub' object has no attribute 'rangeStartA',json2init/results/torch/torch.cuda.nvtx.range_start.init.json,,,,,,,
+seed_generation_failure,torch.cuda.power_draw,missing_dependency,missing_dependency,nvidia-ml-py does not seem to be installed or it can't be imported.,json2init/results/torch/torch.cuda.power_draw.init.json,,,,,,,
+seed_generation_failure,torch.cuda.temperature,missing_dependency,missing_dependency,nvidia-ml-py does not seem to be installed or it can't be imported.,json2init/results/torch/torch.cuda.temperature.init.json,,,,,,,
+seed_generation_failure,torch.cuda.tunable.concurrent.futures.wait,retry,,required param 'fs' unresolved: unsupported base seed type: future,json2init/results/torch/torch.cuda.tunable.concurrent.futures.wait.init.json,,,,,,,
+seed_generation_failure,torch.cuda.utilization,missing_dependency,missing_dependency,nvidia-ml-py does not seem to be installed or it can't be imported.,json2init/results/torch/torch.cuda.utilization.init.json,,,,,,,
+seed_generation_failure,torch.functional.pca_lowrank,api_runtime_error,api_runtime_error,"smoke test failed: not enough values to unpack (expected 2, got 1)",json2init/results/torch/torch.functional.pca_lowrank.init.json,,,,,,,
+seed_generation_failure,torch.functional.stft,api_runtime_error,api_runtime_error,"smoke test failed: stft requires the return_complex parameter be given for real inputs, and will further require that return_complex=True in a future PyTorch release.",json2init/results/torch/torch.functional.stft.init.json,,,,,,,
+seed_generation_failure,torch.functional.svd_lowrank,api_runtime_error,api_runtime_error,"smoke test failed: not enough values to unpack (expected 2, got 1)",json2init/results/torch/torch.functional.svd_lowrank.init.json,,,,,,,
+seed_generation_failure,torch.futures.collect_all,retry,,required param 'futures' unresolved: unsupported base seed type: future,json2init/results/torch/torch.futures.collect_all.init.json,,,,,,,
+seed_generation_failure,torch.fx.experimental.symbolic_shapes.sympy.GramSchmidt,api_runtime_error,api_runtime_error,smoke test failed: 'int' object has no attribute 'rows',json2init/results/torch/torch.fx.experimental.symbolic_shapes.sympy.GramSchmidt.init.json,,,,,,,
+seed_generation_failure,torch.fx.experimental.symbolic_shapes.sympy.nonlinsolve,api_runtime_error,api_runtime_error,"smoke test failed: 
+Symbols must be given, for which solution of the system is to be
+found.",json2init/results/torch/torch.fx.experimental.symbolic_shapes.sympy.nonlinsolve.init.json,,,,,,,
+seed_generation_failure,torch.fx.experimental.symbolic_shapes.sympy.round_two,api_runtime_error,api_runtime_error,smoke test failed: 'float' object has no attribute 'is_univariate',json2init/results/torch/torch.fx.experimental.symbolic_shapes.sympy.round_two.init.json,,,,,,,
+seed_generation_failure,torch.lobpcg,api_runtime_error,api_runtime_error,smoke test failed: tuple index out of range,json2init/results/torch/torch.lobpcg.init.json,,,,,,,
+seed_generation_failure,torch.mtia.get_rng_state,api_runtime_error,api_runtime_error,smoke test failed: Torch not compiled with MTIA enabled. Ensure you have `import mtia.host_runtime.torch_mtia.dynamic_library` in your python src file and include `//mtia/host_runtime/torch_mtia:torch_mtia` as your target dependency!,json2init/results/torch/torch.mtia.get_rng_state.init.json,,,,,,,
+seed_generation_failure,torch.nested.as_nested_tensor,api_runtime_error,api_runtime_error,smoke test failed: as_nested_tensor(): Expected tensor argument to have dim() > 1,json2init/results/torch/torch.nested.as_nested_tensor.init.json,,,,,,,
+seed_generation_failure,torch.nested.narrow,retry,spec_or_seed_error,"smoke test failed: unbind(): argument 'input' (position 1) must be Tensor, not int",json2init/results/torch/torch.nested.narrow.init.json,,,,,,,
+seed_generation_failure,torch.nested.nested_tensor_from_jagged,api_runtime_error,api_runtime_error,smoke test failed: nested_tensor_from_jagged(): At least one of offsets or lengths is required.,json2init/results/torch/torch.nested.nested_tensor_from_jagged.init.json,,,,,,,
+seed_generation_failure,torch.nn.parallel.comm.broadcast_coalesced,retry,spec_or_seed_error,smoke test failed: 'int' object is not iterable,json2init/results/torch/torch.nn.parallel.comm.broadcast_coalesced.init.json,,,,,,,
+seed_generation_failure,torch.nn.parallel.comm.reduce_add,api_runtime_error,api_runtime_error,smoke test failed: module 'torch.mps' has no attribute 'current_device',json2init/results/torch/torch.nn.parallel.comm.reduce_add.init.json,,,,,,,
+seed_generation_failure,torch.nn.parallel.comm.reduce_add_coalesced,retry,spec_or_seed_error,smoke test failed: iteration over a 0-d tensor,json2init/results/torch/torch.nn.parallel.comm.reduce_add_coalesced.init.json,,,,,,,
+seed_generation_failure,torch.nn.quantized.functional.adaptive_avg_pool2d,api_runtime_error,api_runtime_error,smoke test failed: Input to 'quantized.functional.adaptive_avg_pool2d' must be quantized!,json2init/results/torch/torch.nn.quantized.functional.adaptive_avg_pool2d.init.json,,,,,,,
+seed_generation_failure,torch.nn.quantized.functional.adaptive_avg_pool3d,api_runtime_error,api_runtime_error,smoke test failed: Input to 'quantized.functional.adaptive_avg_pool3d' must be quantized!,json2init/results/torch/torch.nn.quantized.functional.adaptive_avg_pool3d.init.json,,,,,,,
+seed_generation_failure,torch.nn.quantized.functional.elu,api_runtime_error,api_runtime_error,smoke test failed: Input to 'quantized.elu' must be quantized!,json2init/results/torch/torch.nn.quantized.functional.elu.init.json,,,,,,,
+seed_generation_failure,torch.nn.quantized.functional.hardswish,api_runtime_error,api_runtime_error,smoke test failed: Input to 'quantized.hardswish' must be quantized!,json2init/results/torch/torch.nn.quantized.functional.hardswish.init.json,,,,,,,
+seed_generation_failure,torch.nn.quantized.functional.linear,api_runtime_error,api_runtime_error,"smoke test failed: Could not run 'aten::q_scale' with arguments from the 'CPU' backend. This could be because the operator doesn't exist for this backend, or was omitted during the selective/custom build process (if using custom build). If you are a Facebook employee using PyTorch on mobile, please visit https://fburl.com/ptmfixes for possible resolutions. 'aten::q_scale' is only available for these backends: [MPS, Meta, QuantizedCPU, BackendSelect, Python, FuncTorchDynamicLayerBackMode, Functionalize, Named, Conjugate, Negative, ZeroTensor, ADInplaceOrView, AutogradOther, AutogradCPU, AutogradCUDA, AutogradHIP, AutogradXLA, AutogradMPS, AutogradIPU, AutogradXPU, AutogradHPU, AutogradVE, AutogradLazy, AutogradMTIA, AutogradMAIA, AutogradPrivateUse1, AutogradPrivateUse2, AutogradPrivateUse3, AutogradMeta, AutogradNestedTensor, Tracer, AutocastCPU, AutocastMTIA, AutocastMAIA, AutocastXPU, AutocastMPS, AutocastCUDA, FuncTorchBatched, BatchedNestedTensor, FuncTorchVmapMode, Batched, VmapMode, FuncTorchGradWrapper, PythonTLSSnapshot, FuncTorchDynamicLayerFrontMode, PreDispatch, PythonDispatcher].
+
+MPS: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/mps/MPSFallback.mm:101 [backend fallback]
+Meta: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/MetaFallbackKernel.cpp:23 [backend fallback]
+QuantizedCPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/build/aten/src/ATen/RegisterQuantizedCPU_0.cpp:1211 [kernel]
+BackendSelect: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/BackendSelectFallbackKernel.cpp:3 [backend fallback]
+Python: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:198 [backend fallback]
+FuncTorchDynamicLayerBackMode: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:477 [backend fallback]
+Functionalize: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/FunctionalizeFallbackKernel.cpp:384 [backend fallback]
+Named: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/NamedRegistrations.cpp:5 [backend fallback]
+Conjugate: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/ConjugateFallback.cpp:17 [backend fallback]
+Negative: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/native/NegateFallback.cpp:18 [backend fallback]
+ZeroTensor: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/ZeroTensorFallback.cpp:115 [backend fallback]
+ADInplaceOrView: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/VariableFallbackKernel.cpp:103 [backend fallback]
+AutogradOther: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradCPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradCUDA: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradHIP: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradXLA: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradMPS: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradIPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradXPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradHPU: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradVE: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradLazy: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradMTIA: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradMAIA: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradPrivateUse1: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradPrivateUse2: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradPrivateUse3: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradMeta: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+AutogradNestedTensor: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/VariableType_4.cpp:19697 [autograd kernel]
+Tracer: registered at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/autograd/generated/TraceType_4.cpp:13600 [kernel]
+AutocastCPU: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:336 [backend fallback]
+AutocastMTIA: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:480 [backend fallback]
+AutocastMAIA: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:518 [backend fallback]
+AutocastXPU: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:556 [backend fallback]
+AutocastMPS: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:221 [backend fallback]
+AutocastCUDA: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/autocast_mode.cpp:177 [backend fallback]
+FuncTorchBatched: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:727 [backend fallback]
+BatchedNestedTensor: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/LegacyBatchingRegistrations.cpp:754 [backend fallback]
+FuncTorchVmapMode: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/VmapModeRegistrations.cpp:22 [backend fallback]
+Batched: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/LegacyBatchingRegistrations.cpp:1072 [backend fallback]
+VmapMode: fallthrough registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/VmapModeRegistrations.cpp:32 [backend fallback]
+FuncTorchGradWrapper: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/TensorWrapper.cpp:210 [backend fallback]
+PythonTLSSnapshot: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:206 [backend fallback]
+FuncTorchDynamicLayerFrontMode: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/functorch/DynamicLayer.cpp:473 [backend fallback]
+PreDispatch: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:210 [backend fallback]
+PythonDispatcher: registered at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/core/PythonFallbackKernel.cpp:202 [backend fallback]
+",json2init/results/torch/torch.nn.quantized.functional.linear.init.json,,,,,,,
+seed_generation_failure,torch.nn.utils.get_total_norm,retry,spec_or_seed_error,smoke test failed: 'int' object is not iterable,json2init/results/torch/torch.nn.utils.get_total_norm.init.json,,,,,,,
+seed_generation_failure,torch.nn.utils.rnn.invert_permutation,api_runtime_error,api_runtime_error,smoke test failed: scatter(): Expected dtype int32/int64 for index,json2init/results/torch/torch.nn.utils.rnn.invert_permutation.init.json,,,,,,,
+seed_generation_failure,torch.pca_lowrank,api_runtime_error,api_runtime_error,"smoke test failed: not enough values to unpack (expected 2, got 1)",json2init/results/torch/torch.pca_lowrank.init.json,,,,,,,
+seed_generation_failure,torch.quantization.default_placeholder_observer.get_buffer,retry,spec_or_seed_error,smoke test failed: Module.get_buffer() missing 1 required positional argument: 'self',json2init/results/torch/torch.quantization.default_placeholder_observer.get_buffer.init.json,,,,,,,
+seed_generation_failure,torch.sparse.semi_structured.to_sparse_semi_structured,api_runtime_error,api_runtime_error,smoke test failed: Error original_tensor.device= cpu is not supported! Only CUDA tensors are currently supported.,json2init/results/torch/torch.sparse.semi_structured.to_sparse_semi_structured.init.json,,,,,,,
+seed_generation_failure,torch.sparse.to_sparse_semi_structured,api_runtime_error,api_runtime_error,smoke test failed: Error original_tensor.device= cpu is not supported! Only CUDA tensors are currently supported.,json2init/results/torch/torch.sparse.to_sparse_semi_structured.init.json,,,,,,,
+seed_generation_failure,torch.stft,api_runtime_error,api_runtime_error,"smoke test failed: stft requires the return_complex parameter be given for real inputs, and will further require that return_complex=True in a future PyTorch release.",json2init/results/torch/torch.stft.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.all,retry,spec_or_seed_error,"smoke test failed: all() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (tuple of ints dim = None, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+",json2init/results/torch/torch.storage.np.all.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.any,retry,spec_or_seed_error,"smoke test failed: any() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (tuple of ints dim = None, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+",json2init/results/torch/torch.storage.np.any.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.array2string,retry,spec_or_seed_error,smoke test failed: '>' not supported between instances of 'builtin_function_or_method' and 'int',json2init/results/torch/torch.storage.np.array2string.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.array_repr,retry,spec_or_seed_error,smoke test failed: '>' not supported between instances of 'builtin_function_or_method' and 'int',json2init/results/torch/torch.storage.np.array_repr.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.astype,retry,spec_or_seed_error,"smoke test failed: astype() got some positional-only arguments passed as keyword arguments: 'x, dtype'",json2init/results/torch/torch.storage.np.astype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.bincount,retry,spec_or_seed_error,smoke test failed: bincount() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.bincount.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.bmat,api_runtime_error,api_runtime_error,smoke test failed: name 'test' is not defined,json2init/results/torch/torch.storage.np.bmat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.busday_count,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.busday_count.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.busday_offset,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.busday_offset.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.can_cast,retry,spec_or_seed_error,smoke test failed: Cannot interpret 'torch.float32' as a data type,json2init/results/torch/torch.storage.np.can_cast.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.capitalize,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.char.capitalize.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.chararray.astype,retry,spec_or_seed_error,smoke test failed: unbound method ndarray.astype() needs an argument,json2init/results/torch/torch.storage.np.char.chararray.astype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.chararray.transpose,retry,spec_or_seed_error,smoke test failed: unbound method ndarray.transpose() needs an argument,json2init/results/torch/torch.storage.np.char.chararray.transpose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.expandtabs,api_runtime_error,api_runtime_error,"smoke test failed: ufunc '_expandtabs_length' did not contain a loop with signature matching types (<class 'numpy.dtypes.Float32DType'>, <class 'numpy.dtypes.Int64DType'>) -> None",json2init/results/torch/torch.storage.np.char.expandtabs.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.lower,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.char.lower.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.rpartition,api_runtime_error,api_runtime_error,smoke test failed: could not convert string to float: np.str_('test'),json2init/results/torch/torch.storage.np.char.rpartition.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.swapcase,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.char.swapcase.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.title,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.char.title.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.char.upper,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.char.upper.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.choose,retry,spec_or_seed_error,smoke test failed: Tensor is not a sequence,json2init/results/torch/torch.storage.np.choose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.arrayprint.any,retry,spec_or_seed_error,"smoke test failed: any() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (tuple of ints dim = None, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+",json2init/results/torch/torch.storage.np.core.arrayprint.any.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.arrayprint.array2string,retry,spec_or_seed_error,smoke test failed: '>' not supported between instances of 'builtin_function_or_method' and 'int',json2init/results/torch/torch.storage.np.core.arrayprint.array2string.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.arrayprint.array_repr,retry,spec_or_seed_error,smoke test failed: '>' not supported between instances of 'builtin_function_or_method' and 'int',json2init/results/torch/torch.storage.np.core.arrayprint.array_repr.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.arrayprint.datetime_as_string,retry,spec_or_seed_error,smoke test failed: input must have type NumPy datetime,json2init/results/torch/torch.storage.np.core.arrayprint.datetime_as_string.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.arrayprint.datetime_data,retry,spec_or_seed_error,smoke test failed: datetime_data() takes no keyword arguments,json2init/results/torch/torch.storage.np.core.arrayprint.datetime_data.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.arrayprint.isnat,retry,spec_or_seed_error,smoke test failed: isnat() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.core.arrayprint.isnat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.capitalize,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.core.defchararray.capitalize.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.expandtabs,api_runtime_error,api_runtime_error,"smoke test failed: ufunc '_expandtabs_length' did not contain a loop with signature matching types (<class 'numpy.dtypes.Float32DType'>, <class 'numpy.dtypes.Int64DType'>) -> None",json2init/results/torch/torch.storage.np.core.defchararray.expandtabs.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.lower,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.core.defchararray.lower.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.rpartition,api_runtime_error,api_runtime_error,smoke test failed: could not convert string to float: np.str_('test'),json2init/results/torch/torch.storage.np.core.defchararray.rpartition.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.slice,retry,spec_or_seed_error,"smoke test failed: slice() got some positional-only arguments passed as keyword arguments: 'a, start, stop, step'",json2init/results/torch/torch.storage.np.core.defchararray.slice.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.strings_partition,api_runtime_error,api_runtime_error,smoke test failed: could not convert string to float: np.str_('StringDType'),json2init/results/torch/torch.storage.np.core.defchararray.strings_partition.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.strings_rpartition,api_runtime_error,api_runtime_error,smoke test failed: could not convert string to float: np.str_('StringDType'),json2init/results/torch/torch.storage.np.core.defchararray.strings_rpartition.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.swapcase,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.core.defchararray.swapcase.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.title,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.core.defchararray.title.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.defchararray.upper,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.core.defchararray.upper.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.einsumfunc.einsum,api_runtime_error,api_runtime_error,"smoke test failed: must specify the einstein sum subscripts string and at least one operand, or at least one operand and its corresponding subscripts list",json2init/results/torch/torch.storage.np.core.einsumfunc.einsum.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.einsumfunc.einsum_path,api_runtime_error,api_runtime_error,smoke test failed: No input operands,json2init/results/torch/torch.storage.np.core.einsumfunc.einsum_path.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.fromnumeric.all,retry,spec_or_seed_error,"smoke test failed: all() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (tuple of ints dim = None, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+",json2init/results/torch/torch.storage.np.core.fromnumeric.all.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.fromnumeric.any,retry,spec_or_seed_error,"smoke test failed: any() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (tuple of ints dim = None, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+",json2init/results/torch/torch.storage.np.core.fromnumeric.any.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.fromnumeric.choose,retry,spec_or_seed_error,smoke test failed: Tensor is not a sequence,json2init/results/torch/torch.storage.np.core.fromnumeric.choose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.fromnumeric.matrix_transpose,retry,spec_or_seed_error,smoke test failed: matrix_transpose() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.core.fromnumeric.matrix_transpose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.function_base.result_type,retry,spec_or_seed_error,smoke test failed: result_type() got an unexpected keyword argument 'arrays_and_dtypes',json2init/results/torch/torch.storage.np.core.function_base.result_type.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.bincount,retry,spec_or_seed_error,smoke test failed: bincount() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.core.multiarray.bincount.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.busday_count,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.multiarray.busday_count.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.busday_offset,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.multiarray.busday_offset.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.can_cast,retry,spec_or_seed_error,smoke test failed: Cannot interpret 'torch.float32' as a data type,json2init/results/torch/torch.storage.np.core.multiarray.can_cast.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.datetime_as_string,retry,spec_or_seed_error,smoke test failed: input must have type NumPy datetime,json2init/results/torch/torch.storage.np.core.multiarray.datetime_as_string.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.datetime_data,retry,spec_or_seed_error,smoke test failed: datetime_data() takes no keyword arguments,json2init/results/torch/torch.storage.np.core.multiarray.datetime_data.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.is_busday,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.multiarray.is_busday.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.isnan,retry,spec_or_seed_error,smoke test failed: isnan() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.core.multiarray.isnan.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.isnat,retry,spec_or_seed_error,smoke test failed: isnat() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.core.multiarray.isnat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.lexsort,retry,spec_or_seed_error,smoke test failed: need sequence of keys with len > 0 in lexsort,json2init/results/torch/torch.storage.np.core.multiarray.lexsort.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.min_scalar_type,retry,spec_or_seed_error,smoke test failed: min_scalar_type() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.core.multiarray.min_scalar_type.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.nested_iters,api_runtime_error,api_runtime_error,smoke test failed: axes must have at least 2 entries for nested iteration,json2init/results/torch/torch.storage.np.core.multiarray.nested_iters.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.packbits,retry,spec_or_seed_error,smoke test failed: packbits() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.core.multiarray.packbits.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.promote_types,retry,spec_or_seed_error,smoke test failed: numpy.promote_types() takes no keyword arguments,json2init/results/torch/torch.storage.np.core.multiarray.promote_types.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.ravel_multi_index,retry,spec_or_seed_error,smoke test failed: dispatcher for __array_function__ did not return an iterable,json2init/results/torch/torch.storage.np.core.multiarray.ravel_multi_index.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.result_type,retry,spec_or_seed_error,smoke test failed: result_type() got an unexpected keyword argument 'arrays_and_dtypes',json2init/results/torch/torch.storage.np.core.multiarray.result_type.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.unpackbits,retry,spec_or_seed_error,smoke test failed: unpackbits() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.core.multiarray.unpackbits.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.multiarray.where,retry,spec_or_seed_error,smoke test failed: where() got some positional-only arguments passed as keyword arguments: 'condition',json2init/results/torch/torch.storage.np.core.multiarray.where.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.all,retry,spec_or_seed_error,"smoke test failed: all() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (tuple of ints dim = None, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+",json2init/results/torch/torch.storage.np.core.numeric.all.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.any,retry,spec_or_seed_error,"smoke test failed: any() received an invalid combination of arguments - got (out=NoneType, axis=NoneType, ), but expected one of:
+ * ()
+ * (tuple of ints dim = None, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (int dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+ * (name dim, bool keepdim = False)
+      didn't match because some of the keywords were incorrect: out, axis
+",json2init/results/torch/torch.storage.np.core.numeric.any.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.array2string,retry,spec_or_seed_error,smoke test failed: '>' not supported between instances of 'builtin_function_or_method' and 'int',json2init/results/torch/torch.storage.np.core.numeric.array2string.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.array_repr,retry,spec_or_seed_error,smoke test failed: '>' not supported between instances of 'builtin_function_or_method' and 'int',json2init/results/torch/torch.storage.np.core.numeric.array_repr.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.astype,retry,spec_or_seed_error,"smoke test failed: astype() got some positional-only arguments passed as keyword arguments: 'x, dtype'",json2init/results/torch/torch.storage.np.core.numeric.astype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.busday_count,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.numeric.busday_count.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.busday_offset,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.numeric.busday_offset.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.can_cast,retry,spec_or_seed_error,smoke test failed: Cannot interpret 'torch.float32' as a data type,json2init/results/torch/torch.storage.np.core.numeric.can_cast.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.choose,retry,spec_or_seed_error,smoke test failed: Tensor is not a sequence,json2init/results/torch/torch.storage.np.core.numeric.choose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.datetime_as_string,retry,spec_or_seed_error,smoke test failed: input must have type NumPy datetime,json2init/results/torch/torch.storage.np.core.numeric.datetime_as_string.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.datetime_data,retry,spec_or_seed_error,smoke test failed: datetime_data() takes no keyword arguments,json2init/results/torch/torch.storage.np.core.numeric.datetime_data.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.is_busday,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.numeric.is_busday.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.isdtype,retry,spec_or_seed_error,"smoke test failed: dtype argument must be a NumPy dtype, but it is a <class 'torch.dtype'>.",json2init/results/torch/torch.storage.np.core.numeric.isdtype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.isfortran,api_runtime_error,api_runtime_error,smoke test failed: 'Tensor' object has no attribute 'flags',json2init/results/torch/torch.storage.np.core.numeric.isfortran.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.isnan,retry,spec_or_seed_error,smoke test failed: isnan() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.core.numeric.isnan.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.isnat,retry,spec_or_seed_error,smoke test failed: isnat() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.core.numeric.isnat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.lexsort,retry,spec_or_seed_error,smoke test failed: need sequence of keys with len > 0 in lexsort,json2init/results/torch/torch.storage.np.core.numeric.lexsort.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.matrix_transpose,retry,spec_or_seed_error,smoke test failed: matrix_transpose() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.core.numeric.matrix_transpose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.min_scalar_type,retry,spec_or_seed_error,smoke test failed: min_scalar_type() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.core.numeric.min_scalar_type.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.moveaxis,api_runtime_error,api_runtime_error,smoke test failed: source: axis 1 is out of bounds for array of dimension 1,json2init/results/torch/torch.storage.np.core.numeric.moveaxis.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.nested_iters,api_runtime_error,api_runtime_error,smoke test failed: axes must have at least 2 entries for nested iteration,json2init/results/torch/torch.storage.np.core.numeric.nested_iters.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.promote_types,retry,spec_or_seed_error,smoke test failed: numpy.promote_types() takes no keyword arguments,json2init/results/torch/torch.storage.np.core.numeric.promote_types.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.result_type,retry,spec_or_seed_error,smoke test failed: result_type() got an unexpected keyword argument 'arrays_and_dtypes',json2init/results/torch/torch.storage.np.core.numeric.result_type.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.setbufsize,retry,spec_or_seed_error,smoke test failed: '<' not supported between instances of 'list' and 'int',json2init/results/torch/torch.storage.np.core.numeric.setbufsize.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numeric.where,retry,spec_or_seed_error,smoke test failed: where() got some positional-only arguments passed as keyword arguments: 'condition',json2init/results/torch/torch.storage.np.core.numeric.where.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numerictypes.busday_count,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.numerictypes.busday_count.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numerictypes.busday_offset,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.numerictypes.busday_offset.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numerictypes.datetime_as_string,retry,spec_or_seed_error,smoke test failed: input must have type NumPy datetime,json2init/results/torch/torch.storage.np.core.numerictypes.datetime_as_string.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numerictypes.datetime_data,retry,spec_or_seed_error,smoke test failed: datetime_data() takes no keyword arguments,json2init/results/torch/torch.storage.np.core.numerictypes.datetime_data.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numerictypes.is_busday,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.core.numerictypes.is_busday.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numerictypes.isdtype,retry,spec_or_seed_error,"smoke test failed: dtype argument must be a NumPy dtype, but it is a <class 'torch.dtype'>.",json2init/results/torch/torch.storage.np.core.numerictypes.isdtype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.numerictypes.sctype2char,api_runtime_error,api_runtime_error,smoke test failed: unrecognized type,json2init/results/torch/torch.storage.np.core.numerictypes.sctype2char.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.shape_base.unstack,retry,spec_or_seed_error,smoke test failed: unstack() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.core.shape_base.unstack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.umath.datetime_data,retry,spec_or_seed_error,smoke test failed: datetime_data() takes no keyword arguments,json2init/results/torch/torch.storage.np.core.umath.datetime_data.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.umath.isnan,retry,spec_or_seed_error,smoke test failed: isnan() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.core.umath.isnan.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.umath.isnat,retry,spec_or_seed_error,smoke test failed: isnat() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.core.umath.isnat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.umath.nested_iters,api_runtime_error,api_runtime_error,smoke test failed: axes must have at least 2 entries for nested iteration,json2init/results/torch/torch.storage.np.core.umath.nested_iters.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.core.umath.promote_types,retry,spec_or_seed_error,smoke test failed: numpy.promote_types() takes no keyword arguments,json2init/results/torch/torch.storage.np.core.umath.promote_types.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ctypeslib.as_ctypes_type,retry,spec_or_seed_error,smoke test failed: Cannot interpret 'torch.float32' as a data type,json2init/results/torch/torch.storage.np.ctypeslib.as_ctypes_type.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.datetime_as_string,retry,spec_or_seed_error,smoke test failed: input must have type NumPy datetime,json2init/results/torch/torch.storage.np.datetime_as_string.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.datetime_data,retry,spec_or_seed_error,smoke test failed: datetime_data() takes no keyword arguments,json2init/results/torch/torch.storage.np.datetime_data.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.diagflat,retry,,required param 'v' unresolved: unhandled chosen type: array_like,json2init/results/torch/torch.storage.np.diagflat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.dtype.newbyteorder,retry,spec_or_seed_error,smoke test failed: unbound method dtype.newbyteorder() needs an argument,json2init/results/torch/torch.storage.np.dtype.newbyteorder.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.einsum,api_runtime_error,api_runtime_error,"smoke test failed: must specify the einstein sum subscripts string and at least one operand, or at least one operand and its corresponding subscripts list",json2init/results/torch/torch.storage.np.einsum.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.einsum_path,api_runtime_error,api_runtime_error,smoke test failed: No input operands,json2init/results/torch/torch.storage.np.einsum_path.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.fft.irfft2,api_runtime_error,api_runtime_error,smoke test failed: index -2 is out of bounds for axis 0 with size 1,json2init/results/torch/torch.storage.np.fft.irfft2.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.fft.rfft2,api_runtime_error,api_runtime_error,smoke test failed: cannot do a non-empty take from an empty axes.,json2init/results/torch/torch.storage.np.fft.rfft2.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.fft.rfftn,api_runtime_error,api_runtime_error,smoke test failed: list index out of range,json2init/results/torch/torch.storage.np.fft.rfftn.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.is_busday,retry,spec_or_seed_error,smoke test failed: Cannot cast array data from dtype('float32') to dtype('<M8') according to the rule 'safe',json2init/results/torch/torch.storage.np.is_busday.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.isdtype,retry,spec_or_seed_error,"smoke test failed: dtype argument must be a NumPy dtype, but it is a <class 'torch.dtype'>.",json2init/results/torch/torch.storage.np.isdtype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.isfortran,api_runtime_error,api_runtime_error,smoke test failed: 'Tensor' object has no attribute 'flags',json2init/results/torch/torch.storage.np.isfortran.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.isnan,retry,spec_or_seed_error,smoke test failed: isnan() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.isnan.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.isnat,retry,spec_or_seed_error,smoke test failed: isnat() takes from 1 to 2 positional arguments but 0 were given,json2init/results/torch/torch.storage.np.isnat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.isreal,api_runtime_error,api_runtime_error,smoke test failed: imag is not implemented for tensors with non-complex dtypes.,json2init/results/torch/torch.storage.np.isreal.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.lexsort,retry,spec_or_seed_error,smoke test failed: need sequence of keys with len > 0 in lexsort,json2init/results/torch/torch.storage.np.lexsort.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.lib.format.descr_to_dtype,retry,spec_or_seed_error,smoke test failed: 'torch.dtype' object is not iterable,json2init/results/torch/torch.storage.np.lib.format.descr_to_dtype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.lib.format.dtype_to_descr,api_runtime_error,api_runtime_error,smoke test failed: 'torch.dtype' object has no attribute 'fields',json2init/results/torch/torch.storage.np.lib.format.dtype_to_descr.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.lib.stride_tricks.sliding_window_view,api_runtime_error,api_runtime_error,"smoke test failed: Since axis is `None`, must provide window_shape for all dimensions of `x`; got 2 window_shape elements and `x.ndim` is 1.",json2init/results/torch/torch.storage.np.lib.stride_tricks.sliding_window_view.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.cond,api_runtime_error,api_runtime_error,smoke test failed: 0-dimensional array given. Array must be at least two-dimensional,json2init/results/torch/torch.storage.np.linalg.cond.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.cross,retry,spec_or_seed_error,"smoke test failed: cross() got some positional-only arguments passed as keyword arguments: 'x1, x2'",json2init/results/torch/torch.storage.np.linalg.cross.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.diagonal,retry,spec_or_seed_error,smoke test failed: diagonal() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.linalg.diagonal.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.eigvals,api_runtime_error,api_runtime_error,smoke test failed: 0-dimensional array given. Array must be at least two-dimensional,json2init/results/torch/torch.storage.np.linalg.eigvals.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.eigvalsh,api_runtime_error,api_runtime_error,smoke test failed: 0-dimensional array given. Array must be at least two-dimensional,json2init/results/torch/torch.storage.np.linalg.eigvalsh.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.matmul,retry,spec_or_seed_error,"smoke test failed: matmul() got some positional-only arguments passed as keyword arguments: 'x1, x2'",json2init/results/torch/torch.storage.np.linalg.matmul.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.matrix_transpose,retry,spec_or_seed_error,smoke test failed: matrix_transpose() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.linalg.matrix_transpose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.multi_dot,api_runtime_error,api_runtime_error,smoke test failed: Expecting at least two arrays.,json2init/results/torch/torch.storage.np.linalg.multi_dot.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.outer,retry,spec_or_seed_error,"smoke test failed: outer() got some positional-only arguments passed as keyword arguments: 'x1, x2'",json2init/results/torch/torch.storage.np.linalg.outer.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.svd,api_runtime_error,api_runtime_error,smoke test failed: 0-dimensional array given. Array must be at least two-dimensional,json2init/results/torch/torch.storage.np.linalg.svd.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.svdvals,retry,spec_or_seed_error,smoke test failed: svdvals() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.linalg.svdvals.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.tensorinv,api_runtime_error,api_runtime_error,smoke test failed: Last 2 dimensions of the array must be square,json2init/results/torch/torch.storage.np.linalg.tensorinv.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.tensorsolve,api_runtime_error,api_runtime_error,"smoke test failed: solve1: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (m,m),(m)->(m) (size 2 is different from 1)",json2init/results/torch/torch.storage.np.linalg.tensorsolve.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.linalg.vecdot,retry,spec_or_seed_error,"smoke test failed: vecdot() got some positional-only arguments passed as keyword arguments: 'x1, x2'",json2init/results/torch/torch.storage.np.linalg.vecdot.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.choose,api_runtime_error,api_runtime_error,smoke test failed: 'numpy.float32' object has no attribute '__setmask__',json2init/results/torch/torch.storage.np.ma.choose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.clip,retry,spec_or_seed_error,"smoke test failed: view() received an invalid combination of arguments - got (type), but expected one of:
+ * (torch.dtype dtype)
+      didn't match because some of the arguments have invalid types: (!type!)
+ * (tuple of ints size)
+      didn't match because some of the arguments have invalid types: (!type!)
+",json2init/results/torch/torch.storage.np.ma.clip.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.column_stack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.column_stack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.concatenate,api_runtime_error,api_runtime_error,smoke test failed: zero-dimensional arrays cannot be concatenated,json2init/results/torch/torch.storage.np.ma.concatenate.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.core.choose,api_runtime_error,api_runtime_error,smoke test failed: 'numpy.float32' object has no attribute '__setmask__',json2init/results/torch/torch.storage.np.ma.core.choose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.core.clip,retry,spec_or_seed_error,"smoke test failed: view() received an invalid combination of arguments - got (type), but expected one of:
+ * (torch.dtype dtype)
+      didn't match because some of the arguments have invalid types: (!type!)
+ * (tuple of ints size)
+      didn't match because some of the arguments have invalid types: (!type!)
+",json2init/results/torch/torch.storage.np.ma.core.clip.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.core.concatenate,api_runtime_error,api_runtime_error,smoke test failed: zero-dimensional arrays cannot be concatenated,json2init/results/torch/torch.storage.np.ma.core.concatenate.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.core.diff,retry,spec_or_seed_error,smoke test failed: diff() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.ma.core.diff.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.core.fromflex,api_runtime_error,api_runtime_error,smoke test failed: too many indices for tensor of dimension 1,json2init/results/torch/torch.storage.np.ma.core.fromflex.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.core.where,api_runtime_error,api_runtime_error,"smoke test failed: Calling nonzero on 0d arrays is not allowed. Use np.atleast_1d(scalar).nonzero() instead. If the context of this error is of the form `arr[nonzero(cond)]`, just use `arr[cond]`.",json2init/results/torch/torch.storage.np.ma.core.where.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.count_masked,retry,spec_or_seed_error,smoke test failed: Cannot interpret 'torch.float32' as a data type,json2init/results/torch/torch.storage.np.ma.count_masked.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.diagflat,retry,,required param 'v' unresolved: unhandled chosen type: array_like,json2init/results/torch/torch.storage.np.ma.diagflat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.diff,retry,spec_or_seed_error,smoke test failed: diff() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.ma.diff.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.dstack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.dstack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.column_stack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.extras.column_stack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.concatenate,api_runtime_error,api_runtime_error,smoke test failed: zero-dimensional arrays cannot be concatenated,json2init/results/torch/torch.storage.np.ma.extras.concatenate.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.count_masked,retry,spec_or_seed_error,smoke test failed: Cannot interpret 'torch.float32' as a data type,json2init/results/torch/torch.storage.np.ma.extras.count_masked.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.diagflat,retry,,required param 'v' unresolved: unhandled chosen type: array_like,json2init/results/torch/torch.storage.np.ma.extras.diagflat.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.dstack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.extras.dstack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.hstack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.extras.hstack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.row_stack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.extras.row_stack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.stack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.extras.stack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.extras.vstack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.extras.vstack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.fromflex,api_runtime_error,api_runtime_error,smoke test failed: too many indices for tensor of dimension 1,json2init/results/torch/torch.storage.np.ma.fromflex.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.hstack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.hstack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.mvoid.argsort,retry,spec_or_seed_error,smoke test failed: MaskedArray.argsort() missing 1 required positional argument: 'self',json2init/results/torch/torch.storage.np.ma.mvoid.argsort.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.mvoid.astype,retry,spec_or_seed_error,smoke test failed: unbound method ndarray.astype() needs an argument,json2init/results/torch/torch.storage.np.ma.mvoid.astype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.mvoid.ptp,retry,spec_or_seed_error,smoke test failed: MaskedArray.ptp() missing 1 required positional argument: 'self',json2init/results/torch/torch.storage.np.ma.mvoid.ptp.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.row_stack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.row_stack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.stack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.stack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.vstack,retry,spec_or_seed_error,smoke test failed: _fromnxfunction_seq() missing 1 required positional argument: 'arys',json2init/results/torch/torch.storage.np.ma.vstack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ma.where,api_runtime_error,api_runtime_error,"smoke test failed: Calling nonzero on 0d arrays is not allowed. Use np.atleast_1d(scalar).nonzero() instead. If the context of this error is of the form `arr[nonzero(cond)]`, just use `arr[cond]`.",json2init/results/torch/torch.storage.np.ma.where.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.matrix_transpose,retry,spec_or_seed_error,smoke test failed: matrix_transpose() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.matrix_transpose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.memmap.astype,retry,spec_or_seed_error,smoke test failed: unbound method ndarray.astype() needs an argument,json2init/results/torch/torch.storage.np.memmap.astype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.memmap.transpose,retry,spec_or_seed_error,smoke test failed: unbound method ndarray.transpose() needs an argument,json2init/results/torch/torch.storage.np.memmap.transpose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.min_scalar_type,retry,spec_or_seed_error,smoke test failed: min_scalar_type() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.min_scalar_type.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.moveaxis,api_runtime_error,api_runtime_error,smoke test failed: source: axis 1 is out of bounds for array of dimension 1,json2init/results/torch/torch.storage.np.moveaxis.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.nested_iters,api_runtime_error,api_runtime_error,smoke test failed: axes must have at least 2 entries for nested iteration,json2init/results/torch/torch.storage.np.nested_iters.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.packbits,retry,spec_or_seed_error,smoke test failed: packbits() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.packbits.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.promote_types,retry,spec_or_seed_error,smoke test failed: numpy.promote_types() takes no keyword arguments,json2init/results/torch/torch.storage.np.promote_types.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ravel_multi_index,retry,spec_or_seed_error,smoke test failed: dispatcher for __array_function__ did not return an iterable,json2init/results/torch/torch.storage.np.ravel_multi_index.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.recarray.astype,retry,spec_or_seed_error,smoke test failed: unbound method ndarray.astype() needs an argument,json2init/results/torch/torch.storage.np.recarray.astype.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.recarray.transpose,retry,spec_or_seed_error,smoke test failed: unbound method ndarray.transpose() needs an argument,json2init/results/torch/torch.storage.np.recarray.transpose.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.result_type,retry,spec_or_seed_error,smoke test failed: result_type() got an unexpected keyword argument 'arrays_and_dtypes',json2init/results/torch/torch.storage.np.result_type.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.rot90,api_runtime_error,api_runtime_error,smoke test failed: Axes must be different.,json2init/results/torch/torch.storage.np.rot90.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.select,retry,spec_or_seed_error,smoke test failed: 'bool' object is not iterable,json2init/results/torch/torch.storage.np.select.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.setbufsize,retry,spec_or_seed_error,smoke test failed: '<' not supported between instances of 'list' and 'int',json2init/results/torch/torch.storage.np.setbufsize.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.split,api_runtime_error,api_runtime_error,smoke test failed: integer modulo by zero,json2init/results/torch/torch.storage.np.split.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.capitalize,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.strings.capitalize.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.expandtabs,api_runtime_error,api_runtime_error,"smoke test failed: ufunc '_expandtabs_length' did not contain a loop with signature matching types (<class 'numpy.dtypes.Float32DType'>, <class 'numpy.dtypes.Int64DType'>) -> None",json2init/results/torch/torch.storage.np.strings.expandtabs.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.lower,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.strings.lower.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.partition,api_runtime_error,api_runtime_error,smoke test failed: could not convert string to float: np.str_('StringDType'),json2init/results/torch/torch.storage.np.strings.partition.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.rpartition,api_runtime_error,api_runtime_error,smoke test failed: could not convert string to float: np.str_('StringDType'),json2init/results/torch/torch.storage.np.strings.rpartition.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.slice,retry,spec_or_seed_error,"smoke test failed: slice() got some positional-only arguments passed as keyword arguments: 'a, start, stop, step'",json2init/results/torch/torch.storage.np.strings.slice.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.swapcase,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.strings.swapcase.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.title,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.strings.title.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.strings.upper,retry,spec_or_seed_error,smoke test failed: string operation on non-string array,json2init/results/torch/torch.storage.np.strings.upper.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.take_along_axis,retry,spec_or_seed_error,smoke test failed: Cannot interpret 'torch.int64' as a data type,json2init/results/torch/torch.storage.np.take_along_axis.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.testing.suppress_warnings.record,retry,spec_or_seed_error,smoke test failed: suppress_warnings.record() missing 1 required positional argument: 'self',json2init/results/torch/torch.storage.np.testing.suppress_warnings.record.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.tile,retry,spec_or_seed_error,smoke test failed: 'float' object cannot be interpreted as an integer,json2init/results/torch/torch.storage.np.tile.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ufunc.outer,retry,spec_or_seed_error,smoke test failed: unbound method ufunc.outer() needs an argument,json2init/results/torch/torch.storage.np.ufunc.outer.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.ufunc.resolve_dtypes,retry,spec_or_seed_error,smoke test failed: unbound method ufunc.resolve_dtypes() needs an argument,json2init/results/torch/torch.storage.np.ufunc.resolve_dtypes.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.unique_all,retry,spec_or_seed_error,smoke test failed: unique_all() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.unique_all.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.unique_counts,retry,spec_or_seed_error,smoke test failed: unique_counts() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.unique_counts.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.unique_inverse,retry,spec_or_seed_error,smoke test failed: unique_inverse() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.unique_inverse.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.unique_values,retry,spec_or_seed_error,smoke test failed: unique_values() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.unique_values.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.unpackbits,retry,spec_or_seed_error,smoke test failed: unpackbits() got some positional-only arguments passed as keyword arguments: 'a',json2init/results/torch/torch.storage.np.unpackbits.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.unstack,retry,spec_or_seed_error,smoke test failed: unstack() got some positional-only arguments passed as keyword arguments: 'x',json2init/results/torch/torch.storage.np.unstack.init.json,,,,,,,
+seed_generation_failure,torch.storage.np.where,retry,spec_or_seed_error,smoke test failed: where() got some positional-only arguments passed as keyword arguments: 'condition',json2init/results/torch/torch.storage.np.where.init.json,,,,,,,
+seed_generation_failure,torch.svd_lowrank,api_runtime_error,api_runtime_error,"smoke test failed: not enough values to unpack (expected 2, got 1)",json2init/results/torch/torch.svd_lowrank.init.json,,,,,,,
+seed_generation_failure,torch.testing.make_tensor,api_runtime_error,api_runtime_error,"smoke test failed: Expected one of cpu, cuda, ipu, xpu, mkldnn, opengl, opencl, ideep, hip, ve, fpga, maia, xla, lazy, vulkan, mps, meta, hpu, mtia, privateuseone device type at start of device string: test",json2init/results/torch/torch.testing.make_tensor.init.json,,,,,,,
+seed_generation_failure,torch.xpu.get_per_process_memory_fraction,api_runtime_error,api_runtime_error,smoke test failed: Torch not compiled with XPU enabled,json2init/results/torch/torch.xpu.get_per_process_memory_fraction.init.json,,,,,,,
+seed_generation_failure,torch.xpu.get_rng_state,api_runtime_error,api_runtime_error,smoke test failed: Torch not compiled with XPU enabled,json2init/results/torch/torch.xpu.get_rng_state.init.json,,,,,,,
+seed_generation_failure,torch.xpu.mem_get_info,api_runtime_error,api_runtime_error,smoke test failed: Torch not compiled with XPU enabled,json2init/results/torch/torch.xpu.mem_get_info.init.json,,,,,,,
+seed_generation_failure,torch.xpu.memory.get_per_process_memory_fraction,api_runtime_error,api_runtime_error,smoke test failed: Torch not compiled with XPU enabled,json2init/results/torch/torch.xpu.memory.get_per_process_memory_fraction.init.json,,,,,,,
+seed_generation_failure,torch.xpu.memory.mem_get_info,api_runtime_error,api_runtime_error,smoke test failed: Torch not compiled with XPU enabled,json2init/results/torch/torch.xpu.memory.mem_get_info.init.json,,,,,,,
+seed_generation_failure,torch.xpu.random.get_rng_state,api_runtime_error,api_runtime_error,smoke test failed: Torch not compiled with XPU enabled,json2init/results/torch/torch.xpu.random.get_rng_state.init.json,,,,,,,
+pipeline_error,torch.storage.np.core.numeric.identity,,,,,mutation,valid,n,value_large_magnitude,valid_mutation_failure,"isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.core.numeric.identity.results.json
+pipeline_error,torch.storage.np.linalg.eig,,,,,mutation,valid,a,value_nan,valid_mutation_failure,Array must not contain infs or NaNs,stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.linalg.eig.results.json
+pipeline_error,torch.storage.np.linalg.eig,,,,,mutation,valid,a,value_neginf,valid_mutation_failure,Array must not contain infs or NaNs,stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.linalg.eig.results.json
+pipeline_error,torch.storage.np.linalg.eig,,,,,mutation,valid,a,value_posinf,valid_mutation_failure,Array must not contain infs or NaNs,stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.linalg.eig.results.json
+pipeline_error,torch.storage.np.ma.core.identity,,,,,mutation,valid,n,value_large_magnitude,valid_mutation_failure,"isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.ma.core.identity.results.json
+pipeline_error,torch.storage.np.ma.identity,,,,,mutation,valid,n,value_large_magnitude,valid_mutation_failure,"isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.ma.identity.results.json
+pipeline_error,torch.storage.np.polynomial.hermite.hermgauss,,,,,mutation,valid,deg,value_large_magnitude,valid_mutation_failure,isolated execution timed out after 45s,stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.polynomial.hermite.hermgauss.results.json
+pipeline_error,torch.storage.np.polynomial.hermite_e.hermegauss,,,,,mutation,valid,deg,value_large_magnitude,valid_mutation_failure,isolated execution timed out after 45s,stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.polynomial.hermite_e.hermegauss.results.json
+pipeline_error,torch.storage.np.polynomial.laguerre.laggauss,,,,,mutation,valid,deg,value_large_magnitude,valid_mutation_failure,isolated execution timed out after 45s,stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.polynomial.laguerre.laggauss.results.json
+pipeline_error,torch.storage.np.polynomial.legendre.leggauss,,,,,mutation,valid,deg,value_large_magnitude,valid_mutation_failure,isolated execution timed out after 45s,stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.polynomial.legendre.leggauss.results.json
+pipeline_error,torch.storage.np.roots,,,,,mutation,valid,p,value_nan,valid_mutation_failure,Array must not contain infs or NaNs,stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.roots.results.json
+pipeline_error,torch.storage.np.tri,,,,,mutation,valid,N,value_large_magnitude,valid_mutation_failure,"isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.tri.results.json
+pipeline_error,torch.storage.np.tril_indices,,,,,mutation,valid,n,value_large_magnitude,valid_mutation_failure,"isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.tril_indices.results.json
+pipeline_error,torch.storage.np.triu_indices,,,,,mutation,valid,n,value_large_magnitude,valid_mutation_failure,"isolated execution subprocess exited abnormally (exitcode=-9, signal=SIGKILL)",stage4/results/torch-thesis-all-coverage/execution_results/torch.storage.np.triu_indices.results.json

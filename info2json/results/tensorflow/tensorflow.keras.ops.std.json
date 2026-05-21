@@ -11,20 +11,21 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis: if provided, must satisfy -rank(x) <= axis < rank(x)"
+        "x must be a valid TensorFlow tensor."
       ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "to compute the standard deviation of the",
+      "default": "",
       "flag": "Optional",
       "description": "Axis along which to compute standard deviation. Default is to compute the standard deviation of the flattened tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(x) <= axis < rank(x)",
-        "axis: if provided, must satisfy -rank(x) <= axis < rank(x)"
+        "(optional)",
+        "-rank(input.x) <= axis < rank(input.x)",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
     "keepdims": {
@@ -42,10 +43,8 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating",
+    "numbers": "1",
     "description": "Output tensor containing the standard deviation values."
   },
-  "constraints": [
-    "axis: if provided, must satisfy -rank(x) <= axis < rank(x)"
-  ]
+  "constraints": []
 }

@@ -13,21 +13,21 @@
       "constraints": []
     },
     "channels": {
-      "type": "int|number|tensor|dtype",
+      "type": "int|number",
       "size": "",
-      "default": "0",
+      "default": "",
       "flag": "Optional",
-      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image. dtype: The desired DType of the returned `Tensor`.",
+      "description": "An optional `int`. Defaults to `0`. Number of color channels for the decoded image.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "",
+    "dtype": {
+      "type": "tensor|dtype",
       "size": "",
-      "default": "",
+      "default": "tf.uint8",
       "flag": "Optional",
-      "description": "A name for the operation (optional)",
+      "description": "The desired DType of the returned `Tensor`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

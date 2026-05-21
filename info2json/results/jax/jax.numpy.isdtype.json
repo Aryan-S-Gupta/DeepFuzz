@@ -2,25 +2,25 @@
   "api_name": "isdtype",
   "module_path": "jax.numpy",
   "params": {
-    "kind": {
-      "type": "string|tuple|dtype",
+    "dtype": {
+      "type": "dtype",
       "size": "",
       "default": "",
-      "flag": "Optional",
-      "description": "the data type kind. If ``kind`` is dtype-like, return ``dtype = kind``. If ``kind`` is a string, then return True if the dtype is in the specified category:",
-      "dtype_candidates": [
-        "bool"
-      ],
+      "flag": "Required",
+      "description": "the input dtype",
+      "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "'bool'",
-        "'signed integer'",
-        "'unsigned integer'",
-        "'real floating'",
-        "'complex floating'",
-        "shorthand for a combination of the above",
-        "kind is required if 'dtype' is provided"
-      ]
+      "constraints": []
+    },
+    "kind": {
+      "type": "string|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "the data type kind. If ``kind`` is dtype-like, return ``dtype = kind``. If ``kind`` is a string, then return True if the dtype is in the specified category:",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
     }
   },
   "output": {

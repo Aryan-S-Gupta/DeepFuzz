@@ -10,34 +10,31 @@
       "description": "N-dimensional input array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "filt and output must have same dtype"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "trim": {
       "type": "string",
       "size": "",
-      "default": "fb",
+      "default": "",
       "flag": "Optional",
       "description": "string, optional, default = ``fb``. Specifies from which end the input is trimmed.",
       "dtype_candidates": [],
-      "enum_values": [
-        "f",
-        "b",
-        "fb"
-      ],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must be one of 'f', 'b', or 'fb'"
+        "'f' | 'b' | 'fb'"
       ]
     },
     "axis": {
-      "type": "int|tensor",
+      "type": "int|sequence|tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "optional axis or axes along which to trim. If not specified, trim along all axes of the array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

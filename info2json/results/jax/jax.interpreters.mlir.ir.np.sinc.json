@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x's type must be numeric",
-        "x's shape can be any"
+        "x shape must be broadcast-compatible with original x shape in example"
       ]
     }
   },
@@ -21,5 +20,7 @@
     "numbers": "1",
     "description": "------- ndarray ``sinc(x)``, which has the same shape as the input."
   },
-  "constraints": []
+  "constraints": [
+    "jax.interpreters.mlir.ir.np.sinc(0) takes limit value 1"
+  ]
 }

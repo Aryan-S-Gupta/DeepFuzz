@@ -1,0 +1,29 @@
+{
+  "api_name": "chebgauss",
+  "module_path": "torch.storage.np.polynomial.chebyshev",
+  "params": {
+    "deg": {
+      "type": "int|number",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int Number of sample points and weights. It must be >= 1.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "deg must be >= 1",
+        "x_i = cos(pi * (2 * i - 1) / (2 * deg))"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "------- ndarray 1-D ndarray containing the sample points. y : ndarray 1-D ndarray containing the weights."
+  },
+  "constraints": [
+    "x and y are 1-D ndarrays",
+    "x is the sample points and y is the weights"
+  ]
+}

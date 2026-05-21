@@ -8,17 +8,22 @@
     "fs": {
       "name": "fs",
       "spec": {
-        "type": "sequence|Future",
+        "type": "sequence|future",
         "size": "",
         "default": "",
         "flag": "Required",
         "description": "The sequence of Futures (possibly created by different Executors) to wait upon.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "future",
       "include_in_base_call": true,
       "base_seed_spec": {},
       "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
       "unresolved_reason": "unsupported base seed type: future"
     },
     "timeout": {
@@ -29,6 +34,9 @@
         "default": "",
         "flag": "Optional",
         "description": "The maximum number of seconds to wait. If None, then there is no limit on the wait time.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "number",
@@ -41,6 +49,12 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "return_when": {
@@ -49,21 +63,26 @@
         "type": "callable",
         "size": "",
         "default": "",
-        "flag": "Required",
-        "description": "Indicates when this function should return. The options",
+        "flag": "Optional",
+        "description": "Indicates when this function should return. The options are:",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "case_insensitive": false,
         "constraints": [
           "return_when must be one of FIRST_COMPLETED, FIRST_EXCEPTION, ALL_COMPLETED"
         ]
       },
       "chosen_type": "callable",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {},
       "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
       "unresolved_reason": "unsupported base seed type: callable"
     }
   },
   "output": {
-    "type": "tuple[set, set]",
+    "type": "tuple|future",
     "numbers": "2",
     "description": "A named 2-tuple of sets. The first set, named 'done', contains the futures that completed (is finished or cancelled) before the wait completed. The second set, named 'not_done', contains uncompleted futures. Duplicate futures given to *fs* are removed and will be returned only once."
   },
@@ -71,12 +90,12 @@
   "spec_ready": false,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "required param 'fs' unresolved: unsupported base seed type: future",
-    "required param 'return_when' unresolved: unsupported base seed type: callable"
+    "required param 'fs' unresolved: unsupported base seed type: future"
   ],
   "smoke_test": {},
   "runtime_supported_here": null,
   "source_spec_json_path": "info2json/results/torch/torch.cuda.tunable.concurrent.futures.wait.json",
   "stage3_status": "retry",
-  "smoke_attempted": false
+  "smoke_attempted": false,
+  "repair_candidate": true
 }

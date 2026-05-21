@@ -1,0 +1,110 @@
+{
+  "api_full_name": "jax.dtypes.result_type",
+  "api_name": "result_type",
+  "module_path": "jax.dtypes",
+  "import_path": "jax.dtypes.result_type",
+  "backend": "jax",
+  "params": {
+    "return_weak_type_flag": {
+      "name": "return_weak_type_flag",
+      "spec": {
+        "type": "bool|tuple|dtype",
+        "size": "",
+        "default": "False",
+        "flag": "Optional",
+        "description": "if True, then return a ``(dtype, weak_type)`` tuple. If False, just return `dtype`",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": false
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "keyword_only"
+    },
+    "args": {
+      "name": "args",
+      "spec": {
+        "type": "any",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "signature parameter args",
+        "constraints": []
+      },
+      "chosen_type": "any",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 1
+      },
+      "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "var_positional"
+    }
+  },
+  "output": {
+    "type": "dtype",
+    "numbers": "1",
+    "description": "dtype or (dtype, weak_type) depending on the value of the ``return_weak_type`` argument."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "Int32DType"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [
+      "args"
+    ],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "return_weak_type_flag"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.dtypes.result_type.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

@@ -10,15 +10,19 @@
       "description": "an array, or nested list of arrays which will be concatenated together to form the final array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "arrays' shapes must match along the axis of concatenation"
+        "arrays can contain only 2D arrays or nested lists of 2D arrays."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "a single array constructed from the inputs."
   },
-  "constraints": []
+  "constraints": [
+    "The size along the axis of concatenation must match for all blocks.",
+    "Blocks need not align in all dimensions, but the shape after inner concatenation must be valid."
+  ]
 }

@@ -20,22 +20,11 @@
         "float64"
       ],
       "constraints": [
-        "Must be one of the following types: half, bfloat16, float32, float64.",
-        "1-D or higher rank.",
+        "Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`.",
         "images must be 1-D",
         "images must be one of half, bfloat16, float32, float64, HSV",
-        "images tensor shape and hsv data last dimension size must match."
+        "Outputs a tensor of the same shape as the `images` tensor, containing the RGB"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "''",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

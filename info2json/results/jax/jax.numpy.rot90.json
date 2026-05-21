@@ -10,20 +10,24 @@
       "description": "input array. Must have ``m.ndim >= 2``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "m.ndim >= 2"
+      ]
     },
     "k": {
       "type": "int|number|tensor",
       "size": "",
-      "default": "",
+      "default": "1",
       "flag": "Optional",
       "description": "int, optional, default=1. Specifies the number of times the array is rotated. For negative values of ``k``, the array is rotated in clockwise direction.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "k < 0 implies clockwise rotation"
+      ]
     },
     "axes": {
-      "type": "tuple|tensor",
+      "type": "int|tuple|tensor",
       "size": "",
       "default": "",
       "flag": "Optional",

@@ -6,7 +6,7 @@
       "type": "float|tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "A `Tensor` or `SparseTensor`. Must be one of the following types: `half`, `float32`, `float64`.",
       "dtype_candidates": [
         "float32",
@@ -19,20 +19,10 @@
         "float64"
       ],
       "constraints": [
-        "Must be one of the following types: half, float32, float64.",
+        "Must be one of the following types: `half`, `float32`, `float64`.",
         "x must be one of SparseTensor, half, float32, float64",
-        "x and output must have the same type."
+        "The function `i0e(x)` is numerically stabler."
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

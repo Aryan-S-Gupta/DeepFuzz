@@ -1,0 +1,30 @@
+{
+  "api_name": "unique_counts",
+  "module_path": "torch.storage.np",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array. It will be flattened if it is not already 1-D.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be compatible with numpy's unique function signature",
+        "x must be 1-D",
+        "x will be flattened if it is not already 1-D."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "2",
+    "description": "------- namedtuple The result containing: * values - The unique elements of an input array. * counts - The corresponding counts for each unique element."
+  },
+  "constraints": [
+    "returns a namedtuple for easier access to each output.",
+    "This function currently always returns a sorted result, however,"
+  ]
+}

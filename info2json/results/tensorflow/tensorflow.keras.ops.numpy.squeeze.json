@@ -10,21 +10,20 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output must have broadcast-compatible shapes"
+      ]
     },
     "axis": {
-      "type": "int32 or int64",
+      "type": "int",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "Select a subset of the entries of length one in the shape.",
-      "dtype_candidates": [
-        "int32",
-        "int64"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must be in the range [-rank(x), rank(x))",
+        "-rank(x) <= axis < rank(x)",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     }

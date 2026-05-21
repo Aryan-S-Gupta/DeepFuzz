@@ -11,13 +11,13 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x cannot be None"
+        "With default values, this returns the standard ReLU activation: `max(x, 0)`, the element-wise maximum of 0 and the input tensor."
       ]
     },
     "negative_slope": {
       "type": "float",
       "size": "",
-      "default": "0",
+      "default": "0.0",
       "flag": "Optional",
       "description": "A `float` that controls the slope for values lower than the threshold.",
       "dtype_candidates": [],
@@ -41,7 +41,7 @@
     "threshold": {
       "type": "float|callable",
       "size": "",
-      "default": "",
+      "default": "0.0",
       "flag": "Optional",
       "description": "A `float` giving the threshold value of the activation function below which values will be damped or set to zero.",
       "dtype_candidates": [],
@@ -56,5 +56,7 @@
     "numbers": "1",
     "description": "A tensor with the same shape and dtype as input `x`."
   },
-  "constraints": []
+  "constraints": [
+    "Modifying default parameters allows you to use non-zero thresholds."
+  ]
 }

@@ -10,48 +10,64 @@
       "description": "the length of the window. In other words, the number of points of the returned window.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "std": {
       "type": "float",
       "size": "",
-      "default": "1",
+      "default": "1.0",
       "flag": "Optional",
       "description": "the standard deviation of the gaussian. It controls how narrow or wide the window is. Default: 1.0.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "sym": {
-      "type": "bool|tensor|dtype",
+      "type": "bool",
       "size": "",
       "default": "True",
       "flag": "Optional",
-      "description": "If `False`, returns a periodic window suitable for use in spectral analysis. If `True`, returns a symmetric window suitable for use in filter design. Default: `True`. dtype (:class:`torch.dtype`, optional): the desired data type of returned tensor. Default: if ``None``, uses a global default (see :func:`torch.set_default_dtype`).",
+      "description": "If `False`, returns a periodic window suitable for use in spectral analysis. If `True`, returns a symmetric window suitable for use in filter design. Default: `True`.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "the desired data type of returned tensor. Default: if ``None``, uses a global default (see :func:`torch.set_default_dtype`).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "layout": {
       "type": "tensor",
       "size": "",
-      "default": "torch",
+      "default": "torch.strided",
       "flag": "Optional",
       "description": "the desired layout of returned Tensor. Default: ``torch.strided``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "device": {
       "type": "tensor|device",
       "size": "",
-      "default": "if ``None``, uses the current device for the default tensor type",
+      "default": "",
       "flag": "Optional",
       "description": "the desired device of returned tensor. Default: if ``None``, uses the current device for the default tensor type (see :func:`torch.set_default_device`). :attr:`device` will be the CPU for CPU tensor types and the current CUDA device for CUDA tensor types.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "requires_grad": {
@@ -64,11 +80,12 @@
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
-    "type": "",
+    "type": "tensor",
     "numbers": "",
     "description": ""
   },

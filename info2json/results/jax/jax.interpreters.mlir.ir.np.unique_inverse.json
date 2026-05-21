@@ -11,38 +11,9 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
+        "flattened if not already 1-D",
         "x must be 1-D"
       ]
-    },
-    "return_inverse": {
-      "type": "",
-      "size": "",
-      "default": "True",
-      "flag": "Optional",
-      "description": "",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "equal_nan": {
-      "type": "",
-      "size": "",
-      "default": "False",
-      "flag": "Optional",
-      "description": "",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "sorted": {
-      "type": "",
-      "size": "",
-      "default": "False",
-      "flag": "Optional",
-      "description": "",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -50,5 +21,7 @@
     "numbers": "1",
     "description": "------- namedtuple The result containing: * values - The unique elements of an input array. * inverse_indices - The indices from the set of unique elements that reconstruct `x`."
   },
-  "constraints": []
+  "constraints": [
+    "returns a sorted result"
+  ]
 }

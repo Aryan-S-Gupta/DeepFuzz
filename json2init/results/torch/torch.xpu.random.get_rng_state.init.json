@@ -10,14 +10,13 @@
       "spec": {
         "type": "int|device",
         "size": "",
-        "default": "'xpu'`` (i",
+        "default": "",
         "flag": "Optional",
         "description": "The device to return the RNG state of. Default: ``'xpu'`` (i.e., ``torch.device('xpu')``, the current XPU device).",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "'device' must be 'xpu' or an int, and defaults to 'xpu'"
-        ]
+        "case_insensitive": false,
+        "constraints": []
       },
       "chosen_type": "int",
       "include_in_base_call": false,
@@ -27,18 +26,25 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": ""
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
-    "description": "Return the random number generator state of the specified GPU as a ByteTensor."
+    "numbers": "",
+    "description": ""
   },
-  "constraints": [],
+  "constraints": [
+    "This function eagerly initializes XPU."
+  ],
   "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
@@ -53,10 +59,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/workspace/pytorch/torch/xpu/random.py\", line 21, in get_rng_state\n    _lazy_init()\n  File \"/workspace/pytorch/torch/xpu/__init__.py\", line 118, in _lazy_init\n    raise AssertionError(\"Torch not compiled with XPU enabled\")\nAssertionError: Torch not compiled with XPU enabled\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/xpu/random.py\", line 20, in get_rng_state\n    _lazy_init()\n    ~~~~~~~~~~^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/torch/xpu/__init__.py\", line 142, in _lazy_init\n    raise AssertionError(\"Torch not compiled with XPU enabled\")\nAssertionError: Torch not compiled with XPU enabled\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.xpu.random.get_rng_state.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

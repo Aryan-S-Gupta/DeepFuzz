@@ -10,6 +10,7 @@
       "description": "numerator array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "x1 and x2 must have broadcast-compatible shapes"
       ]
@@ -18,10 +19,11 @@
       "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Optional",
+      "flag": "Required",
       "description": "denomniator array; should be broadcast-compatible with x1.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "x2 must be broadcast-compatible with x1",
         "x1 and x2 must have broadcast-compatible shapes"
@@ -30,7 +32,7 @@
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "The elementwise arctangent of x1 / x2, tracking the correct quadrant."
   },
   "constraints": [

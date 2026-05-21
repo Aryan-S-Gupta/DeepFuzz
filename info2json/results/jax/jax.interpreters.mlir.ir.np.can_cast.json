@@ -10,7 +10,9 @@
       "description": "dtype, dtype specifier, NumPy scalar, or array Data type, NumPy scalar, or array to cast from.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "from_, to, and casting must be specified"
+      ]
     },
     "to": {
       "type": "dtype",
@@ -20,18 +22,20 @@
       "description": "dtype or dtype specifier Data type to cast to.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "from_, to, and casting must be specified"
+      ]
     },
     "casting": {
       "type": "string",
       "size": "",
-      "default": "safe",
+      "default": "",
       "flag": "Optional",
       "description": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional Controls what kind of data casting may occur.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "'no', 'equiv', 'safe', 'same_kind', or 'unsafe' are valid casting values"
+        "from_, to, and casting must be specified"
       ]
     }
   },
@@ -40,5 +44,7 @@
     "numbers": "1",
     "description": "------- bool True if cast can occur according to the casting rule."
   },
-  "constraints": []
+  "constraints": [
+    "from_, to, and casting must be specified"
+  ]
 }

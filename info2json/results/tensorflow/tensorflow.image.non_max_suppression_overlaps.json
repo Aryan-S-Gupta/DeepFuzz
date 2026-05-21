@@ -10,21 +10,25 @@
       "description": "A 2-D float `Tensor` of shape `[num_boxes, num_boxes]` representing the n-by-n box overlap values.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "overlaps must be 2-D"
+      ]
     },
     "scores": {
       "type": "float|tensor",
-      "size": "",
+      "size": "1-D",
       "default": "",
       "flag": "Required",
       "description": "A 1-D float `Tensor` of shape `[num_boxes]` representing a single score corresponding to each box (each row of boxes).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "scores must be 1-D"
+      ]
     },
     "max_output_size": {
       "type": "int|number|tensor",
-      "size": "",
+      "size": "scalar",
       "default": "",
       "flag": "Required",
       "description": "A scalar integer `Tensor` representing the maximum number of boxes to be selected by non-max suppression.",
@@ -34,9 +38,9 @@
     },
     "overlap_threshold": {
       "type": "float|tensor",
-      "size": "",
-      "default": "",
-      "flag": "Required",
+      "size": "0-D",
+      "default": "0.5",
+      "flag": "Optional",
       "description": "A 0-D float tensor representing the threshold for deciding whether boxes overlap too much with respect to the provided overlap values.",
       "dtype_candidates": [],
       "enum_values": [],
@@ -44,20 +48,10 @@
     },
     "score_threshold": {
       "type": "float|tensor",
-      "size": "",
+      "size": "0-D",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A 0-D float tensor representing the threshold for deciding when to remove boxes based on score.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

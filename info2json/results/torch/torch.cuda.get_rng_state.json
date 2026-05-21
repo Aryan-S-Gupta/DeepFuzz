@@ -1,0 +1,25 @@
+{
+  "api_name": "get_rng_state",
+  "module_path": "torch.cuda",
+  "params": {
+    "device": {
+      "type": "int|device",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The device to return the RNG state of. Default: ``'cuda'`` (i.e., ``torch.device('cuda')``, the current CUDA device).",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "",
+    "description": ""
+  },
+  "constraints": [
+    "The function eagerly initializes CUDA."
+  ]
+}

@@ -10,7 +10,12 @@
       "description": "Input array. Can be N-dimensional but is flattened to 1D.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "Must be an ArrayLike type",
+        "v must be 1-D",
+        "Input v and output Array must have same dtype"
+      ]
     },
     "k": {
       "type": "int",
@@ -20,16 +25,16 @@
       "description": "optional, default=0. Diagonal offset. Positive values place the diagonal above the main diagonal, negative values place it below the main diagonal.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "k >= -rank(v) + 1",
-        "k must be positive",
-        "jax.numpy.diagflat(v, k) returns a 2D array of the same dtype as v"
+        "Must be an integer",
+        "k must be positive"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "A 2D array with the input elements placed along the diagonal with the specified offset (k). The remaining entries are filled with zeros."
   },
   "constraints": []

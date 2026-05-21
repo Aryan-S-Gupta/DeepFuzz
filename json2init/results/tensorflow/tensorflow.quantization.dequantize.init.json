@@ -21,14 +21,16 @@
           "qint16",
           "quint16"
         ],
-        "constraints": []
+        "constraints": [
+          "input must be one of qint8, quint8, qint32, qint16, quint16"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -37,12 +39,23 @@
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -71,6 +84,13 @@
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
         "type_widen"
       ],
       "unresolved_reason": ""
@@ -102,6 +122,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "mode": {
@@ -109,7 +136,7 @@
       "spec": {
         "type": "string",
         "size": "",
-        "default": "\"MIN_COMBINED\"",
+        "default": "",
         "flag": "Optional",
         "description": "An optional `string` from: `\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"`. Defaults to `\"MIN_COMBINED\"`.",
         "dtype_candidates": [],
@@ -126,6 +153,45 @@
         "enum_switch",
         "string_replace",
         "string_empty"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "string_replace"
+      ],
+      "negative_mutation_rules": [
+        "string_empty"
+      ],
+      "unresolved_reason": ""
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "An optional `int`. Defaults to `-1`.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
       ],
       "unresolved_reason": ""
     },
@@ -147,23 +213,30 @@
       "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "literal",
-        "value": true
+        "value": false
       },
       "mutation_rules": [
         "enum_switch",
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
-    "axis": {
-      "name": "axis",
+    "dtype": {
+      "name": "dtype",
       "spec": {
-        "type": "int|float|tensor|dtype",
+        "type": "float|tensor|dtype",
         "size": "",
-        "default": "tf",
+        "default": "tf.float32",
         "flag": "Optional",
-        "description": "An optional `int`. Defaults to `-1`. dtype: An optional `tf.DType` from: `tf.bfloat16, tf.float32`. Defaults to `tf.float32`. Type of the output tensor. Currently Dequantize supports float and bfloat16. If 'dtype' is 'bfloat16', it only supports 'MIN_COMBINED' mode.",
+        "description": "An optional `tf.DType` from: `tf.bfloat16, tf.float32`. Defaults to `tf.float32`. Type of the output tensor. Currently Dequantize supports float and bfloat16. If 'dtype' is 'bfloat16', it only supports 'MIN_COMBINED' mode.",
         "dtype_candidates": [
           "float32",
           "bfloat16"
@@ -171,36 +244,25 @@
         "enum_values": [],
         "constraints": []
       },
-      "chosen_type": "int",
+      "chosen_type": "dtype",
       "include_in_base_call": false,
       "base_seed_spec": {
-        "kind": "literal",
-        "value": 1
+        "kind": "dtype",
+        "value": "float32"
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
+        "type_switch"
       ],
       "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Optional",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": false,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
     }
   },
   "output": {
@@ -223,10 +285,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'T' of float is not in the list of allowed values: qint8, quint8, qint32, qint16, quint16\n\t; NodeDef: {{node Dequantize}}; Op<name=Dequantize; signature=input:T, min_range:float, max_range:float -> output:dtype; attr=T:type,allowed=[DT_QINT8, DT_QUINT8, DT_QINT32, DT_QINT16, DT_QUINT16]; attr=mode:string,default=\"MIN_COMBINED\",allowed=[\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"]; attr=narrow_range:bool,default=false; attr=axis:int,default=-1; attr=dtype:type,default=DT_FLOAT,allowed=[DT_BFLOAT16, DT_FLOAT]> [Op:Dequantize] name: \n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: Value for attr 'T' of float is not in the list of allowed values: qint8, quint8, qint32, qint16, quint16\n\t; NodeDef: {{node Dequantize}}; Op<name=Dequantize; signature=input:T, min_range:float, max_range:float -> output:dtype; attr=T:type,allowed=[DT_QINT8, DT_QUINT8, DT_QINT32, DT_QINT16, DT_QUINT16]; attr=mode:string,default=\"MIN_COMBINED\",allowed=[\"MIN_COMBINED\", \"MIN_FIRST\", \"SCALED\"]; attr=narrow_range:bool,default=false; attr=axis:int,default=-1; attr=dtype:type,default=DT_FLOAT,allowed=[DT_BFLOAT16, DT_FLOAT]> [Op:Dequantize] name: \n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.quantization.dequantize.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

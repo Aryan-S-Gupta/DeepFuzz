@@ -1,0 +1,247 @@
+{
+  "api_full_name": "jax.interpreters.mlir.ir.np.ravel_multi_index",
+  "api_name": "ravel_multi_index",
+  "module_path": "jax.interpreters.mlir.ir.np",
+  "import_path": "jax.interpreters.mlir.ir.np.ravel_multi_index",
+  "backend": "jax",
+  "params": {
+    "multi_index": {
+      "name": "multi_index",
+      "spec": {
+        "type": "int|tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "tuple of array_like A tuple of integer arrays, one array for each dimension.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "int",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tuple",
+        "items": [
+          {
+            "kind": "tensor",
+            "shape": [
+              1
+            ],
+            "dtype": "int32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              0
+            ]
+          },
+          {
+            "kind": "tensor",
+            "shape": [
+              1
+            ],
+            "dtype": "int32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              1
+            ]
+          }
+        ]
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "dims": {
+      "name": "dims",
+      "spec": {
+        "type": "tuple|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "tuple of ints The shape of array into which the indices from ``multi_index`` apply.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          2,
+          2
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "structure_grow",
+        "element_delta",
+        "structure_shrink"
+      ],
+      "valid_mutation_rules": [
+        "structure_grow",
+        "element_delta"
+      ],
+      "negative_mutation_rules": [
+        "structure_shrink"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "mode": {
+      "name": "mode",
+      "spec": {
+        "type": "tuple",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "{'raise', 'wrap', 'clip'}, optional Specifies how out-of-bounds indices are handled. Can specify either one mode or a tuple of modes, one mode per index.",
+        "dtype_candidates": [],
+        "enum_values": [
+          "raise",
+          "wrap",
+          "clip"
+        ],
+        "constraints": [
+          "mode must be one of raise, wrap, clip"
+        ]
+      },
+      "chosen_type": "tuple",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": [
+          1
+        ],
+        "as_tuple": true
+      },
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "order": {
+      "name": "order",
+      "spec": {
+        "type": "",
+        "size": "",
+        "default": "",
+        "flag": "Optional",
+        "description": "{'C', 'F'}, optional Determines whether the multi-index should be viewed as indexing in row-major (C-style) or column-major (Fortran-style) order.",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": []
+      },
+      "chosen_type": "{'c'",
+      "include_in_base_call": false,
+      "base_seed_spec": {},
+      "mutation_rules": [
+        "enum_switch",
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "unhandled chosen type: {'c'",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray An array of indices into the flattened version of an array of dimensions ``dims``."
+  },
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ndarray",
+      "shape": [
+        1
+      ],
+      "dtype": "int64",
+      "size": 1,
+      "has_nan": false,
+      "has_inf": false
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "multi_index",
+      "dims"
+    ],
+    "skipped_optional": [
+      "mode",
+      "order"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "dims.rank == 1",
+    "dims.dtype in {int32,int64}",
+    "dims valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(dims)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    },
+    {
+      "when": "negative_mutation(mode_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(order_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.interpreters.mlir.ir.np.ravel_multi_index.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

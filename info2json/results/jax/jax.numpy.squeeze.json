@@ -10,8 +10,9 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "if `axis` is not specified, all length-1 axes in `a` are removed"
+        "input array 'a' and output Array must have same dtype"
       ]
     },
     "axis": {
@@ -22,9 +23,10 @@
       "description": "integer or sequence of integers specifying axes to remove. If any specified axis does not have a length of 1, an error is raised. If not specified, squeeze all length-1 axes in ``a``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "if specified, must not have a length of 1",
-        "if `axis` is not specified, all length-1 axes in `a` are removed"
+        "must be int or Sequence[int] if provided",
+        "'axis' values must be in range [0, rank(input)) if provided as int"
       ]
     }
   },
@@ -33,8 +35,5 @@
     "numbers": "1",
     "description": "copy of ``a`` with length-1 axes removed."
   },
-  "constraints": [
-    "the number of dimensions in the output is less than or equal to the number of dimensions in the input",
-    "if `axis` is not specified, all length-1 axes in `a` are removed"
-  ]
+  "constraints": []
 }

@@ -11,21 +11,20 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x and alpha must have the same shape"
+        "If x < 0, f(x) = alpha * (exp(x / alpha) - 1). If x >= 0, f(x) = x."
       ]
     },
     "alpha": {
-      "type": "number",
+      "type": "float",
       "size": "",
-      "default": "1",
+      "default": "1.0",
       "flag": "Optional",
       "description": "the α value for the CELU formulation. Defaults to `1.0`.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "alpha > 0",
         "alpha must be one of 1.0, CELU",
-        "x and alpha must have the same shape"
+        "If x < 0, f(x) = alpha * (exp(x / alpha) - 1). If x >= 0, f(x) = x."
       ]
     }
   },
@@ -35,6 +34,6 @@
     "description": "A tensor with the same shape as `x`."
   },
   "constraints": [
-    "x and alpha must have the same shape"
+    "If x < 0, f(x) = alpha * (exp(x / alpha) - 1). If x >= 0, f(x) = x."
   ]
 }

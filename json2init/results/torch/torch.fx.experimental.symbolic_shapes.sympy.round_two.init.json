@@ -18,6 +18,7 @@
           "ZZ",
           "QQ"
         ],
+        "case_insensitive": false,
         "constraints": [
           "T must be one of ZZ, QQ"
         ]
@@ -30,8 +31,13 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
       ],
       "unresolved_reason": ""
     },
@@ -45,6 +51,7 @@
         "description": "dict, optional This is a way for any $p$-radicals (if computed) to be returned by reference. If desired, pass an empty dictionary. If the algorithm reaches the point where it computes the nilradical mod $p$ of the ring of integers $Z_K$, then an $\\mathbb{F}_p$-basis for this ideal will be stored in this dictionary under the key ``p``. This can be useful for other algorithms, such as prime decomposition.",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": []
       },
       "chosen_type": "dict",
@@ -54,6 +61,13 @@
         "value": {}
       },
       "mutation_rules": [
+        "noop_clone",
+        "type_switch"
+      ],
+      "valid_mutation_rules": [
+        "noop_clone"
+      ],
+      "negative_mutation_rules": [
         "type_switch"
       ],
       "unresolved_reason": ""
@@ -79,10 +93,11 @@
     "materialization_reasons": [],
     "result_summary": {},
     "runtime_supported_here": false,
-    "traceback": "Traceback (most recent call last):\n  File \"/workspace/DeepFuzz/json2init/deepfuzz_common.py\", line 559, in run_smoke_test\n    out = api(**kwargs)\n  File \"/usr/local/lib/python3.10/dist-packages/sympy/polys/numberfields/basis.py\", line 193, in round_two\n    if (   not T.is_univariate\nAttributeError: 'float' object has no attribute 'is_univariate'\n"
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 786, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/sympy/polys/numberfields/basis.py\", line 193, in round_two\n    if (   not T.is_univariate\n               ^^^^^^^^^^^^^^^\nAttributeError: 'float' object has no attribute 'is_univariate'\n"
   },
   "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/torch/torch.fx.experimental.symbolic_shapes.sympy.round_two.json",
   "stage3_status": "api_runtime_error",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

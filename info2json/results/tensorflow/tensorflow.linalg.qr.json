@@ -24,27 +24,19 @@
         "M",
         "N"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of float64, float32, half, complex64, complex128, P, M, N"
+      ]
     },
     "full_matrices": {
       "type": "bool",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "An optional `bool`. Defaults to `False`. If true, compute full-sized `q` and `r`. If false (the default), compute only the leading `P` columns of `q`.",
       "dtype_candidates": [
         "bool"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

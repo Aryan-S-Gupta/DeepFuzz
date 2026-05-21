@@ -3,14 +3,16 @@
   "module_path": "tensorflow.keras.ops",
   "params": {
     "x": {
-      "type": "list|sequence|tensor",
+      "type": "sequence|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
       "description": "A sequence of tensors.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x and output must have broadcast-compatible shapes"
+      ]
     },
     "axis": {
       "type": "int",
@@ -21,14 +23,14 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be in the range [-rank(x), rank(x))",
+        "-rank(input) <= axis < rank(input)",
         "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "single",
+    "numbers": "1",
     "description": "The stacked tensor."
   },
   "constraints": []

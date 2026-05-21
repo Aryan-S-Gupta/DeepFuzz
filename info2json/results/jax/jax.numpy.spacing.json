@@ -9,17 +9,20 @@
       "flag": "Required",
       "description": "real-valued array. Integer or boolean types will be cast to float.",
       "dtype_candidates": [
-        "bool"
+        "bool",
+        "float32",
+        "float64"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x shape must match x.shape in docstring examples"
+        "x dtype must be float32 or float64"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "float32",
     "description": "Array of same shape as ``x`` containing spacing between each entry of ``x`` and its closest adjacent value."
   },
   "constraints": []

@@ -10,7 +10,9 @@
       "description": "Input tensor. It must be of dimension 1, and it must only contain non-negative integer(s).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x must be non-negative"
+      ]
     },
     "weights": {
       "type": "tensor",
@@ -25,7 +27,7 @@
     "minlength": {
       "type": "int|number|tensor",
       "size": "",
-      "default": "",
+      "default": "0",
       "flag": "Optional",
       "description": "An integer. The default value is 0. If specified, there will be at least this number of bins in the output tensor. If greater than `max(x) + 1`, each value of the output at an index higher than `max(x)` is set to 0.",
       "dtype_candidates": [],
@@ -35,8 +37,8 @@
     "sparse": {
       "type": "tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "Whether to return a sparse tensor; for backends that support sparse tensors.",
       "dtype_candidates": [],
       "enum_values": [],

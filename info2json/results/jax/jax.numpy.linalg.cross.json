@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x1.shape[axis] == 3",
-        "x1, x2 must have broadcast-compatible shapes"
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     },
     "x2": {
@@ -24,20 +23,20 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x2.shape[axis] == 3",
-        "Broadcast compatible with x1",
-        "x1, x2 must have broadcast-compatible shapes"
+        "x1 and x2 must have broadcast-compatible shapes"
       ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "-1)",
+      "default": "-1",
       "flag": "Optional",
       "description": "axis along which to take the cross product (default: -1).",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "-rank(x1) <= axis < rank(x1)"
+      ]
     }
   },
   "output": {
@@ -46,6 +45,6 @@
     "description": "array containing the result of the cross-product"
   },
   "constraints": [
-    "x1, x2 must have broadcast-compatible shapes"
+    "x1 and x2 must have broadcast-compatible shapes"
   ]
 }

@@ -13,7 +13,9 @@
         "float64"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "input must be 4-D"
+      ]
     },
     "ksize": {
       "type": "int|list|tensor",
@@ -54,18 +56,8 @@
       "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "A string. 'NHWC' and 'NCHW' are supported.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
       "flag": "Optional",
-      "description": "Optional name for the operation.",
+      "description": "A string. 'NHWC' and 'NCHW' are supported.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

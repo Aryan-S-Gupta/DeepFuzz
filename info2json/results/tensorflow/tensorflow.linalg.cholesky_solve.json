@@ -23,25 +23,15 @@
       "description": "A `Tensor`, same type as `chol`, shape is `[..., M, K]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name to give this `Op`. Defaults to `cholesky_solve`.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "rhs must have the same dtype as chol"
+      ]
     }
   },
   "output": {
-    "type": "tensor",
-    "numbers": "[..., M, K]",
+    "type": "",
+    "numbers": "1",
     "description": "Solution to `A x = rhs`, shape `[..., M, K]`."
   },
-  "constraints": [
-    "chol must be float32 or float64"
-  ]
+  "constraints": []
 }

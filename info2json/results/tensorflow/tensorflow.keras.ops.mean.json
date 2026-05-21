@@ -10,19 +10,22 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "params.x must be a valid TensorFlow tensor."
+      ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "Axis or axes along which the means are computed. The default is to compute the mean of the flattened tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(x) <= axis < rank(x)",
-        "axis must be None or a single integer, a non-negative integer, or a list of integers"
+        "(optional)",
+        "If provided, must satisfy -rank(params.x) <= axis < rank(params.x)",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
     "keepdims": {
@@ -36,13 +39,14 @@
       ],
       "enum_values": [],
       "constraints": [
-        "keepdims must be bool"
+        "(optional)",
+        "If true, the axes which are reduced are left in the result as dimensions with size one."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "floating-point",
+    "numbers": "1",
     "description": "Output tensor containing the mean values."
   },
   "constraints": []

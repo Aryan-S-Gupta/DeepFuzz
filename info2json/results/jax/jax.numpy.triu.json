@@ -10,17 +10,21 @@
       "description": "input array. Must have ``m.ndim >= 2``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "m.ndim >= 2"
+      ]
     },
     "k": {
       "type": "int|tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "optional, int, default=0. Specifies the sub-diagonal below which the elements of the array are set to zero. ``k=0`` refers to main diagonal, ``k<0`` refers to sub-diagonal below the main diagonal and ``k>0`` refers to sub-diagonal above the main diagonal.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "k must be positive"
+      ]
     }
   },
   "output": {
@@ -29,6 +33,7 @@
     "description": "An array with same shape as input containing the upper triangle of the given array with elements below the sub-diagonal specified by ``k`` are set to zero."
   },
   "constraints": [
-    "k>= -m.ndim"
+    "jax.numpy.tril(x) returns a lower triangle of an array",
+    "jax.numpy.tri(x) returns an array with ones on and below the diagonal"
   ]
 }

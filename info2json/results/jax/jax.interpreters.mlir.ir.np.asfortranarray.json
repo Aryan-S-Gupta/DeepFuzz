@@ -12,6 +12,16 @@
       "enum_values": [],
       "constraints": []
     },
+    "dtype": {
+      "type": "string|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str or dtype object, optional By default, the data-type is inferred from the input data.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
     "like": {
       "type": "tensor",
       "size": "",
@@ -20,9 +30,7 @@
       "description": "array_like, optional Reference object to allow the creation of arrays which are not NumPy arrays. If an array-like passed in as ``like`` supports the ``__array_function__`` protocol, the result will be defined by it. In this case, it ensures the creation of an array object compatible with that passed in via this argument.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        ">= 1.20.0"
-      ]
+      "constraints": []
     }
   },
   "output": {
@@ -30,7 +38,5 @@
     "numbers": "1",
     "description": "------- ndarray The input `a` in Fortran, or column-major, order."
   },
-  "constraints": [
-    ">= 1-D"
-  ]
+  "constraints": []
 }

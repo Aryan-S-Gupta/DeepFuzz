@@ -10,7 +10,10 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "keepdims must be a boolean or None"
+      ]
     },
     "axis": {
       "type": "int",
@@ -20,27 +23,36 @@
       "description": "optional integer specifying the axis along which to find the maximum value. If ``axis`` is not specified, ``a`` will be flattened.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "axis must be an integer or None"
+      ]
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "unused by JAX",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "keepdims": {
-      "type": "number|tensor",
+      "type": "bool|number|tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "if True, then return an array with the same number of dimensions as ``a``.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "keepdims must be a boolean or None"
+      ]
     }
   },
   "output": {
@@ -48,5 +60,7 @@
     "numbers": "1",
     "description": "an array containing the index of the maximum value along the specified axis."
   },
-  "constraints": []
+  "constraints": [
+    "keepdims must be a boolean or None"
+  ]
 }

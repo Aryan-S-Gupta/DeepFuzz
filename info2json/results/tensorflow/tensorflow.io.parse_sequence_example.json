@@ -10,27 +10,33 @@
       "description": "A vector (1-D Tensor) of type string containing binary serialized `SequenceExample` protos.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "serialized must be 1-D"
+      ]
     },
     "context_features": {
       "type": "dict",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A mapping of feature keys to `FixedLenFeature` or `VarLenFeature` or `RaggedFeature` values. These features are associated with a `SequenceExample` as a whole.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "context_features must be one of FixedLenFeature, VarLenFeature, RaggedFeature, SequenceExample"
+      ]
     },
     "sequence_features": {
       "type": "dict",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A mapping of feature keys to `FixedLenSequenceFeature` or `VarLenFeature` or `RaggedFeature` values. These features are associated with data within the `FeatureList` section of the `SequenceExample` proto.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "sequence_features must be one of FixedLenSequenceFeature, VarLenFeature, RaggedFeature, FeatureList, SequenceExample"
+      ]
     },
     "example_names": {
       "type": "tensor",
@@ -40,17 +46,9 @@
       "description": "A vector (1-D Tensor) of strings (optional), the name of the serialized protos.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for this operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "example_names must be 1-D"
+      ]
     }
   },
   "output": {

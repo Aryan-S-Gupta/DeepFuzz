@@ -1,0 +1,28 @@
+{
+  "api_name": "is_mask",
+  "module_path": "torch.storage.np.ma",
+  "params": {
+    "m": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array to test.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be an ndarray or have similar attributes"
+      ]
+    }
+  },
+  "output": {
+    "type": "bool|dtype",
+    "numbers": "1",
+    "description": "------- bool True if `m.dtype.type` is MaskType, False otherwise."
+  },
+  "constraints": [
+    "input must be an ndarray (or have similar attributes) for the mask to return True",
+    "arrays with complex dtypes don't return True"
+  ]
+}

@@ -10,7 +10,9 @@
       "description": "Tensor to compare.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Returns (x1 == x2) element-wise."
+      ]
     },
     "x2": {
       "type": "tensor",
@@ -20,7 +22,9 @@
       "description": "Tensor to compare.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Returns (x1 == x2) element-wise."
+      ]
     }
   },
   "output": {
@@ -28,5 +32,7 @@
     "numbers": "1",
     "description": "Output tensor, element-wise comparison of `x1` and `x2`."
   },
-  "constraints": []
+  "constraints": [
+    "Returns (x1 == x2) element-wise."
+  ]
 }

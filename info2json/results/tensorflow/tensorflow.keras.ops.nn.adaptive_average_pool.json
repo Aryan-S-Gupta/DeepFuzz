@@ -25,7 +25,7 @@
     "data_format": {
       "type": "string",
       "size": "",
-      "default": "the value found in your Keras config file at",
+      "default": "",
       "flag": "Optional",
       "description": "string, either `\"channels_last\"` or `\"channels_first\"`. Defaults to the value found in your Keras config file at `~/.keras/keras.json`. If never set, defaults to `\"channels_last\"`.",
       "dtype_candidates": [],
@@ -33,7 +33,9 @@
         "channels_last",
         "channels_first"
       ],
-      "constraints": []
+      "constraints": [
+        "data_format must be one of channels_last, channels_first"
+      ]
     }
   },
   "output": {

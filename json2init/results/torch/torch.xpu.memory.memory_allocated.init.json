@@ -15,9 +15,10 @@
         "description": "selected device. Returns statistic for the current device, given by :func:`~torch.xpu.current_device`, if :attr:`device` is ``None`` (default).",
         "dtype_candidates": [],
         "enum_values": [],
+        "case_insensitive": false,
         "constraints": [
-          "device must be a valid torch.device, int or str representing an XPU device.",
-          "If device is None (default), returns memory statistic for the current device."
+          "device parameter is optional",
+          "if device is not provided, statistic for the current device will be returned"
         ]
       },
       "chosen_type": "int",
@@ -28,16 +29,22 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "scalar_delta",
-        "type_widen"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
-    "type": "string|tensor|device",
-    "numbers": "single",
-    "description": "Return the current GPU memory occupied by tensors in bytes for a given device."
+    "type": "int",
+    "numbers": "",
+    "description": "statistic for the current device"
   },
   "constraints": [],
   "spec_ready": true,
@@ -56,8 +63,28 @@
     },
     "runtime_supported_here": true
   },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [],
+    "skipped_optional": [
+      "device"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(device_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.95,
   "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/torch/torch.xpu.memory.memory_allocated.json",
   "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

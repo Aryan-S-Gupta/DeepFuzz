@@ -10,8 +10,9 @@
       "description": "real-valued input array.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 must have the same shape or a shape broadcastable to that of x1"
+        "x1 and x2 must be broadcast-compatible"
       ]
     },
     "x2": {
@@ -22,9 +23,9 @@
       "description": "integer input array. Must be broadcast-compatible with ``x1``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "Must have the same shape as x1 or a shape broadcastable to that of x1",
-        "x1 and x2 must have the same shape or a shape broadcastable to that of x1"
+        "x1 and x2 must be broadcast-compatible"
       ]
     }
   },
@@ -34,6 +35,6 @@
     "description": "``x1 * 2 ** x2`` computed element-wise."
   },
   "constraints": [
-    "x1 and x2 must have the same shape or a shape broadcastable to that of x1"
+    "x1 and x2 must be broadcast-compatible"
   ]
 }

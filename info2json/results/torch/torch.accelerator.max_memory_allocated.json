@@ -10,9 +10,9 @@
       "description": "the index of the device to target. If not given, use :func:`torch.accelerator.current_device_index` by default. If a :class:`torch.device` or str is provided, its type must match the current :ref:`accelerator<accelerators>` device type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "device_index must be an int or a torch.device or a str",
-        "if device_index is a torch.device or a str, its type must match the current accelerator device type"
+        "device_index must match the current accelerator device type if provided as a torch.device or str"
       ]
     }
   },
@@ -21,7 +21,5 @@
     "numbers": "1",
     "description": "the peak memory occupied by live tensors (in bytes) within the current process."
   },
-  "constraints": [
-    "output is always non-negative"
-  ]
+  "constraints": []
 }

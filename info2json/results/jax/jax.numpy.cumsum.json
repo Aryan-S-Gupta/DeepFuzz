@@ -10,26 +10,40 @@
       "description": "N-dimensional array to be accumulated.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
-      "type": "int|tensor|dtype",
+      "type": "int|tensor",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "integer axis along which to accumulate. If None (default), then array will be flattened and accumulated along the flattened axis. dtype: optionally specify the dtype of the output. If not specified, then the output dtype will match the input dtype.",
+      "description": "integer axis along which to accumulate. If None (default), then array will be flattened and accumulated along the flattened axis.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optionally specify the dtype of the output. If not specified, then the output dtype will match the input dtype.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "unused by JAX",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

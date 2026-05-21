@@ -1,0 +1,28 @@
+{
+  "api_name": "fliplr",
+  "module_path": "torch.storage.np",
+  "params": {
+    "m": {
+      "type": "tensor",
+      "size": "2-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Input array, must be at least 2-D.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "must be at least 2-D",
+        "m must be 2-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray A view of `m` with the columns reversed. Since a view is returned, this operation is :math:`\\mathcal O(1)`."
+  },
+  "constraints": [
+    "Input array must support reverse order of elements along axis 1 (left/right)."
+  ]
+}

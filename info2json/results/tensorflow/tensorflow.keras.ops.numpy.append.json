@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "If `axis` is specified, `x1` and `x2` must have compatible shapes."
+        "must be broadcast-compatible with x2 if axis is None"
       ]
     },
     "x2": {
@@ -23,21 +23,21 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "If `axis` is specified, `x1` and `x2` must have compatible shapes."
+        "must be broadcast-compatible with x1 if axis is None"
       ]
     },
     "axis": {
-      "type": "tensor",
+      "type": "int|tensor",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "Axis along which tensor `x2` is appended to tensor `x1`. If `None`, both tensors are flattened before use.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must be in range [-rank(x1), rank(x1))",
-        "If `axis` is specified, `x1` and `x2` must have compatible shapes.",
-        "When `axis` is not specified, both tensors are flattened before use."
+        "if specified, both tensors must have compatible shapes",
+        "axis must satisfy -rank(input) <= axis < rank(input)",
+        "x and y must have broadcast-compatible shapes if axis is None"
       ]
     }
   },
@@ -46,7 +46,5 @@
     "numbers": "1",
     "description": "A tensor with the values of `x2` appended to `x1`."
   },
-  "constraints": [
-    "If `axis` is specified, `x1` and `x2` must have compatible shapes."
-  ]
+  "constraints": []
 }

@@ -1,0 +1,73 @@
+{
+  "api_name": "sliding_window_view",
+  "module_path": "torch.storage.np.lib.stride_tricks",
+  "params": {
+    "x": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like Array to create the sliding window view from.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "window_shape": {
+      "type": "int|tuple|number|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "int or tuple of int Size of window over each axis that takes part in the sliding window. If `axis` is not present, must have same length as the number of input array dimensions. Single integers `i` are treated as if they were the tuple `(i,)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "axis": {
+      "type": "int|tuple",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int or tuple of int, optional Axis or axes along which the sliding window is applied. By default, the sliding window is applied to all axes and `window_shape[i]` will refer to axis `i` of `x`. If `axis` is given as a `tuple of int`, `window_shape[i]` will refer to the axis `axis[i]` of `x`. Single integers `i` are treated as if they were the tuple `(i,)`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "axis must satisfy -rank(x) <= axis < rank(x)"
+      ]
+    },
+    "subok": {
+      "type": "bool|tensor",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, optional If True, sub-classes will be passed-through, otherwise the returned array will be forced to be a base-class array (default).",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "writeable": {
+      "type": "bool",
+      "size": "",
+      "default": "False",
+      "flag": "Optional",
+      "description": "bool, optional When true, allow writing to the returned view. The default is false, as this should be used with caution: the returned view contains the same memory location multiple times, so writing to one location will cause others to change.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "------- ndarray Sliding window view of the array. The sliding window dimensions are inserted at the end, and the original dimensions are trimmed as required by the size of the sliding window. That is, ``view.shape = x_shape_trimmed + window_shape``, where ``x_shape_trimmed`` is ``x.shape`` with every entry reduced by one less than the corresponding window size."
+  },
+  "constraints": []
+}

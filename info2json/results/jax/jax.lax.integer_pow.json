@@ -10,7 +10,10 @@
       "description": "Input array giving the base value. Must have numerical dtype.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "Must have broadcast-compatible shapes with y"
+      ]
     },
     "y": {
       "type": "int|number",
@@ -20,15 +23,16 @@
       "description": "Static scalar integer giving the exponent.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "y must be an integer",
-        "x and y must be compatible for element-wise power operation"
+        "Must be a non-negative integer.",
+        "y >= 0"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape and dtype as x",
+    "numbers": "floating point",
     "description": "An array of the same shape and dtype as ``x`` containing the elementwise power."
   },
   "constraints": []

@@ -10,12 +10,14 @@
       "description": "A `Tensor` of type `string`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "must be a string"
+      ]
     },
     "out_type": {
       "type": "string|float|number|dtype",
       "size": "",
-      "default": "tf",
+      "default": "tf.float32",
       "flag": "Optional",
       "description": "An optional `tf.DType` from: `tf.float32, tf.float64, tf.int32, tf.int64, tf.uint32, tf.uint64`. Defaults to `tf.float32`. The numeric type to interpret each string in `string_tensor` as.",
       "dtype_candidates": [
@@ -28,16 +30,6 @@
       ],
       "enum_values": [],
       "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -45,5 +37,7 @@
     "numbers": "1",
     "description": "A `Tensor` of type `out_type`."
   },
-  "constraints": []
+  "constraints": [
+    "The output is a single number."
+  ]
 }

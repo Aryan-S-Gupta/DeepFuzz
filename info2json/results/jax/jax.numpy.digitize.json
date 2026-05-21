@@ -10,9 +10,8 @@
       "description": "array of values to digitize.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x, bins must have the same shape"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "bins": {
       "type": "tensor",
@@ -22,22 +21,20 @@
       "description": "1D array of bin edges. Must be monotonically increasing or decreasing.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "must be monotonically increasing or decreasing",
-        "bins must be 1-D",
-        "x, bins must have the same shape"
+        "bins must be 1-D"
       ]
     },
     "right": {
-      "type": "bool",
+      "type": "",
       "size": "",
-      "default": "false",
+      "default": "False",
       "flag": "Optional",
       "description": "if true, the intervals include the right bin edges. If false (default) the intervals include the left bin edges.",
-      "dtype_candidates": [
-        "bool"
-      ],
+      "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "method": {
@@ -48,15 +45,14 @@
       "description": "optional method argument to be passed to :func:`~jax.numpy.searchsorted`. See that function for available options.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
   "output": {
     "type": "int|number|tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "An integer array of the same shape as ``x`` indicating the bin number that the values are in."
   },
-  "constraints": [
-    "x, bins must have the same shape"
-  ]
+  "constraints": []
 }

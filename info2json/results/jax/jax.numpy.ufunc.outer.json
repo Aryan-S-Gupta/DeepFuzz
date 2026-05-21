@@ -10,10 +10,7 @@
       "description": "N-dimensional array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "A.ndim >= 0, B.ndim >= 0",
-        "output.shape == tuple(*A.shape, *B.shape)"
-      ]
+      "constraints": []
     },
     "B": {
       "type": "tensor",
@@ -23,19 +20,16 @@
       "description": "N-dimensional array",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "A.ndim >= 0, B.ndim >= 0",
-        "output.shape == tuple(*A.shape, *B.shape)"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tuple|tensor",
-    "numbers": "*A.shape, *B.shape",
+    "numbers": "1",
     "description": "An array of shape `tuple(*A.shape, *B.shape)`"
   },
   "constraints": [
-    "A.ndim >= 0, B.ndim >= 0",
-    "output.shape == tuple(*A.shape, *B.shape)"
+    "(N and M dimensions respectively) => (N + M dimensions in output)",
+    "For input arrays with N and M dimensions respectively, the output will have dimension N + M"
   ]
 }

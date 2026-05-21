@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "from_, to, and casting parameters must be given as strings."
+        "from_, to, and casting must be specified according to the observed signature"
       ]
     },
     "to": {
@@ -23,20 +23,19 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "from_, to, and casting parameters must be given as strings."
+        "from_, to, and casting must be specified according to the observed signature"
       ]
     },
     "casting": {
       "type": "string",
       "size": "",
-      "default": "safe",
+      "default": "",
       "flag": "Optional",
       "description": "{'no', 'equiv', 'safe', 'same_kind', 'unsafe'}, optional Controls what kind of data casting may occur.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "'no', 'equiv', 'safe', 'same_kind', or 'unsafe'",
-        "from_, to, and casting parameters must be given as strings."
+        "from_, to, and casting must be specified according to the observed signature"
       ]
     }
   },
@@ -46,6 +45,6 @@
     "description": "------- bool True if cast can occur according to the casting rule."
   },
   "constraints": [
-    "from_, to, and casting parameters must be given as strings."
+    "from_, to, and casting must be specified according to the observed signature"
   ]
 }

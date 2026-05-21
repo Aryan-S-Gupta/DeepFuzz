@@ -3,20 +3,38 @@
   "module_path": "tensorflow.keras.ops.numpy",
   "params": {
     "x": {
-      "type": "tensor|dtype",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "Input tensor. dtype: The desired data-type for the tensor.",
+      "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If dtype is provided, it must be specified after x in the function call."
+      ]
+    },
+    "dtype": {
+      "type": "string|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The desired data-type for the tensor.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "(optional)",
+        "must be a string representing a data-type",
+        "If dtype is provided, it must be specified after x in the function call."
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "single",
+    "numbers": "1",
     "description": "A tensor."
   },
-  "constraints": []
+  "constraints": [
+    "If dtype is provided, it must be specified after x in the function call."
+  ]
 }

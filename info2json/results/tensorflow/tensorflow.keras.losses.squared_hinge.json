@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "d0, ..., dN-1 >= 0",
-        "y_true shape[0] == y_pred shape[0]"
+        "y_true values are expected to be -1 or 1."
       ]
     },
     "y_pred": {
@@ -23,9 +22,7 @@
       "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true shape[0] == y_pred shape[0]"
-      ]
+      "constraints": []
     }
   },
   "output": {
@@ -34,7 +31,6 @@
     "description": "Squared hinge loss values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true shape[0] == y_pred shape[0]",
-    "d0, ..., dN-1 >= 0"
+    "If binary (0 or 1) labels are provided we will convert them to -1 or 1."
   ]
 }

@@ -31,6 +31,13 @@
         "scalar_delta",
         "type_widen"
       ],
+      "valid_mutation_rules": [
+        "enum_switch",
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
       "unresolved_reason": ""
     },
     "rhs": {
@@ -43,68 +50,78 @@
         "description": "A `Tensor`, same type as `chol`, shape is `[..., M, K]`.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": []
+        "constraints": [
+          "rhs must have the same dtype as chol"
+        ]
       },
       "chosen_type": "tensor",
       "include_in_base_call": true,
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2
         ],
         "dtype": "float32",
-        "fill": 1.0,
-        "device": "cpu",
-        "backend": "tensorflow"
+        "values": [
+          [
+            1.0
+          ],
+          [
+            1.0
+          ]
+        ],
+        "backend": "tensorflow",
+        "device": "cpu"
       },
       "mutation_rules": [
         "enum_switch",
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
+        "enum_switch",
         "value_noise",
         "value_mask",
         "value_division"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A name to give this `Op`. Defaults to `cholesky_solve`.",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name to give this `op`. defaults to `cholesky_solve`.",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [
-        "enum_switch"
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
-      "unresolved_reason": "unhandled chosen type: a name to give this `op`. defaults to `cholesky_solve`."
+      "unresolved_reason": ""
     }
   },
   "output": {
-    "type": "tensor",
-    "numbers": "[..., M, K]",
+    "type": "",
+    "numbers": "1",
     "description": "Solution to `A x = rhs`, shape `[..., M, K]`."
   },
-  "constraints": [
-    "chol must be float32 or float64"
-  ],
-  "spec_ready": false,
+  "constraints": [],
+  "spec_ready": true,
   "ready_for_stage4": false,
   "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name to give this `op`. defaults to `cholesky_solve`."
+    "smoke test failed: {{function_node __wrapped__MatrixTriangularSolve_device_/job:localhost/replica:0/task:0/device:CPU:0}} In[0] ndims must be >= 2: 0 [Op:MatrixTriangularSolve] name: "
   ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "smoke_test": {
+    "attempted": true,
+    "success": false,
+    "classification": "api_runtime_error",
+    "error_type": "InvalidArgumentError",
+    "error": "{{function_node __wrapped__MatrixTriangularSolve_device_/job:localhost/replica:0/task:0/device:CPU:0}} In[0] ndims must be >= 2: 0 [Op:MatrixTriangularSolve] name: ",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/util/traceback_utils.py\", line 167, in error_handler\n    raise e.with_traceback(filtered_tb) from None\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/tensorflow/python/framework/ops.py\", line 6027, in raise_from_not_ok_status\n    raise core._status_to_exception(e) from None  # pylint: disable=protected-access\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntensorflow.python.framework.errors_impl.InvalidArgumentError: {{function_node __wrapped__MatrixTriangularSolve_device_/job:localhost/replica:0/task:0/device:CPU:0}} In[0] ndims must be >= 2: 0 [Op:MatrixTriangularSolve] name: \n"
+  },
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.linalg.cholesky_solve.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "api_runtime_error",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

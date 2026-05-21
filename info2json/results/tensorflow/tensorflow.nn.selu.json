@@ -20,19 +20,10 @@
         "float64"
       ],
       "constraints": [
+        "Must be one of the following types: `half`, `bfloat16`, `float32`, `float64`",
         "features must be one of half, bfloat16, float32, float64",
-        "features must have a broadcast-compatible shape with (scale * alpha)"
+        "Computes scaled exponential linear: `scale * alpha * (exp(features) - 1)` with `initializer = tf.variance_scaling_initializer(factor=1.0, mode='FAN_IN')`"
       ]
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -40,7 +31,5 @@
     "numbers": "1",
     "description": "A `Tensor`. Has the same type as `features`."
   },
-  "constraints": [
-    "alpha and scale are internal constants from the initializer"
-  ]
+  "constraints": []
 }

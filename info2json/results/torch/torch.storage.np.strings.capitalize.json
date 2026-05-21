@@ -1,0 +1,27 @@
+{
+  "api_name": "capitalize",
+  "module_path": "torch.storage.np.strings",
+  "params": {
+    "a": {
+      "type": "tensor|dtype",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array-like, with ``StringDType``, ``bytes_``, or ``str_`` dtype Input array of strings to capitalize.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "Must have StringDType, bytes_, or str_ dtype."
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor|dtype",
+    "numbers": "1",
+    "description": "------- ndarray Output array of ``StringDType``, ``bytes_`` or ``str_`` dtype, depending on input types"
+  },
+  "constraints": [
+    "Input and output arrays must have the same shape."
+  ]
+}

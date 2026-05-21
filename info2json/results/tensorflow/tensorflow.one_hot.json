@@ -14,7 +14,7 @@
     },
     "depth": {
       "type": "number",
-      "size": "",
+      "size": "scalar",
       "default": "",
       "flag": "Required",
       "description": "A scalar defining the depth of the one hot dimension.",
@@ -24,8 +24,8 @@
     },
     "on_value": {
       "type": "number",
-      "size": "",
-      "default": "1)",
+      "size": "scalar",
+      "default": "",
       "flag": "Optional",
       "description": "A scalar defining the value to fill in output when `indices[j] = i`. (default: 1)",
       "dtype_candidates": [],
@@ -34,8 +34,8 @@
     },
     "off_value": {
       "type": "number",
-      "size": "",
-      "default": "0)",
+      "size": "scalar",
+      "default": "",
       "flag": "Optional",
       "description": "A scalar defining the value to fill in output when `indices[j] != i`. (default: 0)",
       "dtype_candidates": [],
@@ -43,21 +43,21 @@
       "constraints": []
     },
     "axis": {
-      "type": "tensor|dtype",
+      "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "The axis to fill (default: -1, a new inner-most axis). dtype: The data type of the output tensor.",
+      "flag": "Optional",
+      "description": "The axis to fill (default: -1, a new inner-most axis).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
-    "name": {
-      "type": "",
+    "dtype": {
+      "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
+      "flag": "Optional",
+      "description": "The data type of the output tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []

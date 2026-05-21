@@ -10,10 +10,7 @@
       "description": "Ground truth values with shape = `[batch_size, d0, .. dN]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true.dtype == y_pred.dtype",
-        "y_true shape is broadcast-compatible with y_pred shape"
-      ]
+      "constraints": []
     },
     "y_pred": {
       "type": "tensor",
@@ -23,20 +20,15 @@
       "description": "The predicted values with shape = `[batch_size, d0, .. dN]`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "y_true.dtype == y_pred.dtype",
-        "y_true shape is broadcast-compatible with y_pred shape"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "-1, d0, ..., dN-1",
+    "numbers": "1",
     "description": "Logcosh error values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "dN >= 1",
-    "y_true.dtype == y_pred.dtype",
-    "y_true shape is broadcast-compatible with y_pred shape"
+    "'log(cosh(x))' is approximately equal to '(x ** 2) / 2' for small 'x' and to 'abs(x) - log(2)' for large 'x'"
   ]
 }

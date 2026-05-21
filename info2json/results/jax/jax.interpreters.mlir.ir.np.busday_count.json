@@ -25,22 +25,12 @@
     "weekmask": {
       "type": "string|bool|list|tensor",
       "size": "",
-      "default": "",
+      "default": "1111100",
       "flag": "Optional",
-      "description": "str or array_like of bool, optional A seven-element array indicating which of Monday through Sunday are valid days. May be specified as a length-seven list or array, like [1,1,1,1,1,0,0]; a length-seven string, like '1111100'; or a string like \"Mon Tue Wed Thu Fri\", made up of 3-character abbreviations for weekdays, optionally separated by white space. Valid abbreviations",
+      "description": "str or array_like of bool, optional A seven-element array indicating which of Monday through Sunday are valid days. May be specified as a length-seven list or array, like [1,1,1,1,1,0,0]; a length-seven string, like '1111100'; or a string like \"Mon Tue Wed Thu Fri\", made up of 3-character abbreviations for weekdays, optionally separated by white space. Valid abbreviations are: Mon Tue Wed Thu Fri Sat Sun",
       "dtype_candidates": [
         "bool"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "are": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "Mon Tue Wed Thu Fri Sat Sun",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },

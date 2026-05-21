@@ -1,0 +1,43 @@
+{
+  "api_name": "matmul",
+  "module_path": "torch.storage.np.linalg",
+  "params": {
+    "x1": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The first input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x1 and x2 must have the same size for their last dimension if not 1-d",
+        "x1 and x2 can be 1-d vectors, in which case the output is their scalar inner product"
+      ]
+    },
+    "x2": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like The second input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "x1 and x2 must have the same size for their last dimension if not 1-d",
+        "x1 and x2 can be 1-d vectors, in which case the output is their scalar inner product"
+      ]
+    }
+  },
+  "output": {
+    "type": "number|tensor",
+    "numbers": "1 or more",
+    "description": "------- ndarray The matrix product of the inputs. This is a scalar only when both ``x1``, ``x2`` are 1-d vectors."
+  },
+  "constraints": [
+    "x1 and x2 must have the same size for their last dimension if not 1-d",
+    "x1 and x2 can be 1-d vectors, in which case the output is their scalar inner product"
+  ]
+}

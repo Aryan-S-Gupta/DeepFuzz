@@ -11,28 +11,20 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "value must have at least 2 dimensions"
+        "The tensor is shuffled along dimension 0, such that each `value[j]` is mapped"
       ]
     },
     "seed": {
       "type": "int",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A Python integer. Used to create a random seed for the distribution. See `tf.random.set_seed` for behavior.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "See `tf.random.set_seed` for behavior."
+      ]
     }
   },
   "output": {

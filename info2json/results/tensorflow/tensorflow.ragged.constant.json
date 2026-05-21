@@ -3,23 +3,35 @@
   "module_path": "tensorflow.ragged",
   "params": {
     "pylist": {
-      "type": "float|tuple|list|number|tensor|dtype|any",
+      "type": "tuple|list|number|tensor|dtype|any",
       "size": "scalar",
-      "default": "chosen based on the scalar values in",
-      "flag": "Optional",
-      "description": "A nested `list`, `tuple` or `np.ndarray`. Any nested element that is not a `list`, `tuple` or `np.ndarray` must be a scalar value compatible with `dtype`. dtype: The type of elements for the returned `RaggedTensor`. If not specified, then a default is chosen based on the scalar values in `pylist`. If there are no scalar values in `pylist`, then the default is `tf.float32`.",
-      "dtype_candidates": [
-        "float32"
-      ],
+      "default": "",
+      "flag": "Required",
+      "description": "A nested `list`, `tuple` or `np.ndarray`. Any nested element that is not a `list`, `tuple` or `np.ndarray` must be a scalar value compatible with `dtype`.",
+      "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
         "pylist must be one of np.ndarray"
       ]
     },
+    "dtype": {
+      "type": "float|number",
+      "size": "scalar",
+      "default": "",
+      "flag": "Optional",
+      "description": "The type of elements for the returned `RaggedTensor`. If not specified, then a default is chosen based on the scalar values in `pylist`. If there are no scalar values in `pylist`, then the default is `tf.float32`.",
+      "dtype_candidates": [
+        "float32"
+      ],
+      "enum_values": [],
+      "constraints": [
+        "dtype must be one of RaggedTensor, tf.float32"
+      ]
+    },
     "ragged_rank": {
       "type": "int",
       "size": "",
-      "default": "max(0, K",
+      "default": "",
       "flag": "Optional",
       "description": "An integer specifying the ragged rank of the returned `RaggedTensor`. Must be nonnegative and less than `K`. Defaults to `max(0, K - 1)` if `inner_shape` is not specified. Defaults to `max(0, K - 1 - len(inner_shape))` if `inner_shape` is specified.",
       "dtype_candidates": [],
@@ -29,7 +41,7 @@
     "inner_shape": {
       "type": "tuple",
       "size": "",
-      "default": "()` if `ragged_rank",
+      "default": "",
       "flag": "Optional",
       "description": "A tuple of integers specifying the shape for individual inner values in the returned `RaggedTensor`. Defaults to `()` if `ragged_rank` is not specified. If `ragged_rank` is specified, then a default is chosen based on the contents of `pylist`.",
       "dtype_candidates": [],
@@ -38,21 +50,11 @@
         "inner_shape must be one of RaggedTensor"
       ]
     },
-    "name": {
-      "type": "tensor",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name prefix for the returned tensor (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
     "row_splits_dtype": {
       "type": "tf.int32|tf.int64",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "tf.int64",
+      "flag": "Optional",
       "description": "data type for the constructed `RaggedTensor`'s row_splits. One of `tf.int32` or `tf.int64`.",
       "dtype_candidates": [
         "int32",

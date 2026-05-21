@@ -5,26 +5,26 @@
     "x": {
       "type": "number|tensor",
       "size": "1D",
-      "default": "-",
-      "flag": "Optional",
+      "default": "",
+      "flag": "Required",
       "description": "Scalar or 1D Tensor. The window length.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
         "x must be 1-D",
-        "x and output have compatible shapes"
+        "The output type is inferred from x and beta."
       ]
     },
     "beta": {
       "type": "float",
       "size": "",
-      "default": "-",
-      "flag": "Optional",
+      "default": "",
+      "flag": "Required",
       "description": "Float. Shape parameter for the Kaiser window.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "beta must be float"
+        "The output type is inferred from x and beta."
       ]
     }
   },
@@ -33,5 +33,7 @@
     "numbers": "1",
     "description": "A 1D tensor containing the Kaiser window values."
   },
-  "constraints": []
+  "constraints": [
+    "The output type is inferred from x and beta."
+  ]
 }

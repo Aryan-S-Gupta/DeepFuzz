@@ -10,19 +10,20 @@
       "spec": {
         "type": "list|future",
         "size": "",
-        "default": "[]",
+        "default": "",
         "flag": "Required",
         "description": "a list of :class:`~torch.futures.Future` objects.",
         "dtype_candidates": [],
         "enum_values": [],
-        "constraints": [
-          "elements must be of type :class:`~torch.futures.Future`"
-        ]
+        "case_insensitive": false,
+        "constraints": []
       },
       "chosen_type": "future",
       "include_in_base_call": true,
       "base_seed_spec": {},
       "mutation_rules": [],
+      "valid_mutation_rules": [],
+      "negative_mutation_rules": [],
       "unresolved_reason": "unsupported base seed type: future"
     }
   },
@@ -31,9 +32,7 @@
     "numbers": "1",
     "description": "class:`~torch.futures.Future` object to a list of the passed in Futures."
   },
-  "constraints": [
-    "input Future objects' results must be settable"
-  ],
+  "constraints": [],
   "spec_ready": false,
   "ready_for_stage4": false,
   "readiness_reasons": [
@@ -43,5 +42,6 @@
   "runtime_supported_here": null,
   "source_spec_json_path": "info2json/results/torch/torch.futures.collect_all.json",
   "stage3_status": "retry",
-  "smoke_attempted": false
+  "smoke_attempted": false,
+  "repair_candidate": true
 }

@@ -10,6 +10,7 @@
       "description": "the input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
@@ -20,46 +21,53 @@
       "description": "int or sequence of ints, default=None. Axis along which the sum to be computed. If None, the sum is computed along all the axes.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "b": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "scaling factors for the exponentials. Must be broadcastable to the shape of `a`.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "keepdims": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "If ``True``, the axes that are reduced are left in the output as dimensions of size 1.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "return_sign": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "If ``True``, the output will be a ``(result, sign)`` pair, where ``sign`` is the sign of the sums and ``result`` contains the logarithms of their absolute values. If ``False`` only ``result`` is returned and it will contain NaN values if the sums are negative.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "return_sign must be one of True, sign, False"
+      ]
     },
     "where": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "Elements to include in the reduction.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

@@ -13,22 +13,22 @@
       "constraints": []
     },
     "blocksize": {
-      "type": "",
+      "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1",
+      "flag": "Optional",
       "description": "Not supported in JAX; JAX always uses ``blocksize=1``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "JAX always uses `blocksize=1`"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "N",
+    "numbers": "1",
     "description": "An array of shape ``(N, N)`` containing the matrix square root of ``A``"
   },
-  "constraints": [
-    "A must be square"
-  ]
+  "constraints": []
 }

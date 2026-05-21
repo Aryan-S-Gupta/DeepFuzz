@@ -27,7 +27,7 @@
     "axis": {
       "type": "int",
       "size": "",
-      "default": "the first dimension",
+      "default": "0",
       "flag": "Optional",
       "description": "An `int`. The axis to unstack along. Defaults to the first dimension. Negative values wrap around, so the valid range is `[-R, R)`.",
       "dtype_candidates": [],
@@ -35,16 +35,6 @@
       "constraints": [
         "axis must be one of int"
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {

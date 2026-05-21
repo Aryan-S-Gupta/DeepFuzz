@@ -10,8 +10,9 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x can take any shape, since no shape information is provided in the docstring"
+        "∈ ← ∇ x ≤ 6"
       ]
     }
   },
@@ -20,7 +21,5 @@
     "numbers": "1",
     "description": "An array."
   },
-  "constraints": [
-    "abla relu6(0) = 0 and abla relu6(6) = 0 are statements about the function's behavior but do not impose constraints on its input or output"
-  ]
+  "constraints": []
 }

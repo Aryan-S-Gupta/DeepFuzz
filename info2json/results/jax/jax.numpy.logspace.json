@@ -10,6 +10,7 @@
       "description": "scalar or array. Used to specify the start value. The start value is ``base ** start``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "stop": {
@@ -20,48 +21,64 @@
       "description": "scalar or array. Used to specify the stop value. The end value is ``base ** stop``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "num": {
       "type": "int|number",
       "size": "",
-      "default": "",
+      "default": "50",
       "flag": "Optional",
       "description": "int, optional, default=50. Number of values to generate.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "endpoint": {
       "type": "bool",
       "size": "",
-      "default": "",
+      "default": "True",
       "flag": "Optional",
       "description": "bool, optional, default=True. If True, then include the ``stop`` value in the result. If False, then exclude the ``stop`` value.",
       "dtype_candidates": [
         "bool"
       ],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "base": {
-      "type": "number|tensor|dtype",
+      "type": "number|tensor",
       "size": "scalar",
-      "default": "",
+      "default": "10.0",
       "flag": "Optional",
-      "description": "scalar or array, optional, default=10. Specifies the base of the logarithm. dtype: optional. Specifies the dtype of the output.",
+      "description": "scalar or array, optional, default=10. Specifies the base of the logarithm.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "dtype": {
+      "type": "dtype",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "optional. Specifies the dtype of the output.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "0",
       "flag": "Optional",
       "description": "int, optional, default=0. Axis along which to generate the logspace.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

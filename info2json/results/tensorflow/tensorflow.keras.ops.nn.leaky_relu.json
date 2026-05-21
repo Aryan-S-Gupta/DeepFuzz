@@ -10,19 +10,19 @@
       "description": "Input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Returns a tensor with the same shape as x for f(x) = alpha * x for x < 0 or f(x) = x for x >= 0."
+      ]
     },
     "negative_slope": {
-      "type": "callable|number",
+      "type": "float|callable",
       "size": "",
-      "default": "0",
+      "default": "0.2",
       "flag": "Optional",
       "description": "Slope of the activation function at x < 0. Defaults to `0.2`.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "non-negative"
-      ]
+      "constraints": []
     }
   },
   "output": {

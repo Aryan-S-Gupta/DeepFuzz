@@ -16,7 +16,7 @@
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "shape must be at least 1-D"
+          "The shapes of x and bins must be compatible for broadcasting."
         ]
       },
       "chosen_type": "tensor",
@@ -24,7 +24,8 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -32,12 +33,22 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     },
@@ -45,15 +56,16 @@
       "name": "bins",
       "spec": {
         "type": "tensor",
-        "size": "1-D",
+        "size": "",
         "default": "",
         "flag": "Required",
         "description": "Array of bins. It has to be one-dimensional and monotonically increasing.",
         "dtype_candidates": [],
         "enum_values": [],
         "constraints": [
-          "bins must be 1-D",
-          "bins must be monotonically increasing"
+          "one-dimensional",
+          "monotonically increasing",
+          "The shapes of x and bins must be compatible for broadcasting."
         ]
       },
       "chosen_type": "tensor",
@@ -61,7 +73,8 @@
       "base_seed_spec": {
         "kind": "tensor",
         "shape": [
-          1
+          2,
+          2
         ],
         "dtype": "float32",
         "fill": 1.0,
@@ -69,45 +82,53 @@
         "backend": "tensorflow"
       },
       "mutation_rules": [
+        "value_noise",
+        "value_mask",
+        "value_division",
         "shape_expand",
         "shape_shrink",
-        "dtype_mutate",
+        "dtype_mutate"
+      ],
+      "valid_mutation_rules": [
         "value_noise",
         "value_mask",
         "value_division"
+      ],
+      "negative_mutation_rules": [
+        "shape_expand",
+        "shape_shrink",
+        "dtype_mutate"
       ],
       "unresolved_reason": ""
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32 or int64",
+    "numbers": "1",
     "description": "Output array of indices, of same shape as `x`."
   },
-  "constraints": [],
+  "constraints": [
+    "The shapes of x and bins must be compatible for broadcasting."
+  ],
   "spec_ready": true,
-  "ready_for_stage4": true,
-  "readiness_reasons": [],
+  "ready_for_stage4": false,
+  "readiness_reasons": [
+    "smoke test failed: only 0-dimensional arrays can be converted to Python scalars"
+  ],
   "smoke_test": {
     "attempted": true,
-    "success": true,
-    "classification": "success",
-    "error_type": "",
-    "error": "",
+    "success": false,
+    "classification": "spec_or_seed_error",
+    "error_type": "TypeError",
+    "error": "only 0-dimensional arrays can be converted to Python scalars",
     "materialization_reasons": [],
-    "result_summary": {
-      "python_type": "EagerTensor",
-      "shape": [
-        1
-      ],
-      "dtype": "int32",
-      "numel": 1,
-      "has_nan": false
-    },
-    "runtime_supported_here": true
+    "result_summary": {},
+    "runtime_supported_here": false,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 766, in run_smoke_test\n    out = api(**kwargs)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/ops/numpy.py\", line 2763, in digitize\n    return backend.numpy.digitize(x, bins)\n           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/backend/tensorflow/numpy.py\", line 1436, in digitize\n    bins = tree.map_structure(lambda x: float(x), bins)\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/tree/tree_api.py\", line 200, in map_structure\n    return tree_impl.map_structure(func, *structures, none_is_leaf=none_is_leaf)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/.venv/lib/python3.13/site-packages/keras/src/tree/optree_impl.py\", line 111, in map_structure\n    return optree.tree_map(\n           ~~~~~~~~~~~~~~~^\n        map_func, *structures, none_is_leaf=none_is_leaf, namespace=\"keras\"\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\nTypeError: only 0-dimensional arrays can be converted to Python scalars\n"
   },
-  "runtime_supported_here": true,
+  "runtime_supported_here": false,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.keras.ops.digitize.json",
-  "stage3_status": "ready_for_stage4",
-  "smoke_attempted": true
+  "stage3_status": "retry",
+  "smoke_attempted": true,
+  "repair_candidate": true
 }

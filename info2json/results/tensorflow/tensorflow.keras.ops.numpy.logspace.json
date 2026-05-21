@@ -45,11 +45,21 @@
       "constraints": []
     },
     "base": {
-      "type": "tensor|dtype",
+      "type": "",
       "size": "",
       "default": "10",
       "flag": "Optional",
-      "description": "The base of the log space. Defaults to `10`. dtype: The type of the output tensor.",
+      "description": "The base of the log space. Defaults to `10`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "The type of the output tensor.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -57,8 +67,8 @@
     "axis": {
       "type": "tensor",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "0",
+      "flag": "Optional",
       "description": "The axis in the result to store the samples. Relevant only if start or stop are array-like.",
       "dtype_candidates": [],
       "enum_values": [],

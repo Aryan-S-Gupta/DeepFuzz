@@ -10,14 +10,15 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "For unsigned integer inputs, this function returns `2 ** nbits - x`, where"
+        "x's dtype must be supported by Jax Lax negation operation"
       ]
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "same shape and dtype as `x`",
+    "numbers": "1",
     "description": "Array of same shape and dtype as ``x``, containing the element-wise negative."
   },
   "constraints": []

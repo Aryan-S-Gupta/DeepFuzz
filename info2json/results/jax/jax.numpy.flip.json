@@ -10,27 +10,26 @@
       "description": "Array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "m must be a JAX array",
-        "m and output have the same shape"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "axis": {
       "type": "int|sequence|tensor",
       "size": "",
-      "default": "None``, which flips",
+      "default": "",
       "flag": "Optional",
       "description": "integer or sequence of integers. Specifies along which axis or axes should the array elements be reversed. Default is ``None``, which flips along all axes.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "axis must be an integer or a sequence of integers"
+        "must be int, Sequence[int], or None"
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "real",
+    "numbers": "1",
     "description": "An array with the elements in reverse order along ``axis``."
   },
   "constraints": []

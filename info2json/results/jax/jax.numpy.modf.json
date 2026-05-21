@@ -10,18 +10,18 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "x can be any numeric type supported by JAX, promoting dtypes inexact"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     },
     "out": {
-      "type": "unused",
+      "type": "",
       "size": "",
       "default": "",
       "flag": "Optional",
       "description": "Not used by JAX.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },
@@ -30,5 +30,7 @@
     "numbers": "2",
     "description": "An array containing the fractional and integral parts of the elements of ``x``, promoting dtypes inexact."
   },
-  "constraints": []
+  "constraints": [
+    "jax.numpy.modf returns a tuple with 2 arrays"
+  ]
 }

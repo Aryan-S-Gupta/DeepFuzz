@@ -3,12 +3,23 @@
   "module_path": "tensorflow",
   "params": {
     "input": {
-      "type": "string|float|bool|tensor|dtype",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "A `Tensor`. dtype: A type for the returned `Tensor`. Must be `float16`, `float32`, `float64`, `int8`, `uint8`, `int16`, `uint16`, `int32`, `int64`, `complex64`, `complex128`, `bool` or `string`.",
+      "description": "A `Tensor`.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": []
+    },
+    "dtype": {
+      "type": "string|float|bool|tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "A type for the returned `Tensor`. Must be `float16`, `float32`, `float64`, `int8`, `uint8`, `int16`, `uint16`, `int32`, `int64`, `complex64`, `complex128`, `bool` or `string`.",
       "dtype_candidates": [
+        "bool",
         "int8",
         "int16",
         "int32",
@@ -18,20 +29,9 @@
         "float16",
         "float32",
         "float64",
-        "bool",
         "complex64",
         "complex128"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },

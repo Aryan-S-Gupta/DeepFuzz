@@ -29,6 +29,8 @@
     "description": "Output tensor, matrix product of the inputs."
   },
   "constraints": [
-    "If either tensor is N-D, N > 2, it is treated as a stack of matrices a 1 to its dimensions. After matrix multiplication the prepended to its dimensions. After matrix multiplication the appended 1 is removed."
+    "If both tensors are 1-dimensional, the dot product (scalar) is returned.",
+    "If either tensor is N-D, N > 2, it is treated as a stack of matrices",
+    "After matrix multiplication the prepended to its dimensions. After matrix multiplication the appended 1 is removed."
   ]
 }

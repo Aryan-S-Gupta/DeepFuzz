@@ -5,14 +5,13 @@
     "futures": {
       "type": "list|future",
       "size": "",
-      "default": "[]",
+      "default": "",
       "flag": "Required",
       "description": "a list of :class:`~torch.futures.Future` objects.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "elements must be of type :class:`~torch.futures.Future`"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
@@ -20,7 +19,5 @@
     "numbers": "1",
     "description": "class:`~torch.futures.Future` object to a list of the passed in Futures."
   },
-  "constraints": [
-    "input Future objects' results must be settable"
-  ]
+  "constraints": []
 }

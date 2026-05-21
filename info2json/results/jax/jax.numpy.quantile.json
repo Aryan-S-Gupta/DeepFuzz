@@ -10,6 +10,7 @@
       "description": "N-dimensional array input.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "q": {
@@ -20,6 +21,7 @@
       "description": "scalar or 1-dimensional array specifying the desired quantiles. ``q`` should contain floating-point values between ``0.0`` and ``1.0``.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
         "q must be one of 0.0, 1.0"
       ]
@@ -32,32 +34,35 @@
       "description": "optional axis or tuple of axes along which to compute the quantile",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "out": {
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "not implemented by JAX; will error if not None",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "overwrite_input": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "False",
+      "flag": "Optional",
       "description": "not implemented by JAX; will error if not False",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "method": {
       "type": "",
       "size": "",
-      "default": "linear",
+      "default": "",
       "flag": "Optional",
       "description": "specify the interpolation method to use. Options are one of ``[\"linear\", \"lower\", \"higher\", \"midpoint\", \"nearest\"]``. default is ``linear``.",
       "dtype_candidates": [],
@@ -68,6 +73,7 @@
         "midpoint",
         "nearest"
       ],
+      "case_insensitive": false,
       "constraints": [
         "method must be one of linear, lower, higher, midpoint, nearest"
       ]
@@ -80,7 +86,21 @@
       "description": "if True, then the returned array will have the same number of dimensions as the input. Default is False.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
+    },
+    "weights": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "keyword-only. optional array of weights associated with the values in ``a``. Each value in ``a`` contributes to the quantile according to its associated weight. The weights array must be broadcastable to the same shape as ``a``. Only works with ``method=\"inverted_cdf\"``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "weights must be one of inverted_cdf"
+      ]
     }
   },
   "output": {

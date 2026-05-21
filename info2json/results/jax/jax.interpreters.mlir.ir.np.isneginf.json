@@ -10,7 +10,9 @@
       "description": "array_like The input array.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x must be array_like"
+      ]
     },
     "out": {
       "type": "bool|tensor",
@@ -27,7 +29,7 @@
   },
   "output": {
     "type": "bool|number|tensor",
-    "numbers": "1",
+    "numbers": "boolean",
     "description": "------- ndarray A boolean array with the same dimensions as the input. If second argument is not supplied then a numpy boolean array is returned with values True where the corresponding element of the input is negative infinity and values False where the element of the input is not negative infinity. If a second argument is supplied the result is stored there. If the type of that array is a numeric type the result is represented as zeros and ones, if the type is boolean then as False and True. The return value `out` is then a reference to that array."
   },
   "constraints": []

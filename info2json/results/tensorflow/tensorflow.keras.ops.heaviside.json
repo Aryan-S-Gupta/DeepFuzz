@@ -11,8 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be real number",
-        "x2 value will be used when x1 equals zero"
+        "The shapes of x1 and x2 must be broadcast-compatible"
       ]
     },
     "x2": {
@@ -24,8 +23,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be same shape as x1 if x2 is a tensor",
-        "x2 value will be used when x1 equals zero"
+        "The shapes of x1 and x2 must be broadcast-compatible"
       ]
     }
   },
@@ -35,6 +33,6 @@
     "description": "A tensor with a shape determined by broadcasting `x1` and `x2`."
   },
   "constraints": [
-    "x2 value will be used when x1 equals zero"
+    "The shapes of x1 and x2 must be broadcast-compatible"
   ]
 }

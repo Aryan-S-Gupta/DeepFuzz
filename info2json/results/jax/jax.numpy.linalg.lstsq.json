@@ -10,6 +10,7 @@
       "description": "array of shape ``(M, N)`` representing the coefficient matrix.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "b": {
@@ -20,6 +21,7 @@
       "description": "array of shape ``(M,)`` or ``(M, K)`` representing the right-hand side.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "rcond": {
@@ -30,16 +32,18 @@
       "description": "Cut-off ratio for small singular values. Singular values smaller than ``rcond * largest_singular_value`` are treated as zero. If None (default), the optimal value will be used to reduce floating point errors.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     },
     "numpy_resid": {
       "type": "",
       "size": "",
-      "default": "",
+      "default": "False",
       "flag": "Optional",
       "description": "If True, compute and return residuals in the same way as NumPy's `linalg.lstsq`. This is necessary if you want to precisely replicate NumPy's behavior. If False (default), a more efficient method is used to compute residuals.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": []
     }
   },

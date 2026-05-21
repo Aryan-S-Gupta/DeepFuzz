@@ -10,14 +10,15 @@
       "description": "the index of the device to target. If not given, use :func:`torch.accelerator.current_device_index` by default. If a :class:`torch.device` or str is provided, its type must match the current :ref:`accelerator<accelerators>` device type.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "device_index must match current accelerator device type if provided"
+        "device_index must match the current accelerator device type if provided as a torch.device or str"
       ]
     }
   },
   "output": {
     "type": "string|int",
-    "numbers": "1",
+    "numbers": "bytes",
     "description": "the peak memory reserved by PyTorch (in bytes) within the current process."
   },
   "constraints": []

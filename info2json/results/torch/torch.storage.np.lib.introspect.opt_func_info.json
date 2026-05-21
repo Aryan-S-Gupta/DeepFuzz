@@ -1,0 +1,40 @@
+{
+  "api_name": "opt_func_info",
+  "module_path": "torch.storage.np.lib.introspect",
+  "params": {
+    "func_name": {
+      "type": "string|callable",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str (optional) Regular expression to filter by function name.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "func_name and signature must be used together with re module for filtering"
+      ]
+    },
+    "signature": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "str (optional) Regular expression to filter by data type.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "func_name and signature must be used together with re module for filtering"
+      ]
+    }
+  },
+  "output": {
+    "type": "dict|callable",
+    "numbers": "1",
+    "description": "------- dict A dictionary where keys are optimized function names and values are nested dictionaries indicating supported targets based on data types."
+  },
+  "constraints": [
+    "func_name and signature must be used together with re module for filtering"
+  ]
+}

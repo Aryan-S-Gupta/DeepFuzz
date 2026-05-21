@@ -10,16 +10,17 @@
       "description": "input array or scalar.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": [
-        "real-valued and not in the closed range (-1, 1) returns nan",
-        "x and output must have broadcast-compatible shapes"
-      ]
+      "case_insensitive": false,
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor|dtype",
-    "numbers": "real or complex",
+    "numbers": "real32, complex64",
     "description": "An array containing the inverse trigonometric sine of each element of ``x`` in radians in the range ``[-pi/2, pi/2]``, promoting to inexact dtype."
   },
-  "constraints": []
+  "constraints": [
+    "jax.numpy.arcsin(jax.numpy.array([-2, -1, -0.5, 0, 0.5, 1, 2])) returns `[nan, -1.571, -0.524, 0. , 0.524, 1.571, nan]` (dtype=float32)",
+    "jax.numpy.arcsin(3+4j) returns `(0.634+2.306j, dtype=complex64, weak_type=True)`"
+  ]
 }

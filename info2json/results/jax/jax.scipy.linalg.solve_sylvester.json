@@ -3,31 +3,31 @@
   "module_path": "jax.scipy.linalg",
   "params": {
     "A": {
-      "type": "",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "Matrix of shape m x m",
+      "description": "array of shape ``(..., m, m)``",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
     "B": {
-      "type": "",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "Matrix of shape n x n",
+      "description": "array of shape ``(..., n, n)``",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     },
     "C": {
-      "type": "",
+      "type": "tensor",
       "size": "",
       "default": "",
       "flag": "Required",
-      "description": "Matrix of shape m x n",
+      "description": "array of shape ``(..., m, n)``. Batch dimensions are broadcast across ``A``, ``B``, and ``C``.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -45,8 +45,8 @@
     "tol": {
       "type": "",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "1e-08",
+      "flag": "Optional",
       "description": "How close the sum of the eigenvalues from A and B can be to zero before returning matrix of NaNs",
       "dtype_candidates": [],
       "enum_values": [],
@@ -54,9 +54,9 @@
     }
   },
   "output": {
-    "type": "X",
+    "type": "tensor",
     "numbers": "1",
-    "description": "Matrix of shape m x n"
+    "description": "Array of shape ``(..., m, n)`` representing the solution ``X``."
   },
   "constraints": []
 }

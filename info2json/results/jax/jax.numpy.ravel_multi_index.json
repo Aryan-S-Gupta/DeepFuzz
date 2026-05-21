@@ -10,7 +10,9 @@
       "description": "sequence of integer arrays containing indices in each dimension.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "len(multi_index) == len(dims)"
+      ]
     },
     "dims": {
       "type": "int|sequence",
@@ -20,34 +22,44 @@
       "description": "sequence of integer sizes; must have ``len(dims) == len(multi_index)``",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "len(multi_index) == len(dims)"
+      ]
     },
     "mode": {
-      "type": "",
+      "type": "string",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "how to handle out-of bound indices. Options are",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "with": {
-      "type": "jax.jit",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "func:`~jax.jit` or other JAX transformations. - ``\"clip\"``: clip out-of-bound indices to valid range. - ``\"wrap\"``: wrap out-of-bound indices to valid range. - ``\"ignore\"``: do not coerce or check input indices. Behavior is undefined if indices are out of bounds.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "raise",
+        "clip",
+        "wrap",
+        "ignore"
+      ]
     },
     "order": {
+      "type": "string",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "``\"C\"`` (default) or ``\"F\"``, specify whether to assume C-style row-major order or Fortran-style column-major order.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "constraints": [
+        "C",
+        "F"
+      ]
+    },
+    "dtype": {
       "type": "dtype",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "``\"C\"`` (default) or ``\"F\"``, specify whether to assume C-style row-major order or Fortran-style column-major order. dtype: the desired output dtype. If not specified, the dtype is determined by standard type promotion rules of the input multi_index.",
+      "description": "the desired output dtype. If not specified, the dtype is determined by standard type promotion rules of the input multi_index.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
@@ -58,5 +70,7 @@
     "numbers": "1",
     "description": "array of flattened indices"
   },
-  "constraints": []
+  "constraints": [
+    "len(multi_index) == len(dims)"
+  ]
 }

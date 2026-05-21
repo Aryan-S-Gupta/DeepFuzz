@@ -10,7 +10,9 @@
       "description": "Each element of the input Tensor is converted to an array of bytes. Currently, this must be a tensor of strings (bytes), although semantically the operation should support any input.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If set, fixed_length must be specified if the elements of input_bytes are of variable length."
+      ]
     },
     "out_type": {
       "type": "float|dtype",
@@ -27,37 +29,36 @@
         "uint16"
       ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "half, float, double, int32, uint16, uint8, int16, int8, int64"
+      ]
     },
     "little_endian": {
-      "type": "",
+      "type": "bool",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "True",
+      "flag": "Optional",
       "description": "Whether the `input_bytes` data is in little-endian format. Data will be converted into host byte order if necessary.",
-      "dtype_candidates": [],
+      "dtype_candidates": [
+        "bool"
+      ],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "If little_endian is not specified, data will be converted into host byte order if necessary."
+      ]
     },
     "fixed_length": {
-      "type": "string",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "If set, the first `fixed_length` bytes of each element will be converted. Data will be zero-padded or truncated to the specified length. `fixed_length` must be a multiple of the size of `out_type`. `fixed_length` must be specified if the elements of `input_bytes` are of variable length.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
+      "type": "string|int",
       "size": "",
       "default": "",
       "flag": "Optional",
-      "description": "A name for the operation (optional).",
+      "description": "If set, the first `fixed_length` bytes of each element will be converted. Data will be zero-padded or truncated to the specified length. `fixed_length` must be a multiple of the size of `out_type`. `fixed_length` must be specified if the elements of `input_bytes` are of variable length.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "Must be a multiple of the size of out_type.",
+        "If set, fixed_length must be specified if the elements of input_bytes are of variable length."
+      ]
     }
   },
   "output": {
@@ -65,5 +66,7 @@
     "numbers": "1",
     "description": "A `Tensor` object storing the decoded bytes."
   },
-  "constraints": []
+  "constraints": [
+    "If set, fixed_length must be specified if the elements of input_bytes are of variable length."
+  ]
 }

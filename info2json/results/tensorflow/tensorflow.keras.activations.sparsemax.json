@@ -11,19 +11,19 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "x cannot be None"
+        "x and output have the same type"
       ]
     },
     "axis": {
       "type": "int",
       "size": "",
-      "default": "",
+      "default": "-1",
       "flag": "Optional",
       "description": "`int`, axis along which the sparsemax operation is applied.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Must satisfy 0 <= axis < rank(x) if axis is not None"
+        "-rank(input) <= axis < rank(input)"
       ]
     }
   },

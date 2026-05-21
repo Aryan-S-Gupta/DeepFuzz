@@ -11,8 +11,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be 2-D or higher",
-        "x's dimensionality must be at least 2"
+        "4-D or more",
+        "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
       ]
     },
     "offset": {
@@ -24,7 +24,8 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "offset must be positive"
+        "offset must be positive",
+        "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
       ]
     },
     "axis1": {
@@ -36,19 +37,23 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis1 must be 2-D"
+        "0 <= axis1 < rank(x)",
+        "axis1 must be 2-D",
+        "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
       ]
     },
     "axis2": {
       "type": "int",
       "size": "2-D",
-      "default": "1` (second axis)",
+      "default": "1",
       "flag": "Optional",
       "description": "Axis to be used as the second axis of the 2-D sub-arrays. Defaults to `1` (second axis).",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis2 must be 2-D"
+        "1 <= axis2 < rank(x)",
+        "axis2 must be 2-D",
+        "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
       ]
     }
   },
@@ -57,5 +62,7 @@
     "numbers": "1",
     "description": "Tensor of diagonals."
   },
-  "constraints": []
+  "constraints": [
+    "If x is 2-D, returns the diagonal with the given offset. If x has more than two dimensions, the axes specified by axis1 and axis2 are used."
+  ]
 }

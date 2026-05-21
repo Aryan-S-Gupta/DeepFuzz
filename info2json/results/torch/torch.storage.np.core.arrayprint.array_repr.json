@@ -1,0 +1,64 @@
+{
+  "api_name": "array_repr",
+  "module_path": "torch.storage.np.core.arrayprint",
+  "params": {
+    "arr": {
+      "type": "tensor",
+      "size": "",
+      "default": "",
+      "flag": "Required",
+      "description": "ndarray Input array.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "max_line_width": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Inserts newlines if text is longer than `max_line_width`. Defaults to ``numpy.get_printoptions()['linewidth']``.",
+      "dtype_candidates": [],
+      "enum_values": [
+        "linewidth"
+      ],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "precision": {
+      "type": "int",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "int, optional Floating point precision. Defaults to ``numpy.get_printoptions()['precision']``.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": []
+    },
+    "suppress_small": {
+      "type": "bool",
+      "size": "",
+      "default": "",
+      "flag": "Optional",
+      "description": "bool, optional Represent numbers \"very close\" to zero as zero; default is False. Very close is defined by precision: if the precision is 8, e.g., numbers smaller (in absolute value) than 5e-9 are represented as zero. Defaults to ``numpy.get_printoptions()['suppress']``.",
+      "dtype_candidates": [
+        "bool"
+      ],
+      "enum_values": [
+        "suppress"
+      ],
+      "case_insensitive": false,
+      "constraints": [
+        "suppress_small must be one of suppress"
+      ]
+    }
+  },
+  "output": {
+    "type": "string|tensor",
+    "numbers": "1",
+    "description": "------- str The string representation of an array."
+  },
+  "constraints": []
+}

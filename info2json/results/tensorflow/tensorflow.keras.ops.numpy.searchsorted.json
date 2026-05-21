@@ -28,11 +28,16 @@
       "type": "",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "'left' or 'right', specifying the direction in which to insert for the equality case (tie-breaker).",
       "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "enum_values": [
+        "left",
+        "right"
+      ],
+      "constraints": [
+        "must be either 'left' or 'right'"
+      ]
     }
   },
   "output": {

@@ -1,0 +1,158 @@
+{
+  "api_full_name": "jax.numpy.lexsort",
+  "api_name": "lexsort",
+  "module_path": "jax.numpy",
+  "import_path": "jax.numpy.lexsort",
+  "backend": "jax",
+  "params": {
+    "keys": {
+      "name": "keys",
+      "spec": {
+        "type": "int|float|bool|sequence|number|tensor",
+        "size": "",
+        "default": "",
+        "flag": "Required",
+        "description": "a sequence of arrays to sort; all arrays must have the same shape. The last key in the sequence is used as the primary key.",
+        "dtype_candidates": [
+          "bool"
+        ],
+        "enum_values": [],
+        "constraints": [
+          "axis must satisfy -rank(keys) <= axis < rank(keys)"
+        ]
+      },
+      "chosen_type": "bool",
+      "include_in_base_call": true,
+      "base_seed_spec": {
+        "kind": "tuple",
+        "items": [
+          {
+            "kind": "tensor",
+            "shape": [
+              2
+            ],
+            "dtype": "float32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              2.0,
+              1.0
+            ]
+          },
+          {
+            "kind": "tensor",
+            "shape": [
+              2
+            ],
+            "dtype": "float32",
+            "fill": 1.0,
+            "device": "cpu",
+            "backend": "jax",
+            "values": [
+              1.0,
+              2.0
+            ]
+          }
+        ]
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    },
+    "axis": {
+      "name": "axis",
+      "spec": {
+        "type": "int",
+        "size": "",
+        "default": "-1",
+        "flag": "Optional",
+        "description": "the axis along which to sort (default: -1).",
+        "dtype_candidates": [],
+        "enum_values": [],
+        "constraints": [
+          "axis must satisfy -rank(keys) <= axis < rank(keys)"
+        ]
+      },
+      "chosen_type": "int",
+      "include_in_base_call": false,
+      "base_seed_spec": {
+        "kind": "literal",
+        "value": 0
+      },
+      "mutation_rules": [
+        "scalar_delta",
+        "type_widen"
+      ],
+      "valid_mutation_rules": [
+        "scalar_delta"
+      ],
+      "negative_mutation_rules": [
+        "type_widen"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "1",
+    "description": "An array of integers of shape ``keys[0].shape`` giving the indices of the entries in lexicographically-sorted order."
+  },
+  "constraints": [
+    "axis must satisfy -rank(keys) <= axis < rank(keys)"
+  ],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "success",
+    "error_type": "",
+    "error": "",
+    "materialization_reasons": [],
+    "result_summary": {
+      "python_type": "ArrayImpl"
+    },
+    "runtime_supported_here": true
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "keys"
+    ],
+    "skipped_optional": [
+      "axis"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [
+    "axis valid for input rank"
+  ],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(axis)",
+      "expect": [
+        "TypeError",
+        "ValueError",
+        "InvalidArgumentError"
+      ]
+    }
+  ],
+  "doc_confidence": 0.98,
+  "runtime_supported_here": true,
+  "source_spec_json_path": "info2json/results/jax/jax.numpy.lexsort.json",
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
+}

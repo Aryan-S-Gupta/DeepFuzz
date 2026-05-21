@@ -12,7 +12,10 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "shape must match on_true and on_false shapes"
+      ]
     },
     "on_true": {
       "type": "tensor|dtype",
@@ -22,7 +25,12 @@
       "description": "array containing entries to return where ``pred`` is True. Must have the same shape as ``pred``, and the same shape and dtype as ``on_false``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "shape must match pred shape",
+        "same dtype as on_false",
+        "on_true and on_false must have the same dtype"
+      ]
     },
     "on_false": {
       "type": "tensor|dtype",
@@ -32,7 +40,11 @@
       "description": "array containing entries to return where ``pred`` is False. Must have the same shape as ``pred``, and the same shape and dtype as ``on_true``.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "same shape and dtype as on_true",
+        "on_true and on_false must have the same dtype"
+      ]
     }
   },
   "output": {
@@ -40,5 +52,7 @@
     "numbers": "1",
     "description": "array with same shape and dtype as ``on_true`` and ``on_false``."
   },
-  "constraints": []
+  "constraints": [
+    "on_true and on_false must have the same dtype"
+  ]
 }

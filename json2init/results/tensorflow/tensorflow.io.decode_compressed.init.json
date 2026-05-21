@@ -28,17 +28,24 @@
       },
       "mutation_rules": [
         "enum_switch",
-        "type_switch"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     },
     "compression_type": {
       "name": "compression_type",
       "spec": {
         "type": "string|number",
         "size": "scalar",
-        "default": "",
-        "flag": "Required",
+        "default": "\"\"",
+        "flag": "Optional",
         "description": "An optional `string`. Defaults to `\"\"`. A scalar containing either (i) the empty string (no compression), (ii) \"ZLIB\", or (iii) \"GZIP\".",
         "dtype_candidates": [],
         "enum_values": [
@@ -46,37 +53,29 @@
           "ZLIB",
           "GZIP"
         ],
-        "constraints": []
+        "constraints": [
+          "scalar containing either (i) the empty string (no compression), (ii) \"ZLIB\", or (iii) \"GZIP\"",
+          "compression_type must be one of string, ZLIB, GZIP"
+        ]
       },
       "chosen_type": "dtype",
-      "include_in_base_call": true,
+      "include_in_base_call": false,
       "base_seed_spec": {
         "kind": "dtype",
         "value": "float32"
       },
       "mutation_rules": [
         "enum_switch",
-        "type_switch"
+        "enum_invalid"
       ],
-      "unresolved_reason": ""
-    },
-    "name": {
-      "name": "name",
-      "spec": {
-        "type": "",
-        "size": "",
-        "default": "",
-        "flag": "Required",
-        "description": "A name for the operation (optional).",
-        "dtype_candidates": [],
-        "enum_values": [],
-        "constraints": []
-      },
-      "chosen_type": "a name for the operation (optional).",
-      "include_in_base_call": true,
-      "base_seed_spec": {},
-      "mutation_rules": [],
-      "unresolved_reason": "unhandled chosen type: a name for the operation (optional)."
+      "valid_mutation_rules": [
+        "enum_switch"
+      ],
+      "negative_mutation_rules": [
+        "enum_invalid"
+      ],
+      "unresolved_reason": "",
+      "call_kind": "positional_or_keyword"
     }
   },
   "output": {
@@ -84,17 +83,52 @@
     "numbers": "1",
     "description": "A `Tensor` of type `string`."
   },
-  "constraints": [
-    "bytes must not be empty string or null"
+  "constraints": [],
+  "spec_ready": true,
+  "ready_for_stage4": true,
+  "readiness_reasons": [],
+  "smoke_test": {
+    "attempted": true,
+    "success": true,
+    "classification": "api_runtime_error",
+    "error_type": "AttributeError",
+    "error": "'bytes' object has no attribute 'dtype'",
+    "materialization_reasons": [],
+    "result_summary": {},
+    "runtime_supported_here": true,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 984, in run_smoke_test\n    result[\"result_summary\"] = summarize_python_value(out)\n                               ~~~~~~~~~~~~~~~~~~~~~~^^^^^\n  File \"/Users/aryansg/Desktop/DeepFuzz/json2init/deepfuzz_common.py\", line 1026, in summarize_python_value\n    is_float = np is not None and getattr(arr.dtype, \"kind\", \"\") in {\"f\", \"c\"}\n                                          ^^^^^^^^^\nAttributeError: 'bytes' object has no attribute 'dtype'\n"
+  },
+  "signature_binding": {
+    "bound_positional": [],
+    "bound_keyword": [
+      "bytes"
+    ],
+    "skipped_optional": [
+      "compression_type"
+    ],
+    "accepts_var_keyword": false
+  },
+  "param_dependencies": [],
+  "raise_contract": [
+    {
+      "when": "negative_mutation(bytes_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    },
+    {
+      "when": "negative_mutation(compression_type_invalid_enum)",
+      "expect": [
+        "TypeError",
+        "ValueError"
+      ]
+    }
   ],
-  "spec_ready": false,
-  "ready_for_stage4": false,
-  "readiness_reasons": [
-    "required param 'name' unresolved: unhandled chosen type: a name for the operation (optional)."
-  ],
-  "smoke_test": {},
-  "runtime_supported_here": null,
+  "doc_confidence": 0.95,
+  "runtime_supported_here": true,
   "source_spec_json_path": "info2json/results/tensorflow/tensorflow.io.decode_compressed.json",
-  "stage3_status": "retry",
-  "smoke_attempted": false
+  "stage3_status": "ready_for_stage4",
+  "smoke_attempted": true,
+  "repair_candidate": false
 }

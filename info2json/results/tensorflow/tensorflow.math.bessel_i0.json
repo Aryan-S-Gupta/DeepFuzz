@@ -19,18 +19,10 @@
         "float64"
       ],
       "constraints": [
-        "x must be one of SparseTensor, half, float32, float64"
+        "x must be a Tensor or SparseTensor.",
+        "x must be one of SparseTensor, half, float32, float64",
+        "It is preferable to use the numerically stabler function `i0e(x)` instead."
       ]
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
     }
   },
   "output": {
@@ -38,5 +30,9 @@
     "numbers": "1",
     "description": "A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`. @compatibility(scipy) Equivalent to scipy.special.i0 @end_compatibility"
   },
-  "constraints": []
+  "constraints": [
+    "@compatibility(scipy)",
+    "Equivalent to scipy.special.i0",
+    "@end_compatibility"
+  ]
 }

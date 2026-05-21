@@ -11,11 +11,11 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "indices values must be in range [0, product(params.shape))"
+        "The type must be either int or list of ints."
       ]
     },
     "shape": {
-      "type": "list|tensor",
+      "type": "tuple|tensor",
       "size": "",
       "default": "",
       "flag": "Required",
@@ -23,16 +23,15 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "indices values must be in range [0, product(params.shape))"
+        "The elements of the tuple should be integers.",
+        "The shape parameter must have at least 2 dimensions."
       ]
     }
   },
   "output": {
     "type": "tuple",
-    "numbers": "1",
+    "numbers": "2",
     "description": "Tuple of arrays for each dimension with unraveled indices."
   },
-  "constraints": [
-    "indices values must be in range [0, product(params.shape))"
-  ]
+  "constraints": []
 }

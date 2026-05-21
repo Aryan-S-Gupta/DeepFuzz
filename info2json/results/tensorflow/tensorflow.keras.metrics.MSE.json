@@ -11,7 +11,7 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must match"
+        "y_true and y_pred must have broadcast-compatible shapes"
       ]
     },
     "y_pred": {
@@ -23,16 +23,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "y_true and y_pred shapes must match"
+        "y_true and y_pred must have broadcast-compatible shapes"
       ]
     }
   },
   "output": {
-    "type": "numbers",
+    "type": "tensor",
     "numbers": "[batch_size, d0, .. dN-1]",
     "description": "Mean squared error values with shape = `[batch_size, d0, .. dN-1]`."
   },
   "constraints": [
-    "y_true and y_pred shapes must match"
+    "y_true and y_pred must have broadcast-compatible shapes"
   ]
 }

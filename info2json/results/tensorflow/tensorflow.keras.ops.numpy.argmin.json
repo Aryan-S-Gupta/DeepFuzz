@@ -11,21 +11,20 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "must be numeric",
-        "x, axis, and keepdims must be compatible"
+        "must be 4-D"
       ]
     },
     "axis": {
       "type": "int|tensor",
       "size": "",
-      "default": "-1",
+      "default": "",
       "flag": "Optional",
       "description": "By default, the index is into the flattened tensor, otherwise along the specified axis.",
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "axis must satisfy -rank(x) <= axis < rank(x)",
-        "x, axis, and keepdims must be compatible"
+        "must satisfy -rank(x.shape) <= axis < rank(x.shape)",
+        "axis must satisfy -rank(x) <= axis < rank(x)"
       ]
     },
     "keepdims": {
@@ -38,17 +37,15 @@
         "bool"
       ],
       "enum_values": [],
-      "constraints": [
-        "x, axis, and keepdims must be compatible"
-      ]
+      "constraints": []
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "int32",
+    "numbers": "1",
     "description": "Tensor of indices. It has the same shape as `x`, with the dimension along `axis` removed."
   },
   "constraints": [
-    "x, axis, and keepdims must be compatible"
+    "indices dtype must be int32 or int64"
   ]
 }

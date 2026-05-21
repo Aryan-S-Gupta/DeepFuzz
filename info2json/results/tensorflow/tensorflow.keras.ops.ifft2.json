@@ -11,15 +11,16 @@
       "dtype_candidates": [],
       "enum_values": [],
       "constraints": [
-        "Both tensors in the tuple should be 2-D.",
-        "x's first tensor should match x's second tensor in shape."
+        "Both tensors in the tuple should be of floating type."
       ]
     }
   },
   "output": {
     "type": "float|tuple|tensor",
-    "numbers": "2",
+    "numbers": "1",
     "description": "A tuple containing two tensors - the real and imaginary parts of the output."
   },
-  "constraints": []
+  "constraints": [
+    "The input tensor's type should be compatible with float32 or float64."
+  ]
 }

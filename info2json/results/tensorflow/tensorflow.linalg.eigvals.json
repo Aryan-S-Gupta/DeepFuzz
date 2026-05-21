@@ -1,24 +1,13 @@
 {
   "api_name": "eigvals",
   "module_path": "tensorflow.linalg",
-  "params": {
-    "name": {
-      "type": "string",
-      "size": "",
-      "default": "optional name of the operation",
-      "flag": "Optional",
-      "description": "string, optional name of the operation.",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
-    }
-  },
+  "params": {},
   "output": {
-    "type": "tensor",
-    "numbers": "...N]",
+    "type": "Tensor",
+    "numbers": "[..., N]",
     "description": "Eigenvalues. Shape is `[..., N]`. The vector `e[..., :]` contains the `N` eigenvalues of `tensor[..., :, :]`."
   },
   "constraints": [
-    "tf.linalg.eig must be imported for correct execution"
+    "The output shape is consistent with the input tensor and eigvals calculation"
   ]
 }

@@ -10,7 +10,9 @@
       "description": "First input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
     },
     "x2": {
       "type": "tensor",
@@ -20,13 +22,17 @@
       "description": "Second input tensor.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "x1 and x2 must have broadcast-compatible shapes"
+      ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "one",
+    "numbers": "1",
     "description": "Output tensor, element-wise comparison of `x1` and `x2`."
   },
-  "constraints": []
+  "constraints": [
+    "x1 and x2 must have broadcast-compatible shapes"
+  ]
 }

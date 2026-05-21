@@ -26,7 +26,9 @@
         "int32",
         "int64"
       ],
-      "constraints": []
+      "constraints": [
+        "num_lower must be one of int32, int64"
+      ]
     },
     "num_upper": {
       "type": "number|tensor",
@@ -36,17 +38,9 @@
       "description": "A `Tensor`. Must have the same type as `num_lower`. 0-D tensor. Number of superdiagonals to keep. If negative, keep entire upper triangle.",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Required",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
-      "enum_values": [],
-      "constraints": []
+      "constraints": [
+        "num_upper must have the same dtype as num_lower"
+      ]
     }
   },
   "output": {

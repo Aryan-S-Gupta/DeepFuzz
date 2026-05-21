@@ -1,0 +1,25 @@
+{
+  "api_name": "lag2poly",
+  "module_path": "torch.storage.np.polynomial.laguerre",
+  "params": {
+    "c": {
+      "type": "tensor",
+      "size": "1-D",
+      "default": "",
+      "flag": "Required",
+      "description": "array_like 1-D array containing the Laguerre series coefficients, ordered from lowest order term to highest.",
+      "dtype_candidates": [],
+      "enum_values": [],
+      "case_insensitive": false,
+      "constraints": [
+        "c must be 1-D"
+      ]
+    }
+  },
+  "output": {
+    "type": "tensor",
+    "numbers": "ndarray",
+    "description": "------- ndarray 1-D array containing the coefficients of the equivalent polynomial (relative to the \"standard\" basis) ordered from lowest order term to highest."
+  },
+  "constraints": []
+}

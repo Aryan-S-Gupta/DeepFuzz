@@ -10,19 +10,24 @@
       "description": "input array",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "dimension of x must be divisible by two"
+        "dimension must be divisible by two",
+        "x and glu(x) must have the same shape"
       ]
     },
     "axis": {
-      "type": "",
+      "type": "int",
       "size": "",
-      "default": "",
-      "flag": "Required",
+      "default": "-1",
+      "flag": "Optional",
       "description": "the axis along which the split should be computed (default: -1)",
       "dtype_candidates": [],
       "enum_values": [],
-      "constraints": []
+      "case_insensitive": false,
+      "constraints": [
+        "must satisfy 0 <= axis < rank(x)"
+      ]
     }
   },
   "output": {

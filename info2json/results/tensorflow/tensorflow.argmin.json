@@ -42,13 +42,15 @@
         "uint32",
         "uint64"
       ],
-      "constraints": []
+      "constraints": [
+        "input must be one of float32, float64, int32, uint8, int16, int8, complex64, int64, qint8, quint8, qint32, bfloat16, uint16, complex128, half, uint32, uint64"
+      ]
     },
     "axis": {
       "type": "tensor",
       "size": "",
       "default": "",
-      "flag": "Required",
+      "flag": "Optional",
       "description": "A `Tensor`. Must be one of the following types: `int32`, `int64`. int32 or int64, must be in the range `-rank(input), rank(input))`. Describes which axis of the input Tensor to reduce across. For vectors, use axis = 0.",
       "dtype_candidates": [
         "int32",
@@ -59,29 +61,20 @@
         "int64"
       ],
       "constraints": [
-        "axis must be one of int32, int64"
+        "axis must be one of int32, int64",
+        "axis must satisfy -rank(input) <= axis < rank(input)"
       ]
     },
     "output_type": {
       "type": "dtype",
       "size": "",
-      "default": "",
+      "default": "tf.int64",
       "flag": "Optional",
       "description": "An optional `tf.DType` from: `tf.int32, tf.int64`. Defaults to `tf.int64`.",
       "dtype_candidates": [
         "int32",
         "int64"
       ],
-      "enum_values": [],
-      "constraints": []
-    },
-    "name": {
-      "type": "",
-      "size": "",
-      "default": "",
-      "flag": "Optional",
-      "description": "A name for the operation (optional).",
-      "dtype_candidates": [],
       "enum_values": [],
       "constraints": []
     }

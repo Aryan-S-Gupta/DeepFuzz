@@ -10,8 +10,10 @@
       "description": "First input array. The elements must have integer dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 elements must have integer dtype"
+        "x1 and x2 must have the same dtype with integer type.",
+        "x1, x2 and output must have broadcast-compatible shapes."
       ]
     },
     "x2": {
@@ -22,17 +24,20 @@
       "description": "Second input array. The elements must have integer dtype.",
       "dtype_candidates": [],
       "enum_values": [],
+      "case_insensitive": false,
       "constraints": [
-        "x1 and x2 elements must have integer dtype"
+        "x1 and x2 must have the same dtype with integer type.",
+        "x1, x2 and output must have broadcast-compatible shapes."
       ]
     }
   },
   "output": {
     "type": "tensor",
-    "numbers": "1",
+    "numbers": "int32",
     "description": "An array containing the least common multiple of the corresponding elements from the absolute values of `x1` and `x2`."
   },
   "constraints": [
-    "x1 and x2 elements must have integer dtype"
+    "x1 and x2 must have the same dtype with integer type.",
+    "x1, x2 and output must have broadcast-compatible shapes."
   ]
 }
