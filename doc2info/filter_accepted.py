@@ -241,6 +241,16 @@ WRAPPER_BRIDGE_NAMESPACE_PATTERNS = [
     r"(?:^|\.)raw_ops(?:\.|$)",
 ]
 
+EXTERNAL_ALIAS_MODULE_PREFIXES = {
+    "numpy",
+    "scipy",
+    "pandas",
+    "sklearn",
+    "matplotlib",
+    "PIL",
+    "cv2",
+}
+
 METHOD_SIGNATURE_PATTERNS = [r"^[A-Za-z_][\w\[\]]*\.[A-Za-z_][\w]*\("]
 
 CLASSISH_OWNER_PATTERNS = [
@@ -856,6 +866,23 @@ def rejects_wrapper_bridge_namespace(api_name: str) -> Tuple[bool, str]:
     return False, ""
 
 
+def rejects_external_alias(api_name: str, entry: Dict[str, Any]) -> Tuple[bool, str]:
+    root = (api_name or "").split(".", 1)[0]
+    if not root:
+        return False, ""
+
+    for field in ("module", "canonical_target"):
+        value = str(entry.get(field) or "").strip()
+        if not value:
+            continue
+        prefix = value.split(".", 1)[0]
+        if prefix == root:
+            continue
+        if prefix in EXTERNAL_ALIAS_MODULE_PREFIXES:
+            return True, f"external imported alias via {field} '{value}'"
+    return False, ""
+
+
 def requires_receiver_harness(api_name: str, sig: Optional[str]) -> Tuple[bool, str]:
     s = (sig or "").strip()
     first = s.split("\n", 1)[0].strip() if s else ""
@@ -997,6 +1024,10 @@ def filter_one(entry: Dict[str, Any], allow_receiver_apis: bool = False, allow_w
         bad_ns, why = rejects_wrapper_bridge_namespace(api)
         if bad_ns:
             return Decision(False, 5, why), base_row
+
+    external_alias, why = rejects_external_alias(api, entry)
+    if external_alias:
+        return Decision(False, 5, why), base_row
 
     sig_params = parse_signature_params(sig)
     doc_params = parse_params_from_doc(doc)
